@@ -147,6 +147,40 @@ The language preference is applied from `ReaderView` using SwiftUI's `locale` an
 `layoutDirection` environments. Arabic uses RTL and English uses LTR. Quranic text fields, QCF page
 layout and Arabic difference content retain their own RTL treatment where required.
 
+## Developer review editor
+
+### State & capabilities
+- **Developer-only entry:** Settings → المطور → «محرر القراءات» (accessibility identifier `open-review-editor`), available in DEBUG builds only. Completely compiled out of Release builds (`#if DEBUG`).
+- **Live write access (owner decision, 2026-10-05):** The developer editor in the DEBUG iOS app may WRITE to the live database through the web review API (`/api/mushaf-1441/qiraat-review`). This is the sole exception to the read-only stance the app otherwise keeps toward the web backend; Release builds never contain it. All writes use the web review API RPCs and enforce identical validation, rules (D8, wasl/waqf, narrator duplication, version conflicts), edit logging, and per-install device ID.
+- **Workflow:** Tap a Mushaf word → bottom sheet with steps:
+  1. **١ الأوجه:** view recorded faces with status chips, approve/flag/delete/restore actions, learned suggestion cards, copy face.
+  2. **٢ المراجع:** nquran and الشامل reference groups with reconciliation badges (matched, recorded unreviewed, partial, missing, unresolved).
+  3. **٣ التحرير:** farsh or usul editing, category selector, reader/narrator matrix with presets and per-narrator wajh/adaa/notes.
+  - Sticky «حفظ واعتماد / اعتماد» button saves dirty edits and advances to the next unreviewed word.
+- **Advanced tools:** Hamzah and Imalah structured builders, learned suggestions with farsh clash guards and debounce, same-word copy with preview confirmation, apply to all occurrences (`bulkApply`), transaction history sheet with undo (`ReviewHistoryView`), and an iPad side-by-side layout (regular width).
+- **Reference data:** nquran (14 MB) and الشامل reference data bundled strictly in Debug builds (`make review-data`, outputs to `Generated/Review/reference`).
+
+### Code layout
+- **Pure engine (`MushafCore/Sources/MushafCore/Review/`):** review models, API client, draft rules, serial save queue, reference data loaders, nquran and الشامل matchers, reconciliation badges, apply plans. Ported directly from web TypeScript and proven equal via golden tests (`make review-golden` runs the web's own TypeScript over real data; requires `node_modules`).
+- **UI layer (`Sources/ReviewEditor/`):** DEBUG-only SwiftUI and UIKit views (`ReviewEditorEntry`, `ReviewPageScreen`, `ReviewPageCanvas`, `ReviewWordSheet`, `ReviewStore`, builders, history, suggestions, copy/bulk views).
+- **Endpoint isolation:** API endpoint strings live strictly in the DEBUG-only `Sources/ReviewEditor/ReviewEndpoint.swift` so the Release binary carries none.
+
+### How to run tests
+- **Core tests:** `make core-test` (runs Swift Testing across `MushafCore`, including all review models, API client, draft, matching, and golden parity suites; requires `review-data` and `review-golden`).
+- **App unit tests:** `xcodebuild test ... -only-testing:MutshabehatTests` (runs unit tests including `ReviewHistoryTests`, `ReviewBulkTests`, `ReviewEditorTests`).
+- **UI tests with stub:** `MutshabehatUITests` runs against an in-memory fake server using the `-review-stub` launch argument (e.g. `ReviewEditorUITests`).
+- **iPad UI tests:** `make test-ipad` runs UI tests on the iPad Pro 13-inch simulator.
+- **Release guard:** `make release-guard` builds a Release configuration and runs `scripts/release_guard.py` to verify that no review symbols (`qiraat-review`, `ReviewStore`, `ReviewEditorEntry`) or directories (`ReviewReference`) leak into the Release binary or bundle. (Also tested in `make test` via `scripts/test_release_guard.py`).
+
+### Test suite notes & known environment facts
+- **Four older UI tests in other classes fail on a clean `ios/main` too:** These failures are pre-existing and unrelated to the review editor.
+- **Search-budget core test:** The search-budget core test can miss its 350 ms budget under heavy machine load; rerun serially if needed.
+
+### Open items & verification status
+- **Real API / database verification:** The editor has only run against the in-memory stub (`-review-stub` launch argument) and unit/UI tests; it has NOT been exercised against the real API or database.
+- **Live end-to-end check:** Requires the owner's explicit go-ahead on a single page with undo before writing to the live database.
+- **On-device installation:** Running `make device` to install on the owner's iPhone is for the owner to perform (requires personal team signing).
+
 ## Important files
 
 | Area | Files |
@@ -159,6 +193,8 @@ layout and Arabic difference content retain their own RTL treatment where requir
 | Database transfer | `Sources/Reader/DeveloperDataTransfer.swift`, `Sources/Mutshabehat/MutshabehatDatabase.swift` |
 | Search | `Sources/Reader/AyahSearchView.swift`, `MushafCore/Sources/MushafCore/QuranSearch.swift` |
 | Qiraat UI | `Sources/Qiraat/QiraatReaderPicker.swift`, `QiraatSheet.swift`, `QiraatControls.swift` |
+| Review editor engine | `MushafCore/Sources/MushafCore/Review/` |
+| Review editor UI & endpoints | `Sources/ReviewEditor/` |
 | Mutshabehat UI | `Sources/Mutshabehat/MutshabehatView.swift`, `ArabicDiffView.swift` |
 | Mutshabehat Editor & Tools | `Sources/Mutshabehat/MutshabehatGroupEditorView.swift`, `AutoColorPickerView.swift`, `WordLinkerView.swift`, `MutshabehatQuranSearchView.swift` |
 | Mutshabehat Algorithms & Models | `Sources/Mutshabehat/ArabicDiffAlgorithm.swift`, `MutshabehatModels.swift`, `MutshabehatDatabase.swift` |
@@ -206,3 +242,10 @@ layout and Arabic difference content retain their own RTL treatment where requir
 - The font and generated databases under `Generated/` are intentionally uncommitted/licence-sensitive.
 - Do not commit credentials, `Config.xcconfig`, `Signing.xcconfig`, generated databases or fonts.
 - Do not push or sign in to Apple/GitHub/Vercel without explicit user approval.
+
+### Developer review editor: after the final review
+- `MushafCore/Review/*` and its tests are wrapped in `#if DEBUG` (Xcode builds the local package in the app's configuration, so Debug has it and Release does not). `swift test` and `swift test -c release --filter PerformanceTests` both work.
+- Two-word faces: arm «ربط بالكلمة التالية» (page action bar), tap the next word, then «وجه جديد».
+- Deferred minors: see the last bullet of the "Final review fixes" entry in CHANGELOG.md.
+- Not exercised: the real API/database (stub and tests only). A live check needs the owner's go-ahead (one page, with undo).
+

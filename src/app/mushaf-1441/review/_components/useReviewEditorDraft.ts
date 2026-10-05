@@ -59,12 +59,15 @@ export function serializeDraftSnapshot(state: {
   return JSON.stringify(state)
 }
 
+/** `approve`: mark the row reviewed in the same queued save (so «اعتماد» never leaves edits unsaved). */
+export type SaveRowOptions = { approve?: boolean }
+
 type UseReviewEditorDraftProps = {
   selectedRow: ReviewRow | null
   activeRowsForWord: ReviewRow[]
   newEntryDraft: CreateEntryInput | null
   selectedWordMeta: WordMeta | null
-  onSaveRowEdits(row: ReviewRow, fields: EntryFields, narrators: NarratorInput[]): Promise<void>
+  onSaveRowEdits(row: ReviewRow, fields: EntryFields, narrators: NarratorInput[], options?: SaveRowOptions): Promise<void>
   onCreateNewEntry(entry: CreateEntryInput, options?: { autoVerify?: boolean }): Promise<boolean>
   onBulkDelete(rows: ReviewRow[], note: string | null): Promise<void>
   onCopyToOccurrence(
@@ -295,7 +298,7 @@ export function useReviewEditorDraft({
   }
   const selectedCategoryCodes = categoryCode ? [categoryCode, ...extraCategoryCodes] : []
 
-  async function handleSaveExisting(): Promise<boolean> {
+  async function handleSaveExisting(options?: SaveRowOptions): Promise<boolean> {
     if (!selectedRow) return false
     const validation = validateEntryDraft(kind, readingText, categoryCode, narrators.length)
     if (!validation.valid) return false
@@ -320,7 +323,7 @@ export function useReviewEditorDraft({
       hamzahDetail: !isFarsh && isHamzahCategory(categoryCode) ? hamzahDetail : null,
     }
 
-    await onSaveRowEdits(selectedRow, fields, narrators)
+    await onSaveRowEdits(selectedRow, fields, narrators, options?.approve === true ? { approve: true } : undefined)
     if (!isFarsh && extraCategoryCodes.length > 0) {
       let allCreated = true
       for (const code of extraCategoryCodes) {

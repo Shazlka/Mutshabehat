@@ -26,6 +26,7 @@ import HistoryPanel from './HistoryPanel'
 import ReviewMushafPane from './ReviewMushafPane'
 import ReviewStatsBar from './ReviewStatsBar'
 import ReviewEditorPane, { type WordMeta } from './ReviewEditorPane'
+import type { SaveRowOptions } from './useReviewEditorDraft'
 import ReviewNav from './ReviewNav'
 import MobileReviewMushafView from './MobileReviewMushafView'
 import MobileReviewEditorView from './MobileReviewEditorView'
@@ -248,6 +249,17 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
   // Latest page/pageNumber for background save jobs, which outlive the render that started them.
   const pageRef = useRef<ReviewPage | null>(null)
   const pageNumberRef = useRef(pageNumber)
+  // Whether the desktop editor holds edits that are not saved yet (reported by ReviewEditorPane).
+  const draftDirtyRef = useRef(false)
+  const handleDraftDirtyChange = useCallback((dirty: boolean) => {
+    draftDirtyRef.current = dirty
+  }, [])
+  const confirmDiscardDraft = useCallback(
+    () =>
+      !draftDirtyRef.current ||
+      window.confirm('عندك تعديلات غير محفوظة في هذا الوجه، وستضيع إن انتقلت الآن. هل تريد المتابعة بدون حفظ؟'),
+    [],
+  )
   const selectedWordKeyRef = useRef<string | null>(null)
   useEffect(() => {
     pageRef.current = page
@@ -358,6 +370,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
   const goToPage = useCallback(
     (target: number) => {
       const clamped = clampPage(target)
+      if (clamped !== pageNumberRef.current && !confirmDiscardDraft()) return
       setPageNumber(clamped)
       setMobileView('mushaf')
       setSelectedWordKey(null)
@@ -376,7 +389,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
         window.history.replaceState(window.history.state, '', url)
       }
     },
-    [loadPage, clearSpanSelection]
+    [loadPage, clearSpanSelection, confirmDiscardDraft]
   )
 
   const reloadCurrentPage = useCallback(async () => {
@@ -566,6 +579,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
         return
       }
 
+      if (key !== selectedWordKey && !confirmDiscardDraft()) return
       clearSpanSelection()
       setSelectedWordKey(key)
       setSelectedWordMeta(meta)
@@ -607,7 +621,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
         })
       }
     },
-    [page, pageNumber, selectedWordKey, selectedWordMeta, clearSpanSelection]
+    [page, pageNumber, selectedWordKey, selectedWordMeta, clearSpanSelection, confirmDiscardDraft]
   )
 
   const handleMobileBack = useCallback(() => {
@@ -761,7 +775,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
   // Save Row Edits (fields + narrators). Optimistic: the row updates at once and the two requests
   // (fields, then narrators) run in the background; progress and failures show in the status bar.
   const handleSaveRowEdits = useCallback(
-    async (row: ReviewRow, fields: EntryFields, narrators: NarratorInput[]) => {
+    async (row: ReviewRow, fields: EntryFields, narrators: NarratorInput[], options?: SaveRowOptions) => {
       if (!deviceId) return
       if (narrators.length === 0) {
         setErrorMessage('يجب اختيار راوٍ واحد على الأقل')
@@ -778,7 +792,8 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
 
       const optimistic = () => {
         const base = pageRef.current?.rows.find((r) => r.entryId === row.entryId) ?? row
-        upsertRow(applyFieldsToRow(base, fields, narrators, pageRef.current ?? current))
+        const next = applyFieldsToRow(base, fields, narrators, pageRef.current ?? current)
+        upsertRow(options?.approve ? { ...next, reviewStatus: 'reviewed' } : next)
       }
       optimistic()
 
@@ -796,6 +811,14 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
             return { ok: false, message: narratorsRes.error.messageAr ?? narratorsRes.error.message }
           }
           upsertRow(narratorsRes.data)
+          // «اعتماد» on an edited face: save first, approve the saved version in the same queue slot.
+          if (options?.approve && narratorsRes.data.reviewStatus !== 'reviewed') {
+            const approved = await reviewApi.setStatus(narratorsRes.data, 'reviewed', null, deviceId)
+            if (!approved.ok) {
+              return { ok: false, message: `تم الحفظ لكن تعذّر الاعتماد: ${approved.error.messageAr ?? approved.error.message}` }
+            }
+            upsertRow(approved.data)
+          }
           return { ok: true }
         },
         onFail: () => void reloadSilent(),
@@ -1123,6 +1146,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
                   onConfirmRow={handleConfirmRow}
                   onFlagRow={handleFlagRow}
                   onSaveRowEdits={handleSaveRowEdits}
+                  onDraftDirtyChange={handleDraftDirtyChange}
                   onDeleteRow={handleDeleteRow}
                   onBulkDelete={handleBulkDelete}
                   onCopyToOccurrence={handleCopyToOccurrence}

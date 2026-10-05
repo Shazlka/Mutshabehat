@@ -12,9 +12,9 @@ IPAD     ?= iPad Pro 13-inch (M5)
 APP      := $(DERIVED)/Build/Products/Debug-iphonesimulator/Mutshabehat.app
 XCB       = xcodebuild -project Mutshabehat.xcodeproj -scheme Mutshabehat -derivedDataPath $(DERIVED)
 
-.PHONY: all data fonts qiraat qiraat-refresh qiraat-offline project data-test core-test perf build test test-ipad run open device clean check-isolation
+.PHONY: all data fonts qiraat qiraat-refresh qiraat-offline review-data review-golden project data-test core-test perf build test test-ipad run open device clean check-isolation release-guard
 
-all: data fonts qiraat project
+all: data fonts qiraat review-data project
 
 data: $(GEN)/mushaf.sqlite $(GEN)/mutshabehat.sqlite
 
@@ -41,6 +41,17 @@ qiraat-refresh:
 qiraat-offline:
 	python3 scripts/fetch_qiraat.py $(REPO) $(GEN)/Qiraat --source fixtures --refresh
 
+# Developer review editor: the web app's nquran / الشامل reference data, copied unchanged (never committed).
+review-data:
+	python3 scripts/build_review_reference.py $(REPO) $(GEN)/Review/reference
+
+# Golden data for the review editor's Swift ports: the web's own TypeScript run over the real data
+# (needs node_modules; a worktree borrows the web checkout's through a git-ignored symlink).
+WEB_CHECKOUT ?= $(HOME)/Projects/mutshabehat-v2
+review-golden:
+	@test -e $(REPO)/node_modules || ln -s $(WEB_CHECKOUT)/node_modules $(REPO)/node_modules
+	cd $(REPO) && npx tsx apps/ios/scripts/review_golden.mjs . apps/ios/$(GEN)/Review/golden
+
 # Sync all databases from web app to iCloud Drive Mushaf_Qiraat folder
 sync-icloud:
 	python3 scripts/sync_webapp_to_icloud.py --update-generated
@@ -54,9 +65,11 @@ data-test:
 	python3 scripts/test_build_mushaf_db.py -v
 	python3 scripts/test_fetch_qcf_fonts.py -v
 	python3 scripts/test_fetch_qiraat.py -v
+	python3 scripts/test_build_review_reference.py -v
+	cd scripts && python3 test_release_guard.py -v
 	python3 scripts/test_device.py -v
 
-core-test: data fonts qiraat
+core-test: data fonts qiraat review-data review-golden
 	swift test --package-path MushafCore
 
 perf: data fonts qiraat
@@ -65,8 +78,14 @@ perf: data fonts qiraat
 build: all
 	$(XCB) -destination 'platform=iOS Simulator,name=$(SIM)' build
 
-test: check-isolation all data-test core-test
+test: check-isolation all data-test core-test release-guard
 	$(XCB) -destination 'platform=iOS Simulator,name=$(SIM)' test
+
+# A Release build must carry nothing of the DEBUG-only review editor (symbols, API path, bundled reference data).
+RELEASE_APP := $(DERIVED)/Build/Products/Release-iphonesimulator/Mutshabehat.app
+release-guard: all
+	$(XCB) -configuration Release -destination 'generic/platform=iOS Simulator' build
+	python3 scripts/release_guard.py $(RELEASE_APP)
 
 test-ipad: all
 	$(XCB) -destination 'platform=iOS Simulator,name=$(IPAD)' test

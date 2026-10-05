@@ -302,6 +302,9 @@ private struct SettingsView: View {
     let onSelectPage: (Int) -> Void
     let onSelectBookmark: (QuranBookmark) -> Void
     @State private var showingQiraatPicker = false
+#if DEBUG
+    @State private var showingReviewEditor = false
+#endif
 
     private var appLanguage: AppLanguage {
         AppLanguage(rawValue: language) ?? .arabic
@@ -404,9 +407,27 @@ private struct SettingsView: View {
                         )
                     }
                     .accessibilityIdentifier("open-database-settings")
+
+                    Button { showingReviewEditor = true } label: {
+                        HStack {
+                            Label(
+                                language == AppLanguage.english.rawValue ? "Qiraat Editor" : "محرر القراءات",
+                                systemImage: "checkmark.seal.text.page"
+                            )
+                            Spacer()
+                            Image(systemName: "chevron.forward").font(.footnote.weight(.semibold)).foregroundStyle(.tertiary)
+                        }
+                    }
+                    .foregroundStyle(.primary)
+                    .accessibilityIdentifier("open-review-editor")
                 }
 #endif
             }
+#if DEBUG
+            .fullScreenCover(isPresented: $showingReviewEditor) {
+                ReviewEditorEntry(library: library)
+            }
+#endif
             .fullScreenCover(isPresented: $showingQiraatPicker) {
                 if let catalog = library.qiraat?.catalog {
                     QiraatReaderPicker(catalog: catalog, selection: $qiraat.filter)
