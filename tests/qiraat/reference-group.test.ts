@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import test from 'node:test'
-import { isGroupInDraft, proposeReferenceDecision } from '../../src/app/mushaf-1441/review/_lib/referenceGroup'
+import { isGroupInDraft, proposeReferenceDecision, referenceBadgeVisibility } from '../../src/app/mushaf-1441/review/_lib/referenceGroup'
 import { ALL_NARRATOR_IDS, nquranGroupsForDifference, type NquranAyahEntry } from '../../src/app/mushaf-1441/review/_lib/nquranReference'
 import { row } from './_helpers/review-row'
 
@@ -58,4 +58,22 @@ test('isGroupInDraft: true only when every narrator of a non-empty group is alre
   assert.equal(isGroupInDraft({ narratorIds: ['Q01-R01', 'Q01-R02'] }, ['Q01-R01']), false)
   assert.equal(isGroupInDraft({ narratorIds: ['Q01-R01'] }, []), false)
   assert.equal(isGroupInDraft({ narratorIds: [] }, ['Q01-R01']), false)
+})
+
+test('referenceBadgeVisibility: a group already saved (approved or not) never shows «في المسودة»', () => {
+  const approved = { status: 'matched', matchedRow: row({ narrators: ids('Q01-R01'), reviewStatus: 'reviewed' }) } as const
+  const recorded = { status: 'recorded_unreviewed', matchedRow: row({ narrators: ids('Q01-R01'), reviewStatus: 'unreviewed' }) } as const
+  // The open draft IS the saved row being edited, so its narrators are "in the draft" too.
+  assert.deepEqual(referenceBadgeVisibility(approved, true), { draft: false, decision: true })
+  assert.deepEqual(referenceBadgeVisibility(recorded, true), { draft: false, decision: true })
+  assert.deepEqual(referenceBadgeVisibility(approved, false), { draft: false, decision: true })
+})
+
+test('referenceBadgeVisibility: only an unsaved reading in the draft shows «في المسودة»', () => {
+  const missing = { status: 'missing', matchedRow: null } as const
+  const partial = { status: 'partial', matchedRow: row({ narrators: ids('Q01-R01') }) } as const
+  assert.deepEqual(referenceBadgeVisibility(missing, true), { draft: true, decision: false })
+  assert.deepEqual(referenceBadgeVisibility(partial, true), { draft: true, decision: false })
+  assert.deepEqual(referenceBadgeVisibility(missing, false), { draft: false, decision: true })
+  assert.deepEqual(referenceBadgeVisibility(null, false), { draft: false, decision: false })
 })

@@ -25,6 +25,7 @@ import {
 import {
   isGroupInDraft,
   proposeReferenceDecision,
+  referenceBadgeVisibility,
   type ReferenceCondition,
   type ReferenceDecisionStatus,
   type ReferenceGroup,
@@ -39,8 +40,8 @@ import type { WordMeta } from './ReviewEditorPane'
 // Labels/colors for the reconciliation badges -- see proposeReferenceDecision() for what each
 // status means. Kept as a plain lookup (not JSX) so it can sit at module scope.
 const DECISION_BADGES: Record<ReferenceDecisionStatus, { label: string; className: string }> = {
-  matched: { label: '✓ مطابق لوجه معتمد', className: 'bg-green-100 text-green-800' },
-  recorded_unreviewed: { label: '🔎 مسجَّل، بانتظار الاعتماد', className: 'bg-blue-100 text-blue-800' },
+  matched: { label: '✓ معتمد كوجه', className: 'bg-green-100 text-green-800' },
+  recorded_unreviewed: { label: '🔎 مسجَّل كوجه، بانتظار الاعتماد', className: 'bg-blue-100 text-blue-800' },
   partial: { label: '⚠ تعارض جزئي في القراء', className: 'bg-orange-100 text-orange-800' },
   missing: { label: '➕ غير مسجَّل — يُقترح إضافته', className: 'bg-red-100 text-red-800' },
   unresolved: { label: '❔ تعذّر التعرّف على القارئ', className: 'bg-gray-100 text-gray-700' },
@@ -184,14 +185,15 @@ export default function ReferencePanel({
   function renderGroupRow(group: ReferenceGroup, matchesWord: boolean, badgeKey: string, withDetails: boolean) {
     const decision = matchesWord ? proposeReferenceDecision(group, activeRowsForWord) : null
     const inDraft = matchesWord && isGroupInDraft(group, draftNarratorIds)
-    const badge = decision && !inDraft ? DECISION_BADGES[decision.status] : null
+    const visible = referenceBadgeVisibility(decision, inDraft)
+    const badge = decision && visible.decision ? DECISION_BADGES[decision.status] : null
     const canApply = matchesWord && group.narratorIds.length > 0
     const suggestion = withDetails ? group.suggestion : undefined
     return (
       <div key={group.key} className="text-[11px] leading-snug">
         <div className="flex flex-wrap items-center gap-1">
           <span className="font-bold text-amber-900">{group.readersLabel}:</span>
-          {inDraft ? (
+          {visible.draft ? (
             <span
               title="هؤلاء الرواة في المسودة الحالية بالفعل"
               className="rounded bg-purple-100 px-1 py-px text-[11px] font-bold text-purple-800"

@@ -89,3 +89,18 @@ export function isGroupInDraft(group: { narratorIds: readonly string[] }, draftN
   const inDraft = new Set(draftNarratorIds)
   return group.narratorIds.every((id) => inDraft.has(id))
 }
+
+/**
+ * Which status badge a group row shows. A group that a saved row already covers (approved or still
+ * waiting for approval) always shows that saved status: the open draft is usually that very row being
+ * edited, so its narrators are "in the draft" as well, and «في المسودة» would hide the real state.
+ * «في المسودة» is only for a reading that exists in the draft alone (nothing saved covers it).
+ */
+export function referenceBadgeVisibility(
+  decision: ReferenceDecision | null,
+  inDraft: boolean,
+): { draft: boolean; decision: boolean } {
+  if (!decision) return { draft: inDraft, decision: false }
+  if (decision.status === 'matched' || decision.status === 'recorded_unreviewed') return { draft: false, decision: true }
+  return inDraft ? { draft: true, decision: false } : { draft: false, decision: true }
+}

@@ -38,6 +38,12 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-10-05 — Review editor: a reference group already saved as a wajh shows its saved status, not «✎ في المسودة»
+- **Owner report:** in the nquran / الشامل panel, groups that were already added as a wajh (and approved) still read «✎ في المسودة».
+- **Cause:** the open draft is usually the saved row being edited, so its narrators are "in the draft" too, and the draft badge replaced the saved-status badge (`ReferencePanel.tsx`).
+- **Fix:** new `referenceBadgeVisibility(decision, inDraft)` (`_lib/referenceGroup.ts`): a group a saved row covers always shows that status; «✎ في المسودة» only appears for a reading that exists in the draft alone. Labels now read «✓ معتمد كوجه» and «🔎 مسجَّل كوجه، بانتظار الاعتماد». The ➕ label («إضافة وجه آخر») and the false-second-wajh guard still follow the draft.
+- **Verification:** 2 new tests in `reference-group.test.ts` (RED→GREEN), `test:qiraat:review` 106/106, typecheck clean, eslint clean on touched files. Not exercised against the real review page/database. **DB migration:** none.
+
 ## 2026-10-04 — Replace الشامل Baqarah sample with the supplied full-surah JSON
 - Replaced only the review editor's الشامل Baqarah reference: 220 sample entries on pages 2–13 → 1,026 locations / 1,701 reader groups on pages 2–49, from the owner-supplied `الشامل database.json` (286 ayahs).
 - The importer supports the supplied ayah/differences format, preserving reader labels, reading prose and source URLs. The الشامل loader uses the existing reader-label resolver for these groups; no categories, reading-text fields or wasl/waqf conditions are inferred from prose. Legacy structured-format coverage remains in test fixtures only.
