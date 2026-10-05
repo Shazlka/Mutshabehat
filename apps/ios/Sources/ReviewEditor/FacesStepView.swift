@@ -7,6 +7,10 @@ struct FacesStepView: View {
     let store: ReviewStore
     let openEditor: () -> Void
 
+    @State private var sameWordOpen = false
+    @State private var verifiedOnly = false
+    @State private var applyRow: ReviewRow?
+
     private var key: String { store.selectedKey ?? "" }
 
     var body: some View {
@@ -35,14 +39,22 @@ struct FacesStepView: View {
                         FaceRow(row: row, catalog: store.page?.narrators ?? [])
                             .contentShape(Rectangle())
                             .onTapGesture { store.startEditing(row); openEditor() }
+                            .contextMenu {
+                                Button { applyRow = row } label: { Label("تطبيق على كل المواضع", systemImage: "square.on.square") }
+                                    .disabled(ReviewPageEditing.isPlaceholder(row))
+                                    .accessibilityIdentifier("review-open-apply-all-\(row.entryId)")
+                            }
                             .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                                 if row.reviewStatus != .reviewed {
                                     Button { store.approve(row) } label: { Label("اعتماد", systemImage: "checkmark") }.tint(.green)
+                                        .accessibilityIdentifier("review-face-approve-\(row.entryId)")
                                 }
                                 Button { store.flag(row, note: nil) } label: { Label("تعليم", systemImage: "flag") }.tint(.orange)
+                                    .accessibilityIdentifier("review-face-flag-\(row.entryId)")
                             }
                             .swipeActions(edge: .leading) {
                                 Button(role: .destructive) { store.delete(row) } label: { Label("حذف", systemImage: "trash") }
+                                    .accessibilityIdentifier("review-face-delete-\(row.entryId)")
                             }
                             .accessibilityIdentifier("review-face-\(row.entryId)")
                     }
@@ -50,8 +62,25 @@ struct FacesStepView: View {
             } header: {
                 Text(FacesSummary.summarize(store.rows(forKey: key)).isEmpty ? "الأوجه المسجلة" : FacesSummary.summarize(store.rows(forKey: key)))
             }
+            Section("مقترحات") {
+                SuggestionsView(store: store)
+            }
+            Section {
+                Button {
+                    verifiedOnly = false
+                    sameWordOpen = true
+                } label: { Label("نسخ من نفس الكلمة", systemImage: "doc.on.doc") }
+                .accessibilityIdentifier("review-open-same-word")
+                Button {
+                    verifiedOnly = true
+                    sameWordOpen = true
+                } label: { Label("✓ تحقق من بيانات معتمدة", systemImage: "checkmark.seal") }
+                .accessibilityIdentifier("review-open-verified-same-word")
+            }
         }
         .listStyle(.insetGrouped)
+        .sheet(isPresented: $sameWordOpen) { SameWordView(store: store, verifiedOnly: verifiedOnly) }
+        .sheet(item: $applyRow) { row in ApplyAllView(store: store, row: row) }
     }
 }
 

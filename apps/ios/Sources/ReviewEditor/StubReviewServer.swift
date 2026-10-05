@@ -186,6 +186,30 @@ final class StubReviewServer: @unchecked Sendable {
         }
     }
 
+    private func bulkReply(_ object: Any) -> (Int, String) {
+        guard let data = try? JSONSerialization.data(withJSONObject: object) else { return (500, #"{"error":"unavailable"}"#) }
+        return (200, String(decoding: data, as: UTF8.self))
+    }
+
+    private func copy(_ body: [String: Any], _ json: (ReviewRow) -> (Int, String)) -> (Int, String) {
+        guard let sourceId = body["sourceEntryId"] as? String,
+              let source = sameWordSources[sourceId] ?? locate(sourceId).flatMap({ pages[$0.page]?[$0.index] }),
+              let surah = body["surah"] as? Int, let ayah = body["ayah"] as? Int,
+              let word = body["startWord"] as? Int else { return (400, #"{"error":"bad_request"}"#) }
+        let entry = CreateEntryInput(surah: surah, ayah: ayah, startWord: word,
+            endAyah: body["endAyah"] as? Int, endWord: body["endWord"] as? Int, kind: source.kind,
+            readingText: source.readingText, uthmaniText: source.uthmaniText, description: source.description,
+            performanceNote: source.performanceNote, variantType: source.variantType, categoryCode: source.categoryCode,
+            rulingText: source.rulingText, narrators: source.narrators.map {
+                NarratorInput(id: $0.id, action: $0.action, wajhOrder: $0.wajhOrder, wajhNote: $0.wajhNote)
+            }, appliesWasl: source.appliesWasl, appliesWaqf: source.appliesWaqf, hamzahDetail: source.hamzahDetail)
+        guard let data = try? JSONEncoder().encode(entry),
+              let object = try? JSONSerialization.jsonObject(with: data) else { return (400, #"{"error":"bad_request"}"#) }
+        return post("create", ["entry": object], json)
+    }
+
+    private var sameWordSources: [String: ReviewRow] = [:]
+
     private func post(_ action: String, _ body: [String: Any], _ json: (ReviewRow) -> (Int, String)) -> (Int, String) {
         switch action {
         case "create":
@@ -209,7 +233,63 @@ final class StubReviewServer: @unchecked Sendable {
             undoneTransactions.insert(txid)
             return (200, #"{"undone":1}"#)
         case "bulkDelete": return (200, #"{"deleted":[]}"#)
-        case "findOccurrences", "suggest", "findSameWord": return (200, "[]")
+        case "suggest", "findSameWord":
+            guard let surah = body["surah"] as? Int, let ayah = body["ayah"] as? Int,
+                  let word = body["word"] as? Int,
+                  let number = try? database.page(of: AyahKey(surah: surah, ayah: ayah)),
+                  let first = words(number).first else { return (200, "[]") }
+            if action == "suggest" {
+                guard first.surah == surah, first.ayah == ayah, first.word == word else { return (200, "[]") }
+                return bulkReply([["key": "stub-exact", "tier": "exact", "support": 2,
+                                   "sourceEntryId": "stub-source", "sources": ["2:25:28"],
+                                   "config": ["kind": "farsh", "readingText": first.text, "variantType": "vowel",
+                                              "appliesWasl": true, "appliesWaqf": true,
+                                              "narrators": [["id": "Q01-R02", "nameAr": "ورش عن نافع", "wajhOrder": 1]]]]])
+            }
+            let match = makeRow("same-word-\(number)", first, kind: .usul, status: .reviewed,
+                                page: number, narrators: ["Q06-R01", "Q06-R02"])
+            sameWordSources[match.entryId] = match
+            let reply = json(match)
+            return (reply.0, "[\(reply.1)]")
+        case "copyEntry": return copy(body, json)
+        case "findOccurrences":
+            guard let id = body["entryId"] as? String, let at = locate(id) else { return (200, "[]") }
+            let row = pages[at.page]![at.index]
+            guard let other = words(at.page).first(where: { $0.key != row.startKey }) else { return (200, "[]") }
+            return bulkReply([
+                ["surah": row.surah, "ayah": row.ayah, "word": row.startWord, "page": at.page,
+                 "canonicalKey": row.startKey, "text": row.hafsText, "status": "exists", "existingEntryId": id],
+                ["surah": other.surah, "ayah": other.ayah, "word": other.word, "page": at.page,
+                 "canonicalKey": other.key, "text": other.text, "status": "add"]
+            ])
+        case "bulkApply":
+            guard let sourceId = body["sourceEntryId"] as? String, let at = locate(sourceId) else {
+                return (404, #"{"error":"not_found"}"#)
+            }
+            let source = pages[at.page]![at.index]
+            var added: [[String: Any]] = [], skipped: [[String: Any]] = [], errors: [[String: Any]] = []
+            for target in body["targets"] as? [[String: Int]] ?? [] {
+                guard let surah = target["surah"], let ayah = target["ayah"], let word = target["word"] else { continue }
+                var result: [String: Any] = ["surah": surah, "ayah": ayah, "word": word]
+                let existing = pages.values.flatMap { $0 }.first {
+                    !$0.deleted && $0.surah == surah && $0.ayah == ayah && $0.startWord == word
+                        && $0.kind == source.kind && $0.categoryCode == source.categoryCode && $0.narrators == source.narrators
+                }
+                if let existing {
+                    result["existingEntryId"] = existing.entryId
+                    skipped.append(result)
+                } else {
+                    let reply = copy(["sourceEntryId": sourceId, "surah": surah, "ayah": ayah, "startWord": word], json)
+                    if reply.0 == 200, let row = try? JSONDecoder().decode(ReviewRow.self, from: Data(reply.1.utf8)) {
+                        result["entryId"] = row.entryId
+                        added.append(result)
+                    } else {
+                        result["message"] = "تعذر نسخ الوجه"
+                        errors.append(result)
+                    }
+                }
+            }
+            return bulkReply(["sourceEntryId": sourceId, "added": added, "skipped": skipped, "errors": errors])
         default: return (400, #"{"error":"bad_request"}"#)
         }
     }

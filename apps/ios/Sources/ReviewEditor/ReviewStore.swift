@@ -22,7 +22,12 @@ final class ReviewStore {
 
     private(set) var pageNumber = 1
     private(set) var page: ReviewPage? {
-        didSet { statuses = page.map(ReviewNavigation.wordStatuses(in:)) ?? [:] }
+        didSet {
+            statuses = page.map(ReviewNavigation.wordStatuses(in:)) ?? [:]
+            let oldIDs = oldValue?.rows.filter { !ReviewPageEditing.isPlaceholder($0) }.map(\.entryId)
+            let newIDs = page?.rows.filter { !ReviewPageEditing.isPlaceholder($0) }.map(\.entryId)
+            if oldIDs != newIDs { loadSuggestions() }
+        }
     }
     private(set) var mushaf: MushafPage?
     private(set) var keyIndex: [String: MushafWord] = [:]
@@ -39,9 +44,34 @@ final class ReviewStore {
     /// The face just deleted, so the sheet can offer «تراجع».
     var lastDeleted: ReviewRow?
 
-    var selectedKey: String?
+    var selectedKey: String? {
+        didSet { if selectedKey != oldValue { resetBulkSelection(); loadSuggestions() } }
+    }
     /// The end of a two-word span, when the reviewer linked the next word.
-    var spanEndKey: String?
+    var spanEndKey: String? {
+        didSet { if spanEndKey != oldValue { resetBulkSelection(); loadSuggestions() } }
+    }
+
+    var suggestions: [ReviewSuggestion] = []
+    var sameWordMatches: [ReviewRow] = []
+    var sameWordVerifiedOnly = false
+    var sameWordState: LoadState = .idle
+    var previewMatch: ReviewRow?
+    var copying = false
+    var occurrences: [OccurrenceCandidate] = []
+    var selectedOccurrences: Set<String> = []
+    var occurrencesState: LoadState = .idle
+    var applyingOccurrences = false
+    var lastBulkResult: BulkApplyResult?
+
+    @ObservationIgnored var suggestionsTask: Task<Void, Never>?
+    @ObservationIgnored var suggestionRequest = UUID()
+    @ObservationIgnored var addedSuggestionKeys: Set<String> = []
+    @ObservationIgnored var sameWordRequest = UUID()
+    @ObservationIgnored var sameWordKey: String?
+    var sameWordRow: ReviewRow?
+    @ObservationIgnored var occurrenceRequest = UUID()
+    @ObservationIgnored var occurrenceSourceId: String?
 
     /// The face being edited (an existing row or a new entry for the selected word).
     struct EditSession: Equatable {
@@ -96,7 +126,7 @@ final class ReviewStore {
     /// Resolves once the store listens to the queue, so no event of the first job is missed.
     @ObservationIgnored private var subscribed: Task<AsyncStream<QueueEvent>, Never>?
 
-    deinit { subscription?.cancel() }
+    deinit { subscription?.cancel(); suggestionsTask?.cancel() }
 
     /// Runs one queue step against the web API. A create has no row; every other step needs the saved row.
     nonisolated private static func execute(_ step: SaveStep, row: ReviewRow?, api: ReviewAPI) async -> Result<ReviewRow, ReviewError> {
