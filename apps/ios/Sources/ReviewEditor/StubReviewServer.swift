@@ -55,12 +55,13 @@ final class StubReviewServer: @unchecked Sendable {
     }
 
     private func makeRow(_ id: String, _ w: ReviewWord, endWord: Int? = nil, kind: ReadingKind, status: ReviewStatus,
-                         page: Int, narrators: [String]) -> ReviewRow {
+                         page: Int, narrators: [String], category: String = "USUL_TAHQIQ") -> ReviewRow {
         let end = endWord ?? w.word
         counter += 1
         return ReviewRow(
             entryId: id, locationId: "l-\(id)", version: "v\(counter)", kind: kind,
-            categoryCode: kind == .usul ? "USUL_TAHQIQ" : nil, categoryNameAr: kind == .usul ? "تحقيق" : nil,
+            categoryCode: kind == .usul ? category : nil,
+            categoryNameAr: kind == .usul ? Self.categories.first { $0.code == category }?.nameAr : nil,
             surah: w.surah, ayah: w.ayah, startWord: w.word, endAyah: w.ayah, endWord: end,
             startKey: w.key, endKey: ReviewWordKeys.key(surah: w.surah, ayah: w.ayah, word: end), page: page,
             hafsText: w.text, readingText: kind == .farsh ? w.text + "ٌ" : nil, variantType: kind == .farsh ? "vowel" : nil,
@@ -78,7 +79,8 @@ final class StubReviewServer: @unchecked Sendable {
             makeRow("r-\(number)-2", w[1], kind: .farsh, status: .unreviewed, page: number, narrators: ["Q01-R02"]),
             makeRow("r-\(number)-3", w[2], kind: .usul, status: .reviewed, page: number, narrators: ["Q08-R01", "Q08-R02"]),
             makeRow("r-\(number)-4", w[4], endWord: w[5].word, kind: .usul, status: .flagged, page: number, narrators: ["Q03-R02"]),
-        ]
+        ] + (w.count > 6 ? [makeRow("r-\(number)-5", w[6], kind: .usul, status: .unreviewed, page: number,
+                                    narrators: ["Q06-R01"], category: "IMALAH_TAQLIL")] : [])
     }
 
     private func rows(_ number: Int) -> [ReviewRow] {

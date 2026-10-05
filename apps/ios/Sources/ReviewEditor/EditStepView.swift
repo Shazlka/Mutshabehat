@@ -34,18 +34,6 @@ struct EditStepView: View {
                 } else {
                     CategoryPickerSection(store: store)
                 }
-                if draft.kind == .usul, let code = draft.categoryCode, CategoryRules.isSpecial(code) {
-                    Section {
-                        NavigationLink {
-                            FaceBuilderView(store: store, category: code)
-                        } label: {
-                            Label(CategoryRules.isImalah(code) ? "منشئ أوجه الممال والمقلل" : "منشئ أوجه الهمز", systemImage: "wand.and.stars.inverse")
-                        }
-                        .accessibilityIdentifier("review-open-builder")
-                    } footer: {
-                        Text("يضيف الوجه بالقراء والأداء والخلاف دفعة واحدة، ويحفظ تفاصيله مع الوجه.")
-                    }
-                }
                 Section("الوصل والوقف") {
                     Toggle("وصلاً", isOn: waslBinding(draft))
                     Toggle("وقفًا", isOn: waqfBinding(draft))
@@ -133,6 +121,14 @@ private struct CategoryPickerSection: View {
         let draft = store.session?.draft ?? ReviewDraftFields(kind: .usul)
         let selected = ReviewDraft.selectedCategoryCodes(draft)
         Section {
+            if let code = draft.categoryCode, CategoryRules.isSpecial(code) {
+                NavigationLink {
+                    FaceBuilderView(store: store, category: code)
+                } label: {
+                    Label(CategoryRules.isImalah(code) ? "منشئ أوجه الممال والمقلل" : "منشئ أوجه الهمز", systemImage: "wand.and.stars.inverse")
+                }
+                .accessibilityIdentifier("review-open-builder")
+            }
             TextField("ابحث في الأبواب", text: $query).accessibilityIdentifier("review-category-search")
             ForEach(categories) { category in
                 Button {

@@ -92,6 +92,7 @@ struct FaceBuilderView: View {
             NarratorFacesSection(store: store)
         }
         .listStyle(.insetGrouped)
+        .accessibilityIdentifier("review-builder")
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
