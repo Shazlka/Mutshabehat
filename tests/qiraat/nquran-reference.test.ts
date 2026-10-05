@@ -1,10 +1,11 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import test from 'node:test'
+import { normalizeArabic } from '../../src/lib/arabic'
 import {
   ALL_NARRATOR_IDS,
   proposeNquranDecision,
-  rankDifferencesForWord,
+  findNquranDifferencesForWord,
   resolveDifferenceGroups,
   resolveNquranReaderLabel,
   hasNquranReferenceForSurah,
@@ -112,15 +113,96 @@ test('proposeNquranDecision: unresolved when the group itself has no resolvable 
   assert.equal(proposeNquranDecision(resolved, []).status, 'unresolved')
 })
 
-test('rankDifferencesForWord: a difference whose location contains the word sorts first', () => {
+// Real ayah words (page-word fixtures), so the tests use the Mushaf's own spellings.
+function ayahWordsOf(surah: number, ayah: number): { word: number; text: string }[] {
+  const dir = new URL('../../packages/quran-data/mushaf1441/fixtures/page-words/', import.meta.url)
+  const out: { word: number; text: string }[] = []
+  for (let page = 1; page <= 604; page += 1) {
+    const data = JSON.parse(readFileSync(new URL(`page-${String(page).padStart(3, '0')}.json`, dir), 'utf8'))
+    for (const line of data.lines)
+      for (const w of line.words)
+        if (w.charTypeName === 'word' && w.surahNumber === surah && w.ayahNumber === ayah) {
+          out.push({ word: w.wordIndexInAyah, text: w.textUthmani })
+        }
+    if (out.length > 0 && page > 1 && data.lines.every((l: { words: { surahNumber: number; ayahNumber: number }[] }) => l.words.every((w) => w.surahNumber !== surah || w.ayahNumber !== ayah))) break
+  }
+  return out.sort((x, y) => x.word - y.word)
+}
+
+function locationsFor(surah: number, ayah: number, wordIndex: number): string[] {
+  const entry = loadSurah(surah).find((e) => e.ayah === ayah)!
+  const words = ayahWordsOf(surah, ayah)
+  const text = words[wordIndex - 1].text
+  return findNquranDifferencesForWord(entry.differences, text, { wordIndex, ayahWords: words }).map((d) => d.location)
+}
+
+const indexOfWord = (words: { word: number; text: string }[], plain: string) =>
+  words.findIndex((w) => normalizeArabic(w.text).replace(/[ءا]/g, '') === normalizeArabic(plain).replace(/[ءا]/g, '')) + 1
+
+test('findNquranDifferencesForWord: whole words only, a short location never matches inside another word', () => {
+  const words = ayahWordsOf(2, 50)
+  const bahr = indexOfWord(words, 'البحر')
+  assert.ok(bahr > 0)
+  // «آل» is a word of 2:50 («آل فرعون»); it must not be offered on «ٱلْبَحْرَ» or any word merely containing «ال».
+  assert.equal(locationsFor(2, 50, bahr).includes('آل'), false)
+  assert.equal(locationsFor(2, 50, indexOfWord(words, 'آل')).includes('آل'), true)
+})
+
+test('findNquranDifferencesForWord: «آل» (2:49) is not offered on «ذَٰلِكُم» although it contains «ال»', () => {
+  const words = ayahWordsOf(2, 49)
+  assert.equal(locationsFor(2, 49, indexOfWord(words, 'ذلكم')).includes('آل'), false)
+  assert.equal(locationsFor(2, 49, indexOfWord(words, 'آل')).includes('آل'), true)
+})
+
+test('findNquranDifferencesForWord: صلة ميم الجمع «نساءكم وفي» belongs to the first word only', () => {
+  const words = ayahWordsOf(2, 49)
+  const nisaakum = indexOfWord(words, 'نساءكم')
+  assert.ok(nisaakum > 0)
+  assert.ok(locationsFor(2, 49, nisaakum).includes('نساءكم وفي'))
+  assert.equal(locationsFor(2, 49, nisaakum + 1).includes('نساءكم وفي'), false)
+})
+
+test('findNquranDifferencesForWord: a phrase must occur in this ayah, not just share a word with it', () => {
+  const differences: NquranDifference[] = [{ location: 'قلوبهم وعلى', groups: [] }]
+  // 2:7 has «وَعَلَىٰ» twice (after «قُلُوبِهِمْ» and after «سَمْعِهِمْ»); only the first belongs to the phrase.
+  const words = ayahWordsOf(2, 7)
+  const keys = words.map((w) => normalizeArabic(w.text).replace(/[ءا]/g, ''))
+  const first = keys.indexOf('وعلي') + 1
+  const second = keys.indexOf('وعلي', first) + 1
+  assert.ok(first > 0 && second > first)
+  const offered = (wordIndex: number) =>
+    findNquranDifferencesForWord(differences, words[wordIndex - 1].text, { wordIndex, ayahWords: words }).length
+  assert.equal(offered(first), 1)
+  assert.equal(offered(second), 0)
+})
+
+test('findNquranDifferencesForWord: a phrase running into the next ayah is offered on the words that end this one', () => {
+  const words = ayahWordsOf(2, 7)
+  const last = words.length
+  assert.ok(locationsFor(2, 7, last).includes('عظيم ومن'))
+})
+
+test('findNquranDifferencesForWord: a modern spelling still finds the Mushaf word («الصلاة» = «ٱلصَّلَوٰةَ»)', () => {
+  const words = ayahWordsOf(2, 3)
+  const salat = words.findIndex((w) => normalizeArabic(w.text).startsWith('الصلو')) + 1
+  assert.ok(salat > 0)
+  assert.ok(locationsFor(2, 3, salat).includes('الصلاة'))
+  assert.equal(locationsFor(2, 3, salat - 1).includes('الصلاة'), false)
+})
+
+test('findNquranDifferencesForWord: a location that is only a long vowel does not hang or match', () => {
+  const words = ayahWordsOf(2, 3)
+  const differences: NquranDifference[] = [{ location: 'يا', groups: [] }]
+  assert.deepEqual(findNquranDifferencesForWord(differences, words[0].text, { wordIndex: 1, ayahWords: words }), [])
+})
+
+test('findNquranDifferencesForWord: without the ayah it still matches whole tokens only', () => {
   const differences: NquranDifference[] = [
-    { location: 'الكافرين', groups: [] },
+    { location: 'آل', groups: [] },
     { location: 'فيه هدى', groups: [] },
   ]
-  const ranked = rankDifferencesForWord(differences, 'هدى')
-  assert.equal(ranked[0].difference.location, 'فيه هدى')
-  assert.equal(ranked[0].matchesWord, true)
-  assert.equal(ranked[1].matchesWord, false)
+  assert.deepEqual(findNquranDifferencesForWord(differences, 'ٱلْبَحْرَ').map((d) => d.location), [])
+  assert.deepEqual(findNquranDifferencesForWord(differences, 'هُدًۭى').map((d) => d.location), ['فيه هدى'])
 })
 
 // ── Full dataset (all 114 surahs) ───────────────────────────────────────────────────────────────
