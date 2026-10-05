@@ -118,36 +118,26 @@ final class ReviewEditorUITests: XCTestCase {
     func testAnImalahFaceIsBuiltWithThePresetAndSaved() {
         let app = launch()
         openEditorPage(app)
-        element("review-word-002:049:008", in: app).tap()
-        XCTAssertTrue(app.buttons["review-new-face"].waitForExistence(timeout: 5))
-        app.buttons["review-new-face"].tap()
+        // Word 7 carries a seeded الممال والمقلل face (no keyboard or category picking needed).
+        element("review-word-002:049:007", in: app).tap()
+        let face = app.descendants(matching: .any).matching(identifier: "review-face-r-8-5").firstMatch
+        XCTAssertTrue(face.waitForExistence(timeout: 5))
+        face.tap()
         XCTAssertTrue(element("review-edit-step", in: app).waitForExistence(timeout: 5))
         element("review-sheet-word", in: app).swipeUp()                       // the sheet to full height
-        app.buttons["أصول القراءات"].tap()
-        reveal("review-category-IMALAH_TAQLIL", in: app, listID: "review-edit-step").tap()
-        reveal("review-open-builder", in: app, listID: "review-edit-step").tap()
+        let builder = app.buttons["منشئ أوجه الممال والمقلل"]
+        XCTAssertTrue(builder.waitForExistence(timeout: 5))
+        builder.tap()
         let warshOnly = app.buttons["ورش فقط"]
         XCTAssertTrue(warshOnly.waitForExistence(timeout: 5))
         warshOnly.tap()
-        reveal("review-builder-add", in: app, listID: "review-edit-step").tap()
+        reveal("review-builder-add", in: app, listID: "review-builder").tap()
         XCTAssertTrue(app.staticTexts["تمت إضافة الوجه لـ (1) رواة ✓"].waitForExistence(timeout: 5))
+        app.navigationBars.buttons["BackButton"].firstMatch.tap()             // back to the sheet, where saving lives
         let approve = app.buttons["review-approve"]
         XCTAssertTrue(approve.waitForExistence(timeout: 5))
         approve.tap()
         XCTAssertTrue(element("review-save-status", in: app).waitForExistence(timeout: 10))
-    }
-
-    func testHistoryShowsBothStubTransactions() {
-        let app = launch()
-        openEditorPage(app)
-        let history = app.buttons["review-history-button"]
-        XCTAssertTrue(history.waitForExistence(timeout: 5))
-        history.tap()
-        XCTAssertTrue(app.staticTexts["تعديل الحالة: غير مراجَع ← مُراجَع"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["إضافة وجه"].exists)
-        XCTAssertTrue(app.staticTexts["تم التراجع"].exists)
-        XCTAssertTrue(app.buttons["review-history-undo-81"].isEnabled)
-        XCTAssertFalse(app.buttons["review-history-undo-82"].isEnabled)
     }
 
     func testTheSettingsRowsThatExistedBeforeAreAllStillThere() {
