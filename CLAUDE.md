@@ -38,6 +38,14 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-10-05 — Review editor: «اعتماد» now saves unsaved edits first; unsaved edits are flagged and guarded
+- **Owner report:** variants added from nquran and approved were gone after a refresh.
+- **Checked on the live system:** the Vercel runtime logs for the last 24 h show no 4xx/5xx on `/api/mushaf-1441/qiraat-review`; the database (via the site's own API) holds every saved face of page 8, all 58 reviewed, with their edit history; the Funnel to the Colima database answers in 0.2 s. So nothing that reached the server was lost.
+- **Cause:** on desktop, «✓ اعتماد» only approved the already-saved row; nothing that was still a draft (such as groups added with ➕ from nquran/الشامل, which fill the draft and wait for «حفظ») was saved. There was no sign that edits were unsaved, and refreshing, turning the page or picking another word silently dropped them.
+- **Fix:** «اعتماد» on a face with unsaved edits reads «حفظ واعتماد» and saves, then approves the saved version, in one queued step (desktop and mobile; `SaveRowOptions.approve`). The editor shows «تعديلات غير محفوظة — اضغط حفظ» and a highlighted «حفظ ●» while edits are unsaved, the browser warns before a refresh/close, and picking another word or page asks first.
+- **Verification:** typecheck, `test:qiraat:review` 113/113, eslint unchanged (14 problems before and after on the four touched files). The React flows themselves have no unit tests here and were not exercised against the real database.
+- **Files:** `review/_components/{ReviewApp,ReviewEditorPane,MobileReviewEditorView,useReviewEditorDraft}.ts*`. **DB migration:** none.
+
 ## 2026-10-05 — Review editor: nquran differences match whole words in their own ayah (no more «آل» on «البحر»), ميم الجمع only on its own word
 - **Owner report:** on «ٱلْبَحْرَ» and «ذَٰلِكُم» the panel offered the nquran difference «آل»; on «وَفِى» it offered «نساءكم وفي» with صلة ميم الجمع, which belongs to «نساءكم» only. Repeated all over the Mushaf.
 - **Cause:** `rankDifferencesForWord` matched by substring after normalising (the location «ال» is inside «البحر» and «ذالكم»), without looking at the ayah, and a two-word location applied to both words.

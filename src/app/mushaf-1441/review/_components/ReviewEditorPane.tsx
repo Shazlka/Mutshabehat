@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import type {
   BulkApplyResult,
   CreateEntryInput,
@@ -28,7 +28,7 @@ import ReferencePanel from './ReferencePanel'
 import { planApplyReferenceGroup, type ReferenceSourceId } from '../_lib/referenceApply'
 import type { ReferenceGroup, ReferenceSuggestion } from '../_lib/referenceGroup'
 
-import { useReviewEditorDraft } from './useReviewEditorDraft'
+import { useReviewEditorDraft, type SaveRowOptions } from './useReviewEditorDraft'
 
 export type WordMeta = {
   surah: number
@@ -53,7 +53,9 @@ type Props = {
   onCancelNewEntry(): void
   onConfirmRow(row: ReviewRow): Promise<void>
   onFlagRow(row: ReviewRow): Promise<void>
-  onSaveRowEdits(row: ReviewRow, fields: EntryFields, narrators: NarratorInput[]): Promise<void>
+  onSaveRowEdits(row: ReviewRow, fields: EntryFields, narrators: NarratorInput[], options?: SaveRowOptions): Promise<void>
+  /** Tells the page whether the open draft has edits that are not saved yet. */
+  onDraftDirtyChange?(dirty: boolean): void
   onDeleteRow(row: ReviewRow): Promise<void>
   onBulkDelete(rows: ReviewRow[], note: string | null): Promise<void>
   onCopyToOccurrence(sourceEntryId: string, target: { surah: number; ayah: number; startWord: number }): Promise<void>
@@ -82,6 +84,7 @@ export default function ReviewEditorPane({
   onConfirmRow,
   onFlagRow,
   onSaveRowEdits,
+  onDraftDirtyChange,
   onDeleteRow,
   onBulkDelete,
   onCopyToOccurrence,
@@ -131,6 +134,7 @@ export default function ReviewEditorPane({
     hamzahDetail,
     setHamzahDetail,
     isAddMode,
+    isDirty,
     currentSurahNumber,
     currentAyahNumber,
     currentWordNumber,
@@ -178,6 +182,18 @@ export default function ReviewEditorPane({
     onCopyToOccurrence,
     onBulkApply,
   })
+
+  // Unsaved edits are lost on refresh or when another word is picked; warn about both.
+  useEffect(() => {
+    onDraftDirtyChange?.(isDirty)
+    if (!isDirty) return
+    const warn = (event: BeforeUnloadEvent) => event.preventDefault()
+    window.addEventListener('beforeunload', warn)
+    return () => {
+      window.removeEventListener('beforeunload', warn)
+      onDraftDirtyChange?.(false)
+    }
+  }, [isDirty, onDraftDirtyChange])
 
   // Reset the transient bulk/copy panels whenever the selected word changes.
   const [resetForWordKey, setResetForWordKey] = useState(selectedWordKey)
@@ -370,7 +386,8 @@ export default function ReviewEditorPane({
           <div className="flex items-center gap-1 flex-wrap">
             <button
               type="button"
-              onClick={() => onConfirmRow(selectedRow)}
+              onClick={() => (isDirty ? void handleSaveExisting({ approve: true }) : onConfirmRow(selectedRow))}
+              title={isDirty ? 'يحفظ تعديلاتك الحالية ثم يعتمد الوجه' : undefined}
               disabled={isSaving}
               className={cn(
                 'flex items-center gap-1 rounded px-2 py-0.5 text-xs font-bold transition-all shadow-xs disabled:opacity-50 cursor-pointer',
@@ -380,7 +397,7 @@ export default function ReviewEditorPane({
               )}
             >
               <span>✓</span>
-              <span>{selectedRow.reviewStatus === 'reviewed' ? 'مُعتمد' : 'اعتماد'}</span>
+              <span>{isDirty ? 'حفظ واعتماد' : selectedRow.reviewStatus === 'reviewed' ? 'مُعتمد' : 'اعتماد'}</span>
             </button>
 
             <button
@@ -400,12 +417,18 @@ export default function ReviewEditorPane({
 
             <button
               type="button"
-              onClick={handleSaveExisting}
+              onClick={() => void handleSaveExisting()}
               disabled={isSaving}
-              className="rounded bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] px-2.5 py-0.5 text-xs font-bold text-white shadow-xs disabled:opacity-50"
+              className={cn(
+                'rounded bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] px-2.5 py-0.5 text-xs font-bold text-white shadow-xs disabled:opacity-50',
+                isDirty && 'ring-2 ring-amber-400',
+              )}
             >
-              حفظ
+              {isDirty ? 'حفظ ●' : 'حفظ'}
             </button>
+            {isDirty ? (
+              <span className="text-[11px] font-bold text-amber-700">تعديلات غير محفوظة — اضغط حفظ</span>
+            ) : null}
 
             <button
               type="button"
