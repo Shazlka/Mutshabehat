@@ -106,5 +106,159 @@ async function nquran(pages) {
   console.log(`nquran: ${samples.length} samples, ${Object.keys(labels).length} labels, ${Object.keys(groups).length} differences`)
 }
 
+
+// ── seeded randomness so the generated cases are the same on every run ──
+function mulberry32(seed) {
+  let a = seed >>> 0
+  return () => {
+    a = (a + 0x6d2b79f5) >>> 0
+    let t = a
+    t = Math.imul(t ^ (t >>> 15), t | 1)
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61)
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+  }
+}
+const pick = (rand, list) => list[Math.floor(rand() * list.length)]
+const subset = (rand, list, p) => list.filter(() => rand() < p)
+const shuffle = (rand, list) => {
+  const copy = [...list]
+  for (let i = copy.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(rand() * (i + 1))
+    ;[copy[i], copy[j]] = [copy[j], copy[i]]
+  }
+  return copy
+}
+const ALL_IDS = []
+for (let r = 1; r <= 10; r += 1) for (const n of [1, 2]) ALL_IDS.push(`Q${String(r).padStart(2, '0')}-R0${n}`)
+
+async function shamil(pages) {
+  const m = await webImport(`${reviewLib}shamilReference.ts`)
+  const entries = readJson(path.join(referenceDir, 'shamil', 'surah-002.json'))
+  const byPage = new Map(pages.map((p) => [p.page, p.words]))
+  const samples = []
+  for (const { page, words } of pages) {
+    for (const w of words) {
+      if (w.surah !== 2) continue
+      const ctx = ayahContext(byPage.get(page), w.surah, w.ayah, w.word)
+      const found = m.findShamilEntriesForWord(entries, w.ayah, w.text, ctx)
+      const withoutCtx = m.findShamilEntriesForWord(entries, w.ayah, w.text)
+      samples.push([page, w.surah, w.ayah, w.word, found.map((e) => entries.indexOf(e)), withoutCtx.map((e) => entries.indexOf(e))])
+    }
+  }
+  const groups = entries.map((entry) => m.shamilGroupsForEntry(entry))
+  const performance = []
+  for (const entry of entries) for (const w of entry.wajhs) {
+    performance.push([m.shamilPerformanceText(w.description, w.condition), m.suggestShamilCategory(w)])
+  }
+  const matchKeys = ['ءَاخِرَة', 'ٱلْـَٔاخِرَةِ', 'مَن', 'مِن', 'إِنَّ', 'أَن', 'وَإِذْ'].map((t) => [t, m.matchKey(t)])
+  fs.writeFileSync(path.join(out, 'shamil.json'), JSON.stringify({ samples, groups, performance, matchKeys }))
+  console.log(`shamil: ${samples.length} samples, ${entries.length} entries`)
+}
+
+async function narrators() {
+  const m = await webImport(`${reviewUi}narratorDisplay.ts`)
+  const w = await webImport(`${reviewUi}ImalahDetailFields.tsx`)
+  const rand = mulberry32(7)
+  const names = (id) => (rand() < 0.1 ? '' : `اسم-${id}`)
+  const cases = []
+  for (let i = 0; i < 1500; i += 1) {
+    const ids = shuffle(rand, subset(rand, rand() < 0.1 ? [...ALL_IDS, 'Q99-R01'] : ALL_IDS, 0.3 + rand() * 0.6))
+    const list = ids.map((id) => ({ id, nameAr: names(id) }))
+    cases.push({ narrators: list, items: m.describeNarratorGroup(list), text: m.describeNarratorGroupText(list) })
+  }
+  const wajh = []
+  for (let i = 0; i < 1500; i += 1) {
+    const list = Array.from({ length: Math.floor(rand() * 6) }, () => ({
+      id: pick(rand, ALL_IDS), wajhOrder: rand() < 0.15 ? null : 1 + Math.floor(rand() * 4),
+    })).map((n) => (n.wajhOrder === null ? { id: n.id } : n))
+    const id = pick(rand, ALL_IDS)
+    wajh.push({ narrators: list, id, next: w.nextWajhOrder(list, id) })
+  }
+  fs.writeFileSync(path.join(out, 'narrators.json'), JSON.stringify({ display: cases, wajh }))
+  console.log(`narrators: ${cases.length} display cases, ${wajh.length} wajh cases`)
+}
+
+async function decisions() {
+  const g = await webImport(`${reviewLib}referenceGroup.ts`)
+  const rand = mulberry32(11)
+  const cases = []
+  for (let i = 0; i < 4000; i += 1) {
+    const rows = Array.from({ length: Math.floor(rand() * 4) }, () => ({
+      narrators: subset(rand, ALL_IDS, 0.1 + rand() * 0.5).map((id) => ({ id })),
+      reviewStatus: pick(rand, ['reviewed', 'unreviewed', 'flagged']),
+      deleted: rand() < 0.15,
+    }))
+    const group = { narratorIds: rand() < 0.08 ? [] : subset(rand, ALL_IDS, 0.05 + rand() * 0.5) }
+    const draftIds = subset(rand, ALL_IDS, rand() * 0.6)
+    const decision = g.proposeReferenceDecision(group, rows)
+    const inDraft = g.isGroupInDraft(group, draftIds)
+    const nullDecision = rand() < 0.1
+    cases.push({
+      rows, group, draftIds,
+      status: decision.status, matched: decision.matchedRow ? rows.indexOf(decision.matchedRow) : -1,
+      inDraft,
+      nullDecision,
+      badge: g.referenceBadgeVisibility(nullDecision ? null : decision, inDraft),
+    })
+  }
+  fs.writeFileSync(path.join(out, 'decision.json'), JSON.stringify(cases))
+  console.log(`decision: ${cases.length} cases`)
+}
+
+async function apply() {
+  const a = await webImport(`${reviewLib}referenceApply.ts`)
+  const sh = await webImport(`${reviewLib}shamilReference.ts`)
+  const nq = await webImport(`${reviewLib}nquranReference.ts`)
+  const shamilEntries = readJson(path.join(referenceDir, 'shamil', 'surah-002.json'))
+  const nquranEntries = readJson(path.join(referenceDir, 'nquran', 'surah-002.json'))
+  const groups = []
+  for (const e of shamilEntries) groups.push(...sh.shamilGroupsForEntry(e))
+  for (const e of nquranEntries) for (const d of e.differences) groups.push(...nq.nquranGroupsForDifference(d))
+  const rand = mulberry32(23)
+  // Real groups never carry a reading text, so add synthetic ones to exercise every branch of the plan.
+  for (let i = 0; i < 600; i += 1) {
+    groups.push({
+      key: `synthetic-${i}`,
+      readersLabel: 'x',
+      narratorIds: subset(rand, ALL_IDS, 0.08 + rand() * 0.3),
+      performanceText: pick(rand, ['', 'أداء', 'تقليل وقفًا', 'نص-1']),
+      ...(rand() < 0.6 ? { readingText: pick(rand, ['نَقْل', 'وَإِذْ', null]) } : {}),
+      ...(rand() < 0.5 ? { condition: pick(rand, ['both', 'wasl', 'waqf']), conditionBasis: 'x' } : {}),
+      ...(rand() < 0.6 ? { suggestion: { kind: pick(rand, ['farsh', 'usul']), categoryCode: rand() < 0.3 ? null : pick(rand, ['USUL_NAQL', 'USUL_SAKT']) } } : {}),
+      ...(rand() < 0.3 ? { unresolvedLabels: [] } : {}),
+    })
+  }
+  const withReading = groups.filter((g) => g.readingText)
+  const withSuggestion = groups.filter((g) => g.suggestion)
+  const cases = []
+  for (let i = 0; i < 6000; i += 1) {
+    const pool = rand() < 0.4 ? withReading : rand() < 0.5 ? withSuggestion : groups
+    const group = pick(rand, pool.length ? pool : groups)
+    const narr = () => ({
+      id: pick(rand, ALL_IDS),
+      action: rand() < 0.3 ? null : (rand() < 0.5 ? group.performanceText : `نص-${Math.floor(rand() * 3)}`),
+      wajhOrder: 1 + Math.floor(rand() * 3),
+      wajhNote: rand() < 0.7 ? null : 'ملاحظة',
+    })
+    const ctx = {
+      narrators: Array.from({ length: Math.floor(rand() * 4) }, narr),
+      readingText: pick(rand, ['', '  ', 'وَإِذْ', 'نص مكتوب']),
+      defaultReadingText: pick(rand, ['', 'وَإِذْ']),
+      kind: pick(rand, ['farsh', 'usul']),
+      categoryCode: rand() < 0.6 ? null : 'USUL_NAQL',
+      isFreshDraft: rand() < 0.5,
+      otherFarshNarrators: Array.from({ length: Math.floor(rand() * 3) }, () => ({ id: pick(rand, ALL_IDS), wajhOrder: 1 + Math.floor(rand() * 3) })),
+    }
+    const source = pick(rand, ['nquran', 'shamil'])
+    cases.push({ source, group, ctx, plan: a.planApplyReferenceGroup(source, group, JSON.parse(JSON.stringify(ctx))) })
+  }
+  fs.writeFileSync(path.join(out, 'apply.json'), JSON.stringify(cases))
+  console.log(`apply: ${cases.length} cases from ${groups.length} real groups`)
+}
+
 const pages = loadPages()
 if (wants('nquran')) await nquran(pages)
+if (wants('shamil')) await shamil(pages)
+if (wants('narrators')) await narrators()
+if (wants('decision')) await decisions()
+if (wants('apply')) await apply()
