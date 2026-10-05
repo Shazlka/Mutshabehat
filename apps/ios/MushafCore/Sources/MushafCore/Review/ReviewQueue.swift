@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 
 /// One entry's worth of save steps. `initialRow` is the saved row the steps act on (nil for a create);
@@ -70,6 +71,12 @@ public actor ReviewQueue {
         schedule(id)
     }
 
+    /// Replaces the cached rows with freshly loaded ones. Call it when the page was re-read or an undo changed
+    /// entries behind the queue's back; otherwise later steps would run against a stale version.
+    public func refresh(_ rows: [ReviewRow]) {
+        for row in rows { latest[row.entryId] = row }
+    }
+
     public func dismiss(_ id: UUID) {
         failed.remove(id)
         states[id] = nil
@@ -81,9 +88,10 @@ public actor ReviewQueue {
         guard let key = states[id]?.job.plan.chainKey else { return }
         pending += 1
         let previous = tails[key]
-        tails[key] = Task { [weak self] in
+        // Strong on purpose: queued saves must finish even after the editor (the queue's owner) is closed.
+        tails[key] = Task {
             await previous?.value
-            await self?.run(id)
+            await self.run(id)
         }
     }
 
@@ -115,3 +123,4 @@ public actor ReviewQueue {
         emit(.succeeded(id))
     }
 }
+#endif

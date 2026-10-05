@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 import Testing
 @testable import MushafCore
@@ -51,3 +52,4 @@ import Testing
         #expect(a == b)
     }
 }
+#endif

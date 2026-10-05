@@ -8,6 +8,7 @@ struct ReviewHomeView: View {
     let library: MushafLibrary
     let openPage: (Int) -> Void
     let close: () -> Void
+    @State private var confirmingClose = false
     @AppStorage("review:last-page:v1") private var lastPage = 1
     @State private var jumpText = ""
 
@@ -85,13 +86,22 @@ struct ReviewHomeView: View {
         .navigationTitle("محرر القراءات")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .cancellationAction) { Button("إغلاق", action: close).accessibilityIdentifier("review-close") }
+            ToolbarItem(placement: .cancellationAction) {
+                Button("إغلاق") { if store.hasSavesAtStake { confirmingClose = true } else { close() } }
+                    .accessibilityIdentifier("review-close")
+            }
             ToolbarItem(placement: .confirmationAction) {
                 Text("للمطور").font(.caption2.weight(.semibold)).padding(.horizontal, 8).padding(.vertical, 3)
                     .background(.orange.opacity(0.2), in: Capsule()).foregroundStyle(.orange)
             }
         }
         .task { await store.loadOverview() }
+        .confirmationDialog("ما زال في الحفظ ما لم يكتمل", isPresented: $confirmingClose, titleVisibility: .visible) {
+            Button("إغلاق رغم ذلك", role: .destructive, action: close)
+            Button("البقاء", role: .cancel) {}
+        } message: {
+            Text("الحفظ الجاري يكمل في الخلفية، لكن ما فشل لن يُعاد، ولن تُحدَّث الصفحة.")
+        }
     }
 }
 #endif

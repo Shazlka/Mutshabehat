@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 import Testing
 @testable import MushafCore
@@ -168,6 +169,43 @@ import Testing
         #expect(siblings.allSatisfy { $0.narrators == draft.narrators })
     }
 
+    @Test func siblingEntriesKeepNonDefaultWaslAndWaqfThroughAFollowUpUpdate() throws {
+        // The create RPC ignores wasl/waqf: only a follow-up update stores them (as the web does).
+        let r = try row(reading: "نقل")
+        let original = ReviewDraft.fields(from: r)
+        var draft = original
+        draft.extraCategoryCodes = ["USUL_SAKT"]
+        draft.appliesWasl = false
+        let existing = ReviewDraft.savePlan(draft: draft, original: original, row: r, newEntry: nil, approve: false)
+        var follow = EntryFields()
+        follow.appliesWasl = .set(false)
+        follow.appliesWaqf = .set(true)
+        follow.hamzahDetail = .set(nil)
+        #expect(existing[1].steps.count == 2)
+        #expect(existing[1].steps[1] == .update(follow))
+
+        var fresh = ReviewDraft.fields(from: newEntry())
+        fresh.narrators = [NarratorInput(id: "Q01-R01", wajhOrder: 1)]
+        fresh.kind = .usul
+        fresh.categoryCode = "USUL_NAQL"
+        fresh.extraCategoryCodes = ["USUL_SAKT"]
+        fresh.appliesWasl = false
+        let plans = ReviewDraft.savePlan(draft: fresh, original: ReviewDraft.fields(from: newEntry()),
+                                         row: nil, newEntry: newEntry(), approve: false)
+        #expect(plans.count == 2)
+        #expect(plans[1].steps.count == 2)
+        #expect(plans[1].steps[1] == .update(follow))
+    }
+
+    @Test func defaultWaslAndWaqfNeedNoFollowUp() {
+        let entry = CreateEntryInput(surah: 2, ayah: 1, startWord: 1, kind: .usul, categoryCode: "USUL_SAKT", narrators: [])
+        #expect(ReviewDraft.createSteps(for: entry) == [.create(entry)])
+        var explicit = entry
+        explicit.appliesWasl = true
+        explicit.appliesWaqf = true
+        #expect(ReviewDraft.createSteps(for: explicit) == [.create(explicit)])
+    }
+
     @Test func newEntryPlanCreatesThenUpdatesNonDefaultsThenApproves() {
         var draft = ReviewDraft.fields(from: newEntry())
         draft.narrators = [NarratorInput(id: "Q01-R01", wajhOrder: 1)]
@@ -287,3 +325,4 @@ import Testing
         #expect(golden.rowCases.count == 600)
     }
 }
+#endif

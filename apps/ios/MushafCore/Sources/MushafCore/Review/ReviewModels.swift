@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 
 // Models of the web review API (`/api/mushaf-1441/qiraat-review`). They mirror
@@ -597,3 +598,4 @@ public struct BulkApplyResult: Codable, Hashable, Sendable {
     public let skipped: [Skipped]
     public let errors: [Failure]
 }
+#endif

@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 
 /// Optimistic edits of a review page (ports of the web's `pageStats`, `buildTempRow`, `applyFieldsToRow`).
@@ -80,3 +81,4 @@ public enum ReviewPageEditing {
         return next
     }
 }
+#endif

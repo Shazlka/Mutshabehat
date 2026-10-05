@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 
 /// The error codes of the web review API, with the raw strings the server sends.
@@ -54,3 +55,4 @@ public struct ReviewError: Error, Equatable, Sendable {
     public static let invalidResponse = ReviewError(
         code: .unavailable, status: 0, messageAr: "استجابة غير صالحة من الخادم")
 }
+#endif

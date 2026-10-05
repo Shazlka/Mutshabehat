@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 import Testing
 @testable import MushafCore
@@ -212,3 +213,4 @@ private extension Data {
         Data(String(decoding: self, as: UTF8.self).replacingOccurrences(of: #""version":"v2""#, with: #""version":"\#(v)""#).utf8)
     }
 }
+#endif

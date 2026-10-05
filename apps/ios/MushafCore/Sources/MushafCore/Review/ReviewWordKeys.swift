@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 
 /// Joins the web review page's words (`SSS:AAA:WWW`) to the app's Mushaf words. Only real words carry a
@@ -18,3 +19,4 @@ public enum ReviewWordKeys {
         return result
     }
 }
+#endif

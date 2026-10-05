@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 
 public enum ReferenceSource: String, Codable, Sendable, Hashable { case nquran, shamil }
@@ -87,3 +88,4 @@ public enum ReferenceApply {
         return plan
     }
 }
+#endif

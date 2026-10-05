@@ -1,3 +1,4 @@
+#if DEBUG
 /// The suggestion card's rules, shared with the web review editor.
 public enum SuggestionLogic {
     public static func isBlocked(_ s: ReviewSuggestion, wordRows: [ReviewRow]) -> Bool {
@@ -29,3 +30,4 @@ public enum SameWordLogic {
         }
     }
 }
+#endif

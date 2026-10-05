@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 
 public struct NarratorRef: Hashable, Sendable {
@@ -50,3 +51,4 @@ public enum WajhOrder {
         return max(highest + 1, id == CanonicalReaders.hafsId ? 2 : 1)
     }
 }
+#endif

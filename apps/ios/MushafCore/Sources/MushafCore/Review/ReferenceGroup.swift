@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 
 public struct ReferenceSuggestion: Codable, Hashable, Sendable {
@@ -109,3 +110,4 @@ extension NquranMatching {
         }
     }
 }
+#endif

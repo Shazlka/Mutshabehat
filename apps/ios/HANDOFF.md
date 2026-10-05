@@ -242,3 +242,10 @@ layout and Arabic difference content retain their own RTL treatment where requir
 - The font and generated databases under `Generated/` are intentionally uncommitted/licence-sensitive.
 - Do not commit credentials, `Config.xcconfig`, `Signing.xcconfig`, generated databases or fonts.
 - Do not push or sign in to Apple/GitHub/Vercel without explicit user approval.
+
+### Developer review editor: after the final review
+- `MushafCore/Review/*` and its tests are wrapped in `#if DEBUG` (Xcode builds the local package in the app's configuration, so Debug has it and Release does not). `swift test` and `swift test -c release --filter PerformanceTests` both work.
+- Two-word faces: arm «ربط بالكلمة التالية» (page action bar), tap the next word, then «وجه جديد».
+- Deferred minors: see the last bullet of the "Final review fixes" entry in CHANGELOG.md.
+- Not exercised: the real API/database (stub and tests only). A live check needs the owner's go-ahead (one page, with undo).
+
