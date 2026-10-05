@@ -12,9 +12,9 @@ IPAD     ?= iPad Pro 13-inch (M5)
 APP      := $(DERIVED)/Build/Products/Debug-iphonesimulator/Mutshabehat.app
 XCB       = xcodebuild -project Mutshabehat.xcodeproj -scheme Mutshabehat -derivedDataPath $(DERIVED)
 
-.PHONY: all data fonts qiraat qiraat-refresh qiraat-offline project data-test core-test perf build test test-ipad run open device clean check-isolation
+.PHONY: all data fonts qiraat qiraat-refresh qiraat-offline review-data project data-test core-test perf build test test-ipad run open device clean check-isolation
 
-all: data fonts qiraat project
+all: data fonts qiraat review-data project
 
 data: $(GEN)/mushaf.sqlite $(GEN)/mutshabehat.sqlite
 
@@ -41,6 +41,10 @@ qiraat-refresh:
 qiraat-offline:
 	python3 scripts/fetch_qiraat.py $(REPO) $(GEN)/Qiraat --source fixtures --refresh
 
+# Developer review editor: the web app's nquran / الشامل reference data, copied unchanged (never committed).
+review-data:
+	python3 scripts/build_review_reference.py $(REPO) $(GEN)/Review/reference
+
 # Sync all databases from web app to iCloud Drive Mushaf_Qiraat folder
 sync-icloud:
 	python3 scripts/sync_webapp_to_icloud.py --update-generated
@@ -54,9 +58,10 @@ data-test:
 	python3 scripts/test_build_mushaf_db.py -v
 	python3 scripts/test_fetch_qcf_fonts.py -v
 	python3 scripts/test_fetch_qiraat.py -v
+	python3 scripts/test_build_review_reference.py -v
 	python3 scripts/test_device.py -v
 
-core-test: data fonts qiraat
+core-test: data fonts qiraat review-data
 	swift test --package-path MushafCore
 
 perf: data fonts qiraat
