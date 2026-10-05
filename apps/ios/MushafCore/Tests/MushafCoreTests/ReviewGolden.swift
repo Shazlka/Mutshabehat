@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 import Testing
 @testable import MushafCore
@@ -49,3 +50,4 @@ enum ReviewGolden {
                 .map { AyahWord(word: $0.word, text: $0.text) }.sorted { $0.word < $1.word })
     }
 }
+#endif

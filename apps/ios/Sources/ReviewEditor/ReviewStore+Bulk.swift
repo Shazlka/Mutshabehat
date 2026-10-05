@@ -48,7 +48,7 @@ extension ReviewStore {
         let entry = SuggestionLogic.createInput(for: suggestion, surah: word.surah, ayah: word.ayah, startWord: word.word)
         let id = nextTempId()
         let placeholder = ReviewPageEditing.placeholderRow(id: id, for: entry, in: page)
-        let plan = SaveJobPlan(label: "إضافة مقترح", chainKey: "loc:\(word.surah):\(word.ayah):\(word.word)", steps: [.create(entry)])
+        let plan = SaveJobPlan(label: "إضافة مقترح", chainKey: "loc:\(word.surah):\(word.ayah):\(word.word)", steps: ReviewDraft.createSteps(for: entry))
         submit(plan, row: nil, placeholderId: id, onFail: { [weak self] in
             guard let self, selectedKey == key, spanEndKey == nil else { return }
             addedSuggestionKeys.remove(suggestion.key)

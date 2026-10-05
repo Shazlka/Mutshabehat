@@ -78,7 +78,7 @@ perf: data fonts qiraat
 build: all
 	$(XCB) -destination 'platform=iOS Simulator,name=$(SIM)' build
 
-test: check-isolation all data-test core-test
+test: check-isolation all data-test core-test release-guard
 	$(XCB) -destination 'platform=iOS Simulator,name=$(SIM)' test
 
 # A Release build must carry nothing of the DEBUG-only review editor (symbols, API path, bundled reference data).

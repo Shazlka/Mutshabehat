@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 import Testing
 @testable import MushafCore
@@ -42,3 +43,4 @@ import Testing
         #expect(ReviewWordKeys.key(surah: 2, ayah: 5, word: 12) == "002:005:012")
     }
 }
+#endif

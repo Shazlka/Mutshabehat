@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 
 public enum WordStatus: Sendable, Hashable { case reviewed, unreviewed, flagged }
@@ -39,3 +40,4 @@ public enum ReviewNavigation {
         return sorted.first { count($0) > 0 }?.page
     }
 }
+#endif

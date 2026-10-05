@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 import Testing
 @testable import MushafCore
@@ -204,3 +205,4 @@ import Testing
         #expect(one == [NarratorDisplayItem(key: "Q01-R02", label: "ورش", color: "#2563EB")])
     }
 }
+#endif

@@ -12,6 +12,12 @@ final class ReviewStore {
     enum LoadState: Equatable { case idle, loading, failed(String) }
     enum SaveStatus: Equatable { case idle, saving(Int), saved(Date), failed(String) }
 
+    /// Saves still running, or failed and not retried: closing the editor now would lose or hide them.
+    var hasSavesAtStake: Bool {
+        if case .saving = saveStatus { return true }
+        return !failures.isEmpty
+    }
+
     struct SaveFailure: Identifiable, Equatable {
         let id: UUID
         let label: String
@@ -81,6 +87,8 @@ final class ReviewStore {
         var newEntry: CreateEntryInput?
     }
     var session: EditSession?
+    /// Armed by «ربط بالكلمة التالية»: the next word tapped extends the selection into a two-word span.
+    var linkingNext = false
     /// A move (word, page or closing the sheet) the reviewer asked for while edits are unsaved; it waits for
     /// a confirmation.
     var pendingSelection: String?
@@ -149,12 +157,19 @@ final class ReviewStore {
         let target = min(mushafPageCount, max(1, number))
         let changed = target != pageNumber
         pageNumber = target
-        if changed { selectedKey = nil; spanEndKey = nil; history = []; historyState = .idle }
+        if changed {
+            // A page change drops everything that belonged to the old page, including a dirty draft and any move
+            // waiting for its confirmation (the dialog lives in the word sheet, which only shows with a selection).
+            selectedKey = nil; spanEndKey = nil; history = []; historyState = .idle
+            session = nil; pendingSuggestion = nil; linkingNext = false
+            cancelPendingSelection()
+        }
         loadState = .loading
         switch await api.page(target, includeDeleted: true) {
         case .success(let loaded):
             guard target == pageNumber else { return }
             page = loaded
+            await queue.refresh(loaded.rows)
             mushaf = mushafPage(target)
             keyIndex = mushaf.map(ReviewWordKeys.index(page:)) ?? [:]
             loadState = .idle
@@ -175,6 +190,7 @@ final class ReviewStore {
         let target = pageNumber
         if case .success(let loaded) = await api.page(target, includeDeleted: true), target == pageNumber, pending == 0 {
             page = loaded
+            await queue.refresh(loaded.rows)
         }
     }
 
@@ -212,11 +228,26 @@ final class ReviewStore {
 
     /// Moves the selection and drops any edit session (the guard against losing edits is `requestSelect`).
     func select(key: String?, extendingSpan: Bool = false) {
-        if extendingSpan, let anchor = selectedKey, let key, key != anchor { spanEndKey = key; return }
+        if extendingSpan, let anchor = selectedKey, let key, key != anchor {
+            spanEndKey = key
+            suggestions = []
+            // A clean new-face draft takes the two words; a dirty one keeps what was typed.
+            if session?.newEntry != nil {
+                if hasUnsavedEdits { notice = "اربط الكلمة قبل أن تعدّل الوجه الجديد" } else { startNewDraft() }
+            }
+            return
+        }
         selectedKey = key
         spanEndKey = nil
         session = nil
         pendingSuggestion = nil
+    }
+
+    /// A tap on a word of the page: extends the span when «ربط بالكلمة التالية» is armed, else selects it.
+    func tapWord(_ key: String) {
+        let extend = linkingNext && selectedKey != nil
+        linkingNext = false
+        requestSelect(key: key, extendingSpan: extend)
     }
 
     // MARK: Saving

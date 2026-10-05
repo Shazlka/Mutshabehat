@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 
 // The external reference data of the review editor: nquran.com «فروقات القراء» and
@@ -161,3 +162,4 @@ public final class ReferenceLibrary: @unchecked Sendable {
         return Set(index.surahs.keys.compactMap(Int.init))
     }
 }
+#endif

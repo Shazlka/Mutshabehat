@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 import Testing
 @testable import MushafCore
@@ -61,3 +62,4 @@ struct HistorySummaryTests {
         #expect(HistorySummary.details(tx) == ["إضافة وجه"])
     }
 }
+#endif

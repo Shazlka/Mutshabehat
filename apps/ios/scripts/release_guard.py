@@ -8,7 +8,8 @@ import os
 import re
 import sys
 
-FORBIDDEN_SYMBOLS = ("qiraat-review", "ReviewStore", "ReviewEditorEntry")
+FORBIDDEN_SYMBOLS = ("qiraat-review", "Qiraat-iOS-Review", "ReviewStore", "ReviewEditorEntry", "ReviewAPI", "ReviewQueue",
+                     "URLSessionReviewTransport", "ReferenceLibrary")
 FORBIDDEN_DIRS = ("ReviewReference",)
 _PRINTABLE = re.compile(rb"[\x20-\x7e]{4,}")
 

@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 
 /// Port of `src/lib/arabic.ts` (`normalizeArabic`), the comparison key every reference match is built on.
@@ -59,3 +60,4 @@ public enum Arabic {
         return String(out)
     }
 }
+#endif

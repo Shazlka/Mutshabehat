@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 import Testing
 @testable import MushafCore
@@ -151,3 +152,4 @@ import Testing
         #expect(HamzahBuilder.updatedRulingText(current: "ملاحظة", action: "تسهيل") == nil)
     }
 }
+#endif

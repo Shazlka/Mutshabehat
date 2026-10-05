@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 import Testing
 @testable import MushafCore
@@ -35,6 +36,18 @@ import Testing
         #expect(!SuggestionLogic.isBlocked(try suggestion(kind: "usul"), wordRows: [try row()]))
     }
 
+    @Test func suggestionStepsStoreNonDefaultWaslWaqfAndHamzahDetailAfterTheCreate() throws {
+        let s = try suggestion(kind: "usul", full: true)     // wasl off, hamzah detail set
+        let input = SuggestionLogic.createInput(for: s, surah: 2, ayah: 49, startWord: 1)
+        let steps = ReviewDraft.createSteps(for: input)
+        var follow = EntryFields()
+        follow.appliesWasl = .set(false)
+        follow.appliesWaqf = .set(true)
+        follow.hamzahDetail = .set(.single(treatment: .ibdal))
+        #expect(steps == [.create(input), .update(follow)])
+        #expect(!steps.contains(.approve))
+    }
+
     @Test func createInputPreservesEveryWebFieldWithoutApproving() throws {
         let s = try suggestion(kind: "usul", full: true)
         let input = SuggestionLogic.createInput(for: s, surah: 2, ayah: 49, startWord: 1)
@@ -60,3 +73,4 @@ import Testing
         #expect(SameWordLogic.verifiedSameCategory(matches: all, for: nil) == all)
     }
 }
+#endif

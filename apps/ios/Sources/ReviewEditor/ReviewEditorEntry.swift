@@ -20,8 +20,12 @@ struct ReviewEditorEntry: View {
     @MainActor
     static func makeStore(library: MushafLibrary) -> ReviewStore {
         let transport: any ReviewTransport
-        if usesStub, let url = Bundle.main.url(forResource: "mushaf", withExtension: "sqlite"),
-           let database = try? MushafDatabase(url: url) {
+        if usesStub {
+            // Never fall back to the live API when a test asked for the stub: those tests approve and create faces.
+            guard let url = Bundle.main.url(forResource: "mushaf", withExtension: "sqlite"),
+                  let database = try? MushafDatabase(url: url) else {
+                fatalError("-review-stub needs the bundled mushaf.sqlite; refusing to use the live review API")
+            }
             transport = StubReviewServer(database: database).transport()
         } else {
             transport = URLSessionReviewTransport()

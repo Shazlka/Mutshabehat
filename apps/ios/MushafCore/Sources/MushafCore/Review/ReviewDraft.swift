@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 
 /// أبواب whose structured details (Hamzah / Imalah) make them single-choice.
@@ -240,6 +241,19 @@ public enum ReviewDraft {
         return fields
     }
 
+    /// The steps that create `entry`. The create RPC stores neither wasl/waqf nor the hamzah detail, so when
+    /// they differ from the defaults a follow-up update writes them (exactly what the web's create does).
+    public static func createSteps(for entry: CreateEntryInput) -> [SaveStep] {
+        guard entry.appliesWasl == false || entry.appliesWaqf == false || entry.hamzahDetail != nil else {
+            return [.create(entry)]
+        }
+        var follow = EntryFields()
+        follow.appliesWasl = .set(entry.appliesWasl ?? true)
+        follow.appliesWaqf = .set(entry.appliesWaqf ?? true)
+        follow.hamzahDetail = .set(entry.hamzahDetail)
+        return [.create(entry), .update(follow)]
+    }
+
     private static func locationKey(_ surah: Int, _ ayah: Int, _ word: Int) -> String { "loc:\(surah):\(ayah):\(word)" }
 
     /// Existing row: `row` is set. New entry: `newEntry` is set (it carries the word position).
@@ -261,7 +275,7 @@ public enum ReviewDraft {
                         categoryCode: code, rulingText: trimmedOrNil(draft.rulingText),
                         narrators: draft.narrators, appliesWasl: draft.appliesWasl, appliesWaqf: draft.appliesWaqf)
                     plans.append(SaveJobPlan(label: "إضافة وجه", chainKey: locationKey(row.surah, row.ayah, row.startWord),
-                                             steps: [.create(sibling)]))
+                                             steps: createSteps(for: sibling)))
                 }
             }
             return plans
@@ -297,7 +311,7 @@ public enum ReviewDraft {
                 var sibling = entry
                 sibling.categoryCode = code
                 sibling.hamzahDetail = nil
-                plans.append(SaveJobPlan(label: "إضافة وجه", chainKey: key, steps: [.create(sibling)]))
+                plans.append(SaveJobPlan(label: "إضافة وجه", chainKey: key, steps: createSteps(for: sibling)))
             }
         }
         return plans
@@ -368,3 +382,4 @@ public enum NarratorSelection {
         list.indices.contains(index) ? list.enumerated().filter { $0.offset != index }.map(\.element) : list
     }
 }
+#endif

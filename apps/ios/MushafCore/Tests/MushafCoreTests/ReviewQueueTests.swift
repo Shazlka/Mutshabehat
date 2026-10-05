@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 import Testing
 @testable import MushafCore
@@ -74,6 +75,41 @@ private actor Script {
         #expect(calls[0].version == "v0")
         #expect(calls[1].version == "v1")      // the version the first step returned, not the stale one
         #expect(calls[1].step == .update(EntryFields()))
+    }
+
+    @Test func aReloadedRowReplacesTheQueuesCachedOneSoAnUndoneApprovalIsSentAgain() async throws {
+        let script = Script()
+        let queue = ReviewQueue { step, row in await script.run(step, row) }
+        let a = job("entry:r-1", [.approve], row: Script.row(id: "r-1", version: "v0"))
+        var events = await queue.subscribe()
+        await queue.enqueue(a)
+        _ = await finish(events, [a.id])
+        #expect(await script.calls.count == 1)
+        // The approval is undone elsewhere; the page reload shows the entry unreviewed at a newer version.
+        await queue.refresh([Script.row(id: "r-1", version: "v9", status: .unreviewed)])
+        let b = job("entry:r-1", [.approve], row: Script.row(id: "r-1", version: "v9"))
+        events = await queue.subscribe()
+        await queue.enqueue(b)
+        _ = await finish(events, [b.id])
+        let calls = await script.calls
+        #expect(calls.count == 2)
+        #expect(calls[1].step == .approve)
+        #expect(calls[1].version == "v9")
+    }
+
+    @Test func queuedJobsFinishEvenWhenNothingElseHoldsTheQueue() async throws {
+        let script = Script()
+        do {
+            let queue = ReviewQueue { step, row in
+                try? await Task.sleep(for: .milliseconds(100))
+                return await script.run(step, row)
+            }
+            let entry = CreateEntryInput(surah: 2, ayah: 1, startWord: 1, kind: .usul, categoryCode: "USUL_NAQL", narrators: [])
+            await queue.enqueue(job("loc:2:1:1", [.create(entry)], row: nil))
+            await queue.enqueue(job("loc:2:1:1", [.create(entry)], row: nil))
+        }   // the owner lets go (the editor is closed) while both creates are still queued
+        for _ in 0..<50 where await script.calls.count < 2 { try? await Task.sleep(for: .milliseconds(100)) }
+        #expect(await script.calls.count == 2)
     }
 
     @Test func differentEntriesRunConcurrently() async throws {
@@ -162,3 +198,4 @@ private actor Script {
         #expect(await queue.pending == 0)
     }
 }
+#endif

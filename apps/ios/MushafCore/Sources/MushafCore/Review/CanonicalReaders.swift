@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 
 public struct CanonicalNarrator: Hashable, Sendable {
@@ -52,3 +53,4 @@ public enum CanonicalReaders {
         all.lazy.flatMap(\.narrators).first { $0.id == id }?.nameAr
     }
 }
+#endif

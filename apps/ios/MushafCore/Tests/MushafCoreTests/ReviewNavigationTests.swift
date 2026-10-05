@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 import Testing
 @testable import MushafCore
@@ -58,3 +59,4 @@ import Testing
         #expect(ReviewNavigation.nextPage(in: ReviewOverview(isEditor: true, pages: []), after: 1, needing: .flagged) == nil)
     }
 }
+#endif

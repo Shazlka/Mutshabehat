@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 import Testing
 @testable import MushafCore
@@ -129,3 +130,4 @@ import Testing
         #expect(Arabic.normalize("  شَىْءٍ ") == "شيء")
     }
 }
+#endif

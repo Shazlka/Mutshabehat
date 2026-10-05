@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 import Testing
 @testable import MushafCore
@@ -89,3 +90,4 @@ import Testing
         #expect(ReviewPageEditing.applying(clear, narrators: row.narrators.map { NarratorInput(id: $0.id) }, to: row, in: page).hamzahDetail == nil)
     }
 }
+#endif

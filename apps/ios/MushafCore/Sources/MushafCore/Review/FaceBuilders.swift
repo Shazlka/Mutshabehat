@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 
 public enum ImalahType: String, Codable, Sendable, CaseIterable, Hashable {
@@ -228,3 +229,4 @@ public enum FaceBuilder {
         return current
     }
 }
+#endif

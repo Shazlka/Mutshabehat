@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 import Testing
 @testable import MushafCore
@@ -145,3 +146,4 @@ import Testing
         #expect(result.errors.first?.message == "x")
     }
 }
+#endif

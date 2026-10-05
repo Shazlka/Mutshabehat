@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 
 /// One word of an ayah as the editor knows it (1-based word number and its Hafs text).
@@ -236,3 +237,4 @@ public enum NquranMatching {
         return explicit + remainderGroups.map { ResolvedNquranGroup(group: $0, narratorIds: remainderIds, unresolvedLabels: []) }
     }
 }
+#endif

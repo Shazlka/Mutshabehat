@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 
 /// Sends one request; the real implementation uses the shared `URLSession`, whose cookie jar keeps the
@@ -218,3 +219,4 @@ extension JSONValue {
         self = try JSONDecoder().decode(JSONValue.self, from: JSONEncoder().encode(value))
     }
 }
+#endif

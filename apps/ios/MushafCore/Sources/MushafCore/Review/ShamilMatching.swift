@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 
 /// Port of `shamilReference.ts`: which «الشامل» entries are about the clicked word, the groups of an entry
@@ -136,3 +137,4 @@ public enum ShamilMatching {
         }
     }
 }
+#endif

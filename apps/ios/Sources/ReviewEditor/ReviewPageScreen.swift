@@ -81,7 +81,7 @@ struct ReviewPageScreen: View {
             ZStack {
                 if let mushaf = store.mushaf {
                     ReviewPageCanvas(page: mushaf, library: library, statusFor: { store.status(forKey: $0) },
-                                     selectedKeys: selectedKeys) { key in store.requestSelect(key: key) }
+                                     selectedKeys: selectedKeys) { key in store.tapWord(key) }
                         .aspectRatio(PageLayoutConstants.pageAspect, contentMode: .fit)
                         .padding(.horizontal, 10)
                         .accessibilityIdentifier("review-page-canvas")
@@ -143,6 +143,14 @@ struct ReviewPageScreen: View {
             }
             .buttonStyle(.borderedProminent)
             .accessibilityIdentifier("review-next-unreviewed")
+            Button { store.linkingNext.toggle() } label: {
+                Label("ربط بالكلمة التالية", systemImage: "link").frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.bordered)
+            .tint(store.linkingNext ? .blue : .secondary)
+            .disabled(store.selectedKey == nil)
+            .accessibilityValue(store.linkingNext ? "مفعّل" : "غير مفعّل")
+            .accessibilityIdentifier("review-link-next")
             Button { if let page = store.nextFlaggedPage() { go(page) } } label: {
                 Label("المعلَّم", systemImage: "flag").frame(maxWidth: .infinity)
             }
