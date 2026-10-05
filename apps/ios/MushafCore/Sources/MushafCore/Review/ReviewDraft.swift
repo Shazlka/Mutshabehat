@@ -131,6 +131,10 @@ public struct SaveJobPlan: Hashable, Sendable {
     public let label: String
     public let chainKey: String
     public let steps: [SaveStep]
+
+    public init(label: String, chainKey: String, steps: [SaveStep]) {
+        self.label = label; self.chainKey = chainKey; self.steps = steps
+    }
 }
 
 /// Port of `useReviewEditorDraft.ts`: validation, dirty detection, categories and the save plan.
