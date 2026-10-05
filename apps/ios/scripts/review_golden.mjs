@@ -256,9 +256,42 @@ async function apply() {
   console.log(`apply: ${cases.length} cases from ${groups.length} real groups`)
 }
 
+async function draft() {
+  const farsh = await webImport(`${reviewUi}FarshFields.tsx`)
+  const faces = await webImport(`${reviewUi}facesSummary.ts`)
+  const rand = mulberry32(31)
+  const raws = [
+    null, undefined, '', ' Vowel ', 'vowel', 'harakah', 'تشكيل', 'تشكيل / حركة', 'حركة', 'consonant', 'letter', 'حرف',
+    'إبدال حرف', 'إبدال', 'addition', 'زيادة', 'زيادة حرف/كلمة', 'زيادة حرف', 'omission', 'حذف', 'حذف حرف/كلمة',
+    'حذف حرف', 'word_form', 'تقديم وتأخير', 'تقديم وتأخير / بنية الكلمة', 'بنية الكلمة', 'orthography', 'رسم', 'hamza',
+    'hamz', 'همز', 'همزة', 'madd', 'مد', 'idgham', 'إدغام', 'ishmam', 'إشمام', 'imalah', 'إمالة', 'taqlil', 'تقليل',
+    'sakt', 'سكت', 'naql', 'نقل', 'ikhfa', 'إخفاء', 'ghunnah', 'غنة', 'pronoun', 'ضمير', 'grammar', 'إعراب', 'other',
+    'أخرى', 'SOMETHING', ' Unknown Thing ',
+  ]
+  const variantTypes = raws.map((raw) => [raw ?? null, farsh.normalizeVariantType(raw)])
+  const rowCases = []
+  for (let i = 0; i < 600; i += 1) {
+    const rows = Array.from({ length: Math.floor(rand() * 5) }, (_, n) => {
+      const startKey = `002:001:00${1 + Math.floor(rand() * 3)}`
+      return {
+        entryId: `r${n}`, kind: pick(rand, ['farsh', 'usul']), deleted: rand() < 0.2,
+        categoryNameAr: pick(rand, [null, '', '  ', 'تحقيق', 'الممال والمقلل']),
+        readingText: pick(rand, [null, '', ' ', 'وَإِذْ', ' نص ']),
+        hafsText: pick(rand, ['', ' ', 'كلمة', null]),
+        startKey, endKey: rand() < 0.3 ? '002:001:009' : startKey,
+        narrators: shuffle(rand, subset(rand, ALL_IDS, 0.15)).map((id) => ({ id, nameAr: `اسم-${id}` })),
+      }
+    })
+    rowCases.push({ rows, summary: faces.summarizeActiveRows(rows) })
+  }
+  fs.writeFileSync(path.join(out, 'draft.json'), JSON.stringify({ variantTypes, rowCases }))
+  console.log(`draft: ${variantTypes.length} variant types, ${rowCases.length} face summaries`)
+}
+
 const pages = loadPages()
 if (wants('nquran')) await nquran(pages)
 if (wants('shamil')) await shamil(pages)
 if (wants('narrators')) await narrators()
 if (wants('decision')) await decisions()
 if (wants('apply')) await apply()
+if (wants('draft')) await draft()
