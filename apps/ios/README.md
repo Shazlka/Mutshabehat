@@ -23,6 +23,13 @@ make open                      # open the generated project in Xcode
 
 `make fonts` downloads the 604 page fonts (~94 MB, about 4 minutes) once; later runs skip them.
 
+## Developer review editor
+
+A developer-only review editor is available in DEBUG builds to review and approve Qiraat variants against the live database:
+- **How to open:** Settings → المطور → «محرر القراءات» (accessibility identifier `open-review-editor`).
+- **DEBUG only:** compiled out of Release builds (`#if DEBUG`); Release builds carry no review code, endpoints, or reference data.
+- **Requirements:** bundled nquran and الشامل reference data (`Generated/Review/reference`). Running `make all` includes `review-data` automatically (or run `make review-data`).
+
 ## Layout
 
 | Path | What | In git? |

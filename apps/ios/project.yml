@@ -45,6 +45,16 @@ targets:
           pages=$(find "$GEN/Qiraat" -name 'page-*.json' -size +0 2>/dev/null | wc -l | tr -d ' ')
           test "$pages" = "604" -a -s "$GEN/Qiraat/catalog.json" || { echo "error: Qiraat snapshot incomplete ($pages/604 pages) — run: make -C apps/ios qiraat"; exit 1; }
           test -s "$GEN/Fonts/KFGQPC Uthmanic Script HAFS Regular.otf" || { echo "error: KFGQPC Uthmanic Script HAFS Regular.otf missing from $GEN/Fonts"; exit 1; }
+      - name: Copy review reference (Debug only)
+        basedOnDependencyAnalysis: false
+        script: |
+          # The developer review editor's reference data ships only in Debug builds.
+          if [ "$CONFIGURATION" = "Debug" ]; then
+            SRC="$SRCROOT/Generated/Review/reference"
+            test -d "$SRC/nquran" || { echo "error: $SRC missing — run: make -C apps/ios review-data"; exit 1; }
+            DEST="$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/ReviewReference"
+            mkdir -p "$DEST" && rsync -a --delete "$SRC/" "$DEST/"
+          fi
     info:
       path: Sources/Info.plist
       properties:
