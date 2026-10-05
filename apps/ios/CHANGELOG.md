@@ -3,6 +3,13 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-05 — Qiraat layer follows the web database live
+- **Why:** the app only showed the snapshot bundled at build time (or an iCloud export someone ran by hand), so a face saved and approved in the web review editor never appeared on the iPhone. Checked: the live web API had page 8's new variant `v-l-2-51-11-394d50` (7 variants, 51 rulings) while the bundled snapshot had 6 and 44.
+- **What:** a page on screen is now fetched from the web app's own endpoint (`/api/mushaf-1441/qiraat?page=N`, straight from the database, never cached) when it appears, when the app returns to the foreground, when the Qiraat layer is switched on, and every 10 s while it stays on screen. A page that differs is kept in `Application Support/QiraatLive` (survives relaunch, snapshot untouched) and redrawn at once; an identical page changes nothing. Offline or on any error the page keeps what it had.
+- **Code:** `QiraatStore(directory:overlayDirectory:)`, `applyLivePage(_:number:)`, `clearOverlay()` (MushafCore); `Sources/Qiraat/QiraatLiveSync.swift`; `MushafPageView` starts/stops the refresh with its window; `MushafLibrary` uses the overlay and clears it when an explicit backup is installed. The app still never writes to the web app's database.
+- **Tests:** 4 new MushafCore tests (overlay wins and survives relaunch, invalid page rejected, clear), 5 new `QiraatLiveSyncTests`; MushafCore 104/104, app unit tests 42/42. Simulator run: opening page 8 produced `QiraatLive/page-008.json` with the new variant within ~12 s.
+- **Not covered:** iCloud `Mushaf_Qiraat` import is unchanged (still a manual snapshot); UI tests were not re-run.
+
 ## [iOS v1.0] — 2026-10-05 — Milestone Reference Release (Tag: `ios-v1.0`)
 - **Milestone Reference Baseline:** Official v1.0 release encapsulating the complete offline/online Mushaf 1441 reading experience, Ten Qira'at layer, Mutshabehat module, advanced AST Quran search engine, reading & Khatma progress tracking, and iCloud synchronization with the production Colima backend.
 - **Mushaf Page Stretched to Fill Top Bar Gap & Expanded Line Spacing:**
