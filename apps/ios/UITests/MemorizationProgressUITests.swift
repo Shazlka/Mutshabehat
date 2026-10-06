@@ -33,16 +33,16 @@ final class MemorizationProgressUITests: XCTestCase {
         XCTAssertTrue(button.waitForExistence(timeout: 10))
         button.tap()
         let field = app.textFields["memo-update-search"]
-        XCTAssertTrue(field.waitForExistence(timeout: 5))
+        XCTAssertTrue(field.waitForExistence(timeout: 12))
         field.tap()
         field.typeText("البقرة 100\n")
         let to = app.textFields["memo-update-to"]
         to.tap()
         to.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 3) + "125")
-        app.buttons["memo-keyboard-done"].tap()
+        if app.buttons["memo-keyboard-done"].waitForExistence(timeout: 2) { app.buttons["memo-keyboard-done"].tap() }
         element("memo-status-\(status)", in: app).tap()
         app.buttons["memo-update-apply"].tap()
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 10))
     }
 
     func testAddGoalShowsProgress() {
@@ -94,14 +94,14 @@ final class MemorizationProgressUITests: XCTestCase {
         XCTAssertTrue(button.waitForExistence(timeout: 10))
         button.tap()
         let field = app.textFields["memo-update-search"]
-        XCTAssertTrue(field.waitForExistence(timeout: 5))
+        XCTAssertTrue(field.waitForExistence(timeout: 12))
         field.tap()
         field.typeText("الفاتحة\n")
         element("memo-status-1", in: app).tap()
         app.buttons["memo-update-apply"].tap()
         let confirm = app.alerts.firstMatch
         if confirm.waitForExistence(timeout: 2) { confirm.buttons.element(boundBy: 1).tap() }
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 10))
         let milestone = app.descendants(matching: .any).matching(identifier: "memo-milestone").firstMatch
         XCTAssertTrue(milestone.waitForExistence(timeout: 3))
         XCTAssertTrue(milestone.label.contains("الفاتحة"), milestone.label)

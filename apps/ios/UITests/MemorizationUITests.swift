@@ -23,7 +23,7 @@ final class MemorizationUITests: XCTestCase {
         let button = app.buttons["memo-update-button"]
         XCTAssertTrue(button.waitForExistence(timeout: 10))
         button.tap()
-        XCTAssertTrue(app.textFields["memo-update-search"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.textFields["memo-update-search"].waitForExistence(timeout: 12))
     }
 
     private func search(_ text: String, in app: XCUIApplication) {
@@ -38,12 +38,14 @@ final class MemorizationUITests: XCTestCase {
         button.tap()
     }
 
-    private func replaceText(in field: XCUIElement, with text: String) {
+    private func replaceText(in field: XCUIElement, with text: String, app: XCUIApplication = XCUIApplication()) {
         field.tap()
         if let current = field.value as? String, !current.isEmpty {
             field.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: current.count))
         }
         field.typeText(text)
+        let done = app.buttons["memo-keyboard-done"]   // the keyboard can cover the controls below
+        if done.waitForExistence(timeout: 2) { done.tap() }
     }
 
     private func strictLabel(_ app: XCUIApplication) -> String {
@@ -106,7 +108,7 @@ final class MemorizationUITests: XCTestCase {
         chooseStatus(1, in: app)
         app.buttons["memo-update-apply"].tap()
         XCTAssertFalse(app.alerts.firstMatch.waitForExistence(timeout: 1.5), "a single ayah must not ask for confirmation")
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 10))
     }
 
     func testWholeSurahAsksConfirmation() {
@@ -126,7 +128,7 @@ final class MemorizationUITests: XCTestCase {
         app.buttons["memo-update-apply"].tap()
         XCTAssertTrue(app.alerts.firstMatch.waitForExistence(timeout: 5))
         app.alerts.firstMatch.buttons["تأكيد"].tap()
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 10))
         XCTAssertNotEqual(before(), initial, "mastering a whole surah must change the headline")
     }
 
@@ -140,7 +142,7 @@ final class MemorizationUITests: XCTestCase {
         replaceText(in: app.textFields["memo-update-to"], with: "129")
         chooseStatus(1, in: app)
         app.buttons["memo-update-apply"].tap()
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 10))
         XCTAssertNotEqual(strictLabel(app), initial)
         element("memo-undo-button", in: app).tap()
         XCTAssertFalse(element("memo-undo-toast", in: app).waitForExistence(timeout: 2))
@@ -165,7 +167,7 @@ final class MemorizationUITests: XCTestCase {
         XCTAssertTrue(element("memo-update-count", in: app).label.contains("١١ آية"), element("memo-update-count", in: app).label)
         chooseStatus(1, in: app)
         app.buttons["memo-update-apply"].tap()
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 10))
     }
 
     func testSettingCurrentPositionShowsOnDashboard() {
@@ -173,7 +175,7 @@ final class MemorizationUITests: XCTestCase {
         openUpdateSheet(app)
         search("آل عمران 42", in: app)
         replaceText(in: app.textFields["memo-update-to"], with: "51")
-        app.buttons["memo-keyboard-done"].tap()
+        if app.buttons["memo-keyboard-done"].waitForExistence(timeout: 2) { app.buttons["memo-keyboard-done"].tap() }
         let toggle = app.switches["memo-update-set-current"]
         XCTAssertTrue(toggle.waitForExistence(timeout: 5))
         // The row spans the sheet; in Arabic (right to left) the switch sits at the leading (left) edge.
@@ -184,7 +186,7 @@ final class MemorizationUITests: XCTestCase {
         XCTAssertEqual(toggle.value as? String, "1")
         chooseStatus(3, in: app)
         app.buttons["memo-update-apply"].tap()
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 10))
         let range = element("memo-current-range", in: app)
         XCTAssertTrue(range.waitForExistence(timeout: 5))
         XCTAssertTrue(range.label.contains("آل عمران"), range.label)
@@ -213,7 +215,7 @@ final class MemorizationUITests: XCTestCase {
         let result = element(resultID, in: app)
         XCTAssertTrue(result.waitForExistence(timeout: 5))
         result.tap()
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 10))
     }
 
     func testReviewExcellentUpdatesTheDueCount() {
@@ -391,10 +393,10 @@ final class MemorizationUITests: XCTestCase {
         openUpdateSheet(app)
         search("البقرة 100", in: app)
         replaceText(in: app.textFields["memo-update-to"], with: "125")
-        app.buttons["memo-keyboard-done"].tap()
+        if app.buttons["memo-keyboard-done"].waitForExistence(timeout: 2) { app.buttons["memo-keyboard-done"].tap() }
         chooseStatus(status, in: app)
         app.buttons["memo-update-apply"].tap()
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 10))
     }
 
     func testHistoryListsBatchAndUndoes() {

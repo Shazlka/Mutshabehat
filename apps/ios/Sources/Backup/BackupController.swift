@@ -49,13 +49,15 @@ final class BackupController {
 
     /// A banner on the dashboard when backups are not working: no folder, or none for over seven days.
     var needsAttention: Bool {
-        refreshFolder()
-        if !folderAvailable { return true }
+        if !folder.isAvailable { return true }
         guard let last = service.lastSuccess else { return true }
         return Date().timeIntervalSince(last) > Self.staleAfter
     }
 
-    func refreshFolder() { folderAvailable = folder.isAvailable }
+    func refreshFolder() {
+        let available = folder.isAvailable
+        if available != folderAvailable { folderAvailable = available }
+    }
 
     // MARK: Triggers
 
