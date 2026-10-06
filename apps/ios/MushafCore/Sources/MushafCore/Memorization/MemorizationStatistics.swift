@@ -127,6 +127,13 @@ public struct PageMix: Equatable, Sendable {
     public let fractions: [MemorizationStatus: Double]
     public let ayahCount: Int
     public let masteredAyahs: Int
+
+    public init(counts: [MemorizationStatus: Int], fractions: [MemorizationStatus: Double], ayahCount: Int, masteredAyahs: Int) {
+        self.counts = counts
+        self.fractions = fractions
+        self.ayahCount = ayahCount
+        self.masteredAyahs = masteredAyahs
+    }
 }
 
 /// One page's state (weakest link of its ayat) and the mix of ayah statuses behind it.
@@ -134,6 +141,12 @@ public struct MemorizationPageProgress: Equatable, Sendable {
     public let page: Int
     public let state: MemorizationStatus
     public let mix: PageMix
+
+    public init(page: Int, state: MemorizationStatus, mix: PageMix) {
+        self.page = page
+        self.state = state
+        self.mix = mix
+    }
 }
 
 extension MemorizationStatisticsService {
