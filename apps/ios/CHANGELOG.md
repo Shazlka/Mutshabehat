@@ -15,6 +15,7 @@
 - **Task 10 core done:** review engine (ladder 1/3/7/14/30/60 days, aged strength shown as weak while status stays mastered), memorization-only streak (DST-safe, future days ignored), and the deterministic suggestion. Tests were drafted by Codex (which then hit its usage limit) and finished by the orchestrator.
 - **Task 6 done:** history analytics: exact past state by rolling back the change log (tie- and clock-safe), net gains in a period, and the progress-over-time series in one backwards pass.
 - **Task 22 (pure part) done:** goal definitions and the goals engine (per-day ayat, per-week page-equivalents, complete a surah or juz, complete the Quran by a date); persistence and UI follow later.
+- **UI foundations:** `MemorizationTheme` (restrained palette, one shape per status ✓✓ ! ◐ ○, Arabic/English labels, Arabic-Indic numbers, spoken page summary), the ayah-mix bar and the banner `PageStatusMark` (wired into the reader later).
 - **Task 19 done (backup core, `MushafCore/Backup`):** manifest, SHA-256, retention planner (newest set per local day for 14 days), consistent SQLite snapshots through the online backup API with integrity check, the versioned `MemorizationExport` document with refusal of newer or corrupt files, and the deterministic merge (newer ayah row wins, history unioned by id, undone stays undone). **Decision:** every stored and exported date is whole milliseconds (`Date.epochMilliseconds`, `normalizedToMilliseconds`), so values compare equal after a database, file or merge round trip.
 - **DB migration:** none.
 
