@@ -28,6 +28,7 @@ struct MemorizationView: View {
     @AppStorage("app:language:v1") private var languageRaw = AppLanguage.arabic.rawValue
     @State private var path: [MemorizationRoute] = []
     @State private var updateRequest: UpdateRequest?
+    @State private var reviewRequest: ReviewRequest?
     @State private var toast: ToastState?
 
     private var language: AppLanguage { AppLanguage(rawValue: languageRaw) ?? .arabic }
@@ -42,7 +43,8 @@ struct MemorizationView: View {
             DashboardView(library: library, store: store, language: language,
                           navigate: { path.append($0) },
                           update: { updateRequest = UpdateRequest(selection: $0) },
-                          openInMushaf: openInMushaf)
+                          openInMushaf: openInMushaf,
+                          startReview: { reviewRequest = ReviewRequest(selection: $0, title: $1) })
                 .navigationTitle(language == .arabic ? "الحفظ" : "Memorization")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
@@ -59,6 +61,11 @@ struct MemorizationView: View {
                                    undoFailed: { path.append(.history) })   // the history screen explains and offers "undo anyway"
         }
         .environment(\.layoutDirection, language.layoutDirection)
+        .sheet(item: $reviewRequest) { request in
+            ReviewView(selection: request.selection, title: request.title, store: store, language: language) { result, plan in
+                showToast(result: result, plan: plan)
+            }
+        }
         .sheet(item: $updateRequest) { request in
             UpdateSheet(store: store, library: library, language: language, initial: request.selection) { result, plan in
                 showToast(result: result, plan: plan)

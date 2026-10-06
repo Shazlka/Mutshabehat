@@ -10,6 +10,7 @@ struct DashboardView: View {
     let navigate: (MemorizationRoute) -> Void
     let update: (MemorizationSelection?) -> Void
     let openInMushaf: (Int, AyahKey?) -> Void
+    let startReview: (MemorizationSelection, String) -> Void
 
     @State private var searchText = ""
     @State private var searchResult: SelectionTarget?
@@ -24,6 +25,7 @@ struct DashboardView: View {
                 tiles
                 currentCard
                 statusSection
+                suggestionSection
                 progressSection
                 reviewSection
                 activitySection
@@ -271,20 +273,49 @@ struct DashboardView: View {
         ProgressSection(store: store, language: language)
     }
 
+    @ViewBuilder
+    private var suggestionSection: some View {
+        if let suggestion = store.suggestion {
+            SuggestionCard(suggestion: suggestion, library: library, language: language,
+                           openSurah: { navigate(.surahDetail($0)) },
+                           startReview: { startReview(.surah($0), copy("مراجعة سورة \(surahName($0))", "Review \(surahName($0))")) })
+        }
+    }
+
     private var reviewSection: some View {
         let now = Date()
-        let due = store.allRecords.values.filter { ReviewEngine.isDue($0, now: now) }.count
+        let due = DueReview.dueAyat(records: store.allRecords, now: now)
+        let overdue = DueReview.mostOverdueSurahs(records: store.allRecords, now: now, limit: 3)
         return sectionCard(title: copy("يحتاج مراجعة", "Needs review"), identifier: "memo-review") {
             Button { navigate(.ayahList(.dueForReview)) } label: {
                 HStack {
                     Text(verbatim: copy("آيات مستحقة للمراجعة", "Ayat due for review"))
                     Spacer()
-                    Text(verbatim: number(due)).monospacedDigit().accessibilityIdentifier("memo-due-count")
+                    Text(verbatim: number(due.count)).monospacedDigit()
                 }
                 .font(.subheadline)
                 .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(copy("آيات مستحقة للمراجعة", "Ayat due for review"))
+            .accessibilityValue(number(due.count))
+            .accessibilityIdentifier("memo-due-count")
+            ForEach(overdue, id: \.surah) { row in
+                HStack {
+                    Text(verbatim: surahName(row.surah))
+                    Spacer()
+                    Text(verbatim: number(row.dueCount)).monospacedDigit().foregroundStyle(.secondary)
+                }
+                .font(.footnote)
+                .accessibilityElement(children: .combine)
+                .accessibilityIdentifier("memo-due-row-\(row.surah)")
+            }
+            Button(copy("ابدأ المراجعة", "Start review")) {
+                startReview(.ayat(Set(due)), copy("مراجعة", "Review"))
+            }
+            .disabled(due.isEmpty)
+            .accessibilityIdentifier("memo-review-start")
         }
     }
 

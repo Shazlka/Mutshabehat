@@ -189,4 +189,62 @@ final class MemorizationUITests: XCTestCase {
         XCTAssertTrue(range.waitForExistence(timeout: 5))
         XCTAssertTrue(range.label.contains("آل عمران"), range.label)
     }
+
+    // MARK: Review and suggestion
+
+    private func scrollTo(_ id: String, in app: XCUIApplication) -> XCUIElement {
+        let target = element(id, in: app)
+        for _ in 0..<8 where !target.exists || !target.isHittable { app.swipeUp() }
+        return target
+    }
+
+    func testDueSectionListsMemorizedUnreviewedAyat() {
+        let app = launch()
+        let count = scrollTo("memo-due-count", in: app)
+        XCTAssertTrue(count.waitForExistence(timeout: 10))
+        XCTAssertNotEqual(count.value as? String, "٠")
+        XCTAssertTrue(element("memo-due-row-1", in: app).exists || element("memo-due-row-2", in: app).exists)
+    }
+
+    private func runReview(_ resultID: String, in app: XCUIApplication) {
+        let start = scrollTo("memo-review-start", in: app)
+        XCTAssertTrue(start.waitForExistence(timeout: 10))
+        start.tap()
+        let result = element(resultID, in: app)
+        XCTAssertTrue(result.waitForExistence(timeout: 5))
+        result.tap()
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
+    }
+
+    func testReviewExcellentUpdatesTheDueCount() {
+        let app = launch()
+        let before = scrollTo("memo-due-count", in: app).value as? String
+        XCTAssertNotEqual(before, "٠")
+        runReview("memo-review-excellent", in: app)
+        XCTAssertEqual(scrollTo("memo-due-count", in: app).value as? String, "٠")
+    }
+
+    func testReviewDoesNotChangeTheStatus() {
+        let app = launch()
+        let strict = element("memo-strict", in: app)
+        XCTAssertTrue(strict.waitForExistence(timeout: 10))
+        let before = strict.label
+        runReview("memo-review-forgot", in: app)
+        XCTAssertEqual(element("memo-strict", in: app).label, before)
+    }
+
+    func testSuggestionShowsTheLearningRangeFirst() {
+        let app = launch()
+        let card = scrollTo("memo-suggestion", in: app)
+        XCTAssertTrue(card.waitForExistence(timeout: 10))
+        XCTAssertTrue(element("memo-suggestion-text", in: app).label.contains("يس"), element("memo-suggestion-text", in: app).label)
+    }
+
+    func testReviewIsUndoable() {
+        let app = launch()
+        let before = scrollTo("memo-due-count", in: app).value as? String
+        runReview("memo-review-good", in: app)
+        element("memo-undo-button", in: app).tap()
+        XCTAssertEqual(scrollTo("memo-due-count", in: app).value as? String, before)
+    }
 }
