@@ -80,6 +80,7 @@ test('FALLBACK_USUL_CATEGORIES contains canonical categories without AYAH_COUNT'
   assert.ok(FALLBACK_USUL_CATEGORIES.some((c) => c.code === 'USUL_TAHQIQ'))
   assert.ok(FALLBACK_USUL_CATEGORIES.some((c) => c.code === 'USUL_NAQL'))
   assert.ok(FALLBACK_USUL_CATEGORIES.some((c) => c.code === 'USUL_IBDAL'))
+  assert.equal(FALLBACK_USUL_CATEGORIES.find((c) => c.code === 'USUL_TASHIL')?.nameAr, 'التسهيل')
 })
 
 test('CANONICAL_VARIANT_TYPES covers standard Farsh changes', () => {

@@ -16,6 +16,7 @@ export const FALLBACK_USUL_CATEGORIES: readonly CategoryOption[] = [
   { code: 'USUL_TAHQIQ', nameAr: 'تحقيق' },
   { code: 'USUL_NAQL', nameAr: 'النقل' },
   { code: 'USUL_IBDAL', nameAr: 'الإبدال' },
+  { code: 'USUL_TASHIL', nameAr: 'التسهيل' },
   { code: 'SILAT_HA', nameAr: 'صلة هاء الكناية' },
   { code: 'TARQIQ_RA', nameAr: 'ترقيق الراءات' },
   { code: 'TAGHLIZ_LAM', nameAr: 'تغليظ اللامات' },

@@ -42,6 +42,7 @@ const CATEGORY_COLORS: Record<string, string> = {
   USUL_NAQL: '#DC2626',
   USUL_TAHQIQ: '#DC2626',
   USUL_IBDAL: '#DC2626',
+  USUL_TASHIL: '#DC2626',
 }
 
 function mapDifferenceType(variantType?: string | null): DifferenceType {

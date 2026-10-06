@@ -38,6 +38,13 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-10-06 — Review editor: new أصول باب «التسهيل» (migration written, NOT yet applied to live)
+- **Owner request:** add the باب «التسهيل» to أبواب الأصول in the editor pane.
+- **Change:** new category `USUL_TASHIL` («التسهيل», word-anchored, sort order 18, next to تحقيق / النقل / الإبدال): migration `supabase/migrations/20261006120000_add_usul_tashil_category.sql` (rollback in `supabase/rollbacks/`). The editor lists categories from the database, so it appears on web and iOS as soon as the migration is applied; also added to the offline fallback list (`UsulRuleGrid.tsx`), the Mushaf colour table (red family like the other hamza treatments, `qiraat/route.ts`) and the ingest classifier (`classify.ts`, alias `TASHIL`). No الشامل auto-mapping was added (its data has no category of that name).
+- **Verification:** `test:qiraat:review` 113/113 (new assertion RED→GREEN), typecheck and eslint clean. The migration itself is a one-row upsert like `20260927120000`; not run against the live database.
+- **DB migration: written, NOT applied to live.** Apply like the earlier ones (backup, then the file with `psql -v ON_ERROR_STOP=1 --single-transaction`); the Mushaf colour needs this commit deployed (push).
+- **Files:** `supabase/migrations/20261006120000_add_usul_tashil_category.sql`, its rollback, `src/app/mushaf-1441/review/_components/UsulRuleGrid.tsx`, `src/app/api/mushaf-1441/qiraat/route.ts`, `packages/qiraat-core/ingest/classify.ts`, `tests/qiraat/review-workstation.test.ts`.
+
 ## 2026-10-06 — Data: Warsh added to the صلة ميم الجمع entries where nquran gives him a reading (817 entries)
 - **Owner request:** where the word also has a Warsh variant in nquran, add it to the ميم الجمع entry.
 - **What was found:** 824 of the 6,185 words have a Warsh group (`ورش عن نافع`) under the same rule: 822 «قرأ بصلة ميم الجمع وصلاً مع الإشباع.» and 2 «قرأ بصلة ميم الجمع وصلا.». 7 of them already had Warsh (hand-made entries), so they were left.

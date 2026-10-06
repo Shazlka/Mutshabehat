@@ -27,6 +27,7 @@ export const DB_CATEGORY_CODES = new Set([
   'USUL_SAKT',
   'USUL_TAHQIQ',
   'USUL_IBDAL',
+  'USUL_TASHIL',
 ])
 
 const CATEGORY_ALIASES: Record<string, string> = {
@@ -36,6 +37,7 @@ const CATEGORY_ALIASES: Record<string, string> = {
   'NAQL': 'USUL_NAQL',
   'TAHQIQ': 'USUL_TAHQIQ',
   'IBDAL': 'USUL_IBDAL',
+  'TASHIL': 'USUL_TASHIL',
   'HA_KINAYA_SILAH': 'SILAT_HA',
   'MIM_JAM_SILAH': 'USUL_MIM_JAM',
   'RA_TARQIQ': 'TARQIQ_RA',
