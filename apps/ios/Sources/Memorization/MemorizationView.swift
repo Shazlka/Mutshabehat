@@ -90,9 +90,9 @@ struct MemorizationView: View {
         switch route {
         case .surahList: ComingSoonView(title: language == .arabic ? "السور" : "Surahs", identifier: "memo-surah-list")
         case .surahDetail: ComingSoonView(title: language == .arabic ? "السورة" : "Surah", identifier: "memo-surah-detail")
-        case .pageGrid: ComingSoonView(title: language == .arabic ? "الصفحات" : "Pages", identifier: "memo-page-grid")
-        case .ayahList: ComingSoonView(title: language == .arabic ? "الآيات" : "Ayat", identifier: "memo-ayah-list")
-        case .history: ComingSoonView(title: language == .arabic ? "آخر التحديثات" : "History", identifier: "memo-history")
+        case .pageGrid: PageGridView(store: store, language: language, openPage: { openInMushaf($0, nil) }, longPressPage: { _ in })
+        case let .ayahList(filter): AyahStatusListView(initialFilter: filter, library: library, store: store, language: language, openAyah: { openInMushaf($0, $1) })
+        case .history: HistoryView(library: library, store: store, language: language)
         }
     }
 
