@@ -3,8 +3,9 @@ import MushafCore
 import SQLite3
 
 public final class MemorizationDatabase: @unchecked Sendable {
-    private var db: OpaquePointer?
-    private let lock = NSLock()
+    /// The handle and lock are internal so the history and transfer extensions in sibling files share them.
+    var db: OpaquePointer?
+    let lock = NSLock()
     public let fileURL: URL
 
     public init(url: URL? = nil, migrations: [MemorizationMigration] = MemorizationMigrations.all) {
