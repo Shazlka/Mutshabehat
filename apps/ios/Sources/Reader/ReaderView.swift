@@ -445,17 +445,6 @@ private struct SettingsView: View {
                     .accessibilityIdentifier("keep-screen-awake-toggle")
                 }
 
-                if let memorization = library.memorizationStore {
-                    Section(appLanguage == .english ? "Memorization" : "حفظ القرآن") {
-                        Toggle(appLanguage == .english ? "Show page status in the top banner" : "إظهار حالة الحفظ في الشريط العلوي",
-                               isOn: Binding(get: { memorization.showsBannerMark }, set: { memorization.showsBannerMark = $0 }))
-                            .accessibilityIdentifier("memo-setting-banner-mark")
-                        Toggle(appLanguage == .english ? "Show memorization marks on the Mushaf" : "إظهار حالة الحفظ على المصحف",
-                               isOn: Binding(get: { memorization.showsAyahMarker }, set: { memorization.showsAyahMarker = $0 }))
-                            .accessibilityIdentifier("memo-setting-ayah-marker")
-                    }
-                }
-
                 if library.qiraat?.catalog != nil {
                     Section(appLanguage == .english ? "Ten Qira'at" : "القراءات العشر") {
                         QiraatToggle(isOn: $qiraat.enabled)
@@ -533,6 +522,17 @@ private struct SettingsView: View {
                     .accessibilityIdentifier("open-review-editor")
                 }
 #endif
+
+                if let memorization = library.memorizationStore {
+                    Section(appLanguage == .english ? "Memorization" : "حفظ القرآن") {
+                        Toggle(appLanguage == .english ? "Show page status in the top banner" : "إظهار حالة الحفظ في الشريط العلوي",
+                               isOn: Binding(get: { memorization.showsBannerMark }, set: { memorization.showsBannerMark = $0 }))
+                            .accessibilityIdentifier("memo-setting-banner-mark")
+                        Toggle(appLanguage == .english ? "Show memorization marks on the Mushaf" : "إظهار حالة الحفظ على المصحف",
+                               isOn: Binding(get: { memorization.showsAyahMarker }, set: { memorization.showsAyahMarker = $0 }))
+                            .accessibilityIdentifier("memo-setting-ayah-marker")
+                    }
+                }
             }
 #if DEBUG
             .fullScreenCover(isPresented: $showingReviewEditor) {

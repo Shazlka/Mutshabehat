@@ -83,8 +83,10 @@ struct ReaderTopBar: View {
             .allowsHitTesting(chromeVisible)
         }
         .animation(.easeInOut(duration: 0.2), value: chromeVisible)
-        .overlay(alignment: .center) {
-            // Kept outside the header/controls cross-fade so the mark never moves when the chrome toggles.
+        .overlay {
+            // Outside the header/controls cross-fade. With the header showing it sits in the free middle of the
+            // banner; with the controls showing it moves into the empty part of the title row (beside the
+            // surah name) so it never covers a control.
             if !memorizationMarks.isEmpty {
                 HStack(spacing: 6) {
                     ForEach(memorizationMarks, id: \.page) { mark in
@@ -95,6 +97,10 @@ struct ReaderTopBar: View {
                         .buttonStyle(.plain)
                     }
                 }
+                .scaleEffect(chromeVisible ? 0.8 : 1, anchor: chromeVisible ? .topTrailing : .center)
+                .padding(.top, chromeVisible ? 5 : 0)
+                .padding(.trailing, chromeVisible ? 118 : 0)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: chromeVisible ? .topTrailing : .center)
                 .environment(\.layoutDirection, .leftToRight)
             }
         }
