@@ -13,6 +13,9 @@ public struct AyahLayoutRow: Equatable, Sendable {
 public struct QuranIndex: Sendable {
     public let ayahKeys: [AyahKey]
     public var totalAyahs: Int { ayahKeys.count }
+    public var surahNumbers: [Int] { surahAyat.keys.sorted() }
+    public var juzNumbers: [Int] { juzPages.keys.sorted() }
+    public var pageNumbers: [Int] { Set(pageAyat.keys).union(pageJuz.keys).sorted() }
 
     private let ordinals: [AyahKey: Int]
     private let ayahPages: [AyahKey: Int]
