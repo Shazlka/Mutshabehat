@@ -41,6 +41,7 @@ struct UndoToast: View {
                 Text(verbatim: MilestoneText.describe(milestone, language: language, surahName: surahName))
                     .font(.caption)
                     .foregroundStyle(MemorizationTheme.color(.mastered))
+                    .accessibilityIdentifier("memo-milestone")
             }
         }
         .padding(.horizontal, 16)

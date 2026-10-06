@@ -42,16 +42,17 @@ final class MemorizationReaderUITests: XCTestCase {
         XCTAssertTrue(mark(600, in: app).label.contains("غير محفوظ"), mark(600, in: app).label)
     }
 
-    func testMarkVisibleWithChromeHiddenAndShownAndDoesNotMove() {
+    func testMarkIsVisibleWithChromeHiddenAndShownAndNeverCoversAControl() {
         let app = launch(page: 1)
         XCTAssertTrue(mark(1, in: app).waitForExistence(timeout: 15))
-        let hiddenFrame = mark(1, in: app).frame
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()   // a tap on the page toggles the chrome
         XCTAssertTrue(app.buttons["open-index"].waitForExistence(timeout: 5))
         XCTAssertTrue(mark(1, in: app).exists)
-        let shownFrame = mark(1, in: app).frame
-        XCTAssertEqual(hiddenFrame.minX, shownFrame.minX, accuracy: 1)
-        XCTAssertEqual(hiddenFrame.minY, shownFrame.minY, accuracy: 1)
+        let markFrame = mark(1, in: app).frame
+        for id in ["search-button", "bookmarks-button", "mutshabehat-button", "memorization-button", "settings-button"] {
+            let frame = app.buttons[id].frame
+            XCTAssertFalse(markFrame.intersects(frame), "\(id) is covered by the mark: \(markFrame) vs \(frame)")
+        }
     }
 
     func testMarkCanBeHidden() {

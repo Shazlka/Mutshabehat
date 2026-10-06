@@ -316,4 +316,20 @@ final class MemorizationApplyUndoTests: XCTestCase {
         try db.replaceAll(with: export)
         XCTAssertEqual(db.goals(), [changed])
     }
+
+    /// A whole-Quran update (6,236 ayat) is one transaction and stays inside the budget.
+    func testWholeQuranApplyIsFast() throws {
+        let big = QuranIndex(
+            rows: (1...6_236).map { AyahLayoutRow(key: AyahKey(surah: 1, ayah: $0), page: 1, wordCount: 3) },
+            pageJuz: [1: 1])
+        let plan = MemorizationPlanner.planUpdate(selection: .surah(1), label: "all", status: .mastered, learning: nil,
+                                                  records: db.loadRecords(), index: big, now: clock)
+        XCTAssertEqual(plan.changes.count, 6_236)
+        let start = ContinuousClock.now
+        _ = try db.apply(plan, now: clock)
+        let milliseconds = Double((ContinuousClock.now - start).components.attoseconds) / 1e15
+        print("whole-Quran apply: \(milliseconds) ms")
+        XCTAssertLessThan(milliseconds, 300)
+        XCTAssertEqual(db.loadRecords().count, 6_236)
+    }
 }
