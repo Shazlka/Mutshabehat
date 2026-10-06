@@ -10,6 +10,7 @@
 - **Revised after the owner's review (same day):** memorization is Hafs only and unrelated to Qiraat; a page-status mark in the reader's top banner with four states by a weakest-link rule (متقن / مع أخطاء / يحتاج المصحف / غير محفوظ) plus the ayah mix, tapping it opens the page sheet.
 - **Plan written:** `docs/plans/2026-10-06-memorization.md` (24 tasks in 10 phases).
 - **Implementation (branch `ios/memorization`), phase 1:** task 1 done: `MushafCore/Memorization` models and `MemorizationPolicy` (statuses 1–4, review strength, change log types, the single home of weights, ladder and thresholds).
+- **Tasks 2 and 7 done:** `QuranIndex` (ayah→page, page weights summing to 604, juz ranges, spans) and `MemorizationSelection` with the text parser («البقرة ٢٥٥», «صفحة 42», «الجزء 30», Arabic-Indic digits).
 - **Task 19 done (backup core, `MushafCore/Backup`):** manifest, SHA-256, retention planner (newest set per local day for 14 days), consistent SQLite snapshots through the online backup API with integrity check, the versioned `MemorizationExport` document with refusal of newer or corrupt files, and the deterministic merge (newer ayah row wins, history unioned by id, undone stays undone). **Decision:** every stored and exported date is whole milliseconds (`Date.epochMilliseconds`, `normalizedToMilliseconds`), so values compare equal after a database, file or merge round trip.
 - **DB migration:** none.
 
