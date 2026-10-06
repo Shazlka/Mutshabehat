@@ -178,4 +178,100 @@ final class MemorizationUITests: XCTestCase {
         let current = element("memo-current", in: app)
         XCTAssertTrue(current.staticTexts.allElementsBoundByIndex.contains { $0.label.contains("آل عمران") })
     }
+
+    // MARK: Surah list and surah detail (Task 14)
+
+    func testSurahListFiltersAndSorts() {
+        let app = launch()
+        let tile = element("memo-tile-surahs", in: app)
+        XCTAssertTrue(tile.waitForExistence(timeout: 15))
+        tile.tap()
+        XCTAssertTrue(element("memo-surah-list", in: app).waitForExistence(timeout: 5))
+
+        let filterMenu = element("memo-surah-filter", in: app)
+        XCTAssertTrue(filterMenu.waitForExistence(timeout: 5))
+        filterMenu.tap()
+        let completeButton = app.buttons["المكتمل"]
+        XCTAssertTrue(completeButton.waitForExistence(timeout: 5))
+        completeButton.tap()
+
+        XCTAssertTrue(element("memo-surah-row-1", in: app).waitForExistence(timeout: 5))
+        XCTAssertFalse(element("memo-surah-row-2", in: app).exists)
+
+        filterMenu.tap()
+        let allButton = app.buttons["الكل"]
+        XCTAssertTrue(allButton.waitForExistence(timeout: 5))
+        allButton.tap()
+
+        let sortMenu = element("memo-surah-sort", in: app)
+        XCTAssertTrue(sortMenu.waitForExistence(timeout: 5))
+        sortMenu.tap()
+        let mostMemorizedButton = app.buttons["الأكثر حفظاً"]
+        XCTAssertTrue(mostMemorizedButton.waitForExistence(timeout: 5))
+        mostMemorizedButton.tap()
+
+        let firstRow = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'memo-surah-row-'")).firstMatch
+        XCTAssertTrue(firstRow.waitForExistence(timeout: 5))
+        XCTAssertEqual(firstRow.identifier, "memo-surah-row-1")
+    }
+
+    func testSurahSearchMatchesArabicNameWithoutDiacritics() {
+        let app = launch()
+        let tile = element("memo-tile-surahs", in: app)
+        XCTAssertTrue(tile.waitForExistence(timeout: 15))
+        tile.tap()
+        XCTAssertTrue(element("memo-surah-list", in: app).waitForExistence(timeout: 5))
+
+        let searchField = app.textFields["memo-surah-search"]
+        XCTAssertTrue(searchField.waitForExistence(timeout: 5))
+        searchField.tap()
+        searchField.typeText("البقره\n")
+
+        XCTAssertTrue(element("memo-surah-row-2", in: app).waitForExistence(timeout: 5))
+        XCTAssertFalse(element("memo-surah-row-1", in: app).exists)
+    }
+
+    func testSurahDetailShowsRunsAndOpensMushaf() {
+        let app = launch(extra: ["-mushaf1441:last-page:v1", "1"])
+        let tile = element("memo-tile-surahs", in: app)
+        XCTAssertTrue(tile.waitForExistence(timeout: 15))
+        tile.tap()
+        XCTAssertTrue(element("memo-surah-list", in: app).waitForExistence(timeout: 5))
+
+        let row2 = element("memo-surah-row-2", in: app)
+        XCTAssertTrue(row2.waitForExistence(timeout: 5))
+        row2.tap()
+
+        XCTAssertTrue(element("memo-surah-detail", in: app).waitForExistence(timeout: 5))
+
+        for segId in ["memo-strip-seg-1", "memo-strip-seg-21", "memo-strip-seg-36", "memo-strip-seg-51"] {
+            XCTAssertTrue(element(segId, in: app).waitForExistence(timeout: 5), segId)
+        }
+
+        element("memo-strip-seg-1", in: app).tap()
+        let page2 = app.descendants(matching: .any)["mushaf-page-2"]
+        XCTAssertTrue(page2.waitForExistence(timeout: 10))
+    }
+
+    func testSurahDetailUpdateButtonOpensTheSheetPreselected() {
+        let app = launch()
+        let tile = element("memo-tile-surahs", in: app)
+        XCTAssertTrue(tile.waitForExistence(timeout: 15))
+        tile.tap()
+        XCTAssertTrue(element("memo-surah-list", in: app).waitForExistence(timeout: 5))
+
+        let row2 = element("memo-surah-row-2", in: app)
+        XCTAssertTrue(row2.waitForExistence(timeout: 5))
+        row2.tap()
+
+        XCTAssertTrue(element("memo-surah-detail", in: app).waitForExistence(timeout: 5))
+
+        let updateButton = element("memo-detail-update", in: app)
+        XCTAssertTrue(updateButton.waitForExistence(timeout: 5))
+        updateButton.tap()
+
+        let countLabel = element("memo-update-count", in: app)
+        XCTAssertTrue(countLabel.waitForExistence(timeout: 5))
+        XCTAssertTrue(countLabel.label.contains("سورة"), countLabel.label)
+    }
 }
