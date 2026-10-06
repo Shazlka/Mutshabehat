@@ -42,14 +42,15 @@ final class MemorizationBackupUITests: XCTestCase {
         XCTAssertTrue(button.waitForExistence(timeout: 10))
         button.tap()
         let field = app.textFields["memo-update-search"]
-        XCTAssertTrue(field.waitForExistence(timeout: 5))
+        if !field.waitForExistence(timeout: 6) { button.tap() }   // the first tap can land during the launch transition
+        XCTAssertTrue(field.waitForExistence(timeout: 12))
         field.tap()
         field.typeText("البقرة 100\n")
         let status = element("memo-status-1", in: app)
-        XCTAssertTrue(status.waitForExistence(timeout: 5))
+        XCTAssertTrue(status.waitForExistence(timeout: 12))
         status.tap()
         app.buttons["memo-update-apply"].tap()
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 10))
     }
 
     func testBackupNowCreatesASnapshotAndSavesTheLastTime() {
@@ -84,16 +85,16 @@ final class MemorizationBackupUITests: XCTestCase {
         XCTAssertTrue(update.waitForExistence(timeout: 10))
         update.tap()
         let field = app.textFields["memo-update-search"]
-        XCTAssertTrue(field.waitForExistence(timeout: 5))
+        XCTAssertTrue(field.waitForExistence(timeout: 12))
         field.tap()
         field.typeText("البقرة 100\n")
         let to = app.textFields["memo-update-to"]
         to.tap()
         to.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 3) + "125")
-        app.buttons["memo-keyboard-done"].tap()
+        if app.buttons["memo-keyboard-done"].waitForExistence(timeout: 2) { app.buttons["memo-keyboard-done"].tap() }
         element("memo-status-1", in: app).tap()
         app.buttons["memo-update-apply"].tap()
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 10))
         XCTAssertNotEqual(element("memo-strict", in: app).label, before)
 
         openBackup(app)

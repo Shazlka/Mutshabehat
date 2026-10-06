@@ -285,6 +285,7 @@ struct RestoreView: View {
         }
         .environment(\.layoutDirection, language.layoutDirection)
         .presentationDetents([.large])
+        .presentationSizing(.page)
         .task { load() }
     }
 

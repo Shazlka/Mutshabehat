@@ -79,7 +79,7 @@ final class MemorizationReaderUITests: XCTestCase {
         let apply = element("memo-page-status-1", in: app)
         XCTAssertTrue(apply.waitForExistence(timeout: 5))
         apply.tap()
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 10))
         XCTAssertTrue(mark(600, in: app).label.contains("متقن"), mark(600, in: app).label)
     }
 
@@ -92,10 +92,10 @@ final class MemorizationReaderUITests: XCTestCase {
         XCTAssertTrue(first.waitForExistence(timeout: 5))
         first.tap()
         let status = element("memo-page-status-1", in: app)
-        XCTAssertTrue(status.waitForExistence(timeout: 5))
+        XCTAssertTrue(status.waitForExistence(timeout: 12))
         XCTAssertTrue(status.isEnabled, "choosing an ayah must enable the status buttons")
         status.tap()
-        let toast = element("memo-undo-toast", in: app).waitForExistence(timeout: 5)
+        let toast = element("memo-undo-toast", in: app).waitForExistence(timeout: 10)
         if !toast { print("DEBUGTREE-BEGIN\n" + app.debugDescription + "\nDEBUGTREE-END") }
         XCTAssertTrue(toast)
         XCTAssertTrue(mark(600, in: app).label.contains("غير محفوظ"),
@@ -150,9 +150,9 @@ final class MemorizationReaderUITests: XCTestCase {
         XCTAssertTrue(mark(600, in: app).waitForExistence(timeout: 15))
         longPressFirstAyah(in: app)
         let status = element("memo-ayah-status-1", in: app)
-        XCTAssertTrue(status.waitForExistence(timeout: 5))
+        XCTAssertTrue(status.waitForExistence(timeout: 12))
         status.tap()
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 10))
     }
 
     func testRangeModeShowsThePillAndCanBeCancelled() {

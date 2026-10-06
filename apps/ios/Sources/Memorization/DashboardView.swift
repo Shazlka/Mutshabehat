@@ -355,6 +355,7 @@ struct DashboardView: View {
                 Button(copy("إعدادات النسخ الاحتياطي والاستعادة", "Backup and restore")) { navigate(.backup) }
                     .font(.subheadline)
                     .accessibilityIdentifier("memo-backup-link")
+                    .onAppear { controller.refreshFolder() }
             }
         }
     }
