@@ -75,7 +75,7 @@ public final class MemorizationDatabase: @unchecked Sendable {
         return readSchemaVersionLocked()
     }
 
-    private func readSchemaVersionLocked() -> Int {
+    func readSchemaVersionLocked() -> Int {
         guard let value = getMetaLocked("schema_version") else { return 0 }
         return Int(value) ?? 0
     }
@@ -86,7 +86,7 @@ public final class MemorizationDatabase: @unchecked Sendable {
         return getMetaLocked(key)
     }
 
-    private func getMetaLocked(_ key: String) -> String? {
+    func getMetaLocked(_ key: String) -> String? {
         guard let db = db else { return nil }
         let sql = "SELECT value FROM memorization_meta WHERE key = ? LIMIT 1;"
         var stmt: OpaquePointer?
@@ -110,7 +110,7 @@ public final class MemorizationDatabase: @unchecked Sendable {
         setMetaLocked(key, value)
     }
 
-    private func setMetaLocked(_ key: String, _ value: String) {
+    func setMetaLocked(_ key: String, _ value: String) {
         guard let db = db else { return }
         try? setMetaDirect(key, value, on: db)
     }
@@ -141,7 +141,7 @@ public final class MemorizationDatabase: @unchecked Sendable {
         return getOrCreateDeviceIDLocked()
     }
 
-    private func getOrCreateDeviceIDLocked() -> String {
+    func getOrCreateDeviceIDLocked() -> String {
         if let existing = getMetaLocked("device_id"), !existing.isEmpty {
             return existing
         }
@@ -153,6 +153,11 @@ public final class MemorizationDatabase: @unchecked Sendable {
     public func loadRecords() -> [AyahKey: AyahMemorizationRecord] {
         lock.lock()
         defer { lock.unlock() }
+        return loadRecordsLocked()
+    }
+
+    /// All ayah rows (or those matching a SQL condition). The lock must be held.
+    func loadRecordsLocked(where condition: String? = nil) -> [AyahKey: AyahMemorizationRecord] {
         guard let db = db else { return [:] }
 
         let sql = """
@@ -161,7 +166,7 @@ public final class MemorizationDatabase: @unchecked Sendable {
           first_memorized_at, last_status_changed_at, last_reviewed_at, next_review_at,
           review_count, successful_review_count, consecutive_successful_reviews, error_count,
           updated_at
-        FROM memorization_ayahs;
+        FROM memorization_ayahs\(condition.map { " WHERE " + $0 } ?? "");
         """
         var stmt: OpaquePointer?
         guard sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK else {
