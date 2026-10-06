@@ -178,4 +178,126 @@ final class MemorizationUITests: XCTestCase {
         let current = element("memo-current", in: app)
         XCTAssertTrue(current.staticTexts.allElementsBoundByIndex.contains { $0.label.contains("آل عمران") })
     }
+
+    // MARK: Page grid, ayah list and history (Task 15)
+
+    func testPageGridShowsStateShapesAndLegend() {
+        let app = launch()
+        let tile = element("memo-tile-pages", in: app)
+        XCTAssertTrue(tile.waitForExistence(timeout: 15))
+        tile.tap()
+        XCTAssertTrue(element("memo-page-grid", in: app).waitForExistence(timeout: 10))
+        let cell1 = element("memo-page-cell-1", in: app)
+        XCTAssertTrue(cell1.waitForExistence(timeout: 5))
+        XCTAssertTrue(cell1.label.contains("متقن"), cell1.label)
+        let cell4 = element("memo-page-cell-4", in: app)
+        XCTAssertTrue(cell4.waitForExistence(timeout: 5))
+        XCTAssertTrue(cell4.label.contains("محفوظ مع أخطاء"), cell4.label)
+        XCTAssertTrue(element("memo-page-legend", in: app).exists)
+    }
+
+    func testTappingPageOpensMushafPage() {
+        let app = launch(extra: ["-mushaf1441:last-page:v1", "1"])
+        let tile = element("memo-tile-pages", in: app)
+        XCTAssertTrue(tile.waitForExistence(timeout: 15))
+        tile.tap()
+        let cell4 = element("memo-page-cell-4", in: app)
+        XCTAssertTrue(cell4.waitForExistence(timeout: 10))
+        cell4.tap()
+        let mushafPage4 = app.descendants(matching: .any)["mushaf-page-4"]
+        XCTAssertTrue(mushafPage4.waitForExistence(timeout: 10))
+    }
+
+    func testStatusRowOpensFilteredList() {
+        let app = launch()
+        let row = element("memo-status-row-2", in: app)
+        XCTAssertTrue(row.waitForExistence(timeout: 15))
+        if !row.isHittable {
+            app.swipeUp()
+        }
+        row.tap()
+        XCTAssertTrue(element("memo-ayah-list", in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(element("memo-ayah-row-2-21", in: app).waitForExistence(timeout: 5))
+        XCTAssertFalse(element("memo-ayah-row-2-1", in: app).exists)
+    }
+
+    func testHistoryListsBatchAndUndoes() {
+        let app = launch()
+        XCTAssertTrue(element("memo-strict", in: app).waitForExistence(timeout: 15))
+        let initial = strictLabel(app)
+        openUpdateSheet(app)
+        search("البقرة 100", in: app)
+        chooseStatus(1, in: app)
+        app.buttons["memo-update-apply"].tap()
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
+        XCTAssertNotEqual(strictLabel(app), initial)
+
+        let historyLink = element("memo-history-link", in: app)
+        if !historyLink.isHittable {
+            app.swipeUp()
+        }
+        XCTAssertTrue(historyLink.waitForExistence(timeout: 10))
+        historyLink.tap()
+
+        XCTAssertTrue(element("memo-history", in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(element("memo-history-row-0", in: app).waitForExistence(timeout: 5))
+        let undoButton = element("memo-history-undo-0", in: app)
+        XCTAssertTrue(undoButton.waitForExistence(timeout: 5))
+        undoButton.tap()
+
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        XCTAssertEqual(strictLabel(app), initial)
+    }
+
+    func testHistoryWarnsWhenNewerBatchOverlaps() {
+        // Review focus: undo after a later overlapping batch
+        let app = launch()
+        XCTAssertTrue(element("memo-strict", in: app).waitForExistence(timeout: 15))
+        openUpdateSheet(app)
+        search("البقرة 100", in: app)
+        chooseStatus(1, in: app)
+        app.buttons["memo-update-apply"].tap()
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
+
+        openUpdateSheet(app)
+        search("البقرة 100", in: app)
+        chooseStatus(2, in: app)
+        app.buttons["memo-update-apply"].tap()
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
+
+        let strictBefore = strictLabel(app)
+        let historyLink = element("memo-history-link", in: app)
+        if !historyLink.isHittable {
+            app.swipeUp()
+        }
+        XCTAssertTrue(historyLink.waitForExistence(timeout: 10))
+        historyLink.tap()
+
+        XCTAssertTrue(element("memo-history", in: app).waitForExistence(timeout: 10))
+        let undo1 = element("memo-history-undo-1", in: app)
+        XCTAssertTrue(undo1.waitForExistence(timeout: 5))
+        undo1.tap()
+
+        let alert = app.alerts.firstMatch
+        XCTAssertTrue(alert.waitForExistence(timeout: 5))
+        XCTAssertTrue(alert.buttons["تراجع على أي حال"].exists)
+        let cancelButton = alert.buttons["إلغاء"]
+        XCTAssertTrue(cancelButton.exists)
+        cancelButton.tap()
+
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        XCTAssertEqual(strictLabel(app), strictBefore)
+    }
+
+    func testDueForReviewListShowsMemorizedUnreviewedAyat() {
+        let app = launch()
+        let dueCount = element("memo-due-count", in: app)
+        XCTAssertTrue(dueCount.waitForExistence(timeout: 15))
+        if !dueCount.isHittable {
+            app.swipeUp()
+        }
+        dueCount.tap()
+        XCTAssertTrue(element("memo-ayah-list", in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(element("memo-ayah-row-1-1", in: app).waitForExistence(timeout: 5))
+    }
 }
