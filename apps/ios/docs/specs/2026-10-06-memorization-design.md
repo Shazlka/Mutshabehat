@@ -1,6 +1,6 @@
 # حفظ القرآن (Memorization) in the Qiraat iOS app: design
 
-Date: 2026-10-06. Status: design approved by the owner in chat, section by section. Revised the same day after
+Date: 2026-10-06. Status: implemented on `ios/memorization` (not merged); see `docs/memorization-acceptance.md`. Design approved by the owner in chat, section by section. Revised the same day after
 the owner's review of the written spec: memorization is **Hafs only** and unrelated to Qiraat (§3.4); the page
 status is shown as a **mark in the reader's top banner** with **four states** (§4.1, §11).
 Branch: `ios/memorization` from `ios/main`. Everything lives under `apps/ios` (isolation rule, `AGENTS.md` §1).

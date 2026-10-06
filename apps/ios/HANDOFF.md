@@ -29,6 +29,23 @@ The repository-root `HANDOFF.md` describes the web application and production ba
 
 ---
 
+## Memorization module (حفظ القرآن), branch `ios/memorization` (2026-10-06)
+
+Built, tested and committed on `ios/memorization`; **not pushed, not merged into `ios/main`** (waits for the owner).
+
+- **What exists:** Hafs-only ayah-level memorization with four statuses and a «currently learning» flag; derived
+  statistics; update by surah / ayah range / page range / juz / from the Mushaf with confirmation and undo; review
+  with an interval ladder; streak, goals, progress charts, milestones; a page-status mark in the reader banner
+  (weakest-link, four states); backup of all app data to an iCloud Drive folder plus JSON export/import and restore.
+- **Where:** core in `MushafCore/Sources/MushafCore/Memorization` (+ `Backup`), app in `Sources/Memorization`
+  and `Sources/Backup`, database `mushaf_memorization.sqlite`. Spec `docs/specs/2026-10-06-memorization-design.md`,
+  plan `docs/plans/2026-10-06-memorization.md`, acceptance report `docs/memorization-acceptance.md`.
+- **Run its tests:** `swift test --package-path MushafCore --filter Memorization`; `xcodebuild … -only-testing:MutshabehatTests`;
+  UI tests `MemorizationUITests`, `MemorizationReaderUITests`, `MemorizationBackupUITests`, `MemorizationProgressUITests`.
+  DEBUG launch arguments: `-memorization-seed demo|empty|complete`, `-open-memorization`, `-backup-folder none|temp`.
+- **Open items:** real iCloud Drive behaviour and real-device haptics are not verified; the full `make test-ipad` was
+  not re-run after the last fixes; five Reader/Qiraat UI tests fail on `ios/main` itself (pre-existing).
+
 ## Start here
 
 1. Read `AGENTS.md`, then the repository-root `HANDOFF.md` and `PROJECT_MASTER.md`, then `CLAUDE.md`.
