@@ -91,6 +91,7 @@ struct HistoryView: View {
                 .listStyle(.insetGrouped)
             }
         }
+        .accessibilityElement(children: .contain)
         .accessibilityIdentifier("memo-history")
         .navigationTitle(language == .arabic ? "آخر التحديثات" : "History")
         .navigationBarTitleDisplayMode(.inline)
@@ -206,6 +207,7 @@ struct HistoryView: View {
             }
         }
         .padding(.vertical, 2)
+        .accessibilityElement(children: .contain)
         .accessibilityIdentifier("memo-history-row-\(index)")
     }
 

@@ -163,6 +163,7 @@ struct SurahListView: View {
         }
         .navigationTitle(copy("السور", "Surahs"))
         .navigationBarTitleDisplayMode(.inline)
+        .accessibilityElement(children: .contain)
         .accessibilityIdentifier("memo-surah-list")
     }
 
