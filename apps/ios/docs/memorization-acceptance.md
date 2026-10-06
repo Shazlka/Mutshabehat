@@ -92,6 +92,20 @@ Full `make test` on the iPhone simulator, compared with the same tests on `ios/m
   fixed: the banner mark covered the search icon, and the Memorization settings rows pushed the Developer rows
   off screen.
 
+## Final runs (2026-10-06, branch `ios/memorization`)
+
+- `make test` first run: unit tests all passed; UI failures were the five baseline ones plus three regressions this
+  work caused (fixed, see above). After the fixes: all 50 memorization UI tests pass on the iPhone 18 Pro Max
+  simulator (1 iPad-only test skipped there) and on the iPad Pro 13-inch (M5) simulator (one test, `testUpdateSucceedsWhenBackupFolderIsMissing`,
+  passed on its own rerun after a first-launch timing flake in the full run).
+- iPad-specific fixes found by that run: the update, ayah, page, review and restore sheets are now `presentationSizing(.page)`;
+  the update sheet's count and Save button are pinned at the bottom; the two-page spread test rotates to landscape.
+- A real bug found by the iPad run: `BackupController.needsAttention` wrote observed state while the dashboard was
+  rendering, which kept the app busy and made every UI query wait 60 s. Fixed.
+- `scripts/check_isolation.sh`: `isolation ok`. `make release-guard`: `release guard ok`.
+- Not re-run after the last fixes: the full `make test-ipad` (every Reader/Qiraat UI test on iPad). Only the
+  memorization suites were run on iPad.
+
 ## Not verified here
 
 - Real iCloud Drive behaviour on the iPhone: evicted (not downloaded) files, a signed-out account, coordination
