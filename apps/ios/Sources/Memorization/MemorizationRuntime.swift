@@ -22,6 +22,24 @@ enum MemorizationRuntime {
         return MemorizationStore(database: MemorizationDatabase(), index: index)
     }
 
+    static func makeBackupController(library: MushafLibrary, store: MemorizationStore) -> BackupController {
+#if DEBUG
+        let arguments = ProcessInfo.processInfo.arguments
+        if let position = arguments.firstIndex(of: "-backup-folder"), arguments.indices.contains(position + 1) {
+            let defaults = UserDefaults(suiteName: "backup-ui-\(UUID().uuidString)") ?? .standard
+            switch arguments[position + 1] {
+            case "none":
+                return BackupController(library: library, store: store, folder: BackupFolder(provider: { nil }), defaults: defaults)
+            default:
+                let url = FileManager.default.temporaryDirectory.appendingPathComponent("backup-ui-\(UUID().uuidString)", isDirectory: true)
+                try? FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
+                return BackupController(library: library, store: store, folder: BackupFolder(provider: { url }), defaults: defaults)
+            }
+        }
+#endif
+        return BackupController(library: library, store: store)
+    }
+
 #if DEBUG
     /// `-flag YES|NO` in the launch arguments.
     private static func flag(_ name: String, in arguments: [String]) -> Bool? {

@@ -29,6 +29,12 @@ final class MushafLibrary {
     /// The one memorization store of the app, created on first use.
     private(set) lazy var memorizationStore: MemorizationStore? = MemorizationRuntime.makeStore(library: self)
 
+    /// Backups and restores of the person's data, created together with the memorization store.
+    private(set) lazy var backupController: BackupController? = {
+        guard let store = memorizationStore else { return nil }
+        return MemorizationRuntime.makeBackupController(library: self, store: store)
+    }()
+
     init(bundle: Bundle = .main) throws {
         guard let databaseURL = bundle.url(forResource: "mushaf", withExtension: "sqlite") else {
             throw MushafLibraryError.missingResource("mushaf.sqlite")

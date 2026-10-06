@@ -18,8 +18,15 @@ public enum SQLiteSnapshot {
     /// is consistent even while the app holds the source open in WAL mode. The copy is a single file
     /// (rollback-journal mode, no -wal/-shm) written beside the destination and then moved into place.
     public static func copy(from source: URL, to destination: URL) throws {
+        // A write-ahead-log database cannot be opened read-only when its -shm file is not there (the app has
+        // it closed), so the source is opened read-write without ever writing to it; read-only is the fallback.
         var sourceHandle: OpaquePointer?
-        guard sqlite3_open_v2(source.path, &sourceHandle, SQLITE_OPEN_READONLY, nil) == SQLITE_OK, let sourceHandle else {
+        if sqlite3_open_v2(source.path, &sourceHandle, SQLITE_OPEN_READWRITE, nil) != SQLITE_OK {
+            sqlite3_close(sourceHandle)
+            sourceHandle = nil
+            _ = sqlite3_open_v2(source.path, &sourceHandle, SQLITE_OPEN_READONLY, nil)
+        }
+        guard let sourceHandle, sqlite3_errcode(sourceHandle) == SQLITE_OK else {
             let detail = sourceHandle.map { String(cString: sqlite3_errmsg($0)) } ?? "no handle"
             sqlite3_close(sourceHandle)
             throw SQLiteSnapshotError.openFailed(detail)

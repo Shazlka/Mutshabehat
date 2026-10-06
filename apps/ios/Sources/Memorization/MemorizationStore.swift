@@ -16,7 +16,7 @@ final class MemorizationStore {
 
     let index: QuranIndex
     let policy: MemorizationPolicy
-    private let database: MemorizationDatabase
+    let database: MemorizationDatabase
     @ObservationIgnored private let clock: @MainActor () -> Date
     @ObservationIgnored private let calendar: Calendar
     @ObservationIgnored private let defaults: UserDefaults
@@ -24,7 +24,11 @@ final class MemorizationStore {
     @ObservationIgnored private var snapshotCache: (version: Int, value: MemorizationSnapshot)?
 
     /// Bumped after every successful write, so observers re-read what they show.
-    private(set) var version = 0
+    private(set) var version = 0 {
+        didSet { onDataChanged?() }
+    }
+    /// Called after every change of the data (used to schedule a backup).
+    @ObservationIgnored var onDataChanged: (() -> Void)?
 
     static let bannerMarkKey = "memorization:show-banner-mark:v1"
     static let ayahMarkerKey = "memorization:show-ayah-marker:v1"

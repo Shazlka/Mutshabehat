@@ -96,6 +96,7 @@ struct ReaderView: View {
             }
         }
         .onChange(of: scenePhase) { _, newPhase in
+            library.backupController?.scenePhaseChanged(newPhase)
             tracker.configureScreenAwake(enabled: keepScreenAwake, scenePhase: newPhase)
             if newPhase != .active {
                 tracker.flushCurrentPageDwell(library: library)
