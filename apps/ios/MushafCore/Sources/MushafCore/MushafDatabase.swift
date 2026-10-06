@@ -243,6 +243,16 @@ public final class MushafDatabase {
         try textBoundRows(sql, binds: binds) { $0.text(0) }
     }
 
+    public func ayahLayout() throws -> [AyahLayoutRow] {
+        try rows("SELECT surah, ayah, MIN(page), SUM(char_type = 'word') FROM words GROUP BY surah, ayah ORDER BY surah, ayah") { s in
+            AyahLayoutRow(key: AyahKey(surah: s.int(0), ayah: s.int(1)), page: s.int(2), wordCount: s.int(3))
+        }
+    }
+
+    public func pageJuzMap() throws -> [Int: Int] {
+        Dictionary(uniqueKeysWithValues: try rows("SELECT number, juz FROM pages") { s in (s.int(0), s.int(1)) })
+    }
+
     // MARK: - Minimal statement helpers
 
     struct Row {
