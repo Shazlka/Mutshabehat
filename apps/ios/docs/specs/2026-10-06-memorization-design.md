@@ -1,7 +1,8 @@
 # حفظ القرآن (Memorization) in the Qiraat iOS app: design
 
-Date: 2026-10-06. Status: design approved by the owner in chat, section by section; this written spec awaits
-the owner's review before the implementation plan is written.
+Date: 2026-10-06. Status: design approved by the owner in chat, section by section. Revised the same day after
+the owner's review of the written spec: memorization is **Hafs only** and unrelated to Qiraat (§3.4); the page
+status is shown as a **mark in the reader's top banner** with **four states** (§4.1, §11).
 Branch: `ios/memorization` from `ios/main`. Everything lives under `apps/ios` (isolation rule, `AGENTS.md` §1).
 
 ## 1. Goal
@@ -23,8 +24,8 @@ Success criteria (the owner's §50 acceptance list is the definition of done; th
 5. **Nothing existing breaks.** Reader, Qiraat colours and layer rules, bookmarks, reading statistics and
    streaks, Mutshabehat, search, settings and sync behave as before. Memorization never recolours Quran text.
 
-Non-goals: separate memorization per Qiraat (the model leaves room, nothing is built); hizb and quarter-hizb
-selection (§3.4); cloud sync between devices (the model is merge-ready, no network feature is built);
+Non-goals: any relation to the Qiraat feature (memorization is Hafs only, §3.4); hizb and quarter-hizb
+selection (§2); cloud sync between devices (the model is merge-ready, no network feature is built);
 audio; changes to the web app or its database.
 
 ## 2. Findings that shape the design
@@ -84,10 +85,16 @@ juz → page range, surah → pages occupied. All selection resolution (§5.1) g
 review interval ladder (§6), the strength-aging thresholds, the big-update confirmation threshold (a full
 surah or more than 30 ayat), and milestone percentages (25 / 50 / 75 / 100). No view contains a formula.
 
-### 3.4 Not modelled
+### 3.4 Hafs only, no Qiraat
 
-Hizb and quarter-hizb (§2). Per-Qiraat memorization: records belong to the ayah; a future `qiraatID` column
-can be added by migration without changing this model.
+Memorization is measured **only on Hafs**, the Mushaf 1441 text the reader prints. A record is keyed by the
+Hafs ayah `(surah, ayah)` and has no Qiraat, reader or narrator field; nothing in the module reads or writes
+Qiraat data, and the Qiraat layer, its colours, its modes (including القراءة برواية) and its rules never
+influence a memorization figure or marker. Memorization marks are drawn independently of Qiraat marks.
+(Backing up the Qiraat snapshot with the other app data, §9, is a separate matter and is not part of the
+memorization data or its JSON.)
+
+Not modelled: hizb and quarter-hizb (§2).
 
 ## 4. Statistics (`MemorizationStatisticsService`)
 
@@ -103,6 +110,7 @@ A pure function of `[ayah → record]` and `QuranIndex`. Every screen reads from
   (documented approximation). Dashboard tile: "pages fully mastered / 604" with the page-equivalent and its
   percentage beneath. A per-page mix (mastered / errors / needs / none fractions) feeds the page grid, computed
   in one pass for all 604 pages.
+- **Page status (§4.1)** gives every page one of four states.
 - **Juz.** Whole-juz progress from page ranges; completed juz count.
 - **Review backlog.** Memorized (mastered or with-errors) ayat that are due: `nextReviewAt ≤ now`, or never
   reviewed. Per-surah overdue average for suggestions.
@@ -112,6 +120,22 @@ A pure function of `[ayah → record]` and `QuranIndex`. Every screen reads from
   with-errors; page-equivalents of those ayat; surahs completed in the period) and the points of the
   progress-over-time series (strict, optionally learning) for 7 days / 30 days / 3 / 6 months / year / all.
 - **Budgets (release mode):** full snapshot ≤ 20 ms, page-mix for 604 pages ≤ 10 ms.
+
+### 4.1 Page status: four states
+
+Every page has exactly one of four states, the same four as the ayah statuses, so the banner mark, the page
+grid and the "pages fully mastered" count always agree. The rule is **weakest link**: the page takes the
+status of its weakest ayah, in the order متقن › محفوظ مع أخطاء › يحتاج المصحف › غير محفوظ. So a page is:
+
+- **متقن** only when every ayah on it is mastered (this is also the "page fully mastered" rule of §4);
+- **محفوظ مع أخطاء** when every ayah is memorized (mastered or with errors) and at least one has errors;
+- **يحتاج المصحف** when no ayah is unmemorized but at least one needs the Mushaf;
+- **غير محفوظ** when at least one ayah is not memorized.
+
+Because weakest-link is strict, a partly memorized page reads «غير محفوظ»; to keep that honest, every place
+that shows a page state also shows its **ayah mix** (the four fractions by ayah share and the count of
+mastered ayat, e.g. «٧ من ١٠ متقنة»), so progress inside a page is never hidden. The service returns, per
+page, the state and the mix, computed in one pass for all 604 pages.
 
 ## 5. Updating
 
@@ -252,8 +276,8 @@ confirmation, then a toast «تم تحديث N آية — تراجع» for about
 filter complete / incomplete / currently learning / needs review; row = percentage, «متقن: 180 / 286»,
 segmented bar). Surah detail (strict and weighted %, four counts, pages occupied, last review, review
 strength, current position, last memorized ayah, the ayah strip of same-status runs as proportional segments,
-tap → Mushaf, update and open buttons). Page grid (604 cells, each a mini stacked fill of its ayah mix; tap
-opens the Mushaf page, long-press the page actions; legend). Ayah status list (filter by status, due,
+tap → Mushaf, update and open buttons). Page grid (604 cells; each shows the page's four-state shape and a mini stacked fill of its ayah mix; tap
+opens the Mushaf page, long-press the page actions; legend of the four states). Ayah status list (filter by status, due,
 currently learning; grouped by surah and page; tap opens the Mushaf). History (batches by day with the
 status change summary; undo). Goals. Review. Backup and restore.
 
@@ -271,21 +295,33 @@ goal, and marking an ayah mastered; ordinary taps give none.
 2. **Range mode.** «تحديد من هنا» stores a start ayah; a bottom pill reads «من البقرة ١٢ — اختر آية النهاية»
    with a cancel button; pages can be turned; long-pressing another ayah (across surahs too) completes the
    range and opens a sheet with the count and four statuses, using the same planner, confirmation and undo.
-3. **Page action** «تحديث حفظ الصفحة»: shown only when the chrome is visible, as a small capsule by the page
-   number (exact placement confirmed on device screenshots); also «الصفحة كلها» in the ayah sheet. Options:
-   whole page mastered / with errors / needs Mushaf / not memorized, and «تحديد آيات فقط» (the page's ayat as a
-   checklist, then apply a status).
-4. **Optional marker** (setting «إظهار حالة الحفظ على المصحف», off by default): a tiny monochrome shape under
-   each ayah-end marker, ink at reduced opacity, no hue, no change to Quran text: filled disc = mastered,
+3. **Page mark in the top banner** (the owner's request). The banner (`ReaderTopBar`) is one 52 pt slot that
+   swaps between the reading header and the controls bar. A small page-status mark sits in that slot and is
+   **visible in both modes**, so it never jumps (the existing single-slot rule). It shows the page's one of
+   four states (§4.1) as a shape plus a short word, with a hairline bar of the ayah mix beneath:
+   - ✓✓ **متقن** · ! **محفوظ مع أخطاء** · ◐ **يحتاج المصحف** · ○ **غير محفوظ**, each also in its own colour
+     from the module's restrained palette (shape and word carry the meaning, so colour is never alone).
+   The mark follows the page the banner describes; in the iPad spread, where two pages are visible, it shows
+   one mark per page, labelled with the page number. It has its own tap target (tapping the header elsewhere
+   still toggles the chrome): tapping it opens the **page sheet** «تحديث حفظ الصفحة» with the page's ayah mix,
+   the four statuses applied to the whole page, and «تحديد آيات فقط» (the page's ayat as a checklist, then
+   apply a status). «الصفحة كلها» is also offered in the ayah sheet. A setting «إظهار حالة الحفظ في الشريط
+   العلوي» turns the mark off; it is **on by default**. Placement and width are verified on screenshots at
+   iPhone and iPad widths.
+4. **Optional ayah marker** (setting «إظهار حالة الحفظ على المصحف», off by default): a tiny monochrome shape
+   under each ayah-end marker, ink at reduced opacity, no hue, no change to Quran text: filled disc = mastered,
    ring with a centre dot = with errors, plain ring = needs Mushaf, nothing = not memorized. The dashboard
-   uses matching shapes. Final glyph sizes are tuned on a device. It cannot be confused with the reader colours
+   uses matching shapes. Final glyph sizes are tuned on a device. It cannot be confused with the Qiraat marks
    (different place, no hue) or the bookmark ribbon (above the marker).
-5. **Wiring.** The pager asks the store for one page's statuses (like `bookmarkedAyahs`); nothing is queried
-   when the marker is off; a change bumps a version counter and only visible pages redraw.
+5. **Wiring.** The store answers `pageState(page)` (state + mix) from the in-memory statuses for the banner
+   mark, and one page's ayah statuses for the optional ayah marker (like `bookmarkedAyahs`); nothing is queried
+   for a mark that is switched off; a change bumps a version counter and only the banner and the visible pages
+   redraw.
 6. **Open in Mushaf.** Every module screen calls one `openInMushaf(page, ayah)`: close the cover, set the page,
    highlight the ayah's words (the mechanism search results use).
-7. **Boundaries.** Memorization never touches `ReadingTracker` or its streak; the Qiraat layer rules and word
-   taps are unchanged; resume-last-page is unchanged.
+7. **Boundaries.** Memorization never touches `ReadingTracker` or its streak, and has no relation to the Qiraat
+   layer (§3.4): the layer's rules, colours, modes and word taps are unchanged, and the memorization marks
+   look the same whatever Qiraat mode is on; resume-last-page is unchanged.
 
 ## 12. Code layout
 
@@ -308,7 +344,10 @@ goal, and marking an ayah mastered; ordinary taps give none.
   page-equivalent shares summing to 604; juz and page-range boundaries; ayah-range edges and cross-surah
   ranges; the text parser; planner no-op handling; undo restores the exact prior rows and warns on overlap;
   streak ignores downgrades, undos and imports; the review ladder and aged strength; milestones fire once;
-  rollback-by-events equals a recomputed past state; all percentages and counts.
+  rollback-by-events equals a recomputed past state; all percentages and counts; the four page states by the
+  weakest-link rule (all-mastered, one with errors, one needs Mushaf, one unmemorized, empty page record), and
+  the page-state count agreeing with "pages fully mastered"; memorization figures identical with and without
+  Qiraat data present.
 - **Persistence:** reopen keeps data; migration from a v1 file; a transaction that fails halfway leaves the old
   state.
 - **Backup (temp folders):** set verification, retention, merge rules, restore rollback on injected failure.
@@ -328,7 +367,10 @@ goal, and marking an ayah mastered; ordinary taps give none.
 
 ## 15. Risks and what cannot be proven here
 
-- The top bar is full; the new button is checked on screenshots at iPhone width.
+- The top banner is a tight 52 pt slot: the page mark and the new «الحفظ» button are checked on screenshots at
+  iPhone and iPad widths, in both header modes and in the iPad spread (two marks).
+- Weakest-link makes a partly memorized page read «غير محفوظ»; the ayah mix shown beside every page state is
+  the mitigation. If this reads wrongly in use, the rule is a single function to change.
 - The ayah-sheet change must keep the existing bookmark UI tests passing.
 - Real iCloud behaviour (evicted files, signed-out account, coordination) can only be confirmed on the owner's
   iPhone; the simulator exercises the host iCloud Drive path like the existing sync. The final report states

@@ -7,6 +7,7 @@
 - **Docs only, no code yet:** `docs/specs/2026-10-06-memorization-design.md` (branch `ios/memorization`). Ayah-level memorization truth (four statuses, review strength kept separate, a «currently learning» flag), a statistics service for strict and weighted progress by ayah, surah, page and juz, bulk updates with confirmation and undo, review results with an interval ladder, a memorization-only streak, goals, a dashboard with charts, reader integration (ayah sheet, range selection, page action, optional marker), and backup of all app data to an iCloud Drive folder plus JSON export and import.
 - **Why:** the owner wants a long-term memorization companion inside the Mushaf. Decisions in chat: JSON export/import in v1, and backups cover every database including the Qiraat snapshot.
 - **Verified in the repository:** no ayah spans two pages (6,236 ayat), juz is page-aligned, hizb/rub are page-level only (so excluded), the app has no iCloud entitlement (backups use the picked-folder bookmark).
+- **Revised after the owner's review (same day):** memorization is Hafs only and unrelated to Qiraat; a page-status mark in the reader's top banner with four states by a weakest-link rule (متقن / مع أخطاء / يحتاج المصحف / غير محفوظ) plus the ayah mix, tapping it opens the page sheet.
 - **DB migration:** none.
 
 ## [Unreleased] — 2026-10-05 — Developer review editor (milestones 1–4: engine, page screen, review and approve, add and edit)
