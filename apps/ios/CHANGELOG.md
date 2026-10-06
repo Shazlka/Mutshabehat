@@ -3,6 +3,12 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-06 — Memorization module (حفظ القرآن): design spec written
+- **Docs only, no code yet:** `docs/specs/2026-10-06-memorization-design.md` (branch `ios/memorization`). Ayah-level memorization truth (four statuses, review strength kept separate, a «currently learning» flag), a statistics service for strict and weighted progress by ayah, surah, page and juz, bulk updates with confirmation and undo, review results with an interval ladder, a memorization-only streak, goals, a dashboard with charts, reader integration (ayah sheet, range selection, page action, optional marker), and backup of all app data to an iCloud Drive folder plus JSON export and import.
+- **Why:** the owner wants a long-term memorization companion inside the Mushaf. Decisions in chat: JSON export/import in v1, and backups cover every database including the Qiraat snapshot.
+- **Verified in the repository:** no ayah spans two pages (6,236 ayat), juz is page-aligned, hizb/rub are page-level only (so excluded), the app has no iCloud entitlement (backups use the picked-folder bookmark).
+- **DB migration:** none.
+
 ## [Unreleased] — 2026-10-05 — Developer review editor (milestones 1–4: engine, page screen, review and approve, add and edit)
 - **Suggestions, copy and occurrences:** learned suggestion cards add ordinary unreviewed faces through the save queue, with farsh narrator clash guards and a 250 ms selection debounce. Same-word copies require a preview and explicit confirmation, with a same-category filter. A face’s context menu lists all occurrences, applies only selected additions, and reports added, skipped and failed results. Added pure-Swift parity tests, stubbed store tests and a dedicated suggestion UI test.
 - **History and undo:** the developer page toolbar opens an Arabic native history sheet with transaction summaries, time, device, refresh and undo. Successful undo reloads the page and history and refreshes the live layer; conflicts and refused undo preserve the list and show the server’s Arabic message. Added summary, store and stub UI coverage; already-undone transactions cannot be submitted again.
