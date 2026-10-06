@@ -3,7 +3,7 @@ import MushafCore
 import XCTest
 @testable import Mutshabehat
 
-final class HistorySummaryTests: XCTestCase {
+final class MemorizationHistorySummaryTests: XCTestCase {
     private let now = Date(epochMilliseconds: 1_790_000_000_000)
     private let batchID = UUID()
 
@@ -26,19 +26,19 @@ final class HistorySummaryTests: XCTestCase {
     }
 
     func testNoEventsReturnsNil() {
-        XCTAssertNil(HistorySummary.dominantTransition(events: []))
+        XCTAssertNil(MemorizationHistorySummary.dominantTransition(events: []))
     }
 
     func testSingleEventReturnsItsTransition() {
         let event = makeEvent(surah: 1, ayah: 1, beforeStatus: .notMemorized, afterStatus: .mastered)
-        let transition = HistorySummary.dominantTransition(events: [event])
+        let transition = MemorizationHistorySummary.dominantTransition(events: [event])
         XCTAssertEqual(transition?.from, .notMemorized)
         XCTAssertEqual(transition?.to, .mastered)
     }
 
     func testNilBeforeDefaultsToNotMemorized() {
         let event = makeEvent(surah: 1, ayah: 1, beforeStatus: nil, afterStatus: .memorizedWithErrors)
-        let transition = HistorySummary.dominantTransition(events: [event])
+        let transition = MemorizationHistorySummary.dominantTransition(events: [event])
         XCTAssertEqual(transition?.from, .notMemorized)
         XCTAssertEqual(transition?.to, .memorizedWithErrors)
     }
@@ -49,7 +49,7 @@ final class HistorySummaryTests: XCTestCase {
             makeEvent(surah: 1, ayah: 2, beforeStatus: .notMemorized, afterStatus: .memorizedWithErrors),
             makeEvent(surah: 1, ayah: 3, beforeStatus: .notMemorized, afterStatus: .memorizedWithErrors)
         ]
-        let transition = HistorySummary.dominantTransition(events: events)
+        let transition = MemorizationHistorySummary.dominantTransition(events: events)
         XCTAssertEqual(transition?.from, .notMemorized)
         XCTAssertEqual(transition?.to, .memorizedWithErrors)
     }
@@ -62,7 +62,7 @@ final class HistorySummaryTests: XCTestCase {
             makeEvent(surah: 1, ayah: 1, beforeStatus: .mastered, afterStatus: .memorizedWithErrors),
             makeEvent(surah: 1, ayah: 2, beforeStatus: .memorizedWithErrors, afterStatus: .mastered)
         ]
-        let transition = HistorySummary.dominantTransition(events: events)
+        let transition = MemorizationHistorySummary.dominantTransition(events: events)
         XCTAssertEqual(transition?.from, .mastered)
         XCTAssertEqual(transition?.to, .memorizedWithErrors)
     }
@@ -75,7 +75,7 @@ final class HistorySummaryTests: XCTestCase {
             makeEvent(surah: 1, ayah: 1, beforeStatus: .needsMushaf, afterStatus: .mastered),
             makeEvent(surah: 1, ayah: 2, beforeStatus: .needsMushaf, afterStatus: .memorizedWithErrors)
         ]
-        let transition = HistorySummary.dominantTransition(events: events)
+        let transition = MemorizationHistorySummary.dominantTransition(events: events)
         XCTAssertEqual(transition?.from, .needsMushaf)
         XCTAssertEqual(transition?.to, .mastered)
     }

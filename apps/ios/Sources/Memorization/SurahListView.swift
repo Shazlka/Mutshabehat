@@ -18,7 +18,7 @@ public enum SurahFilter: String, CaseIterable, Sendable {
 public enum SurahListQuery: Sendable {
     public static func apply(
         surahs: [Surah],
-        progress: [Int: SurahProgress],
+        progress: [Int: MushafCore.SurahProgress],
         records: [AyahKey: AyahMemorizationRecord],
         searchText: String,
         sort: SurahSortOrder,
@@ -83,7 +83,7 @@ public enum SurahListQuery: Sendable {
 
     public static func apply(
         surahs: [Surah],
-        progress: [SurahProgress],
+        progress: [MushafCore.SurahProgress],
         records: [AyahKey: AyahMemorizationRecord],
         searchText: String,
         sort: SurahSortOrder,
@@ -140,7 +140,7 @@ struct SurahListView: View {
     private func copy(_ ar: String, _ en: String) -> String { language == .arabic ? ar : en }
     private func number(_ value: Int) -> String { MemorizationTheme.number(value, language: language) }
 
-    private var progressMap: [Int: SurahProgress] {
+    private var progressMap: [Int: MushafCore.SurahProgress] {
         Dictionary(uniqueKeysWithValues: store.snapshot.surahs.map { ($0.surah, $0) })
     }
 

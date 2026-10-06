@@ -3,7 +3,7 @@ import MushafCore
 import SwiftUI
 
 /// Pure summary helper for finding the dominant status transition of a batch.
-enum HistorySummary {
+enum MemorizationHistorySummary {
     static func dominantTransition(events: [ChangeEvent]) -> (from: MemorizationStatus, to: MemorizationStatus)? {
         guard !events.isEmpty else { return nil }
 
@@ -62,9 +62,14 @@ struct HistoryView: View {
         var id: Date { day }
     }
 
-    var body: some View {
+    /// Reading `refreshTrigger` makes the list reload after an undo.
+    private func loadBatches() -> [BatchRecord] {
         _ = refreshTrigger
-        let batches = store.batches(limit: 200)
+        return store.batches(limit: 200)
+    }
+
+    var body: some View {
+        let batches = loadBatches()
         let groups = groupedBatches(batches)
 
         Group {
@@ -226,7 +231,7 @@ struct HistoryView: View {
 
     private func transitionText(_ batch: BatchRecord) -> String? {
         let events = store.events(batchID: batch.id)
-        guard let transition = HistorySummary.dominantTransition(events: events) else { return nil }
+        guard let transition = MemorizationHistorySummary.dominantTransition(events: events) else { return nil }
         let from = MemorizationTheme.label(transition.from, language: language)
         let to = MemorizationTheme.label(transition.to, language: language)
         return language == .arabic ? "\(from) ← \(to)" : "\(from) → \(to)"
