@@ -7,6 +7,9 @@ public final class MutshabehatDatabase: @unchecked Sendable {
     private let lock = NSLock()
     private let databaseURL: URL
 
+    /// The SQLite file this database is stored in (used by backups to take a consistent snapshot).
+    public var fileURL: URL { databaseURL }
+
     public init(url: URL? = nil) {
         let dbUrl: URL
         if let url = url {

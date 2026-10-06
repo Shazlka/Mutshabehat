@@ -47,6 +47,89 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         }
     }
 
+    /// The SQLite file this database is stored in (used by backups to take a consistent snapshot).
+    public var fileURL: URL { databaseURL }
+
+    // MARK: - Backup transfer
+
+    public enum TransferError: LocalizedError {
+        case databaseUnavailable
+        case invalidDatabase
+
+        public var errorDescription: String? {
+            switch self {
+            case .databaseUnavailable: "تعذر فتح قاعدة بيانات القراءة"
+            case .invalidDatabase: "الملف ليس نسخة صالحة من بيانات القراءة"
+            }
+        }
+    }
+
+    /// The whole database as one self-contained file's bytes: a consistent snapshot (SQLite's online backup
+    /// API) in rollback-journal mode, so it opens anywhere without its write-ahead log.
+    public func exportDatabase() throws -> Data {
+        lock.lock()
+        defer { lock.unlock() }
+        guard db != nil else { throw TransferError.databaseUnavailable }
+        let snapshot = FileManager.default.temporaryDirectory.appendingPathComponent("reading-export-\(UUID().uuidString).sqlite")
+        defer { try? FileManager.default.removeItem(at: snapshot) }
+        try SQLiteSnapshot.copy(from: databaseURL, to: snapshot)
+        return try Data(contentsOf: snapshot)
+    }
+
+    /// Replaces the whole database with `data` after checking that it holds the reading tables. If anything
+    /// fails after the swap starts, the previous contents are restored.
+    public func importDatabase(_ data: Data) throws {
+        let stagingURL = FileManager.default.temporaryDirectory
+            .appendingPathComponent("reading-import-\(UUID().uuidString).sqlite")
+        defer { try? FileManager.default.removeItem(at: stagingURL) }
+        try data.write(to: stagingURL, options: .atomic)
+        try Self.validateDatabase(at: stagingURL)
+
+        lock.lock()
+        defer { lock.unlock() }
+        execute("PRAGMA wal_checkpoint(TRUNCATE);")
+        let previous = try Data(contentsOf: databaseURL)
+        if let db {
+            sqlite3_close(db)
+            self.db = nil
+        }
+        for suffix in ["-wal", "-shm"] { try? FileManager.default.removeItem(atPath: databaseURL.path + suffix) }
+
+        do {
+            try data.write(to: databaseURL, options: .atomic)
+            guard sqlite3_open(databaseURL.path, &db) == SQLITE_OK else {
+                db = nil
+                throw TransferError.databaseUnavailable
+            }
+            setupTables()
+        } catch {
+            if let db { sqlite3_close(db) }
+            db = nil
+            try? previous.write(to: databaseURL, options: .atomic)
+            if sqlite3_open(databaseURL.path, &db) == SQLITE_OK { setupTables() } else { db = nil }
+            throw error
+        }
+    }
+
+    private static func validateDatabase(at url: URL) throws {
+        var candidate: OpaquePointer?
+        guard sqlite3_open_v2(url.path, &candidate, SQLITE_OPEN_READWRITE, nil) == SQLITE_OK, let candidate else {
+            if let candidate { sqlite3_close(candidate) }
+            throw TransferError.invalidDatabase
+        }
+        defer { sqlite3_close(candidate) }
+        var statement: OpaquePointer?
+        guard sqlite3_prepare_v2(candidate, "SELECT name FROM sqlite_master WHERE type='table'", -1, &statement, nil) == SQLITE_OK,
+              let statement else { throw TransferError.invalidDatabase }
+        defer { sqlite3_finalize(statement) }
+        var found = Set<String>()
+        while sqlite3_step(statement) == SQLITE_ROW, let text = sqlite3_column_text(statement, 0) {
+            found.insert(String(cString: text))
+        }
+        let required: Set<String> = ["bookmarks", "khatmas", "khatma_read_ayahs", "reading_days", "reading_metadata"]
+        guard required.isSubset(of: found) else { throw TransferError.invalidDatabase }
+    }
+
     private func setupTables() {
         execute("""
         PRAGMA journal_mode = WAL;
