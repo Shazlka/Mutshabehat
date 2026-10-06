@@ -80,7 +80,8 @@ final class MemorizationStoreTests: XCTestCase {
     func testMilestoneReportedOnlyOnce() throws {
         let store = makeStore()
         let first = try store.update(.surah(1), label: "x", status: .mastered)
-        XCTAssertEqual(first.milestones, [.surahCompleted(1)])
+        // 7 of this test index's 17 ayat are 41 %, so the 25 % threshold is crossed together with the surah.
+        XCTAssertEqual(first.milestones, [.surahCompleted(1), .percent(25)])
         try store.undo(batchID: first.batch.id)
         let again = try store.update(.surah(1), label: "x", status: .mastered)
         XCTAssertTrue(again.milestones.isEmpty)
