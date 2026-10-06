@@ -38,6 +38,12 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-10-06 — Data: Warsh added to the صلة ميم الجمع entries where nquran gives him a reading (817 entries)
+- **Owner request:** where the word also has a Warsh variant in nquran, add it to the ميم الجمع entry.
+- **What was found:** 824 of the 6,185 words have a Warsh group (`ورش عن نافع`) under the same rule: 822 «قرأ بصلة ميم الجمع وصلاً مع الإشباع.» and 2 «قرأ بصلة ميم الجمع وصلا.». 7 of them already had Warsh (hand-made entries), so they were left.
+- **What was written (live database, review API, device id `bulk-mim-jam-warsh-2026-10-06`):** `Q01-R02` (ورش) with the nquran wording was added to the other 817 entries (narrator list replaced with the old narrators + Warsh; all other fields and the review status unchanged). 816 stay reviewed; 95:6:6 was already unreviewed and stays so. 0 errors; a pilot of 5 first.
+- **Verification (read back from the live API):** all 824 Warsh words now have `Q01-R02` on their ميم الجمع entry, with the exact nquran text, no duplicates. List of updated entries: `~/mim-jam-warsh-updated-2026-10-06.json`. **DB migration:** none.
+
 ## 2026-10-06 — Data: صلة ميم الجمع from nquran added and approved on every location of the Mushaf (6,072 entries)
 - **Owner request:** apply the nquran rule «قالون عن نافع: بصلة ميم الجمع وصلاً بخلف عنه» + «أبو جعفر، ابن كثير: بصلة ميم الجمع وصلاً» to all words in أصول القراءات › ميم الجمع, and approve them.
 - **What was found:** the rule appears at 6,181 nquran locations (all with exactly these two groups), which resolve with the web's own matcher (`findNquranDifferencesForWord`, ayah context, first word of the phrase) to 6,185 Mushaf words. 114 already had a ميم الجمع entry.
