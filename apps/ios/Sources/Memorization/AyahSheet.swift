@@ -99,7 +99,7 @@ struct AyahSheet: View {
             }
         }
         .environment(\.layoutDirection, language.layoutDirection)
-        .presentationDetents([.medium, .large])
+        .presentationDetents([.large])
     }
 
     private func apply(_ status: MemorizationStatus) {

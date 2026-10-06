@@ -24,9 +24,10 @@ struct PageSheet: View {
         NavigationStack {
             List {
                 summarySection
-                if picking { checklistSection }
                 statusSection
-                if !picking {
+                if picking {
+                    checklistSection
+                } else {
                     Section {
                         Button(copy("تحديد آيات فقط", "Choose ayat only")) { picking = true }
                             .accessibilityIdentifier("memo-page-pick")
@@ -54,7 +55,7 @@ struct PageSheet: View {
             }
         }
         .environment(\.layoutDirection, language.layoutDirection)
-        .presentationDetents([.medium, .large])
+        .presentationDetents([.large])
     }
 
     // MARK: Sections
@@ -88,6 +89,7 @@ struct PageSheet: View {
                         Text(verbatim: MemorizationTheme.shape(store.status(of: key)))
                             .foregroundStyle(MemorizationTheme.color(store.status(of: key)))
                     }
+                    .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
                 .accessibilityIdentifier("memo-page-ayah-row-\(key.surah)-\(key.ayah)")

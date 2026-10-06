@@ -136,6 +136,8 @@ final class MemorizationUITests: XCTestCase {
         let initial = strictLabel(app)
         openUpdateSheet(app)
         search("البقرة 100", in: app)
+        // 30 ayat (not more than the confirmation threshold) so the one-decimal headline visibly moves.
+        replaceText(in: app.textFields["memo-update-to"], with: "129")
         chooseStatus(1, in: app)
         app.buttons["memo-update-apply"].tap()
         XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
@@ -171,11 +173,20 @@ final class MemorizationUITests: XCTestCase {
         openUpdateSheet(app)
         search("آل عمران 42", in: app)
         replaceText(in: app.textFields["memo-update-to"], with: "51")
-        element("memo-update-set-current", in: app).tap()
+        app.buttons["memo-keyboard-done"].tap()
+        let toggle = app.switches["memo-update-set-current"]
+        XCTAssertTrue(toggle.waitForExistence(timeout: 5))
+        // The row spans the sheet; in Arabic (right to left) the switch sits at the leading (left) edge.
+        toggle.tap()
+        for dx in [0.08, 0.92] where toggle.value as? String != "1" {
+            toggle.coordinate(withNormalizedOffset: CGVector(dx: dx, dy: 0.5)).tap()
+        }
+        XCTAssertEqual(toggle.value as? String, "1")
         chooseStatus(3, in: app)
         app.buttons["memo-update-apply"].tap()
         XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
-        let current = element("memo-current", in: app)
-        XCTAssertTrue(current.staticTexts.allElementsBoundByIndex.contains { $0.label.contains("آل عمران") })
+        let range = element("memo-current-range", in: app)
+        XCTAssertTrue(range.waitForExistence(timeout: 5))
+        XCTAssertTrue(range.label.contains("آل عمران"), range.label)
     }
 }

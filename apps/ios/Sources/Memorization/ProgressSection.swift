@@ -22,6 +22,7 @@ struct ProgressSection: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(14)
         .background(RoundedRectangle(cornerRadius: 12).fill(Color.secondary.opacity(0.1)))
+        .accessibilityElement(children: .contain)
         .accessibilityIdentifier("memo-progress")
     }
 
