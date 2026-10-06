@@ -88,8 +88,13 @@ struct MemorizationView: View {
     @ViewBuilder
     private func destination(_ route: MemorizationRoute) -> some View {
         switch route {
-        case .surahList: ComingSoonView(title: language == .arabic ? "السور" : "Surahs", identifier: "memo-surah-list")
-        case .surahDetail: ComingSoonView(title: language == .arabic ? "السورة" : "Surah", identifier: "memo-surah-detail")
+        case .surahList:
+            SurahListView(library: library, store: store, language: language,
+                          openSurah: { path.append(.surahDetail($0)) })
+        case .surahDetail(let number):
+            SurahDetailView(surah: number, library: library, store: store, language: language,
+                            openInMushaf: openInMushaf,
+                            update: { updateRequest = UpdateRequest(selection: $0) })
         case .pageGrid: ComingSoonView(title: language == .arabic ? "الصفحات" : "Pages", identifier: "memo-page-grid")
         case .ayahList: ComingSoonView(title: language == .arabic ? "الآيات" : "Ayat", identifier: "memo-ayah-list")
         case .history: ComingSoonView(title: language == .arabic ? "آخر التحديثات" : "History", identifier: "memo-history")
