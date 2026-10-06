@@ -99,7 +99,9 @@ struct UpdateSheet: View {
                     Toggle(copy("اجعله موضع الحفظ الحالي", "Make this my current position"), isOn: $setCurrent)
                         .accessibilityIdentifier("memo-update-set-current")
                 }
-                Section {
+            }
+            .safeAreaInset(edge: .bottom) {
+                VStack(spacing: 8) {
                     Text(verbatim: countLine)
                         .font(.subheadline)
                         .accessibilityIdentifier("memo-update-count")
@@ -111,6 +113,9 @@ struct UpdateSheet: View {
                     .disabled(status == nil || resolvedCount == 0)
                     .accessibilityIdentifier("memo-update-apply")
                 }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 10)
+                .background(.regularMaterial)
             }
             .navigationTitle(copy("تحديث الحفظ", "Update memorization"))
             .navigationBarTitleDisplayMode(.inline)
@@ -139,6 +144,7 @@ struct UpdateSheet: View {
         }
         .environment(\.layoutDirection, language.layoutDirection)
         .presentationDetents([.large])
+        .presentationSizing(.page)
     }
 
     // MARK: Controls

@@ -56,6 +56,7 @@ struct PageSheet: View {
         }
         .environment(\.layoutDirection, language.layoutDirection)
         .presentationDetents([.large])
+        .presentationSizing(.page)
     }
 
     // MARK: Sections

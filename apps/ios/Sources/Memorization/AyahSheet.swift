@@ -100,6 +100,7 @@ struct AyahSheet: View {
         }
         .environment(\.layoutDirection, language.layoutDirection)
         .presentationDetents([.large])
+        .presentationSizing(.page)
     }
 
     private func apply(_ status: MemorizationStatus) {
