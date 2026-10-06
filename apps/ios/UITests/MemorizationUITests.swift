@@ -386,15 +386,22 @@ final class MemorizationUITests: XCTestCase {
         XCTAssertFalse(element("memo-ayah-row-2-1", in: app).exists)
     }
 
+    /// Applies a status to al-Baqarah 100–125 (26 ayat: moves the one-decimal headline, needs no confirmation).
+    private func applyBaqarahRange(status: Int, in app: XCUIApplication) {
+        openUpdateSheet(app)
+        search("البقرة 100", in: app)
+        replaceText(in: app.textFields["memo-update-to"], with: "125")
+        app.buttons["memo-keyboard-done"].tap()
+        chooseStatus(status, in: app)
+        app.buttons["memo-update-apply"].tap()
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
+    }
+
     func testHistoryListsBatchAndUndoes() {
         let app = launch()
         XCTAssertTrue(element("memo-strict", in: app).waitForExistence(timeout: 15))
         let initial = strictLabel(app)
-        openUpdateSheet(app)
-        search("البقرة 100", in: app)
-        chooseStatus(1, in: app)
-        app.buttons["memo-update-apply"].tap()
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
+        applyBaqarahRange(status: 1, in: app)
         XCTAssertNotEqual(strictLabel(app), initial)
 
         let historyLink = element("memo-history-link", in: app)
@@ -418,17 +425,8 @@ final class MemorizationUITests: XCTestCase {
         // Review focus: undo after a later overlapping batch
         let app = launch()
         XCTAssertTrue(element("memo-strict", in: app).waitForExistence(timeout: 15))
-        openUpdateSheet(app)
-        search("البقرة 100", in: app)
-        chooseStatus(1, in: app)
-        app.buttons["memo-update-apply"].tap()
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
-
-        openUpdateSheet(app)
-        search("البقرة 100", in: app)
-        chooseStatus(2, in: app)
-        app.buttons["memo-update-apply"].tap()
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
+        applyBaqarahRange(status: 1, in: app)
+        applyBaqarahRange(status: 2, in: app)
 
         let strictBefore = strictLabel(app)
         let historyLink = element("memo-history-link", in: app)

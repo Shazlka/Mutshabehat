@@ -43,6 +43,7 @@ struct SurahDetailView: View {
         }
         .navigationTitle(copy("سورة \(surahName)", "Surah \(surahName)"))
         .navigationBarTitleDisplayMode(.inline)
+        .accessibilityElement(children: .contain)
         .accessibilityIdentifier("memo-surah-detail")
     }
 
@@ -120,6 +121,7 @@ struct SurahDetailView: View {
         }
         .frame(height: 28)
         .clipShape(RoundedRectangle(cornerRadius: 6))
+        .accessibilityElement(children: .contain)
         .accessibilityIdentifier("memo-detail-strip")
     }
 
