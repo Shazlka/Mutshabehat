@@ -12,6 +12,11 @@ struct ReaderTopBar: View {
     let openSearch: () -> Void
     let openBookmarks: () -> Void
     let openMutshabehat: () -> Void
+    let openMemorization: () -> Void
+    /// Page-status marks for the banner (one page, or both pages of a spread), left to right; empty hides them.
+    var memorizationMarks: [(page: Int, progress: MemorizationPageProgress)] = []
+    var memorizationLanguage: AppLanguage = .arabic
+    var openMemorizationPage: (Int) -> Void = { _ in }
     let openSettings: () -> Void
     let onTapHeader: () -> Void
 
@@ -68,6 +73,7 @@ struct ReaderTopBar: View {
                 TopBarIconButton(systemImage: "magnifyingglass", label: "بحث", identifier: "search-button", action: openSearch)
                 TopBarIconButton(systemImage: "bookmark.fill", label: "الفواصل", identifier: "bookmarks-button", action: openBookmarks)
                 TopBarIconButton(systemImage: "square.stack.3d.up.fill", label: "المتشابهات", identifier: "mutshabehat-button", action: openMutshabehat)
+                TopBarIconButton(systemImage: "book.closed.fill", label: "الحفظ", identifier: "memorization-button", action: openMemorization)
                 TopBarIconButton(systemImage: "gearshape.fill", label: "الإعدادات", identifier: "settings-button", action: openSettings)
             }
             .padding(.horizontal, 8)
@@ -77,6 +83,21 @@ struct ReaderTopBar: View {
             .allowsHitTesting(chromeVisible)
         }
         .animation(.easeInOut(duration: 0.2), value: chromeVisible)
+        .overlay(alignment: .center) {
+            // Kept outside the header/controls cross-fade so the mark never moves when the chrome toggles.
+            if !memorizationMarks.isEmpty {
+                HStack(spacing: 6) {
+                    ForEach(memorizationMarks, id: \.page) { mark in
+                        Button { openMemorizationPage(mark.page) } label: {
+                            PageStatusMark(page: mark.page, progress: mark.progress,
+                                           showsPageNumber: memorizationMarks.count > 1, language: memorizationLanguage)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+                .environment(\.layoutDirection, .leftToRight)
+            }
+        }
     }
 }
 

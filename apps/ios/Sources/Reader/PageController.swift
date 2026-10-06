@@ -25,6 +25,7 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
          highlightedWordIDs: Set<String>,
          bookmarkedAyahs: Set<AyahKey> = [],
          isPageBookmarked: Bool = false,
+         memorizationStatuses: [AyahKey: MemorizationStatus] = [:],
          chromeVisible: Bool = false,
          onTapCentre: @escaping () -> Void,
          onTapWord: @escaping (MushafPage, MushafWord) -> Void,
@@ -45,6 +46,7 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
         pageView.highlightedWordIDs = highlightedWordIDs
         pageView.bookmarkedAyahs = bookmarkedAyahs
         pageView.isPageBookmarked = isPageBookmarked
+        pageView.memorizationStatuses = memorizationStatuses
     }
 
     /// The reader changed the Qiraat layer, appearance, or chrome state: redraw and update visibility.
@@ -52,6 +54,7 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
                highlightedWordIDs: Set<String>,
                bookmarkedAyahs: Set<AyahKey>,
                isPageBookmarked: Bool,
+               memorizationStatuses: [AyahKey: MemorizationStatus] = [:],
                appearance: MushafAppearance,
                chromeVisible: Bool = false) {
         self.appearance = appearance
@@ -67,6 +70,7 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
         pageView.highlightedWordIDs = highlightedWordIDs
         pageView.bookmarkedAyahs = bookmarkedAyahs
         pageView.isPageBookmarked = isPageBookmarked
+        pageView.memorizationStatuses = memorizationStatuses
         updateBookStyling()
         setChromeVisible(chromeVisible, animated: true)
     }

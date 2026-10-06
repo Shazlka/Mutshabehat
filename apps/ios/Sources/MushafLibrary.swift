@@ -23,6 +23,12 @@ final class MushafLibrary {
     /// The bundled snapshot of the web app's Qiraat data; nil only if the build shipped without it.
     private(set) var qiraat: QiraatStore?
 
+    /// The ayah → page/juz index memorization is computed from, built once on first use.
+    private(set) lazy var quranIndex: QuranIndex? = try? QuranIndex.load(from: database)
+
+    /// The one memorization store of the app, created on first use.
+    private(set) lazy var memorizationStore: MemorizationStore? = MemorizationRuntime.makeStore(library: self)
+
     init(bundle: Bundle = .main) throws {
         guard let databaseURL = bundle.url(forResource: "mushaf", withExtension: "sqlite") else {
             throw MushafLibraryError.missingResource("mushaf.sqlite")

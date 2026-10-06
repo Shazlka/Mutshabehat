@@ -18,6 +18,10 @@ struct MushafPager: UIViewControllerRepresentable {
     let highlightedWordIDs: Set<String>
     let bookmarkedAyahs: (Int) -> Set<AyahKey>
     let isPageBookmarked: (Int) -> Bool
+    /// Per-page ayah statuses for the optional memorization marker; returns [:] when the marker is off.
+    var memorizationStatuses: (Int) -> [AyahKey: MemorizationStatus] = { _ in [:] }
+    /// Changes whenever memorization changes, so the pager redraws the visible pages.
+    var memorizationVersion = 0
     let chromeVisible: Bool
     let onTapCentre: () -> Void
     let onTapWord: (MushafPage, MushafWord) -> Void
@@ -49,6 +53,7 @@ struct MushafPager: UIViewControllerRepresentable {
                 pc.apply(qiraat, highlightedWordIDs: highlightedWordIDs,
                          bookmarkedAyahs: bookmarkedAyahs(p),
                          isPageBookmarked: isPageBookmarked(p),
+                         memorizationStatuses: memorizationStatuses(p),
                          appearance: appearance,
                          chromeVisible: chromeVisible)
             }
@@ -74,6 +79,7 @@ struct MushafPager: UIViewControllerRepresentable {
                                   highlightedWordIDs: parent.highlightedWordIDs,
                                   bookmarkedAyahs: parent.bookmarkedAyahs(number),
                                   isPageBookmarked: parent.isPageBookmarked(number),
+                                  memorizationStatuses: parent.memorizationStatuses(number),
                                   chromeVisible: parent.chromeVisible,
                                   onTapCentre: { [weak self] in self?.parent.onTapCentre() },
                                   onTapWord: { [weak self] page, word in self?.parent.onTapWord(page, word) },
