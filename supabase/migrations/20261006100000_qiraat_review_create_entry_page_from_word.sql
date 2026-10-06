@@ -1,0 +1,256 @@
+-- ============================================================================
+-- Fix: entries the review editor created on a word whose ayah had no recorded locus yet were
+-- stored on Mushaf page 1 (the page lookup fell back to `p->>'page'`, which no client sends,
+-- then to 1). The review screen finds rows by the word's own page, so the editor showed them,
+-- but `qiraat_export_page` (the Mushaf, web and iOS) groups by qiraat_entries.page_id, so the
+-- words were never coloured. Found on 2:56 (ميم الجمع on بعثناكم، موتكم، لعلكم) and 2:12, 2:18,
+-- 2:42, which the page-1 export carried.
+--
+-- 1. qiraat_review_create_entry now takes the page of the word from quran_words.page_number.
+--    Everything else is identical to 20260929130000.
+-- 2. Repair: loci and entries made by the review editor (device_id is set) whose page_id differs
+--    from the page of their start word are moved to that page. Imported data is not touched.
+--    The repair is not reversed by the rollback (the old page was wrong).
+-- Rollback: supabase/rollbacks/20261006100000_qiraat_review_create_entry_page_from_word.down.sql
+-- ============================================================================
+
+CREATE OR REPLACE FUNCTION qiraat_review_create_entry(p jsonb)
+RETURNS jsonb LANGUAGE plpgsql SECURITY DEFINER SET search_path = public AS $$
+DECLARE
+  v_surah integer := (p->>'surah')::integer;
+  v_start_ayah integer := (p->>'ayah')::integer;
+  v_start_word integer := (p->>'startWord')::integer;
+  v_end_ayah integer := coalesce((p->>'endAyah')::integer, (p->>'ayah')::integer);
+  v_end_word integer := coalesce((p->>'endWord')::integer, (p->>'startWord')::integer);
+  v_kind_str text := p->>'kind';
+  v_kind qiraat_entry_kind;
+  v_category_code text := nullif(btrim(p->>'categoryCode'), '');
+  v_reading_text text := btrim(coalesce(p->>'readingText', ''));
+  v_uthmani_text text := nullif(btrim(p->>'uthmaniText'), '');
+  v_description text := nullif(btrim(p->>'description'), '');
+  v_perf_note text := nullif(btrim(p->>'performanceNote'), '');
+  v_variant_type text := coalesce(nullif(btrim(p->>'variantType'), ''), 'other');
+  v_ruling_text text := nullif(btrim(p->>'rulingText'), '');
+  v_notes text := nullif(btrim(p->>'notes'), '');
+  v_device_id text := coalesce(nullif(btrim(p->>'deviceId'), ''), 'review-web');
+  v_narrators jsonb := coalesce(p->'narrators', '[]'::jsonb);
+  v_narrator_ids text[];
+
+  v_locus_id text;
+  v_entry_id text;
+  v_page_id bigint;
+  v_mushaf_page integer;
+  v_base_text text;
+  v_existing_id text;
+  v_order smallint;
+  v_narrator jsonb;
+  v_w_order smallint;
+  v_w_note text;
+  v_action text;
+BEGIN
+  PERFORM qiraat_require_editor();
+  PERFORM set_config('app.device_id', v_device_id, true);
+
+  -- 1. Validation
+  IF v_surah IS NULL OR v_start_ayah IS NULL OR v_start_word IS NULL THEN
+    RAISE EXCEPTION 'surah, ayah, and startWord are required' USING ERRCODE = 'invalid_parameter_value';
+  END IF;
+
+  IF v_kind_str = 'farsh' THEN
+    v_kind := 'variant';
+  ELSIF v_kind_str = 'usul' THEN
+    v_kind := 'ruling';
+  ELSE
+    RAISE EXCEPTION 'kind must be farsh or usul' USING ERRCODE = 'invalid_parameter_value';
+  END IF;
+
+  IF v_kind = 'variant' AND v_reading_text = '' THEN
+    RAISE EXCEPTION 'readingText is required for farsh entry' USING ERRCODE = 'invalid_parameter_value';
+  END IF;
+
+  IF v_kind = 'ruling' AND (v_category_code IS NULL OR NOT EXISTS (SELECT 1 FROM qiraat_categories WHERE code = v_category_code AND code <> 'AYAH_COUNT')) THEN
+    RAISE EXCEPTION 'valid categoryCode is required for usul entry' USING ERRCODE = 'invalid_parameter_value';
+  END IF;
+
+  IF jsonb_typeof(v_narrators) <> 'array' OR jsonb_array_length(v_narrators) = 0 THEN
+    RAISE EXCEPTION 'at least one narrator is required' USING ERRCODE = 'invalid_parameter_value';
+  END IF;
+
+  SELECT coalesce(array_agg(DISTINCT elem->>'id' ORDER BY elem->>'id'), ARRAY[]::text[])
+    INTO v_narrator_ids
+    FROM jsonb_array_elements(v_narrators) elem;
+
+  -- 2. Find existing locus or check duplicate. A duplicate is the same face -- same
+  -- word/reading (or same usul category) AND the same set of narrators -- not merely
+  -- the same reading text, since several distinct reader groups can share identical
+  -- reading text at a phonetic-only locus (see 20260928130000's header comment).
+  SELECT id INTO v_locus_id
+    FROM qiraat_loci
+   WHERE surah_number = v_surah
+     AND start_ayah = v_start_ayah
+     AND start_word = v_start_word
+     AND end_ayah = v_end_ayah
+     AND end_word = v_end_word
+   LIMIT 1;
+
+  IF v_locus_id IS NOT NULL THEN
+    IF v_kind = 'variant' THEN
+      SELECT e.id INTO v_existing_id
+        FROM qiraat_entries e
+        JOIN qiraat_variant_details vd ON vd.entry_id = e.id
+       WHERE e.locus_id = v_locus_id
+         AND e.deleted_at IS NULL
+         AND vd.reading_text_normalized = qiraat_norm(v_reading_text)
+         AND (
+           SELECT coalesce(array_agg(DISTINCT ea.authority_id ORDER BY ea.authority_id), ARRAY[]::text[])
+             FROM qiraat_entry_authorities ea WHERE ea.entry_id = e.id AND ea.deleted_at IS NULL
+         ) = v_narrator_ids
+       LIMIT 1;
+    ELSE
+      SELECT e.id INTO v_existing_id
+        FROM qiraat_entries e
+        JOIN qiraat_ruling_details rd ON rd.entry_id = e.id
+       WHERE e.locus_id = v_locus_id
+         AND e.deleted_at IS NULL
+         AND rd.category_code = v_category_code
+         AND (
+           SELECT coalesce(array_agg(DISTINCT ea.authority_id ORDER BY ea.authority_id), ARRAY[]::text[])
+             FROM qiraat_entry_authorities ea WHERE ea.entry_id = e.id AND ea.deleted_at IS NULL
+         ) = v_narrator_ids
+       LIMIT 1;
+    END IF;
+
+    IF v_existing_id IS NOT NULL THEN
+      RETURN qiraat_review_row(v_existing_id);
+    END IF;
+  END IF;
+
+  -- 3. Resolve or create locus
+  IF v_locus_id IS NULL THEN
+    -- The page is the one the word is printed on: quran_words, the same source the review screen
+    -- and the Mushaf use. (Before, a word whose ayah had no locus yet fell through to page 1.)
+    SELECT pg.id, pg.mushaf_page_number INTO v_page_id, v_mushaf_page
+      FROM quran_words w
+      JOIN qiraat_pages pg ON pg.mushaf_page_number = w.page_number
+     WHERE w.surah = v_surah AND w.ayah = v_start_ayah AND w.word_position = v_start_word
+     LIMIT 1;
+
+    IF v_page_id IS NULL THEN
+      SELECT p.id, p.mushaf_page_number INTO v_page_id, v_mushaf_page
+        FROM qiraat_pages p
+       WHERE p.id = (
+         SELECT page_id FROM qiraat_loci
+          WHERE surah_number = v_surah AND start_ayah = v_start_ayah
+          LIMIT 1
+       );
+    END IF;
+
+    IF v_page_id IS NULL THEN
+      SELECT id, mushaf_page_number INTO v_page_id, v_mushaf_page
+        FROM qiraat_pages
+       WHERE mushaf_page_number = coalesce((p->>'page')::integer, 1)
+       LIMIT 1;
+    END IF;
+
+    IF v_page_id IS NULL THEN
+      SELECT id, mushaf_page_number INTO v_page_id, v_mushaf_page FROM qiraat_pages ORDER BY mushaf_page_number LIMIT 1;
+    END IF;
+
+    v_base_text := coalesce(
+      nullif(btrim(p->>'uthmaniText'), ''),
+      nullif(btrim(p->>'hafsText'), ''),
+      v_reading_text
+    );
+
+    v_locus_id := 'l-' || v_surah || '-' || v_start_ayah || '-' || v_start_word;
+    IF v_end_ayah <> v_start_ayah OR v_end_word <> v_start_word THEN
+      v_locus_id := v_locus_id || '-' || v_end_ayah || '-' || v_end_word;
+    END IF;
+
+    IF EXISTS (SELECT 1 FROM qiraat_loci WHERE id = v_locus_id) THEN
+      v_locus_id := v_locus_id || '-' || substr(md5(random()::text), 1, 4);
+    END IF;
+
+    INSERT INTO qiraat_loci (
+      id, page_id, surah_number, start_ayah, start_word, end_ayah, end_word,
+      base_text, base_text_normalized, review_status, device_id
+    ) VALUES (
+      v_locus_id, v_page_id, v_surah, v_start_ayah, v_start_word, v_end_ayah, v_end_word,
+      v_base_text, qiraat_norm(v_base_text), 'reviewed', v_device_id
+    );
+  ELSE
+    SELECT page_id INTO v_page_id FROM qiraat_loci WHERE id = v_locus_id;
+  END IF;
+
+  -- 4. Create entry
+  v_entry_id := (CASE WHEN v_kind = 'variant' THEN 'v-' ELSE 'r-' END) || v_locus_id || '-' || substr(md5(random()::text), 1, 6);
+  SELECT coalesce(max(entry_order), 0) + 1 INTO v_order FROM qiraat_entries WHERE locus_id = v_locus_id;
+
+  INSERT INTO qiraat_entries (
+    id, locus_id, page_id, kind, entry_order, attribution_mode,
+    verification_status, review_status, notes, device_id
+  ) VALUES (
+    v_entry_id, v_locus_id, v_page_id, v_kind, v_order, 'explicit',
+    'VERIFIED', 'reviewed', v_notes, v_device_id
+  );
+
+  -- 5. Create details (using safe qiraat_to_variant_type)
+  IF v_kind = 'variant' THEN
+    INSERT INTO qiraat_variant_details (
+      entry_id, reading_text, reading_text_normalized, uthmani_text,
+      description_ar, variant_type, performance_note, device_id
+    ) VALUES (
+      v_entry_id, v_reading_text, qiraat_norm(v_reading_text), v_uthmani_text,
+      v_description, qiraat_to_variant_type(v_variant_type), v_perf_note, v_device_id
+    );
+  ELSE
+    INSERT INTO qiraat_ruling_details (
+      entry_id, category_code, text_ar, device_id
+    ) VALUES (
+      v_entry_id, v_category_code, v_ruling_text, v_device_id
+    );
+  END IF;
+
+  -- 6. Insert narrators -- into the real table, `qiraat_entry_authorities` (see
+  -- qiraat_review_set_narrators for the same pattern). `qiraat_entry_readings` is a
+  -- separate, trigger-derived projection and must not be written here.
+  FOR v_narrator IN SELECT value FROM jsonb_array_elements(v_narrators) LOOP
+    v_w_order := coalesce((v_narrator->>'wajhOrder')::smallint, 1);
+    v_w_note := nullif(btrim(v_narrator->>'wajhNote'), '');
+    v_action := nullif(btrim(v_narrator->>'action'), '');
+
+    IF (v_narrator->>'id') = 'Q05-R02' AND v_w_order = 1 AND v_w_note IS NULL THEN
+      RAISE EXCEPTION 'QIRAAT_D8 hafs primary' USING ERRCODE = 'check_violation';
+    END IF;
+
+    INSERT INTO qiraat_entry_authorities (
+      entry_id, authority_id, action_ar, is_default, wajh_order, wajh_note, device_id
+    ) VALUES (
+      v_entry_id, v_narrator->>'id', v_action, v_w_order = 1, v_w_order, v_w_note, v_device_id
+    );
+  END LOOP;
+
+  PERFORM qiraat_review_touch(v_entry_id);
+  RETURN qiraat_review_row(v_entry_id);
+END;
+$$;
+
+
+-- 2. Repair loci created by the review editor on the wrong page.
+UPDATE qiraat_loci l
+   SET page_id = pg.id
+  FROM quran_words w
+  JOIN qiraat_pages pg ON pg.mushaf_page_number = w.page_number
+ WHERE w.surah = l.surah_number AND w.ayah = l.start_ayah AND w.word_position = l.start_word
+   AND l.device_id IS NOT NULL
+   AND l.page_id <> pg.id;
+
+-- ... and the entries on them.
+UPDATE qiraat_entries e
+   SET page_id = l.page_id
+  FROM qiraat_loci l
+ WHERE e.locus_id = l.id
+   AND e.device_id IS NOT NULL
+   AND e.page_id <> l.page_id;
+
+NOTIFY pgrst, 'reload schema';
