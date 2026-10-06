@@ -12,6 +12,17 @@ public struct SurahProgress: Equatable, Sendable {
     public let learningPercent: Double
     public let state: SurahState
     public let isCompleteIncludingErrors: Bool
+
+    public init(surah: Int, ayahCount: Int, counts: [MemorizationStatus: Int], strictPercent: Double,
+                learningPercent: Double, state: SurahState, isCompleteIncludingErrors: Bool) {
+        self.surah = surah
+        self.ayahCount = ayahCount
+        self.counts = counts
+        self.strictPercent = strictPercent
+        self.learningPercent = learningPercent
+        self.state = state
+        self.isCompleteIncludingErrors = isCompleteIncludingErrors
+    }
 }
 
 public struct JuzProgress: Equatable, Sendable {

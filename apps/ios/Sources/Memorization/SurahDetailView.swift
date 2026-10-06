@@ -15,9 +15,9 @@ struct SurahDetailView: View {
 
     private var surahName: String { library.surahNames[surah] ?? "\(surah)" }
 
-    private var progress: SurahProgress {
+    private var progress: MushafCore.SurahProgress {
         store.snapshot.surahs.first(where: { $0.surah == surah })
-            ?? SurahProgress(
+            ?? MushafCore.SurahProgress(
                 surah: surah,
                 ayahCount: store.index.ayahCount(surah: surah),
                 counts: [:],

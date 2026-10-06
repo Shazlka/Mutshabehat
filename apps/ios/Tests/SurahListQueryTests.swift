@@ -12,24 +12,24 @@ final class SurahListQueryTests: XCTestCase {
         Surah(number: 4, name: "النساء", ayahCount: 176, firstPage: 77, lastPage: 106)
     ]
 
-    private var progressMap: [Int: SurahProgress] {
+    private var progressMap: [Int: MushafCore.SurahProgress] {
         [
-            1: SurahProgress(
+            1: MushafCore.SurahProgress(
                 surah: 1, ayahCount: 7, counts: [.mastered: 7],
                 strictPercent: 100, learningPercent: 100, state: .complete,
                 isCompleteIncludingErrors: true
             ),
-            2: SurahProgress(
+            2: MushafCore.SurahProgress(
                 surah: 2, ayahCount: 286, counts: [.mastered: 143, .notMemorized: 143],
                 strictPercent: 50, learningPercent: 50, state: .partial,
                 isCompleteIncludingErrors: false
             ),
-            3: SurahProgress(
+            3: MushafCore.SurahProgress(
                 surah: 3, ayahCount: 200, counts: [.notMemorized: 200],
                 strictPercent: 0, learningPercent: 0, state: .none,
                 isCompleteIncludingErrors: false
             ),
-            4: SurahProgress(
+            4: MushafCore.SurahProgress(
                 surah: 4, ayahCount: 176, counts: [.mastered: 88, .notMemorized: 88],
                 strictPercent: 50, learningPercent: 50, state: .partial,
                 isCompleteIncludingErrors: false
