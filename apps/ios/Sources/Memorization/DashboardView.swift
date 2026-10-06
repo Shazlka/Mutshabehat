@@ -182,6 +182,7 @@ struct DashboardView: View {
                 VStack(alignment: .leading, spacing: 8) {
                     Text(verbatim: copy("الحفظ الحالي", "Currently memorizing")).font(.subheadline).foregroundStyle(.secondary)
                     Text(verbatim: rangeText(range)).font(.headline)
+                        .accessibilityIdentifier("memo-current-range")
                     ProgressView(value: Double(mastered), total: Double(max(1, keys.count)))
                         .tint(MemorizationTheme.color(.mastered))
                     Text(verbatim: "\(number(mastered)) / \(number(keys.count)) " + copy("آيات", "ayat"))
@@ -209,6 +210,7 @@ struct DashboardView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(14)
         .background(RoundedRectangle(cornerRadius: 12).fill(Color.secondary.opacity(0.1)))
+        .accessibilityElement(children: .contain)
         .accessibilityIdentifier("memo-current")
     }
 
@@ -241,6 +243,7 @@ struct DashboardView: View {
             }
             .frame(height: 12)
             .clipShape(Capsule())
+            .accessibilityElement(children: .contain)
             .accessibilityIdentifier("memo-status-bar")
 
             ForEach(MemorizationStatus.allCases, id: \.self) { status in
@@ -254,6 +257,7 @@ struct DashboardView: View {
                         Text(verbatim: number(snapshot.counts[status] ?? 0)).monospacedDigit().foregroundStyle(.secondary)
                     }
                     .font(.subheadline)
+                    .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
                 .accessibilityIdentifier("memo-status-row-\(status.rawValue)")
@@ -278,6 +282,7 @@ struct DashboardView: View {
                     Text(verbatim: number(due)).monospacedDigit().accessibilityIdentifier("memo-due-count")
                 }
                 .font(.subheadline)
+                .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
         }
@@ -312,6 +317,7 @@ struct DashboardView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(14)
         .background(RoundedRectangle(cornerRadius: 12).fill(Color.secondary.opacity(0.1)))
+        .accessibilityElement(children: .contain)
         .accessibilityIdentifier(identifier)
     }
 }

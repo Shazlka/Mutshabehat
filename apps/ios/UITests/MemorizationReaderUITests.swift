@@ -87,12 +87,18 @@ final class MemorizationReaderUITests: XCTestCase {
         XCTAssertTrue(mark(600, in: app).waitForExistence(timeout: 15))
         mark(600, in: app).tap()
         element("memo-page-pick", in: app).tap()
-        let first = app.descendants(matching: .any).matching(NSPredicate(format: "identifier BEGINSWITH 'memo-page-ayah-row-'")).firstMatch
+        let first = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'memo-page-ayah-row-'")).firstMatch
         XCTAssertTrue(first.waitForExistence(timeout: 5))
         first.tap()
-        element("memo-page-status-1", in: app).tap()
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 5))
-        XCTAssertTrue(mark(600, in: app).label.contains("غير محفوظ"), "one ayah mastered leaves the page «غير محفوظ» (weakest link)")
+        let status = element("memo-page-status-1", in: app)
+        XCTAssertTrue(status.waitForExistence(timeout: 5))
+        XCTAssertTrue(status.isEnabled, "choosing an ayah must enable the status buttons")
+        status.tap()
+        let toast = element("memo-undo-toast", in: app).waitForExistence(timeout: 5)
+        if !toast { print("DEBUGTREE-BEGIN\n" + app.debugDescription + "\nDEBUGTREE-END") }
+        XCTAssertTrue(toast)
+        XCTAssertTrue(mark(600, in: app).label.contains("غير محفوظ"),
+                      "one ayah mastered leaves the page «غير محفوظ» (weakest link); label: \(mark(600, in: app).label)")
     }
 
     func testIPadSpreadShowsTwoMarks() throws {
@@ -104,9 +110,12 @@ final class MemorizationReaderUITests: XCTestCase {
 
     // MARK: Ayah sheet and range mode (Task 17)
 
+    /// Long-presses down the page until the ayah sheet opens (a press between two lines hits no ayah).
     private func longPressFirstAyah(in app: XCUIApplication) {
-        // The ayah-end markers sit at the end of each line; a long press near the middle of the page lands on an ayah.
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.45)).press(forDuration: 0.8)
+        for y in [0.40, 0.46, 0.52, 0.34, 0.58, 0.64, 0.28] {
+            app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: y)).press(forDuration: 0.8)
+            if element("ayah-sheet-bookmark-ayah", in: app).waitForExistence(timeout: 1.5) { return }
+        }
     }
 
     func testLongPressOpensSheetWithBookmarkAndMemorization() {
@@ -160,7 +169,10 @@ final class MemorizationReaderUITests: XCTestCase {
         element("memo-range-start", in: app).tap()
         XCTAssertTrue(element("memo-range-pill", in: app).waitForExistence(timeout: 5))
         // A second long press somewhere lower on the same page ends the range.
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.75)).press(forDuration: 0.8)
+        for y in [0.75, 0.7, 0.8, 0.66, 0.85] {
+            app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: y)).press(forDuration: 0.8)
+            if element("memo-update-count", in: app).waitForExistence(timeout: 1.5) { break }
+        }
         XCTAssertTrue(element("memo-update-count", in: app).waitForExistence(timeout: 5))
         XCTAssertTrue(element("memo-status-1", in: app).exists)
     }

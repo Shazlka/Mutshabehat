@@ -116,6 +116,13 @@ struct UpdateSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button(copy("إلغاء", "Cancel")) { dismiss() } }
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button(copy("تم", "Done")) {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    }
+                    .accessibilityIdentifier("memo-keyboard-done")
+                }
             }
             .alert(confirmationTitle, isPresented: Binding(get: { pendingPlan != nil }, set: { if !$0 { pendingPlan = nil } })) {
                 Button(copy("تأكيد", "Confirm")) { if let pendingPlan { commit(pendingPlan) } }
