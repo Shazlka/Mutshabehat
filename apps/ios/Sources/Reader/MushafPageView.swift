@@ -68,6 +68,15 @@ final class MushafPageView: UIView {
             }
         }
     }
+    /// Memorization statuses of this page's ayat for the optional marker under each ayah-end marker (empty = off).
+    var memorizationStatuses: [AyahKey: MemorizationStatus] = [:] {
+        didSet {
+            if memorizationStatuses != oldValue {
+                updateAccessibilityElements()
+                setNeedsDisplay()
+            }
+        }
+    }
     var isPageBookmarked: Bool = false {
         didSet {
             if isPageBookmarked != oldValue {
@@ -181,6 +190,12 @@ final class MushafPageView: UIView {
     }
 
     /// The page itself, then every Qiraat-marked word (so VoiceOver and UI tests can reach them).
+    /// The memorization status to show under this word, when it is an ayah-end marker with a visible status.
+    private func memorizationMarker(for box: WordBox) -> MemorizationStatus? {
+        guard box.word.charType == .end, let status = memorizationStatuses[box.word.ayahKey], status != .notMemorized else { return nil }
+        return status
+    }
+
     private func updateAccessibilityElements() {
         let pageElement = UIAccessibilityElement(accessibilityContainer: self)
         pageElement.accessibilityLabel = "صفحة \(page.number)"
@@ -188,10 +203,14 @@ final class MushafPageView: UIView {
         pageElement.accessibilityFrameInContainerSpace = bounds
         var elements: [Any] = [pageElement]
         for box in layout?.lines.flatMap(\.boxes) ?? []
-            where marks[box.word.id] != nil || highlightedWordIDs.contains(box.word.id) {
+            where marks[box.word.id] != nil || highlightedWordIDs.contains(box.word.id) || memorizationMarker(for: box) != nil {
             let word = box.word
             let element = UIAccessibilityElement(accessibilityContainer: self)
-            if marks[word.id] != nil {
+            if let status = memorizationMarker(for: box) {
+                element.accessibilityLabel = "حالة الحفظ: \(MemorizationTheme.label(status, language: .arabic))"
+                element.accessibilityIdentifier = "memo-ayah-marker-\(word.ayahKey.surah)-\(word.ayahKey.ayah)"
+                element.accessibilityTraits = .staticText
+            } else if marks[word.id] != nil {
                 element.accessibilityLabel = "\(word.textUthmani)، فيها قراءات"
                 element.accessibilityIdentifier = "qiraat-word-\(word.ayahKey.surah):\(word.ayahKey.ayah):\(word.indexInAyah)"
                 element.accessibilityTraits = .button
@@ -736,7 +755,38 @@ final class MushafPageView: UIView {
         if box.word.charType == .end && bookmarkedAyahs.contains(box.word.ayahKey) {
             drawAyahBookmarkIndicator(around: box.frame, context: context)
         }
+        if box.word.charType == .end, let status = memorizationStatuses[box.word.ayahKey] {
+            drawMemorizationMarker(status, below: box.frame, context: context)
+        }
         if let mark, let layout { drawQiraatMarks(mark, around: box.frame, fontSize: layout.fontSize, in: context) }
+    }
+
+    /// A tiny monochrome shape under the ayah-end marker: a filled disc (mastered), a ring with a centre dot
+    /// (memorized with errors) or a plain ring (needs the Mushaf). No hue, so it can never be mistaken for a
+    /// Qiraat colour, and the Quran text is not touched.
+    private func drawMemorizationMarker(_ status: MemorizationStatus, below frame: CGRect, context: CGContext) {
+        guard status != .notMemorized else { return }
+        let size = max(5, frame.height * 0.2)
+        let center = CGPoint(x: frame.midX, y: frame.maxY + size * 0.7)
+        let ink = appearance.ink(for: traitCollection).withAlphaComponent(0.55).cgColor
+        context.saveGState()
+        context.setFillColor(ink)
+        context.setStrokeColor(ink)
+        context.setLineWidth(max(0.9, size * 0.14))
+        let disc = CGRect(x: center.x - size / 2, y: center.y - size / 2, width: size, height: size)
+        switch status {
+        case .mastered:
+            context.fillEllipse(in: disc)
+        case .memorizedWithErrors:
+            context.strokeEllipse(in: disc.insetBy(dx: 0.5, dy: 0.5))
+            let dot = size * 0.3
+            context.fillEllipse(in: CGRect(x: center.x - dot / 2, y: center.y - dot / 2, width: dot, height: dot))
+        case .needsMushaf:
+            context.strokeEllipse(in: disc.insetBy(dx: 0.5, dy: 0.5))
+        case .notMemorized:
+            break
+        }
+        context.restoreGState()
     }
 
     private func drawAyahBookmarkIndicator(around frame: CGRect, context: CGContext) {

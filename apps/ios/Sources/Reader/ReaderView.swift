@@ -22,6 +22,13 @@ struct ReaderView: View {
     @State private var showingBookmarks = CommandLine.arguments.contains("-open-bookmarks")
     @State private var showingStatistics = CommandLine.arguments.contains("-open-statistics")
     @State private var showingMutshabehat = CommandLine.arguments.contains("-open-mutshabehat")
+    @State private var showingMemorization = CommandLine.arguments.contains("-open-memorization")
+    @State private var pageSheetRequest: PageSheetRequest?
+    @State private var ayahSheetTarget: AyahSheetTarget?
+    @State private var rangeStart: AyahKey?
+    @State private var rangeRequest: RangeRequest?
+    @State private var memorizationToast: ToastState?
+    @State private var isSpread = false
     @State private var highlightedWordIDs: Set<String> = []
     @State private var qiraat = QiraatPreferences()
     @State private var qiraatSelection: QiraatWordSelection?
@@ -41,13 +48,16 @@ struct ReaderView: View {
                             highlightedWordIDs: highlightedWordIDs,
                             bookmarkedAyahs: { tracker.bookmarkedAyahs(on: $0) },
                             isPageBookmarked: { tracker.isPageBookmarked(page: $0) },
+                            memorizationStatuses: { markerStatuses($0) },
+                            memorizationVersion: memorizationVersion,
                             chromeVisible: chromeVisible,
                             onTapCentre: { withAnimation(.easeInOut(duration: 0.2)) { chromeVisible.toggle() } },
                             onTapWord: openQiraat,
                             onLongPressAyah: { pressedPage, ayahKey in
-                                bookmarkActionTarget = (pressedPage, ayahKey)
+                                handleLongPress(pressedPage, ayahKey)
                             })
                 .id(spread)  // single ↔ spread needs a different spine: rebuild the pager, keep the page
+                .onChange(of: spread, initial: true) { _, newValue in isSpread = newValue }
             }
         }
         .overlay(alignment: .top) {
@@ -62,6 +72,10 @@ struct ReaderView: View {
                 openSearch: { showingSearch = true },
                 openBookmarks: { showingBookmarks = true },
                 openMutshabehat: { showingMutshabehat = true },
+                openMemorization: { showingMemorization = true },
+                memorizationMarks: memorizationMarks,
+                memorizationLanguage: appLanguage,
+                openMemorizationPage: { pageSheetRequest = PageSheetRequest(page: $0) },
                 openSettings: { showingSettings = true },
                 onTapHeader: {
                     withAnimation(.easeInOut(duration: 0.2)) { chromeVisible.toggle() }
@@ -213,8 +227,93 @@ struct ReaderView: View {
         .fullScreenCover(isPresented: $showingMutshabehat) {
             MutshabehatView(library: library)
         }
+        .fullScreenCover(isPresented: $showingMemorization) {
+            if let store = library.memorizationStore {
+                MemorizationView(library: library, store: store) { target, ayah in
+                    page = target
+                    highlightedWordIDs = ayah.map { key in
+                        Set((library.page(target)?.lines ?? []).flatMap(\.words).filter { $0.ayahKey == key }.map(\.id))
+                    } ?? []
+                }
+            }
+        }
+        .sheet(item: $ayahSheetTarget) { target in
+            if let store = library.memorizationStore {
+                AyahSheet(target: target, library: library, store: store, language: appLanguage,
+                          isAyahBookmarked: tracker.isAyahBookmarked(surah: target.ayah.surah, ayah: target.ayah.ayah),
+                          isPageBookmarked: tracker.isPageBookmarked(page: target.page.number),
+                          toggleAyahBookmark: {
+                              tracker.toggleAyahBookmark(surah: target.ayah.surah, ayah: target.ayah.ayah, page: target.page.number)
+                          },
+                          togglePageBookmark: {
+                              tracker.togglePageBookmark(page: target.page.number, surah: target.ayah.surah, ayah: target.ayah.ayah)
+                          },
+                          startRange: { rangeStart = target.ayah },
+                          openPageSheet: {
+                              Task { @MainActor in
+                                  try? await Task.sleep(for: .milliseconds(450))
+                                  pageSheetRequest = PageSheetRequest(page: target.page.number)
+                              }
+                          },
+                          onApplied: { result, plan in memorizationToast = ToastState(result: result, plan: plan) })
+            }
+        }
+        .sheet(item: $rangeRequest) { request in
+            if let store = library.memorizationStore {
+                UpdateSheet(store: store, library: library, language: appLanguage, initial: request.selection) { result, plan in
+                    memorizationToast = ToastState(result: result, plan: plan)
+                }
+            }
+        }
+        .overlay(alignment: .bottom) {
+            if let start = rangeStart {
+                RangePill(start: start, library: library, language: appLanguage) { rangeStart = nil }
+                    .padding(.bottom, 24)
+            }
+        }
+        .sheet(item: $pageSheetRequest) { request in
+            if let store = library.memorizationStore {
+                PageSheet(page: request.page, store: store, library: library, language: appLanguage) { result, plan in
+                    memorizationToast = ToastState(result: result, plan: plan)
+                }
+            }
+        }
+        .modifier(OptionalMemorizationToast(toast: $memorizationToast, library: library, language: appLanguage))
         .environment(\.locale, appLanguage.locale)
         .environment(\.layoutDirection, appLanguage.layoutDirection)
+    }
+
+    /// A long press ends a stored range, otherwise opens the ayah sheet (or the old bookmark dialog without a store).
+    private func handleLongPress(_ pressedPage: MushafPage, _ ayah: AyahKey) {
+        guard library.memorizationStore != nil else {
+            bookmarkActionTarget = (pressedPage, ayah)
+            return
+        }
+        if let start = rangeStart {
+            rangeStart = nil
+            rangeRequest = RangeRequest(selection: .span(from: start, to: ayah))
+        } else {
+            ayahSheetTarget = AyahSheetTarget(page: pressedPage, ayah: ayah)
+        }
+    }
+
+    /// Statuses for the optional ayah marker; nothing is queried while the marker is off.
+    private func markerStatuses(_ page: Int) -> [AyahKey: MemorizationStatus] {
+        guard let store = library.memorizationStore, store.showsAyahMarker else { return [:] }
+        return store.statuses(onPage: page)
+    }
+
+    /// Read in `body` so the pager redraws when memorization or the marker setting changes.
+    private var memorizationVersion: Int {
+        guard let store = library.memorizationStore else { return 0 }
+        return store.version * 2 + (store.showsAyahMarker ? 1 : 0)
+    }
+
+    /// The banner's memorization marks: the current page, or both pages of a spread (left page first).
+    private var memorizationMarks: [(page: Int, progress: MemorizationPageProgress)] {
+        guard let store = library.memorizationStore, store.showsBannerMark else { return [] }
+        let pages = isSpread ? [Spread.leftPage(of: page), Spread.rightPage(of: page)] : [page]
+        return pages.map { ($0, store.pageProgress($0)) }
     }
 
     private var appearance: MushafAppearance {
@@ -343,6 +442,17 @@ private struct SettingsView: View {
                         isOn: $keepScreenAwake
                     )
                     .accessibilityIdentifier("keep-screen-awake-toggle")
+                }
+
+                if let memorization = library.memorizationStore {
+                    Section(appLanguage == .english ? "Memorization" : "حفظ القرآن") {
+                        Toggle(appLanguage == .english ? "Show page status in the top banner" : "إظهار حالة الحفظ في الشريط العلوي",
+                               isOn: Binding(get: { memorization.showsBannerMark }, set: { memorization.showsBannerMark = $0 }))
+                            .accessibilityIdentifier("memo-setting-banner-mark")
+                        Toggle(appLanguage == .english ? "Show memorization marks on the Mushaf" : "إظهار حالة الحفظ على المصحف",
+                               isOn: Binding(get: { memorization.showsAyahMarker }, set: { memorization.showsAyahMarker = $0 }))
+                            .accessibilityIdentifier("memo-setting-ayah-marker")
+                    }
                 }
 
                 if library.qiraat?.catalog != nil {

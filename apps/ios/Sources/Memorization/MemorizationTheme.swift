@@ -65,6 +65,31 @@ enum MemorizationTheme {
         })
     }
 
+    /// A percentage with one decimal: «٣٨٫٧٪» in Arabic, "38.7%" in English.
+    static func percent(_ value: Double, language: AppLanguage) -> String {
+        let clamped = min(100, max(0, value))
+        let text = String(format: "%.1f", clamped)
+        switch language {
+        case .english: return text + "%"
+        case .arabic:
+            let mapped = text.unicodeScalars.map { scalar -> Character in
+                if let digit = Int(String(scalar)) { return Character(UnicodeScalar(0x0660 + digit)!) }
+                return scalar == "." ? "٫" : Character(scalar)
+            }
+            return String(mapped) + "٪"
+        }
+    }
+
+    /// One decimal for page-equivalents («٢٤٥٫٣»).
+    static func decimal(_ value: Double, language: AppLanguage) -> String {
+        let text = String(format: "%.1f", value)
+        guard language == .arabic else { return text }
+        return String(text.unicodeScalars.map { scalar -> Character in
+            if let digit = Int(String(scalar)) { return Character(UnicodeScalar(0x0660 + digit)!) }
+            return scalar == "." ? "٫" : Character(scalar)
+        })
+    }
+
     /// The spoken description of a page's state, e.g. «صفحة ٤٢: متقن، ٧ من ١٠ آيات متقنة».
     static func pageSummary(page: Int, progress: MemorizationPageProgress, language: AppLanguage) -> String {
         let state = label(progress.state, language: language)
