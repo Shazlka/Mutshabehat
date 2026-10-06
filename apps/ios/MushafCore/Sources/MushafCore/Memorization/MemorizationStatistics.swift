@@ -34,7 +34,7 @@ public struct MemorizationSnapshot: Equatable, Sendable {
     public let partialSurahs: Int
     public let completeIncludingErrorsSurahs: Int
     public let completedJuz: Int
-    public let pages: [MemorizationStatisticsService.PageProgress]
+    public let pages: [MemorizationPageProgress]
     public let pagesFullyMastered: Int
     public let pageEquivalentMastered: Double
 }
@@ -129,16 +129,17 @@ public struct PageMix: Equatable, Sendable {
     public let masteredAyahs: Int
 }
 
-extension MemorizationStatisticsService {
-    public struct PageProgress: Equatable, Sendable {
-        public let page: Int
-        public let state: MemorizationStatus
-        public let mix: PageMix
-    }
+/// One page's state (weakest link of its ayat) and the mix of ayah statuses behind it.
+public struct MemorizationPageProgress: Equatable, Sendable {
+    public let page: Int
+    public let state: MemorizationStatus
+    public let mix: PageMix
+}
 
+extension MemorizationStatisticsService {
     public static func pageProgress(
         page: Int, records: [AyahKey: AyahMemorizationRecord], index: QuranIndex
-    ) -> PageProgress {
+    ) -> MemorizationPageProgress {
         var total = PageTotals()
         for key in index.ayat(onPage: page) {
             total.add(records[key]?.status ?? .notMemorized, wordShare: index.weight(of: key))
@@ -160,8 +161,8 @@ private struct PageTotals {
         if status.rawValue > weakest.rawValue { weakest = status }
     }
 
-    func progress(page: Int) -> MemorizationStatisticsService.PageProgress {
-        MemorizationStatisticsService.PageProgress(
+    func progress(page: Int) -> MemorizationPageProgress {
+        MemorizationPageProgress(
             page: page, state: ayahCount == 0 ? .notMemorized : weakest,
             mix: PageMix(counts: counts, fractions: fractions, ayahCount: ayahCount,
                          masteredAyahs: counts[.mastered, default: 0])
