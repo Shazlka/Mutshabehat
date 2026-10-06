@@ -8,6 +8,7 @@
 - **Why:** the owner wants a long-term memorization companion inside the Mushaf. Decisions in chat: JSON export/import in v1, and backups cover every database including the Qiraat snapshot.
 - **Verified in the repository:** no ayah spans two pages (6,236 ayat), juz is page-aligned, hizb/rub are page-level only (so excluded), the app has no iCloud entitlement (backups use the picked-folder bookmark).
 - **Revised after the owner's review (same day):** memorization is Hafs only and unrelated to Qiraat; a page-status mark in the reader's top banner with four states by a weakest-link rule (متقن / مع أخطاء / يحتاج المصحف / غير محفوظ) plus the ayah mix, tapping it opens the page sheet.
+- **Plan written:** `docs/plans/2026-10-06-memorization.md` (24 tasks in 10 phases).
 - **DB migration:** none.
 
 ## [Unreleased] — 2026-10-05 — Developer review editor (milestones 1–4: engine, page screen, review and approve, add and edit)
