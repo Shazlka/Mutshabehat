@@ -60,6 +60,7 @@ struct ReviewView: View {
         }
         .environment(\.layoutDirection, language.layoutDirection)
         .presentationDetents([.large])
+        .presentationSizing(.page)
     }
 
     private func resultButton(_ result: ReviewResult, ar: String, en: String, identifier: String) -> some View {

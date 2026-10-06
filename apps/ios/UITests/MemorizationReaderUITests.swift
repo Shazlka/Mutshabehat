@@ -104,6 +104,8 @@ final class MemorizationReaderUITests: XCTestCase {
 
     func testIPadSpreadShowsTwoMarks() throws {
         guard UIDevice.current.userInterfaceIdiom == .pad else { throw XCTSkip("iPad only") }
+        XCUIDevice.shared.orientation = .landscapeLeft   // the two-page spread is a landscape layout
+        addTeardownBlock { XCUIDevice.shared.orientation = .portrait }
         let app = launch(page: 1)
         XCTAssertTrue(mark(1, in: app).waitForExistence(timeout: 15))
         XCTAssertTrue(mark(2, in: app).exists)
