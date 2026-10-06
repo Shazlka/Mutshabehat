@@ -38,6 +38,11 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-10-06 — Data: Yaqub «قرأ بكسر الهاء ووقف بهاء السكت باتفاق.» (16 entries) and Hamzah «قرأ بكسر الهاء وصلاً ووقفاً، وله في الهمزة التحقيق والإبدال ياء مفتوحة وقفا.» (3 entries) added from nquran
+- **Owner request:** same pass for these two wordings (the owner's first message also listed the Hisham «تحقيق الهمزة المتطرفة…» wording, but that message was interrupted and re-sent without it; that exact wording had already been done earlier today, 421 entries, so nothing was repeated).
+- **Yaqub** → `USUL_SAKT` (as the hand-made Yaqub هاء السكت entries), `Q09-R01` + `Q09-R02`: 16 nquran locations (فهي، وهي…) → 16 words, **16 new**. **Hamzah** → `USUL_TAHQIQ` (as the earlier Hamzah passes; no hand-made entry exists for this wording): 3 locations («بأيديهم» at 2:79:5, 6:7:8, 59:2:35) → 3 words, **3 new**. Both: the nquran wording as «الأداء», وصل and وقف on, created as `reviewed`, 0 errors, no word already covered.
+- **Verification (read back from the live API):** all 19 words have exactly one active entry in the target باب with exactly the expected narrators and text. Created ids/plans `~/yaqub2-*`, `~/hamza3-*` (`-2026-10-06.json`). **DB migration:** none.
+
 ## 2026-10-06 — Data: five more nquran rules added as entries (Kisai feminine-ha 1,086; Ibn Wardan 7; Hamzah إبدالها حرفا مديا 971; ضم ميم الجمع group 63; Khalaf السكت وعدمه 820)
 - **Owner request:** same pass for Kisai «قرأ بإمالة هاء التأنيث وقفا.», Ibn Wardan «قرأ بنقل حركة الهمزة إلى اللام.», Hamzah «قرأ بتحقيق الهمزة وصلاً، ووقف بإبدالها حرفا مديا.», and the group Qalun/Warsh/Abu Jaafar «قرأ بضم ميم الجمع، ووصلها بواو لفظية…» + Khalaf «قرأ بالسكت وعدمه وصلاً ووقفا.». Exact nquran wordings only; a narrator is included only where its group's text matches exactly. Strict whole-word matching in the ayah as in the earlier passes (0 unmatched except where noted). The باب was not named, so each was taken from the hand-made reviewed entries:
   - **Kisai** → `IMALAH_TAQLIL` (الممال والمقلل), `Q07-R01` + `Q07-R02`, **وقف only** (wording says «وقفا»; wasl switched off by a follow-up update). 1,192 locations → 1,192 words; 106 already had an entry for Kisai in that باب; **1,086 new**. 25 of them also keep an older imported `WAQF_RASM` entry for Kisai.
