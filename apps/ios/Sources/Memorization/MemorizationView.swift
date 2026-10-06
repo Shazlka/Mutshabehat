@@ -102,9 +102,9 @@ struct MemorizationView: View {
             SurahDetailView(surah: number, library: library, store: store, language: language,
                             openInMushaf: openInMushaf,
                             update: { updateRequest = UpdateRequest(selection: $0) })
-        case .pageGrid: ComingSoonView(title: language == .arabic ? "الصفحات" : "Pages", identifier: "memo-page-grid")
-        case .ayahList: ComingSoonView(title: language == .arabic ? "الآيات" : "Ayat", identifier: "memo-ayah-list")
-        case .history: ComingSoonView(title: language == .arabic ? "آخر التحديثات" : "History", identifier: "memo-history")
+        case .pageGrid: PageGridView(store: store, language: language, openPage: { openInMushaf($0, nil) }, longPressPage: { _ in })
+        case let .ayahList(filter): AyahStatusListView(initialFilter: filter, library: library, store: store, language: language, openAyah: { openInMushaf($0, $1) })
+        case .history: HistoryView(library: library, store: store, language: language)
         }
     }
 
