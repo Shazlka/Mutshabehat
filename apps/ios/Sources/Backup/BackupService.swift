@@ -102,6 +102,9 @@ final class BackupService {
         }
     }
 
+    /// The memorization document alone, for the manual export when no backup folder is set up.
+    func memorizationExportData() throws -> Data { try sources.memorizationExport().encode() }
+
     /// Backup sets in the folder, newest first.
     func listSnapshots() -> [SnapshotInfo] {
         guard let root = folder.backupsRoot() else { return [] }

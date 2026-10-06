@@ -30,6 +30,7 @@ struct DashboardView: View {
                 reviewSection
                 activitySection
                 GoalsSection(store: store, library: library, language: language)
+                backupSection
             }
             .padding(.horizontal, 16)
             .padding(.top, 8)
@@ -336,6 +337,24 @@ struct DashboardView: View {
                 Button(copy("عرض الكل", "Show all")) { navigate(.history) }
                     .font(.footnote)
                     .accessibilityIdentifier("memo-history-link")
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var backupSection: some View {
+        if let controller = library.backupController {
+            sectionCard(title: copy("النسخ الاحتياطي", "Backup"), identifier: "memo-backup-section") {
+                if controller.needsAttention {
+                    Text(verbatim: controller.folderAvailable
+                         ? copy("لم تتم نسخة احتياطية منذ أكثر من سبعة أيام", "No backup for over seven days")
+                         : copy("لم يُحدَّد مجلد iCloud للنسخ الاحتياطي", "No iCloud backup folder is set"))
+                        .font(.footnote).foregroundStyle(.orange)
+                        .accessibilityIdentifier("memo-backup-banner")
+                }
+                Button(copy("إعدادات النسخ الاحتياطي والاستعادة", "Backup and restore")) { navigate(.backup) }
+                    .font(.subheadline)
+                    .accessibilityIdentifier("memo-backup-link")
             }
         }
     }

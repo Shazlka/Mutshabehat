@@ -8,6 +8,7 @@ enum MemorizationRoute: Hashable {
     case pageGrid
     case ayahList(AyahFilter)
     case history
+    case backup
 }
 
 enum AyahFilter: Hashable {
@@ -105,6 +106,10 @@ struct MemorizationView: View {
         case .pageGrid: PageGridView(store: store, language: language, openPage: { openInMushaf($0, nil) }, longPressPage: { _ in })
         case let .ayahList(filter): AyahStatusListView(initialFilter: filter, library: library, store: store, language: language, openAyah: { openInMushaf($0, $1) })
         case .history: HistoryView(library: library, store: store, language: language)
+        case .backup:
+            if let controller = library.backupController {
+                BackupSettingsView(controller: controller, language: language)
+            }
         }
     }
 
