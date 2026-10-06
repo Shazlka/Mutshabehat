@@ -1,0 +1,12 @@
+{
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/AdvancedQuranMorphology.swift" : {
+    "abi-baseline-json" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MushafCore.abi.json",
+    "const-values" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MushafCore-primary.swiftconstvalues",
+    "dependencies" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MushafCore-primary.d",
+    "diagnostics" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MushafCore-primary.dia",
+    "objc-header" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MushafCore-Swift.h",
+    "swiftdoc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MushafCore.swiftdoc",
+    "swiftmodule" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MushafCore.swiftmodule",
+    "swiftsourceinfo" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MushafCore.swiftsourceinfo"
+  }
+}

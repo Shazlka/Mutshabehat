@@ -1,0 +1,236 @@
+{
+  "" : {
+    "const-values" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MushafCore-primary.swiftconstvalues",
+    "dependencies" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MushafCore-primary.d",
+    "diagnostics" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MushafCore-primary.dia",
+    "emit-module-dependencies" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MushafCore-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MushafCore-primary-emit-module.dia",
+    "pch" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MushafCore-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MushafCore-primary.swiftdeps"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/AdvancedQuranMorphology.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/AdvancedQuranMorphology.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/AdvancedQuranMorphology.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/AdvancedQuranMorphology.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/AdvancedQuranQueryParser.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/AdvancedQuranQueryParser.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/AdvancedQuranQueryParser.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/AdvancedQuranQueryParser.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/AdvancedQuranSearchData.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/AdvancedQuranSearchData.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/AdvancedQuranSearchData.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/AdvancedQuranSearchData.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/AdvancedQuranSearchEngine.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/AdvancedQuranSearchEngine.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/AdvancedQuranSearchEngine.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/AdvancedQuranSearchEngine.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Backup/BackupCoding.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/BackupCoding.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/BackupCoding.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/BackupCoding.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Backup/BackupHash.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/BackupHash.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/BackupHash.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/BackupHash.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Backup/BackupManifest.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/BackupManifest.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/BackupManifest.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/BackupManifest.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Backup/RetentionPlanner.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/RetentionPlanner.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/RetentionPlanner.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/RetentionPlanner.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Backup/SQLiteSnapshot.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/SQLiteSnapshot.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/SQLiteSnapshot.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/SQLiteSnapshot.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Memorization/DatePrecision.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/DatePrecision.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/DatePrecision.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/DatePrecision.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Memorization/MemorizationExport.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MemorizationExport.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MemorizationExport.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MemorizationExport.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Memorization/MemorizationModels.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MemorizationModels.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MemorizationModels.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MemorizationModels.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Memorization/MemorizationPlanner.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MemorizationPlanner.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MemorizationPlanner.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MemorizationPlanner.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Memorization/MemorizationPolicy.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MemorizationPolicy.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MemorizationPolicy.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MemorizationPolicy.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Memorization/MemorizationSelection.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MemorizationSelection.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MemorizationSelection.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MemorizationSelection.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Memorization/QuranIndex.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/QuranIndex.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/QuranIndex.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/QuranIndex.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Models.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/Models.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/Models.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/Models.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/MushafDatabase.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MushafDatabase.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MushafDatabase.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/MushafDatabase.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Navigation.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/Navigation.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/Navigation.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/Navigation.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/PageLayout.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/PageLayout.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/PageLayout.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/PageLayout.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/QCFFontStore.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/QCFFontStore.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/QCFFontStore.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/QCFFontStore.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/QiraatMarks.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/QiraatMarks.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/QiraatMarks.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/QiraatMarks.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/QiraatModels.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/QiraatModels.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/QiraatModels.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/QiraatModels.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/QiraatPresentation.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/QiraatPresentation.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/QiraatPresentation.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/QiraatPresentation.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/QiraatStore.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/QiraatStore.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/QiraatStore.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/QiraatStore.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/QuranSearch.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/QuranSearch.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/QuranSearch.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/QuranSearch.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Review/Arabic.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/Arabic.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/Arabic.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/Arabic.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Review/CanonicalReaders.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/CanonicalReaders.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/CanonicalReaders.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/CanonicalReaders.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Review/FaceBuilders.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/FaceBuilders.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/FaceBuilders.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/FaceBuilders.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Review/HistorySummary.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/HistorySummary.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/HistorySummary.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/HistorySummary.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Review/NarratorDisplay.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/NarratorDisplay.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/NarratorDisplay.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/NarratorDisplay.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Review/NquranMatching.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/NquranMatching.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/NquranMatching.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/NquranMatching.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Review/ReferenceApply.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReferenceApply.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReferenceApply.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReferenceApply.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Review/ReferenceData.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReferenceData.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReferenceData.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReferenceData.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Review/ReferenceGroup.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReferenceGroup.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReferenceGroup.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReferenceGroup.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Review/ReviewAPI.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewAPI.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewAPI.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewAPI.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Review/ReviewDraft.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewDraft.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewDraft.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewDraft.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Review/ReviewError.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewError.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewError.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewError.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Review/ReviewModels.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewModels.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewModels.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewModels.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Review/ReviewNavigation.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewNavigation.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewNavigation.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewNavigation.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Review/ReviewPageEditing.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewPageEditing.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewPageEditing.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewPageEditing.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Review/ReviewQueue.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewQueue.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewQueue.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewQueue.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Review/ReviewWordKeys.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewWordKeys.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewWordKeys.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ReviewWordKeys.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Review/ShamilMatching.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ShamilMatching.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ShamilMatching.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/ShamilMatching.o"
+  },
+  "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/Sources/MushafCore/Review/SuggestionLogic.swift" : {
+    "index-unit-output-path" : "/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/SuggestionLogic.o",
+    "llvm-bc" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/SuggestionLogic.bc",
+    "object" : "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/MushafCore/build/MushafCore.build/Release-iphoneos/MushafCore-t.build/Objects-normal/arm64/SuggestionLogic.o"
+  }
+}
