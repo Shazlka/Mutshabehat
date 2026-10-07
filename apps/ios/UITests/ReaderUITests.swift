@@ -8,12 +8,14 @@ final class ReaderUITests: XCTestCase {
     override nonisolated func setUp() { continueAfterFailure = false }
 
     /// Launches with the stored reading position forced through the argument domain.
-    private func launch(atPage page: Int, arabic: Bool = false) -> XCUIApplication {
+    /// `pinLanguage` forces Arabic through the argument domain, which also shadows anything the app writes to that
+    /// key; the language test therefore launches without it.
+    private func launch(atPage page: Int, arabic: Bool = false, pinLanguage: Bool = true) -> XCUIApplication {
         let app = XCUIApplication()
         // Paging tests run on the plain mushaf: with the Qiraat layer on, a tap on a marked word
         // opens its card instead of the chrome.
-        app.launchArguments = ["-mushaf1441:last-page:v1", "\(page)", "-mushaf1441:reader-layer:v1", "none",
-                               "-app:language:v1", "ar"]
+        app.launchArguments = ["-mushaf1441:last-page:v1", "\(page)", "-mushaf1441:reader-layer:v1", "none"]
+        if pinLanguage { app.launchArguments += ["-app:language:v1", "ar"] }
         if arabic { app.launchArguments += ["-AppleLanguages", "(ar)", "-AppleLocale", "ar_SA"] }
         app.launch()
         return app
@@ -112,8 +114,13 @@ final class ReaderUITests: XCTestCase {
         XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 10))
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
         app.buttons["settings-button"].tap()
-        app.switches["qiraat-toggle"].tap()
-        app.buttons["open-qiraat-picker"].tap()
+        // The row is one element; only the switch inside it reacts to a tap.
+        let toggle = app.switches["qiraat-toggle"]
+        XCTAssertTrue(toggle.waitForExistence(timeout: 3))
+        toggle.switches.firstMatch.tap()
+        let picker = app.buttons["open-qiraat-picker"]
+        XCTAssertTrue(picker.isEnabled, "turning the layer on enables the reader picker")
+        picker.tap()
 
         XCTAssertTrue(app.navigationBars["اختر القارئ أو الراوي"].waitForExistence(timeout: 3))
         XCTAssertTrue(app.buttons["qiraat-reader-Q01"].exists)
@@ -126,20 +133,18 @@ final class ReaderUITests: XCTestCase {
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
         app.buttons["mutshabehat-button"].tap()
         XCTAssertTrue(app.navigationBars["المتشابهات"].waitForExistence(timeout: 3))
-        XCTAssertFalse(app.buttons["settings-button"].exists)
+        // The reader stays in the accessibility tree behind a full-screen cover, but nothing in it can be reached.
+        XCTAssertFalse(app.buttons["settings-button"].isHittable)
     }
 
-    func testSettingsOpensMutshabehatModule() {
+    /// Mutshabehat lives in the top bar, not in Settings (see `testSettingsShowsThemeLanguageAndQiraatControls`).
+    func testMutshabehatShowsItsPersonalAndAutomatedTabs() {
         let app = launch(atPage: 50)
         XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 10))
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()
-        let settingsButton = app.buttons["settings-button"]
-        XCTAssertTrue(settingsButton.waitForExistence(timeout: 3))
-        settingsButton.tap()
-
-        let mutshabehatLink = app.buttons["settings-mutshabehat"]
-        XCTAssertTrue(mutshabehatLink.waitForExistence(timeout: 3))
-        mutshabehatLink.tap()
+        let button = app.buttons["mutshabehat-button"]
+        XCTAssertTrue(button.waitForExistence(timeout: 3))
+        button.tap()
 
         XCTAssertTrue(app.navigationBars["المتشابهات"].waitForExistence(timeout: 3))
         XCTAssertTrue(app.buttons["الشخصية"].exists)
@@ -174,7 +179,7 @@ final class ReaderUITests: XCTestCase {
     }
 
     func testLanguageSelectionChangesSettingsMenusToEnglish() {
-        let app = launch(atPage: 50)
+        let app = launch(atPage: 50, pinLanguage: false)
         XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 10))
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()
         app.buttons["settings-button"].tap()
@@ -182,8 +187,14 @@ final class ReaderUITests: XCTestCase {
 
         XCTAssertTrue(app.buttons["language-ar"].exists)
         app.buttons["language-en"].tap()
-        XCTAssertTrue(app.navigationBars["Language"].waitForExistence(timeout: 3))
-        XCTAssertTrue(app.buttons["English"].exists)
+        // The navigation bar keeps the Arabic key as its identifier; the visible strings are what change.
+        let arabicOption = app.buttons["language-ar"]
+        XCTAssertTrue(arabicOption.waitForExistence(timeout: 3))
+        XCTAssertEqual(arabicOption.label, "Arabic")
+        XCTAssertEqual(app.buttons["language-en"].label, "English")
+        // The choice is stored on the device: put it back so later tests start in Arabic.
+        arabicOption.tap()
+        XCTAssertEqual(app.buttons["language-ar"].label, "العربية")
     }
 
     func testSearchFindsAnAyahAndJumpsToItsPage() {
