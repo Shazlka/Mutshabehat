@@ -55,8 +55,10 @@ final class QiraatUITests: XCTestCase {
 
         let toggle = app.switches["qiraat-toggle"]
         XCTAssertTrue(toggle.waitForExistence(timeout: 5))
-        toggle.tap()
-        app.buttons["تم"].tap()
+        toggle.switches.firstMatch.tap()   // the row is one element; only the switch inside it reacts
+        let done = app.buttons["تم"]
+        XCTAssertTrue(done.waitForExistence(timeout: 5))
+        done.tap()
 
         XCTAssertFalse(element("qiraat-word-1:4:1", in: app).waitForExistence(timeout: 2))
         app.terminate()
@@ -70,7 +72,7 @@ final class QiraatUITests: XCTestCase {
         // Leave the device as a new install would be, so the other tests start from the default.
         relaunched.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()
         relaunched.buttons["settings-button"].tap()
-        relaunched.switches["qiraat-toggle"].tap()
+        relaunched.switches["qiraat-toggle"].switches.firstMatch.tap()
         relaunched.buttons["تم"].tap()
         XCTAssertTrue(element("qiraat-word-1:4:1", in: relaunched).waitForExistence(timeout: 5))
     }

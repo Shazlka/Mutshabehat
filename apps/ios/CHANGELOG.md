@@ -3,6 +3,14 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-07 — The 5 UI tests that failed on `ios/main` fixed (test-only)
+- **No app code changed;** every cause was in the tests.
+- `testQiraatReaderPickerOpensFullScreenWithColoredReaders`, `testTheLayerToggleTurnsMarksOffAndIsRemembered`: tapping the Qiraat row hit the row, not the switch inside it, so the layer never flipped; they now tap the inner switch (and the layer test's cleanup does too, so it no longer leaves the layer off for the next test).
+- `testLanguageSelectionChangesSettingsMenusToEnglish`: the helper pinned `-app:language:v1 ar`, which shadows what the app writes to that key, so the language never changed. The test now launches without the pin, checks the visible labels (the navigation bar keeps the Arabic key as its identifier) and restores Arabic.
+- `testMutshabehatOpensAsAFullScreenReaderDestination`: the reader stays in the accessibility tree behind a full-screen cover, so the check is now `isHittable` instead of `exists`.
+- `testSettingsOpensMutshabehatModule` contradicted `testSettingsShowsThemeLanguageAndQiraatControls` (Mutshabehat is in the top bar, not in Settings); replaced by `testMutshabehatShowsItsPersonalAndAutomatedTabs`.
+- **Verification (iPhone 18 Pro Max):** ReaderUITests 18 run, 0 failures (2 skipped); QiraatUITests 4/4. Full `make test` and iPad not re-run after this change.
+
 ## [Unreleased] — 2026-10-07 — Haptics in the index and on Qiraat word presses
 - **فهرس:** the surah/juz list gives a soft selection tick about every 52 pt while a finger drags or the list coasts; the automatic jump to the current row stays silent (`IndexSheet.swift`, `onScrollPhaseChange` + `onScrollGeometryChange`).
 - **Qiraat:** pressing a marked word gives a firm tap once its details sheet opens (not when nothing opens); the ayah long-press uses the same helper (`Haptics.swift`, `ReaderView.openQiraat`, `PageController`).
