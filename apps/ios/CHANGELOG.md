@@ -3,6 +3,10 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-07 — App icon replaced
+- Replaced the iPhone and iPad app icon with the supplied blue «القراءات العشر» artwork, resized from the provided square PNG to the asset catalog's required 1024 × 1024 pixels.
+- **Verification:** `actool` compiled the asset catalog for iPhone and iPad without warnings or errors; `git diff --check` passed.
+
 ## [Unreleased] — 2026-10-05 — Developer review editor (milestones 1–4: engine, page screen, review and approve, add and edit)
 - **Suggestions, copy and occurrences:** learned suggestion cards add ordinary unreviewed faces through the save queue, with farsh narrator clash guards and a 250 ms selection debounce. Same-word copies require a preview and explicit confirmation, with a same-category filter. A face’s context menu lists all occurrences, applies only selected additions, and reports added, skipped and failed results. Added pure-Swift parity tests, stubbed store tests and a dedicated suggestion UI test.
 - **History and undo:** the developer page toolbar opens an Arabic native history sheet with transaction summaries, time, device, refresh and undo. Successful undo reloads the page and history and refreshes the live layer; conflicts and refused undo preserve the list and show the server’s Arabic message. Added summary, store and stub UI coverage; already-undone transactions cannot be submitted again.
