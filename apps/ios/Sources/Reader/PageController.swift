@@ -205,7 +205,6 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
     }
 
     private func configureMetadataLabels() {
-        let meta = page.metadata
         let font = UIFont.systemFont(ofSize: isSpreadHalf ? 13 : 16, weight: .medium)
         for label in [surahLabel, sectionLabel, pageNumberLabel] {
             label.font = font
@@ -274,7 +273,7 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
         guard recognizer.state == .began else { return }
         let location = recognizer.location(in: pageView)
         if let ayah = pageView.ayahKey(at: location) {
-            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+            Haptics.wordPress()
             onLongPressAyah?(page, ayah)
         }
     }

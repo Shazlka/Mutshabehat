@@ -22,6 +22,10 @@ struct IndexSheet: View {
     @StateObject private var tracker = ReadingTracker.shared
     @State private var tab = Tab.surahs
     @State private var surahFilter = SurahProgressFilter.all
+    /// True only while a finger drives the list (dragging or coasting); `scrollTo` animations stay silent.
+    @State private var isUserScrolling = false
+    /// Average row height; a tick fires each time the list moves by this much.
+    private static let tickPitch: CGFloat = 52
 
     private var displayedSurahs: [Surah] {
         switch surahFilter {
@@ -137,6 +141,15 @@ struct IndexSheet: View {
                 }
                 .listStyle(.plain)
                 .id(tab)
+                .onScrollPhaseChange { _, phase in
+                    isUserScrolling = phase == .interacting || phase == .decelerating
+                    if phase == .interacting { Haptics.prepareScrolling() }
+                }
+                .onScrollGeometryChange(for: Int.self) { geometry in
+                    Int(max(0, geometry.contentOffset.y) / Self.tickPitch)
+                } action: { old, new in
+                    if old != new, isUserScrolling { Haptics.scrollTick() }
+                }
                 .onAppear {
                     if let currentRow { proxy.scrollTo(currentRow, anchor: .center) }
                 }

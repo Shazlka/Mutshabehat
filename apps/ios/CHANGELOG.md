@@ -3,6 +3,12 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-07 — Haptics in the index and on Qiraat word presses
+- **فهرس:** the surah/juz list gives a soft selection tick about every 52 pt while a finger drags or the list coasts; the automatic jump to the current row stays silent (`IndexSheet.swift`, `onScrollPhaseChange` + `onScrollGeometryChange`).
+- **Qiraat:** pressing a marked word gives a firm tap once its details sheet opens (not when nothing opens); the ayah long-press uses the same helper (`Haptics.swift`, `ReaderView.openQiraat`, `PageController`).
+- **Cleanup:** removed an unused `meta` variable in `PageController`.
+- **Verification:** build ok, MushafCore 370/370, `make test`: the same 5 UI failures as on `ios/main`, none new. Haptics themselves are not testable in the simulator; check on a device.
+
 ## [Unreleased] — 2026-10-06 — Memorization module (حفظ القرآن): spec, plan and implementation in progress
 - **Docs only, no code yet:** `docs/specs/2026-10-06-memorization-design.md` (branch `ios/memorization`). Ayah-level memorization truth (four statuses, review strength kept separate, a «currently learning» flag), a statistics service for strict and weighted progress by ayah, surah, page and juz, bulk updates with confirmation and undo, review results with an interval ladder, a memorization-only streak, goals, a dashboard with charts, reader integration (ayah sheet, range selection, page action, optional marker), and backup of all app data to an iCloud Drive folder plus JSON export and import.
 - **Why:** the owner wants a long-term memorization companion inside the Mushaf. Decisions in chat: JSON export/import in v1, and backups cover every database including the Qiraat snapshot.
