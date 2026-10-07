@@ -3,6 +3,10 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-07 — App icon replaced
+- Replaced the iPhone and iPad app icon with the supplied blue «القراءات العشر» artwork, resized from the provided square PNG to the asset catalog's required 1024 × 1024 pixels.
+- **Verification:** `actool` compiled the asset catalog for iPhone and iPad without warnings or errors; `git diff --check` passed.
+
 ## [Unreleased] — 2026-10-07 — The 5 UI tests that failed on `ios/main` fixed (test-only)
 - **No app code changed;** every cause was in the tests.
 - `testQiraatReaderPickerOpensFullScreenWithColoredReaders`, `testTheLayerToggleTurnsMarksOffAndIsRemembered`: tapping the Qiraat row hit the row, not the switch inside it, so the layer never flipped; they now tap the inner switch (and the layer test's cleanup does too, so it no longer leaves the layer off for the next test).
