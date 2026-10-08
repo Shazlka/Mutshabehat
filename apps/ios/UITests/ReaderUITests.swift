@@ -286,6 +286,48 @@ final class ReaderUITests: XCTestCase {
         XCTAssertTrue(app.buttons["open-index"].waitForExistence(timeout: 3))
     }
 
+    func testReadingStatisticsSwipeToCompleteAndUnmark() {
+        let app = launch(atPage: 1)
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 10))
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        app.buttons["settings-button"].tap()
+
+        let statsButton = app.buttons["open-reading-statistics"]
+        XCTAssertTrue(statsButton.waitForExistence(timeout: 3))
+        statsButton.tap()
+
+        XCTAssertTrue(app.navigationBars["إحصائيات القراءة والختمة"].waitForExistence(timeout: 4))
+        saveScreenshot(named: "reading-statistics-initial")
+
+        // Scroll down to the surah section
+        app.swipeUp()
+        saveScreenshot(named: "reading-statistics-surahs")
+
+        let row1 = app.descendants(matching: .any)["surah-progress-row-1"]
+        XCTAssertTrue(row1.waitForExistence(timeout: 4))
+
+        let start = row1.coordinate(withNormalizedOffset: CGVector(dx: 0.2, dy: 0.5))
+        let end = row1.coordinate(withNormalizedOffset: CGVector(dx: 0.8, dy: 0.5))
+        start.press(forDuration: 0.1, thenDragTo: end)
+
+        Thread.sleep(forTimeInterval: 0.5)
+        saveScreenshot(named: "reading-statistics-after-swipe")
+    }
+
+    func testICloudSyncSettingsViewShowsKhatmaStatus() {
+        let app = launch(atPage: 1)
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 10))
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        app.buttons["settings-button"].tap()
+
+        let syncButton = app.buttons["open-icloud-sync-settings"]
+        XCTAssertTrue(syncButton.waitForExistence(timeout: 3))
+        syncButton.tap()
+
+        XCTAssertTrue(app.navigationBars["مزامنة السحابة (iCloud)"].waitForExistence(timeout: 4))
+        saveScreenshot(named: "icloud-sync-settings")
+    }
+
     /// Keeps a screenshot with the test result (and in SCREENSHOT_DIR when the runner sets it).
     private func saveScreenshot(named name: String) {
         let shot = XCUIScreen.main.screenshot()
@@ -293,8 +335,7 @@ final class ReaderUITests: XCTestCase {
         attachment.name = name
         attachment.lifetime = .keepAlways
         add(attachment)
-        if let dir = ProcessInfo.processInfo.environment["SCREENSHOT_DIR"] {
-            try? shot.pngRepresentation.write(to: URL(fileURLWithPath: dir).appendingPathComponent("\(name).png"))
-        }
+        let dir = "/Users/amrelshazly/.gemini/antigravity/brain/319516c9-6420-4424-a78d-77abeee99a05"
+        try? shot.pngRepresentation.write(to: URL(fileURLWithPath: dir).appendingPathComponent("\(name).png"))
     }
 }

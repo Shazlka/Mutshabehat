@@ -71,6 +71,17 @@ struct ICloudSyncSettingsView: View {
                 }
 
                 HStack {
+                    Label(copy("ختم القرآن ومتابعة القراءة", "Quran Khatma & Reading Progress"), systemImage: "book.pages")
+                    Spacer()
+                    let completedKhatmas = QuranReadingDatabase.shared.completedKhatmasCount()
+                    let activeKhatma = QuranReadingDatabase.shared.getOrCreateActiveKhatma()
+                    let ayahsRead = QuranReadingDatabase.shared.readAyahsCount(khatmaId: activeKhatma.id)
+                    Text("\(copy("الختمة", "Khatma")) #\(activeKhatma.khatmaNumber) (\(ayahsRead) \(copy("آية", "ayahs"))) • \(completedKhatmas) \(copy("مكتملة", "completed"))")
+                        .font(.subheadline.bold())
+                        .foregroundStyle(.secondary)
+                }
+
+                HStack {
                     Label(copy("المصدر المعتمد", "Source of Truth"), systemImage: "server.rack")
                     Spacer()
                     Text(copy("خادم الويب المباشر", "Live Web App Database"))
@@ -125,8 +136,8 @@ struct ICloudSyncSettingsView: View {
                 Text(copy("إجراءات المزامنة", "Sync Actions"))
             } footer: {
                 Text(copy(
-                    "المصدر المعتمد هو خادم الويب. يتم حفظ نسخ قواعد البيانات (المتشابهات والقراءات) كملفات منفصلة في مجلد Mushaf_Qiraat على iCloud لتتطابق تلقائياً على كل أجهزتك (الآيفون والآيباد).",
-                    "The web app is the authoritative source of truth. Separate database files (Mutshabehat and Qiraat) are kept in the Mushaf_Qiraat iCloud folder to stay synchronized across all your devices."
+                    "المصدر المعتمد هو خادم الويب. يتم حفظ نسخ قواعد البيانات (المتشابهات، القراءات، وإحصائيات الختمة والقراءة) كملفات منفصلة في مجلد Mushaf_Qiraat على iCloud لتتطابق تلقائياً على كل أجهزتك (الآيفون والآيباد).",
+                    "The web app is the authoritative source of truth. Separate database files (Mutshabehat, Qiraat, and Khatma/reading progress) are kept in the Mushaf_Qiraat iCloud folder to stay synchronized across all your devices."
                 ))
             }
 

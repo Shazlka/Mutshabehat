@@ -111,6 +111,218 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         }
     }
 
+    /// Merges reading data (bookmarks, reading days, khatmas, read ayahs) from another database snapshot.
+    /// This is an additive, union-based merge:
+    /// - Khatmas with matching numbers are unified: if marked completed in either, it is completed.
+    /// - Read ayahs from both databases are unioned.
+    /// - Reading days take the maximum counts/seconds per date.
+    /// - Bookmarks are unioned by (type, surah, ayah, page).
+    @discardableResult
+    public func mergeDatabase(from sourceURL: URL) throws -> (khatmasMerged: Int, ayahsMerged: Int, daysMerged: Int) {
+        try Self.validateDatabase(at: sourceURL)
+
+        lock.lock()
+        defer { lock.unlock() }
+        guard let db = db else { throw TransferError.databaseUnavailable }
+
+        let escapedPath = sourceURL.path.replacingOccurrences(of: "'", with: "''")
+        let attachSQL = "ATTACH DATABASE '\(escapedPath)' AS source_db;"
+        guard sqlite3_exec(db, attachSQL, nil, nil, nil) == SQLITE_OK else {
+            throw TransferError.invalidDatabase
+        }
+        defer {
+            sqlite3_exec(db, "DETACH DATABASE source_db;", nil, nil, nil)
+        }
+
+        execute("BEGIN TRANSACTION;")
+
+        // 1. Merge Bookmarks
+        let bookmarksSQL = """
+        INSERT OR IGNORE INTO bookmarks (id, type, surah, ayah, page, note, created_at)
+        SELECT id, type, surah, ayah, page, note, created_at FROM source_db.bookmarks;
+
+        UPDATE bookmarks
+        SET note = (SELECT s.note FROM source_db.bookmarks s WHERE s.type = bookmarks.type AND s.surah = bookmarks.surah AND s.ayah = bookmarks.ayah AND s.page = bookmarks.page AND s.note IS NOT NULL)
+        WHERE note IS NULL AND EXISTS (SELECT 1 FROM source_db.bookmarks s WHERE s.type = bookmarks.type AND s.surah = bookmarks.surah AND s.ayah = bookmarks.ayah AND s.page = bookmarks.page AND s.note IS NOT NULL);
+        """
+        sqlite3_exec(db, bookmarksSQL, nil, nil, nil)
+
+        // 2. Merge Reading Days
+        let daysSQL = """
+        INSERT OR IGNORE INTO reading_days (date_string, ayahs_read, pages_read, seconds_read, last_read_at)
+        SELECT date_string, ayahs_read, pages_read, seconds_read, last_read_at FROM source_db.reading_days;
+
+        UPDATE reading_days
+        SET
+            ayahs_read = MAX(reading_days.ayahs_read, (SELECT s.ayahs_read FROM source_db.reading_days s WHERE s.date_string = reading_days.date_string)),
+            pages_read = MAX(reading_days.pages_read, (SELECT s.pages_read FROM source_db.reading_days s WHERE s.date_string = reading_days.date_string)),
+            seconds_read = MAX(reading_days.seconds_read, (SELECT s.seconds_read FROM source_db.reading_days s WHERE s.date_string = reading_days.date_string)),
+            last_read_at = MAX(reading_days.last_read_at, (SELECT s.last_read_at FROM source_db.reading_days s WHERE s.date_string = reading_days.date_string))
+        WHERE date_string IN (SELECT date_string FROM source_db.reading_days);
+        """
+        sqlite3_exec(db, daysSQL, nil, nil, nil)
+
+        // 3. Merge Khatmas
+        var khatmasMerged = 0
+        var ayahsMerged = 0
+
+        struct TempKhatma {
+            let id: String
+            let number: Int
+            let startedAt: String
+            let completedAt: String?
+            let status: String
+            let percent: Double
+        }
+
+        var sourceKhatmas: [TempKhatma] = []
+        let selectKhatmasSQL = "SELECT id, khatma_number, started_at, completed_at, status, percent_complete FROM source_db.khatmas ORDER BY khatma_number ASC;"
+        var stmt: OpaquePointer?
+        if sqlite3_prepare_v2(db, selectKhatmasSQL, -1, &stmt, nil) == SQLITE_OK {
+            while sqlite3_step(stmt) == SQLITE_ROW {
+                let id = String(cString: sqlite3_column_text(stmt, 0))
+                let num = Int(sqlite3_column_int64(stmt, 1))
+                let started = String(cString: sqlite3_column_text(stmt, 2))
+                var completed: String? = nil
+                if sqlite3_column_type(stmt, 3) != SQLITE_NULL, let text = sqlite3_column_text(stmt, 3) {
+                    completed = String(cString: text)
+                }
+                let status = String(cString: sqlite3_column_text(stmt, 4))
+                let pct = sqlite3_column_double(stmt, 5)
+                sourceKhatmas.append(TempKhatma(id: id, number: num, startedAt: started, completedAt: completed, status: status, percent: pct))
+            }
+        }
+        sqlite3_finalize(stmt)
+
+        for srcKhatma in sourceKhatmas {
+            // Check if local has a khatma with matching number
+            var localKhatmaId: String? = nil
+            var localCompletedAt: String? = nil
+
+            let findLocalSQL = "SELECT id, status, completed_at FROM khatmas WHERE khatma_number = ? LIMIT 1;"
+            var findStmt: OpaquePointer?
+            if sqlite3_prepare_v2(db, findLocalSQL, -1, &findStmt, nil) == SQLITE_OK {
+                sqlite3_bind_int64(findStmt, 1, Int64(srcKhatma.number))
+                if sqlite3_step(findStmt) == SQLITE_ROW {
+                    localKhatmaId = String(cString: sqlite3_column_text(findStmt, 0))
+                    if sqlite3_column_type(findStmt, 2) != SQLITE_NULL, let text = sqlite3_column_text(findStmt, 2) {
+                        localCompletedAt = String(cString: text)
+                    }
+                }
+            }
+            sqlite3_finalize(findStmt)
+
+            let targetId: String
+            if let existingId = localKhatmaId {
+                targetId = existingId
+                // If source is completed, mark local as completed too
+                if srcKhatma.status == "completed" {
+                    let completedDateStr = srcKhatma.completedAt ?? localCompletedAt ?? Self.isoFormatter.string(from: Date())
+                    let updateSQL = "UPDATE khatmas SET status = 'completed', completed_at = ?, percent_complete = 100.0 WHERE id = ?;"
+                    var updStmt: OpaquePointer?
+                    if sqlite3_prepare_v2(db, updateSQL, -1, &updStmt, nil) == SQLITE_OK {
+                        sqlite3_bind_text(updStmt, 1, (completedDateStr as NSString).utf8String, -1, nil)
+                        sqlite3_bind_text(updStmt, 2, (existingId as NSString).utf8String, -1, nil)
+                        _ = sqlite3_step(updStmt)
+                    }
+                    sqlite3_finalize(updStmt)
+                }
+            } else {
+                targetId = srcKhatma.id
+                let insertKhatmaSQL = """
+                INSERT INTO khatmas (id, khatma_number, started_at, completed_at, status, percent_complete)
+                VALUES (?, ?, ?, ?, ?, ?);
+                """
+                var insStmt: OpaquePointer?
+                if sqlite3_prepare_v2(db, insertKhatmaSQL, -1, &insStmt, nil) == SQLITE_OK {
+                    sqlite3_bind_text(insStmt, 1, (srcKhatma.id as NSString).utf8String, -1, nil)
+                    sqlite3_bind_int64(insStmt, 2, Int64(srcKhatma.number))
+                    sqlite3_bind_text(insStmt, 3, (srcKhatma.startedAt as NSString).utf8String, -1, nil)
+                    if let comp = srcKhatma.completedAt {
+                        sqlite3_bind_text(insStmt, 4, (comp as NSString).utf8String, -1, nil)
+                    } else {
+                        sqlite3_bind_null(insStmt, 4)
+                    }
+                    sqlite3_bind_text(insStmt, 5, (srcKhatma.status as NSString).utf8String, -1, nil)
+                    sqlite3_bind_double(insStmt, 6, srcKhatma.percent)
+                    _ = sqlite3_step(insStmt)
+                }
+                sqlite3_finalize(insStmt)
+                khatmasMerged += 1
+            }
+
+            // Union read ayahs from source khatma into local khatma
+            let copyAyahsSQL = """
+            INSERT OR IGNORE INTO khatma_read_ayahs (khatma_id, surah, ayah, page, read_at)
+            SELECT ?, surah, ayah, page, read_at FROM source_db.khatma_read_ayahs WHERE khatma_id = ?;
+            """
+            var copyStmt: OpaquePointer?
+            if sqlite3_prepare_v2(db, copyAyahsSQL, -1, &copyStmt, nil) == SQLITE_OK {
+                sqlite3_bind_text(copyStmt, 1, (targetId as NSString).utf8String, -1, nil)
+                sqlite3_bind_text(copyStmt, 2, (srcKhatma.id as NSString).utf8String, -1, nil)
+                _ = sqlite3_step(copyStmt)
+                ayahsMerged += Int(sqlite3_changes(db))
+            }
+            sqlite3_finalize(copyStmt)
+        }
+
+        // 4. Ensure an active Khatma exists locally
+        var activeCount = 0
+        var activeCountStmt: OpaquePointer?
+        if sqlite3_prepare_v2(db, "SELECT COUNT(*) FROM khatmas WHERE status = 'active';", -1, &activeCountStmt, nil) == SQLITE_OK {
+            if sqlite3_step(activeCountStmt) == SQLITE_ROW {
+                activeCount = Int(sqlite3_column_int64(activeCountStmt, 0))
+            }
+        }
+        sqlite3_finalize(activeCountStmt)
+
+        if activeCount == 0 {
+            // Create next active khatma
+            var maxKhatmaNum = 0
+            var maxStmt: OpaquePointer?
+            if sqlite3_prepare_v2(db, "SELECT COALESCE(MAX(khatma_number), 0) FROM khatmas;", -1, &maxStmt, nil) == SQLITE_OK {
+                if sqlite3_step(maxStmt) == SQLITE_ROW {
+                    maxKhatmaNum = Int(sqlite3_column_int64(maxStmt, 0))
+                }
+            }
+            sqlite3_finalize(maxStmt)
+
+            let nextNum = maxKhatmaNum + 1
+            let newId = UUID().uuidString
+            let nowStr = Self.isoFormatter.string(from: Date())
+            let insActiveSQL = "INSERT INTO khatmas (id, khatma_number, started_at, status, percent_complete) VALUES (?, ?, ?, 'active', 0.0);"
+            var insActiveStmt: OpaquePointer?
+            if sqlite3_prepare_v2(db, insActiveSQL, -1, &insActiveStmt, nil) == SQLITE_OK {
+                sqlite3_bind_text(insActiveStmt, 1, (newId as NSString).utf8String, -1, nil)
+                sqlite3_bind_int64(insActiveStmt, 2, Int64(nextNum))
+                sqlite3_bind_text(insActiveStmt, 3, (nowStr as NSString).utf8String, -1, nil)
+                _ = sqlite3_step(insActiveStmt)
+            }
+            sqlite3_finalize(insActiveStmt)
+        }
+
+        // 5. Update completed_khatmas in reading_metadata
+        let updateMetaSQL = """
+        INSERT INTO reading_metadata (key, value)
+        VALUES ('completed_khatmas', (SELECT CAST(COUNT(*) AS TEXT) FROM khatmas WHERE status = 'completed'))
+        ON CONFLICT(key) DO UPDATE SET value = (SELECT CAST(COUNT(*) AS TEXT) FROM khatmas WHERE status = 'completed');
+        """
+        sqlite3_exec(db, updateMetaSQL, nil, nil, nil)
+
+        execute("COMMIT;")
+
+        return (khatmasMerged: khatmasMerged, ayahsMerged: ayahsMerged, daysMerged: sourceKhatmas.count)
+    }
+
+    @discardableResult
+    public func mergeDatabase(_ data: Data) throws -> (khatmasMerged: Int, ayahsMerged: Int, daysMerged: Int) {
+        let stagingURL = FileManager.default.temporaryDirectory
+            .appendingPathComponent("reading-merge-\(UUID().uuidString).sqlite")
+        defer { try? FileManager.default.removeItem(at: stagingURL) }
+        try data.write(to: stagingURL, options: .atomic)
+        return try mergeDatabase(from: stagingURL)
+    }
+
     private static func validateDatabase(at url: URL) throws {
         var candidate: OpaquePointer?
         guard sqlite3_open_v2(url.path, &candidate, SQLITE_OPEN_READWRITE, nil) == SQLITE_OK, let candidate else {
@@ -588,6 +800,22 @@ public final class QuranReadingDatabase: @unchecked Sendable {
             }
         }
         return completed
+    }
+
+    /// Removes all read ayahs for a surah from the given khatma (e.g. when unmarking a completed surah).
+    public func removeReadAyahsForSurah(khatmaId: String, surah: Int) {
+        lock.lock()
+        defer { lock.unlock() }
+        guard let db = db else { return }
+
+        let deleteSql = "DELETE FROM khatma_read_ayahs WHERE khatma_id = ? AND surah = ?;"
+        var stmt: OpaquePointer?
+        if sqlite3_prepare_v2(db, deleteSql, -1, &stmt, nil) == SQLITE_OK {
+            sqlite3_bind_text(stmt, 1, (khatmaId as NSString).utf8String, -1, nil)
+            sqlite3_bind_int64(stmt, 2, Int64(surah))
+            _ = sqlite3_step(stmt)
+        }
+        sqlite3_finalize(stmt)
     }
 
     public func completeActiveKhatma(khatmaId: String) -> KhatmaRecord? {

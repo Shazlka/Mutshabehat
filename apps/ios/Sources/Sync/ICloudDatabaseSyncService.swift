@@ -8,6 +8,7 @@ import SwiftUI
 extension Notification.Name {
     static let mutshabehatDatabaseDidUpdate = Notification.Name("mutshabehatDatabaseDidUpdate")
     static let qiraatDatabaseDidUpdate = Notification.Name("qiraatDatabaseDidUpdate")
+    static let readingDatabaseDidUpdate = Notification.Name("readingDatabaseDidUpdate")
     static let iCloudSyncStatusDidChange = Notification.Name("iCloudSyncStatusDidChange")
 }
 
@@ -66,6 +67,7 @@ struct SyncDatabaseEntry: Codable, Sendable {
 struct SyncSummary: Sendable {
     let mutshabehatGroupsCount: Int
     let qiraatPagesCount: Int
+    var readingKhatmasCount: Int = 0
     let syncedAt: Date
     let message: String
 }
@@ -228,6 +230,46 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
             }
         }
 
+        // Sync Reading & Khatma if reading.sqlite exists in folder or Backups/latest
+        var readingKhatmasMerged = 0
+        let readingFile = folder.appendingPathComponent("reading.sqlite")
+        let backupReadingFile = folder.appendingPathComponent("Backups/latest/reading.sqlite")
+        let targetReadingURL: URL? = {
+            if FileManager.default.fileExists(atPath: readingFile.path) {
+                return readingFile
+            } else if FileManager.default.fileExists(atPath: backupReadingFile.path) {
+                return backupReadingFile
+            }
+            return nil
+        }()
+
+        if let targetURL = targetReadingURL {
+            if targetURL.lastPathComponent.hasPrefix(".") && targetURL.pathExtension == "icloud" {
+                try? FileManager.default.startDownloadingUbiquitousItem(at: targetURL)
+            }
+
+            do {
+                let stats = try QuranReadingDatabase.shared.mergeDatabase(from: targetURL)
+                readingKhatmasMerged = stats.khatmasMerged
+                ReadingTracker.shared.reloadFromDatabase()
+                NotificationCenter.default.post(name: .readingDatabaseDidUpdate, object: nil)
+
+                // Ensure root folder has the updated reading.sqlite
+                if !FileManager.default.fileExists(atPath: readingFile.path) {
+                    if let exportData = try? QuranReadingDatabase.shared.exportDatabase() {
+                        try? exportData.write(to: readingFile, options: .atomic)
+                    }
+                }
+            } catch {
+                print("Notice: Reading database merge failed: \(error.localizedDescription)")
+            }
+        } else {
+            // Upload current local reading database to iCloud if not present
+            if let exportData = try? QuranReadingDatabase.shared.exportDatabase() {
+                try? exportData.write(to: readingFile, options: .atomic)
+            }
+        }
+
         let now = Date()
         self.lastSyncDate = now
         defaults.set(now, forKey: lastSyncKey)
@@ -236,7 +278,8 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
         }
 
         let groupCount = currentManifest?.databases["mutshabehat"]?.groupsCount ?? MutshabehatDatabase.shared.fetchPersonalGroups().count
-        let message = "تمت المزامنة بنجاح: \(groupCount) مجموعة متشابهات و\(qiraatPages) صفحة قراءات"
+        let khatmaNum = QuranReadingDatabase.shared.getOrCreateActiveKhatma().khatmaNumber
+        let message = "تمت المزامنة بنجاح: \(groupCount) مجموعة متشابهات، \(qiraatPages) صفحة قراءات، والختمة #\(khatmaNum)"
         self.lastStatusMessage = message
         self.isConnected = true
 
@@ -245,9 +288,49 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
         return SyncSummary(
             mutshabehatGroupsCount: groupCount,
             qiraatPagesCount: qiraatPages,
+            readingKhatmasCount: QuranReadingDatabase.shared.completedKhatmasCount(),
             syncedAt: now,
             message: message
         )
+    }
+
+    // MARK: - Reading Database Push to iCloud
+
+    private var debouncedPushTask: Task<Void, Never>?
+
+    @MainActor
+    func scheduleDebouncedReadingPush() {
+        debouncedPushTask?.cancel()
+        debouncedPushTask = Task {
+            try? await Task.sleep(nanoseconds: 3_000_000_000)
+            guard !Task.isCancelled else { return }
+            pushReadingToICloud()
+        }
+    }
+
+    @MainActor
+    func pushReadingToICloud() {
+        guard let folder = resolveSyncFolder() else { return }
+
+        Task.detached(priority: .utility) {
+            do {
+                let data = try QuranReadingDatabase.shared.exportDatabase()
+                let destURL = folder.appendingPathComponent("reading.sqlite")
+                try data.write(to: destURL, options: .atomic)
+
+                let backupLatest = folder.appendingPathComponent("Backups/latest")
+                if FileManager.default.fileExists(atPath: backupLatest.path) {
+                    let backupDest = backupLatest.appendingPathComponent("reading.sqlite")
+                    try? data.write(to: backupDest, options: .atomic)
+                }
+
+                await MainActor.run {
+                    NotificationCenter.default.post(name: .readingDatabaseDidUpdate, object: nil)
+                }
+            } catch {
+                print("Notice: pushReadingToICloud failed: \(error.localizedDescription)")
+            }
+        }
     }
 
     // MARK: - Direct Web Fallback
