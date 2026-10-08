@@ -72,14 +72,21 @@ The native app currently includes:
   - Left roundel: total Ayah count in Arabic-Indic digits without caption text.
   - Central cartouche: vertically and horizontally centered Surah title in King Fahd Complex calligraphy (`KFGQPCUthmanicScriptHAFS`).
   - Authentic Madinah Mushaf QCF Page 1 Basmalah glyphs (`["ﱁ", "ﱂ", "ﱃ", "ﱄ"]`) matching physical print 100%.
-- **Quran Reading & Khatma Engine:**
+- **Quran Reading, Khatma Engine & Cloud Sync:**
   - Screen always awake (`isIdleTimerDisabled`) while reading with Settings toggle.
   - Quran bookmarking system: long-press on ayah end marker/word (0.45s with haptics) to bookmark ayah or page; dedicated `BookmarksView`.
   - Reading progress & 30s dwell tracking: dwell ticks every 1.0s and credits ayahs proportionally based on dwell duration.
   - Reading statistics dashboard (`ReadingStatisticsView`): circular activity ring, lifetime cumulative reading time (hours & minutes), daily reading history, 7-day streak tracker, remaining verses per Surah.
   - Cumulative lifetime Ayahs read counter (`lifetimeReadAyahsCount()`).
   - Manual reading sessions (`AddReadingSessionView`): log sessions by full Surah or Ayah range, date/time, duration pills, and recitation from memory toggle.
+  - Swipe-to-complete Surahs in Khatma: drag right on any Surah card in `ReadingStatisticsView` (or via context menu) to instantly mark the Surah as 100% completed in the active Khatma, with emerald feedback, haptic confirmation, and spring physics. Dragging again unmarks it cleanly.
   - Automatic Khatma completion & restart: detects 100% read ayahs, presents celebration modal, increments lifetime counter, auto-starts Khatma #N.
+  - **Bidirectional iPhone-iPad Reading Sync (`ICloudDatabaseSyncService.swift`):**
+    - Seamlessly syncs `mushaf_reading.sqlite` (`reading.sqlite` in `Mushaf_Qiraat/`).
+    - Additive database merge (`mergeDatabase(from:)`) unifies bookmarks, aggregates reading days taking maximum seconds/pages/ayahs, reconciles completed Khatmas (e.g. marking Khatma #N as completed on both devices and advancing active Khatmas), and performs union of read ayahs so neither device loses progress.
+    - Automatic push to iCloud on Khatma completion, manual session additions, and debounced dwell reading.
+    - Automatic pull and merge on launch, app resume, and when entering statistics/sync screens.
+    - Integrated status and manual trigger in `ICloudSyncSettingsView`.
 - Qiraat colouring, reader/narrator filtering, and detailed variant sheets.
 - KFGQPC Uthmanic Script HAFS for changed Qiraat words and Mutshabehat Arabic content.
 - Native Qur'an smart search with exact, smart, broad, phrase, alias and fuzzy matching.

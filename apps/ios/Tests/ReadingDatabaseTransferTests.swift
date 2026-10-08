@@ -85,4 +85,80 @@ final class ReadingDatabaseTransferTests: XCTestCase {
         sqlite3_finalize(statement)
         sqlite3_close(handle)
     }
+
+    func testMergeDatabasesUnifiesAyahsAndBookmarks() throws {
+        let source = makeDatabase("source.sqlite")
+        source.addBookmark(type: .ayah, surah: 2, ayah: 255, page: 42, note: "Kursi")
+        let sourceKhatma = source.getOrCreateActiveKhatma()
+        _ = source.recordReadAyahs(khatmaId: sourceKhatma.id, items: [(1, 1, 1), (1, 2, 1)])
+
+        let target = makeDatabase("target.sqlite")
+        target.addBookmark(type: .ayah, surah: 3, ayah: 1, page: 50, note: "Imran")
+        let targetKhatma = target.getOrCreateActiveKhatma()
+        _ = target.recordReadAyahs(khatmaId: targetKhatma.id, items: [(1, 3, 1), (1, 4, 1)])
+
+        let sourceURL = directory.appendingPathComponent("source.sqlite")
+        let stats = try target.mergeDatabase(from: sourceURL)
+
+        XCTAssertEqual(target.readAyahsCount(khatmaId: targetKhatma.id), 4)
+        XCTAssertEqual(target.allBookmarks().count, 2)
+        XCTAssertEqual(Set(target.allBookmarks().map(\.page)), [42, 50])
+    }
+
+    func testMergeKhatmaCompletionAdvancesActiveKhatma() throws {
+        let source = makeDatabase("source_khatma.sqlite")
+        let srcKhatma1 = source.getOrCreateActiveKhatma()
+        _ = source.recordReadAyahs(khatmaId: srcKhatma1.id, items: [(1, 1, 1), (1, 2, 1), (1, 3, 1)])
+        _ = source.completeActiveKhatma(khatmaId: srcKhatma1.id)
+        let srcKhatma2 = source.getOrCreateActiveKhatma()
+        XCTAssertEqual(srcKhatma2.khatmaNumber, 2)
+
+        let target = makeDatabase("target_khatma.sqlite")
+        let tgtKhatma1 = target.getOrCreateActiveKhatma()
+        _ = target.recordReadAyahs(khatmaId: tgtKhatma1.id, items: [(1, 4, 1)])
+        XCTAssertEqual(target.completedKhatmasCount(), 0)
+
+        let sourceURL = directory.appendingPathComponent("source_khatma.sqlite")
+        _ = try target.mergeDatabase(from: sourceURL)
+
+        XCTAssertEqual(target.completedKhatmasCount(), 1)
+        let tgtActive = target.getOrCreateActiveKhatma()
+        XCTAssertEqual(tgtActive.khatmaNumber, 2)
+        XCTAssertEqual(target.readAyahsCount(khatmaId: tgtKhatma1.id), 4)
+    }
+
+    func testMergeReadingDaysTakesMaxActivity() throws {
+        let source = makeDatabase("source_days.sqlite")
+        let date = Date()
+        source.recordDailyReadingActivity(ayahsCount: 10, pagesCount: 1, seconds: 300, on: date)
+
+        let target = makeDatabase("target_days.sqlite")
+        target.recordDailyReadingActivity(ayahsCount: 5, pagesCount: 2, seconds: 500, on: date)
+
+        let sourceURL = directory.appendingPathComponent("source_days.sqlite")
+        _ = try target.mergeDatabase(from: sourceURL)
+
+        let days = target.allReadingDays()
+        XCTAssertEqual(days.count, 1)
+        XCTAssertEqual(days[0].ayahsRead, 10)
+        XCTAssertEqual(days[0].pagesRead, 2)
+        XCTAssertEqual(days[0].secondsRead, 500)
+    }
+
+    func testMarkSurahCompletedAndUnmark() {
+        let db = makeDatabase("surah_test.sqlite")
+        let khatma = db.getOrCreateActiveKhatma()
+
+        // Mark Surah 1 (Al-Fatihah, 7 ayahs) as completed
+        let items = (1...7).map { (surah: 1, ayah: $0, page: 1) }
+        let inserted = db.recordReadAyahs(khatmaId: khatma.id, items: items)
+        XCTAssertEqual(inserted, 7)
+        XCTAssertEqual(db.readAyahsCountForSurah(khatmaId: khatma.id, surah: 1), 7)
+        XCTAssertEqual(db.completedSurahsCount(khatmaId: khatma.id, surahAyahCounts: [1: 7]), 1)
+
+        // Unmark Surah 1
+        db.removeReadAyahsForSurah(khatmaId: khatma.id, surah: 1)
+        XCTAssertEqual(db.readAyahsCountForSurah(khatmaId: khatma.id, surah: 1), 0)
+        XCTAssertEqual(db.completedSurahsCount(khatmaId: khatma.id, surahAyahCounts: [1: 7]), 0)
+    }
 }

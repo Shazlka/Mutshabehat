@@ -210,7 +210,50 @@ final class ReadingTracker: ObservableObject {
             // Check Khatma completion (100%)
             if totalAyahsRead >= cachedTotalQuranAyahs {
                 triggerKhatmaCompletion()
+            } else {
+                ICloudDatabaseSyncService.shared.scheduleDebouncedReadingPush()
             }
+        }
+    }
+
+    func reloadFromDatabase() {
+        self.activeKhatma = db.getOrCreateActiveKhatma()
+        refreshStats()
+        refreshBookmarksCache()
+    }
+
+    func markSurahCompleted(_ surahNumber: Int, completed: Bool = true, library: MushafLibrary) {
+        let totalQuranAyahs = library.surahs.map(\.ayahCount).reduce(0, +)
+        self.cachedTotalQuranAyahs = totalQuranAyahs > 0 ? totalQuranAyahs : 6236
+
+        if completed {
+            let maxAyahs = library.surahAyahCounts[surahNumber] ?? 0
+            if maxAyahs > 0 {
+                var items: [(surah: Int, ayah: Int, page: Int)] = []
+                for a in 1...maxAyahs {
+                    let p = library.page(of: AyahKey(surah: surahNumber, ayah: a)) ?? 1
+                    items.append((surah: surahNumber, ayah: a, page: p))
+                }
+                let inserted = db.recordReadAyahs(khatmaId: activeKhatma.id, items: items, at: Date())
+                let distinctPages = Set(items.map(\.page)).count
+                let estimatedSeconds = max(60, maxAyahs * 15)
+                db.recordDailyReadingActivity(
+                    ayahsCount: max(1, inserted > 0 ? inserted : items.count),
+                    pagesCount: distinctPages,
+                    seconds: estimatedSeconds,
+                    on: Date()
+                )
+            }
+        } else {
+            db.removeReadAyahsForSurah(khatmaId: activeKhatma.id, surah: surahNumber)
+        }
+
+        refreshStats()
+
+        if completed && totalAyahsRead >= cachedTotalQuranAyahs {
+            triggerKhatmaCompletion()
+        } else {
+            ICloudDatabaseSyncService.shared.pushReadingToICloud()
         }
     }
 
@@ -221,6 +264,7 @@ final class ReadingTracker: ObservableObject {
             // Start next Khatma at 0%
             activeKhatma = db.getOrCreateActiveKhatma()
             refreshStats()
+            ICloudDatabaseSyncService.shared.pushReadingToICloud()
         }
     }
 
@@ -228,6 +272,7 @@ final class ReadingTracker: ObservableObject {
         _ = db.completeActiveKhatma(khatmaId: activeKhatma.id)
         activeKhatma = db.getOrCreateActiveKhatma()
         refreshStats()
+        ICloudDatabaseSyncService.shared.pushReadingToICloud()
     }
 
     // MARK: - Manual Reading Session Recording
@@ -270,6 +315,8 @@ final class ReadingTracker: ObservableObject {
 
         if totalAyahsRead >= cachedTotalQuranAyahs {
             triggerKhatmaCompletion()
+        } else {
+            ICloudDatabaseSyncService.shared.pushReadingToICloud()
         }
 
         return items.count
@@ -313,6 +360,8 @@ final class ReadingTracker: ObservableObject {
 
         if totalAyahsRead >= cachedTotalQuranAyahs {
             triggerKhatmaCompletion()
+        } else {
+            ICloudDatabaseSyncService.shared.pushReadingToICloud()
         }
 
         return items.count

@@ -170,6 +170,16 @@ struct ReadingStatisticsView: View {
                         .padding(.horizontal, 16)
                     }
 
+                    // Swipe Instruction Capsule
+                    HStack(spacing: 6) {
+                        Image(systemName: "hand.draw")
+                            .font(.caption)
+                        Text("اسحب أي سورة لليمين لإكمالها أو إلغائها في الختمة")
+                            .font(.caption2)
+                    }
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal, 16)
+
                     // Surah List
                     LazyVStack(spacing: 8) {
                         if filteredSurahs.isEmpty {
@@ -185,16 +195,22 @@ struct ReadingStatisticsView: View {
                             .padding(.vertical, 32)
                         } else {
                             ForEach(filteredSurahs) { item in
-                                Button {
-                                    if let surah = library.surahs.first(where: { $0.number == item.surahNumber }) {
-                                        let targetPage = tracker.nextUnreadPage(for: surah, library: library)
-                                        onSelectSurah(surah, targetPage)
-                                        dismiss()
+                                SwipeableSurahProgressRow(
+                                    progress: item,
+                                    onSelect: {
+                                        if let surah = library.surahs.first(where: { $0.number == item.surahNumber }) {
+                                            let targetPage = tracker.nextUnreadPage(for: surah, library: library)
+                                            onSelectSurah(surah, targetPage)
+                                            dismiss()
+                                        }
+                                    },
+                                    onToggleCompleted: {
+                                        withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
+                                            tracker.markSurahCompleted(item.surahNumber, completed: !item.isCompleted, library: library)
+                                            loadData()
+                                        }
                                     }
-                                } label: {
-                                    SurahProgressItemRow(progress: item)
-                                }
-                                .buttonStyle(.plain)
+                                )
                             }
                         }
                     }
@@ -223,7 +239,18 @@ struct ReadingStatisticsView: View {
                 loadData()
             }
         }
-        .onAppear(perform: loadData)
+        .onAppear {
+            loadData()
+            if ICloudDatabaseSyncService.shared.autoSyncEnabled {
+                Task {
+                    _ = try? await ICloudDatabaseSyncService.shared.syncFromICloud(library: library)
+                    loadData()
+                }
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .readingDatabaseDidUpdate)) { _ in
+            loadData()
+        }
     }
 
     private func loadData() {
@@ -590,6 +617,117 @@ private struct WeeklyStreakTrackerCard: View {
         .background(Color(uiColor: .secondarySystemGroupedBackground))
         .cornerRadius(18)
         .padding(.horizontal, 16)
+    }
+}
+
+// MARK: - Swipeable Surah Progress Row Item
+
+private struct SwipeableSurahProgressRow: View {
+    let progress: SurahProgress
+    let onSelect: () -> Void
+    let onToggleCompleted: () -> Void
+
+    @State private var dragOffset: CGFloat = 0
+    @State private var hasPassedThreshold: Bool = false
+
+    private let actionThreshold: CGFloat = 75
+
+    var body: some View {
+        ZStack {
+            // Background Action (revealed as card slides horizontally)
+            RoundedRectangle(cornerRadius: 14)
+                .fill(progress.isCompleted ? Color.orange : Color.green)
+                .overlay(
+                    HStack(spacing: 8) {
+                        if dragOffset > 0 {
+                            // Card moved right -> action revealed on the left side
+                            HStack(spacing: 6) {
+                                Image(systemName: progress.isCompleted ? "arrow.uturn.backward.circle.fill" : "checkmark.circle.fill")
+                                    .font(.system(size: 17, weight: .bold))
+                                Text(progress.isCompleted ? "إلغاء الإكمال" : "إكمال في الختمة")
+                                    .font(.system(size: 13, weight: .bold))
+                            }
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 16)
+                            Spacer()
+                        } else if dragOffset < 0 {
+                            // Card moved left -> action revealed on the right side
+                            Spacer()
+                            HStack(spacing: 6) {
+                                Text(progress.isCompleted ? "إلغاء الإكمال" : "إكمال في الختمة")
+                                    .font(.system(size: 13, weight: .bold))
+                                Image(systemName: progress.isCompleted ? "arrow.uturn.backward.circle.fill" : "checkmark.circle.fill")
+                                    .font(.system(size: 17, weight: .bold))
+                            }
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 16)
+                        }
+                    }
+                )
+
+            // Foreground Surah Card
+            SurahProgressItemRow(progress: progress)
+                .offset(x: dragOffset)
+                .contentShape(Rectangle())
+                .gesture(
+                    DragGesture(minimumDistance: 12)
+                        .onChanged { value in
+                            if abs(value.translation.width) > abs(value.translation.height) {
+                                if value.translation.width > 0 {
+                                    dragOffset = min(130, value.translation.width)
+                                } else {
+                                    dragOffset = max(-130, value.translation.width)
+                                }
+
+                                if abs(dragOffset) >= actionThreshold && !hasPassedThreshold {
+                                    hasPassedThreshold = true
+                                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                                } else if abs(dragOffset) < actionThreshold && hasPassedThreshold {
+                                    hasPassedThreshold = false
+                                }
+                            }
+                        }
+                        .onEnded { value in
+                            let triggered = abs(dragOffset) >= actionThreshold
+                            if triggered {
+                                UINotificationFeedbackGenerator().notificationOccurred(.success)
+                                onToggleCompleted()
+                            }
+                            withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
+                                dragOffset = 0
+                                hasPassedThreshold = false
+                            }
+                        }
+                )
+                .onTapGesture {
+                    if dragOffset == 0 {
+                        onSelect()
+                    } else {
+                        withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                            dragOffset = 0
+                        }
+                    }
+                }
+        }
+        .clipShape(RoundedRectangle(cornerRadius: 14))
+        .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("surah-progress-row-\(progress.surahNumber)")
+        .contextMenu {
+            Button {
+                onToggleCompleted()
+            } label: {
+                Label(
+                    progress.isCompleted ? "إلغاء إكمال السورة في الختمة" : "إكمال السورة في الختمة",
+                    systemImage: progress.isCompleted ? "arrow.uturn.backward" : "checkmark.circle"
+                )
+            }
+
+            Button {
+                onSelect()
+            } label: {
+                Label("متابعة القراءة", systemImage: "book")
+            }
+        }
     }
 }
 

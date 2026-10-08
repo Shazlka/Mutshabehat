@@ -3,6 +3,19 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-08 — Swipe-to-complete Surah in Khatma & iPhone-iPad Reading Sync via iCloud
+- **Swipe-to-complete Surah:** in «إحصائيات القراءة والختمة», users can now swipe right on any Surah card (or use context menu) to instantly mark the entire Surah as completed in their active Khatma (or unmark it). Supports spring physics, haptic feedback, and live recalculation of reading statistics.
+- **iPhone / iPad Reading Sync via iCloud:** added bidirectional synchronization for `mushaf_reading.sqlite` (`reading.sqlite` in `Mushaf_Qiraat/`).
+  - Implemented additive SQLite database merge (`QuranReadingDatabase.mergeDatabase`) unifying bookmarks, taking maximum activity for reading days/durations, reconciling Khatma statuses, and preserving read ayahs across devices.
+  - Automatically pushes reading database changes to iCloud on Khatma completion, manual session logging, and debounced reading dwell time.
+  - Automatically checks and merges reading progress on launch, app resume, and when entering the statistics or sync screens.
+  - Added Quran Khatma & Reading Progress row to `ICloudSyncSettingsView`.
+- **Tests & Verification:**
+  - 9 new unit tests in `ReadingDatabaseTransferTests` covering export/import, WAL consistency, foreign DB rejection, additive merge, and Khatma auto-advancement.
+  - 2 new UI tests in `ReaderUITests` (`testReadingStatisticsSwipeToCompleteAndUnmark` and `testICloudSyncSettingsViewShowsKhatmaStatus`) verified passing on iPhone simulator.
+  - Visual artifacts captured and verified (`reading-statistics-initial.png`, `reading-statistics-surahs.png`, `reading-statistics-after-swipe.png`, `icloud-sync-settings.png`).
+
+
 ## [Unreleased] — 2026-10-07 — App icon replaced
 - Replaced the iPhone and iPad app icon with the supplied blue «القراءات العشر» artwork, resized from the provided square PNG to the asset catalog's required 1024 × 1024 pixels.
 - **Verification:** `actool` compiled the asset catalog for iPhone and iPad without warnings or errors; `git diff --check` passed.
