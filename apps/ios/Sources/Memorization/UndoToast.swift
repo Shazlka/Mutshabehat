@@ -79,6 +79,7 @@ enum MilestoneText {
 /// haptic only when the update reached a milestone.
 private struct MemorizationToastModifier: ViewModifier {
     @Binding var toast: ToastState?
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     let store: MemorizationStore
     let library: MushafLibrary
     let language: AppLanguage
@@ -92,7 +93,7 @@ private struct MemorizationToastModifier: ViewModifier {
                     UndoToast(state: toast, language: language, surahName: { library.surahNames[$0] }, undo: undo,
                               dismiss: { self.toast = nil })
                         .padding(.bottom, bottomPadding)
-                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                        .transition(reduceMotion ? .opacity : .move(edge: .bottom).combined(with: .opacity))
                 }
             }
             .animation(.easeInOut(duration: 0.2), value: toast?.id)

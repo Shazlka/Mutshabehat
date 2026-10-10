@@ -39,6 +39,7 @@ struct FacesStepView: View {
                         FaceRow(row: row, catalog: store.page?.narrators ?? [])
                             .contentShape(Rectangle())
                             .onTapGesture { store.startEditing(row); openEditor() }
+                            .accessibilityAddTraits(.isButton)
                             .contextMenu {
                                 Button { applyRow = row } label: { Label("تطبيق على كل المواضع", systemImage: "square.on.square") }
                                     .disabled(ReviewPageEditing.isPlaceholder(row))

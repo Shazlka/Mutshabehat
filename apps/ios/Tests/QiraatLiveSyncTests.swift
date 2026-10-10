@@ -73,4 +73,15 @@ final class QiraatLiveSyncTests: XCTestCase {
         _ = await sync.refresh(page: 8, store: store, force: true)
         XCTAssertEqual(calls, 2)
     }
+
+    func testAQuietPageIsCheckedLessOftenUntilSomethingChanges() {
+        let first = QiraatLiveSync.firstPollInterval
+        let second = QiraatLiveSync.nextPollInterval(after: .unchanged, current: first)
+        XCTAssertEqual(second, first * 2)
+        var interval = first
+        for _ in 0..<20 { interval = QiraatLiveSync.nextPollInterval(after: .unchanged, current: interval) }
+        XCTAssertEqual(interval, QiraatLiveSync.maxPollInterval)
+        XCTAssertEqual(QiraatLiveSync.nextPollInterval(after: .updated, current: interval), first)
+        XCTAssertEqual(QiraatLiveSync.nextPollInterval(after: .failed, current: first), first * 2)
+    }
 }

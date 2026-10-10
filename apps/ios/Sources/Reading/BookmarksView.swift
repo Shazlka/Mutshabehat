@@ -72,7 +72,7 @@ struct BookmarksView: View {
                     VStack(spacing: 16) {
                         Spacer()
                         Image(systemName: "bookmark")
-                            .font(.system(size: 48))
+                            .scaledFont(size: 48)
                             .foregroundColor(.secondary)
                         Text("لا توجد فواصل محفوظة")
                             .font(.headline)
@@ -170,23 +170,23 @@ private struct BookmarkCard: View {
                 VStack(alignment: .leading, spacing: 3) {
                     HStack(spacing: 6) {
                         Text(surahName)
-                            .font(.system(size: 17, weight: .bold))
+                            .font(.headline.weight(.bold))
                             .foregroundColor(.primary)
 
                         Text("•")
                             .foregroundColor(.secondary)
 
                         if bookmark.type == .ayah {
-                            Text("آية \(toArabicDigits(bookmark.ayah))")
-                                .font(.system(size: 15, weight: .semibold))
+                            Text("آية \(ArabicDigits.string(bookmark.ayah))")
+                                .font(.subheadline.weight(.semibold))
                                 .foregroundColor(Color.accentColor)
                         }
 
                         Text("•")
                             .foregroundColor(.secondary)
 
-                        Text("صفحة \(toArabicDigits(bookmark.page))")
-                            .font(.system(size: 14))
+                        Text("صفحة \(ArabicDigits.string(bookmark.page))")
+                            .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
 
@@ -202,8 +202,8 @@ private struct BookmarkCard: View {
                     .font(.caption.bold())
                     .padding(.horizontal, 10)
                     .padding(.vertical, 4)
-                    .background(bookmark.type == .ayah ? Color.accentColor.opacity(0.12) : Color.orange.opacity(0.12))
-                    .foregroundColor(bookmark.type == .ayah ? Color.accentColor : Color.orange)
+                    .background(bookmark.type == .ayah ? Color.accentColor.opacity(0.12) : Color.caution.opacity(0.12))
+                    .foregroundColor(bookmark.type == .ayah ? Color.accentColor : Color.caution)
                     .clipShape(Capsule())
             }
 
@@ -227,9 +227,4 @@ private struct BookmarkCard: View {
         .padding(.vertical, 6)
     }
 
-    private func toArabicDigits(_ number: Int) -> String {
-        let digits = ["0": "٠", "1": "١", "2": "٢", "3": "٣", "4": "٤",
-                      "5": "٥", "6": "٦", "7": "٧", "8": "٨", "9": "٩"]
-        return String(number).compactMap { digits[String($0)] }.joined()
-    }
 }

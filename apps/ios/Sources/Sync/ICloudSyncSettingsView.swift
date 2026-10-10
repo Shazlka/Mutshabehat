@@ -23,8 +23,8 @@ struct ICloudSyncSettingsView: View {
             Section {
                 HStack(spacing: 12) {
                     Image(systemName: syncService.isConnected ? "checkmark.icloud.fill" : "exclamationmark.icloud.fill")
-                        .font(.system(size: 28))
-                        .foregroundStyle(syncService.isConnected ? .green : .orange)
+                        .font(.title)
+                        .foregroundStyle(syncService.isConnected ? .progress : .caution)
 
                     VStack(alignment: .leading, spacing: 4) {
                         Text(syncService.isConnected ? copy("متصل بـ iCloud Drive", "Connected to iCloud Drive") : copy("بانتظار الربط بـ iCloud", "Awaiting iCloud Connection"))

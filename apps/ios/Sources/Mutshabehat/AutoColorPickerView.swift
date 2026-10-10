@@ -68,10 +68,10 @@ public struct AutoColorPickerView: View {
                     if indexA == indexB {
                         Text("يرجى اختيار آيتين مختلفتين للمقارنة")
                             .font(.caption.bold())
-                            .foregroundStyle(.orange)
+                            .foregroundStyle(.caution)
                             .padding(10)
                             .frame(maxWidth: .infinity, alignment: .center)
-                            .background(Color.orange.opacity(0.12))
+                            .background(Color.caution.opacity(0.12))
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                     } else {
                         // Live Previews

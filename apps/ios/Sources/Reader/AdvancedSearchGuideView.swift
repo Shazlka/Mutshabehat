@@ -373,7 +373,7 @@ struct AdvancedSearchGuideView: View {
                 // Section: How to use advanced search
                 VStack(alignment: .leading, spacing: 14) {
                     Text(isArabic ? "كيفية استخدام البحث المتقدم:" : "How to use advanced search:")
-                        .font(.system(size: 15, weight: .regular))
+                        .font(.subheadline)
                         .foregroundStyle(.secondary)
                         .padding(.horizontal, 16)
 
@@ -383,19 +383,19 @@ struct AdvancedSearchGuideView: View {
                         } label: {
                             VStack(alignment: .leading, spacing: 10) {
                                 Text(item.title)
-                                    .font(.system(size: 16, weight: .bold))
+                                    .font(.callout.weight(.bold))
                                     .foregroundStyle(.primary)
 
                                 HStack(spacing: 8) {
                                     Image(systemName: "magnifyingglass")
-                                        .font(.system(size: 14, weight: .semibold))
+                                        .font(.subheadline.weight(.semibold))
                                         .foregroundColor(Color(uiColor: .systemGray3))
                                         .padding(.leading, 8)
 
                                     Spacer()
 
                                     Text(item.query)
-                                        .font(.system(size: 16, weight: .bold))
+                                        .font(.callout.weight(.bold))
                                         .foregroundColor(queryTextColor)
                                         .environment(\.layoutDirection, .rightToLeft)
                                         .multilineTextAlignment(.center)
@@ -403,14 +403,14 @@ struct AdvancedSearchGuideView: View {
                                     Spacer()
                                         .frame(width: 22) // Visual balance for search icon
                                 }
-                                .frame(height: 38)
+                                .frame(minHeight: 44)
                                 .frame(maxWidth: .infinity)
                                 .background(queryBoxBackground)
                                 .cornerRadius(8)
 
                                 if let desc = item.description {
                                     Text(desc)
-                                        .font(.system(size: 13, weight: .regular))
+                                        .font(.footnote)
                                         .foregroundStyle(.secondary)
                                         .multilineTextAlignment(.leading)
                                         .lineSpacing(3)
@@ -433,7 +433,7 @@ struct AdvancedSearchGuideView: View {
                 // Section: Advanced Search Examples
                 VStack(alignment: .leading, spacing: 14) {
                     Text(isArabic ? "أمثلة على البحث المتقدم:" : "Advanced Search Examples:")
-                        .font(.system(size: 15, weight: .regular))
+                        .font(.subheadline)
                         .foregroundStyle(.secondary)
                         .padding(.horizontal, 16)
                         .padding(.top, 6)
@@ -444,25 +444,25 @@ struct AdvancedSearchGuideView: View {
                         } label: {
                             VStack(alignment: .leading, spacing: 6) {
                                 Text(isArabic ? "النتيجة المتوقعة:" : "Expected Result:")
-                                    .font(.system(size: 13, weight: .regular))
+                                    .font(.footnote)
                                     .foregroundStyle(.secondary)
 
                                 Text(item.title)
-                                    .font(.system(size: 16, weight: .bold))
+                                    .font(.callout.weight(.bold))
                                     .foregroundStyle(.primary)
                                     .padding(.bottom, 2)
 
                                 Text(isArabic ? "استعلام البحث:" : "Search Query:")
-                                    .font(.system(size: 13, weight: .regular))
+                                    .font(.footnote)
                                     .foregroundStyle(.secondary)
 
                                 Text(item.query)
-                                    .font(.system(size: 16, weight: .bold))
+                                    .font(.callout.weight(.bold))
                                     .foregroundColor(queryTextColor)
                                     .environment(\.layoutDirection, .rightToLeft)
                                     .multilineTextAlignment(.center)
                                     .lineLimit(1)
-                                    .frame(height: 38)
+                                    .frame(minHeight: 44)
                                     .frame(maxWidth: .infinity)
                                     .background(queryBoxBackground)
                                     .cornerRadius(8)

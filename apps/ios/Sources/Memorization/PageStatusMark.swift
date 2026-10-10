@@ -7,6 +7,8 @@ struct PageStatusMark: View {
     let page: Int
     let progress: MemorizationPageProgress
     var showsPageNumber = false
+    /// Shape and bar only, for the narrow space beside the reader's controls; VoiceOver still reads the full summary.
+    var compact = false
     let language: AppLanguage
 
     var body: some View {
@@ -15,9 +17,11 @@ struct PageStatusMark: View {
         VStack(spacing: 2) {
             HStack(spacing: 4) {
                 Text(verbatim: MemorizationTheme.shape(status)).font(.caption.weight(.bold))
-                Text(verbatim: MemorizationTheme.shortLabel(status, language: language))
-                    .font(.caption2.weight(.semibold))
-                    .lineLimit(1)
+                if !compact {
+                    Text(verbatim: MemorizationTheme.shortLabel(status, language: language))
+                        .font(.caption2.weight(.semibold))
+                        .lineLimit(1)
+                }
                 if showsPageNumber {
                     Text(verbatim: MemorizationTheme.number(page, language: language))
                         .font(.caption2.monospacedDigit())
@@ -25,7 +29,7 @@ struct PageStatusMark: View {
                 }
             }
             MemorizationMixBar(fractions: progress.mix.fractions)
-                .frame(width: 54)
+                .frame(width: compact ? 30 : 54)
         }
         .foregroundStyle(color)
         .padding(.horizontal, 9)

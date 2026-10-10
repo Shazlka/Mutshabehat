@@ -152,15 +152,15 @@ struct HistoryView: View {
                             .font(.caption2.weight(.medium))
                             .padding(.horizontal, 6)
                             .padding(.vertical, 2)
-                            .background(Capsule().fill(Color.blue.opacity(0.15)))
-                            .foregroundStyle(Color.blue)
+                            .background(Capsule().fill(Color.info.opacity(0.15)))
+                            .foregroundStyle(Color.info)
                     } else if batch.kind == .undo {
                         Text(verbatim: language == .arabic ? "تراجع" : "Undo")
                             .font(.caption2.weight(.medium))
                             .padding(.horizontal, 6)
                             .padding(.vertical, 2)
-                            .background(Capsule().fill(Color.orange.opacity(0.15)))
-                            .foregroundStyle(Color.orange)
+                            .background(Capsule().fill(Color.caution.opacity(0.15)))
+                            .foregroundStyle(Color.caution)
                     }
                 }
 
@@ -199,7 +199,7 @@ struct HistoryView: View {
                 } label: {
                     Text(verbatim: language == .arabic ? "تراجع" : "Undo")
                         .font(.subheadline.weight(.medium))
-                        .foregroundStyle(Color.red)
+                        .foregroundStyle(Color.danger)
                 }
                 .buttonStyle(.bordered)
                 .controlSize(.small)

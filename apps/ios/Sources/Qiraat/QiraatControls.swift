@@ -8,7 +8,7 @@ struct QiraatToggle: View {
     var body: some View {
         Toggle("إظهار علامات القراءات", isOn: $isOn)
             .toggleStyle(.switch)
-            .tint(.green)
+            .tint(.progressFill)
         .accessibilityLabel("القراءات العشر")
         .accessibilityValue(isOn ? "مفعّلة" : "متوقفة")
         .accessibilityIdentifier("qiraat-toggle")

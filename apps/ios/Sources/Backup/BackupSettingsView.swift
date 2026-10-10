@@ -83,7 +83,7 @@ struct BackupSettingsView: View {
                 Text(verbatim: copy("المجلد", "Folder"))
                 Spacer()
                 Text(verbatim: controller.folderAvailable ? copy("متصل", "Connected") : copy("غير محدد", "Not set"))
-                    .foregroundStyle(controller.folderAvailable ? .green : .orange)
+                    .foregroundStyle(controller.folderAvailable ? .progress : .caution)
                     .accessibilityIdentifier("memo-backup-folder-state")
             }
             HStack {
@@ -95,7 +95,7 @@ struct BackupSettingsView: View {
                     .accessibilityIdentifier("memo-backup-last")
             }
             if let error = controller.lastError {
-                Text(verbatim: error).font(.footnote).foregroundStyle(.red)
+                Text(verbatim: error).font(.footnote).foregroundStyle(.danger)
             }
         } footer: {
             Text(verbatim: copy("تشمل النسخة الحفظ والقراءة والمتشابهات وبيانات القراءات في مجلد iCloud Drive الذي تختاره.",
@@ -263,13 +263,13 @@ struct RestoreView: View {
                     Section(copy("النتيجة", "Result")) {
                         ForEach(Array(report.restored), id: \.self) { Text(verbatim: "✓ " + name($0)) }
                         ForEach(Array(report.failed.keys), id: \.self) { store in
-                            Text(verbatim: "✕ \(name(store)): \(report.failed[store] ?? "")").foregroundStyle(.red)
+                            Text(verbatim: "✕ \(name(store)): \(report.failed[store] ?? "")").foregroundStyle(.danger)
                         }
                     }
                     .accessibilityIdentifier("memo-restore-report")
                 }
                 if let errorMessage {
-                    Section { Text(verbatim: errorMessage).foregroundStyle(.red) }
+                    Section { Text(verbatim: errorMessage).foregroundStyle(.danger) }
                 }
             }
             .navigationTitle(copy("استعادة نسخة", "Restore a backup"))

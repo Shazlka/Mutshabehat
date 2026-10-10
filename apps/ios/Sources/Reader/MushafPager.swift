@@ -39,6 +39,7 @@ struct MushafPager: UIViewControllerRepresentable {
         pager.dataSource = context.coordinator
         pager.delegate = context.coordinator
         disableTapToTurn(in: pager)
+        context.coordinator.pager = pager
         context.coordinator.show(page, in: pager, animated: false)
         return pager
     }
@@ -70,11 +71,24 @@ struct MushafPager: UIViewControllerRepresentable {
     @MainActor
     final class Coordinator: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
         var parent: MushafPager
+        weak var pager: UIPageViewController?
         init(_ parent: MushafPager) { self.parent = parent }
+
+        /// VoiceOver's three-finger swipe: turn one page (or one spread) and announce where it landed.
+        func accessibilityTurn(forward: Bool) -> Bool {
+            guard let pager, let current = visiblePage(in: pager) else { return false }
+            let step = parent.spread ? 2 : 1
+            let target = forward ? current + step : current - step
+            guard (1...mushafPageCount).contains(target) else { return false }
+            parent.page = target
+            show(target, in: pager, animated: true)
+            UIAccessibility.post(notification: .pageScrolled, argument: "صفحة \(target)")
+            return true
+        }
 
         func controller(for number: Int) -> PageController? {
             guard (1...mushafPageCount).contains(number), let page = parent.library.page(number) else { return nil }
-            return PageController(page: page, library: parent.library, isSpreadHalf: parent.spread,
+            let controller = PageController(page: page, library: parent.library, isSpreadHalf: parent.spread,
                                   appearance: parent.appearance, qiraat: parent.qiraat,
                                   highlightedWordIDs: parent.highlightedWordIDs,
                                   bookmarkedAyahs: parent.bookmarkedAyahs(number),
@@ -84,6 +98,8 @@ struct MushafPager: UIViewControllerRepresentable {
                                   onTapCentre: { [weak self] in self?.parent.onTapCentre() },
                                   onTapWord: { [weak self] page, word in self?.parent.onTapWord(page, word) },
                                   onLongPressAyah: { [weak self] page, ayah in self?.parent.onLongPressAyah(page, ayah) })
+            controller.onAccessibilityTurn = { [weak self] forward in self?.accessibilityTurn(forward: forward) ?? false }
+            return controller
         }
 
         /// The page the pager shows: the single page, or the right-hand (odd) page of a spread.

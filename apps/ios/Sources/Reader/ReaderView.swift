@@ -344,14 +344,14 @@ struct ReaderView: View {
         if appLanguage == .english {
             base = "Page \(page) | Juz \(metadata?.juz ?? 1) | Hizb \(metadata?.hizb ?? 1)"
         } else {
-            base = "صفحة \(toArabicDigits(page)) | جزء \(toArabicDigits(metadata?.juz ?? 1)) | حزب \(toArabicDigits(metadata?.hizb ?? 1))"
+            base = "صفحة \(ArabicDigits.string(page)) | جزء \(ArabicDigits.string(metadata?.juz ?? 1)) | حزب \(ArabicDigits.string(metadata?.hizb ?? 1))"
         }
         if tracker.khatmaPercent > 0 {
             let pct = Int(tracker.khatmaPercent)
             if appLanguage == .english {
                 return "\(base) • Khatma \(pct)%"
             } else {
-                return "\(base) • ختمة \(toArabicDigits(pct))٪"
+                return "\(base) • ختمة \(ArabicDigits.string(pct))٪"
             }
         }
         return base
@@ -362,14 +362,9 @@ struct ReaderView: View {
         if appLanguage == .english {
             return "Juz \(meta.juz) · Hizb \(meta.hizb)"
         }
-        return "جزء \(toArabicDigits(meta.juz))   ◐ حزب \(toArabicDigits(meta.hizb))"
+        return "جزء \(ArabicDigits.string(meta.juz))   ◐ حزب \(ArabicDigits.string(meta.hizb))"
     }
 
-    private func toArabicDigits(_ number: Int) -> String {
-        let digits = ["0": "٠", "1": "١", "2": "٢", "3": "٣", "4": "٤",
-                      "5": "٥", "6": "٦", "7": "٧", "8": "٨", "9": "٩"]
-        return String(number).compactMap { digits[String($0)] }.joined()
-    }
 
     private func jumpToBookmark(_ bookmark: QuranBookmark) {
         page = bookmark.page
@@ -472,7 +467,7 @@ private struct SettingsView: View {
                             )
                             Spacer()
                             Circle()
-                                .fill(ICloudDatabaseSyncService.shared.isConnected ? Color.green : Color.orange)
+                                .fill(ICloudDatabaseSyncService.shared.isConnected ? Color.progress : Color.caution)
                                 .frame(width: 8, height: 8)
                         }
                     }
