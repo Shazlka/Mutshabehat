@@ -59,20 +59,13 @@ struct IndexSheet: View {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 8) {
                                     ForEach(SurahProgressFilter.allCases) { f in
-                                        Button {
+                                        FilterChip(isSelected: surahFilter == f) {
                                             withAnimation(.easeInOut(duration: 0.15)) {
                                                 surahFilter = f
                                             }
                                         } label: {
                                             Text(f.title)
-                                                .font(.caption.bold())
-                                                .padding(.horizontal, 12)
-                                                .padding(.vertical, 6)
-                                                .background(surahFilter == f ? Color.green : Color(uiColor: .tertiarySystemFill))
-                                                .foregroundColor(surahFilter == f ? .white : .primary)
-                                                .clipShape(Capsule())
                                         }
-                                        .buttonStyle(.plain)
                                     }
                                 }
                                 .padding(.vertical, 4)
@@ -96,7 +89,7 @@ struct IndexSheet: View {
                         if all.isEmpty {
                             VStack(spacing: 12) {
                                 Image(systemName: "bookmark")
-                                    .font(.system(size: 36))
+                                    .scaledFont(size: 36)
                                     .foregroundColor(.secondary)
                                 Text("لا توجد فواصل محفوظة")
                                     .font(.subheadline)
@@ -196,7 +189,7 @@ struct IndexSheet: View {
         return Button { onSelect(targetPage) } label: {
             VStack(alignment: .leading, spacing: 4) {
                 HStack {
-                    Text(verbatim: String(surah.number)).monospacedDigit().foregroundStyle(.secondary).frame(width: 32, alignment: .leading)
+                    Text(verbatim: String(surah.number)).monospacedDigit().foregroundStyle(.secondary).frame(minWidth: 32, alignment: .leading)
                     Text(surah.name).font(.title3)
                     if isCurrent {
                         Image(systemName: "checkmark").foregroundStyle(Color.accentColor).accessibilityHidden(true)
@@ -204,7 +197,7 @@ struct IndexSheet: View {
                     if progress.isCompleted {
                         Image(systemName: "checkmark.circle.fill")
                             .font(.caption2)
-                            .foregroundStyle(.green)
+                            .foregroundStyle(.progress)
                     }
                     Spacer()
                     Text(verbatim: "ص \(surah.firstPage)").monospacedDigit().foregroundStyle(.secondary)
@@ -218,7 +211,7 @@ struct IndexSheet: View {
                                     .fill(Color(uiColor: .tertiarySystemFill))
                                     .frame(height: 4)
                                 Capsule()
-                                    .fill(pct >= 100 ? Color.green : Color.accentColor)
+                                    .fill(pct >= 100 ? Color.progress : Color.accentColor)
                                     .frame(width: max(0, min(geo.size.width, geo.size.width * CGFloat(pct / 100.0))), height: 4)
                             }
                         }
@@ -227,7 +220,7 @@ struct IndexSheet: View {
                         if progress.isCompleted {
                             Text("مكتملة • \(Int(pct))%")
                                 .font(.caption2.bold())
-                                .foregroundStyle(.green)
+                                .foregroundStyle(.progress)
                         } else {
                             Text("\(readCount)/\(surah.ayahCount) • المتبقي: \(progress.remainingAyahsCount)")
                                 .font(.caption2.monospacedDigit())
@@ -256,7 +249,7 @@ struct IndexSheet: View {
     private func row(title: String, number: Int, page: Int, isCurrent: Bool) -> some View {
         Button { onSelect(page) } label: {
             HStack {
-                Text(verbatim: String(number)).monospacedDigit().foregroundStyle(.secondary).frame(width: 32)
+                Text(verbatim: String(number)).monospacedDigit().foregroundStyle(.secondary).frame(minWidth: 32)
                 Text(title).font(.title3)
                 if isCurrent {
                     Image(systemName: "checkmark").foregroundStyle(Color.accentColor).accessibilityHidden(true)

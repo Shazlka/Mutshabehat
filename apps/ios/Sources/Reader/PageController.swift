@@ -19,6 +19,11 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
     private let wordTap = UITapGestureRecognizer()
     private let longPress = UILongPressGestureRecognizer()
     private(set) var chromeVisible: Bool = false
+    /// VoiceOver page turn (three-finger swipe); set by the pager. `true` = next page in reading order.
+    var onAccessibilityTurn: ((_ forward: Bool) -> Bool)? {
+        get { pageView.onAccessibilityTurn }
+        set { pageView.onAccessibilityTurn = newValue }
+    }
 
     init(page: MushafPage, library: MushafLibrary, isSpreadHalf: Bool, appearance: MushafAppearance,
          qiraat: QiraatDisplay,
@@ -42,6 +47,11 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
         self.onTapWord = onTapWord
         self.onLongPressAyah = onLongPressAyah
         super.init(nibName: nil, bundle: nil)
+        pageView.onToggleChrome = onTapCentre
+        pageView.onAyahOptions = { [weak self] ayah in
+            guard let self else { return }
+            onLongPressAyah?(self.page, ayah)
+        }
         pageView.qiraat = qiraat
         pageView.highlightedWordIDs = highlightedWordIDs
         pageView.bookmarkedAyahs = bookmarkedAyahs
@@ -215,9 +225,10 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
         }
         surahLabel.isHidden = true
         sectionLabel.isHidden = true
-        pageNumberLabel.text = arabicIndic(page.number)
+        pageNumberLabel.text = ArabicDigits.string(page.number)
         pageNumberLabel.textAlignment = .center
-        pageNumberLabel.accessibilityLabel = "صفحة \(page.number)"
+        // The page element already says "صفحة N"; the printed number would repeat it.
+        pageNumberLabel.isAccessibilityElement = false
     }
 
     private func layoutMetadataLabels(around paperFrame: CGRect) {
@@ -241,12 +252,6 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
 
-    private func arabicIndic(_ value: Int) -> String {
-        String(value).map { character in
-            guard let digit = character.wholeNumberValue else { return character }
-            return Character(String(UnicodeScalar(0x0660 + digit)!))
-        }.reduce(into: "") { $0.append($1) }
-    }
 
     @objc private func tappedWord(_ recognizer: UITapGestureRecognizer) {
         if let word = pageView.markedWord(at: recognizer.location(in: pageView)) { onTapWord(page, word) }

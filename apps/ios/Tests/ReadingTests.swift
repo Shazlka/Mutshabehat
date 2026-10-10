@@ -1,3 +1,4 @@
+import UIKit
 import Foundation
 import MushafCore
 import SwiftUI
@@ -411,9 +412,22 @@ final class ReadingTests: XCTestCase {
         // Palette must have 12 vibrant editorial colors
         XCTAssertEqual(MutshabehatMagazineTheme.palette.count, 12)
 
-        // Custom colors must be respected if specified and non-default
-        let customColor = MutshabehatMagazineTheme.color(for: "group-1", customColor: "#FF5733")
-        XCTAssertEqual(customColor, Color(hex: "#FF5733"))
+        // Custom colors are respected, adjusted only as far as needed to read as text in both modes.
+        let light = UITraitCollection(userInterfaceStyle: .light), dark = UITraitCollection(userInterfaceStyle: .dark)
+        for hex in ["#FF5733", "#0F5132", "#F2C94C"] {
+            let color = UIColor(MutshabehatMagazineTheme.color(for: "group-1", customColor: hex))
+            for traits in [light, dark] {
+                let background = UIColor.secondarySystemGroupedBackground.resolvedColor(with: traits)
+                XCTAssertGreaterThanOrEqual(color.resolvedColor(with: traits).contrast(with: background), 4.5, "\(hex)")
+            }
+        }
+        let readable = UIColor(MutshabehatMagazineTheme.color(for: "group-1", customColor: "#1D4ED8"))
+        XCTAssertEqual(readable.resolvedColor(with: light).relativeLuminance,
+                       UIColor(Color(hex: "#1D4ED8")).relativeLuminance, accuracy: 0.001)
+
+        // The default colour of a group is the same on every launch (it used `String.hashValue`).
+        XCTAssertEqual(UIColor(MutshabehatMagazineTheme.color(for: "group-7", customColor: "")).resolvedColor(with: light),
+                       UIColor(MutshabehatMagazineTheme.color(for: "group-7", customColor: "")).resolvedColor(with: light))
 
         // Default or empty colors must map to the rich magazine palette based on ID hash
         let colorA = MutshabehatMagazineTheme.color(for: "group-1", customColor: "#55b94f")

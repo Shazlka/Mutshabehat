@@ -30,6 +30,11 @@ struct MutshabehatGroupEditorView: View {
         "#55b94f", "#4b63e6", "#c9a84c", "#7c3aed", "#15803d",
         "#2563eb", "#d92323", "#0f766e", "#9a5d00", "#1A4A6E"
     ]
+    /// VoiceOver names for `suggestedColors`, same order.
+    private let suggestedColorNames: [String] = [
+        "أخضر", "أزرق", "ذهبي", "بنفسجي", "أخضر داكن",
+        "أزرق ملكي", "أحمر", "فيروزي", "بني", "كحلي"
+    ]
 
     private let partTypes: [(key: String, label: String, style: MutshabehatPartStyle)] = [
         ("shared", "مشترك", .shared),
@@ -76,19 +81,25 @@ struct MutshabehatGroupEditorView: View {
 
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 8) {
-                                ForEach(suggestedColors, id: \.self) { c in
+                                ForEach(Array(suggestedColors.enumerated()), id: \.element) { index, c in
                                     let isSelected = colorHex.lowercased() == c.lowercased()
-                                    Circle()
-                                        .fill(Color(hex: c))
-                                        .frame(width: 32, height: 32)
-                                        .overlay(
-                                            Circle()
-                                                .stroke(Color.primary, lineWidth: isSelected ? 3 : 0)
-                                        )
-                                        .scaleEffect(isSelected ? 1.15 : 1.0)
-                                        .onTapGesture {
-                                            colorHex = c
-                                        }
+                                    Button {
+                                        colorHex = c
+                                    } label: {
+                                        Circle()
+                                            .fill(Color(hex: c))
+                                            .frame(width: 32, height: 32)
+                                            .overlay(
+                                                Circle()
+                                                    .stroke(Color.primary, lineWidth: isSelected ? 3 : 0)
+                                            )
+                                            .scaleEffect(isSelected ? 1.15 : 1.0)
+                                            .frame(width: 44, height: 44)
+                                            .contentShape(Circle())
+                                    }
+                                    .buttonStyle(.plain)
+                                    .accessibilityLabel(suggestedColorNames[index])
+                                    .accessibilityAddTraits(isSelected ? .isSelected : [])
                                 }
 
                                 Divider().frame(height: 24)
@@ -177,7 +188,7 @@ struct MutshabehatGroupEditorView: View {
                                 }
                             } label: {
                                 Image(systemName: "slider.horizontal.3")
-                                    .font(.system(size: 16, weight: .bold))
+                                    .font(.callout.weight(.bold))
                                     .padding(8)
                                     .background(Color(uiColor: .tertiarySystemFill))
                                     .clipShape(Circle())
@@ -198,7 +209,7 @@ struct MutshabehatGroupEditorView: View {
                                 isExpanded: expandedVerseId == verse.id,
                                 partTypes: partTypes,
                                 onToggleExpand: {
-                                    withAnimation(.snappy(duration: 0.25)) {
+                                    withMotion {
                                         if expandedVerseId == verse.id {
                                             expandedVerseId = nil
                                         } else {
@@ -210,17 +221,17 @@ struct MutshabehatGroupEditorView: View {
                                     verses[vIndex] = updatedVerse
                                 },
                                 onMoveUp: vIndex > 0 ? {
-                                    withAnimation {
+                                    withMotion {
                                         verses.swapAt(vIndex, vIndex - 1)
                                     }
                                 } : nil,
                                 onMoveDown: vIndex < verses.count - 1 ? {
-                                    withAnimation {
+                                    withMotion {
                                         verses.swapAt(vIndex, vIndex + 1)
                                     }
                                 } : nil,
                                 onDelete: {
-                                    withAnimation {
+                                    withMotion {
                                         verses.remove(at: vIndex)
                                     }
                                 }
@@ -245,11 +256,11 @@ struct MutshabehatGroupEditorView: View {
                     VStack(alignment: .leading, spacing: 6) {
                         HStack(spacing: 6) {
                             Circle()
-                                .fill(Color(hex: "#6549A3"))
+                                .fill(Color.insight)
                                 .frame(width: 8, height: 8)
                             Text("فائدة فريدة / إضافية")
                                 .font(.caption.bold())
-                                .foregroundStyle(Color(hex: "#6549A3"))
+                                .foregroundStyle(Color.insight)
                         }
                         TextEditor(text: $unote)
                             .frame(minHeight: 65)
@@ -415,7 +426,7 @@ private struct VerseEditorRow: View {
                     HStack(spacing: 6) {
                         Image(systemName: isExpanded ? "chevron.down.circle.fill" : "chevron.left.circle")
                             .foregroundColor(.accentColor)
-                            .font(.system(size: 15))
+                            .font(.subheadline)
 
                         Text(surah.isEmpty ? "سورة جديدة" : surah)
                             .font(.caption.bold())
@@ -441,7 +452,7 @@ private struct VerseEditorRow: View {
                     if let onMoveUp = onMoveUp {
                         Button(action: onMoveUp) {
                             Image(systemName: "arrow.up")
-                                .font(.system(size: 11, weight: .bold))
+                                .font(.caption2.weight(.bold))
                                 .padding(4)
                         }
                         .buttonStyle(.plain)
@@ -450,7 +461,7 @@ private struct VerseEditorRow: View {
                     if let onMoveDown = onMoveDown {
                         Button(action: onMoveDown) {
                             Image(systemName: "arrow.down")
-                                .font(.system(size: 11, weight: .bold))
+                                .font(.caption2.weight(.bold))
                                 .padding(4)
                         }
                         .buttonStyle(.plain)
@@ -458,8 +469,8 @@ private struct VerseEditorRow: View {
 
                     Button(action: onDelete) {
                         Image(systemName: "trash")
-                            .font(.system(size: 11))
-                            .foregroundColor(.red)
+                            .font(.caption2)
+                            .foregroundColor(.danger)
                             .padding(4)
                     }
                     .buttonStyle(.plain)
@@ -473,6 +484,8 @@ private struct VerseEditorRow: View {
                 .background(Color(uiColor: .tertiarySystemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .onTapGesture(perform: onToggleExpand)
+                .accessibilityAddTraits(.isButton)
+                .accessibilityHint(isExpanded ? "انقر مرتين لإغلاق المحرر" : "انقر مرتين لتحرير الأجزاء")
 
             // Expanded Editor Form
             if isExpanded {
@@ -577,7 +590,7 @@ private struct VerseEditorRow: View {
                                             notifyUpdate()
                                         } label: {
                                             Image(systemName: "arrow.up")
-                                                .font(.system(size: 10))
+                                                .font(.caption2)
                                                 .padding(4)
                                         }
                                     }
@@ -587,7 +600,7 @@ private struct VerseEditorRow: View {
                                             notifyUpdate()
                                         } label: {
                                             Image(systemName: "arrow.down")
-                                                .font(.system(size: 10))
+                                                .font(.caption2)
                                                 .padding(4)
                                         }
                                     }
@@ -596,8 +609,8 @@ private struct VerseEditorRow: View {
                                         notifyUpdate()
                                     } label: {
                                         Image(systemName: "xmark")
-                                            .font(.system(size: 10, weight: .bold))
-                                            .foregroundColor(.red)
+                                            .font(.caption2.weight(.bold))
+                                            .foregroundColor(.danger)
                                             .padding(4)
                                     }
                                 }

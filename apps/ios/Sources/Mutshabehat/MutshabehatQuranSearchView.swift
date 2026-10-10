@@ -72,7 +72,7 @@ struct MutshabehatQuranSearchView: View {
                         VStack(spacing: 12) {
                             Spacer()
                             Image(systemName: "magnifyingglass")
-                                .font(.system(size: 40))
+                                .scaledFont(size: 40)
                                 .foregroundColor(.secondary)
                             Text("لا توجد نتائج مطابقة")
                                 .font(.subheadline)

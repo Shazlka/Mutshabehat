@@ -44,15 +44,15 @@ struct AyahSearchView: View {
                 // Top header bar matching screenshots
                 HStack {
                     Spacer()
-                        .frame(width: 36) // Balance close button for centering
+                        .frame(width: 44) // Balance the close button for centering
 
                     HStack(spacing: 6) {
                         Text(isArabic ? "البحث في القرآن" : "Search in Quran")
-                            .font(.system(size: 17, weight: .semibold))
+                            .font(.headline)
                             .foregroundColor(.primary)
 
                         Image(systemName: "chevron.down.circle.fill")
-                            .font(.system(size: 15))
+                            .font(.subheadline)
                             .foregroundColor(Color(uiColor: .tertiaryLabel))
                     }
 
@@ -62,11 +62,13 @@ struct AyahSearchView: View {
                         dismiss()
                     }) {
                         Image(systemName: "xmark")
-                            .font(.system(size: 13, weight: .bold))
+                            .font(.footnote.weight(.bold))
                             .foregroundColor(.primary)
                             .frame(width: 32, height: 32)
                             .background(Color(uiColor: .secondarySystemBackground))
                             .clipShape(Circle())
+                            .frame(width: 44, height: 44)
+                            .contentShape(Rectangle())
                     }
                     .buttonStyle(.plain)
                     .accessibilityLabel("إغلاق")
@@ -86,7 +88,7 @@ struct AyahSearchView: View {
                     VStack(spacing: 12) {
                         Spacer()
                         Image(systemName: "magnifyingglass")
-                            .font(.system(size: 44))
+                            .scaledFont(size: 44)
                             .foregroundStyle(.secondary)
                         Text("لا توجد نتائج")
                             .font(.headline)
@@ -100,7 +102,7 @@ struct AyahSearchView: View {
                     // Header count
                     if hasSearched || !results.isEmpty {
                         Text(isArabic ? "إجمالي الآيات في نتائج البحث: \(displayedResults.count)" : "Total verses in search results: \(displayedResults.count)")
-                            .font(.system(size: 14, weight: .regular))
+                            .font(.subheadline)
                             .foregroundStyle(.secondary)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .padding(.top, 6)
@@ -153,26 +155,11 @@ struct AyahSearchView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 8) {
                             ForEach(variantPills, id: \.self) { pill in
-                                Button {
-                                    if selectedVariant == pill {
-                                        selectedVariant = nil
-                                    } else {
-                                        selectedVariant = pill
-                                    }
+                                FilterChip(isSelected: selectedVariant == pill) {
+                                    selectedVariant = selectedVariant == pill ? nil : pill
                                 } label: {
                                     Text(pill)
-                                        .font(.system(size: 15, weight: .bold))
-                                        .foregroundColor(selectedVariant == pill ? .white : Color(red: 0.08, green: 0.40, blue: 0.20))
-                                        .padding(.horizontal, 14)
-                                        .padding(.vertical, 6)
-                                        .background(
-                                            Capsule()
-                                                .fill(selectedVariant == pill
-                                                      ? Color(red: 0.13, green: 0.55, blue: 0.30)
-                                                      : Color(red: 0.82, green: 0.95, blue: 0.86))
-                                        )
                                 }
-                                .buttonStyle(.plain)
                             }
                         }
                         .padding(.horizontal, 16)
@@ -184,11 +171,11 @@ struct AyahSearchView: View {
                 HStack(spacing: 10) {
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(.secondary)
-                        .font(.system(size: 16))
+                        .font(.callout)
 
                     TextField(isArabic ? "ابحث في القرآن الكريم..." : "Search the Holy Quran...", text: $query)
                         .textFieldStyle(.plain)
-                        .font(.system(size: 16))
+                        .font(.callout)
                         .environment(\.layoutDirection, isArabic || !query.isEmpty ? .rightToLeft : .leftToRight)
                         .submitLabel(.search)
                         .onSubmit(performSearch)
@@ -204,7 +191,7 @@ struct AyahSearchView: View {
                         } label: {
                             Image(systemName: "xmark.circle.fill")
                                 .foregroundColor(.secondary)
-                                .font(.system(size: 16))
+                                .font(.callout)
                         }
                         .buttonStyle(.plain)
                     }
@@ -212,7 +199,7 @@ struct AyahSearchView: View {
                     Button(action: performSearch) {
                         Image(systemName: "arrow.up.circle.fill")
                             .foregroundColor(.accentColor)
-                            .font(.system(size: 22))
+                            .font(.title2)
                     }
                     .accessibilityIdentifier("search-submit")
                     .accessibilityLabel("بحث")
@@ -224,7 +211,7 @@ struct AyahSearchView: View {
                         dismiss()
                     } label: {
                         Image(systemName: "xmark")
-                            .font(.system(size: 15, weight: .semibold))
+                            .font(.subheadline.weight(.semibold))
                             .foregroundColor(.primary)
                     }
                     .buttonStyle(.plain)
@@ -368,7 +355,7 @@ private struct QuranSearchResultCard: View {
             HStack {
                 ShareLink(item: "\(result.text)\n\n[\(surahTitle) - آية \(result.ayah.ayah)]") {
                     Image(systemName: "square.and.arrow.up")
-                        .font(.system(size: 15))
+                        .font(.subheadline)
                         .foregroundStyle(.secondary)
                         .padding(6)
                 }
@@ -377,17 +364,17 @@ private struct QuranSearchResultCard: View {
 
                 Text(surahTitle)
                     .font(surahHeaderFont)
-                    .foregroundColor(Color(red: 0.58, green: 0.38, blue: 0.18)) // Bronze/gold
+                    .foregroundStyle(Color(uiColor: .mushafBrown))
 
                 Spacer()
 
                 HStack(spacing: 5) {
                     Text("\(result.ayah.ayah)")
-                        .font(.system(size: 14, weight: .medium, design: .rounded))
+                        .font(.system(.subheadline, design: .rounded, weight: .medium))
                         .foregroundStyle(.secondary)
 
                     Image(systemName: "book.pages")
-                        .font(.system(size: 13))
+                        .font(.footnote)
                         .foregroundStyle(.secondary)
                 }
                 .padding(6)
@@ -435,7 +422,7 @@ private struct QuranSearchResultCard: View {
         attributed.font = quranFont
         attributed.foregroundColor = Color.primary
 
-        let highlightColor = Color(red: 0.74, green: 0.44, blue: 0.15) // Amber/bronze matching photo
+        let highlightColor = Color(uiColor: .mushafGold)
 
         let words = text.split(separator: " ")
         let cleanQuery = QuranSearchNormalizer.canonical(QuranSearchNormalizer.plain(query))

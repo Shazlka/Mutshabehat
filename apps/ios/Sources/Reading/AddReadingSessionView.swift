@@ -120,8 +120,8 @@ struct AddReadingSessionView: View {
                                         .font(.caption.bold())
                                         .padding(.horizontal, 10)
                                         .padding(.vertical, 6)
-                                        .background(Color.green.opacity(0.12), in: Capsule())
-                                        .foregroundColor(.green)
+                                        .background(Color.progress.opacity(0.12), in: Capsule())
+                                        .foregroundColor(.progress)
 
                                     Label("ص \(surah.firstPage)", systemImage: "book.pages")
                                         .font(.caption)
@@ -208,7 +208,7 @@ struct AddReadingSessionView: View {
                                 Text("تحديد كامل السورة (\(fromSurahMaxAyahs) آية)")
                             }
                             .font(.caption.bold())
-                            .foregroundColor(.green)
+                            .foregroundColor(.progress)
                         }
                         .buttonStyle(.plain)
                         .padding(.vertical, 2)
@@ -236,7 +236,7 @@ struct AddReadingSessionView: View {
                     // Range Summary Badge
                     HStack {
                         Image(systemName: "book.pages.fill")
-                            .foregroundColor(.green)
+                            .foregroundColor(.progress)
                         Text(mode == .byPage ? "المجموع: \(toPage - fromPage + 1) صفحة" : "المجموع: \(estimatedAyahCount) آية")
                             .font(.subheadline.bold())
                             .foregroundColor(.primary)
@@ -261,24 +261,17 @@ struct AddReadingSessionView: View {
                             Spacer()
                             Text("\(durationMinutes) دقيقة")
                                 .font(.subheadline.bold())
-                                .foregroundColor(.green)
+                                .foregroundColor(.progress)
                         }
 
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 8) {
                                 ForEach(quickDurations, id: \.self) { mins in
-                                    Button {
+                                    FilterChip(isSelected: durationMinutes == mins) {
                                         durationMinutes = mins
                                     } label: {
                                         Text("\(mins) د")
-                                            .font(.caption.bold())
-                                            .padding(.horizontal, 14)
-                                            .padding(.vertical, 7)
-                                            .background(durationMinutes == mins ? Color.green : Color(uiColor: .tertiarySystemFill))
-                                            .foregroundColor(durationMinutes == mins ? .white : .primary)
-                                            .clipShape(Capsule())
                                     }
-                                    .buttonStyle(.plain)
                                 }
                             }
                             .padding(.vertical, 2)
@@ -293,18 +286,18 @@ struct AddReadingSessionView: View {
                     Toggle(isOn: $isFromMemory) {
                         HStack(spacing: 12) {
                             Image(systemName: "brain.head.profile")
-                                .foregroundColor(.purple)
-                                .font(.system(size: 20))
+                                .foregroundColor(.insight)
+                                .font(.title3)
                             VStack(alignment: .leading, spacing: 2) {
                                 Text("تلوتُ عن ظهر قلب (من الذاكرة)")
-                                    .font(.system(size: 15, weight: .medium))
+                                    .font(.subheadline.weight(.medium))
                                 Text("حفظ أو مراجعة بدون الاستعانة بالمصحف")
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                             }
                         }
                     }
-                    .tint(.green)
+                    .tint(.progressFill)
                 } header: {
                     Text("طريقة التلاوة")
                 }
@@ -322,7 +315,7 @@ struct AddReadingSessionView: View {
                         .foregroundColor(.white)
                         .padding(.vertical, 6)
                     }
-                    .listRowBackground(Color.green)
+                    .listRowBackground(Color.progressFill)
                 }
             }
             .navigationTitle("أضف جلسة قراءة")
@@ -339,7 +332,7 @@ struct AddReadingSessionView: View {
                         saveSession()
                     }
                     .bold()
-                    .tint(.green)
+                    .tint(.progressFill)
                 }
             }
         }

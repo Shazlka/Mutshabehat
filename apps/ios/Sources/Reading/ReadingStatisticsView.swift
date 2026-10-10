@@ -65,11 +65,8 @@ struct ReadingStatisticsView: View {
         ScrollView {
             VStack(spacing: 20) {
                 if let stats = overview {
-                    // 1. Circular Completion Ring Header
-                    KhatmaCircularRingCard(stats: stats)
-
-                    // 2. Summary Grid (Total Pages, Pages Remaining, Khatmas, Cumulative Ayahs & Time)
-                    KhatmaPagesScorecard(stats: stats)
+                    // 1. The current khatma and the lifetime figures, in one section
+                    KhatmaSummaryCard(stats: stats)
 
                     // 3. Continue Reading Banner
                     if let surah = currentPositionSurah {
@@ -100,7 +97,7 @@ struct ReadingStatisticsView: View {
                     HStack {
                         VStack(alignment: .leading, spacing: 2) {
                             Text("الختم على حسب السورة")
-                                .font(.system(size: 19, weight: .bold))
+                                .font(.title3.weight(.bold))
                                 .foregroundColor(.primary)
                             Text("متابعة إنجاز كل سورة والمتبقي منها")
                                 .font(.caption)
@@ -109,7 +106,7 @@ struct ReadingStatisticsView: View {
                         Spacer()
                         Text("\(surahsProgress.filter(\.isCompleted).count) / 114")
                             .font(.subheadline.bold())
-                            .foregroundColor(.green)
+                            .foregroundColor(.progress)
                     }
                     .padding(.horizontal, 16)
 
@@ -146,25 +143,18 @@ struct ReadingStatisticsView: View {
                                     }
                                 }()
 
-                                Button {
+                                FilterChip(isSelected: selectedFilter == f,
+                                           unselectedFill: Color(uiColor: .secondarySystemGroupedBackground)) {
                                     withAnimation(.easeInOut(duration: 0.2)) {
                                         selectedFilter = f
                                     }
                                 } label: {
                                     HStack(spacing: 6) {
                                         Text(f.title)
-                                            .font(.caption.bold())
-                                        Text("(\(count))")
+                                        Text("(\(ArabicDigits.string(count)))")
                                             .font(.caption2)
                                     }
-                                    .padding(.horizontal, 14)
-                                    .padding(.vertical, 8)
-                                    .background(selectedFilter == f ? Color.green : Color(uiColor: .secondarySystemGroupedBackground))
-                                    .foregroundColor(selectedFilter == f ? .white : .primary)
-                                    .clipShape(Capsule())
-                                    .shadow(color: Color.black.opacity(selectedFilter == f ? 0.08 : 0.02), radius: 2, y: 1)
                                 }
-                                .buttonStyle(.plain)
                             }
                         }
                         .padding(.horizontal, 16)
@@ -185,7 +175,7 @@ struct ReadingStatisticsView: View {
                         if filteredSurahs.isEmpty {
                             VStack(spacing: 8) {
                                 Image(systemName: "tray")
-                                    .font(.system(size: 32))
+                                    .scaledFont(size: 32)
                                     .foregroundColor(.secondary)
                                 Text("لا توجد سور مطابقة للتصفية")
                                     .font(.subheadline)
@@ -205,7 +195,7 @@ struct ReadingStatisticsView: View {
                                         }
                                     },
                                     onToggleCompleted: {
-                                        withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
+                                        withMotion {
                                             tracker.markSurahCompleted(item.surahNumber, completed: !item.isCompleted, library: library)
                                             loadData()
                                         }
@@ -230,7 +220,7 @@ struct ReadingStatisticsView: View {
                 } label: {
                     Label("أضف جلسة", systemImage: "plus")
                         .font(.body.bold())
-                        .foregroundColor(.green)
+                        .foregroundColor(.progress)
                 }
             }
         }
@@ -261,217 +251,76 @@ struct ReadingStatisticsView: View {
     }
 }
 
-// MARK: - Circular Progress Ring Card
+// MARK: - Khatma Summary
 
-private struct KhatmaCircularRingCard: View {
+/// The current khatma as one figure and a bar, then the lifetime figures as a short list. Replaces a
+/// 170 pt gradient ring plus a grid of identical number boxes: the same information, less to scan.
+private struct KhatmaSummaryCard: View {
     let stats: ReadingStatsOverview
 
+    private var fraction: Double { max(0, min(1, stats.progressPercentage / 100)) }
+
     var body: some View {
-        VStack(spacing: 16) {
-            ZStack {
-                // Background Track Ring
-                Circle()
-                    .stroke(Color.green.opacity(0.15), lineWidth: 16)
-                    .frame(width: 170, height: 170)
+        VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("الختمة الحالية (\(ArabicDigits.string(stats.currentKhatma.khatmaNumber)))")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
 
-                // Animated Progress Ring with emerald gradient
-                Circle()
-                    .trim(from: 0, to: max(0.001, min(1.0, CGFloat(stats.progressPercentage / 100.0))))
-                    .stroke(
-                        LinearGradient(
-                            colors: [Color.green, Color(red: 0.18, green: 0.82, blue: 0.55)],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        ),
-                        style: StrokeStyle(lineWidth: 16, lineCap: .round)
-                    )
-                    .rotationEffect(.degrees(-90))
-                    .frame(width: 170, height: 170)
-
-                // Percentage & Title in Center
-                VStack(spacing: 4) {
-                    Text(String(format: "%.1f%%", stats.progressPercentage))
-                        .font(.system(size: 34, weight: .bold, design: .rounded))
-                        .foregroundColor(.primary)
-
-                    Text("ختم القرآن")
-                        .font(.system(size: 14, weight: .medium))
-                        .foregroundColor(.secondary)
+                HStack(alignment: .firstTextBaseline, spacing: 6) {
+                    Text(fraction.formatted(.percent.precision(.fractionLength(0...1)).locale(Locale(identifier: "ar"))))
+                        .font(.largeTitle.weight(.semibold))
+                        .monospacedDigit()
+                    Text("من القرآن")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
                 }
-            }
-            .padding(.top, 8)
 
-            Text("الختمة الحالية (#\(stats.currentKhatma.khatmaNumber)) • \(stats.totalAyahsReadInCurrentKhatma) من \(stats.totalQuranAyahs) آية")
-                .font(.footnote)
-                .foregroundColor(.secondary)
+                ProgressView(value: fraction)
+                    .tint(.progress)
+                    .accessibilityHidden(true)
+
+                Text("\(ArabicDigits.string(stats.totalPagesReadInCurrentKhatma)) من ٦٠٤ صفحة، بقي \(ArabicDigits.string(stats.remainingPages)) · \(ArabicDigits.string(stats.totalAyahsReadInCurrentKhatma)) من \(ArabicDigits.string(stats.totalQuranAyahs)) آية")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+            }
+            .accessibilityElement(children: .combine)
+
+            Divider()
+
+            VStack(spacing: 10) {
+                SummaryFigure(title: "وقت التلاوة الكلي", value: stats.formattedLifetimeDuration)
+                SummaryFigure(title: "أيام التلاوة", value: "\(ArabicDigits.string(stats.totalReadingDays)) يوم")
+                SummaryFigure(title: "الآيات المقروءة", value: "\(ArabicDigits.string(stats.lifetimeAyahsRead)) آية")
+                SummaryFigure(title: "الختمات المكتملة", value: ArabicDigits.string(stats.completedKhatmasCount))
+            }
         }
-        .frame(maxWidth: .infinity)
-        .padding(20)
-        .background(Color(uiColor: .secondarySystemGroupedBackground))
-        .cornerRadius(20)
+        .padding(18)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 14))
         .padding(.horizontal, 16)
     }
 }
 
-// MARK: - Pages Scorecard
-
-private func formatArabicIndic(_ number: Int) -> String {
-    let digits = ["0": "٠", "1": "١", "2": "٢", "3": "٣", "4": "٤",
-                  "5": "٥", "6": "٦", "7": "٧", "8": "٨", "9": "٩"]
-    return String(number).compactMap { digits[String($0)] }.joined()
-}
-
-private struct KhatmaPagesScorecard: View {
-    let stats: ReadingStatsOverview
-
-    var body: some View {
-        VStack(spacing: 12) {
-            // Prominent Hero Card for Cumulative Reading Duration (Hours and Minutes)
-            HStack(spacing: 14) {
-                ZStack {
-                    Circle()
-                        .fill(Color.blue.opacity(0.12))
-                        .frame(width: 46, height: 46)
-                    Image(systemName: "clock.badge.checkmark.fill")
-                        .font(.system(size: 20, weight: .bold))
-                        .foregroundColor(.blue)
-                }
-
-                VStack(alignment: .leading, spacing: 3) {
-                    Text("إجمالي وقت التلاوة (تراكمي)")
-                        .font(.caption.bold())
-                        .foregroundColor(.secondary)
-                    HStack(alignment: .firstTextBaseline, spacing: 4) {
-                        Text(stats.formattedLifetimeDuration)
-                            .font(.system(size: 24, weight: .bold, design: .rounded))
-                            .foregroundColor(.primary)
-                    }
-                }
-
-                Spacer()
-
-                VStack(alignment: .trailing, spacing: 2) {
-                    Text("أيام التلاوة")
-                        .font(.caption2)
-                        .foregroundColor(.secondary)
-                    HStack(spacing: 4) {
-                        Image(systemName: "calendar")
-                            .foregroundColor(.blue)
-                            .font(.caption)
-                        Text(formatArabicIndic(stats.totalReadingDays))
-                            .font(.headline.bold())
-                            .foregroundColor(.blue)
-                        Text("يوم")
-                            .font(.caption2.bold())
-                            .foregroundColor(.secondary)
-                    }
-                }
-            }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 14)
-            .background(Color(uiColor: .secondarySystemGroupedBackground))
-            .cornerRadius(18)
-
-            // Prominent Hero Card for Cumulative Ayahs Read
-            HStack(spacing: 14) {
-                ZStack {
-                    Circle()
-                        .fill(Color.purple.opacity(0.12))
-                        .frame(width: 46, height: 46)
-                    Image(systemName: "sparkles")
-                        .font(.system(size: 20, weight: .bold))
-                        .foregroundColor(.purple)
-                }
-
-                VStack(alignment: .leading, spacing: 3) {
-                    Text("مجموع الآيات المقروءة (تراكمي)")
-                        .font(.caption.bold())
-                        .foregroundColor(.secondary)
-                    HStack(alignment: .firstTextBaseline, spacing: 4) {
-                        Text(formatArabicIndic(stats.lifetimeAyahsRead))
-                            .font(.system(size: 26, weight: .bold, design: .rounded))
-                            .foregroundColor(.primary)
-                        Text("آية")
-                            .font(.subheadline.bold())
-                            .foregroundColor(.purple)
-                    }
-                }
-
-                Spacer()
-
-                VStack(alignment: .trailing, spacing: 2) {
-                    Text("الختمات المكتملة")
-                        .font(.caption2)
-                        .foregroundColor(.secondary)
-                    HStack(spacing: 4) {
-                        Image(systemName: "checkmark.seal.fill")
-                            .foregroundColor(.green)
-                            .font(.caption)
-                        Text(formatArabicIndic(stats.completedKhatmasCount))
-                            .font(.headline.bold())
-                            .foregroundColor(.green)
-                    }
-                }
-            }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 14)
-            .background(Color(uiColor: .secondarySystemGroupedBackground))
-            .cornerRadius(18)
-
-            // Grid for Pages Status
-            HStack(spacing: 10) {
-                ScorecardBox(
-                    title: "إجمالي الصفحات",
-                    value: "٦٠٤",
-                    icon: "book.pages",
-                    tint: .blue
-                )
-
-                ScorecardBox(
-                    title: "الصفحات المتبقية",
-                    value: formatArabicIndic(stats.remainingPages),
-                    icon: "bookmark.slash",
-                    tint: .orange
-                )
-
-                ScorecardBox(
-                    title: "الصفحات المنجزة",
-                    value: formatArabicIndic(stats.totalPagesReadInCurrentKhatma),
-                    icon: "checkmark.circle.fill",
-                    tint: .green
-                )
-            }
-        }
-        .padding(.horizontal, 16)
-    }
-}
-
-private struct ScorecardBox: View {
+/// One label and its value on a line; it stacks when the text size is very large.
+private struct SummaryFigure: View {
     let title: String
     let value: String
-    let icon: String
-    let tint: Color
 
     var body: some View {
-        VStack(spacing: 8) {
-            Image(systemName: icon)
-                .foregroundColor(tint)
-                .font(.system(size: 20))
-
-            Text(value)
-                .font(.system(size: 22, weight: .bold, design: .rounded))
-                .foregroundColor(.primary)
-
-            Text(title)
-                .font(.system(size: 11, weight: .medium))
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
+        ViewThatFits(in: .horizontal) {
+            HStack(alignment: .firstTextBaseline) {
+                Text(title).foregroundStyle(.secondary)
+                Spacer(minLength: 12)
+                Text(value).fontWeight(.semibold).monospacedDigit()
+            }
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title).foregroundStyle(.secondary)
+                Text(value).fontWeight(.semibold).monospacedDigit()
+            }
         }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 14)
-        .padding(.horizontal, 6)
-        .background(Color(uiColor: .secondarySystemGroupedBackground))
-        .cornerRadius(16)
+        .font(.subheadline)
+        .accessibilityElement(children: .combine)
     }
 }
 
@@ -488,16 +337,16 @@ private struct ContinueReadingBanner: View {
             HStack(spacing: 14) {
                 ZStack {
                     Circle()
-                        .fill(Color.green.opacity(0.18))
+                        .fill(Color.progress.opacity(0.18))
                         .frame(width: 44, height: 44)
                     Image(systemName: "book.fill")
-                        .foregroundColor(.green)
-                        .font(.system(size: 20))
+                        .foregroundColor(.progress)
+                        .font(.title3)
                 }
 
                 VStack(alignment: .leading, spacing: 3) {
                     Text("تابع القراءة")
-                        .font(.system(size: 16, weight: .bold))
+                        .font(.callout.weight(.bold))
                         .foregroundColor(.primary)
                     Text("سورة \(surahName)، آية \(ayahNumber) • ص \(pageNumber)")
                         .font(.caption)
@@ -515,7 +364,7 @@ private struct ContinueReadingBanner: View {
             .cornerRadius(16)
             .overlay(
                 RoundedRectangle(cornerRadius: 16)
-                    .stroke(Color.green.opacity(0.25), lineWidth: 1)
+                    .stroke(Color.progress.opacity(0.25), lineWidth: 1)
             )
         }
         .buttonStyle(.plain)
@@ -536,12 +385,12 @@ private struct WeeklyStreakTrackerCard: View {
             HStack {
                 HStack(spacing: 8) {
                     Image(systemName: "flame.fill")
-                        .foregroundColor(.orange)
-                        .font(.system(size: 22))
+                        .foregroundColor(.caution)
+                        .font(.title2)
 
                     VStack(alignment: .leading, spacing: 2) {
                         Text("\(currentStreak) يوم مداومة")
-                            .font(.system(size: 17, weight: .bold))
+                            .font(.headline.weight(.bold))
                             .foregroundColor(.primary)
                         Text("أطول مدة مداومة: \(longestStreak) يوم")
                             .font(.caption)
@@ -559,8 +408,8 @@ private struct WeeklyStreakTrackerCard: View {
                     }
                     .padding(.horizontal, 12)
                     .padding(.vertical, 6)
-                    .background(Color.green.opacity(0.14))
-                    .foregroundColor(.green)
+                    .background(Color.progress.opacity(0.14))
+                    .foregroundColor(.progress)
                     .clipShape(Capsule())
                 }
             }
@@ -570,30 +419,30 @@ private struct WeeklyStreakTrackerCard: View {
                 ForEach(days) { day in
                     VStack(spacing: 6) {
                         Text(day.dayNameAr.prefix(3))
-                            .font(.system(size: 11, weight: .medium))
-                            .foregroundColor(day.isToday ? .green : .secondary)
+                            .font(.caption2.weight(.medium))
+                            .foregroundColor(day.isToday ? .progress : .secondary)
 
                         ZStack {
                             if day.isRead {
                                 Circle()
-                                    .fill(Color.green)
+                                    .fill(Color.progressFill)
                                     .frame(width: 32, height: 32)
                                 Image(systemName: "checkmark")
-                                    .font(.system(size: 13, weight: .bold))
+                                    .font(.footnote.weight(.bold))
                                     .foregroundColor(.white)
                             } else {
                                 Circle()
-                                    .stroke(day.isToday ? Color.green : Color(uiColor: .tertiarySystemFill), lineWidth: 1.5)
+                                    .stroke(day.isToday ? Color.progress : Color(uiColor: .tertiarySystemFill), lineWidth: 1.5)
                                     .frame(width: 32, height: 32)
                                 Text(day.dayNumber)
-                                    .font(.system(size: 12, weight: day.isToday ? .bold : .regular))
-                                    .foregroundColor(day.isToday ? .green : .secondary)
+                                    .font(.caption.weight(day.isToday ? .bold : .regular))
+                                    .foregroundColor(day.isToday ? .progress : .secondary)
                             }
                         }
 
                         if day.isToday {
                             Circle()
-                                .fill(Color.green)
+                                .fill(Color.progress)
                                 .frame(width: 4, height: 4)
                         } else {
                             Circle()
@@ -603,7 +452,7 @@ private struct WeeklyStreakTrackerCard: View {
 
                         // Daily duration (hours and minutes)
                         Text(day.formattedDuration)
-                            .font(.system(size: 10, weight: day.isRead ? .bold : .regular, design: .rounded))
+                            .font(.system(.caption2, design: .rounded, weight: day.isRead ? .bold : .regular))
                             .foregroundColor(day.isRead ? .primary : .secondary.opacity(0.5))
                             .lineLimit(1)
                             .minimumScaleFactor(0.75)
@@ -636,16 +485,16 @@ private struct SwipeableSurahProgressRow: View {
         ZStack {
             // Background Action (revealed as card slides horizontally)
             RoundedRectangle(cornerRadius: 14)
-                .fill(progress.isCompleted ? Color.orange : Color.green)
+                .fill(progress.isCompleted ? Color.cautionFill : Color.progressFill)
                 .overlay(
                     HStack(spacing: 8) {
                         if dragOffset > 0 {
                             // Card moved right -> action revealed on the left side
                             HStack(spacing: 6) {
                                 Image(systemName: progress.isCompleted ? "arrow.uturn.backward.circle.fill" : "checkmark.circle.fill")
-                                    .font(.system(size: 17, weight: .bold))
+                                    .font(.headline.weight(.bold))
                                 Text(progress.isCompleted ? "إلغاء الإكمال" : "إكمال في الختمة")
-                                    .font(.system(size: 13, weight: .bold))
+                                    .font(.footnote.weight(.bold))
                             }
                             .foregroundColor(.white)
                             .padding(.horizontal, 16)
@@ -655,9 +504,9 @@ private struct SwipeableSurahProgressRow: View {
                             Spacer()
                             HStack(spacing: 6) {
                                 Text(progress.isCompleted ? "إلغاء الإكمال" : "إكمال في الختمة")
-                                    .font(.system(size: 13, weight: .bold))
+                                    .font(.footnote.weight(.bold))
                                 Image(systemName: progress.isCompleted ? "arrow.uturn.backward.circle.fill" : "checkmark.circle.fill")
-                                    .font(.system(size: 17, weight: .bold))
+                                    .font(.headline.weight(.bold))
                             }
                             .foregroundColor(.white)
                             .padding(.horizontal, 16)
@@ -693,7 +542,7 @@ private struct SwipeableSurahProgressRow: View {
                                 UINotificationFeedbackGenerator().notificationOccurred(.success)
                                 onToggleCompleted()
                             }
-                            withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
+                            withMotion {
                                 dragOffset = 0
                                 hasPassedThreshold = false
                             }
@@ -703,7 +552,7 @@ private struct SwipeableSurahProgressRow: View {
                     if dragOffset == 0 {
                         onSelect()
                     } else {
-                        withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                        withMotion {
                             dragOffset = 0
                         }
                     }
@@ -712,6 +561,11 @@ private struct SwipeableSurahProgressRow: View {
         .clipShape(RoundedRectangle(cornerRadius: 14))
         .accessibilityElement(children: .combine)
         .accessibilityIdentifier("surah-progress-row-\(progress.surahNumber)")
+        .accessibilityAddTraits(.isButton)
+        .accessibilityAction { onSelect() }
+        .accessibilityAction(named: progress.isCompleted ? "إلغاء إكمال السورة في الختمة" : "إكمال السورة في الختمة") {
+            onToggleCompleted()
+        }
         .contextMenu {
             Button {
                 onToggleCompleted()
@@ -747,7 +601,7 @@ private struct SurahProgressItemRow: View {
             VStack(alignment: .leading, spacing: 6) {
                 HStack {
                     Text(progress.surahName)
-                        .font(.system(size: 16, weight: .semibold))
+                        .font(.callout.weight(.semibold))
                         .foregroundColor(.primary)
 
                     Spacer()
@@ -758,7 +612,7 @@ private struct SurahProgressItemRow: View {
 
                     Text("\(Int(progress.percentage))%")
                         .font(.caption.bold())
-                        .foregroundColor(progress.isCompleted ? .green : .primary)
+                        .foregroundColor(progress.isCompleted ? .progress : .primary)
                 }
 
                 // Progress Bar
@@ -768,7 +622,7 @@ private struct SurahProgressItemRow: View {
                             .fill(Color(uiColor: .tertiarySystemFill))
                             .frame(height: 5)
                         Capsule()
-                            .fill(progress.isCompleted ? Color.green : Color(red: 0.18, green: 0.82, blue: 0.55))
+                            .fill(progress.isCompleted ? Color.progress : Color.progress.opacity(0.55))
                             .frame(
                                 width: max(0, min(geo.size.width, geo.size.width * CGFloat(progress.percentage / 100.0))),
                                 height: 5
@@ -781,14 +635,14 @@ private struct SurahProgressItemRow: View {
                 HStack {
                     if progress.isCompleted {
                         Image(systemName: "checkmark.circle.fill")
-                            .font(.system(size: 10))
-                            .foregroundColor(.green)
+                            .font(.caption2)
+                            .foregroundColor(.progress)
                         Text("مكتملة • لم يبقَ شيء")
-                            .font(.system(size: 11, weight: .medium))
-                            .foregroundColor(.green)
+                            .font(.caption2.weight(.medium))
+                            .foregroundColor(.progress)
                     } else {
                         Text("المتبقي: \(progress.remainingAyahsCount) آية")
-                            .font(.system(size: 11))
+                            .font(.caption2)
                             .foregroundColor(.secondary)
                     }
                     Spacer()
@@ -796,7 +650,7 @@ private struct SurahProgressItemRow: View {
             }
 
             Image(systemName: "chevron.left")
-                .font(.system(size: 12, weight: .semibold))
+                .font(.caption.weight(.semibold))
                 .foregroundColor(Color(uiColor: .tertiaryLabel))
         }
         .padding(12)
@@ -815,10 +669,10 @@ private struct DailyReadingHistoryCard: View {
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
                     Image(systemName: "calendar.badge.clock")
-                        .foregroundColor(.blue)
+                        .foregroundColor(.info)
                         .font(.headline)
                     Text("سجل القراءة اليومي")
-                        .font(.system(size: 17, weight: .bold))
+                        .font(.headline.weight(.bold))
                         .foregroundColor(.primary)
                     Spacer()
                     Text("\(days.count) يوم")
@@ -838,13 +692,13 @@ private struct DailyReadingHistoryCard: View {
                             HStack(spacing: 4) {
                                 Image(systemName: "clock")
                                     .font(.caption2)
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(.info)
                                 Text(formatDuration(day.secondsRead))
                                     .font(.subheadline.bold())
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(.info)
                             }
 
-                            Text("• \(formatArabicIndic(day.pagesRead)) ص • \(formatArabicIndic(day.ayahsRead)) آية")
+                            Text("• \(ArabicDigits.string(day.pagesRead)) ص • \(ArabicDigits.string(day.ayahsRead)) آية")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
@@ -878,12 +732,12 @@ private struct DailyReadingHistoryCard: View {
         let minutes = (seconds % 3600) / 60
         if hours > 0 {
             if minutes > 0 {
-                return "\(formatArabicIndic(hours)) س \(formatArabicIndic(minutes)) د"
+                return "\(ArabicDigits.string(hours)) س \(ArabicDigits.string(minutes)) د"
             } else {
-                return "\(formatArabicIndic(hours)) س"
+                return "\(ArabicDigits.string(hours)) س"
             }
         } else {
-            return "\(formatArabicIndic(max(1, minutes))) د"
+            return "\(ArabicDigits.string(max(1, minutes))) د"
         }
     }
 }

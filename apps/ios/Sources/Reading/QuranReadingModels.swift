@@ -163,11 +163,7 @@ public struct WeeklyDayStatus: Identifiable, Hashable, Sendable {
         guard isRead, readingSeconds > 0 else { return "—" }
         let hours = readingSeconds / 3600
         let minutes = (readingSeconds % 3600) / 60
-        let digits = ["0": "٠", "1": "١", "2": "٢", "3": "٣", "4": "٤",
-                      "5": "٥", "6": "٦", "7": "٧", "8": "٨", "9": "٩"]
-        let formatIndic: (Int) -> String = { val in
-            String(val).compactMap { digits[String($0)] }.joined()
-        }
+        let formatIndic = ArabicDigits.string
         if hours > 0 {
             if minutes > 0 {
                 return "\(formatIndic(hours)) س \(formatIndic(minutes)) د"
@@ -229,11 +225,7 @@ public struct ReadingStatsOverview: Sendable {
     }
 
     public var formattedLifetimeDuration: String {
-        let digits = ["0": "٠", "1": "١", "2": "٢", "3": "٣", "4": "٤",
-                      "5": "٥", "6": "٦", "7": "٧", "8": "٨", "9": "٩"]
-        let formatIndic: (Int) -> String = { val in
-            String(val).compactMap { digits[String($0)] }.joined()
-        }
+        let formatIndic = ArabicDigits.string
         let h = lifetimeHours
         let m = lifetimeMinutes
         if h > 0 {

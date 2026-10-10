@@ -19,16 +19,16 @@ struct KhatmaCelebrationView: View {
                 // Traditional illuminated Islamic crest
                 VStack(spacing: 12) {
                     Image(systemName: "book.pages.fill")
-                        .font(.system(size: 64))
+                        .scaledFont(size: 64)
                         .foregroundColor(Color.accentColor)
 
                     Text("الْحَمْدُ لِلَّهِ")
-                        .font(.system(size: 32, weight: .bold))
+                        .scaledFont(size: 32, weight: .bold)
                         .foregroundColor(.primary)
 
                     Text("تَمَّتْ خَتْمَةُ الْقُرْآنِ الْكَرِيمِ بِحَمْدِ اللَّهِ وَتَوْفِيقِهِ")
-                        .font(.system(size: 18, weight: .medium))
-                        .foregroundColor(Color(red: 0.60, green: 0.48, blue: 0.20))
+                        .font(.title3.weight(.medium))
+                        .foregroundStyle(Color(uiColor: .mushafGold))
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 24)
                 }
@@ -54,7 +54,7 @@ struct KhatmaCelebrationView: View {
                     .cornerRadius(16)
                     .overlay(
                         RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color(red: 0.60, green: 0.48, blue: 0.20).opacity(0.3), lineWidth: 1)
+                            .stroke(Color(uiColor: .mushafGold).opacity(0.3), lineWidth: 1)
                     )
                     .padding(.horizontal, 24)
                 }
@@ -116,7 +116,7 @@ private struct DetailItem: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
             Text(value)
-                .font(.system(size: 14, weight: .bold))
+                .font(.subheadline.weight(.bold))
                 .foregroundColor(.primary)
         }
     }

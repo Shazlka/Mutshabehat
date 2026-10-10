@@ -90,9 +90,9 @@ struct MutshabehatView: View {
                                     Text(verbatim: selectedSurah)
                                 }
                             }
-                                .font(.system(size: 13, weight: .medium))
+                                .font(.footnote.weight(.medium))
                             Image(systemName: "chevron.down")
-                                .font(.system(size: 10))
+                                .font(.caption2)
                         }
                         .padding(.horizontal, 10)
                         .padding(.vertical, 8)
@@ -106,7 +106,7 @@ struct MutshabehatView: View {
                             loadData()
                         }) {
                             Image(systemName: showFavoritesOnly ? "star.fill" : "star")
-                                .foregroundColor(showFavoritesOnly ? .yellow : .secondary)
+                                .foregroundColor(showFavoritesOnly ? .favorite : .secondary)
                                 .padding(8)
                                 .background(Color(UIColor.secondarySystemBackground))
                                 .cornerRadius(10)
@@ -144,7 +144,7 @@ struct MutshabehatView: View {
                                 Image(systemName: "plus")
                                 Text("إضافة")
                             }
-                            .font(.system(size: 14, weight: .bold))
+                            .font(.subheadline.weight(.bold))
                         }
                         .accessibilityIdentifier("add-mutshabehat-group-button")
                     }
@@ -157,7 +157,7 @@ struct MutshabehatView: View {
                                 Image(systemName: "square.and.arrow.down")
                                 Text("استيراد")
                             }
-                            .font(.system(size: 14))
+                            .font(.subheadline)
                         }
                     }
                 }
@@ -234,7 +234,7 @@ struct MutshabehatView: View {
                 VStack(spacing: 12) {
                     Spacer()
                     Image(systemName: "doc.text.magnifyingglass")
-                        .font(.system(size: 40))
+                        .scaledFont(size: 40)
                         .foregroundColor(.secondary)
                     Text("لا توجد مجموعات تطابق البحث")
                         .foregroundColor(.secondary)
@@ -287,12 +287,12 @@ struct MutshabehatView: View {
                 VStack(spacing: 16) {
                     Spacer()
                     Image(systemName: "sparkles")
-                        .font(.system(size: 40))
+                        .scaledFont(size: 40)
                         .foregroundColor(.secondary)
                     Text("لا توجد مجموعات آلية مخزنة")
-                        .font(.system(size: 17, weight: .semibold))
+                        .font(.headline)
                     Text("يمكنك استيراد ملف بيانات الآلية (JSON) بالضغط على زر استيراد في الأعلى.")
-                        .font(.system(size: 14))
+                        .font(.subheadline)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 32)
@@ -300,7 +300,7 @@ struct MutshabehatView: View {
                         showFileImporter = true
                     } label: {
                         Label("استيراد ملف الآلية (JSON)", systemImage: "square.and.arrow.down")
-                            .font(.system(size: 14, weight: .bold))
+                            .font(.subheadline.weight(.bold))
                     }
                     .buttonStyle(.borderedProminent)
                     Spacer()
@@ -315,10 +315,10 @@ struct MutshabehatView: View {
                             Spacer()
                             Label("قاعدة آلية", systemImage: "sparkles")
                                 .font(.caption2.bold())
-                                .foregroundStyle(.purple)
+                                .foregroundStyle(.insight)
                                 .padding(.horizontal, 8)
                                 .padding(.vertical, 4)
-                                .background(Color.purple.opacity(0.12), in: Capsule())
+                                .background(Color.insight.opacity(0.12), in: Capsule())
                         }
                         .padding(.horizontal, 16)
                         .padding(.top, 8)
@@ -449,10 +449,12 @@ struct MutshabehatMagazineTheme {
     static func color(for id: String, customColor: String) -> Color {
         let trimmed = customColor.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         if !trimmed.isEmpty && trimmed != "#55b94f" && trimmed != "55b94f" {
-            return Color(hex: customColor)
+            return Color(uiColor: UIColor(Color(hex: customColor)).readable())
         }
-        let hash = abs(id.hashValue)
-        return palette[hash % palette.count]
+        // `String.hashValue` is seeded per launch, so it gave a group a different colour each time
+        // the app opened; FNV-1a over the UTF-8 bytes is stable.
+        let hash = id.utf8.reduce(UInt64(14_695_981_039_346_656_037)) { ($0 ^ UInt64($1)) &* 1_099_511_628_211 }
+        return Color(uiColor: UIColor(palette[Int(hash % UInt64(palette.count))]).readable())
     }
 }
 
@@ -574,7 +576,7 @@ private struct PersonalMagazineCard: View {
                     let surahs = group.verses.map(\.surah).removingDuplicates()
                     if !surahs.isEmpty {
                         Text(surahs.joined(separator: " • "))
-                            .font(.system(size: size == .compact ? 11 : 12, weight: .bold))
+                            .font((size == .compact ? Font.caption2 : Font.caption).weight(.bold))
                             .foregroundStyle(color)
                             .lineLimit(1)
                     }
@@ -582,7 +584,7 @@ private struct PersonalMagazineCard: View {
                     Spacer(minLength: 4)
 
                     Text("\(group.verses.count) مواضع")
-                        .font(.system(size: 10, weight: .semibold))
+                        .font(.caption2.weight(.semibold))
                         .foregroundStyle(.secondary)
                         .padding(.horizontal, 6)
                         .padding(.vertical, 2)
@@ -590,15 +592,15 @@ private struct PersonalMagazineCard: View {
 
                     Button(action: toggleFavorite) {
                         Image(systemName: group.favorite ? "star.fill" : "star")
-                            .font(.system(size: 13))
-                            .foregroundColor(group.favorite ? .yellow : .secondary)
+                            .font(.footnote)
+                            .foregroundColor(group.favorite ? .favorite : .secondary)
                     }
                     .buttonStyle(.plain)
                 }
 
                 // Title
                 Text(verbatim: group.title)
-                    .font(.system(size: size == .hero ? 17 : (size == .tall ? 15 : 14), weight: .bold))
+                    .font((size == .hero ? Font.headline : Font.subheadline).weight(.bold))
                     .foregroundStyle(.primary)
                     .lineLimit(size == .compact ? 2 : 3)
                     .multilineTextAlignment(.leading)
@@ -615,12 +617,12 @@ private struct PersonalMagazineCard: View {
                 HStack {
                     if group.verses.count > 1 {
                         Text("+ \(group.verses.count - 1) مواضع أخرى")
-                            .font(.system(size: 10, weight: .medium))
+                            .font(.caption2.weight(.medium))
                             .foregroundStyle(.secondary)
                     }
                     Spacer()
                     Image(systemName: "chevron.left")
-                        .font(.system(size: 10, weight: .semibold))
+                        .font(.caption2.weight(.semibold))
                         .foregroundStyle(color.opacity(0.8))
                 }
                 .padding(.top, 2)
@@ -628,20 +630,13 @@ private struct PersonalMagazineCard: View {
             .padding(14)
             .frame(maxWidth: .infinity, alignment: .topLeading)
             .background(
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .fill(
-                        LinearGradient(
-                            colors: [color.opacity(0.14), color.opacity(0.06)],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .fill(color.opacity(0.08))
             )
             .overlay(
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .stroke(color.opacity(0.38), lineWidth: 1.2)
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .strokeBorder(color.opacity(0.30), lineWidth: 1)
             )
-            .shadow(color: color.opacity(0.10), radius: 5, y: 2)
         }
         .buttonStyle(.plain)
         .contextMenu {
@@ -726,7 +721,7 @@ private struct AutomatedMagazineCard: View {
                 HStack(spacing: 6) {
                     if !group.surahs.isEmpty {
                         Text(group.surahs.joined(separator: " • "))
-                            .font(.system(size: size == .compact ? 11 : 12, weight: .bold))
+                            .font((size == .compact ? Font.caption2 : Font.caption).weight(.bold))
                             .foregroundStyle(color)
                             .lineLimit(1)
                     }
@@ -734,7 +729,7 @@ private struct AutomatedMagazineCard: View {
                     Spacer(minLength: 4)
 
                     Text("\(group.verses.count) مواضع")
-                        .font(.system(size: 10, weight: .semibold))
+                        .font(.caption2.weight(.semibold))
                         .foregroundStyle(.secondary)
                         .padding(.horizontal, 6)
                         .padding(.vertical, 2)
@@ -742,14 +737,14 @@ private struct AutomatedMagazineCard: View {
 
                     if group.copied {
                         Image(systemName: "checkmark.circle.fill")
-                            .foregroundColor(.green)
-                            .font(.system(size: 13))
+                            .foregroundColor(.progress)
+                            .font(.footnote)
                     }
                 }
 
                 // Title
                 Text(verbatim: group.title)
-                    .font(.system(size: size == .hero ? 17 : (size == .tall ? 15 : 14), weight: .bold))
+                    .font((size == .hero ? Font.headline : Font.subheadline).weight(.bold))
                     .foregroundStyle(.primary)
                     .lineLimit(size == .compact ? 2 : 3)
                     .multilineTextAlignment(.leading)
@@ -766,12 +761,12 @@ private struct AutomatedMagazineCard: View {
                 HStack {
                     if group.verses.count > 1 {
                         Text("+ \(group.verses.count - 1) مواضع أخرى")
-                            .font(.system(size: 10, weight: .medium))
+                            .font(.caption2.weight(.medium))
                             .foregroundStyle(.secondary)
                     }
                     Spacer()
                     Image(systemName: "chevron.left")
-                        .font(.system(size: 10, weight: .semibold))
+                        .font(.caption2.weight(.semibold))
                         .foregroundStyle(color.opacity(0.8))
                 }
                 .padding(.top, 2)
@@ -779,20 +774,13 @@ private struct AutomatedMagazineCard: View {
             .padding(14)
             .frame(maxWidth: .infinity, alignment: .topLeading)
             .background(
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .fill(
-                        LinearGradient(
-                            colors: [color.opacity(0.14), color.opacity(0.06)],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .fill(color.opacity(0.08))
             )
             .overlay(
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .stroke(color.opacity(0.38), lineWidth: 1.2)
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .strokeBorder(color.opacity(0.30), lineWidth: 1)
             )
-            .shadow(color: color.opacity(0.10), radius: 5, y: 2)
         }
         .buttonStyle(.plain)
         .contextMenu {
@@ -837,8 +825,8 @@ struct PersonalGroupDetailView: View {
                             onToggleFavorite(group)
                         } label: {
                             Image(systemName: group.favorite ? "star.fill" : "star")
-                                .foregroundColor(group.favorite ? .yellow : .secondary)
-                                .font(.system(size: 18))
+                                .foregroundColor(group.favorite ? .favorite : .secondary)
+                                .font(.title3)
                         }
                     }
 
@@ -878,7 +866,7 @@ struct PersonalGroupDetailView: View {
                     ForEach(group.verses) { verse in
                         VStack(alignment: .leading, spacing: 10) {
                             HStack {
-                                Label("\(verse.surah) - آية \(toArabicIndic(verse.ayah))", systemImage: "book.fill")
+                                Label("\(verse.surah) - آية \(ArabicDigits.string(verse.ayah))", systemImage: "book.fill")
                                     .font(.subheadline.bold())
                                     .foregroundColor(MutshabehatMagazineTheme.color(for: group.id, customColor: group.color))
 
@@ -922,11 +910,6 @@ struct PersonalGroupDetailView: View {
         }
     }
 
-    private func toArabicIndic(_ value: Int) -> String {
-        let digits = ["0": "٠", "1": "١", "2": "٢", "3": "٣", "4": "٤",
-                      "5": "٥", "6": "٦", "7": "٧", "8": "٨", "9": "٩"]
-        return String(value).compactMap { digits[String($0)] }.joined()
-    }
 }
 
 struct AutomatedGroupDetailView: View {
@@ -954,7 +937,7 @@ struct AutomatedGroupDetailView: View {
 
                         if group.copied {
                             Image(systemName: "checkmark.circle.fill")
-                                .foregroundColor(.green)
+                                .foregroundColor(.progress)
                         }
                     }
 
@@ -965,7 +948,7 @@ struct AutomatedGroupDetailView: View {
                     HStack {
                         Label("قاعدة آلية رسمية", systemImage: "sparkles")
                             .font(.caption.bold())
-                            .foregroundColor(.purple)
+                            .foregroundColor(.insight)
                         Spacer()
                         Button {
                             onCopyToPersonal(group)
@@ -974,7 +957,7 @@ struct AutomatedGroupDetailView: View {
                                 .font(.caption.bold())
                         }
                         .buttonStyle(.borderedProminent)
-                        .tint(.purple)
+                        .tint(.insight)
                     }
                 }
                 .padding(18)
@@ -996,7 +979,7 @@ struct AutomatedGroupDetailView: View {
                     ForEach(Array(group.verses.enumerated()), id: \.offset) { _, verse in
                         VStack(alignment: .leading, spacing: 10) {
                             HStack {
-                                Label("\(verse.surah) - آية \(toArabicIndic(verse.ayah))", systemImage: "book.fill")
+                                Label("\(verse.surah) - آية \(ArabicDigits.string(verse.ayah))", systemImage: "book.fill")
                                     .font(.subheadline.bold())
                                     .foregroundColor(MutshabehatMagazineTheme.color(for: String(group.id), customColor: group.color))
 
@@ -1028,11 +1011,6 @@ struct AutomatedGroupDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    private func toArabicIndic(_ value: Int) -> String {
-        let digits = ["0": "٠", "1": "١", "2": "٢", "3": "٣", "4": "٤",
-                      "5": "٥", "6": "٦", "7": "٧", "8": "٨", "9": "٩"]
-        return String(value).compactMap { digits[String($0)] }.joined()
-    }
 }
 
 // MARK: - Mutshabehat Card Shell
@@ -1050,13 +1028,12 @@ private struct MutshabehatCardShell<Content: View>: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(
             RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .fill(color.opacity(isShowingDetails ? 0.16 : 0.22))
+                .fill(color.opacity(isShowingDetails ? 0.06 : 0.10))
         )
         .overlay(
             RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .stroke(color.opacity(0.65), lineWidth: 1.5)
+                .strokeBorder(color.opacity(0.35), lineWidth: 1)
         )
-        .shadow(color: color.opacity(0.12), radius: 4, y: 2)
     }
 }
 
@@ -1107,7 +1084,7 @@ private struct MutshabehatVerseDetail: View {
                     .font(.caption.bold())
                     .foregroundStyle(Color.accentColor)
 
-                Text("— آية \(toArabicDigits(ayah))")
+                Text("— آية \(ArabicDigits.string(ayah))")
                     .font(.caption.monospacedDigit())
                     .foregroundStyle(.secondary)
 
@@ -1125,11 +1102,6 @@ private struct MutshabehatVerseDetail: View {
         .background(Color(uiColor: .secondarySystemBackground).opacity(0.85), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
     }
 
-    private func toArabicDigits(_ number: Int) -> String {
-        let digits = ["0": "٠", "1": "١", "2": "٢", "3": "٣", "4": "٤",
-                      "5": "٥", "6": "٦", "7": "٧", "8": "٨", "9": "٩"]
-        return String(number).compactMap { digits[String($0)] }.joined()
-    }
 }
 
 // MARK: - Color Hex Extension

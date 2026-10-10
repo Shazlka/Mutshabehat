@@ -64,6 +64,7 @@ final class MushafPageView: UIView {
     var bookmarkedAyahs: Set<AyahKey> = [] {
         didSet {
             if bookmarkedAyahs != oldValue {
+                updateAccessibilityElements()
                 setNeedsDisplay()
             }
         }
@@ -80,6 +81,7 @@ final class MushafPageView: UIView {
     var isPageBookmarked: Bool = false {
         didSet {
             if isPageBookmarked != oldValue {
+                updateAccessibilityElements()
                 setNeedsDisplay()
             }
         }
@@ -132,8 +134,9 @@ final class MushafPageView: UIView {
 
     // MARK: Live Qiraat data (the web app's database is the source of truth)
 
-    private static let liveRefreshInterval: TimeInterval = 10
+    private var liveActive = false
     private var liveTimer: Timer?
+    private var liveInterval = QiraatLiveSync.firstPollInterval
     private var liveObservers: [NSObjectProtocol] = []
 
     override func didMoveToWindow() {
@@ -141,10 +144,12 @@ final class MushafPageView: UIView {
         if window != nil { startLiveQiraat() } else { stopLiveQiraat() }
     }
 
-    /// While this page is on screen: fetch it now, on returning to the app, and every few seconds, so a
-    /// face saved in the web review editor shows here without relaunching or syncing.
+    /// While this page is on screen: fetch it now, on returning to the app, and again on a backing-off
+    /// schedule (`QiraatLiveSync.nextPollInterval`), so a face saved in the web review editor shows
+    /// here without relaunching or syncing.
     private func startLiveQiraat() {
-        guard liveTimer == nil else { return }
+        guard !liveActive else { return }
+        liveActive = true
         let center = NotificationCenter.default
         liveObservers = [
             center.addObserver(forName: .qiraatPageDidChange, object: nil, queue: .main) { [weak self] note in
@@ -155,26 +160,45 @@ final class MushafPageView: UIView {
                 }
             },
             center.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) { [weak self] _ in
-                MainActor.assumeIsolated { self?.refreshLiveQiraat(force: true) }
+                MainActor.assumeIsolated {
+                    guard let self else { return }
+                    self.liveInterval = QiraatLiveSync.firstPollInterval
+                    self.refreshLiveQiraat(force: true)
+                }
             },
         ]
-        liveTimer = Timer.scheduledTimer(withTimeInterval: Self.liveRefreshInterval, repeats: true) { [weak self] _ in
-            MainActor.assumeIsolated { self?.refreshLiveQiraat(force: false) }
-        }
+        liveInterval = QiraatLiveSync.firstPollInterval
         refreshLiveQiraat(force: true)
     }
 
     private func stopLiveQiraat() {
+        liveActive = false
         liveTimer?.invalidate()
         liveTimer = nil
         liveObservers.forEach(NotificationCenter.default.removeObserver)
         liveObservers = []
     }
 
+    private func scheduleLiveQiraat() {
+        liveTimer?.invalidate()
+        guard liveActive else { return }
+        liveTimer = Timer.scheduledTimer(withTimeInterval: liveInterval, repeats: false) { [weak self] _ in
+            MainActor.assumeIsolated { self?.refreshLiveQiraat(force: false) }
+        }
+    }
+
     private func refreshLiveQiraat(force: Bool) {
         guard qiraat.enabled, window != nil else { return }
         let number = page.number, store = library.qiraat
-        Task { await QiraatLiveSync.shared.refresh(page: number, store: store, force: force) }
+        Task { [weak self] in
+            let outcome = await QiraatLiveSync.shared.refresh(page: number, store: store, force: force)
+            guard let self, outcome != .skipped else {
+                self?.scheduleLiveQiraat()
+                return
+            }
+            self.liveInterval = QiraatLiveSync.nextPollInterval(after: outcome, current: self.liveInterval)
+            self.scheduleLiveQiraat()
+        }
     }
 
     private func refreshQiraatMarks() {
@@ -189,40 +213,135 @@ final class MushafPageView: UIView {
         setNeedsDisplay()
     }
 
-    /// The page itself, then every Qiraat-marked word (so VoiceOver and UI tests can reach them).
     /// The memorization status to show under this word, when it is an ayah-end marker with a visible status.
     private func memorizationMarker(for box: WordBox) -> MemorizationStatus? {
         guard box.word.charType == .end, let status = memorizationStatuses[box.word.ayahKey], status != .notMemorized else { return nil }
         return status
     }
 
+    // MARK: VoiceOver
+
+    /// Double-tap on the page element (VoiceOver): show or hide the reader's controls.
+    var onToggleChrome: (() -> Void)?
+    /// Double-tap or the custom action on an ayah element: the same options a long press opens.
+    var onAyahOptions: ((AyahKey) -> Void)?
+    /// A three-finger swipe (VoiceOver): `true` turns to the next page in reading order.
+    var onAccessibilityTurn: ((_ forward: Bool) -> Bool)?
+
+    /// The QCF glyphs are Private Use Area code points VoiceOver cannot read, so the page exposes its
+    /// own elements, in reading order: the page, each surah header and basmala, then every ayah with
+    /// its text, each followed by its Qiraat-marked words, search hits and memorization marker.
     private func updateAccessibilityElements() {
-        let pageElement = UIAccessibilityElement(accessibilityContainer: self)
+        let pageElement = MushafAccessibilityElement(accessibilityContainer: self)
         pageElement.accessibilityLabel = "صفحة \(page.number)"
+        pageElement.accessibilityValue = isPageBookmarked ? "عليها علامة" : nil
+        pageElement.accessibilityHint = "انقر مرتين لإظهار أدوات القراءة أو إخفائها"
         pageElement.accessibilityIdentifier = "mushaf-page-\(page.number)"
+        pageElement.accessibilityLanguage = "ar"
         pageElement.accessibilityFrameInContainerSpace = bounds
+        pageElement.onActivate = { [weak self] in
+            guard let toggle = self?.onToggleChrome else { return false }
+            toggle()
+            return true
+        }
         var elements: [Any] = [pageElement]
-        for box in layout?.lines.flatMap(\.boxes) ?? []
-            where marks[box.word.id] != nil || highlightedWordIDs.contains(box.word.id) || memorizationMarker(for: box) != nil {
-            let word = box.word
-            let element = UIAccessibilityElement(accessibilityContainer: self)
-            if let status = memorizationMarker(for: box) {
-                element.accessibilityLabel = "حالة الحفظ: \(MemorizationTheme.label(status, language: .arabic))"
-                element.accessibilityIdentifier = "memo-ayah-marker-\(word.ayahKey.surah)-\(word.ayahKey.ayah)"
-                element.accessibilityTraits = .staticText
-            } else if marks[word.id] != nil {
-                element.accessibilityLabel = "\(word.textUthmani)، فيها قراءات"
-                element.accessibilityIdentifier = "qiraat-word-\(word.ayahKey.surah):\(word.ayahKey.ayah):\(word.indexInAyah)"
-                element.accessibilityTraits = .button
-            } else {
-                element.accessibilityLabel = "نتيجة البحث: \(word.textUthmani)"
-                element.accessibilityIdentifier = "search-highlighted-word"
-                element.accessibilityTraits = .staticText
+
+        enum Entry { case header(Int, CGRect), basmala(CGRect), ayah(AyahKey) }
+        var entries: [Entry] = []
+        var ayahBoxes: [AyahKey: [WordBox]] = [:]
+        for line in layout?.lines ?? [] {
+            switch line.content {
+            case let .surahHeader(number): entries.append(.header(number, line.rect))
+            case .basmala: entries.append(.basmala(line.rect))
+            case let .words(boxes, _):
+                for box in boxes {
+                    let key = box.word.ayahKey
+                    if ayahBoxes[key] == nil { entries.append(.ayah(key)) }
+                    ayahBoxes[key, default: []].append(box)
+                }
+            case .empty: break
             }
-            element.accessibilityFrameInContainerSpace = box.frame
-            elements.append(element)
+        }
+
+        for entry in entries {
+            switch entry {
+            case let .header(number, rect):
+                let element = UIAccessibilityElement(accessibilityContainer: self)
+                element.accessibilityLabel = "سورة \(library.surahNames[number] ?? "\(number)")"
+                element.accessibilityTraits = .header
+                element.accessibilityLanguage = "ar"
+                element.accessibilityFrameInContainerSpace = rect
+                elements.append(element)
+            case let .basmala(rect):
+                let element = UIAccessibilityElement(accessibilityContainer: self)
+                element.accessibilityLabel = "بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ"
+                element.accessibilityLanguage = "ar"
+                element.accessibilityFrameInContainerSpace = rect
+                elements.append(element)
+            case let .ayah(key):
+                let boxes = ayahBoxes[key] ?? []
+                elements.append(ayahElement(key, boxes: boxes))
+                elements.append(contentsOf: boxes.compactMap(wordElement))
+            }
         }
         accessibilityElements = elements
+    }
+
+    private func ayahElement(_ key: AyahKey, boxes: [WordBox]) -> UIAccessibilityElement {
+        let text = boxes.filter { $0.word.charType == .word }.map(\.word.textUthmani).joined(separator: " ")
+        let element = MushafAccessibilityElement(accessibilityContainer: self)
+        element.accessibilityLabel = "الآية \(key.ayah)، \(text)"
+        element.accessibilityValue = bookmarkedAyahs.contains(key) ? "عليها علامة" : nil
+        element.accessibilityHint = "انقر مرتين لخيارات الآية"
+        element.accessibilityIdentifier = "ayah-\(key.surah)-\(key.ayah)"
+        element.accessibilityLanguage = "ar"
+        element.accessibilityFrameInContainerSpace = boxes.map(\.frame).reduce(CGRect.null) { $0.union($1) }
+        element.onActivate = { [weak self] in
+            guard let options = self?.onAyahOptions else { return false }
+            options(key)
+            return true
+        }
+        element.accessibilityCustomActions = [
+            UIAccessibilityCustomAction(name: "خيارات الآية") { [weak self] _ in
+                guard let options = self?.onAyahOptions else { return false }
+                options(key)
+                return true
+            },
+        ]
+        return element
+    }
+
+    /// A Qiraat-marked word, a search hit or a memorization marker; nil for any other word.
+    private func wordElement(_ box: WordBox) -> UIAccessibilityElement? {
+        let word = box.word
+        let element = UIAccessibilityElement(accessibilityContainer: self)
+        if let status = memorizationMarker(for: box) {
+            element.accessibilityLabel = "حالة الحفظ: \(MemorizationTheme.label(status, language: .arabic))"
+            element.accessibilityIdentifier = "memo-ayah-marker-\(word.ayahKey.surah)-\(word.ayahKey.ayah)"
+            element.accessibilityTraits = .staticText
+        } else if marks[word.id] != nil {
+            element.accessibilityLabel = "\(word.textUthmani)، فيها قراءات"
+            element.accessibilityIdentifier = "qiraat-word-\(word.ayahKey.surah):\(word.ayahKey.ayah):\(word.indexInAyah)"
+            element.accessibilityTraits = .button
+        } else if highlightedWordIDs.contains(word.id) {
+            element.accessibilityLabel = "نتيجة البحث: \(word.textUthmani)"
+            element.accessibilityIdentifier = "search-highlighted-word"
+            element.accessibilityTraits = .staticText
+        } else {
+            return nil
+        }
+        element.accessibilityLanguage = "ar"
+        element.accessibilityFrameInContainerSpace = box.frame
+        return element
+    }
+
+    override func accessibilityScroll(_ direction: UIAccessibilityScrollDirection) -> Bool {
+        // A right-to-left book: a three-finger swipe right (`.left`) reveals the next page.
+        switch direction {
+        case .left, .next: return onAccessibilityTurn?(true) ?? false
+        case .right, .previous: return onAccessibilityTurn?(false) ?? false
+        default: return false
+        }
     }
 
     override func layoutSubviews() {
@@ -545,7 +664,7 @@ final class MushafPageView: UIView {
         let rightCircleCenterX = frame.maxX - (119.0 / 60.0) * frame.height
         let rightCircleCenterY = frame.midY
 
-        let rightNum = toArabicDigits(number) as NSString
+        let rightNum = ArabicDigits.string(number) as NSString
         let rightNumAttrs: [NSAttributedString.Key: Any] = [
             .font: numberFont,
             .foregroundColor: titleColor
@@ -559,7 +678,7 @@ final class MushafPageView: UIView {
         let leftCircleCenterX = frame.minX + (117.0 / 60.0) * frame.height
         let leftCircleCenterY = frame.midY
 
-        let leftNum = toArabicDigits(ayahCount) as NSString
+        let leftNum = ArabicDigits.string(ayahCount) as NSString
         let leftNumAttrs: [NSAttributedString.Key: Any] = [
             .font: numberFont,
             .foregroundColor: titleColor
@@ -727,11 +846,6 @@ final class MushafPageView: UIView {
         )
     }
 
-    private func toArabicDigits(_ number: Int) -> String {
-        let digits = ["0": "٠", "1": "١", "2": "٢", "3": "٣", "4": "٤",
-                      "5": "٥", "6": "٦", "7": "٧", "8": "٨", "9": "٩"]
-        return String(number).compactMap { digits[String($0)] }.joined()
-    }
 
     private func drawWord(_ box: WordBox, font: CTFont, in context: CGContext) {
         let mark = marks[box.word.id]
@@ -911,4 +1025,11 @@ final class MushafPageView: UIView {
         string.draw(at: CGPoint(x: rect.midX - measured.width / 2, y: rect.midY - measured.height / 2),
                     withAttributes: attributes)
     }
+}
+
+/// A VoiceOver element whose double-tap runs `onActivate` instead of a tap at its centre (an ayah's
+/// centre can fall on another ayah or a Qiraat word).
+private final class MushafAccessibilityElement: UIAccessibilityElement {
+    var onActivate: (() -> Bool)?
+    override func accessibilityActivate() -> Bool { onActivate?() ?? false }
 }

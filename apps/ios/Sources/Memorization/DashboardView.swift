@@ -115,7 +115,7 @@ struct DashboardView: View {
             Text(verbatim: copy("الحفظ المتقن", "Mastered"))
                 .font(.subheadline).foregroundStyle(.secondary)
             Text(verbatim: percent(snapshot.strictPercent))
-                .font(.system(size: 54, weight: .semibold, design: .rounded))
+                .scaledFont(size: 54, weight: .semibold, design: .rounded)
                 .monospacedDigit()
                 .foregroundStyle(MemorizationTheme.color(.mastered))
                 .accessibilityIdentifier("memo-strict")
@@ -349,7 +349,7 @@ struct DashboardView: View {
                     Text(verbatim: controller.folderAvailable
                          ? copy("لم تتم نسخة احتياطية منذ أكثر من سبعة أيام", "No backup for over seven days")
                          : copy("لم يُحدَّد مجلد iCloud للنسخ الاحتياطي", "No iCloud backup folder is set"))
-                        .font(.footnote).foregroundStyle(.orange)
+                        .font(.footnote).foregroundStyle(.caution)
                         .accessibilityIdentifier("memo-backup-banner")
                 }
                 Button(copy("إعدادات النسخ الاحتياطي والاستعادة", "Backup and restore")) { navigate(.backup) }

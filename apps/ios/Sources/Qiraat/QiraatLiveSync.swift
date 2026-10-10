@@ -32,6 +32,16 @@ final class QiraatLiveSync {
         self.minInterval = minInterval
     }
 
+    /// How soon a page on screen checks again: soon after it appears, then less often while nothing
+    /// changes (doubling up to five minutes), and soon again once a change arrives. A page that sat
+    /// still used to be fetched every 10 s: 360 requests an hour, 720 on an iPad spread.
+    nonisolated static let firstPollInterval: TimeInterval = 10
+    nonisolated static let maxPollInterval: TimeInterval = 300
+
+    nonisolated static func nextPollInterval(after outcome: Outcome, current: TimeInterval) -> TimeInterval {
+        outcome == .updated ? firstPollInterval : min(maxPollInterval, current * 2)
+    }
+
     nonisolated static func liveURL(page: Int) -> URL {
         var components = URLComponents(url: baseURL.appendingPathComponent("api/mushaf-1441/qiraat"), resolvingAgainstBaseURL: false)!
         components.queryItems = [URLQueryItem(name: "page", value: String(page))]

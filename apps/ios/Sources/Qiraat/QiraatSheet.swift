@@ -47,7 +47,7 @@ struct QiraatSheet: View {
                 // The exact Mushaf glyph, in its own page's font.
                 Text(verbatim: item.word.glyph).font(Font(wordFont)).foregroundStyle(Color(uiColor: .mushafInk))
             } else {
-                Text(verbatim: item.word.textUthmani).font(.system(size: 30, weight: .bold))
+                Text(verbatim: item.word.textUthmani).scaledFont(size: 30, weight: .bold)
             }
             Spacer()
             Text(verbatim: item.word.ayahKey.description)

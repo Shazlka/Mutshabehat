@@ -115,7 +115,7 @@ struct AyahStatusListView: View {
                 filterChip(
                     title: language == .arabic ? "مستحقة للمراجعة" : "Due for review",
                     shape: nil,
-                    color: .orange,
+                    color: .caution,
                     isSelected: filter == .dueForReview,
                     identifier: "memo-ayah-filter-due"
                 ) {
@@ -125,7 +125,7 @@ struct AyahStatusListView: View {
                 filterChip(
                     title: language == .arabic ? "قيد الحفظ" : "Currently learning",
                     shape: nil,
-                    color: .blue,
+                    color: .info,
                     isSelected: filter == .currentlyLearning,
                     identifier: "memo-ayah-filter-learning"
                 ) {

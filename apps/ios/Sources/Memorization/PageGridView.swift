@@ -98,6 +98,11 @@ struct PageGridView: View {
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(MemorizationTheme.pageSummary(page: progress.page, progress: progress, language: language))
+        .accessibilityAddTraits(.isButton)
+        .accessibilityAction { openPage(progress.page) }
+        .accessibilityAction(named: language == .arabic ? "تحديث حالة الصفحة" : "Update page status") {
+            longPressPage(progress.page)
+        }
         .accessibilityIdentifier("memo-page-cell-\(progress.page)")
         .accessibilityAddTraits(.isButton)
     }
