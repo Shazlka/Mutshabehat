@@ -143,6 +143,7 @@ final class ReaderUITests: XCTestCase {
         let app = launch(atPage: 1)
         XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 10))
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        app.buttons["more-button"].tap()
         app.buttons["mutshabehat-button"].tap()
         XCTAssertTrue(app.navigationBars["المتشابهات"].waitForExistence(timeout: 3))
         // The reader stays in the accessibility tree behind a full-screen cover, but nothing in it can be reached.
@@ -154,6 +155,9 @@ final class ReaderUITests: XCTestCase {
         let app = launch(atPage: 50)
         XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 10))
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()
+        let more = app.buttons["more-button"]
+        XCTAssertTrue(more.waitForExistence(timeout: 3))
+        more.tap()
         let button = app.buttons["mutshabehat-button"]
         XCTAssertTrue(button.waitForExistence(timeout: 3))
         button.tap()

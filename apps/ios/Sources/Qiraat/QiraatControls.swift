@@ -15,6 +15,31 @@ struct QiraatToggle: View {
     }
 }
 
+/// The choices of the Qiraat filter: all, then one reader (both narrators or either one) per submenu.
+/// Shared by the standalone menu and the reader's Qiraat menu. A checkmark marks the current choice.
+struct QiraatFilterItems: View {
+    let catalog: QiraatCatalog
+    @Binding var filter: QiraatFilter
+
+    var body: some View {
+        choice("الكل", .all, id: "qiraat-filter-all")
+        ForEach(catalog.readers.sorted { $0.sortOrder < $1.sortOrder }) { reader in
+            Menu("الإمام \(reader.nameArShort)") {
+                choice("روايتاه معًا", .reader(reader.id), id: "qiraat-filter-reader-\(reader.id)")
+                ForEach(catalog.narrators(of: reader.id)) { narrator in
+                    choice("الراوي \(narrator.nameAr)", .reading(narrator.id), id: "qiraat-filter-narrator-\(narrator.id)")
+                }
+            }
+            .accessibilityIdentifier("qiraat-filter-menu-\(reader.id)")
+        }
+    }
+
+    private func choice(_ title: String, _ value: QiraatFilter, id: String) -> some View {
+        Toggle(title, isOn: Binding(get: { filter == value }, set: { _ in filter = value }))
+            .accessibilityIdentifier(id)
+    }
+}
+
 /// Narrows the page to one reader or one narrator (the web's comparison filter).
 struct QiraatFilterMenu: View {
     let catalog: QiraatCatalog
@@ -22,34 +47,33 @@ struct QiraatFilterMenu: View {
 
     var body: some View {
         Menu {
-            Button { filter = .all } label: { selectable("الكل", .all) }
-            ForEach(catalog.readers.sorted { $0.sortOrder < $1.sortOrder }) { reader in
-                Menu("الإمام \(reader.nameArShort)") {
-                    Button { filter = .reader(reader.id) } label: { selectable("روايتاه معًا", .reader(reader.id)) }
-                    ForEach(catalog.narrators(of: reader.id)) { narrator in
-                        Button { filter = .reading(narrator.id) } label: {
-                            selectable("الراوي \(narrator.nameAr)", .reading(narrator.id))
-                        }
-                    }
-                }
-            }
+            QiraatFilterItems(catalog: catalog, filter: $filter)
         } label: {
-            Label(name(of: filter), systemImage: "line.3.horizontal.decrease.circle")
+            Label(catalog.filterName(filter), systemImage: "line.3.horizontal.decrease.circle")
                 .labelStyle(.titleAndIcon)
                 .font(.subheadline.bold())
         }
         .accessibilityIdentifier("qiraat-filter")
     }
+}
 
-    private func selectable(_ title: String, _ value: QiraatFilter) -> some View {
-        Label(title, systemImage: value == filter ? "checkmark" : "")
-    }
-
-    private func name(of filter: QiraatFilter) -> String {
+extension QiraatCatalog {
+    /// The filter spelled out: «الإمام نافع», «الراوي ورش», or «الكل».
+    func filterName(_ filter: QiraatFilter) -> String {
         switch filter {
         case .all: "الكل"
-        case .reader(let id): catalog.reader(id).map { "الإمام \($0.nameArShort)" } ?? id
-        case .reading(let id): catalog.narrator(id).map { "الراوي \($0.nameAr)" } ?? id
+        case .reader(let id): reader(id).map { "الإمام \($0.nameArShort)" } ?? id
+        case .reading(let id): narrator(id).map { "الراوي \($0.nameAr)" } ?? id
+        }
+    }
+
+    /// The filter as a short label for the reading header: the reader's short name, or the narrator's name
+    /// (the repeated «الإمام» / «الراوي» dropped). Nil for «الكل».
+    func filterShortName(_ filter: QiraatFilter) -> String? {
+        switch filter {
+        case .all: nil
+        case .reader(let id): reader(id)?.nameArShort ?? id
+        case .reading(let id): narrator(id)?.nameAr ?? id
         }
     }
 }

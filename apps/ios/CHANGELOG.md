@@ -3,6 +3,13 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-10 — Five-button reader bar with Qiraat hub and inline filter
+- The reader bar keeps five 44 pt icon entries: search, bookmarks, the new Qiraat menu, «المزيد» (containing the existing متشابهات and الحفظ actions), and settings. Existing action identifiers remain available inside «المزيد».
+- The Qiraat menu exposes the persisted layer toggle and the existing reader/narrator filter choices. Future hub routes are defined for integration, with no placeholder menu actions or screens.
+- A selected reader or narrator appears as a compact `FilterChip` in the fixed 52 pt reading header; tapping it opens the existing reader picker without moving the Mushaf page. The row-based memorization mark placement remains intact.
+- Added `QiraatTopBarUITests` for the five-button geometry, menus, toggle, chip visibility/name, direct filter access, and stable page frame; updated existing top-bar tests to enter moved actions through «المزيد».
+- **Verification:** `make project` completed with `xcodegen generate --quiet`; `QiraatPresentationTests` passed (4 tests in 1 suite); `xcrun swiftc -parse` over all changed Swift source and UI-test files exited 0; `git diff --check` exited 0. App builds and simulator UI tests were not run in this worktree because WS-02 reserves them for the orchestrator.
+
 ## [Unreleased] — 2026-10-10 — QiraatSheet split into VariantCard / RulingCard / QiraatPills / FlowLayout (refactor, no behaviour change)
 - **Refactor only:** `Sources/Qiraat/QiraatSheet.swift` is split by piece. `QiraatSheet` keeps `QiraatWordSelection`, the sheet body and header, and wiring. `VariantCard` (variant card, scoped reader filter, Uthmani variant font), `RulingCard` (أصول ruling card, per-action performance lines, الخلاف notes) and the shared `QiraatPills` / `QiraatBadge` / `QiraatNeedsReviewBadge` move into their own files, with `FlowLayout` unchanged in `FlowLayout.swift`.
 - Each card takes exactly what it reads (the variant or ruling, the catalog, and the filter for variants). Strings, fonts, colours, padding, modifiers and accessibility identifiers are unchanged; colours are not touched yet.
