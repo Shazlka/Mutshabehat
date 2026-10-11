@@ -38,9 +38,11 @@ final class BackupController {
             mutshabehatFileURL: MutshabehatDatabase.shared.fileURL,
             qiraatArchive: archive,
             deviceID: database.deviceID,
-            appVersion: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "0")
+            appVersion: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "0",
+            qiraatNotesFileURL: QiraatNotesStore.shared.fileURL)
         service = BackupService(folder: folder, sources: sources, defaults: defaults)
         store.onDataChanged = { [weak self] in self?.dataChanged() }
+        QiraatNotesStore.shared.onDataChanged = { [weak self] in self?.dataChanged() }
     }
 
     var lastSuccess: Date? { service.lastSuccess }
@@ -121,7 +123,9 @@ final class BackupController {
             mutshabehatFileURL: MutshabehatDatabase.shared.fileURL,
             readingImport: { try QuranReadingDatabase.shared.importDatabase($0) },
             mutshabehatImport: { try MutshabehatDatabase.shared.importDatabase($0) },
-            qiraatInstall: { try library.installQiraatBackup($0) })
+            qiraatInstall: { try library.installQiraatBackup($0) },
+            qiraatNotesFileURL: QiraatNotesStore.shared.fileURL,
+            qiraatNotesImport: { try QiraatNotesStore.shared.importDatabase($0) })
         let safety = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
             .appendingPathComponent("BackupSafetyCopies", isDirectory: true)
         return RestoreService(backupsRoot: root, targets: targets, safetyDirectory: safety)

@@ -223,6 +223,7 @@ struct RestoreView: View {
         case .reading: copy("القراءة", "Reading")
         case .mutshabehat: copy("المتشابهات", "Mutashabihat")
         case .qiraat: copy("القراءات", "Qiraat")
+        case .qiraatNotes: copy("مفضلة وملاحظات القراءات", "Qiraat favourites and notes")
         }
     }
 

@@ -50,6 +50,7 @@ final class BackupService {
         var qiraatArchive: (@Sendable () throws -> Data)?
         var deviceID: String
         var appVersion: String
+        var qiraatNotesFileURL: URL? = nil
     }
 
     private let folder: BackupFolder
@@ -128,9 +129,11 @@ struct BackupWorker: Sendable {
 
     private static let qiraatName = "shared/qiraat.qiraatdata"
     private var sqliteSources: [(name: String, url: URL)] {
-        [("memorization.sqlite", sources.memorizationFileURL),
+        var files: [(name: String, url: URL)] = [("memorization.sqlite", sources.memorizationFileURL),
          ("reading.sqlite", sources.readingFileURL),
          ("mutshabehat.sqlite", sources.mutshabehatFileURL)]
+        if let url = sources.qiraatNotesFileURL { files.append(("qiraat-notes.sqlite", url)) }
+        return files
     }
 
     static func loadManifest(in folder: URL) -> BackupManifest? {

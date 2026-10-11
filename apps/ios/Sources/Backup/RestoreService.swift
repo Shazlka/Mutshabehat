@@ -2,7 +2,7 @@ import Foundation
 import MushafCore
 
 enum BackupStore: CaseIterable, Hashable, Sendable {
-    case memorization, reading, mutshabehat, qiraat
+    case memorization, reading, mutshabehat, qiraat, qiraatNotes
 }
 
 enum MemorizationRestoreMode: Sendable {
@@ -58,6 +58,8 @@ final class RestoreService {
         var readingImport: (Data) throws -> Void
         var mutshabehatImport: (Data) throws -> Void
         var qiraatInstall: ((Data) throws -> Void)?
+        var qiraatNotesFileURL: URL? = nil
+        var qiraatNotesImport: ((Data) throws -> Void)? = nil
     }
 
     private let backupsRoot: URL
@@ -82,6 +84,7 @@ final class RestoreService {
         let export = try verify(info, includingQiraat: false)
         var stores: Set<BackupStore> = [.memorization]
         let names = Set(info.manifest.files.map(\.name))
+        if names.contains("qiraat-notes.sqlite") { stores.insert(.qiraatNotes) }
         if names.contains("reading.sqlite") { stores.insert(.reading) }
         if names.contains("mutshabehat.sqlite") { stores.insert(.mutshabehat) }
         if names.contains(Self.qiraatName),
@@ -155,6 +158,16 @@ final class RestoreService {
                     try targets.readingImport(Data(contentsOf: info.url.appendingPathComponent("reading.sqlite")))
                 case .mutshabehat:
                     try targets.mutshabehatImport(Data(contentsOf: info.url.appendingPathComponent("mutshabehat.sqlite")))
+                case .qiraatNotes:
+                    let name = "qiraat-notes.sqlite"
+                    // Older backups have no notes file and must leave current notes untouched.
+                    guard info.manifest.files.contains(where: { $0.name == name }) else {
+                        throw RestoreError.fileMissing(name)
+                    }
+                    guard let restore = targets.qiraatNotesImport else {
+                        throw RestoreError.storeUnavailable("ملاحظات القراءات")
+                    }
+                    try restore(Data(contentsOf: info.url.appendingPathComponent(name)))
                 case .qiraat:
                     guard let install = targets.qiraatInstall else { throw RestoreError.storeUnavailable("Qiraat") }
                     try install(Data(contentsOf: backupsRoot.appendingPathComponent("shared/qiraat.qiraatdata")))
@@ -205,9 +218,10 @@ final class RestoreService {
         try fileManager.createDirectory(at: folder, withIntermediateDirectories: true)
 
         try targets.memorizationCurrentExport().encode().write(to: folder.appendingPathComponent("memorization.json"))
-        let files: [(String, URL)] = [("memorization.sqlite", targets.memorizationFileURL),
+        var files: [(String, URL)] = [("memorization.sqlite", targets.memorizationFileURL),
                                       ("reading.sqlite", targets.readingFileURL),
                                       ("mutshabehat.sqlite", targets.mutshabehatFileURL)]
+        if let url = targets.qiraatNotesFileURL { files.append(("qiraat-notes.sqlite", url)) }
         for (fileName, origin) in files where fileManager.fileExists(atPath: origin.path) {
             try SQLiteSnapshot.copy(from: origin, to: folder.appendingPathComponent(fileName))
         }
