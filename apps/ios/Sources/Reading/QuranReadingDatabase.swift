@@ -3,7 +3,18 @@ import MushafCore
 import SQLite3
 
 public final class QuranReadingDatabase: @unchecked Sendable {
-    public static let shared = QuranReadingDatabase()
+    public static let shared = QuranReadingDatabase(url: launchOverrideURL)
+
+    /// UI tests pass `-reading-fresh` (DEBUG builds only) to read and write a throw-away database, so one
+    /// test's reading progress never changes where another test's index jump lands.
+    private static var launchOverrideURL: URL? {
+#if DEBUG
+        guard ProcessInfo.processInfo.arguments.contains("-reading-fresh") else { return nil }
+        return FileManager.default.temporaryDirectory.appendingPathComponent("reading-ui-\(UUID().uuidString).sqlite")
+#else
+        return nil
+#endif
+    }
 
     private var db: OpaquePointer?
     private let lock = NSLock()

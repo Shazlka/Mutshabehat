@@ -55,6 +55,25 @@ final class MemorizationReaderUITests: XCTestCase {
         }
     }
 
+    /// The mark takes its own place in the banner: it never sits on the surah name, the page details or
+    /// the juz/hizb text, with the reading header or with the controls showing.
+    func testMarkNeverCoversTheBannerText() {
+        let app = launch(page: 4)
+        XCTAssertTrue(mark(4, in: app).waitForExistence(timeout: 15))
+        func assertClear(_ ids: [String]) {
+            let markFrame = mark(4, in: app).frame
+            for id in ids {
+                let text = app.staticTexts[id]
+                XCTAssertTrue(text.waitForExistence(timeout: 5), id)
+                XCTAssertFalse(markFrame.intersects(text.frame), "\(id) is covered by the mark: \(markFrame) vs \(text.frame)")
+            }
+        }
+        assertClear(["reading-surah-title", "reading-section-text"])
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()   // show the controls
+        XCTAssertTrue(app.buttons["open-index"].waitForExistence(timeout: 5))
+        assertClear(["surah-title", "page-number"])
+    }
+
     func testMarkCanBeHidden() {
         let app = launch(page: 1, extra: ["-memorization-banner-mark", "NO"])
         XCTAssertTrue(app.descendants(matching: .any)["mushaf-page-1"].waitForExistence(timeout: 15))
