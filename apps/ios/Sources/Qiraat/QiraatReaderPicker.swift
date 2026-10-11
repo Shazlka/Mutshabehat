@@ -12,7 +12,7 @@ struct QiraatReaderPicker: View {
                 Button {
                     choose(.all)
                 } label: {
-                    SelectionRow(title: "كل القراء والرواة", color: catalog.multiReaderColor, selected: selection == .all)
+                    SelectionRow(title: Text("كل القراء والرواة"), color: catalog.multiReaderColor, selected: selection == .all)
                 }
                 .accessibilityIdentifier("qiraat-reader-all")
 
@@ -21,7 +21,7 @@ struct QiraatReaderPicker: View {
                         Button {
                             choose(.reader(reader.id))
                         } label: {
-                            SelectionRow(title: "روايتا الإمام \(reader.nameArShort)", color: reader.color,
+                            SelectionRow(title: Text("روايتا الإمام \(reader.nameArShort)"), color: reader.color,
                                          selected: selection == .reader(reader.id))
                         }
                         .accessibilityIdentifier("qiraat-reader-\(reader.id)")
@@ -30,7 +30,7 @@ struct QiraatReaderPicker: View {
                             Button {
                                 choose(.reading(narrator.id))
                             } label: {
-                                SelectionRow(title: narrator.nameAr, color: narrator.color,
+                                SelectionRow(title: Text(verbatim: narrator.nameAr), color: narrator.color,
                                              selected: selection == .reading(narrator.id))
                             }
                             .accessibilityIdentifier("qiraat-narrator-\(narrator.id)")
@@ -58,7 +58,7 @@ struct QiraatReaderPicker: View {
 }
 
 private struct SelectionRow: View {
-    let title: String
+    let title: Text
     let color: String
     let selected: Bool
 
@@ -67,7 +67,7 @@ private struct SelectionRow: View {
             Circle()
                 .fill(Color(qiraatHex: color))
                 .frame(width: 14, height: 14)
-            Text(title)
+            title
                 .foregroundStyle(.primary)
             Spacer()
             if selected {

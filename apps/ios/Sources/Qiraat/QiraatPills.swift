@@ -23,14 +23,21 @@ struct QiraatPills: View {
     }
 }
 
-/// A small capsule label: a ruling category, a variant kind, a wajh number.
+/// A small capsule label: a ruling category, a variant kind, a wajh number. The caller decides whether the
+/// text is data (`Text(verbatim:)`, as the web gives it) or app chrome (`Text("…")`, translated).
 struct QiraatBadge: View {
-    let text: String
+    let label: Text
     let foreground: Color
     let background: Color
 
+    init(_ label: Text, foreground: Color, background: Color) {
+        self.label = label
+        self.foreground = foreground
+        self.background = background
+    }
+
     var body: some View {
-        Text(verbatim: text).font(.caption2.bold()).foregroundStyle(foreground)
+        label.font(.caption2.bold()).foregroundStyle(foreground)
             .padding(.horizontal, 8).padding(.vertical, 3)
             .background(Capsule().fill(background))
     }
@@ -39,6 +46,6 @@ struct QiraatBadge: View {
 /// Shown on a variant or ruling whose verification status is NEEDS_MANUAL_REVIEW.
 struct QiraatNeedsReviewBadge: View {
     var body: some View {
-        QiraatBadge(text: "تحتاج مراجعة يدوية", foreground: Color(qiraatHex: "#8a2f10"), background: Color(qiraatHex: "#f7d2c4"))
+        QiraatBadge(Text("تحتاج مراجعة يدوية"), foreground: Color(qiraatHex: "#8a2f10"), background: Color(qiraatHex: "#f7d2c4"))
     }
 }

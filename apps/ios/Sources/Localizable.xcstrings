@@ -961,7 +961,14 @@
       }
     },
     "الكل" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "All"
+          }
+        }
+      }
     },
     "اللغة" : {
       "localizations" : {
@@ -1632,6 +1639,284 @@
           "stringUnit" : {
             "state" : "machine_translated",
             "value" : "You can import an automation data file (JSON) by tapping Import above."
+          }
+        }
+      }
+    },
+    "الراوي %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Narrator %@"
+          }
+        }
+      }
+    },
+    "روايتاه معًا" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Both narrations together"
+          }
+        }
+      }
+    },
+    "روايتا الإمام %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Both narrations of Imam %@"
+          }
+        }
+      }
+    },
+    "كل القراء والرواة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "All readers and narrators"
+          }
+        }
+      }
+    },
+    "تحتاج مراجعة يدوية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Needs manual review"
+          }
+        }
+      }
+    },
+    "وجه %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Wajh %lld"
+          }
+        }
+      }
+    },
+    "الخلاف: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Disagreement: %@"
+          }
+        }
+      }
+    },
+    "qiraat.difference.HARAKAH" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تشكيل"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Vowel marks"
+          }
+        }
+      }
+    },
+    "qiraat.difference.LETTER" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حرف"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Letter"
+          }
+        }
+      }
+    },
+    "qiraat.difference.ADDITION" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "زيادة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Addition"
+          }
+        }
+      }
+    },
+    "qiraat.difference.OMISSION" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حذف"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Omission"
+          }
+        }
+      }
+    },
+    "qiraat.difference.MADD" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مد"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Madd"
+          }
+        }
+      }
+    },
+    "qiraat.difference.HAMZ" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "همز"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Hamz"
+          }
+        }
+      }
+    },
+    "qiraat.difference.IMALAH" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إمالة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Imalah"
+          }
+        }
+      }
+    },
+    "qiraat.difference.IDGHAM" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إدغام"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Idgham"
+          }
+        }
+      }
+    },
+    "qiraat.difference.WAQF" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "وقف"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Waqf"
+          }
+        }
+      }
+    },
+    "qiraat.difference.NAQL" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نقل"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Naql"
+          }
+        }
+      }
+    },
+    "qiraat.difference.SILAH" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "صلة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Silah"
+          }
+        }
+      }
+    },
+    "qiraat.difference.ORTHOGRAPHY" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "رسم"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Orthography"
+          }
+        }
+      }
+    },
+    "qiraat.difference.OTHER" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أخرى"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Other"
           }
         }
       }

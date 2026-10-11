@@ -12,7 +12,7 @@ struct RulingCard: View {
         let distinct = distinctRulingText(ruling.text, categoryAr: ruling.categoryAr, actions: ruling.attribution.map(\.action))
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                QiraatBadge(text: ruling.categoryAr, foreground: .white, background: color)
+                QiraatBadge(Text(verbatim: ruling.categoryAr), foreground: .white, background: color)
                 Spacer()
                 if let condition = ruling.condition {
                     Text(verbatim: condition).font(.caption2.bold()).foregroundStyle(.secondary)
@@ -51,7 +51,7 @@ struct RulingCard: View {
         if showAction || !conditions.isEmpty || !wajhs.isEmpty {
             HStack(spacing: 4) {
                 ForEach(wajhs, id: \.self) { n in
-                    QiraatBadge(text: "وجه \(n)", foreground: Color(qiraatHex: "#7a5a10"), background: Color(qiraatHex: "#f1e2b6"))
+                    QiraatBadge(Text("وجه \(n)"), foreground: Color(qiraatHex: "#7a5a10"), background: Color(qiraatHex: "#f1e2b6"))
                 }
                 if showAction { Text(verbatim: group.action).font(.caption.bold()) }
                 if !conditions.isEmpty {
@@ -60,7 +60,7 @@ struct RulingCard: View {
                 }
             }
         }
-        ForEach(notes, id: \.self) { Text(verbatim: "الخلاف: \($0)").font(.caption).foregroundStyle(.secondary) }
+        ForEach(notes, id: \.self) { Text("الخلاف: \($0)").font(.caption).foregroundStyle(.secondary) }
     }
 
     private func unique(_ values: [String]) -> [String] {

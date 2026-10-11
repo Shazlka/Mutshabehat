@@ -10,11 +10,11 @@ struct VariantCard: View {
 
     var body: some View {
         let performanceOnly = variant.isPerformanceOnly && variant.performanceNote != nil
-        let label = variant.performanceNote ?? differenceTypeLabelAr(variant.differenceType)
+        let label = variant.performanceNote.map { Text(verbatim: $0) } ?? differenceLabel(variant.differenceType)
         let text = variant.uthmaniText ?? (performanceOnly ? variant.hafsText : variant.variantText)
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                QiraatBadge(text: label, foreground: Color(qiraatHex: "#7a5a10"), background: Color(qiraatHex: "#f1e2b6"))
+                QiraatBadge(label, foreground: Color(qiraatHex: "#7a5a10"), background: Color(qiraatHex: "#f1e2b6"))
                 Spacer()
                 Text("خلاف في الرسم").font(.caption2.bold()).foregroundStyle(.secondary)
             }
@@ -28,6 +28,25 @@ struct VariantCard: View {
         .padding(10)
         .background(RoundedRectangle(cornerRadius: 10).fill(.white))
         .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(qiraatHex: "#e3d6b4")))
+    }
+
+    /// The web's difference-kind labels (`DIFFERENCE_TYPE_LABELS_AR`), translated. Unknown kinds read as "other".
+    private func differenceLabel(_ type: String?) -> Text {
+        switch type {
+        case "HARAKAH": Text("qiraat.difference.HARAKAH")
+        case "LETTER": Text("qiraat.difference.LETTER")
+        case "ADDITION": Text("qiraat.difference.ADDITION")
+        case "OMISSION": Text("qiraat.difference.OMISSION")
+        case "MADD": Text("qiraat.difference.MADD")
+        case "HAMZ": Text("qiraat.difference.HAMZ")
+        case "IMALAH": Text("qiraat.difference.IMALAH")
+        case "IDGHAM": Text("qiraat.difference.IDGHAM")
+        case "WAQF": Text("qiraat.difference.WAQF")
+        case "NAQL": Text("qiraat.difference.NAQL")
+        case "SILAH": Text("qiraat.difference.SILAH")
+        case "ORTHOGRAPHY": Text("qiraat.difference.ORTHOGRAPHY")
+        default: Text("qiraat.difference.OTHER")
+        }
     }
 
     /// The readers to show: narrowed to the selected reader or reading when the filter names one.
