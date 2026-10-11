@@ -1,3 +1,4 @@
+import Combine
 import Foundation
 import MushafCore
 
@@ -11,8 +12,13 @@ extension Notification.Name {
 /// snapshot (`QiraatStore.applyLivePage`) and redrawn only when it actually changed. Offline, or on any
 /// failure, the page keeps showing what it had. Nothing here ever writes to the web app.
 @MainActor
-final class QiraatLiveSync {
+final class QiraatLiveSync: ObservableObject {
     enum Outcome: Equatable { case updated, unchanged, skipped, failed }
+
+    struct PageState: Equatable {
+        let latestOutcome: Outcome?
+        let lastConfirmation: Date?
+    }
 
     nonisolated static let baseURL = URL(string: "https://mutshabehat-v2.vercel.app")!
     static let shared = QiraatLiveSync()
@@ -26,6 +32,7 @@ final class QiraatLiveSync {
     private let minInterval: TimeInterval
     private var lastChecked: [Int: Date] = [:]
     private var inFlight: Set<Int> = []
+    @Published private(set) var pageStates: [Int: PageState] = [:]
 
     init(fetch: @escaping (URL) async throws -> Data = QiraatLiveSync.fetchFromWeb, minInterval: TimeInterval = 5) {
         self.fetch = fetch
@@ -48,6 +55,10 @@ final class QiraatLiveSync {
         return components.url!
     }
 
+    func pageState(for page: Int) -> PageState {
+        pageStates[page] ?? PageState(latestOutcome: nil, lastConfirmation: nil)
+    }
+
     /// The site signs a visitor in with a cookie on the first request and redirects back; the shared
     /// session keeps the cookie and follows the redirect. The response is never cached.
     nonisolated static func fetchFromWeb(_ url: URL) async throws -> Data {
@@ -61,18 +72,34 @@ final class QiraatLiveSync {
 
     @discardableResult
     func refresh(page: Int, store: QiraatStore?, force: Bool = false) async -> Outcome {
-        guard let store, !inFlight.contains(page) else { return .skipped }
-        if !force, let last = lastChecked[page], Date().timeIntervalSince(last) < minInterval { return .skipped }
+        guard let store, !inFlight.contains(page) else { return record(.skipped, for: page) }
+        if !force, let last = lastChecked[page], Date().timeIntervalSince(last) < minInterval {
+            return record(.skipped, for: page)
+        }
         inFlight.insert(page)
         defer { inFlight.remove(page) }
         lastChecked[page] = Date()
         do {
             let data = try await fetch(Self.liveURL(page: page))
-            guard try store.applyLivePage(data, number: page) else { return .unchanged }
+            guard try store.applyLivePage(data, number: page) else { return record(.unchanged, for: page) }
+            let outcome = record(.updated, for: page)
             NotificationCenter.default.post(name: .qiraatPageDidChange, object: nil, userInfo: ["page": page])
-            return .updated
+            return outcome
         } catch {
-            return .failed
+            return record(.failed, for: page)
         }
+    }
+
+    @discardableResult
+    private func record(_ outcome: Outcome, for page: Int, now: Date = Date()) -> Outcome {
+        let lastConfirmation: Date?
+        switch outcome {
+        case .updated, .unchanged:
+            lastConfirmation = now
+        case .skipped, .failed:
+            lastConfirmation = pageStates[page]?.lastConfirmation
+        }
+        pageStates[page] = PageState(latestOutcome: outcome, lastConfirmation: lastConfirmation)
+        return outcome
     }
 }

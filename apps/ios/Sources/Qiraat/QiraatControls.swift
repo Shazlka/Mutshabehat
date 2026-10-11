@@ -10,7 +10,7 @@ struct QiraatToggle: View {
             .toggleStyle(.switch)
             .tint(.progressFill)
         .accessibilityLabel("القراءات العشر")
-        .accessibilityValue(isOn ? "مفعّلة" : "متوقفة")
+        .accessibilityValue(isOn ? Text("مفعّلة") : Text("متوقفة"))
         .accessibilityIdentifier("qiraat-toggle")
     }
 }
@@ -34,7 +34,7 @@ struct QiraatFilterItems: View {
         }
     }
 
-    private func choice(_ title: String, _ value: QiraatFilter, id: String) -> some View {
+    private func choice(_ title: LocalizedStringKey, _ value: QiraatFilter, id: String) -> some View {
         Toggle(title, isOn: Binding(get: { filter == value }, set: { _ in filter = value }))
             .accessibilityIdentifier(id)
     }
@@ -59,11 +59,11 @@ struct QiraatFilterMenu: View {
 
 extension QiraatCatalog {
     /// The filter spelled out: «الإمام نافع», «الراوي ورش», or «الكل».
-    func filterName(_ filter: QiraatFilter) -> String {
+    func filterName(_ filter: QiraatFilter) -> LocalizedStringKey {
         switch filter {
         case .all: "الكل"
-        case .reader(let id): reader(id).map { "الإمام \($0.nameArShort)" } ?? id
-        case .reading(let id): narrator(id).map { "الراوي \($0.nameAr)" } ?? id
+        case .reader(let id): reader(id).map { "الإمام \($0.nameArShort)" } ?? LocalizedStringKey(id)
+        case .reading(let id): narrator(id).map { "الراوي \($0.nameAr)" } ?? LocalizedStringKey(id)
         }
     }
 

@@ -17,6 +17,7 @@ struct ReaderTopBar: View {
     var qiraat: QiraatPreferences
     var qiraatCatalog: QiraatCatalog?
     var openQiraatFilter: () -> Void = {}
+    var openQiraatRoute: (QiraatHubRoute) -> Void = { _ in }
     /// Page-status marks for the banner (one page, or both pages of a spread), left to right; empty hides them.
     var memorizationMarks: [(page: Int, progress: MemorizationPageProgress)] = []
     var memorizationLanguage: AppLanguage = .arabic
@@ -92,7 +93,8 @@ struct ReaderTopBar: View {
                     TopBarIconMenu(systemImage: qiraat.enabled ? "character.book.closed.fill" : "character.book.closed",
                                    label: "القراءات", identifier: "qiraat-button",
                                    value: qiraat.enabled ? "مفعّلة" : "متوقفة") {
-                        QiraatHubContent(qiraat: qiraat, catalog: qiraatCatalog)
+                        QiraatHubContent(qiraat: qiraat, catalog: qiraatCatalog,
+                                         openRoute: openQiraatRoute)
                     }
                     TopBarIconMenu(systemImage: "ellipsis.circle", label: "المزيد", identifier: "more-button") {
                         Button(action: openMutshabehat) { Label("المتشابهات", systemImage: "square.stack.3d.up.fill") }
@@ -125,7 +127,7 @@ struct ReaderTopBar: View {
             }
             .frame(maxWidth: 130)
             .fixedSize()
-            .accessibilityLabel("القراءات: \(full)")
+            .accessibilityLabel(Text("القراءات العشر") + Text(verbatim: ": ") + Text(full))
             .accessibilityHint("لتغيير القارئ أو الراوي")
             .accessibilityIdentifier("qiraat-filter-chip")
         }
