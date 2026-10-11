@@ -12,9 +12,11 @@ public enum MushafDatabaseError: Error, Equatable {
 /// Not thread-safe; callers must serialise access (the app uses the main actor).
 public final class MushafDatabase {
     public static let supportedSchemaVersion = 2
+    public let url: URL
     private var handle: OpaquePointer?
 
     public init(url: URL) throws {
+        self.url = url
         let flags = SQLITE_OPEN_READONLY | SQLITE_OPEN_NOMUTEX
         guard sqlite3_open_v2(url.path, &handle, flags, nil) == SQLITE_OK else {
             let message = handle.map { String(cString: sqlite3_errmsg($0)) } ?? "no handle"
@@ -81,6 +83,30 @@ public final class MushafDatabase {
         try rows("SELECT MIN(page) FROM words WHERE surah = ? AND ayah = ?", bind: [ayah.surah, ayah.ayah]) { s in
             s.optionalInt(0)
         }.first ?? nil
+    }
+
+    /// Resolves every Quran word coordinate to the page that actually contains it. Qiraat snapshot
+    /// files are transport buckets and are not authoritative for a ruling's printed page.
+    public func wordPageIndex() throws -> [MushafWordCoordinate: Int] {
+        var result: [MushafWordCoordinate: Int] = [:]
+        let rows = try rows("""
+                SELECT surah, ayah, index_in_ayah, page
+                FROM words WHERE char_type = 'word'
+                """, { row in
+                (
+                    MushafWordCoordinate(surah: row.int(0), ayah: row.int(1), token: row.int(2)),
+                    row.int(3)
+                )
+            })
+        for (coordinate, page) in rows {
+            if let existing = result[coordinate], existing != page {
+                throw MushafDatabaseError.queryFailed(
+                    "Word coordinate \(coordinate.surah):\(coordinate.ayah):\(coordinate.token) is on pages \(existing) and \(page)"
+                )
+            }
+            result[coordinate] = page
+        }
+        return result
     }
 
     /// Indexed offline Quran search. All matching happens against derived columns; authoritative

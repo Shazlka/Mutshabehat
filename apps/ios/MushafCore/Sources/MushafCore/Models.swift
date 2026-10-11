@@ -35,6 +35,19 @@ public struct MushafWord: Identifiable, Hashable, Sendable {
     public let textUthmani: String
 }
 
+/// The stable Quran coordinate used to resolve a word to its printed Mushaf page.
+public struct MushafWordCoordinate: Hashable, Sendable {
+    public let surah: Int
+    public let ayah: Int
+    public let token: Int
+
+    public init(surah: Int, ayah: Int, token: Int) {
+        self.surah = surah
+        self.ayah = ayah
+        self.token = token
+    }
+}
+
 public struct LineDecoration: Hashable, Sendable {
     public var surahHeader: Int?
     public var basmala: Bool

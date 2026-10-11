@@ -3,31 +3,64 @@ import Testing
 @testable import MushafCore
 
 @Suite struct UsulIndexTests {
-    @Test func bundledSnapshotHasTwentyThreeCategoriesAndTwelveThousandFiveHundredSixRulings() throws {
-        let store = try QiraatStore(directory: generatedDirectory.appendingPathComponent("Qiraat"))
-        let categories = UsulIndex.build(store: store)
+    @Test func bundledSnapshotAggregatesRowsIntoNavigablePlacesWithoutLosingDetails() throws {
+        let result = try buildBundledIndex()
 
-        #expect(categories.count == 23)
-        let totalCount = categories.reduce(0) { $0 + $1.count }
-        #expect(totalCount == 12_506)
+        #expect(result.categories.count == 23)
+        #expect(result.rawRulingCount == 12_506)
 
-        let totalPlaces = categories.reduce(0) { $0 + $1.places.count }
-        #expect(totalPlaces == 12_506)
+        let places = result.categories.flatMap(\.places)
+        #expect(places.count == 12_297)
+        #expect(places.filter { $0.rulings.count > 1 }.count == 93)
+        #expect(places.map { $0.rulings.count }.max() == 11)
+        #expect(places.flatMap(\.rulings).count == result.rawRulingCount)
+
+        for category in result.categories {
+            let loci = category.places.map {
+                "\($0.surah):\($0.ayah):\($0.startToken)-\($0.endAyah):\($0.endToken)"
+            }
+            #expect(Set(loci).count == loci.count, "Duplicate locus in \(category.code)")
+        }
     }
 
-    @Test func categoriesAreOrderedByCountDescending() throws {
+    @Test func pagesComeFromQuranCoordinatesInsteadOfSnapshotBuckets() throws {
         let store = try QiraatStore(directory: generatedDirectory.appendingPathComponent("Qiraat"))
-        let categories = UsulIndex.build(store: store)
+        let database = try openDatabase()
+        let wordPages = try database.wordPageIndex()
+        let categories = UsulIndex.build(store: store, wordPages: wordPages)
 
-        #expect(!categories.isEmpty)
-        for i in 0..<(categories.count - 1) {
-            #expect(categories[i].count >= categories[i + 1].count)
+        let pageOneRulings = try #require(store.page(1)?.rulings)
+        let incorrectlyFiled = pageOneRulings.filter { ruling in
+            wordPages[coordinate(of: ruling)] != 1
+        }
+        #expect(incorrectlyFiled.count == 5)
+        #expect(Set(incorrectlyFiled.compactMap { wordPages[coordinate(of: $0)] }) == [3, 4, 7])
+
+        let places = categories.flatMap(\.places)
+        for ruling in incorrectlyFiled {
+            let place = try #require(places.first { $0.rulings.contains { $0.id == ruling.id } })
+            #expect(place.page == wordPages[coordinate(of: ruling)])
+        }
+    }
+
+    @Test func categoriesAndPlacesHaveDeterministicReadingOrder() throws {
+        let categories = try buildBundledIndex().categories
+
+        for pair in zip(categories, categories.dropFirst()) {
+            #expect(pair.0.count > pair.1.count ||
+                    (pair.0.count == pair.1.count && pair.0.code < pair.1.code))
+        }
+
+        for category in categories {
+            for pair in zip(category.places, category.places.dropFirst()) {
+                #expect(isInReadingOrder(pair.0, pair.1),
+                        "Reading-order inversion in \(category.code)")
+            }
         }
     }
 
     @Test func everyCategoryAndPlaceHasValidProperties() throws {
-        let store = try QiraatStore(directory: generatedDirectory.appendingPathComponent("Qiraat"))
-        let categories = UsulIndex.build(store: store)
+        let categories = try buildBundledIndex().categories
 
         var seenCodes = Set<String>()
         for category in categories {
@@ -44,23 +77,16 @@ import Testing
                 #expect((1...114).contains(place.surah))
                 #expect(place.ayah >= 1)
                 #expect(place.startToken >= 1)
+                #expect(place.endAyah >= place.ayah)
+                #expect(place.endToken >= 1)
+                #expect(!place.rulings.isEmpty)
             }
         }
-        // The live data carries exactly two rulings without a base text (2:33 word 16, النقل and السكت);
-        // the index keeps them rather than dropping or inventing text.
-        let missingText = categories.flatMap(\.places).filter { $0.baseText.isEmpty }.map(\.id).sorted()
+
+        // Keep the two source rows whose text is empty; do not invent Quran text for them.
+        let missingText = categories.flatMap(\.places).flatMap(\.rulings)
+            .filter { $0.baseText.isEmpty }.map(\.id).sorted()
         #expect(missingText == ["r-l-2-33-16-6c3ade", "r-l-2-33-16-b8236e"])
-    }
-
-    @Test func placesPreserveQuranicReadingOrder() throws {
-        let store = try QiraatStore(directory: generatedDirectory.appendingPathComponent("Qiraat"))
-        let categories = UsulIndex.build(store: store)
-
-        for category in categories {
-            for i in 0..<(category.places.count - 1) {
-                #expect(category.places[i].page <= category.places[i + 1].page)
-            }
-        }
     }
 
     @Test func emptyStateWhenStoreHasNoPages() throws {
@@ -72,10 +98,8 @@ import Testing
         try FileManager.default.copyItem(at: catalogURL, to: tempDir.appendingPathComponent("catalog.json"))
 
         let store = try QiraatStore(directory: tempDir)
-        let categories = UsulIndex.build(store: store)
+        let categories = UsulIndex.build(store: store, wordPages: try openDatabase().wordPageIndex())
         #expect(categories.isEmpty)
-        #expect(categories.count == 0)
-        #expect(categories.reduce(0) { $0 + $1.count } == 0)
     }
 
     @Test func emptyStateWhenStoreHasPagesWithNoRulings() throws {
@@ -90,12 +114,69 @@ import Testing
         try Data(page1Data.utf8).write(to: tempDir.appendingPathComponent("page-001.json"))
 
         let store = try QiraatStore(directory: tempDir)
-        let categories = UsulIndex.build(store: store)
+        let categories = UsulIndex.build(store: store, wordPages: try openDatabase().wordPageIndex())
         #expect(categories.isEmpty)
     }
 
     @Test func emptyStateWhenStoreIsNil() {
-        let categories = UsulIndex.build(store: nil)
+        let categories = UsulIndex.build(store: nil, wordPages: [:])
         #expect(categories.isEmpty)
     }
+
+    @Test func cacheReusesTheFirstOffMainBuild() async throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        let qiraatDirectory = directory.appendingPathComponent("Qiraat")
+        try FileManager.default.createDirectory(at: qiraatDirectory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+
+        try FileManager.default.copyItem(
+            at: generatedDirectory.appendingPathComponent("Qiraat/catalog.json"),
+            to: qiraatDirectory.appendingPathComponent("catalog.json")
+        )
+        let pageURL = qiraatDirectory.appendingPathComponent("page-001.json")
+        try FileManager.default.copyItem(
+            at: generatedDirectory.appendingPathComponent("Qiraat/page-001.json"),
+            to: pageURL
+        )
+        let databaseURL = directory.appendingPathComponent("mushaf.sqlite")
+        try FileManager.default.copyItem(
+            at: generatedDirectory.appendingPathComponent("mushaf.sqlite"),
+            to: databaseURL
+        )
+
+        let store = try QiraatStore(directory: qiraatDirectory)
+        let cache = UsulIndexCache()
+        let first = await cache.categories(store: store, databaseURL: databaseURL)
+        #expect(!first.isEmpty)
+
+        try FileManager.default.removeItem(at: pageURL)
+        try FileManager.default.removeItem(at: databaseURL)
+        let second = await cache.categories(store: store, databaseURL: databaseURL)
+        #expect(second == first)
+    }
+}
+
+private func buildBundledIndex() throws -> (
+    categories: [UsulCategory],
+    rawRulingCount: Int
+) {
+    let store = try QiraatStore(directory: generatedDirectory.appendingPathComponent("Qiraat"))
+    let wordPages = try openDatabase().wordPageIndex()
+    let rawRulingCount = (1...mushafPageCount).reduce(into: 0) { count, page in
+        count += store.page(page)?.rulings.count ?? 0
+    }
+    return (UsulIndex.build(store: store, wordPages: wordPages), rawRulingCount)
+}
+
+private func coordinate(of ruling: QiraatRuling) -> MushafWordCoordinate {
+    MushafWordCoordinate(surah: ruling.surah, ayah: ruling.ayah, token: ruling.startToken)
+}
+
+private func isInReadingOrder(_ lhs: UsulPlace, _ rhs: UsulPlace) -> Bool {
+    let left = [lhs.page, lhs.surah, lhs.ayah, lhs.startToken, lhs.endAyah, lhs.endToken]
+    let right = [rhs.page, rhs.surah, rhs.ayah, rhs.startToken, rhs.endAyah, rhs.endToken]
+    for (leftValue, rightValue) in zip(left, right) where leftValue != rightValue {
+        return leftValue < rightValue
+    }
+    return true
 }

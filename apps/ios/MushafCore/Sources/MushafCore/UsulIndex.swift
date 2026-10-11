@@ -7,17 +7,36 @@ public struct UsulPlace: Codable, Sendable, Hashable, Identifiable {
     public let surah: Int
     public let ayah: Int
     public let startToken: Int
+    public let endAyah: Int
+    public let endToken: Int
     public let baseText: String
+    /// All narrator/reader-specific faces recorded for this one navigable locus.
+    public let rulings: [QiraatRuling]
 
     public var token: Int { startToken }
 
-    public init(id: String? = nil, page: Int, surah: Int, ayah: Int, startToken: Int, baseText: String) {
-        self.id = id ?? "\(page)-\(surah)-\(ayah)-\(startToken)"
+    public init(
+        id: String? = nil,
+        page: Int,
+        surah: Int,
+        ayah: Int,
+        startToken: Int,
+        endAyah: Int? = nil,
+        endToken: Int? = nil,
+        baseText: String,
+        rulings: [QiraatRuling] = []
+    ) {
+        let resolvedEndAyah = endAyah ?? ayah
+        let resolvedEndToken = endToken ?? startToken
+        self.id = id ?? "\(page)-\(surah)-\(ayah)-\(startToken)-\(resolvedEndAyah)-\(resolvedEndToken)"
         self.page = page
         self.surah = surah
         self.ayah = ayah
         self.startToken = startToken
+        self.endAyah = resolvedEndAyah
+        self.endToken = resolvedEndToken
         self.baseText = baseText
+        self.rulings = rulings
     }
 }
 
@@ -71,20 +90,28 @@ public struct UsulIndex: Sendable {
         self.categories = categories
     }
 
-    /// Builds the list of Usul categories from all 604 pages of the provided Qiraat store.
-    /// Categories are ordered by count descending (with category code as a tie-breaker).
-    public static func build(store: QiraatStore) -> [UsulCategory] {
-        build(store: Optional.some(store))
+    private struct LocusKey: Hashable {
+        let surah: Int
+        let ayah: Int
+        let startToken: Int
+        let endAyah: Int
+        let endToken: Int
     }
 
-    /// Builds the list of Usul categories from the store, returning an empty list if nil.
-    public static func build(store: QiraatStore?) -> [UsulCategory] {
+    /// Builds the list from all 604 snapshot files. The database-derived `wordPages` map is the
+    /// authority for navigation; records whose start coordinate is absent are not navigable and are
+    /// therefore omitted. Rows sharing a category and complete locus span become one place while
+    /// their reader/narrator-specific details remain available in `UsulPlace.rulings`.
+    public static func build(
+        store: QiraatStore?,
+        wordPages: [MushafWordCoordinate: Int]
+    ) -> [UsulCategory] {
         guard let store else { return [] }
 
         struct CategoryAccumulator {
             var categoryAr: String
             var color: String
-            var places: [UsulPlace]
+            var rulingsByLocus: [LocusKey: [QiraatRuling]]
         }
 
         var map: [String: CategoryAccumulator] = [:]
@@ -92,17 +119,23 @@ public struct UsulIndex: Sendable {
         for pageNumber in 1...mushafPageCount {
             guard let pageData = store.page(pageNumber) else { continue }
             for ruling in pageData.rulings {
-                let place = UsulPlace(
-                    id: ruling.id,
-                    page: pageNumber,
+                let coordinate = MushafWordCoordinate(
+                    surah: ruling.surah,
+                    ayah: ruling.ayah,
+                    token: ruling.startToken
+                )
+                guard wordPages[coordinate] != nil else { continue }
+
+                let locus = LocusKey(
                     surah: ruling.surah,
                     ayah: ruling.ayah,
                     startToken: ruling.startToken,
-                    baseText: ruling.baseText
+                    endAyah: ruling.endAyah ?? ruling.ayah,
+                    endToken: ruling.endToken
                 )
 
                 if var existing = map[ruling.category] {
-                    existing.places.append(place)
+                    existing.rulingsByLocus[locus, default: []].append(ruling)
                     if existing.categoryAr.isEmpty && !ruling.categoryAr.isEmpty {
                         existing.categoryAr = ruling.categoryAr
                     }
@@ -114,19 +147,39 @@ public struct UsulIndex: Sendable {
                     map[ruling.category] = CategoryAccumulator(
                         categoryAr: ruling.categoryAr,
                         color: ruling.color,
-                        places: [place]
+                        rulingsByLocus: [locus: [ruling]]
                     )
                 }
             }
         }
 
         var categories = map.map { code, acc in
-            UsulCategory(
+            let places = acc.rulingsByLocus.map { locus, rulings in
+                let coordinate = MushafWordCoordinate(
+                    surah: locus.surah,
+                    ayah: locus.ayah,
+                    token: locus.startToken
+                )
+                let baseText = rulings.lazy.map(\.baseText).first { !$0.isEmpty } ?? ""
+                return UsulPlace(
+                    id: "\(code)-\(locus.surah)-\(locus.ayah)-\(locus.startToken)-\(locus.endAyah)-\(locus.endToken)",
+                    page: wordPages[coordinate]!,
+                    surah: locus.surah,
+                    ayah: locus.ayah,
+                    startToken: locus.startToken,
+                    endAyah: locus.endAyah,
+                    endToken: locus.endToken,
+                    baseText: baseText,
+                    rulings: rulings.sorted { $0.id < $1.id }
+                )
+            }.sorted(by: placePrecedes)
+
+            return UsulCategory(
                 code: code,
                 categoryAr: acc.categoryAr,
                 color: acc.color,
-                count: acc.places.count,
-                places: acc.places
+                count: places.count,
+                places: places
             )
         }
 
@@ -138,6 +191,48 @@ public struct UsulIndex: Sendable {
             return a.code < b.code
         }
 
+        return categories
+    }
+
+    private static func placePrecedes(_ lhs: UsulPlace, _ rhs: UsulPlace) -> Bool {
+        if lhs.page != rhs.page { return lhs.page < rhs.page }
+        if lhs.surah != rhs.surah { return lhs.surah < rhs.surah }
+        if lhs.ayah != rhs.ayah { return lhs.ayah < rhs.ayah }
+        if lhs.startToken != rhs.startToken { return lhs.startToken < rhs.startToken }
+        if lhs.endAyah != rhs.endAyah { return lhs.endAyah < rhs.endAyah }
+        return lhs.endToken < rhs.endToken
+    }
+}
+
+/// Builds the expensive 604-file index once per store/database pair and shares concurrent callers.
+public actor UsulIndexCache {
+    public static let shared = UsulIndexCache()
+
+    private struct Key: Hashable {
+        let store: ObjectIdentifier
+        let databasePath: String
+    }
+
+    private var cached: [Key: [UsulCategory]] = [:]
+    private var inFlight: [Key: Task<[UsulCategory], Never>] = [:]
+
+    public init() {}
+
+    public func categories(store: QiraatStore?, databaseURL: URL) async -> [UsulCategory] {
+        guard let store else { return [] }
+        let key = Key(store: ObjectIdentifier(store), databasePath: databaseURL.standardizedFileURL.path)
+        if let categories = cached[key] { return categories }
+        if let task = inFlight[key] { return await task.value }
+
+        let task = Task.detached(priority: .userInitiated) { () -> [UsulCategory] in
+            guard let database = try? MushafDatabase(url: databaseURL),
+                  let wordPages = try? database.wordPageIndex() else { return [] }
+            return UsulIndex.build(store: store, wordPages: wordPages)
+        }
+        inFlight[key] = task
+        let categories = await task.value
+        inFlight[key] = nil
+        cached[key] = categories
         return categories
     }
 }

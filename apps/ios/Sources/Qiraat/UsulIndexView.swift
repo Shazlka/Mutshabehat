@@ -4,12 +4,13 @@ import UIKit
 
 /// An index of all 23 أصول categories (أبواب الأصول) and their occurrences across the Mushaf.
 struct UsulIndexView: View {
+    @Environment(\.dismiss) private var dismiss
+
     let categories: [UsulCategory]
     let surahNames: [Int: String]?
     let onOpen: (_ page: Int, _ surah: Int, _ ayah: Int, _ token: Int) -> Void
     let onClose: (() -> Void)?
 
-    @Environment(\.dismiss) private var dismiss
     @State private var searchText: String = ""
 
     init(
@@ -20,29 +21,6 @@ struct UsulIndexView: View {
     ) {
         self.categories = categories
         self.surahNames = surahNames
-        self.onOpen = onOpen
-        self.onClose = onClose
-    }
-
-    init(
-        store: QiraatStore?,
-        surahNames: [Int: String]? = nil,
-        onOpen: @escaping (_ page: Int, _ surah: Int, _ ayah: Int, _ token: Int) -> Void = { _, _, _, _ in },
-        onClose: (() -> Void)? = nil
-    ) {
-        self.categories = UsulIndex.build(store: store)
-        self.surahNames = surahNames
-        self.onOpen = onOpen
-        self.onClose = onClose
-    }
-
-    init(
-        library: MushafLibrary,
-        onOpen: @escaping (_ page: Int, _ surah: Int, _ ayah: Int, _ token: Int) -> Void = { _, _, _, _ in },
-        onClose: (() -> Void)? = nil
-    ) {
-        self.categories = UsulIndex.build(store: library.qiraat)
-        self.surahNames = library.surahNames
         self.onOpen = onOpen
         self.onClose = onClose
     }
@@ -154,6 +132,53 @@ struct UsulIndexView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding()
         .accessibilityIdentifier("usul-index-empty")
+    }
+}
+
+/// Loads the index away from the main actor through the process-wide cache, then injects the
+/// immutable result into `UsulIndexView`. Recreating this SwiftUI view does not rescan the snapshot.
+struct UsulIndexLoaderView: View {
+    let store: QiraatStore?
+    let databaseURL: URL
+    let surahNames: [Int: String]?
+    let onOpen: (_ page: Int, _ surah: Int, _ ayah: Int, _ token: Int) -> Void
+    let onClose: (() -> Void)?
+
+    @State private var categories: [UsulCategory]?
+
+    init(
+        library: MushafLibrary,
+        onOpen: @escaping (_ page: Int, _ surah: Int, _ ayah: Int, _ token: Int) -> Void = { _, _, _, _ in },
+        onClose: (() -> Void)? = nil
+    ) {
+        self.store = library.qiraat
+        self.databaseURL = library.database.url
+        self.surahNames = library.surahNames
+        self.onOpen = onOpen
+        self.onClose = onClose
+    }
+
+    var body: some View {
+        Group {
+            if let categories {
+                UsulIndexView(
+                    categories: categories,
+                    surahNames: surahNames,
+                    onOpen: onOpen,
+                    onClose: onClose
+                )
+            } else {
+                ProgressView("جارٍ إعداد فهرس الأصول...")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color(uiColor: .mushafPaper))
+            }
+        }
+        .task {
+            categories = await UsulIndexCache.shared.categories(
+                store: store,
+                databaseURL: databaseURL
+            )
+        }
     }
 }
 
