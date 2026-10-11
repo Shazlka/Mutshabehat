@@ -19,6 +19,7 @@ final class RestoreServiceTests: XCTestCase {
     private var data: URL { base.appendingPathComponent("data") }
     private var safety: URL { base.appendingPathComponent("safety") }
     private let recorder = Recorder()
+    private var qiraatNotes: QiraatNotesStore!
     private var clock = Date(epochMilliseconds: 1_790_000_000_000)
     private var calendar: Calendar = {
         var value = Calendar(identifier: .gregorian)
@@ -31,9 +32,13 @@ final class RestoreServiceTests: XCTestCase {
         base = FileManager.default.temporaryDirectory.appendingPathComponent("restore-\(UUID().uuidString)")
         for url in [root, data, safety] { try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true) }
         for name in ["memorization", "reading", "mutshabehat"] { try makeDatabase(name) }
+        qiraatNotes = QiraatNotesStore(url: databaseURL("qiraat-notes"))
+        XCTAssertNil(qiraatNotes.loadError)
+        try qiraatNotes.setNote("Test fixture: RestoreService backup note", page: 1, surah: 1, ayah: 1, token: 1)
     }
 
     override func tearDown() async throws {
+        qiraatNotes = nil
         try? FileManager.default.removeItem(at: base)
         try await super.tearDown()
     }
@@ -66,7 +71,8 @@ final class RestoreServiceTests: XCTestCase {
         let sources = BackupService.Sources(
             memorizationExport: { snapshot }, memorizationFileURL: databaseURL("memorization"),
             readingFileURL: databaseURL("reading"), mutshabehatFileURL: databaseURL("mutshabehat"),
-            qiraatArchive: { Data("qiraat-archive".utf8) }, deviceID: "dev", appVersion: "test")
+            qiraatArchive: { Data("qiraat-archive".utf8) }, deviceID: "dev", appVersion: "test",
+            qiraatNotesFileURL: qiraatNotes.fileURL)
         let service = BackupService(folder: BackupFolder(provider: { [root] in root }), sources: sources,
                                     now: { [unowned self] in self.clock }, calendar: calendar,
                                     defaults: UserDefaults(suiteName: "restore-test-\(UUID().uuidString)")!)
@@ -87,7 +93,9 @@ final class RestoreServiceTests: XCTestCase {
                 log.log("reading.import")
             },
             mutshabehatImport: { _ in log.log("mutshabehat.import") },
-            qiraatInstall: qiraat ? { _ in log.log("qiraat.install") } : nil)
+            qiraatInstall: qiraat ? { _ in log.log("qiraat.install") } : nil,
+            qiraatNotesFileURL: qiraatNotes.fileURL,
+            qiraatNotesImport: { _ in log.log("qiraat-notes.import") })
         return RestoreService(backupsRoot: root.appendingPathComponent("Backups"), targets: targets, safetyDirectory: safety,
                               now: { [unowned self] in self.clock }, calendar: calendar)
     }
@@ -129,7 +137,8 @@ final class RestoreServiceTests: XCTestCase {
         let info = try await makeBackup()
         let report = try makeService().restore(info, stores: Set(BackupStore.allCases), memorizationMode: .merge)
         XCTAssertEqual(report.restored, Set(BackupStore.allCases))
-        XCTAssertEqual(Set(recorder.events), ["memorization.merge:1", "reading.import", "mutshabehat.import", "qiraat.install"])
+        XCTAssertEqual(Set(recorder.events), ["memorization.merge:1", "reading.import", "mutshabehat.import",
+                                              "qiraat.install", "qiraat-notes.import"])
     }
 
     func testRestoreMakesSafetyCopyAndKeepsLastThree() async throws {
