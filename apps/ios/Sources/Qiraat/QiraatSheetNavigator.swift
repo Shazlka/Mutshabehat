@@ -11,22 +11,24 @@ struct QiraatSheetNavigator: View {
 
     var body: some View {
         Group {
-            if dynamicTypeSize.isAccessibilitySize {
-                VStack(spacing: 4) {
-                    position
-                    HStack {
-                        previousButton
-                        Spacer(minLength: 8)
-                        nextButton
+            if let activeRef {
+                if dynamicTypeSize.isAccessibilitySize {
+                    VStack(spacing: 4) {
+                        position(for: activeRef)
+                        HStack {
+                            previousButton(from: activeRef)
+                            Spacer(minLength: 8)
+                            nextButton(from: activeRef)
+                        }
                     }
-                }
-            } else {
-                HStack(spacing: 8) {
-                    previousButton
-                    Spacer(minLength: 0)
-                    position
-                    Spacer(minLength: 0)
-                    nextButton
+                } else {
+                    HStack(spacing: 8) {
+                        previousButton(from: activeRef)
+                        Spacer(minLength: 0)
+                        position(for: activeRef)
+                        Spacer(minLength: 0)
+                        nextButton(from: activeRef)
+                    }
                 }
             }
         }
@@ -35,23 +37,33 @@ struct QiraatSheetNavigator: View {
         .padding(.horizontal, 8)
         .background(Color(uiColor: .mushafPaper))
         .environment(\.layoutDirection, .rightToLeft)
+        .onAppear(perform: recoverMissingSelection)
+        .onChange(of: orderedRefs) { _, _ in recoverMissingSelection() }
+        .onChange(of: currentRef.id) { _, _ in recoverMissingSelection() }
     }
 
-    private var position: some View {
-        let index = orderedRefs.firstIndex { $0.id == currentRef.id }
-        return Text(verbatim: "\(ArabicDigits.string(index.map { $0 + 1 } ?? 0)) من \(ArabicDigits.string(orderedRefs.count))")
+    private var activeRef: MarkedWordRef? { orderedRefs.nearest(to: currentRef) }
+
+    private func position(for ref: MarkedWordRef) -> some View {
+        let index = orderedRefs.firstIndex { $0.id == ref.id }
+        return Text(verbatim: "\(ArabicDigits.string(index.map { $0 + 1 } ?? 1)) من \(ArabicDigits.string(orderedRefs.count))")
             .monospacedDigit()
             .accessibilityIdentifier("qiraat-sheet-position")
     }
 
-    private var previousButton: some View {
+    private func previousButton(from ref: MarkedWordRef) -> some View {
         navigationButton("السابق", symbol: "chevron.backward",
-                         ref: orderedRefs.previous(before: currentRef), identifier: "qiraat-sheet-prev")
+                         ref: orderedRefs.previous(before: ref), identifier: "qiraat-sheet-prev")
     }
 
-    private var nextButton: some View {
+    private func nextButton(from ref: MarkedWordRef) -> some View {
         navigationButton("التالي", symbol: "chevron.forward",
-                         ref: orderedRefs.next(after: currentRef), identifier: "qiraat-sheet-next")
+                         ref: orderedRefs.next(after: ref), identifier: "qiraat-sheet-next")
+    }
+
+    private func recoverMissingSelection() {
+        guard !orderedRefs.contains(where: { $0.id == currentRef.id }), let activeRef else { return }
+        onSelect(activeRef)
     }
 
     private func navigationButton(_ title: String, symbol: String, ref: MarkedWordRef?,

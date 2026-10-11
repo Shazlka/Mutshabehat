@@ -3,6 +3,12 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-11 — Workstream 04 review fixes
+- Variant face numbers now use the semantic displayed face (Quran span, displayed text, performance note, and a sorted/deduplicated reading set), so duplicate records with different IDs share one wajh number.
+- If filtering or a live update removes the selected marked word, the sheet navigator selects the next nearest marked word in Quran order (or the preceding final word); it hides when no marked words remain instead of showing `٠ من N` with two disabled directions. Existing accessibility identifiers are unchanged.
+- Added MushafCore regression coverage for semantic duplicate faces and missing-selection recovery before, within, and after the remaining marked-word list.
+- **Verification:** `swift test --disable-sandbox --package-path MushafCore --filter QiraatWordOrderTests` — `✔ Test run with 11 tests in 1 suite passed after 0.059 seconds.` (`--disable-sandbox` was required because nested `sandbox-exec` is unavailable in this managed worktree.)
+
 ## [Unreleased] — 2026-10-10 — Marked-word sheet navigation and variant face numbering (WS-04)
 - Added `MarkedWordRef` and `QiraatWordOrder.markedWords`, using the page view's exact `wordMarks(for:filter:)` predicate and Quran coordinate order across lines/pages, including reversed iPad spread inputs. Ordered refs offer next/previous lookup without wrapping or navigating from a missing selection.
 - Added `variantWajhNumbers` for appearance-ordered, one-based face numbers, omitted when fewer than two distinct variants are displayed.

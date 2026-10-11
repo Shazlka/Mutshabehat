@@ -134,19 +134,44 @@ import Testing
         #expect([refs[0]].previous(before: refs[0]) == nil)
     }
 
+    @Test func missingSelectionRecoversToNearestRemainingWord() throws {
+        let words = try openDatabase().page(1).lines.flatMap(\.words).filter { $0.charType == .word }
+        let refs = [words[1], words[3], words[5]].map(MarkedWordRef.init)
+        #expect(refs.nearest(to: refs[1]) == refs[1])
+        #expect(refs.nearest(to: MarkedWordRef(word: words[0])) == refs[0])
+        #expect(refs.nearest(to: MarkedWordRef(word: words[2])) == refs[1])
+        #expect(refs.nearest(to: MarkedWordRef(word: words[4])) == refs[2])
+        #expect(refs.nearest(to: MarkedWordRef(word: words[6])) == refs[2])
+        #expect([MarkedWordRef]().nearest(to: refs[0]) == nil)
+    }
+
     @Test func wajhNumbersFollowAppearanceWithoutSortingIDs() throws {
         let word = try #require(openDatabase().page(1).lines.flatMap(\.words).first { $0.charType == .word })
-        let variants = ["z", "a", "m"].map { variant(for: word, id: $0) }
+        let readings = testCatalog.narrators.prefix(3).map(\.id)
+        let variants = zip(["z", "a", "m"], readings).map { variant(for: word, id: $0.0, readings: [$0.1]) }
         #expect(variantWajhNumbers(variants) == ["z": 1, "a": 2, "m": 3])
         #expect(variantWajhNumbers(Array(variants.reversed())) == ["m": 1, "a": 2, "z": 3])
     }
 
     @Test func wajhNumbersAreAbsentForZeroOrOneFaceAndIgnoreDuplicateIDs() throws {
         let word = try #require(openDatabase().page(1).lines.flatMap(\.words).first { $0.charType == .word })
-        let a = variant(for: word, id: "a"), b = variant(for: word, id: "b")
+        let readings = testCatalog.narrators.prefix(2).map(\.id)
+        let a = variant(for: word, id: "a", readings: [readings[0]])
+        let b = variant(for: word, id: "b", readings: [readings[1]])
         #expect(variantWajhNumbers([]).isEmpty)
         #expect(variantWajhNumbers([a]).isEmpty)
         #expect(variantWajhNumbers([a, a]).isEmpty)
         #expect(variantWajhNumbers([a, a, b]) == ["a": 1, "b": 2])
+    }
+
+    @Test func semanticDuplicateFacesShareOneNumberAcrossDifferentIDs() throws {
+        let word = try #require(openDatabase().page(1).lines.flatMap(\.words).first { $0.charType == .word })
+        let readings = testCatalog.narrators.prefix(3).map(\.id)
+        let first = variant(for: word, id: "first", readings: [readings[1], readings[0], readings[0]])
+        let duplicate = variant(for: word, id: "duplicate", readings: [readings[0], readings[1]])
+        let other = variant(for: word, id: "other", readings: [readings[2]])
+
+        #expect(variantWajhNumbers([first, duplicate, other]) == ["first": 1, "duplicate": 1, "other": 2])
+        #expect(variantWajhNumbers([first, duplicate]).isEmpty)
     }
 }
