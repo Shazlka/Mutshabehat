@@ -50,15 +50,27 @@ public struct QiraatComparedReading: Hashable, Sendable {
             case base(sameAsHafs: Bool)
         }
 
-        public var id: String { rulingId }
-        public let rulingId: String
+        public var id: String { groupId }
+        /// The category/locus group being compared. Several raw ruling rows can belong to it.
+        public let groupId: String
+        public let sourceRulingIds: [String]
         public let categoryAr: String
         /// The usul family colour.
         public let color: String
         public let status: Status
 
+        /// Compatibility for callers that handled one raw ruling. Aggregated groups use `groupId`
+        /// and `sourceRulingIds` instead.
+        public var rulingId: String { sourceRulingIds.count == 1 ? sourceRulingIds[0] : groupId }
+
+        public init(groupId: String, sourceRulingIds: [String], categoryAr: String, color: String, status: Status) {
+            self.groupId = groupId; self.sourceRulingIds = sourceRulingIds
+            self.categoryAr = categoryAr; self.color = color; self.status = status
+        }
+
         public init(rulingId: String, categoryAr: String, color: String, status: Status) {
-            self.rulingId = rulingId; self.categoryAr = categoryAr; self.color = color; self.status = status
+            self.init(groupId: rulingId, sourceRulingIds: [rulingId], categoryAr: categoryAr,
+                      color: color, status: status)
         }
 
         public var isRecorded: Bool {
@@ -97,24 +109,135 @@ public struct QiraatComparedReading: Hashable, Sendable {
     public let voices: [Voice]
 }
 
+/// One exact Quran locus selected for comparison. Overlapping spans are separate loci so concurrent
+/// differences are never presented as alternative wajhs of one reading.
+public struct QiraatComparisonLocus: Hashable, Sendable, Identifiable {
+    public let surah: Int
+    public let ayah: Int
+    public let startToken: Int
+    public let endAyah: Int
+    public let endToken: Int
+    public let selection: QiraatSelection
+
+    public var id: String { "\(surah):\(ayah):\(startToken)-\(endAyah):\(endToken)" }
+
+    /// Existing source text for the locus, never reconstructed or invented.
+    public var baseText: String? {
+        selection.variants.lazy.map(\.hafsText).first { !$0.isEmpty }
+            ?? selection.rulings.lazy.map(\.baseText).first { !$0.isEmpty }
+    }
+}
+
+/// Raw أصول rows combined by their category and complete Quran locus.
+public struct QiraatComparedUsulGroup: Hashable, Sendable, Identifiable {
+    public let id: String
+    public let category: String
+    public let categoryAr: String
+    public let color: String
+    public let surah: Int
+    public let ayah: Int
+    public let startToken: Int
+    public let endAyah: Int
+    public let endToken: Int
+    public let rulings: [QiraatRuling]
+}
+
 public enum QiraatCompare {
     /// حفص عن عاصم: the text of the Mushaf this app shows.
     public static let hafsReadingId = "Q05-R02"
 
-    /// What `readingId` (a narrator id, or a reader id) reads at `word`. `selection` must be the
-    /// word's unfiltered selection (`QiraatMarks.selection(..., filter: .all)`): a filtered one drops
-    /// the variants of other readers, which would then wrongly read as the Mushaf text.
-    public static func reading(of readingId: String, selection: QiraatSelection, word: MushafWord,
+    /// Separates a tapped word's unfiltered data into exact spans. The caller must choose one before
+    /// comparing, because overlapping spans can describe simultaneous differences.
+    public static func loci(selection: QiraatSelection) -> [QiraatComparisonLocus] {
+        struct Key: Hashable {
+            let surah: Int
+            let ayah: Int
+            let startToken: Int
+            let endAyah: Int
+            let endToken: Int
+        }
+
+        var keys: [Key] = []
+        for variant in selection.variants {
+            let key = Key(surah: variant.surah, ayah: variant.ayah, startToken: variant.startToken,
+                          endAyah: variant.ayah, endToken: variant.endToken)
+            if !keys.contains(key) { keys.append(key) }
+        }
+        for ruling in selection.rulings {
+            let key = Key(surah: ruling.surah, ayah: ruling.ayah, startToken: ruling.startToken,
+                          endAyah: ruling.endAyah ?? ruling.ayah, endToken: ruling.endToken)
+            if !keys.contains(key) { keys.append(key) }
+        }
+        keys.sort {
+            ($0.surah, $0.ayah, $0.startToken, $0.endAyah, $0.endToken)
+                < ($1.surah, $1.ayah, $1.startToken, $1.endAyah, $1.endToken)
+        }
+        return keys.map { key in
+            let variants = selection.variants.filter {
+                $0.surah == key.surah && $0.ayah == key.ayah && $0.startToken == key.startToken
+                    && $0.endToken == key.endToken && key.endAyah == key.ayah
+            }
+            let rulings = selection.rulings.filter {
+                $0.surah == key.surah && $0.ayah == key.ayah && $0.startToken == key.startToken
+                    && ($0.endAyah ?? $0.ayah) == key.endAyah && $0.endToken == key.endToken
+            }
+            return QiraatComparisonLocus(surah: key.surah, ayah: key.ayah, startToken: key.startToken,
+                                         endAyah: key.endAyah, endToken: key.endToken,
+                                         selection: QiraatSelection(variants: variants, rulings: rulings))
+        }
+    }
+
+    /// Requires the complete page selection. Nil means comparison is unavailable; a filtered
+    /// fallback would falsely make omitted readers appear to follow the Mushaf base.
+    public static func unfilteredSelection(for word: MushafWord, marks: QiraatMarks?) -> QiraatSelection? {
+        marks?.selection(surah: word.ayahKey.surah, ayah: word.ayahKey.ayah,
+                         token: word.indexInAyah, filter: .all)
+    }
+
+    /// Raw أصول rows become one comparison group per category and complete locus.
+    public static func usulGroups(selection: QiraatSelection) -> [QiraatComparedUsulGroup] {
+        struct Key: Hashable {
+            let category: String
+            let surah: Int
+            let ayah: Int
+            let startToken: Int
+            let endAyah: Int
+            let endToken: Int
+        }
+
+        var orderedKeys: [Key] = []
+        var grouped: [Key: [QiraatRuling]] = [:]
+        for ruling in selection.rulings {
+            let key = Key(category: ruling.category, surah: ruling.surah, ayah: ruling.ayah,
+                          startToken: ruling.startToken, endAyah: ruling.endAyah ?? ruling.ayah,
+                          endToken: ruling.endToken)
+            if grouped[key] == nil { orderedKeys.append(key) }
+            grouped[key, default: []].append(ruling)
+        }
+        return orderedKeys.compactMap { key in
+            guard let rulings = grouped[key], let first = rulings.first else { return nil }
+            let id = "\(key.category)|\(key.surah):\(key.ayah):\(key.startToken)-\(key.endAyah):\(key.endToken)"
+            return QiraatComparedUsulGroup(id: id, category: key.category, categoryAr: first.categoryAr,
+                                           color: first.color, surah: key.surah, ayah: key.ayah,
+                                           startToken: key.startToken, endAyah: key.endAyah,
+                                           endToken: key.endToken, rulings: rulings)
+        }
+    }
+
+    /// What `readingId` (a narrator id, or a reader id) reads at one exact `locus`. The locus must
+    /// come from the word's unfiltered selection.
+    public static func reading(of readingId: String, locus: QiraatComparisonLocus, word: MushafWord,
                                catalog: QiraatCatalog) -> QiraatComparedReading {
         if let narrator = catalog.narrator(readingId) {
             return QiraatComparedReading(authorityId: readingId,
-                                         voices: [voice(narrator, selection: selection, word: word, catalog: catalog)])
+                                         voices: [voice(narrator, selection: locus.selection, word: word,
+                                                        catalog: catalog)])
         }
         guard let reader = catalog.reader(readingId) else {
             return QiraatComparedReading(authorityId: readingId, voices: [])
         }
         let narrators = catalog.narrators(of: reader.id)
-        let voices = narrators.map { voice($0, selection: selection, word: word, catalog: catalog) }
+        let voices = narrators.map { voice($0, selection: locus.selection, word: word, catalog: catalog) }
         // A reader stands for his narrators only when they read alike here; otherwise both are shown.
         if let first = voices.first, voices.allSatisfy({ $0.content == first.content }) {
             let merged = QiraatComparedReading.Voice(
@@ -125,20 +248,44 @@ public enum QiraatCompare {
         return QiraatComparedReading(authorityId: readingId, voices: voices)
     }
 
+    /// Compatibility for a selection that has one locus. When old callers pass overlaps, this
+    /// chooses one exact locus instead of combining their records into false alternative wajhs.
+    public static func reading(of readingId: String, selection: QiraatSelection, word: MushafWord,
+                               catalog: QiraatCatalog) -> QiraatComparedReading {
+        guard let locus = loci(selection: selection).first else {
+            return QiraatComparedReading(authorityId: readingId, voices: [])
+        }
+        return reading(of: readingId, locus: locus, word: word, catalog: catalog)
+    }
+
     /// Both readings, and whether they read the word the same way.
-    public static func compare(_ a: String, _ b: String, selection: QiraatSelection, word: MushafWord,
+    public static func compare(_ a: String, _ b: String, locus: QiraatComparisonLocus, word: MushafWord,
                                catalog: QiraatCatalog) -> (QiraatComparedReading, QiraatComparedReading, isSame: Bool) {
-        let first = reading(of: a, selection: selection, word: word, catalog: catalog)
-        let second = reading(of: b, selection: selection, word: word, catalog: catalog)
+        let first = reading(of: a, locus: locus, word: word, catalog: catalog)
+        let second = reading(of: b, locus: locus, word: word, catalog: catalog)
         let same = !first.voices.isEmpty && first.voices.map(\.content) == second.voices.map(\.content)
         return (first, second, same)
     }
 
-    /// A sensible first pair: Hafs, and the first other narrator the word's data names.
+    /// Compatibility overload; new UI should expose and pass an explicit locus.
+    public static func compare(_ a: String, _ b: String, selection: QiraatSelection, word: MushafWord,
+                               catalog: QiraatCatalog) -> (QiraatComparedReading, QiraatComparedReading, isSame: Bool) {
+        guard let locus = loci(selection: selection).first else {
+            let first = QiraatComparedReading(authorityId: a, voices: [])
+            let second = QiraatComparedReading(authorityId: b, voices: [])
+            return (first, second, false)
+        }
+        return compare(a, b, locus: locus, word: word, catalog: catalog)
+    }
+
+    /// A sensible first pair: Hafs, and the first other narrator or reader the locus data names.
     public static func defaultPair(selection: QiraatSelection, catalog: QiraatCatalog) -> (String, String)? {
         let named = selection.variants.flatMap(\.readingIds)
             + selection.rulings.flatMap { $0.attribution.map(\.authorityId) + $0.readings.map(\.readingId) }
-        guard let other = named.first(where: { $0 != hafsReadingId && catalog.narrator($0) != nil }) else { return nil }
+        let hafsReaderId = catalog.readerId(ofReading: hafsReadingId)
+        guard let other = named.first(where: {
+            $0 != hafsReadingId && $0 != hafsReaderId && (catalog.narrator($0) != nil || catalog.reader($0) != nil)
+        }) else { return nil }
         return (hafsReadingId, other)
     }
 
@@ -172,10 +319,10 @@ public enum QiraatCompare {
                                            source: .base(sameAsHafs: !hafsRecorded))]
     }
 
-    /// The Mushaf text over the widest variant span here, so both columns cover the same words.
+    /// The Mushaf text for this exact locus, so both columns cover the same words.
     private static func baseText(selection: QiraatSelection, word: MushafWord) -> String {
-        let widest = selection.variants.max { ($0.endToken - $0.startToken) < ($1.endToken - $1.startToken) }
-        if let widest, !widest.hafsText.isEmpty { return widest.hafsText }
+        if let text = selection.variants.lazy.map(\.hafsText).first(where: { !$0.isEmpty }) { return text }
+        if let text = selection.rulings.lazy.map(\.baseText).first(where: { !$0.isEmpty }) { return text }
         return word.textUthmani
     }
 
@@ -183,16 +330,22 @@ public enum QiraatCompare {
         authorityId == narrator.id || authorityId == narrator.readerId
     }
 
-    private static func entries(of ruling: QiraatRuling,
+    private static func entries(of group: QiraatComparedUsulGroup,
                                 for narrator: QiraatCatalog.Narrator) -> [QiraatComparedReading.UsulEntry] {
-        var found: [QiraatComparedReading.UsulEntry] = ruling.attribution
-            .filter { names($0.authorityId, narrator) }
-            .map { QiraatComparedReading.UsulEntry(action: $0.action ?? ruling.categoryAr, condition: $0.condition,
-                                                   wajhOrder: $0.wajhOrder, wajhNote: $0.wajhNote) }
-        if found.isEmpty {
-            found = ruling.readings.filter { names($0.readingId, narrator) }
-                .map { QiraatComparedReading.UsulEntry(action: $0.action.isEmpty ? ruling.categoryAr : $0.action,
-                                                       condition: nil, wajhOrder: nil, wajhNote: nil) }
+        var found: [QiraatComparedReading.UsulEntry] = []
+        for ruling in group.rulings {
+            let attributed = ruling.attribution.filter { names($0.authorityId, narrator) }
+            if !attributed.isEmpty {
+                found += attributed.map {
+                    QiraatComparedReading.UsulEntry(action: $0.action ?? ruling.categoryAr,
+                                                    condition: $0.condition ?? ruling.condition,
+                                                    wajhOrder: $0.wajhOrder, wajhNote: $0.wajhNote)
+                }
+            } else {
+                found += ruling.readings.filter { names($0.readingId, narrator) }
+                    .map { QiraatComparedReading.UsulEntry(action: $0.action.isEmpty ? ruling.categoryAr : $0.action,
+                                                           condition: ruling.condition, wajhOrder: nil, wajhNote: nil) }
+            }
         }
         var unique: [QiraatComparedReading.UsulEntry] = []
         for entry in found where !unique.contains(entry) { unique.append(entry) }
@@ -206,18 +359,20 @@ public enum QiraatCompare {
     private static func usul(_ narrator: QiraatCatalog.Narrator, selection: QiraatSelection,
                              catalog: QiraatCatalog) -> [QiraatComparedReading.Usul] {
         let hafsReader = catalog.readerId(ofReading: hafsReadingId)
-        return selection.rulings.map { ruling in
-            let found = entries(of: ruling, for: narrator)
+        return usulGroups(selection: selection).map { group in
+            let found = entries(of: group, for: narrator)
             let status: QiraatComparedReading.Usul.Status
             if found.isEmpty {
-                let hafsNamed = ruling.attribution.contains { $0.authorityId == hafsReadingId || $0.authorityId == hafsReader }
-                    || ruling.readings.contains { $0.readingId == hafsReadingId }
+                let hafsNamed = group.rulings.contains { ruling in
+                    ruling.attribution.contains { $0.authorityId == hafsReadingId || $0.authorityId == hafsReader }
+                        || ruling.readings.contains { $0.readingId == hafsReadingId }
+                }
                 status = .base(sameAsHafs: !hafsNamed)
             } else {
                 status = .entries(found)
             }
-            return QiraatComparedReading.Usul(rulingId: ruling.id, categoryAr: ruling.categoryAr, color: ruling.color,
-                                              status: status)
+            return QiraatComparedReading.Usul(groupId: group.id, sourceRulingIds: group.rulings.map(\.id),
+                                              categoryAr: group.categoryAr, color: group.color, status: status)
         }
     }
 }

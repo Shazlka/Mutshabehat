@@ -6,52 +6,79 @@ import UIKit
 /// choice is the right-hand column (right to left). Every text and attribution comes from the word's
 /// Qiraat data (`QiraatCompare`); a reading the data does not name reads the Mushaf text.
 ///
-/// `item.selection` must be the word's unfiltered selection (`QiraatCompareView.unfiltered(_:store:)`):
-/// a filtered one drops other readers' variants, which would then read as the Mushaf text.
+/// The initializer reloads the word's unfiltered selection. If its page is unavailable, comparison
+/// stays unavailable rather than treating omitted readers as though they read the Mushaf base.
 struct QiraatCompareView: View {
-    let item: QiraatWordSelection
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
+    let item: QiraatWordSelection?
     let catalog: QiraatCatalog
+    private let loci: [QiraatComparisonLocus]
+
     @State private var first: String
     @State private var second: String
+    @State private var selectedLocusId: String?
     @ScaledMetric(relativeTo: .title) private var quranSize: CGFloat = 28
 
-    init(item: QiraatWordSelection, catalog: QiraatCatalog, initialPair: (String, String)? = nil) {
-        self.item = item
-        self.catalog = catalog
-        let pair = initialPair
-            ?? QiraatCompare.defaultPair(selection: item.selection, catalog: catalog)
-            ?? (QiraatCompare.hafsReadingId, QiraatCompare.hafsReadingId)
-        _first = State(initialValue: pair.0)
-        _second = State(initialValue: pair.1)
+    private var selectedLocus: QiraatComparisonLocus? {
+        loci.first { $0.id == selectedLocusId } ?? loci.first
     }
 
-    /// The word's selection with no reader filter, read from the store; `item` unchanged if the page
-    /// is not available.
-    static func unfiltered(_ item: QiraatWordSelection, store: QiraatStore?) -> QiraatWordSelection {
+    private var columnsLayout: AnyLayout {
+        if dynamicTypeSize.isAccessibilitySize {
+            AnyLayout(VStackLayout(alignment: .leading, spacing: 10))
+        } else {
+            AnyLayout(HStackLayout(alignment: .top, spacing: 10))
+        }
+    }
+
+    init(item: QiraatWordSelection, store: QiraatStore?, catalog: QiraatCatalog,
+         initialPair: (String, String)? = nil) {
+        let fullItem = Self.unfiltered(item, store: store)
+        let loci = fullItem.map { QiraatCompare.loci(selection: $0.selection) } ?? []
+        let initialLocus = loci.first
+        self.item = fullItem
+        self.catalog = catalog
+        let pair = initialPair
+            ?? initialLocus.flatMap { QiraatCompare.defaultPair(selection: $0.selection, catalog: catalog) }
+            ?? (QiraatCompare.hafsReadingId, QiraatCompare.hafsReadingId)
+        self.loci = loci
+        _first = State(initialValue: pair.0)
+        _second = State(initialValue: pair.1)
+        _selectedLocusId = State(initialValue: initialLocus?.id)
+    }
+
+    /// The word's selection with no reader filter, read from the store. Nil disables comparison.
+    static func unfiltered(_ item: QiraatWordSelection, store: QiraatStore?) -> QiraatWordSelection? {
         let w = item.word
-        guard let full = store?.marks(page: w.page)?.selection(surah: w.ayahKey.surah, ayah: w.ayahKey.ayah,
-                                                                token: w.indexInAyah, filter: .all) else { return item }
+        guard let full = QiraatCompare.unfilteredSelection(for: w, marks: store?.marks(page: w.page)) else { return nil }
         return QiraatWordSelection(word: w, selection: full)
     }
 
     var body: some View {
-        let result = QiraatCompare.compare(first, second, selection: item.selection, word: item.word, catalog: catalog)
-        let rulings = item.selection.rulings.filter { ruling in
-            (result.0.voices + result.1.voices).contains { voice in
-                voice.content.usul.contains { $0.rulingId == ruling.id && $0.isRecorded }
-            }
-        }
         ScrollView {
             VStack(alignment: .leading, spacing: 14) {
-                verdict(isSame: result.isSame)
-                // In a right-to-left layout the first child of an HStack is on the right.
-                HStack(alignment: .top, spacing: 10) {
-                    column(result.0, selection: $first, side: "first")
-                    column(result.1, selection: $second, side: "second")
-                }
-                if !rulings.isEmpty {
-                    Text("الأصول").font(.headline).padding(.top, 4)
-                    ForEach(rulings) { ruling in usulRow(ruling, result.0, result.1) }
+                if let item, let locus = selectedLocus {
+                    let result = QiraatCompare.compare(first, second, locus: locus, word: item.word, catalog: catalog)
+                    let groups = QiraatCompare.usulGroups(selection: locus.selection).filter { group in
+                        (result.0.voices + result.1.voices).contains { voice in
+                            voice.content.usul.contains { $0.groupId == group.id && $0.isRecorded }
+                        }
+                    }
+                    if loci.count > 1 { locusPicker }
+                    verdict(isSame: result.isSame)
+                    columnsLayout {
+                        column(result.0, selection: $first, side: "first")
+                        column(result.1, selection: $second, side: "second")
+                    }
+                    .environment(\.layoutDirection, .rightToLeft)
+                    if !groups.isEmpty {
+                        Text("الأصول").font(.headline).padding(.top, 4)
+                        ForEach(groups) { group in usulRow(group, result.0, result.1) }
+                    }
+                } else {
+                    ContentUnavailableView("المقارنة غير متاحة", systemImage: "exclamationmark.triangle",
+                                           description: Text("تعذر تحميل بيانات الصفحة الكاملة."))
                 }
             }
             .padding()
@@ -63,6 +90,16 @@ struct QiraatCompareView: View {
     }
 
     // MARK: Pieces
+
+    private var locusPicker: some View {
+        Picker("الموضع", selection: $selectedLocusId) {
+            ForEach(Array(loci.enumerated()), id: \.element.id) { index, locus in
+                Text(locus.baseText ?? "الموضع \(ArabicDigits.string(index + 1))").tag(Optional(locus.id))
+            }
+        }
+        .pickerStyle(.menu)
+        .accessibilityIdentifier("qiraat-compare-locus")
+    }
 
     private func verdict(isSame: Bool) -> some View {
         Label(isSame ? "تتفقان في هذه الكلمة" : "تختلفان في هذه الكلمة",
@@ -149,29 +186,28 @@ struct QiraatCompareView: View {
         .accessibilityElement(children: .combine)
     }
 
-    private func usulRow(_ ruling: QiraatRuling, _ a: QiraatComparedReading, _ b: QiraatComparedReading) -> some View {
+    private func usulRow(_ group: QiraatComparedUsulGroup, _ a: QiraatComparedReading,
+                         _ b: QiraatComparedReading) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 6) {
-                AuthorityMark(color: ruling.color)
-                Text(verbatim: ruling.categoryAr).font(.subheadline.bold())
-                if let condition = ruling.condition {
-                    Text(verbatim: condition).font(.caption).foregroundStyle(.secondary)
-                }
+                AuthorityMark(color: group.color)
+                Text(verbatim: group.categoryAr).font(.subheadline.bold())
             }
-            HStack(alignment: .top, spacing: 10) {
-                usulColumn(ruling, a)
-                usulColumn(ruling, b)
+            columnsLayout {
+                usulColumn(group, a)
+                usulColumn(group, b)
             }
+            .environment(\.layoutDirection, .rightToLeft)
         }
         .padding(10)
         .background(RoundedRectangle(cornerRadius: 12).fill(Color(uiColor: .secondarySystemGroupedBackground)))
-        .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color(qiraatHex: ruling.color).opacity(0.6)))
+        .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color(qiraatHex: group.color).opacity(0.6)))
     }
 
-    private func usulColumn(_ ruling: QiraatRuling, _ reading: QiraatComparedReading) -> some View {
+    private func usulColumn(_ group: QiraatComparedUsulGroup, _ reading: QiraatComparedReading) -> some View {
         VStack(alignment: .leading, spacing: 6) {
             ForEach(reading.voices) { voice in
-                if let usul = voice.content.usul.first(where: { $0.rulingId == ruling.id }) {
+                if let usul = voice.content.usul.first(where: { $0.groupId == group.id }) {
                     VStack(alignment: .leading, spacing: 3) {
                         if reading.voices.count > 1 {
                             Text(verbatim: voice.name).font(.caption.bold()).foregroundStyle(.secondary)
