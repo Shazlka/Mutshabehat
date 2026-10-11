@@ -4,6 +4,8 @@ Generated/
 Mutshabehat.xcodeproj/
 DerivedData/
 MushafCore/.build/
+# Xcode build products of the local package (module maps, precompiled modules, objects) — never committed.
+MushafCore/build/
 MushafCore/.swiftpm/
 *.xcresult
 xcuserdata/
