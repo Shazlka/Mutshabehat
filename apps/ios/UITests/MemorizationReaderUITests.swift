@@ -49,7 +49,7 @@ final class MemorizationReaderUITests: XCTestCase {
         XCTAssertTrue(app.buttons["open-index"].waitForExistence(timeout: 5))
         XCTAssertTrue(mark(1, in: app).exists)
         let markFrame = mark(1, in: app).frame
-        for id in ["search-button", "bookmarks-button", "mutshabehat-button", "memorization-button", "settings-button"] {
+        for id in ["search-button", "bookmarks-button", "qiraat-button", "more-button", "settings-button"] {
             let frame = app.buttons[id].frame
             XCTAssertFalse(markFrame.intersects(frame), "\(id) is covered by the mark: \(markFrame) vs \(frame)")
         }

@@ -67,8 +67,11 @@ final class MemorizationUITests: XCTestCase {
 
     func testTopBarButtonOpensTheModule() {
         let app = launch(openModule: false, extra: ["-show-chrome"])
+        let more = app.buttons["more-button"]
+        XCTAssertTrue(more.waitForExistence(timeout: 15))
+        more.tap()
         let button = app.buttons["memorization-button"]
-        XCTAssertTrue(button.waitForExistence(timeout: 15))
+        XCTAssertTrue(button.waitForExistence(timeout: 5))
         button.tap()
         XCTAssertTrue(element("memo-strict", in: app).waitForExistence(timeout: 10))
     }

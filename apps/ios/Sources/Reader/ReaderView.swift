@@ -32,6 +32,8 @@ struct ReaderView: View {
     @State private var highlightedWordIDs: Set<String> = []
     @State private var qiraat = QiraatPreferences()
     @State private var qiraatSelection: QiraatWordSelection?
+    @State private var qiraatRoute: QiraatHubRoute?
+    @State private var showingQiraatFilter = false
     @State private var bookmarkActionTarget: (page: MushafPage, ayah: AyahKey)? = nil
     @AppStorage("mushaf1441:theme:v1") private var theme = MushafAppearance.system.rawValue
     @AppStorage("app:language:v1") private var language = AppLanguage.arabic.rawValue
@@ -73,6 +75,9 @@ struct ReaderView: View {
                 openBookmarks: { showingBookmarks = true },
                 openMutshabehat: { showingMutshabehat = true },
                 openMemorization: { showingMemorization = true },
+                qiraat: qiraat,
+                qiraatCatalog: library.qiraat?.catalog,
+                openQiraatFilter: { showingQiraatFilter = true },
                 memorizationMarks: memorizationMarks,
                 memorizationLanguage: appLanguage,
                 openMemorizationPage: { pageSheetRequest = PageSheetRequest(page: $0) },
@@ -117,6 +122,12 @@ struct ReaderView: View {
             if let catalog = library.qiraat?.catalog {
                 QiraatSheet(item: item, catalog: catalog, filter: qiraat.filter,
                             wordFont: try? library.fonts.font(page: item.word.page, size: 40)) { qiraatSelection = nil }
+            }
+        }
+        .sheet(item: $qiraatRoute) { route in qiraatDestination(route) }
+        .sheet(isPresented: $showingQiraatFilter) {
+            if let catalog = library.qiraat?.catalog {
+                QiraatReaderPicker(catalog: catalog, selection: $qiraat.filter)
             }
         }
         .sheet(isPresented: $showingIndex) {

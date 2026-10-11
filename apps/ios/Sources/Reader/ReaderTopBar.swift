@@ -13,6 +13,10 @@ struct ReaderTopBar: View {
     let openBookmarks: () -> Void
     let openMutshabehat: () -> Void
     let openMemorization: () -> Void
+    /// The Qiraat layer's state and catalog. The entry stays in the fixed five-icon group.
+    var qiraat: QiraatPreferences
+    var qiraatCatalog: QiraatCatalog?
+    var openQiraatFilter: () -> Void = {}
     /// Page-status marks for the banner (one page, or both pages of a spread), left to right; empty hides them.
     var memorizationMarks: [(page: Int, progress: MemorizationPageProgress)] = []
     var memorizationLanguage: AppLanguage = .arabic
@@ -33,7 +37,12 @@ struct ReaderTopBar: View {
                     .accessibilityIdentifier("reading-surah-title")
 
                 Spacer(minLength: 0)
-                if !chromeVisible { memorizationMarkRow(compact: false) }
+                if !chromeVisible {
+                    HStack(spacing: 8) {
+                        memorizationMarkRow(compact: false)
+                        qiraatFilterChip
+                    }
+                }
                 Spacer(minLength: 0)
 
                 Text(sectionText)
@@ -80,8 +89,17 @@ struct ReaderTopBar: View {
                 HStack(spacing: 0) {
                     TopBarIconButton(systemImage: "magnifyingglass", label: "بحث", identifier: "search-button", action: openSearch)
                     TopBarIconButton(systemImage: "bookmark.fill", label: "الفواصل", identifier: "bookmarks-button", action: openBookmarks)
-                    TopBarIconButton(systemImage: "square.stack.3d.up.fill", label: "المتشابهات", identifier: "mutshabehat-button", action: openMutshabehat)
-                    TopBarIconButton(systemImage: "book.closed.fill", label: "الحفظ", identifier: "memorization-button", action: openMemorization)
+                    TopBarIconMenu(systemImage: qiraat.enabled ? "character.book.closed.fill" : "character.book.closed",
+                                   label: "القراءات", identifier: "qiraat-button",
+                                   value: qiraat.enabled ? "مفعّلة" : "متوقفة") {
+                        QiraatHubContent(qiraat: qiraat, catalog: qiraatCatalog)
+                    }
+                    TopBarIconMenu(systemImage: "ellipsis.circle", label: "المزيد", identifier: "more-button") {
+                        Button(action: openMutshabehat) { Label("المتشابهات", systemImage: "square.stack.3d.up.fill") }
+                            .accessibilityIdentifier("mutshabehat-button")
+                        Button(action: openMemorization) { Label("الحفظ", systemImage: "book.closed.fill") }
+                            .accessibilityIdentifier("memorization-button")
+                    }
                     TopBarIconButton(systemImage: "gearshape.fill", label: "الإعدادات", identifier: "settings-button", action: openSettings)
                 }
             }
@@ -95,6 +113,22 @@ struct ReaderTopBar: View {
         // The bar is a fixed 52 pt slot over the page: text grows with the user's size up to a point,
         // and the icons show the large content viewer beyond it.
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
+    }
+
+    /// The current reader or narrator while the Qiraat layer is narrowed to one; a tap opens the picker.
+    @ViewBuilder
+    private var qiraatFilterChip: some View {
+        if qiraat.enabled, let name = qiraatCatalog?.filterShortName(qiraat.filter),
+           let full = qiraatCatalog?.filterName(qiraat.filter) {
+            FilterChip(isSelected: true, action: openQiraatFilter) {
+                Text(name).lineLimit(1).minimumScaleFactor(0.8)
+            }
+            .frame(maxWidth: 130)
+            .fixedSize()
+            .accessibilityLabel("القراءات: \(full)")
+            .accessibilityHint("لتغيير القارئ أو الراوي")
+            .accessibilityIdentifier("qiraat-filter-chip")
+        }
     }
 
     /// Page-status marks (one page, or both pages of a spread), left to right; nothing when they are hidden.
@@ -137,6 +171,33 @@ private struct TopBarIconButton: View {
         }
         .foregroundStyle(.primary)
         .accessibilityLabel(label)
+        .accessibilityShowsLargeContentViewer {
+            Label(label, systemImage: systemImage)
+        }
+        .accessibilityIdentifier(identifier)
+    }
+}
+
+/// A top-bar icon that opens a menu; same size, label and large-content viewer as `TopBarIconButton`.
+private struct TopBarIconMenu<Content: View>: View {
+    let systemImage: String
+    let label: LocalizedStringKey
+    let identifier: String
+    var value: LocalizedStringKey?
+    @ViewBuilder let content: Content
+
+    var body: some View {
+        Menu {
+            content
+        } label: {
+            Image(systemName: systemImage)
+                .font(.body.weight(.medium))
+                .frame(width: TopBarMetrics.iconSize, height: TopBarMetrics.iconSize)
+                .contentShape(Rectangle())
+        }
+        .foregroundStyle(.primary)
+        .accessibilityLabel(label)
+        .accessibilityValue(value ?? "")
         .accessibilityShowsLargeContentViewer {
             Label(label, systemImage: systemImage)
         }
