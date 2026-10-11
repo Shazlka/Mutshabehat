@@ -8,26 +8,42 @@ struct VariantCard: View {
     let catalog: QiraatCatalog
     let filter: QiraatFilter
 
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
+    /// The reading is set at 40 pt and follows the title metric up to `maxWordSize`.
+    static let maxWordSize: CGFloat = 72
+
     var body: some View {
         let performanceOnly = variant.isPerformanceOnly && variant.performanceNote != nil
-        let label = variant.performanceNote ?? differenceTypeLabelAr(variant.differenceType)
         let text = variant.uthmaniText ?? (performanceOnly ? variant.hafsText : variant.variantText)
         VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                QiraatBadge(text: label, foreground: Color(qiraatHex: "#7a5a10"), background: Color(qiraatHex: "#f1e2b6"))
-                Spacer()
-                Text("خلاف في الرسم").font(.caption2.bold()).foregroundStyle(.secondary)
+            FlowLayout(spacing: 6) {
+                QiraatBadge(text: kindLabel)
+                if let note = variant.performanceNote, note != kindLabel {
+                    Text(verbatim: note).font(.caption2.bold()).foregroundStyle(.secondary)
+                }
             }
             Text(verbatim: text)
                 .font(variantFont)
-                .foregroundStyle(Color(qiraatHex: "#7a1f1a"))
+                .foregroundStyle(.qiraatVariantInk)
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
+                .minimumScaleFactor(0.65)
+                .allowsTightening(true)
+                .fixedSize(horizontal: false, vertical: true)
                 .frame(maxWidth: .infinity)
+                .accessibilityIdentifier("qiraat-variant-text")
             QiraatPills(pills: rollupAuthorityPills(scopedReadingIds, catalog: catalog))
             if variant.verificationStatus == "NEEDS_MANUAL_REVIEW" { QiraatNeedsReviewBadge() }
         }
         .padding(10)
-        .background(RoundedRectangle(cornerRadius: 10).fill(.white))
-        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(qiraatHex: "#e3d6b4")))
+        .background(RoundedRectangle(cornerRadius: 10).fill(.qiraatCardFill))
+        .overlay(RoundedRectangle(cornerRadius: 10).stroke(.qiraatCardStroke))
+    }
+
+    /// What kind of difference this is: the recitation only («أداء»), or the real type from the data.
+    private var kindLabel: String {
+        variant.isPerformanceOnly ? "أداء" : differenceTypeLabelAr(variant.differenceType)
     }
 
     /// The readers to show: narrowed to the selected reader or reading when the filter names one.
@@ -44,9 +60,11 @@ struct VariantCard: View {
     /// changed Unicode spelling cannot be shaped by them. The KFGQPC Unicode Mushaf face shapes
     /// the changed reading and its harakat without reusing the original word's incorrect QCF glyph.
     private var variantFont: Font {
-        let font = UIFont(name: "KFGQPCUthmanicScriptHAFS", size: 40)
+        _ = dynamicTypeSize // Recompute when the SwiftUI Dynamic Type environment changes.
+        let baseFont = UIFont(name: "KFGQPCUthmanicScriptHAFS", size: 40)
             ?? UIFont(name: "DamascusBold", size: 40)
             ?? UIFont.systemFont(ofSize: 40, weight: .bold)
-        return Font(font)
+        return Font(UIFontMetrics(forTextStyle: .title1)
+            .scaledFont(for: baseFont, maximumPointSize: Self.maxWordSize))
     }
 }

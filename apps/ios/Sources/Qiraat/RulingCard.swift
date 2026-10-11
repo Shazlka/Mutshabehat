@@ -12,7 +12,7 @@ struct RulingCard: View {
         let distinct = distinctRulingText(ruling.text, categoryAr: ruling.categoryAr, actions: ruling.attribution.map(\.action))
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                QiraatBadge(text: ruling.categoryAr, foreground: .white, background: color)
+                QiraatBadge(category: ruling.categoryAr, hex: ruling.color)
                 Spacer()
                 if let condition = ruling.condition {
                     Text(verbatim: condition).font(.caption2.bold()).foregroundStyle(.secondary)
@@ -27,17 +27,24 @@ struct RulingCard: View {
             if let distinct { Text(verbatim: distinct).font(.caption).foregroundStyle(Color(uiColor: .mushafBrown)) }
             if !ruling.alternateReadings.isEmpty {
                 Text("ذو وجهين (بخلف عنه) — الوجه الآخر جائز أيضًا")
-                    .font(.caption.bold()).foregroundStyle(Color(qiraatHex: "#7a5a10"))
+                    .font(.caption.bold()).foregroundStyle(.qiraatBadgeInk)
                     .padding(.horizontal, 8).padding(.vertical, 4)
-                    .background(RoundedRectangle(cornerRadius: 6).fill(Color(qiraatHex: "#fdf3d8")))
+                    .background(RoundedRectangle(cornerRadius: 6).fill(.qiraatBadgeFill))
             }
-            if let notes = ruling.notes { Text(verbatim: notes).font(.caption).foregroundStyle(.secondary) }
-            ForEach(ruling.sourceNotes ?? [], id: \.self) { Text(verbatim: $0).font(.caption).foregroundStyle(.secondary) }
+            if !noteParagraphs.isEmpty { CollapsibleText(text: noteParagraphs.joined(separator: "\n")) }
             if ruling.verificationStatus == "NEEDS_MANUAL_REVIEW" { QiraatNeedsReviewBadge() }
         }
         .padding(10)
-        .background(RoundedRectangle(cornerRadius: 10).fill(color.opacity(0.05)))
+        .background {
+            RoundedRectangle(cornerRadius: 10).fill(.qiraatCardFill)
+            RoundedRectangle(cornerRadius: 10).fill(color.opacity(0.06))
+        }
         .overlay(RoundedRectangle(cornerRadius: 10).stroke(color))
+    }
+
+    /// The notes and the source notes, in the order the web shows them.
+    private var noteParagraphs: [String] {
+        ([ruling.notes].compactMap { $0 } + (ruling.sourceNotes ?? [])).filter { !$0.isEmpty }
     }
 
     /// How the readers above read it: wajh numbers, the action (unless it repeats the category),
@@ -51,7 +58,7 @@ struct RulingCard: View {
         if showAction || !conditions.isEmpty || !wajhs.isEmpty {
             HStack(spacing: 4) {
                 ForEach(wajhs, id: \.self) { n in
-                    QiraatBadge(text: "وجه \(n)", foreground: Color(qiraatHex: "#7a5a10"), background: Color(qiraatHex: "#f1e2b6"))
+                    QiraatBadge(text: "وجه \(n)")
                 }
                 if showAction { Text(verbatim: group.action).font(.caption.bold()) }
                 if !conditions.isEmpty {
@@ -67,5 +74,56 @@ struct RulingCard: View {
         var seen: [String] = []
         for v in values where !v.isEmpty && !seen.contains(v) { seen.append(v) }
         return seen
+    }
+}
+
+/// Secondary text that shows three lines and offers «المزيد» when there is more, so a long note does not
+/// push the readers off the screen. Short text shows no button.
+struct CollapsibleText: View {
+    let text: String
+    var lineLimit = 3
+
+    @State private var expanded = false
+    @State private var fullHeight: CGFloat = 0
+    @State private var limitedHeight: CGFloat = 0
+
+    private var isTruncated: Bool { fullHeight > limitedHeight + 1 }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text(verbatim: text).font(.caption).foregroundStyle(.secondary)
+                .lineLimit(expanded ? nil : lineLimit)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(HeightReader(onChange: { limitedHeight = $0 }))
+                .background {
+                    // The same text with no line limit, only to know how tall it would be.
+                    Text(verbatim: text).font(.caption)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .hidden()
+                        .background(HeightReader(onChange: { fullHeight = $0 }))
+                }
+            if isTruncated || expanded {
+                Button {
+                    withMotion { expanded.toggle() }
+                } label: {
+                    Text(expanded ? "أقل" : "المزيد").font(.caption.bold()).foregroundStyle(.qiraatBadgeInk)
+                        .frame(minWidth: 44, minHeight: 44, alignment: .leading)
+                        .contentShape(Rectangle())
+                }
+                .accessibilityIdentifier("qiraat-notes-toggle")
+                .accessibilityHint(expanded ? "يطوي الملاحظات" : "يعرض الملاحظات كاملة")
+            }
+        }
+    }
+}
+
+private struct HeightReader: View {
+    let onChange: (CGFloat) -> Void
+    var body: some View {
+        GeometryReader { proxy in
+            Color.clear
+                .onAppear { onChange(proxy.size.height) }
+                .onChange(of: proxy.size.height) { _, height in onChange(height) }
+        }
     }
 }

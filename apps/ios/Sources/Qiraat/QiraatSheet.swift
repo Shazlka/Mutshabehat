@@ -19,13 +19,29 @@ struct QiraatSheet: View {
     let wordFont: CTFont?
     let onClose: () -> Void
 
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
+    /// The header glyph is drawn at the size it was loaded at (40 pt) and follows the title metric up to 72 pt.
+    private func scaledWordFont(_ font: CTFont) -> CTFont {
+        _ = dynamicTypeSize // Recompute when the SwiftUI Dynamic Type environment changes.
+        let baseSize = CTFontGetSize(font)
+        let scaledSize = UIFontMetrics(forTextStyle: .title1).scaledValue(for: baseSize)
+        return CTFontCreateCopyWithAttributes(font, min(scaledSize, VariantCard.maxWordSize), nil, nil)
+    }
+
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 12) {
                     header
-                    ForEach(item.selection.variants) { VariantCard(variant: $0, catalog: catalog, filter: filter) }
-                    ForEach(item.selection.rulings) { RulingCard(ruling: $0, catalog: catalog) }
+                    if !item.selection.variants.isEmpty {
+                        sectionHeading("الفرش")
+                        ForEach(item.selection.variants) { VariantCard(variant: $0, catalog: catalog, filter: filter) }
+                    }
+                    if !item.selection.rulings.isEmpty {
+                        sectionHeading("الأصول")
+                        ForEach(item.selection.rulings) { RulingCard(ruling: $0, catalog: catalog) }
+                    }
                 }
                 .padding()
             }
@@ -41,11 +57,27 @@ struct QiraatSheet: View {
         .presentationDetents([.medium, .large])
     }
 
+    /// «الفرش» (the words that differ) and «الأصول» (the rules that colour a word), as VoiceOver headings.
+    private func sectionHeading(_ title: String) -> some View {
+        Text(title)
+            .font(.subheadline.bold())
+            .foregroundStyle(Color(uiColor: .mushafBrown))
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.top, 4)
+            .accessibilityAddTraits(.isHeader)
+    }
+
     private var header: some View {
         HStack(alignment: .firstTextBaseline) {
             if let wordFont {
                 // The exact Mushaf glyph, in its own page's font.
-                Text(verbatim: item.word.glyph).font(Font(wordFont)).foregroundStyle(Color(uiColor: .mushafInk))
+                Text(verbatim: item.word.glyph)
+                    .font(Font(scaledWordFont(wordFont)))
+                    .foregroundStyle(Color(uiColor: .mushafInk))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.6)
+                    .allowsTightening(true)
+                    .layoutPriority(1)
             } else {
                 Text(verbatim: item.word.textUthmani).scaledFont(size: 30, weight: .bold)
             }

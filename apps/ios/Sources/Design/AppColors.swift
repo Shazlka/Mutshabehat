@@ -91,3 +91,44 @@ private enum AppPalette {
     static let favorite = Color(uiColor: .dynamic(light: 0x8F6A00, dark: 0xF2C94C))
     static let danger = Color(uiColor: .dynamic(light: 0xB4232A, dark: 0xFF8A8A))
 }
+
+// MARK: - Qiraat detail sheet
+
+/// Colours of the Qiraat detail sheet. Reader and ruling colours come from the data and are not here.
+/// Every text/background pair below measures at least 4.5:1 in light and dark (`QiraatContrastTests`).
+/// The sheet sits on `UIColor.mushafPaper`; its cards sit on `qiraatCardFill`.
+enum QiraatPalette {
+    /// A variant or ruling card.
+    static let cardFill = UIColor.dynamic(light: 0xFFFEFA, dark: 0x27241E)
+    /// The outline of a card and of a hint.
+    static let cardStroke = UIColor.dynamic(light: 0xD9C99B, dark: 0x5A5036)
+    /// The differing reading, set large on a variant card.
+    static let variantInk = UIColor.dynamic(light: 0x7A1F1A, dark: 0xF2A9A1)
+    /// A kind or wajh badge, the «ذو وجهين» note, the first-use hint.
+    static let badgeInk = UIColor.dynamic(light: 0x6B4A00, dark: 0xF0D58A)
+    static let badgeFill = UIColor.dynamic(light: 0xF1E2B6, dark: 0x4A3A12)
+    /// The «تحتاج مراجعة يدوية» badge.
+    static let reviewInk = UIColor.dynamic(light: 0x8A2F10, dark: 0xFFC1A8)
+    static let reviewFill = UIColor.dynamic(light: 0xF7D2C4, dark: 0x5C2616)
+    /// Text on a data colour (a ruling category, a reader dot): light or dark, whichever reads better.
+    static let onFillLight = UIColor(rgb: 0xFFFFFF)
+    static let onFillDark = UIColor(rgb: 0x16110A)
+}
+
+extension UIColor {
+    /// The ink for text drawn on `fill` (a colour that does not change with the mode).
+    static func qiraatInk(onFill fill: UIColor) -> UIColor {
+        let light = QiraatPalette.onFillLight, dark = QiraatPalette.onFillDark
+        return light.contrast(with: fill) >= dark.contrast(with: fill) ? light : dark
+    }
+}
+
+extension ShapeStyle where Self == Color {
+    static var qiraatCardFill: Color { Color(uiColor: QiraatPalette.cardFill) }
+    static var qiraatCardStroke: Color { Color(uiColor: QiraatPalette.cardStroke) }
+    static var qiraatVariantInk: Color { Color(uiColor: QiraatPalette.variantInk) }
+    static var qiraatBadgeInk: Color { Color(uiColor: QiraatPalette.badgeInk) }
+    static var qiraatBadgeFill: Color { Color(uiColor: QiraatPalette.badgeFill) }
+    static var qiraatReviewInk: Color { Color(uiColor: QiraatPalette.reviewInk) }
+    static var qiraatReviewFill: Color { Color(uiColor: QiraatPalette.reviewFill) }
+}
