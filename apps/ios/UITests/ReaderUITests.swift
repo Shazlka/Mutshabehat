@@ -121,6 +121,11 @@ final class ReaderUITests: XCTestCase {
         XCTAssertFalse(app.buttons["settings-mutshabehat"].exists)
     }
 
+    /// Labels with a substituted name carry invisible direction marks (U+2066 to U+2069) around it.
+    private func withoutBidiMarks(_ text: String) -> String {
+        String(text.unicodeScalars.filter { !(0x2066...0x2069).contains($0.value) })
+    }
+
     func testQiraatReaderPickerOpensFullScreenWithColoredReaders() {
         let app = launch(atPage: 1)
         XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 10))
@@ -137,11 +142,11 @@ final class ReaderUITests: XCTestCase {
         XCTAssertTrue(app.navigationBars["اختر القارئ أو الراوي"].waitForExistence(timeout: 3))
         let reader = app.buttons["qiraat-reader-Q01"]
         XCTAssertTrue(reader.waitForExistence(timeout: 3))
-        XCTAssertTrue(reader.label.contains("نافع (روايتاه)"))
+        XCTAssertTrue(withoutBidiMarks(reader.label).contains("روايتا الإمام نافع"))
 
         let narrator = app.buttons["qiraat-narrator-Q01-R02"]
         XCTAssertTrue(narrator.waitForExistence(timeout: 3))
-        XCTAssertTrue(narrator.label.contains("ورش"))
+        XCTAssertTrue(withoutBidiMarks(narrator.label).contains("ورش"))
     }
 
     func testQiraatReaderPickerSearchAndDismiss() {

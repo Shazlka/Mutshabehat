@@ -31,60 +31,15 @@ The repository-root `HANDOFF.md` describes the web application and production ba
 
 ## Qiraat UX round (branch ios/qiraat-ux, 2026-10-10/11)
 
-- **What was added:**
-  - Legend: colour and mark reference sheet (`QiraatLegendSheet`) explaining marks, readers, narrators, and usul categories.
-  - Top-bar Qiraat menu + filter chip: reader top-bar controls to toggle layer and select filter; active filter chip in reading header without moving page frame.
-  - Sheet theming & decomposition: decomposed `QiraatSheet` into `VariantCard`, `RulingCard`, `QiraatPills`, and `FlowLayout`.
-  - Sheet navigation & face numbering: Quran-order marked-word traversal with `QiraatSheetNavigator`, and semantic variant face numbers.
-  - Compare mode: side-by-side reading comparison for two readers or narrators (`QiraatCompareView`) from unfiltered page data with right-to-left columns.
-  - Notes, sync status, and report link: favorite toggle and persistence, live sync status indicator, and report link to web review editor.
-  - Page summary: list of differences on current page or spread grouped by ayah (`QiraatPageSummaryView`).
-  - Search: offline search across 604 pages by reader or narrator, word text, or bab (`QiraatSearchView`).
-  - Usul index: index of 23 categories and 12,506 rulings (`UsulIndexView`), resolving pages via `mushaf.sqlite` and aggregating loci into 12,297 places.
-  - Picker redesign: half-sheet reader/narrator picker with search filtering.
-  - Localization: Arabic and English string coverage in `Localizable.xcstrings`.
-- **Where the code lives:**
-  - `MushafCore/Sources/MushafCore/QiraatWordOrder.swift`
-  - `MushafCore/Sources/MushafCore/QiraatPageSummary.swift`
-  - `MushafCore/Sources/MushafCore/QiraatSearch.swift`
-  - `MushafCore/Sources/MushafCore/UsulIndex.swift`
-  - `MushafCore/Sources/MushafCore/QiraatCompare.swift`
-  - `Sources/Qiraat/QiraatLegendSheet.swift`
-  - `Sources/Qiraat/QiraatSheet.swift`
-  - `Sources/Qiraat/VariantCard.swift`
-  - `Sources/Qiraat/RulingCard.swift`
-  - `Sources/Qiraat/QiraatPills.swift`
-  - `Sources/Qiraat/FlowLayout.swift`
-  - `Sources/Qiraat/QiraatSheetNavigator.swift`
-  - `Sources/Qiraat/QiraatPageSummaryView.swift`
-  - `Sources/Qiraat/QiraatSearchView.swift`
-  - `Sources/Qiraat/UsulIndexView.swift`
-  - `Sources/Qiraat/QiraatCompareView.swift`
-  - `Sources/Qiraat/QiraatReaderPicker.swift`
-  - `Sources/Qiraat/QiraatControls.swift`
-  - `Sources/Qiraat/QiraatPreferences.swift`
-  - `Sources/Reader/ReaderTopBar.swift`
-  - `Sources/Reader/ReaderView.swift`
-  - `Sources/Localizable.xcstrings`
-  - `Tests/QiraatLegendTests.swift`
-  - `UITests/QiraatFeaturesUITests.swift`
-  - `MushafCore/Tests/MushafCoreTests/QiraatWordOrderTests.swift`
-  - `MushafCore/Tests/MushafCoreTests/QiraatPageSummaryTests.swift`
-  - `MushafCore/Tests/MushafCoreTests/QiraatSearchTests.swift`
-  - `MushafCore/Tests/MushafCoreTests/UsulIndexTests.swift`
-  - `MushafCore/Tests/MushafCoreTests/QiraatCompareTests.swift`
-- **How to run its tests:**
-  - `swift test --package-path MushafCore --filter QiraatWordOrderTests`
-  - `swift test --package-path MushafCore --filter QiraatPageSummaryTests`
-  - `swift test --package-path MushafCore --filter QiraatSearchTests`
-  - `swift test --package-path MushafCore --filter UsulIndexTests`
-  - `swift test --package-path MushafCore --filter QiraatCompareTests`
-  - `xcodebuild -project Mutshabehat.xcodeproj -scheme Mutshabehat -destination 'platform=iOS Simulator,name=iPhone 18 Pro Max' test -only-testing:MutshabehatTests/QiraatLegendTests`
-  - `xcodebuild -project Mutshabehat.xcodeproj -scheme Mutshabehat -destination 'platform=iOS Simulator,name=iPhone 18 Pro Max' test -only-testing:MutshabehatUITests/QiraatFeaturesUITests`
-- **Not verified:**
-  - VoiceOver by hand.
-  - Real-device haptics.
-  - iCloud.
+Everything is on the branch `ios/qiraat-ux` (based on `ios/memorization`). It is not merged into `ios/main`, `ios/memorization` or web `main`. Details: the top entry of `CHANGELOG.md`, the per-workstream entries in `CHANGELOG-archive.md`, results in `docs/qiraat-ux-acceptance.md`.
+
+- **What was added:** colour key, top-bar Qiraat menu with filter chip, page summary, offline Qiraat search, usul index, side-by-side compare, word-sheet navigation and face numbers, live-sync status and report link, favourites and personal notes (in backup and restore), redesigned reader picker, English chrome (`Localizable.xcstrings`, `appLocalized`).
+- **Where the code lives:** `Sources/Qiraat/` (views, `QiraatHub`, `QiraatControls`, `QiraatNotes*`, `QiraatSyncStatusView`), `Sources/Design/AppLocalized.swift`, `Sources/Reader/ReaderTopBar.swift` and `ReaderView.swift`, `Sources/Backup/*`; pure logic in `MushafCore/Sources/MushafCore/` (`QiraatWordOrder`, `QiraatPageSummary`, `QiraatSearch`, `UsulIndex`, `QiraatCompare`, `QiraatResolvedPageIndex`).
+- **How to run its tests:** `swift test --package-path MushafCore`; `xcodebuild ... test -only-testing:MutshabehatTests`; UI: `QiraatFeaturesUITests`, `QiraatTopBarUITests`, `QiraatLocalizationUITests`, `QiraatSheetAccessibilityUITests`, `QiraatUITests`. Run UI tests one device at a time, never beside another build: a loaded machine makes some tests time out.
+- **Test facts learned:** items inside a SwiftUI `Menu` section or submenu are exposed by label only (the identifier is dropped); labels with a substituted name carry invisible direction marks U+2066 to U+2069, so tests must strip them; with the Qiraat layer on, the page centre is a marked word, so tests tap the left margin.
+- **Known timing-sensitive tests:** whole-Quran speed test, history/undo test, search time budget, and `testLegendOpensListsReaderRowsAndCloses` on iPad. If they fail in a full run, re-run them alone before treating them as broken.
+- **Web database problems to fix at the source (not here):** 5 misfiled rulings (listed in the acceptance report), 2 rulings with empty `baseText`, 93 loci with several rows.
+- **Open follow-ups:** a person should review the English strings (all `needs_review`); dark theme still draws raw Qiraat colours on the page; VoiceOver, device haptics and iCloud were not checked by hand. Gated items (hujjah/Shatibiyya, audio, quiz, biographies, widget, share card) were not started.
 
 ---
 
