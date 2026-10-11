@@ -113,7 +113,7 @@ enum QiraatLegend {
     /// Every row of the key: the marks, then the readers with their narrators, then the أصول categories.
     static func entries(catalog: QiraatCatalog, usulCategories: [QiraatLegendCategory] = []) -> [QiraatLegendEntry] {
         let readers = catalog.readers.sorted { $0.sortOrder < $1.sortOrder }
-        let familyColor = usulCategories.first?.color
+        let familyColor = usulCategories.first?.color ?? catalog.multiReaderColor
         let imalahColor = usulCategories.first { $0.code == imalahCategory }?.color ?? familyColor
         var rows: [QiraatLegendEntry] = []
 
@@ -140,24 +140,30 @@ enum QiraatLegend {
             explanation: "القارئ غير معروف بعد في بيانات الكلمة، فلا يُنسب الخط إلى أحد.", isNarrator: false))
         rows.append(QiraatLegendEntry(
             id: "mark-dotted", group: .marks, mark: .dottedLine,
-            colors: familyColor.map { [$0] } ?? [], textColor: nil,
+            colors: [familyColor], textColor: nil,
             title: "خط منقّط تحت الكلمة",
             explanation: "ذو وجهين: لبعض القرّاء وجه ثانٍ جائز («بخلف عنه»)، بلون الباب.", isNarrator: false))
         rows.append(QiraatLegendEntry(
             id: "mark-family", group: .marks, mark: .familyDot,
-            colors: familyColor.map { [$0] } ?? [], textColor: nil,
+            colors: [familyColor], textColor: nil,
             title: "نقطة أعلى يسار الكلمة",
             explanation: "أكثر من باب من أبواب الأصول على الكلمة، بلون أول حكم عليها.", isNarrator: false))
         rows.append(QiraatLegendEntry(
             id: "mark-imalah", group: .marks, mark: .imalahFilled,
-            colors: imalahColor.map { [$0] } ?? [], textColor: nil,
+            colors: [imalahColor], textColor: nil,
             title: "نقطة مملوءة أسفل يسار الكلمة",
             explanation: "إمالة في باب الممال والمقلل، بلون هذا الباب.", isNarrator: false))
         rows.append(QiraatLegendEntry(
             id: "mark-taqlil", group: .marks, mark: .imalahRing,
-            colors: imalahColor.map { [$0] } ?? [], textColor: nil,
+            colors: [imalahColor], textColor: nil,
             title: "حلقة أسفل يسار الكلمة",
             explanation: "تقليل بلا إمالة في باب الممال والمقلل، بلون هذا الباب.", isNarrator: false))
+        rows.append(QiraatLegendEntry(
+            id: "mark-ruling-word", group: .marks, mark: .rulingWord,
+            colors: [familyColor], textColor: familyColor,
+            title: "كلمة بلون الباب",
+            explanation: "حكم من أبواب الأصول بلا اختلاف في الرسم: يلوّن نص الكلمة بلا خط تحتها.",
+            isNarrator: false))
 
         for reader in readers {
             rows.append(QiraatLegendEntry(
@@ -257,6 +263,7 @@ struct QiraatLegendSheet: View {
                 }
             }
         }
+        .environment(\.layoutDirection, .rightToLeft)
         .presentationDetents([.medium, .large])
         .task { await loadCategories() }
     }
@@ -278,11 +285,12 @@ struct QiraatLegendSheet: View {
 /// One key row: the sample on the start edge, the name and what it means beside it.
 private struct QiraatLegendRow: View {
     let entry: QiraatLegendEntry
+    @ScaledMetric(relativeTo: .body) private var sampleWidth: CGFloat = 84
 
     var body: some View {
         HStack(alignment: .center, spacing: 12) {
             QiraatLegendSample(mark: entry.mark, colors: entry.colors, textColor: entry.textColor)
-                .frame(width: 84)
+                .frame(width: sampleWidth)
             VStack(alignment: .leading, spacing: 2) {
                 Text(verbatim: entry.title)
                     .font(.headline)
@@ -359,7 +367,12 @@ private struct QiraatLegendSample: View {
             context.stroke(Path(ellipseIn: ring.insetBy(dx: dot * 0.14, dy: dot * 0.14)), with: .color(color(0)),
                            lineWidth: max(1, dot * 0.28))
         case .rulingWord:
-            break
+            let badge = CGRect(x: word.minX - dot * 0.8, y: word.midY - dot * 0.45,
+                               width: dot * 0.8, height: dot * 0.9)
+            context.fill(Path(roundedRect: badge, cornerRadius: dot * 0.22),
+                         with: .color(color(0).opacity(0.16)))
+            context.stroke(Path(roundedRect: badge, cornerRadius: dot * 0.22),
+                           with: .color(color(0)), lineWidth: max(1, thickness * 0.65))
         }
     }
 }

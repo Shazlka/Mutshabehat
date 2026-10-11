@@ -67,7 +67,7 @@ public final class QiraatSearchIndex: Sendable {
         var id: String { "\(page)-\(surah)-\(ayah)-\(token)" }
     }
 
-    public init(store: QiraatStore) {
+    public init(store: QiraatStore, wordPages: [MushafWordCoordinate: Int]) {
         var entries: [Entry] = []
         var authorities: [String: [Int]] = [:]
         var categoryEntries: [String: [Int]] = [:]
@@ -76,7 +76,7 @@ public final class QiraatSearchIndex: Sendable {
         let catalog = store.catalog
 
         func append(page: Int, surah: Int, ayah: Int, token: Int, text: String, alternatives: [String],
-                    kind: QiraatSearchKind, wordAnchored: Bool, ids: [String], category: String? = nil) {
+                    kind: QiraatSearchKind, wordAnchored: Bool, readingIds: [String], category: String? = nil) {
             let offset = entries.count
             let texts = ([text] + alternatives).filter { !$0.isEmpty }
             entries.append(Entry(page: page, surah: surah, ayah: ayah, token: token, displayText: text,
@@ -85,31 +85,30 @@ public final class QiraatSearchIndex: Sendable {
                                  kind: kind, wordAnchored: wordAnchored))
             if let category { categoryEntries[category, default: []].append(offset) }
             guard wordAnchored else { return }
-            var expanded: Set<String> = []
-            for id in ids {
+            var filterKeys: Set<String> = []
+            for id in readingIds {
                 if let narrator = catalog.narrator(id) {
-                    expanded.insert(id)
-                    expanded.insert(narrator.readerId)
-                } else if catalog.reader(id) != nil {
-                    expanded.insert(id)
-                    expanded.formUnion(catalog.narrators(of: id).map(\.id))
+                    filterKeys.insert(id)
+                    filterKeys.insert(narrator.readerId)
                 }
             }
-            for id in expanded { authorities[id, default: []].append(offset) }
+            for id in filterKeys { authorities[id, default: []].append(offset) }
         }
 
+        let resolved = QiraatResolvedPageIndex(store: store, wordPages: wordPages)
+        missing = resolved.missingSnapshotPages
         for number in 1...mushafPageCount {
-            guard let page = store.page(number) else { missing.append(number); continue }
+            guard let page = resolved.page(number) else { continue }
             for variant in page.variants {
                 append(page: number, surah: variant.surah, ayah: variant.ayah, token: variant.startToken,
                        text: variant.hafsText, alternatives: [variant.variantText], kind: .farsh,
-                       wordAnchored: true, ids: variant.readingIds)
+                       wordAnchored: true, readingIds: variant.readingIds)
             }
             for ruling in page.rulings {
                 names[ruling.category] = names[ruling.category] ?? ruling.categoryAr
                 append(page: number, surah: ruling.surah, ayah: ruling.ayah, token: ruling.startToken,
                        text: ruling.baseText, alternatives: [], kind: .usul, wordAnchored: ruling.wordAnchored,
-                       ids: ruling.readings.map(\.readingId) + ruling.attribution.map(\.authorityId),
+                       readingIds: ruling.readings.map(\.readingId),
                        category: ruling.category)
             }
         }
@@ -217,14 +216,22 @@ public final class QiraatSearchIndex: Sendable {
 /// The index is a point-in-time snapshot; create a new service after replacing the source store.
 public actor QiraatSearch {
     private let store: QiraatStore
+    private let databaseURL: URL
     private var build: Task<QiraatSearchIndex, Never>?
 
-    public init(store: QiraatStore) { self.store = store }
+    public init(store: QiraatStore, databaseURL: URL) {
+        self.store = store
+        self.databaseURL = databaseURL
+    }
 
     public func index() async -> QiraatSearchIndex {
         if let build { return await build.value }
         let store = self.store
-        let task = Task.detached(priority: .userInitiated) { QiraatSearchIndex(store: store) }
+        let databaseURL = self.databaseURL
+        let task = Task.detached(priority: .userInitiated) {
+            let wordPages = (try? MushafDatabase(url: databaseURL).wordPageIndex()) ?? [:]
+            return QiraatSearchIndex(store: store, wordPages: wordPages)
+        }
         build = task
         return await task.value
     }

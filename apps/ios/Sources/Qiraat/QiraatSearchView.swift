@@ -1,3 +1,4 @@
+import Foundation
 import MushafCore
 import SwiftUI
 
@@ -5,6 +6,7 @@ import SwiftUI
 @MainActor
 struct QiraatSearchView: View {
     let store: QiraatStore
+    let databaseURL: URL
     let surahNames: [Int: String]
     let onOpen: (_ page: Int, _ surah: Int, _ ayah: Int, _ token: Int) -> Void
 
@@ -26,12 +28,13 @@ struct QiraatSearchView: View {
         var id: String { rawValue }
     }
 
-    init(store: QiraatStore, surahNames: [Int: String],
+    init(store: QiraatStore, databaseURL: URL, surahNames: [Int: String],
          onOpen: @escaping (_ page: Int, _ surah: Int, _ ayah: Int, _ token: Int) -> Void) {
         self.store = store
+        self.databaseURL = databaseURL
         self.surahNames = surahNames
         self.onOpen = onOpen
-        _search = State(initialValue: QiraatSearchSession.service(for: store))
+        _search = State(initialValue: QiraatSearchSession.service(for: store, databaseURL: databaseURL))
     }
 
     private var query: QiraatSearchQuery? {
@@ -80,15 +83,21 @@ struct QiraatSearchView: View {
                         Text("الفهرس غير مكتمل: \(missingPageCount) صفحة غير متاحة")
                             .foregroundStyle(Color.caution)
                     }
-                    if loading {
-                        ProgressView("جارٍ تجهيز النتائج")
-                    } else if query == nil {
+                    if query == nil {
                         Text(scope == .word ? "اكتب كلمة للبحث في مواضع الخلاف" : "اختر من القائمة لعرض المواضع")
                     } else if groups.isEmpty {
-                        Text("لا توجد نتائج")
+                        if loading {
+                            ProgressView("جارٍ تجهيز النتائج")
+                        } else {
+                            Text("لا توجد نتائج")
+                        }
                     } else {
                         Text("\(groups.reduce(0) { $0 + $1.pages.reduce(0) { $0 + $1.results.count } }) موضع")
                             .font(.subheadline)
+                        if loading {
+                            ProgressView("جارٍ تحديث النتائج")
+                                .controlSize(.small)
+                        }
                         resultSections
                     }
                 }
@@ -200,7 +209,7 @@ struct QiraatSearchView: View {
                             VStack(alignment: .leading, spacing: 6) {
                                 // A few bundled rulings carry no word text; show the position only.
                                 Text(verbatim: result.displayText.isEmpty ? "كلمة \(result.token)" : result.displayText)
-                                    .font(.title3)
+                                    .font(Font(MushafLibrary.mushafFont(size: 22)))
                                 Text("صفحة \(result.page) · آية \(result.ayah) · كلمة \(result.token)")
                                     .font(.caption)
                                 Text(verbatim: result.kinds.map(\.rawValue).joined(separator: " · "))
@@ -228,7 +237,6 @@ struct QiraatSearchView: View {
 
     @MainActor private func updateResults() async {
         loading = true
-        groups = []
         let requestedQuery = query
         let index = await search.index()
         guard !Task.isCancelled else { return }
@@ -238,6 +246,8 @@ struct QiraatSearchView: View {
             let found = await search.search(requestedQuery)
             guard !Task.isCancelled else { return }
             groups = found
+        } else {
+            groups = []
         }
         loading = false
     }
@@ -245,12 +255,13 @@ struct QiraatSearchView: View {
 
 /// Reopening search reuses the index; importing a replacement store starts a fresh snapshot.
 @MainActor private enum QiraatSearchSession {
-    private static var current: (store: QiraatStore, search: QiraatSearch)?
+    private static var current: (store: QiraatStore, databasePath: String, search: QiraatSearch)?
 
-    static func service(for store: QiraatStore) -> QiraatSearch {
-        if let current, current.store === store { return current.search }
-        let search = QiraatSearch(store: store)
-        current = (store, search)
+    static func service(for store: QiraatStore, databaseURL: URL) -> QiraatSearch {
+        let databasePath = databaseURL.standardizedFileURL.path
+        if let current, current.store === store, current.databasePath == databasePath { return current.search }
+        let search = QiraatSearch(store: store, databaseURL: databaseURL)
+        current = (store, databasePath, search)
         return search
     }
 }

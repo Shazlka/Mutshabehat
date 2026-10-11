@@ -4,7 +4,9 @@ import Testing
 
 @Suite(.serialized) struct QiraatSearchTests {
     private static let snapshot = Task.detached {
-        QiraatSearchIndex(store: try QiraatStore(directory: generatedDirectory.appendingPathComponent("Qiraat")))
+        let store = try QiraatStore(directory: generatedDirectory.appendingPathComponent("Qiraat"))
+        let database = try MushafDatabase(url: generatedDirectory.appendingPathComponent("mushaf.sqlite"))
+        return QiraatSearchIndex(store: store, wordPages: try database.wordPageIndex())
     }
 
     @Test func bundledNarratorAndReaderFindKnownVariantAndRuling() async throws {
@@ -21,6 +23,8 @@ import Testing
 
     @Test func everyCategoryTotalMatchesRawBundledJSON() async throws {
         let index = try await Self.snapshot.value
+        let database = try MushafDatabase(url: generatedDirectory.appendingPathComponent("mushaf.sqlite"))
+        let wordPages = try database.wordPageIndex()
         var counts: [String: Int] = [:]
         var places: [String: Set<String>] = [:]
         for page in 1...604 {
@@ -32,7 +36,8 @@ import Testing
                 let ayah = try #require(row["ayah"] as? Int)
                 let token = try #require(row["startToken"] as? Int)
                 counts[category, default: 0] += 1
-                places[category, default: []].insert("\(page)-\(surah)-\(ayah)-\(token)")
+                let resolvedPage = try #require(wordPages[MushafWordCoordinate(surah: surah, ayah: ayah, token: token)])
+                places[category, default: []].insert("\(resolvedPage)-\(surah)-\(ayah)-\(token)")
             }
         }
         #expect(index.categories.count == 23)
@@ -50,6 +55,8 @@ import Testing
     @Test func everyAuthorityMatchesRawBundledLocations() async throws {
         let index = try await Self.snapshot.value
         let store = try QiraatStore(directory: generatedDirectory.appendingPathComponent("Qiraat"))
+        let database = try MushafDatabase(url: generatedDirectory.appendingPathComponent("mushaf.sqlite"))
+        let wordPages = try database.wordPageIndex()
         var expected: [String: Set<String>] = [:]
         var variantCount = 0
         for page in 1...604 {
@@ -63,15 +70,15 @@ import Testing
                 let ayah = try #require(row["ayah"] as? Int)
                 let token = try #require(row["startToken"] as? Int)
                 let ids = Set((row["readingIds"] as? [String] ?? [])
-                    + (row["readings"] as? [[String: Any]] ?? []).compactMap { $0["readingId"] as? String }
-                    + (row["attribution"] as? [[String: Any]] ?? []).compactMap { $0["authorityId"] as? String })
-                let location = "\(page)-\(surah)-\(ayah)-\(token)"
+                    + (row["readings"] as? [[String: Any]] ?? []).compactMap { $0["readingId"] as? String })
+                let resolvedPage = try #require(wordPages[MushafWordCoordinate(surah: surah, ayah: ayah, token: token)])
+                let location = "\(resolvedPage)-\(surah)-\(ayah)-\(token)"
                 for reader in store.catalog.readers {
                     let narrators = store.catalog.narrators(of: reader.id)
-                    if ids.contains(reader.id) || narrators.contains(where: { ids.contains($0.id) }) {
+                    if narrators.contains(where: { ids.contains($0.id) }) {
                         expected[reader.id, default: []].insert(location)
                     }
-                    for narrator in narrators where ids.contains(reader.id) || ids.contains(narrator.id) {
+                    for narrator in narrators where ids.contains(narrator.id) {
                         expected[narrator.id, default: []].insert(location)
                     }
                 }
@@ -101,7 +108,7 @@ import Testing
         #expect(index.search(.word("\u{064E}", ignoreTashkeel: true)).isEmpty)
     }
 
-    @Test func attributionOnlyReaderExpandsWithoutLeakingToSiblingNarrator() throws {
+    @Test func attributionOnlyRulingsDoNotAppearInAuthoritySearch() throws {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         defer { try? FileManager.default.removeItem(at: directory) }
@@ -119,10 +126,16 @@ import Testing
             ruling("narrator", token: 2, authority: "Q01-R02")
         ], rules: [])
         try JSONEncoder().encode(page).write(to: directory.appendingPathComponent("page-002.json"))
-        let index = QiraatSearchIndex(store: try QiraatStore(directory: directory))
-        #expect(index.search(.authority("Q01")).map(\.token) == [1, 2])
-        #expect(index.search(.authority("Q01-R01")).map(\.token) == [1])
-        #expect(index.search(.authority("Q01-R02")).map(\.token) == [1, 2])
+        let index = QiraatSearchIndex(
+            store: try QiraatStore(directory: directory),
+            wordPages: [
+                MushafWordCoordinate(surah: 2, ayah: 1, token: 1): 2,
+                MushafWordCoordinate(surah: 2, ayah: 1, token: 2): 2
+            ]
+        )
+        #expect(index.search(.authority("Q01")).isEmpty)
+        #expect(index.search(.authority("Q01-R01")).isEmpty)
+        #expect(index.search(.authority("Q01-R02")).isEmpty)
         #expect(index.missingPages.count == 603)
     }
 
@@ -143,7 +156,13 @@ import Testing
         let store = try QiraatStore(directory: generatedDirectory.appendingPathComponent("Qiraat"))
         let page = try #require(store.page(1))
         let convention = try #require(page.rulings.first { !$0.wordAnchored })
-        let conventionID = "1-\(convention.surah)-\(convention.ayah)-\(convention.startToken)"
+        let wordPages = try MushafDatabase(url: generatedDirectory.appendingPathComponent("mushaf.sqlite")).wordPageIndex()
+        let conventionPage = try #require(wordPages[MushafWordCoordinate(
+            surah: convention.surah,
+            ayah: convention.ayah,
+            token: convention.startToken
+        )])
+        let conventionID = "\(conventionPage)-\(convention.surah)-\(convention.ayah)-\(convention.startToken)"
         #expect(index.search(.category(convention.category)).contains { $0.id == conventionID })
         #expect(!index.search(.word(convention.baseText)).contains { $0.id == conventionID })
 
@@ -174,8 +193,59 @@ import Testing
         #expect(!index.search(.word("ا")).contains { $0.id == "6-2-33-16" })
     }
 
+    @Test func bundledAttributionOnlyMismatchCountIsZero() throws {
+        let store = try QiraatStore(directory: generatedDirectory.appendingPathComponent("Qiraat"))
+        var differing: [QiraatRuling] = []
+        for page in 1...mushafPageCount {
+            differing += store.page(page)?.rulings.filter {
+                $0.readings.isEmpty && !$0.attribution.isEmpty
+            } ?? []
+        }
+        #expect(differing.count == 0)
+        print("QiraatSearch filter parity: 0 of 12,506 rulings are attribution-only")
+    }
+
+    @Test func misfiledRulingsUseMushafPagesForDisplayNavigationAndOrdering() async throws {
+        let index = try await Self.snapshot.value
+        let store = try QiraatStore(directory: generatedDirectory.appendingPathComponent("Qiraat"))
+        let wordPages = try MushafDatabase(
+            url: generatedDirectory.appendingPathComponent("mushaf.sqlite")
+        ).wordPageIndex()
+        let misplaced = try #require(store.page(1)).rulings.filter { ruling in
+            wordPages[MushafWordCoordinate(
+                surah: ruling.surah,
+                ayah: ruling.ayah,
+                token: ruling.startToken
+            )] != 1
+        }
+        #expect(misplaced.count == 5)
+
+        for ruling in misplaced {
+            let page = try #require(wordPages[MushafWordCoordinate(
+                surah: ruling.surah,
+                ayah: ruling.ayah,
+                token: ruling.startToken
+            )])
+            let result = try #require(index.search(.category(ruling.category)).first {
+                $0.page == page && $0.surah == ruling.surah && $0.ayah == ruling.ayah
+                    && $0.token == ruling.startToken
+            })
+            #expect([3, 4, 7].contains(result.page))
+            #expect(result.page != 1)
+        }
+
+        let surahTwo = QiraatSearchIndex.group(index.search(.category(misplaced[0].category)))
+            .first { $0.surah == 2 }
+        if let surahTwo {
+            #expect(surahTwo.pages.map(\.page) == surahTwo.pages.map(\.page).sorted())
+        }
+    }
+
     @Test func backgroundServiceReusesOneIndex() async throws {
-        let service = QiraatSearch(store: try QiraatStore(directory: generatedDirectory.appendingPathComponent("Qiraat")))
+        let service = QiraatSearch(
+            store: try QiraatStore(directory: generatedDirectory.appendingPathComponent("Qiraat")),
+            databaseURL: generatedDirectory.appendingPathComponent("mushaf.sqlite")
+        )
         async let first = service.index()
         async let second = service.index()
         let (a, b) = await (first, second)

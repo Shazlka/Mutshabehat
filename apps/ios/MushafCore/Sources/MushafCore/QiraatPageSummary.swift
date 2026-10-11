@@ -15,6 +15,21 @@ public struct QiraatPageSummaryItem: Identifiable, Hashable, Sendable {
         QiraatSelection(variants: variants.map(\.variant), rulings: rulings.map(\.ruling))
     }
 
+    /// Source rows for one باب share one visual heading while retaining every ruling.
+    public var rulingGroups: [RulingCategoryGroup] {
+        var order: [String] = []
+        var grouped: [String: [Ruling]] = [:]
+        for ruling in rulings {
+            let category = ruling.ruling.category
+            if grouped[category] == nil { order.append(category) }
+            grouped[category, default: []].append(ruling)
+        }
+        return order.compactMap { category in
+            guard let rulings = grouped[category], let first = rulings.first else { return nil }
+            return RulingCategoryGroup(category: category, categoryAr: first.categoryAr, rulings: rulings)
+        }
+    }
+
     public struct Variant: Identifiable, Hashable, Sendable {
         public let variant: QiraatVariant
         public let authorities: [AuthorityPill]
@@ -33,6 +48,13 @@ public struct QiraatPageSummaryItem: Identifiable, Hashable, Sendable {
         public let action: String
         public let entries: [QiraatRulingAttribution]
         public let authorities: [AuthorityPill]
+    }
+
+    public struct RulingCategoryGroup: Identifiable, Hashable, Sendable {
+        public let category: String
+        public let categoryAr: String
+        public let rulings: [Ruling]
+        public var id: String { category }
     }
 }
 
@@ -61,16 +83,48 @@ public enum QiraatPageSummary {
             }
             let rulings = data.rulings.filter {
                 $0.wordAnchored && $0.touches(surah: surah, ayah: ayah, token: token) && marks.matches($0, filter)
-            }.map { ruling in
-                let groups = ruling.attributionByAction.compactMap { group -> QiraatPageSummaryItem.ActionGroup? in
+            }.compactMap { ruling -> QiraatPageSummaryItem.Ruling? in
+                var groups = ruling.attributionByAction.compactMap { group -> QiraatPageSummaryItem.ActionGroup? in
                     let entries = group.entries.filter { matchesAuthority($0.authorityId, filter: filter, catalog: catalog) }
                     guard !entries.isEmpty else { return nil }
                     return QiraatPageSummaryItem.ActionGroup(action: group.action, entries: entries,
                         authorities: rollupAuthorityPills(entries.map(\.authorityId), catalog: catalog))
                 }
+                if groups.isEmpty {
+                    groups = readingActionGroups(ruling, filter: filter, catalog: catalog)
+                }
+                guard !groups.isEmpty else { return nil }
                 return QiraatPageSummaryItem.Ruling(ruling: ruling, actionGroups: groups)
             }
+            guard !variants.isEmpty || !rulings.isEmpty else { return nil }
             return QiraatPageSummaryItem(word: word, variants: variants, rulings: rulings)
+        }
+    }
+
+    /// Some imports carry filter-authoritative `readings` without equivalent attribution rows.
+    /// Preserve their source actions by adapting those readings into the summary's display model.
+    private static func readingActionGroups(
+        _ ruling: QiraatRuling,
+        filter: QiraatFilter,
+        catalog: QiraatCatalog
+    ) -> [QiraatPageSummaryItem.ActionGroup] {
+        var order: [String] = []
+        var entriesByAction: [String: [QiraatRulingAttribution]] = [:]
+        for reading in ruling.readings where matchesAuthority(reading.readingId, filter: filter, catalog: catalog) {
+            let action = reading.action.isEmpty ? ruling.categoryAr : reading.action
+            if entriesByAction[action] == nil { order.append(action) }
+            entriesByAction[action, default: []].append(QiraatRulingAttribution(
+                authorityId: reading.readingId,
+                action: action
+            ))
+        }
+        return order.compactMap { action in
+            guard let entries = entriesByAction[action], !entries.isEmpty else { return nil }
+            return QiraatPageSummaryItem.ActionGroup(
+                action: action,
+                entries: entries,
+                authorities: rollupAuthorityPills(entries.map(\.authorityId), catalog: catalog)
+            )
         }
     }
 

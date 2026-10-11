@@ -62,15 +62,21 @@ import Testing
                       verificationStatus: "NEEDS_MANUAL_REVIEW", readingIds: readings)
     }
 
-    private func ruling(anchored: Bool = true) -> QiraatRuling {
-        QiraatRuling(id: "fixture ruling", category: "OTHER", categoryAr: "fixture category",
+    private func ruling(id: String = "fixture ruling", anchored: Bool = true, category: String = "OTHER",
+                        attribution: [QiraatRulingAttribution]? = nil,
+                        readings: [QiraatRulingReading]? = nil) -> QiraatRuling {
+        QiraatRuling(id: id, category: category, categoryAr: "fixture category",
                     color: testCatalog.readers[0].color, wordAnchored: anchored,
                     surah: 2, ayah: 1, startToken: 2, endToken: 1, endAyah: 2,
                     baseText: "fixture base", verificationStatus: "REVIEWED", hasAlternate: false,
-                    attribution: [QiraatRulingAttribution(authorityId: "Q01", action: "fixture action A"),
-                                  QiraatRulingAttribution(authorityId: "Q02-R01", action: "fixture action B")],
-                    readings: [QiraatRulingReading(readingId: "Q01-R01", action: "fixture action A", isDefault: true),
-                               QiraatRulingReading(readingId: "Q02-R01", action: "fixture action B", isDefault: true)])
+                    attribution: attribution ?? [
+                        QiraatRulingAttribution(authorityId: "Q01", action: "fixture action A"),
+                        QiraatRulingAttribution(authorityId: "Q02-R01", action: "fixture action B")
+                    ],
+                    readings: readings ?? [
+                        QiraatRulingReading(readingId: "Q01-R01", action: "fixture action A", isDefault: true),
+                        QiraatRulingReading(readingId: "Q02-R01", action: "fixture action B", isDefault: true)
+                    ])
     }
 
     private func build(_ words: [MushafWord], variants: [QiraatVariant] = [],
@@ -118,6 +124,70 @@ import Testing
             #expect(scoped.rulings[0].actionGroups.map(\.action) == ["fixture action A"])
             #expect(scoped.rulings[0].actionGroups[0].authorities == rollupAuthorityPills(["Q01"], catalog: testCatalog))
         }
+    }
+
+    @Test func readingsSupplyActionsWhenMatchingAttributionIsMissing() throws {
+        let sourceReadings = [
+            QiraatRulingReading(readingId: "Q01-R01", action: "fixture reading action", isDefault: true)
+        ]
+        let item = try #require(build(
+            [word(2)],
+            rulings: [ruling(attribution: [], readings: sourceReadings)],
+            filter: .reading("Q01-R01")
+        ).first)
+        #expect(item.rulings[0].actionGroups.map(\.action) == ["fixture reading action"])
+        #expect(item.rulings[0].actionGroups[0].entries.map(\.authorityId) == ["Q01-R01"])
+    }
+
+    @Test func rulingsWithoutDisplayableActionsDoNotCreateEmptyCards() {
+        #expect(build([word(2)], rulings: [ruling(attribution: [], readings: [])]).isEmpty)
+    }
+
+    @Test func sameCategoryRulingsShareOneCategoryGroup() throws {
+        let item = try #require(build([word(2)], rulings: [
+            ruling(id: "first"),
+            ruling(id: "second")
+        ]).first)
+        #expect(item.rulingGroups.count == 1)
+        #expect(item.rulingGroups[0].rulings.map(\.id) == ["first", "second"])
+    }
+
+    @Test func misfiledBundledRulingsAppearOnTheirDatabaseResolvedPages() throws {
+        let store = try QiraatStore(directory: generatedDirectory.appendingPathComponent("Qiraat"))
+        let database = try MushafDatabase(url: generatedDirectory.appendingPathComponent("mushaf.sqlite"))
+        let wordPages = try database.wordPageIndex()
+        let index = QiraatResolvedPageIndex(store: store, wordPages: wordPages)
+        let misplaced = try #require(store.page(1)).rulings.filter { ruling in
+            wordPages[MushafWordCoordinate(
+                surah: ruling.surah,
+                ayah: ruling.ayah,
+                token: ruling.startToken
+            )] != 1
+        }
+        #expect(misplaced.count == 5)
+        #expect(Set(misplaced.compactMap { ruling in
+            wordPages[MushafWordCoordinate(surah: ruling.surah, ayah: ruling.ayah, token: ruling.startToken)]
+        }) == [3, 4, 7])
+
+        let misplacedIDs = Set(misplaced.map(\.id))
+        let pageOneIDs = Set(index.page(1)?.rulings.map(\.id) ?? [])
+        #expect(pageOneIDs.isDisjoint(with: misplacedIDs))
+
+        var summaryIDs = Set<String>()
+        for page in [3, 4, 7] {
+            let data = try #require(index.page(page))
+            let words = try database.page(page).lines.flatMap(\.words)
+            let items = QiraatPageSummary.build(
+                page: page,
+                words: words,
+                data: data,
+                marks: QiraatMarks(catalog: store.catalog, page: data),
+                catalog: store.catalog,
+                filter: .all
+            )
+            summaryIDs.formUnion(items.flatMap(\.rulings).map(\.id))
+        }
+        #expect(misplacedIDs.isSubset(of: summaryIDs))
     }
 
     @Test func emptyAndUnanchoredPagesHaveNoItems() {
