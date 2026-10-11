@@ -3,6 +3,11 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-10 — Usul index (أصول القراءات): categories and places index across all 604 pages
+- **Usul index:** Added core model `UsulIndex.build(store: QiraatStore)` in `MushafCore/Sources/MushafCore/UsulIndex.swift` aggregating all 23 أصول categories (`UsulCategory`) and 12,506 ruling occurrences (`UsulPlace`) from all 604 pages, ordered by count descending with deterministic category code tie-breaker. Places capture page, surah, ayah, startToken, baseText.
+- **App UI:** Added `UsulIndexView` in `Sources/Qiraat/UsulIndexView.swift` showing the list of أبواب with authentic reader category colour, Arabic name, count in `ArabicDigits`, and empty-state handling. Tapping a category navigates to `UsulPlacesView` displaying each place with surah/ayah, baseText in King Fahd Complex Mushaf/KFGQPC font, and page number, calling `onOpen(page:surah:ayah:token:)` on selection. Accessibility identifiers: `usul-index`, `usul-category-<code>`, `usul-place-<page>-<surah>-<ayah>-<token>`.
+- **Verification:** Unit tests added in `MushafCore/Tests/MushafCoreTests/UsulIndexTests.swift` (`UsulIndexTests` suite) verifying 23 categories, 12,506 rulings in bundled snapshot (`Generated/Qiraat`), count descending ordering, valid place properties, reading order preservation, and empty states.
+
 ## [Unreleased] — 2026-10-10 — QiraatSheet split into VariantCard / RulingCard / QiraatPills / FlowLayout (refactor, no behaviour change)
 - **Refactor only:** `Sources/Qiraat/QiraatSheet.swift` is split by piece. `QiraatSheet` keeps `QiraatWordSelection`, the sheet body and header, and wiring. `VariantCard` (variant card, scoped reader filter, Uthmani variant font), `RulingCard` (أصول ruling card, per-action performance lines, الخلاف notes) and the shared `QiraatPills` / `QiraatBadge` / `QiraatNeedsReviewBadge` move into their own files, with `FlowLayout` unchanged in `FlowLayout.swift`.
 - Each card takes exactly what it reads (the variant or ruling, the catalog, and the filter for variants). Strings, fonts, colours, padding, modifiers and accessibility identifiers are unchanged; colours are not touched yet.
