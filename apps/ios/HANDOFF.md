@@ -29,6 +29,65 @@ The repository-root `HANDOFF.md` describes the web application and production ba
 
 ---
 
+## Qiraat UX round (branch ios/qiraat-ux, 2026-10-10/11)
+
+- **What was added:**
+  - Legend: colour and mark reference sheet (`QiraatLegendSheet`) explaining marks, readers, narrators, and usul categories.
+  - Top-bar Qiraat menu + filter chip: reader top-bar controls to toggle layer and select filter; active filter chip in reading header without moving page frame.
+  - Sheet theming & decomposition: decomposed `QiraatSheet` into `VariantCard`, `RulingCard`, `QiraatPills`, and `FlowLayout`.
+  - Sheet navigation & face numbering: Quran-order marked-word traversal with `QiraatSheetNavigator`, and semantic variant face numbers.
+  - Compare mode: side-by-side reading comparison for two readers or narrators (`QiraatCompareView`) from unfiltered page data with right-to-left columns.
+  - Notes, sync status, and report link: favorite toggle and persistence, live sync status indicator, and report link to web review editor.
+  - Page summary: list of differences on current page or spread grouped by ayah (`QiraatPageSummaryView`).
+  - Search: offline search across 604 pages by reader or narrator, word text, or bab (`QiraatSearchView`).
+  - Usul index: index of 23 categories and 12,506 rulings (`UsulIndexView`), resolving pages via `mushaf.sqlite` and aggregating loci into 12,297 places.
+  - Picker redesign: half-sheet reader/narrator picker with search filtering.
+  - Localization: Arabic and English string coverage in `Localizable.xcstrings`.
+- **Where the code lives:**
+  - `MushafCore/Sources/MushafCore/QiraatWordOrder.swift`
+  - `MushafCore/Sources/MushafCore/QiraatPageSummary.swift`
+  - `MushafCore/Sources/MushafCore/QiraatSearch.swift`
+  - `MushafCore/Sources/MushafCore/UsulIndex.swift`
+  - `MushafCore/Sources/MushafCore/QiraatCompare.swift`
+  - `Sources/Qiraat/QiraatLegendSheet.swift`
+  - `Sources/Qiraat/QiraatSheet.swift`
+  - `Sources/Qiraat/VariantCard.swift`
+  - `Sources/Qiraat/RulingCard.swift`
+  - `Sources/Qiraat/QiraatPills.swift`
+  - `Sources/Qiraat/FlowLayout.swift`
+  - `Sources/Qiraat/QiraatSheetNavigator.swift`
+  - `Sources/Qiraat/QiraatPageSummaryView.swift`
+  - `Sources/Qiraat/QiraatSearchView.swift`
+  - `Sources/Qiraat/UsulIndexView.swift`
+  - `Sources/Qiraat/QiraatCompareView.swift`
+  - `Sources/Qiraat/QiraatReaderPicker.swift`
+  - `Sources/Qiraat/QiraatControls.swift`
+  - `Sources/Qiraat/QiraatPreferences.swift`
+  - `Sources/Reader/ReaderTopBar.swift`
+  - `Sources/Reader/ReaderView.swift`
+  - `Sources/Localizable.xcstrings`
+  - `Tests/QiraatLegendTests.swift`
+  - `UITests/QiraatFeaturesUITests.swift`
+  - `MushafCore/Tests/MushafCoreTests/QiraatWordOrderTests.swift`
+  - `MushafCore/Tests/MushafCoreTests/QiraatPageSummaryTests.swift`
+  - `MushafCore/Tests/MushafCoreTests/QiraatSearchTests.swift`
+  - `MushafCore/Tests/MushafCoreTests/UsulIndexTests.swift`
+  - `MushafCore/Tests/MushafCoreTests/QiraatCompareTests.swift`
+- **How to run its tests:**
+  - `swift test --package-path MushafCore --filter QiraatWordOrderTests`
+  - `swift test --package-path MushafCore --filter QiraatPageSummaryTests`
+  - `swift test --package-path MushafCore --filter QiraatSearchTests`
+  - `swift test --package-path MushafCore --filter UsulIndexTests`
+  - `swift test --package-path MushafCore --filter QiraatCompareTests`
+  - `xcodebuild -project Mutshabehat.xcodeproj -scheme Mutshabehat -destination 'platform=iOS Simulator,name=iPhone 18 Pro Max' test -only-testing:MutshabehatTests/QiraatLegendTests`
+  - `xcodebuild -project Mutshabehat.xcodeproj -scheme Mutshabehat -destination 'platform=iOS Simulator,name=iPhone 18 Pro Max' test -only-testing:MutshabehatUITests/QiraatFeaturesUITests`
+- **Not verified:**
+  - VoiceOver by hand.
+  - Real-device haptics.
+  - iCloud.
+
+---
+
 ## Memorization module (حفظ القرآن), branch `ios/memorization` (2026-10-06)
 
 Built, tested and committed on `ios/memorization`; **not pushed, not merged into `ios/main`** (waits for the owner).
