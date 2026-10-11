@@ -127,7 +127,7 @@ struct ReaderTopBar: View {
             }
             .frame(maxWidth: 130)
             .fixedSize()
-            .accessibilityLabel("القراءات: \(full)")
+            .accessibilityLabel(Text("القراءات العشر") + Text(verbatim: ": ") + Text(full))
             .accessibilityHint("لتغيير القارئ أو الراوي")
             .accessibilityIdentifier("qiraat-filter-chip")
         }

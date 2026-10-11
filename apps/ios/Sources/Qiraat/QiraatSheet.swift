@@ -16,10 +16,14 @@ struct QiraatSheet: View {
     let item: QiraatWordSelection
     let catalog: QiraatCatalog
     let filter: QiraatFilter
+    let store: QiraatStore?
+    let orderedRefs: [MarkedWordRef]
     let wordFont: CTFont?
+    let onSelect: (MarkedWordRef) -> Void
     let onClose: () -> Void
 
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @ObservedObject private var liveSync = QiraatLiveSync.shared
 
     /// The header glyph is drawn at the size it was loaded at (40 pt) and follows the title metric up to 72 pt.
     private func scaledWordFont(_ font: CTFont) -> CTFont {
@@ -33,7 +37,13 @@ struct QiraatSheet: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 12) {
+                    QiraatSheetNavigator(
+                        orderedRefs: orderedRefs,
+                        currentRef: MarkedWordRef(word: item.word),
+                        onSelect: onSelect
+                    )
                     header
+                    sheetActions
                     if !item.selection.variants.isEmpty {
                         sectionHeading("الفرش")
                         ForEach(item.selection.variants) { VariantCard(variant: $0, catalog: catalog, filter: filter) }
@@ -42,6 +52,7 @@ struct QiraatSheet: View {
                         sectionHeading("الأصول")
                         ForEach(item.selection.rulings) { RulingCard(ruling: $0, catalog: catalog) }
                     }
+                    QiraatReportErrorLink(report: QiraatErrorReport(item: item))
                 }
                 .padding()
             }
@@ -68,25 +79,64 @@ struct QiraatSheet: View {
     }
 
     private var header: some View {
-        HStack(alignment: .firstTextBaseline) {
-            if let wordFont {
-                // The exact Mushaf glyph, in its own page's font.
-                Text(verbatim: item.word.glyph)
-                    .font(Font(scaledWordFont(wordFont)))
-                    .foregroundStyle(Color(uiColor: .mushafInk))
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.6)
-                    .allowsTightening(true)
-                    .layoutPriority(1)
-            } else {
-                Text(verbatim: item.word.textUthmani).scaledFont(size: 30, weight: .bold)
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(alignment: .firstTextBaseline) {
+                if let wordFont {
+                    // The exact Mushaf glyph, in its own page's font.
+                    Text(verbatim: item.word.glyph)
+                        .font(Font(scaledWordFont(wordFont)))
+                        .foregroundStyle(Color(uiColor: .mushafInk))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.6)
+                        .allowsTightening(true)
+                        .layoutPriority(1)
+                } else {
+                    Text(verbatim: item.word.textUthmani).scaledFont(size: 30, weight: .bold)
+                }
+                Spacer()
+                Text(verbatim: item.word.ayahKey.description)
+                    .font(.caption.bold()).foregroundStyle(.secondary)
+                    .environment(\.layoutDirection, .leftToRight)
             }
-            Spacer()
-            Text(verbatim: item.word.ayahKey.description)
-                .font(.caption.bold()).foregroundStyle(.secondary)
-                .environment(\.layoutDirection, .leftToRight)
+            QiraatSyncStatusView(status: syncStatus)
         }
         .padding(.bottom, 4)
         .overlay(alignment: .bottom) { Divider() }
+    }
+
+    private var sheetActions: some View {
+        ViewThatFits(in: .horizontal) {
+            HStack(spacing: 8) {
+                compareLink
+                Spacer(minLength: 0)
+                QiraatNoteButton(word: item.word)
+            }
+            VStack(alignment: .leading, spacing: 4) {
+                compareLink
+                QiraatNoteButton(word: item.word)
+            }
+        }
+    }
+
+    private var compareLink: some View {
+        NavigationLink {
+            QiraatCompareView(item: item, store: store, catalog: catalog)
+        } label: {
+            Label("قارن", systemImage: "rectangle.split.2x1")
+                .font(.body.bold())
+                .frame(minWidth: 44, minHeight: 44)
+                .contentShape(Rectangle())
+        }
+        .accessibilityIdentifier("qiraat-compare-open")
+    }
+
+    private var syncStatus: QiraatSyncStatus {
+        let state = liveSync.pageState(for: item.word.page)
+        return QiraatSyncStatus.make(
+            outcome: state.latestOutcome,
+            lastSuccess: state.lastConfirmation,
+            now: Date(),
+            isOffline: false
+        )
     }
 }

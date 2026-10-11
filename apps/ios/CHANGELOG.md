@@ -3,6 +3,11 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-11 — Qiraat word-sheet and settings wiring
+- Wired marked-word previous/next navigation across the visible page or spread, rebuilding the filtered selection and page-specific QCF font without closing the sheet.
+- Added the unfiltered reader comparison link, favourites/notes controls, live-sync status and error-report link to the Qiraat word sheet.
+- Added the one-time first-use hint below the fixed 52 pt reader bar, changed the Settings reader picker to a sheet, and localized the Qiraat filter and on/off control labels.
+
 ## [Unreleased] — 2026-10-11 — Qiraat hub destinations wired into the reader
 - Added direct Qiraat-menu entries for the colour key, visible-page/spread summary, offline search and cached Usul index, preserving their accessibility identifiers and the fixed 52 pt top bar.
 - Summary and search results now dismiss their route sheet, turn to the real Mushaf page, clear search highlighting and open the existing filtered Qiraat word sheet only after dismissal; an unavailable/filtered word just opens its page. Usul places navigate to the page without opening a word sheet.

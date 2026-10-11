@@ -89,6 +89,13 @@ struct ReaderView: View {
                 }
             )
         }
+        .overlay(alignment: .top) {
+            if qiraat.enabled, library.qiraat != nil {
+                QiraatFirstUseHint()
+                    .padding(.horizontal, 12)
+                    .padding(.top, 60)
+            }
+        }
         .onChange(of: page) { _, newPage in
             ReadingPosition().page = newPage
             tracker.pageDidChange(to: newPage, library: library)
@@ -123,7 +130,9 @@ struct ReaderView: View {
         .sheet(item: $qiraatSelection) { item in
             if let catalog = library.qiraat?.catalog {
                 QiraatSheet(item: item, catalog: catalog, filter: qiraat.filter,
-                            wordFont: try? library.fonts.font(page: item.word.page, size: 40)) { qiraatSelection = nil }
+                            store: library.qiraat, orderedRefs: qiraatMarkedWords,
+                            wordFont: try? library.fonts.font(page: item.word.page, size: 40),
+                            onSelect: openQiraatSheetWord) { qiraatSelection = nil }
             }
         }
         .sheet(item: $qiraatRoute, onDismiss: presentPendingQiraatWord) { route in
@@ -387,6 +396,25 @@ struct ReaderView: View {
 
     var activeQiraatFilter: QiraatFilter { qiraat.filter }
 
+    private var qiraatMarkedWords: [MarkedWordRef] {
+        guard let store = library.qiraat else { return [] }
+        let pages = qiraatVisiblePages
+        let words = pages.compactMap(library.page).flatMap { $0.lines.flatMap(\.words) }
+        let data = pages.compactMap(store.page)
+        let combined = QiraatPageData(
+            pageNumber: pages.first ?? page,
+            variants: data.flatMap(\.variants),
+            rulings: data.flatMap(\.rulings),
+            rules: data.flatMap(\.rules)
+        )
+        return QiraatWordOrder.markedWords(
+            pages: pages,
+            words: words,
+            marks: QiraatMarks(catalog: store.catalog, page: combined),
+            filter: qiraat.filter
+        )
+    }
+
     /// Turns to a result and defers the existing word-opening path until the route sheet is gone.
     func openQiraatHubWord(page targetPage: Int, surah: Int, ayah: Int, token: Int) {
         let targetPage = clampPage(targetPage)
@@ -436,6 +464,18 @@ struct ReaderView: View {
               let selection = marks.selection(surah: word.ayahKey.surah, ayah: word.ayahKey.ayah,
                                               token: word.indexInAyah, filter: qiraat.filter) else { return }
         Haptics.wordPress()
+        qiraatSelection = QiraatWordSelection(word: word, selection: selection)
+    }
+
+    private func openQiraatSheetWord(_ reference: MarkedWordRef) {
+        let word = reference.word
+        guard let marks = library.qiraat?.marks(page: word.page),
+              let selection = marks.selection(
+                  surah: word.ayahKey.surah,
+                  ayah: word.ayahKey.ayah,
+                  token: word.indexInAyah,
+                  filter: qiraat.filter
+              ) else { return }
         qiraatSelection = QiraatWordSelection(word: word, selection: selection)
     }
 
@@ -594,7 +634,7 @@ private struct SettingsView: View {
                 ReviewEditorEntry(library: library)
             }
 #endif
-            .fullScreenCover(isPresented: $showingQiraatPicker) {
+            .sheet(isPresented: $showingQiraatPicker) {
                 if let catalog = library.qiraat?.catalog {
                     QiraatReaderPicker(catalog: catalog, selection: $qiraat.filter)
                 }

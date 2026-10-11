@@ -1404,6 +1404,16 @@
         }
       }
     },
+    "قارن" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Compare"
+          }
+        }
+      }
+    },
     "قاعدة آلية" : {
 
     },
