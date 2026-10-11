@@ -129,9 +129,9 @@ struct QiraatCompareView: View {
         Menu {
             ForEach(catalog.readers.sorted { $0.sortOrder < $1.sortOrder }) { reader in
                 Section("الإمام \(reader.nameAr)") {
-                    choice("الإمام \(reader.nameArShort) (روايتاه)", id: reader.id, selection: selection)
+                    choice(Text("الإمام \(reader.nameArShort) (روايتاه)"), id: reader.id, selection: selection)
                     ForEach(catalog.narrators(of: reader.id)) { narrator in
-                        choice("الراوي \(narrator.nameAr)", id: narrator.id, selection: selection)
+                        choice(Text("الراوي \(narrator.nameAr)"), id: narrator.id, selection: selection)
                     }
                 }
             }
@@ -152,9 +152,17 @@ struct QiraatCompareView: View {
         .accessibilityIdentifier("qiraat-compare-picker-\(side)")
     }
 
-    private func choice(_ title: String, id: String, selection: Binding<String>) -> some View {
+    private func choice(_ title: Text, id: String, selection: Binding<String>) -> some View {
         Button { withMotion { selection.wrappedValue = id } } label: {
-            Label(title, systemImage: selection.wrappedValue == id ? "checkmark" : "")
+            if selection.wrappedValue == id {
+                Label {
+                    title
+                } icon: {
+                    Image(systemName: "checkmark")
+                }
+            } else {
+                title
+            }
         }
     }
 

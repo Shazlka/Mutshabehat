@@ -5,14 +5,23 @@ import SwiftUI
 struct QiraatFirstUseHint: View {
     static let storageKey = "qiraat:first-use-hint:v1"
 
-    @AppStorage("qiraat:first-use-hint:v1") private var dismissed = false
+    @AppStorage(storageKey) private var dismissed = false
 
     var body: some View {
         if !dismissed {
-            HStack(spacing: 8) {
-                Image(systemName: "hand.tap").font(.body.bold()).accessibilityHidden(true)
-                Text("المس كلمة ملوّنة لعرض قراءاتها").font(.subheadline.bold())
-                    .frame(maxWidth: .infinity, alignment: .leading)
+            ZStack(alignment: .trailing) {
+                HStack(spacing: 8) {
+                    Image(systemName: "hand.tap").font(.body.bold()).accessibilityHidden(true)
+                    Text("المس كلمة ملوّنة لعرض قراءاتها").font(.subheadline.bold())
+                        .dynamicTypeSize(...DynamicTypeSize.xLarge)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Color.clear.frame(width: 44, height: 44)
+                }
+                .padding(.leading, 12)
+                .background(RoundedRectangle(cornerRadius: 12).fill(.qiraatBadgeFill))
+                .overlay(RoundedRectangle(cornerRadius: 12).stroke(.qiraatCardStroke))
+                .allowsHitTesting(false)
+
                 Button {
                     withMotion { dismissed = true }
                 } label: {
@@ -22,12 +31,14 @@ struct QiraatFirstUseHint: View {
                 .accessibilityIdentifier("qiraat-first-use-hint-dismiss")
             }
             .foregroundStyle(.qiraatBadgeInk)
-            .padding(.leading, 12)
-            .background(RoundedRectangle(cornerRadius: 12).fill(.qiraatBadgeFill))
-            .overlay(RoundedRectangle(cornerRadius: 12).stroke(.qiraatCardStroke))
+            .dynamicTypeSize(...DynamicTypeSize.xLarge)
             .accessibilityElement(children: .contain)
             .accessibilityIdentifier("qiraat-first-use-hint")
             .transition(.opacity)
+            .task {
+                try? await Task.sleep(for: .seconds(8))
+                withMotion { dismissed = true }
+            }
         }
     }
 }

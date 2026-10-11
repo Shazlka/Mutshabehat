@@ -463,6 +463,7 @@ struct ReaderView: View {
         guard qiraat.enabled, let marks = library.qiraat?.marks(page: tappedPage.number),
               let selection = marks.selection(surah: word.ayahKey.surah, ayah: word.ayahKey.ayah,
                                               token: word.indexInAyah, filter: qiraat.filter) else { return }
+        UserDefaults.standard.set(true, forKey: QiraatFirstUseHint.storageKey)
         Haptics.wordPress()
         qiraatSelection = QiraatWordSelection(word: word, selection: selection)
     }

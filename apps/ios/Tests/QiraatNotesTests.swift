@@ -166,6 +166,33 @@ final class QiraatNotesTests: XCTestCase {
         XCTAssertEqual(notifications, 0)
     }
 
+    func testRestoringAnOlderBackupKeepsNewerNotesAndNotesTheBackupLacks() throws {
+        // The fixture backup (updated_at 0) holds a note at 1:1:1. On this device that note was edited later and
+        // another note was added, so restoring the older backup must lose neither.
+        try store.setNote("Test fixture: edited later", page: 1, surah: 1, ayah: 1, token: 1)
+        try store.setNote("Test fixture: added later", page: 1, surah: 1, ayah: 1, token: 2)
+
+        try store.importDatabase(importFixture(mutation: ""))
+
+        XCTAssertEqual(store.note(surah: 1, ayah: 1, token: 1)?.note, "Test fixture: edited later")
+        XCTAssertEqual(store.note(surah: 1, ayah: 1, token: 2)?.note, "Test fixture: added later")
+        XCTAssertEqual(try store.list().count, 2)
+    }
+
+    func testRestoringBringsBackANoteThatIsNewerInTheBackupAndOneDeletedSince() throws {
+        try store.setNote("Test fixture: old local text", page: 1, surah: 1, ayah: 1, token: 1)
+        let newer = try importFixture(mutation: """
+            UPDATE qiraat_notes SET note = 'Test fixture: newer in backup', updated_at = 99999999999999 WHERE token = 1;
+            INSERT INTO qiraat_notes VALUES ('00000000-0000-0000-0000-000000000003',
+                1, 1, 3, 1, 0, 'Test fixture: deleted here since', 0, 0);
+            """)
+
+        try store.importDatabase(newer)
+
+        XCTAssertEqual(store.note(surah: 1, ayah: 1, token: 1)?.note, "Test fixture: newer in backup")
+        XCTAssertEqual(store.note(surah: 1, ayah: 1, token: 3)?.note, "Test fixture: deleted here since")
+    }
+
     func testDuplicateImportedAnchorsRollBackReplacement() throws {
         try seedNotes()
         let expected = try store.list()

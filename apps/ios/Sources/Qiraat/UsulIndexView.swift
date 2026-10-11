@@ -230,7 +230,8 @@ struct UsulPlacesView: View {
     }
 
     private func placeRow(_ place: UsulPlace) -> some View {
-        Button {
+        let wordText = place.baseText.isEmpty ? "كلمة \(ArabicDigits.string(place.startToken))" : place.baseText
+        return Button {
             onOpen(place.page, place.surah, place.ayah, place.startToken)
         } label: {
             HStack(alignment: .center, spacing: 12) {
@@ -250,7 +251,7 @@ struct UsulPlacesView: View {
                             .foregroundStyle(.secondary)
                     }
 
-                    Text(verbatim: place.baseText)
+                    Text(verbatim: wordText)
                         .font(Font(MushafLibrary.mushafFont(size: 22)))
                         .foregroundStyle(Color(uiColor: .mushafInk))
                         .lineLimit(2)
@@ -271,7 +272,7 @@ struct UsulPlacesView: View {
         .buttonStyle(.plain)
         .accessibilityIdentifier("usul-place-\(place.page)-\(place.surah)-\(place.ayah)-\(place.startToken)")
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("\(surahAyahAccessibility(place: place))، \(place.baseText)، صفحة \(ArabicDigits.string(place.page))")
+        .accessibilityLabel("\(surahAyahAccessibility(place: place))، \(wordText)، صفحة \(ArabicDigits.string(place.page))")
         .accessibilityHint("اضغط للانتقال إلى هذا الموضع في المصحف")
     }
 

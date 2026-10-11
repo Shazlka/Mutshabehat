@@ -285,22 +285,41 @@ struct QiraatLegendSheet: View {
 /// One key row: the sample on the start edge, the name and what it means beside it.
 private struct QiraatLegendRow: View {
     let entry: QiraatLegendEntry
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @ScaledMetric(relativeTo: .body) private var sampleWidth: CGFloat = 84
 
     var body: some View {
-        HStack(alignment: .center, spacing: 12) {
-            QiraatLegendSample(mark: entry.mark, colors: entry.colors, textColor: entry.textColor)
-                .frame(width: sampleWidth)
-            VStack(alignment: .leading, spacing: 2) {
-                Text(verbatim: entry.title)
-                    .font(.headline)
-                    .foregroundStyle(.primary)
-                Text(verbatim: entry.explanation)
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-                    .fixedSize(horizontal: false, vertical: true)
+        Group {
+            if dynamicTypeSize.isAccessibilitySize {
+                VStack(alignment: .leading, spacing: 8) {
+                    QiraatLegendSample(mark: entry.mark, colors: entry.colors, textColor: entry.textColor)
+                        .frame(width: sampleWidth, alignment: .leading)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(verbatim: entry.title)
+                            .font(.headline)
+                            .foregroundStyle(.primary)
+                        Text(verbatim: entry.explanation)
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                }
+            } else {
+                HStack(alignment: .center, spacing: 12) {
+                    QiraatLegendSample(mark: entry.mark, colors: entry.colors, textColor: entry.textColor)
+                        .frame(width: sampleWidth)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(verbatim: entry.title)
+                            .font(.headline)
+                            .foregroundStyle(.primary)
+                        Text(verbatim: entry.explanation)
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    Spacer(minLength: 0)
+                }
             }
-            Spacer(minLength: 0)
         }
         .padding(.leading, entry.isNarrator ? 16 : 0)
         .accessibilityElement(children: .combine)
@@ -367,12 +386,7 @@ private struct QiraatLegendSample: View {
             context.stroke(Path(ellipseIn: ring.insetBy(dx: dot * 0.14, dy: dot * 0.14)), with: .color(color(0)),
                            lineWidth: max(1, dot * 0.28))
         case .rulingWord:
-            let badge = CGRect(x: word.minX - dot * 0.8, y: word.midY - dot * 0.45,
-                               width: dot * 0.8, height: dot * 0.9)
-            context.fill(Path(roundedRect: badge, cornerRadius: dot * 0.22),
-                         with: .color(color(0).opacity(0.16)))
-            context.stroke(Path(roundedRect: badge, cornerRadius: dot * 0.22),
-                           with: .color(color(0)), lineWidth: max(1, thickness * 0.65))
+            break
         }
     }
 }

@@ -134,7 +134,7 @@ final class QiraatNotesStore {
         try didChange()
     }
 
-    /// Validate the incoming file before replacing rows in one transaction, retaining the live WAL handle.
+    /// Validate the incoming file, then merge its rows in one transaction, retaining the live WAL handle.
     func importDatabase(_ data: Data) throws {
         let temporary = FileManager.default.temporaryDirectory.appendingPathComponent("notes-import-\(UUID()).sqlite")
         defer {
@@ -146,9 +146,18 @@ final class QiraatNotesStore {
         guard sqlite3_open_v2(temporary.path, &incoming.handle, SQLITE_OPEN_READONLY, nil) == SQLITE_OK,
               try schemaVersion(on: incoming.handle) == 1 else { throw Self.failure("إصدار ملف الملاحظات غير مدعوم.") }
         let rows = try readNotes(on: incoming.handle)
+        var anchors = Set<String>()
+        for row in rows where !anchors.insert("\(row.surah):\(row.ayah):\(row.token)").inserted {
+            throw Self.failure("ملف الملاحظات غير صالح.")
+        }
+        // A restore merges: a note on this device that is as new as the backup's, or newer, is kept, and notes
+        // the backup does not have are never deleted, so restoring an older backup cannot lose recent notes.
         try transaction {
-            try execute("DELETE FROM qiraat_notes;")
-            for row in rows { try write(row, upsert: false) }
+            for row in rows {
+                if let local = note(surah: row.surah, ayah: row.ayah, token: row.token),
+                   local.updatedAt >= row.updatedAt { continue }
+                try write(row)
+            }
         }
         try didChange()
     }
