@@ -40,8 +40,15 @@ final class QiraatFeaturesUITests: XCTestCase {
     }
 
     /// Taps the page centre to toggle navigation chrome / top bar controls.
+    /// A menu entry of any kind whose label contains every given word (interpolated names carry invisible direction marks).
+    private func byLabel(_ words: String..., in app: XCUIApplication) -> XCUIElement {
+        let predicates = words.map { NSPredicate(format: "label CONTAINS %@", $0) }
+        return app.descendants(matching: .any).matching(NSCompoundPredicate(andPredicateWithSubpredicates: predicates)).firstMatch
+    }
+
+    /// A tap in the left margin shows or hides the controls; with the Qiraat layer on, the page centre can be a marked word.
     private func showControls(in app: XCUIApplication) {
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()
     }
 
     /// Scrolls the settings collection view to bring a target row into view.
@@ -77,10 +84,20 @@ final class QiraatFeaturesUITests: XCTestCase {
         XCTAssertTrue(legend.waitForExistence(timeout: 5))
 
         let nafiRow = app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS 'نافع'")).firstMatch
+        var swipes = 0
+        while !nafiRow.exists && swipes < 8 {   // the reader rows are below the mark samples
+            legend.swipeUp()
+            swipes += 1
+        }
         XCTAssertTrue(nafiRow.waitForExistence(timeout: 5), "Legend must list reader rows such as Imam Nafi")
 
         let asimRow = app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS 'عاصم'")).firstMatch
-        XCTAssertTrue(asimRow.exists, "Legend must list reader rows such as Imam Asim")
+        swipes = 0
+        while !asimRow.exists && swipes < 8 {
+            legend.swipeUp()
+            swipes += 1
+        }
+        XCTAssertTrue(asimRow.waitForExistence(timeout: 5), "Legend must list reader rows such as Imam Asim")
 
         let closeButton = app.buttons["qiraat-legend-close"]
         XCTAssertTrue(closeButton.waitForExistence(timeout: 5))
@@ -108,9 +125,12 @@ final class QiraatFeaturesUITests: XCTestCase {
         XCTAssertTrue(filterSubmenu.waitForExistence(timeout: 5))
         filterSubmenu.tap()
 
-        let narratorOption = app.buttons.matching(NSPredicate(format: "label CONTAINS 'ورش' OR label CONTAINS 'نافع' OR identifier CONTAINS 'Q01'")).firstMatch
-        XCTAssertTrue(narratorOption.waitForExistence(timeout: 5))
-        narratorOption.tap()
+        let nafi = byLabel("الإمام", "نافع", in: app)
+        XCTAssertTrue(nafi.waitForExistence(timeout: 5))
+        nafi.tap()
+        let warsh = byLabel("الراوي", "ورش", in: app)
+        XCTAssertTrue(warsh.waitForExistence(timeout: 5))
+        warsh.tap()
 
         showControls(in: app)
 
@@ -340,7 +360,7 @@ final class QiraatFeaturesUITests: XCTestCase {
         searchField.tap()
         searchField.typeText("عاصم")
 
-        let asimRow = app.buttons["qiraat-reader-Q07"]
+        let asimRow = app.buttons["qiraat-reader-Q05"]
         XCTAssertTrue(asimRow.waitForExistence(timeout: 5), "Search must display matching reader row")
         XCTAssertFalse(app.buttons["qiraat-reader-all"].exists, "Search must filter out non-matching rows")
 

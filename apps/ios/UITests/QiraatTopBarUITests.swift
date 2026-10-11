@@ -27,6 +27,13 @@ final class QiraatTopBarUITests: XCTestCase {
         return app.descendants(matching: .any).matching(NSCompoundPredicate(andPredicateWithSubpredicates: predicates)).firstMatch
     }
 
+    /// The reader / narrator filter is a submenu of the Qiraat menu.
+    private func openFilterSubmenu(_ app: XCUIApplication) {
+        let submenu = element("qiraat-filter", in: app)
+        XCTAssertTrue(submenu.waitForExistence(timeout: 3), "the filter submenu is in the Qiraat menu")
+        submenu.tap()
+    }
+
     private func showChrome(_ app: XCUIApplication) {
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()
         XCTAssertTrue(app.buttons["open-index"].waitForExistence(timeout: 5))
@@ -123,7 +130,8 @@ final class QiraatTopBarUITests: XCTestCase {
         showChrome(app)
         XCTAssertEqual(mushafPage.frame, before, "the page moved when the controls showed")
         app.buttons["qiraat-button"].tap()
-        // Items inside a menu section are exposed by label; their identifiers are not.
+        openFilterSubmenu(app)
+        // Items inside a menu are exposed by label.
         let all = app.buttons["الكل"]
         XCTAssertTrue(all.waitForExistence(timeout: 3))
         all.tap()
@@ -139,6 +147,7 @@ final class QiraatTopBarUITests: XCTestCase {
         XCTAssertTrue(element("mushaf-page-1", in: app).waitForExistence(timeout: 15))
         showChrome(app)
         app.buttons["qiraat-button"].tap()
+        openFilterSubmenu(app)
         let nafi = byLabel("الإمام", "نافع", in: app)
         XCTAssertTrue(nafi.waitForExistence(timeout: 3))
         nafi.tap()
