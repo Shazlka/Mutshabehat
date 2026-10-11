@@ -46,7 +46,7 @@ struct QiraatSheetNavigator: View {
 
     private func position(for ref: MarkedWordRef) -> some View {
         let index = orderedRefs.firstIndex { $0.id == ref.id }
-        return Text(verbatim: "\(ArabicDigits.string(index.map { $0 + 1 } ?? 1)) من \(ArabicDigits.string(orderedRefs.count))")
+        return Text("\(ArabicDigits.string(index.map { $0 + 1 } ?? 1)) من \(ArabicDigits.string(orderedRefs.count))")
             .monospacedDigit()
             .accessibilityIdentifier("qiraat-sheet-position")
     }
@@ -66,7 +66,7 @@ struct QiraatSheetNavigator: View {
         onSelect(activeRef)
     }
 
-    private func navigationButton(_ title: String, symbol: String, ref: MarkedWordRef?,
+    private func navigationButton(_ title: LocalizedStringKey, symbol: String, ref: MarkedWordRef?,
                                   identifier: String) -> some View {
         Button {
             if let ref { withMotion { onSelect(ref) } }
@@ -79,7 +79,7 @@ struct QiraatSheetNavigator: View {
         .buttonStyle(.plain)
         .opacity(ref == nil ? 0.4 : 1)
         .disabled(ref == nil)
-        .accessibilityLabel(title)
+        .accessibilityLabel(Text(title))
         .accessibilityIdentifier(identifier)
     }
 }

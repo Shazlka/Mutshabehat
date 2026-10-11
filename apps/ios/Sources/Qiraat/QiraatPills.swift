@@ -47,29 +47,43 @@ struct QiraatPills: View {
     }
 }
 
-/// A small capsule label: a ruling category, a variant kind, a wajh number.
+/// A small capsule label: a ruling category, a variant kind, a wajh number. The caller decides whether the
+/// text is data (`Text(verbatim:)`, as the web gives it) or app chrome (`Text("…")`, translated).
 struct QiraatBadge: View {
-    let text: String
+    let label: Text
     let foreground: Color
     let background: Color
 
+    init(_ label: Text, foreground: Color, background: Color) {
+        self.label = label
+        self.foreground = foreground
+        self.background = background
+    }
+
     var body: some View {
-        Text(verbatim: text).font(.caption2.bold()).foregroundStyle(foreground)
+        label.font(.caption2.bold()).foregroundStyle(foreground)
             .padding(.horizontal, 8).padding(.vertical, 3)
             .background(Capsule().fill(background))
     }
 }
 
 extension QiraatBadge {
+    /// The quiet gold badge for localized app chrome.
+    init(_ label: Text) {
+        self.init(label, foreground: .qiraatBadgeInk, background: .qiraatBadgeFill)
+    }
+
     /// The quiet gold badge: a variant kind, a wajh number.
     init(text: String) {
-        self.init(text: text, foreground: .qiraatBadgeInk, background: .qiraatBadgeFill)
+        self.init(Text(verbatim: text))
     }
 
     /// A ruling category on its own data colour, with the ink that reads best on it.
     init(category text: String, hex: String) {
         let fill = UIColor(qiraatHex: hex)
-        self.init(text: text, foreground: Color(uiColor: .qiraatInk(onFill: fill)), background: Color(uiColor: fill))
+        self.init(Text(verbatim: text),
+                  foreground: Color(uiColor: .qiraatInk(onFill: fill)),
+                  background: Color(uiColor: fill))
     }
 }
 

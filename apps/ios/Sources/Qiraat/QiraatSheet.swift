@@ -58,7 +58,7 @@ struct QiraatSheet: View {
     }
 
     /// «الفرش» (the words that differ) and «الأصول» (the rules that colour a word), as VoiceOver headings.
-    private func sectionHeading(_ title: String) -> some View {
+    private func sectionHeading(_ title: LocalizedStringKey) -> some View {
         Text(title)
             .font(.subheadline.bold())
             .foregroundStyle(Color(uiColor: .mushafBrown))

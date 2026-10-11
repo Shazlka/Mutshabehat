@@ -147,7 +147,7 @@ struct QiraatReaderPicker: View {
                         chooseSingle(.all)
                     } label: {
                         ReaderSelectionRow(
-                            title: "كل القراء والرواة",
+                            title: Text("كل القراء والرواة"),
                             colorHex: catalog.multiReaderColor,
                             isSelected: isSelected(.all),
                             isMultiSelect: isMultiSelect
@@ -168,7 +168,7 @@ struct QiraatReaderPicker: View {
                                 }
                             } label: {
                                 ReaderSelectionRow(
-                                    title: "\(reader.nameArShort) (روايتاه)",
+                                    title: Text("روايتا الإمام \(reader.nameArShort)"),
                                     colorHex: reader.color,
                                     isSelected: isSelected(.reader(reader.id)),
                                     isMultiSelect: isMultiSelect
@@ -186,7 +186,7 @@ struct QiraatReaderPicker: View {
                                 }
                             } label: {
                                 ReaderSelectionRow(
-                                    title: narrator.nameAr,
+                                    title: Text(verbatim: narrator.nameAr),
                                     colorHex: narrator.color,
                                     isSelected: isSelected(.reading(narrator.id)),
                                     isMultiSelect: isMultiSelect
@@ -291,7 +291,7 @@ private struct ReaderSectionHeader: View {
             Circle()
                 .fill(Color(qiraatHex: reader.color))
                 .frame(width: 8, height: 8)
-            Text(reader.nameAr)
+            Text(verbatim: reader.nameAr)
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(.primary)
         }
@@ -300,7 +300,7 @@ private struct ReaderSectionHeader: View {
 }
 
 private struct ReaderSelectionRow: View {
-    let title: String
+    let title: Text
     let colorHex: String
     let isSelected: Bool
     let isMultiSelect: Bool
@@ -312,7 +312,7 @@ private struct ReaderSelectionRow: View {
                 Circle()
                     .fill(color)
                     .frame(width: 8, height: 8)
-                Text(title)
+                title
                     .font(.body)
                     .foregroundStyle(.primary)
             }

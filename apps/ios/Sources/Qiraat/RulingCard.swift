@@ -58,7 +58,7 @@ struct RulingCard: View {
         if showAction || !conditions.isEmpty || !wajhs.isEmpty {
             HStack(spacing: 4) {
                 ForEach(wajhs, id: \.self) { n in
-                    QiraatBadge(text: "وجه \(n)")
+                    QiraatBadge(Text("وجه \(n)"))
                 }
                 if showAction { Text(verbatim: group.action).font(.caption.bold()) }
                 if !conditions.isEmpty {
@@ -67,7 +67,7 @@ struct RulingCard: View {
                 }
             }
         }
-        ForEach(notes, id: \.self) { Text(verbatim: "الخلاف: \($0)").font(.caption).foregroundStyle(.secondary) }
+        ForEach(notes, id: \.self) { Text("الخلاف: \($0)").font(.caption).foregroundStyle(.secondary) }
     }
 
     private func unique(_ values: [String]) -> [String] {
@@ -106,14 +106,18 @@ struct CollapsibleText: View {
                 Button {
                     withMotion { expanded.toggle() }
                 } label: {
-                    Text(expanded ? "أقل" : "المزيد").font(.caption.bold()).foregroundStyle(.qiraatBadgeInk)
+                    toggleLabel.font(.caption.bold()).foregroundStyle(.qiraatBadgeInk)
                         .frame(minWidth: 44, minHeight: 44, alignment: .leading)
                         .contentShape(Rectangle())
                 }
                 .accessibilityIdentifier("qiraat-notes-toggle")
-                .accessibilityHint(expanded ? "يطوي الملاحظات" : "يعرض الملاحظات كاملة")
+                .accessibilityHint(expanded ? Text("يطوي الملاحظات") : Text("يعرض الملاحظات كاملة"))
             }
         }
+    }
+
+    private var toggleLabel: Text {
+        expanded ? Text("أقل") : Text("المزيد")
     }
 }
 

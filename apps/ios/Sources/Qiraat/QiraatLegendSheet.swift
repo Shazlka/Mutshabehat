@@ -63,15 +63,15 @@ enum QiraatLegendMark: Hashable, CaseIterable, Sendable {
     /// The shape, in words, for VoiceOver (a colour is never the only cue: each row also has its name).
     var shapeWords: String {
         switch self {
-        case .solidLine: "خط متصل تحت الكلمة"
-        case .segmentedLine: "خط مقسَّم إلى أجزاء متساوية تحت الكلمة"
-        case .performanceLine: "خط متصل تحت الكلمة، لون الأداء"
-        case .unresolvedLine: "خط متصل رمادي تحت الكلمة"
-        case .dottedLine: "خط منقّط تحت الكلمة"
-        case .familyDot: "نقطة مملوءة أعلى يسار الكلمة"
-        case .imalahFilled: "نقطة مملوءة أسفل يسار الكلمة"
-        case .imalahRing: "حلقة أسفل يسار الكلمة"
-        case .rulingWord: "نص الكلمة ملوّن بلا خط تحتها"
+        case .solidLine: String(localized: "خط متصل تحت الكلمة")
+        case .segmentedLine: String(localized: "خط مقسَّم إلى أجزاء متساوية تحت الكلمة")
+        case .performanceLine: String(localized: "خط متصل تحت الكلمة، لون الأداء")
+        case .unresolvedLine: String(localized: "خط متصل رمادي تحت الكلمة")
+        case .dottedLine: String(localized: "خط منقّط تحت الكلمة")
+        case .familyDot: String(localized: "نقطة مملوءة أعلى يسار الكلمة")
+        case .imalahFilled: String(localized: "نقطة مملوءة أسفل يسار الكلمة")
+        case .imalahRing: String(localized: "حلقة أسفل يسار الكلمة")
+        case .rulingWord: String(localized: "نص الكلمة ملوّن بلا خط تحتها")
         }
     }
 }
@@ -120,64 +120,64 @@ enum QiraatLegend {
         rows.append(QiraatLegendEntry(
             id: "mark-solid", group: .marks, mark: .solidLine,
             colors: readers.first.map { [$0.color] } ?? [], textColor: readers.first?.color,
-            title: "خط متصل تحت الكلمة",
-            explanation: "قارئ أو راوٍ واحد على الكلمة. الألوان في القسم التالي.", isNarrator: false))
+            title: String(localized: "خط متصل تحت الكلمة"),
+            explanation: String(localized: "قارئ أو راوٍ واحد على الكلمة. الألوان في القسم التالي."), isNarrator: false))
         rows.append(QiraatLegendEntry(
             id: "mark-segmented", group: .marks, mark: .segmentedLine,
             colors: readers.prefix(3).map(\.color), textColor: catalog.multiReaderColor,
-            title: "خط مقسَّم",
-            explanation: "أكثر من إمام على الكلمة: قطعة متساوية لكل إمام بترتيب القرّاء، والنص بلون مشترك.",
+            title: String(localized: "خط مقسَّم"),
+            explanation: String(localized: "أكثر من إمام على الكلمة: قطعة متساوية لكل إمام بترتيب القرّاء، والنص بلون مشترك."),
             isNarrator: false))
         rows.append(QiraatLegendEntry(
             id: "mark-performance", group: .marks, mark: .performanceLine,
             colors: [catalog.performanceColor], textColor: catalog.performanceColor,
-            title: "خط بلون الأداء",
-            explanation: "الاختلاف في طريقة القراءة فقط، والرسم كما هو في المصحف.", isNarrator: false))
+            title: String(localized: "خط بلون الأداء"),
+            explanation: String(localized: "الاختلاف في طريقة القراءة فقط، والرسم كما هو في المصحف."), isNarrator: false))
         rows.append(QiraatLegendEntry(
             id: "mark-unresolved", group: .marks, mark: .unresolvedLine,
             colors: [catalog.unresolvedColor], textColor: catalog.unresolvedColor,
-            title: "خط رمادي",
-            explanation: "القارئ غير معروف بعد في بيانات الكلمة، فلا يُنسب الخط إلى أحد.", isNarrator: false))
+            title: String(localized: "خط رمادي"),
+            explanation: String(localized: "القارئ غير معروف بعد في بيانات الكلمة، فلا يُنسب الخط إلى أحد."), isNarrator: false))
         rows.append(QiraatLegendEntry(
             id: "mark-dotted", group: .marks, mark: .dottedLine,
             colors: [familyColor], textColor: nil,
-            title: "خط منقّط تحت الكلمة",
-            explanation: "ذو وجهين: لبعض القرّاء وجه ثانٍ جائز («بخلف عنه»)، بلون الباب.", isNarrator: false))
+            title: String(localized: "خط منقّط تحت الكلمة"),
+            explanation: String(localized: "ذو وجهين: لبعض القرّاء وجه ثانٍ جائز («بخلف عنه»)، بلون الباب."), isNarrator: false))
         rows.append(QiraatLegendEntry(
             id: "mark-family", group: .marks, mark: .familyDot,
             colors: [familyColor], textColor: nil,
-            title: "نقطة أعلى يسار الكلمة",
-            explanation: "أكثر من باب من أبواب الأصول على الكلمة، بلون أول حكم عليها.", isNarrator: false))
+            title: String(localized: "نقطة أعلى يسار الكلمة"),
+            explanation: String(localized: "أكثر من باب من أبواب الأصول على الكلمة، بلون أول حكم عليها."), isNarrator: false))
         rows.append(QiraatLegendEntry(
             id: "mark-imalah", group: .marks, mark: .imalahFilled,
             colors: [imalahColor], textColor: nil,
-            title: "نقطة مملوءة أسفل يسار الكلمة",
-            explanation: "إمالة في باب الممال والمقلل، بلون هذا الباب.", isNarrator: false))
+            title: String(localized: "نقطة مملوءة أسفل يسار الكلمة"),
+            explanation: String(localized: "إمالة في باب الممال والمقلل، بلون هذا الباب."), isNarrator: false))
         rows.append(QiraatLegendEntry(
             id: "mark-taqlil", group: .marks, mark: .imalahRing,
             colors: [imalahColor], textColor: nil,
-            title: "حلقة أسفل يسار الكلمة",
-            explanation: "تقليل بلا إمالة في باب الممال والمقلل، بلون هذا الباب.", isNarrator: false))
+            title: String(localized: "حلقة أسفل يسار الكلمة"),
+            explanation: String(localized: "تقليل بلا إمالة في باب الممال والمقلل، بلون هذا الباب."), isNarrator: false))
         rows.append(QiraatLegendEntry(
             id: "mark-ruling-word", group: .marks, mark: .rulingWord,
             colors: [familyColor], textColor: familyColor,
-            title: "كلمة بلون الباب",
-            explanation: "حكم من أبواب الأصول بلا اختلاف في الرسم: يلوّن نص الكلمة بلا خط تحتها.",
+            title: String(localized: "كلمة بلون الباب"),
+            explanation: String(localized: "حكم من أبواب الأصول بلا اختلاف في الرسم: يلوّن نص الكلمة بلا خط تحتها."),
             isNarrator: false))
 
         for reader in readers {
             rows.append(QiraatLegendEntry(
                 id: "reader-\(reader.id)", group: .readers, mark: .solidLine,
                 colors: [reader.color], textColor: reader.color,
-                title: "الإمام \(reader.nameArShort)",
-                explanation: "يُلوَّن الخط ونص الكلمة بلونه إذا ذُكر راوياه معًا، أو قطعةً من الخط المقسَّم.",
+                title: String(localized: "الإمام \(reader.nameArShort)"),
+                explanation: String(localized: "يُلوَّن الخط ونص الكلمة بلونه إذا ذُكر راوياه معًا، أو قطعةً من الخط المقسَّم."),
                 isNarrator: false))
             for narrator in catalog.narrators(of: reader.id) {
                 rows.append(QiraatLegendEntry(
                     id: "narrator-\(narrator.id)", group: .readers, mark: .solidLine,
                     colors: [narrator.color], textColor: narrator.color,
-                    title: "الراوي \(narrator.nameAr)",
-                    explanation: "يُلوَّن بلونه إذا ذُكر وحده دون زميله من الإمام نفسه.", isNarrator: true))
+                    title: String(localized: "الراوي \(narrator.nameAr)"),
+                    explanation: String(localized: "يُلوَّن بلونه إذا ذُكر وحده دون زميله من الإمام نفسه."), isNarrator: true))
             }
         }
 
@@ -186,7 +186,7 @@ enum QiraatLegend {
                 id: "usul-\(category.id)", group: .usul, mark: .rulingWord,
                 colors: [category.color], textColor: category.color,
                 title: category.nameAr,
-                explanation: "حكم أصولي على الكلمة: يلوّن نصها إن لم يكن فيها اختلاف قراءة، وتُرسم به النقطة والخط المنقّط.",
+                explanation: String(localized: "حكم أصولي على الكلمة: يلوّن نصها إن لم يكن فيها اختلاف قراءة، وتُرسم به النقطة والخط المنقّط."),
                 isNarrator: false))
         }
         return rows
@@ -234,12 +234,12 @@ struct QiraatLegendSheet: View {
                 Section {
                     ForEach(rows.filter { $0.group == .marks }) { QiraatLegendRow(entry: $0) }
                 } header: {
-                    Text(verbatim: "علامات الكلمة")
+                    Text("علامات الكلمة")
                 }
                 Section {
                     ForEach(rows.filter { $0.group == .readers }) { QiraatLegendRow(entry: $0) }
                 } header: {
-                    Text(verbatim: "ألوان القرّاء والرواة")
+                    Text("ألوان القرّاء والرواة")
                 }
                 Section {
                     if categoriesLoaded {
@@ -247,10 +247,10 @@ struct QiraatLegendSheet: View {
                     } else {
                         ProgressView()
                             .frame(maxWidth: .infinity)
-                            .accessibilityLabel(Text(verbatim: "جارٍ تحميل أبواب الأصول"))
+                            .accessibilityLabel(Text("جارٍ تحميل أبواب الأصول"))
                     }
                 } header: {
-                    Text(verbatim: "أبواب الأصول")
+                    Text("أبواب الأصول")
                 }
             }
             .accessibilityIdentifier("qiraat-legend")
@@ -315,7 +315,7 @@ private struct QiraatLegendSample: View {
     let textColor: String?
 
     var body: some View {
-        Text(verbatim: "كلمة")
+        Text("كلمة")
             .font(.title3)
             .foregroundStyle(textColor.map { Color(qiraatHex: $0) } ?? Color(uiColor: .mushafInk))
             .padding(.horizontal, 12)

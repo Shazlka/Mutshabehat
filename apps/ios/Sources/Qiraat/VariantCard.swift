@@ -18,8 +18,10 @@ struct VariantCard: View {
         let text = variant.uthmaniText ?? (performanceOnly ? variant.hafsText : variant.variantText)
         VStack(alignment: .leading, spacing: 8) {
             FlowLayout(spacing: 6) {
-                QiraatBadge(text: kindLabel)
-                if let note = variant.performanceNote, note != kindLabel {
+                QiraatBadge(performanceOnly
+                    ? Text("qiraat.difference.PERFORMANCE")
+                    : differenceLabel(variant.differenceType))
+                if let note = variant.performanceNote {
                     Text(verbatim: note).font(.caption2.bold()).foregroundStyle(.secondary)
                 }
             }
@@ -41,9 +43,23 @@ struct VariantCard: View {
         .overlay(RoundedRectangle(cornerRadius: 10).stroke(.qiraatCardStroke))
     }
 
-    /// What kind of difference this is: the recitation only («أداء»), or the real type from the data.
-    private var kindLabel: String {
-        variant.isPerformanceOnly ? "أداء" : differenceTypeLabelAr(variant.differenceType)
+    /// The web's difference-kind labels (`DIFFERENCE_TYPE_LABELS_AR`), translated. Unknown kinds read as "other".
+    private func differenceLabel(_ type: String?) -> Text {
+        switch type {
+        case "HARAKAH": Text("qiraat.difference.HARAKAH")
+        case "LETTER": Text("qiraat.difference.LETTER")
+        case "ADDITION": Text("qiraat.difference.ADDITION")
+        case "OMISSION": Text("qiraat.difference.OMISSION")
+        case "MADD": Text("qiraat.difference.MADD")
+        case "HAMZ": Text("qiraat.difference.HAMZ")
+        case "IMALAH": Text("qiraat.difference.IMALAH")
+        case "IDGHAM": Text("qiraat.difference.IDGHAM")
+        case "WAQF": Text("qiraat.difference.WAQF")
+        case "NAQL": Text("qiraat.difference.NAQL")
+        case "SILAH": Text("qiraat.difference.SILAH")
+        case "ORTHOGRAPHY": Text("qiraat.difference.ORTHOGRAPHY")
+        default: Text("qiraat.difference.OTHER")
+        }
     }
 
     /// The readers to show: narrowed to the selected reader or reading when the filter names one.

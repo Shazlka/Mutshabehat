@@ -54,7 +54,7 @@ struct QiraatPageSummaryView: View {
                             .listRowBackground(Color(uiColor: .mushafPaper))
                     }
                 } header: {
-                    Text(verbatim: "\(library.surahNames[section.id.surah] ?? String(section.id.surah)) · الآية \(section.id.ayah)")
+                    Text("\(library.surahNames[section.id.surah] ?? String(section.id.surah)) · الآية \(section.id.ayah)")
                         .font(.headline)
                         .foregroundStyle(Color(uiColor: .mushafInk))
                         .textCase(nil)
@@ -96,7 +96,7 @@ struct QiraatPageSummaryView: View {
             }
             ForEach(item.rulingGroups) { group in
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(verbatim: "باب: \(group.categoryAr)").font(.subheadline.bold())
+                    Text("باب: \(group.categoryAr)").font(.subheadline.bold())
                     ForEach(group.rulings) { ruling in
                         ForEach(ruling.actionGroups, id: \.action) { actionGroup in
                             Text(verbatim: actionGroup.action).font(.subheadline)

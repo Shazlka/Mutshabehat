@@ -240,7 +240,7 @@ struct QiraatCompareView: View {
                 Text(verbatim: condition).font(.caption).foregroundStyle(.secondary)
             }
             if let note = entry.wajhNote {
-                Text(verbatim: "الخلاف: \(note)").font(.caption).foregroundStyle(.secondary)
+                Text("الخلاف: \(note)").font(.caption).foregroundStyle(.secondary)
             }
         }
     }
