@@ -3,6 +3,13 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-10 — Live-sync status chip and «بلّغ عن خطأ» report link (new views, no wiring yet)
+- **Sync status:** `QiraatSyncStatus` (pure model in `Sources/Qiraat/QiraatSyncStatusView.swift`) maps a `QiraatLiveSync.Outcome` plus the last confirmation time and the offline flag to «محدّث الآن» (confirmed under a minute ago), «محدّث قبل N دقيقة» (N in Arabic plurals, up to days) or «نسخة محلية» (never confirmed on this device). `updated` and `unchanged` count as confirmed now; `failed`, `skipped` and no check yet keep the last confirmation.
+- **Chip:** `QiraatSyncStatusView` is a small token-coloured capsule (progress, info, caution, each paired with an SF Symbol and words), identifier `qiraat-sync-status`.
+- **Report link:** `QiraatReportErrorLink` is a `ShareLink` «بلّغ عن خطأ» (44 pt tall, identifier `qiraat-report-error`). `QiraatErrorReport` builds the prefilled text from the page, `surah:ayah:token`, the word and the variant/ruling ids. It makes no network request.
+- **Not wired:** `QiraatLiveSync` keeps no per-page outcome or success time, so these views cannot be fed from the live app yet. See the report for the one-line hook.
+- **Verification:** see the test run recorded in the report (`QiraatSyncStatusTests`, QX-10).
+
 ## [Unreleased] — 2026-10-10 — QiraatSheet split into VariantCard / RulingCard / QiraatPills / FlowLayout (refactor, no behaviour change)
 - **Refactor only:** `Sources/Qiraat/QiraatSheet.swift` is split by piece. `QiraatSheet` keeps `QiraatWordSelection`, the sheet body and header, and wiring. `VariantCard` (variant card, scoped reader filter, Uthmani variant font), `RulingCard` (أصول ruling card, per-action performance lines, الخلاف notes) and the shared `QiraatPills` / `QiraatBadge` / `QiraatNeedsReviewBadge` move into their own files, with `FlowLayout` unchanged in `FlowLayout.swift`.
 - Each card takes exactly what it reads (the variant or ruling, the catalog, and the filter for variants). Strings, fonts, colours, padding, modifiers and accessibility identifiers are unchanged; colours are not touched yet.
