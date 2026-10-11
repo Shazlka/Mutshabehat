@@ -29,7 +29,7 @@ final class QiraatSyncStatusTests: XCTestCase {
     func testFailedWithNoEarlierSuccessIsTheLocalCopy() {
         let result = status(.failed, secondsSinceSuccess: nil)
         XCTAssertEqual(result.kind, .localCopy)
-        XCTAssertEqual(result.title, "نسخة محلية")
+        XCTAssertEqual(result.title.removingBidiIsolates, "نسخة محلية")
     }
 
     func testSkippedWithNoEarlierSuccessIsTheLocalCopy() {
@@ -43,16 +43,16 @@ final class QiraatSyncStatusTests: XCTestCase {
     func testFailedKeepsTheTimeOfTheLastConfirmation() {
         let result = status(.failed, secondsSinceSuccess: 5 * 60)
         XCTAssertEqual(result.kind, .confirmed(elapsed: 300))
-        XCTAssertEqual(result.title, "محدّث قبل ٥ دقائق")
+        XCTAssertEqual(result.title.removingBidiIsolates, "محدّث قبل ٥ دقائق")
     }
 
     func testSkippedKeepsTheTimeOfTheLastConfirmation() {
         let result = status(.skipped, secondsSinceSuccess: 3 * 3600)
-        XCTAssertEqual(result.title, "محدّث قبل ٣ ساعات")
+        XCTAssertEqual(result.title.removingBidiIsolates, "محدّث قبل ٣ ساعات")
     }
 
     func testNoOutcomeYetKeepsTheTimeOfAnEarlierConfirmation() {
-        XCTAssertEqual(status(nil, secondsSinceSuccess: 90).title, "محدّث قبل دقيقة")
+        XCTAssertEqual(status(nil, secondsSinceSuccess: 90).title.removingBidiIsolates, "محدّث قبل دقيقة")
     }
 
     func testEveryOutcomeIsCoveredByOneRule() {
@@ -104,7 +104,7 @@ final class QiraatSyncStatusTests: XCTestCase {
 
     func testOfflineKeepsTheTimeOfTheLastConfirmation() {
         let result = status(.skipped, secondsSinceSuccess: 600, offline: true)
-        XCTAssertEqual(result.title, "محدّث قبل ١٠ دقائق")
+        XCTAssertEqual(result.title.removingBidiIsolates, "محدّث قبل ١٠ دقائق")
         XCTAssertEqual(result.symbolName, "wifi.slash")
     }
 

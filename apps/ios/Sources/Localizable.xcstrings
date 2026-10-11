@@ -1803,6 +1803,7 @@
     "قارئ أو راوٍ واحد على الكلمة. الألوان في القسم التالي." : { "localizations" : { "en" : { "stringUnit" : { "state" : "needs_review", "value" : "One reader or narrator applies to the word. The colours are listed in the next section." } } } },
     "قارئ/راوٍ" : { "localizations" : { "en" : { "stringUnit" : { "state" : "needs_review", "value" : "Reader/Narrator" } } } },
     "قبل " : { "localizations" : { "en" : { "stringUnit" : { "state" : "needs_review", "value" : "ago " } } } },
+    "بلا اختلاف مسجّل هنا" : { "localizations" : { "en" : { "stringUnit" : { "state" : "needs_review", "value" : "No recorded difference here" } } } },
     "كحفص" : { "localizations" : { "en" : { "stringUnit" : { "state" : "needs_review", "value" : "As Hafs" } } } },
     "كلمة" : { "localizations" : { "en" : { "stringUnit" : { "state" : "needs_review", "value" : "Word" } } } },
     "كلمة %lld" : { "localizations" : { "en" : { "stringUnit" : { "state" : "needs_review", "value" : "Word %lld" } } } },

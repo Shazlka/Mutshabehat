@@ -38,12 +38,12 @@ struct QiraatSyncStatus: Equatable {
         return QiraatSyncStatus(kind: kind, isOffline: isOffline)
     }
 
-    /// The visible label, always in Arabic.
+    /// The visible label, in the app's language.
     var title: String {
         switch kind {
-        case .current: "محدّث الآن"
-        case .confirmed(let elapsed): "محدّث \(Self.agoText(elapsed))"
-        case .localCopy: "نسخة محلية"
+        case .current: appLocalized("محدّث الآن")
+        case .confirmed(let elapsed): appLocalized("محدّث \(Self.agoText(elapsed))")
+        case .localCopy: appLocalized("نسخة محلية")
         }
     }
 
@@ -67,6 +67,7 @@ struct QiraatSyncStatus: Equatable {
 
     /// «قبل دقيقة», «قبل 5 دقائق», «قبل ساعتين», «قبل 3 أيام» (minutes, hours, days; Arabic plurals).
     static func agoText(_ elapsed: TimeInterval) -> String {
+        if appLanguageCode == AppLanguage.english.rawValue { return englishAgoText(elapsed) }
         let minutes = Int(elapsed / 60)
         if minutes < 60 {
             return "قبل " + arabicCount(minutes, one: "دقيقة", two: "دقيقتين", few: "دقائق", many: "دقيقة")
@@ -76,6 +77,16 @@ struct QiraatSyncStatus: Equatable {
             return "قبل " + arabicCount(hours, one: "ساعة", two: "ساعتين", few: "ساعات", many: "ساعة")
         }
         return "قبل " + arabicCount(hours / 24, one: "يوم", two: "يومين", few: "أيام", many: "يومًا")
+    }
+
+    /// «5 minutes ago», «1 hour ago», «2 days ago».
+    private static func englishAgoText(_ elapsed: TimeInterval) -> String {
+        func count(_ n: Int, _ unit: String) -> String { n == 1 ? "1 \(unit) ago" : "\(n) \(unit)s ago" }
+        let minutes = max(1, Int(elapsed / 60))
+        if minutes < 60 { return count(minutes, "minute") }
+        let hours = minutes / 60
+        if hours < 24 { return count(hours, "hour") }
+        return count(hours / 24, "day")
     }
 
     private static func arabicCount(_ n: Int, one: String, two: String, few: String, many: String) -> String {

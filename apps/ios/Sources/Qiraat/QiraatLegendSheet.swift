@@ -63,15 +63,15 @@ enum QiraatLegendMark: Hashable, CaseIterable, Sendable {
     /// The shape, in words, for VoiceOver (a colour is never the only cue: each row also has its name).
     var shapeWords: String {
         switch self {
-        case .solidLine: String(localized: "خط متصل تحت الكلمة")
-        case .segmentedLine: String(localized: "خط مقسَّم إلى أجزاء متساوية تحت الكلمة")
-        case .performanceLine: String(localized: "خط متصل تحت الكلمة، لون الأداء")
-        case .unresolvedLine: String(localized: "خط متصل رمادي تحت الكلمة")
-        case .dottedLine: String(localized: "خط منقّط تحت الكلمة")
-        case .familyDot: String(localized: "نقطة مملوءة أعلى يسار الكلمة")
-        case .imalahFilled: String(localized: "نقطة مملوءة أسفل يسار الكلمة")
-        case .imalahRing: String(localized: "حلقة أسفل يسار الكلمة")
-        case .rulingWord: String(localized: "نص الكلمة ملوّن بلا خط تحتها")
+        case .solidLine: appLocalized("خط متصل تحت الكلمة")
+        case .segmentedLine: appLocalized("خط مقسَّم إلى أجزاء متساوية تحت الكلمة")
+        case .performanceLine: appLocalized("خط متصل تحت الكلمة، لون الأداء")
+        case .unresolvedLine: appLocalized("خط متصل رمادي تحت الكلمة")
+        case .dottedLine: appLocalized("خط منقّط تحت الكلمة")
+        case .familyDot: appLocalized("نقطة مملوءة أعلى يسار الكلمة")
+        case .imalahFilled: appLocalized("نقطة مملوءة أسفل يسار الكلمة")
+        case .imalahRing: appLocalized("حلقة أسفل يسار الكلمة")
+        case .rulingWord: appLocalized("نص الكلمة ملوّن بلا خط تحتها")
         }
     }
 }
@@ -120,64 +120,64 @@ enum QiraatLegend {
         rows.append(QiraatLegendEntry(
             id: "mark-solid", group: .marks, mark: .solidLine,
             colors: readers.first.map { [$0.color] } ?? [], textColor: readers.first?.color,
-            title: String(localized: "خط متصل تحت الكلمة"),
-            explanation: String(localized: "قارئ أو راوٍ واحد على الكلمة. الألوان في القسم التالي."), isNarrator: false))
+            title: appLocalized("خط متصل تحت الكلمة"),
+            explanation: appLocalized("قارئ أو راوٍ واحد على الكلمة. الألوان في القسم التالي."), isNarrator: false))
         rows.append(QiraatLegendEntry(
             id: "mark-segmented", group: .marks, mark: .segmentedLine,
             colors: readers.prefix(3).map(\.color), textColor: catalog.multiReaderColor,
-            title: String(localized: "خط مقسَّم"),
-            explanation: String(localized: "أكثر من إمام على الكلمة: قطعة متساوية لكل إمام بترتيب القرّاء، والنص بلون مشترك."),
+            title: appLocalized("خط مقسَّم"),
+            explanation: appLocalized("أكثر من إمام على الكلمة: قطعة متساوية لكل إمام بترتيب القرّاء، والنص بلون مشترك."),
             isNarrator: false))
         rows.append(QiraatLegendEntry(
             id: "mark-performance", group: .marks, mark: .performanceLine,
             colors: [catalog.performanceColor], textColor: catalog.performanceColor,
-            title: String(localized: "خط بلون الأداء"),
-            explanation: String(localized: "الاختلاف في طريقة القراءة فقط، والرسم كما هو في المصحف."), isNarrator: false))
+            title: appLocalized("خط بلون الأداء"),
+            explanation: appLocalized("الاختلاف في طريقة القراءة فقط، والرسم كما هو في المصحف."), isNarrator: false))
         rows.append(QiraatLegendEntry(
             id: "mark-unresolved", group: .marks, mark: .unresolvedLine,
             colors: [catalog.unresolvedColor], textColor: catalog.unresolvedColor,
-            title: String(localized: "خط رمادي"),
-            explanation: String(localized: "القارئ غير معروف بعد في بيانات الكلمة، فلا يُنسب الخط إلى أحد."), isNarrator: false))
+            title: appLocalized("خط رمادي"),
+            explanation: appLocalized("القارئ غير معروف بعد في بيانات الكلمة، فلا يُنسب الخط إلى أحد."), isNarrator: false))
         rows.append(QiraatLegendEntry(
             id: "mark-dotted", group: .marks, mark: .dottedLine,
             colors: [familyColor], textColor: nil,
-            title: String(localized: "خط منقّط تحت الكلمة"),
-            explanation: String(localized: "ذو وجهين: لبعض القرّاء وجه ثانٍ جائز («بخلف عنه»)، بلون الباب."), isNarrator: false))
+            title: appLocalized("خط منقّط تحت الكلمة"),
+            explanation: appLocalized("ذو وجهين: لبعض القرّاء وجه ثانٍ جائز («بخلف عنه»)، بلون الباب."), isNarrator: false))
         rows.append(QiraatLegendEntry(
             id: "mark-family", group: .marks, mark: .familyDot,
             colors: [familyColor], textColor: nil,
-            title: String(localized: "نقطة أعلى يسار الكلمة"),
-            explanation: String(localized: "أكثر من باب من أبواب الأصول على الكلمة، بلون أول حكم عليها."), isNarrator: false))
+            title: appLocalized("نقطة أعلى يسار الكلمة"),
+            explanation: appLocalized("أكثر من باب من أبواب الأصول على الكلمة، بلون أول حكم عليها."), isNarrator: false))
         rows.append(QiraatLegendEntry(
             id: "mark-imalah", group: .marks, mark: .imalahFilled,
             colors: [imalahColor], textColor: nil,
-            title: String(localized: "نقطة مملوءة أسفل يسار الكلمة"),
-            explanation: String(localized: "إمالة في باب الممال والمقلل، بلون هذا الباب."), isNarrator: false))
+            title: appLocalized("نقطة مملوءة أسفل يسار الكلمة"),
+            explanation: appLocalized("إمالة في باب الممال والمقلل، بلون هذا الباب."), isNarrator: false))
         rows.append(QiraatLegendEntry(
             id: "mark-taqlil", group: .marks, mark: .imalahRing,
             colors: [imalahColor], textColor: nil,
-            title: String(localized: "حلقة أسفل يسار الكلمة"),
-            explanation: String(localized: "تقليل بلا إمالة في باب الممال والمقلل، بلون هذا الباب."), isNarrator: false))
+            title: appLocalized("حلقة أسفل يسار الكلمة"),
+            explanation: appLocalized("تقليل بلا إمالة في باب الممال والمقلل، بلون هذا الباب."), isNarrator: false))
         rows.append(QiraatLegendEntry(
             id: "mark-ruling-word", group: .marks, mark: .rulingWord,
             colors: [familyColor], textColor: familyColor,
-            title: String(localized: "كلمة بلون الباب"),
-            explanation: String(localized: "حكم من أبواب الأصول بلا اختلاف في الرسم: يلوّن نص الكلمة بلا خط تحتها."),
+            title: appLocalized("كلمة بلون الباب"),
+            explanation: appLocalized("حكم من أبواب الأصول بلا اختلاف في الرسم: يلوّن نص الكلمة بلا خط تحتها."),
             isNarrator: false))
 
         for reader in readers {
             rows.append(QiraatLegendEntry(
                 id: "reader-\(reader.id)", group: .readers, mark: .solidLine,
                 colors: [reader.color], textColor: reader.color,
-                title: String(localized: "الإمام \(reader.nameArShort)"),
-                explanation: String(localized: "يُلوَّن الخط ونص الكلمة بلونه إذا ذُكر راوياه معًا، أو قطعةً من الخط المقسَّم."),
+                title: appLocalized("الإمام \(reader.nameArShort)"),
+                explanation: appLocalized("يُلوَّن الخط ونص الكلمة بلونه إذا ذُكر راوياه معًا، أو قطعةً من الخط المقسَّم."),
                 isNarrator: false))
             for narrator in catalog.narrators(of: reader.id) {
                 rows.append(QiraatLegendEntry(
                     id: "narrator-\(narrator.id)", group: .readers, mark: .solidLine,
                     colors: [narrator.color], textColor: narrator.color,
-                    title: String(localized: "الراوي \(narrator.nameAr)"),
-                    explanation: String(localized: "يُلوَّن بلونه إذا ذُكر وحده دون زميله من الإمام نفسه."), isNarrator: true))
+                    title: appLocalized("الراوي \(narrator.nameAr)"),
+                    explanation: appLocalized("يُلوَّن بلونه إذا ذُكر وحده دون زميله من الإمام نفسه."), isNarrator: true))
             }
         }
 
@@ -186,7 +186,7 @@ enum QiraatLegend {
                 id: "usul-\(category.id)", group: .usul, mark: .rulingWord,
                 colors: [category.color], textColor: category.color,
                 title: category.nameAr,
-                explanation: String(localized: "حكم أصولي على الكلمة: يلوّن نصها إن لم يكن فيها اختلاف قراءة، وتُرسم به النقطة والخط المنقّط."),
+                explanation: appLocalized("حكم أصولي على الكلمة: يلوّن نصها إن لم يكن فيها اختلاف قراءة، وتُرسم به النقطة والخط المنقّط."),
                 isNarrator: false))
         }
         return rows
