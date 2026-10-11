@@ -140,11 +140,14 @@ final class ReviewEditorUITests: XCTestCase {
         XCTAssertTrue(created.waitForExistence(timeout: 10))
     }
 
-    /// Scrolls the edit list (or the builder list) until the element can be tapped.
+    /// Scrolls the edit list (or the builder list) until the whole element is on screen and clear of the
+    /// home indicator: a button whose top edge has just scrolled in already counts as hittable, but a tap at
+    /// its centre then lands off screen.
     private func reveal(_ id: String, in app: XCUIApplication, listID: String) -> XCUIElement {
         let target = element(id, in: app)
+        let bottom = app.windows.firstMatch.frame.maxY - 44
         var tries = 0
-        while !target.isHittable && tries < 10 { element(listID, in: app).swipeUp(); tries += 1 }
+        while (!target.isHittable || target.frame.maxY > bottom) && tries < 10 { element(listID, in: app).swipeUp(); tries += 1 }
         return target
     }
 

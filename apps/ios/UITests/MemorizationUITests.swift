@@ -178,6 +178,10 @@ final class MemorizationUITests: XCTestCase {
         if app.buttons["memo-keyboard-done"].waitForExistence(timeout: 2) { app.buttons["memo-keyboard-done"].tap() }
         let toggle = app.switches["memo-update-set-current"]
         XCTAssertTrue(toggle.waitForExistence(timeout: 5))
+        // It is the last row of the form: on a shorter phone it starts behind the summary-and-save bar,
+        // where a tap lands on the bar. Scroll it above the bar first.
+        let bar = element("memo-update-count", in: app)
+        for _ in 0..<4 where toggle.frame.maxY > bar.frame.minY - 8 { app.swipeUp() }
         // The row spans the sheet; in Arabic (right to left) the switch sits at the leading (left) edge.
         toggle.tap()
         for dx in [0.08, 0.92] where toggle.value as? String != "1" {

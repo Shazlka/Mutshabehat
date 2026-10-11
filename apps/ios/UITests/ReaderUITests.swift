@@ -14,7 +14,9 @@ final class ReaderUITests: XCTestCase {
         let app = XCUIApplication()
         // Paging tests run on the plain mushaf: with the Qiraat layer on, a tap on a marked word
         // opens its card instead of the chrome.
-        app.launchArguments = ["-mushaf1441:last-page:v1", "\(page)", "-mushaf1441:reader-layer:v1", "none"]
+        // `-reading-fresh`: a throw-away reading database, so earlier tests' reading progress cannot move
+        // where the index jumps (it opens a surah at its first unread page).
+        app.launchArguments = ["-mushaf1441:last-page:v1", "\(page)", "-mushaf1441:reader-layer:v1", "none", "-reading-fresh"]
         if pinLanguage { app.launchArguments += ["-app:language:v1", "ar"] }
         if arabic { app.launchArguments += ["-AppleLanguages", "(ar)", "-AppleLocale", "ar_SA"] }
         app.launch()
@@ -33,6 +35,16 @@ final class ReaderUITests: XCTestCase {
 
     private func page(_ number: Int, in app: XCUIApplication) -> XCUIElement {
         app.descendants(matching: .any)["mushaf-page-\(number)"]
+    }
+
+    /// A row of the settings list. The list only creates the rows on screen, and on iPad the settings sheet is
+    /// short, so a lower row (language, database) does not exist until the list is scrolled to it.
+    private func settingsRow(_ id: String, in app: XCUIApplication, kind: XCUIElement.ElementType = .button) -> XCUIElement {
+        let row = app.descendants(matching: kind)[id]
+        let list = app.collectionViews.firstMatch
+        for _ in 0..<4 where !(row.exists && row.isHittable) { list.swipeUp() }
+        for _ in 0..<4 where !(row.exists && row.isHittable) { list.swipeDown() }
+        return row
     }
 
     func testOpensOnTheStoredPage() {
@@ -103,9 +115,9 @@ final class ReaderUITests: XCTestCase {
         XCTAssertTrue(app.buttons["theme-whitePage"].exists)
         XCTAssertTrue(app.buttons["theme-blackPage"].exists)
         app.navigationBars.buttons.element(boundBy: 0).tap()
-        XCTAssertTrue(app.buttons["open-language-settings"].exists)
-        XCTAssertTrue(app.switches["qiraat-toggle"].exists)
-        XCTAssertTrue(app.buttons["open-qiraat-picker"].exists)
+        XCTAssertTrue(settingsRow("open-language-settings", in: app).exists)
+        XCTAssertTrue(settingsRow("qiraat-toggle", in: app, kind: .switch).exists)
+        XCTAssertTrue(settingsRow("open-qiraat-picker", in: app).exists)
         XCTAssertFalse(app.buttons["settings-mutshabehat"].exists)
     }
 
@@ -171,7 +183,8 @@ final class ReaderUITests: XCTestCase {
         XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 10))
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()
         app.buttons["settings-button"].tap()
-        app.buttons["open-database-settings"].tap()
+        XCTAssertTrue(app.navigationBars["الإعدادات"].waitForExistence(timeout: 3))
+        settingsRow("open-database-settings", in: app).tap()
         XCTAssertTrue(app.buttons["export-qiraat-database"].exists)
         XCTAssertTrue(app.buttons["import-qiraat-database"].exists)
         XCTAssertTrue(app.buttons["export-mutshabehat-database"].exists)
@@ -183,7 +196,8 @@ final class ReaderUITests: XCTestCase {
         XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 10))
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()
         app.buttons["settings-button"].tap()
-        app.buttons["open-language-settings"].tap()
+        XCTAssertTrue(app.navigationBars["الإعدادات"].waitForExistence(timeout: 3))
+        settingsRow("open-language-settings", in: app).tap()
 
         XCTAssertTrue(app.buttons["language-ar"].exists)
         app.buttons["language-en"].tap()

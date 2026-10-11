@@ -47,7 +47,15 @@ final class ReviewBulkUITests: XCTestCase {
         element("review-word-002:049:001", in: app).tap()
         XCTAssertTrue(element("review-sheet-word", in: app).waitForExistence(timeout: 5))
         element("review-sheet-word", in: app).swipeUp()
+        // The card sits low in a lazy list: one swipe does not always lift the sheet off its half detent
+        // (a slow machine drops it), so drag the list until the card is built.
         let card = element("review-suggestion-stub-exact", in: app)
+        var drags = 0
+        while !card.waitForExistence(timeout: 2) && drags < 6 {
+            app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.8))
+                .press(forDuration: 0.05, thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.3)))
+            drags += 1
+        }
         XCTAssertTrue(card.waitForExistence(timeout: 10))
         let add = app.buttons["review-suggestion-add-stub-exact"]
         XCTAssertTrue(add.exists)

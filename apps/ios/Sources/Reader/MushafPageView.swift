@@ -375,7 +375,17 @@ final class MushafPageView: UIView {
         }) {
             return wordBox.word.ayahKey
         }
-        return nil
+        // The page spreads its 15 lines over the screen, so a line is taller than its glyphs: a press
+        // anywhere in a line of words (below a glyph or between two words) is the nearest word's ayah.
+        // Surah headers and basmala lines have no words and stay unanswered.
+        guard let line = layout.lines.first(where: { $0.rect.minY <= point.y && point.y < $0.rect.maxY }),
+              let nearest = line.boxes.min(by: { horizontalDistance($0.frame, point.x) < horizontalDistance($1.frame, point.x) })
+        else { return nil }
+        return nearest.word.ayahKey
+    }
+
+    private func horizontalDistance(_ frame: CGRect, _ x: CGFloat) -> CGFloat {
+        x < frame.minX ? frame.minX - x : (x > frame.maxX ? x - frame.maxX : 0)
     }
 
     override func draw(_ rect: CGRect) {
