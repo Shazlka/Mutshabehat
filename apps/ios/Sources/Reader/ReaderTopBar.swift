@@ -22,15 +22,19 @@ struct ReaderTopBar: View {
 
     var body: some View {
         ZStack {
-            // Reading mode header: Surah name on right, Hizb & Juz on left
-            HStack(alignment: .center) {
+            // Reading mode header: Surah name on right, Hizb & Juz on left, the page's memorization mark between
+            // them in a place of its own, so neither text ever runs under it.
+            HStack(alignment: .center, spacing: 8) {
                 Text(surahTitle)
                     .font(Font(MushafLibrary.mushafFont(size: 20)))
                     .foregroundStyle(Color(uiColor: appearance.ink(for: traits)))
                     .lineLimit(1)
+                    .layoutPriority(1)
                     .accessibilityIdentifier("reading-surah-title")
 
-                Spacer()
+                Spacer(minLength: 0)
+                if !chromeVisible { memorizationMarkRow(compact: false) }
+                Spacer(minLength: 0)
 
                 Text(sectionText)
                     .font(.subheadline.weight(.medium))
@@ -70,6 +74,9 @@ struct ReaderTopBar: View {
                 .accessibilityIdentifier("open-index")
                 .accessibilityLabel("\(surahTitle)، \(detailsText)")
 
+                // Compact, between the title and the icons: the title shrinks to make room instead of sliding under it.
+                if chromeVisible { memorizationMarkRow(compact: true) }
+
                 HStack(spacing: 0) {
                     TopBarIconButton(systemImage: "magnifyingglass", label: "بحث", identifier: "search-button", action: openSearch)
                     TopBarIconButton(systemImage: "bookmark.fill", label: "الفواصل", identifier: "bookmarks-button", action: openBookmarks)
@@ -88,35 +95,32 @@ struct ReaderTopBar: View {
         // The bar is a fixed 52 pt slot over the page: text grows with the user's size up to a point,
         // and the icons show the large content viewer beyond it.
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
-        .overlay {
-            // Outside the header/controls cross-fade. With the header showing it sits in the free middle of the
-            // banner; with the controls showing it shrinks to its compact form and sits just past the icon
-            // group, measured from the icons' fixed widths, so it never covers a control.
-            if !memorizationMarks.isEmpty {
-                HStack(spacing: 6) {
-                    ForEach(memorizationMarks, id: \.page) { mark in
-                        Button { openMemorizationPage(mark.page) } label: {
-                            PageStatusMark(page: mark.page, progress: mark.progress,
-                                           showsPageNumber: memorizationMarks.count > 1, compact: chromeVisible,
-                                           language: memorizationLanguage)
-                        }
-                        .buttonStyle(.plain)
+    }
+
+    /// Page-status marks (one page, or both pages of a spread), left to right; nothing when they are hidden.
+    @ViewBuilder
+    private func memorizationMarkRow(compact: Bool) -> some View {
+        if !memorizationMarks.isEmpty {
+            HStack(spacing: 6) {
+                ForEach(memorizationMarks, id: \.page) { mark in
+                    Button { openMemorizationPage(mark.page) } label: {
+                        PageStatusMark(page: mark.page, progress: mark.progress,
+                                       showsPageNumber: memorizationMarks.count > 1, compact: compact,
+                                       language: memorizationLanguage)
                     }
+                    .buttonStyle(.plain)
                 }
-                .padding(.leading, chromeVisible ? TopBarMetrics.iconGroupWidth + TopBarMetrics.edgePadding + 6 : 0)
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: chromeVisible ? .leading : .center)
-                .environment(\.layoutDirection, .leftToRight)
             }
+            .fixedSize()
+            .environment(\.layoutDirection, .leftToRight)
         }
     }
 }
 
-/// The bar's fixed geometry, shared by the icons and the memorization mark that sits beside them.
+/// The bar's fixed geometry.
 private enum TopBarMetrics {
     static let edgePadding: CGFloat = 8
     static let iconSize: CGFloat = 44
-    static let iconCount: CGFloat = 5
-    static var iconGroupWidth: CGFloat { iconSize * iconCount }
 }
 
 private struct TopBarIconButton: View {
