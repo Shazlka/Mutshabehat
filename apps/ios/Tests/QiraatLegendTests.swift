@@ -119,6 +119,20 @@ final class QiraatLegendTests: XCTestCase {
         XCTAssertEqual(rows, Set(QiraatLegendMark.allCases))
     }
 
+    func testMarkRowsHaveCatalogColoursBeforeCategoriesLoad() throws {
+        let catalog = try bundledCatalog()
+        let rows = QiraatLegend.entries(catalog: catalog).filter { $0.group == .marks }
+        let categoryMarks: Set<QiraatLegendMark> = [
+            .dottedLine, .familyDot, .imalahFilled, .imalahRing, .rulingWord
+        ]
+        for row in rows where categoryMarks.contains(row.mark) {
+            XCTAssertEqual(row.colors, [catalog.multiReaderColor], row.id)
+        }
+        let rulingWord = try XCTUnwrap(rows.first { $0.mark == .rulingWord })
+        XCTAssertEqual(rulingWord.textColor, catalog.multiReaderColor)
+        XCTAssertEqual(rulingWord.id, "mark-ruling-word")
+    }
+
     func testReadersAndNarratorsGetOneColouredRowEach() throws {
         let catalog = try bundledCatalog()
         let rows = QiraatLegend.entries(catalog: catalog).filter { $0.group == .readers }

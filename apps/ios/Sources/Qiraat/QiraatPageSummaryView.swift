@@ -13,36 +13,31 @@ struct QiraatPageSummaryView: View {
 
     @ScaledMetric(relativeTo: .title2) private var wordSize: CGFloat = 30
     @State private var liveRevision = 0
+    @State private var groups: [AyahGroup]?
 
     private struct AyahGroup: Identifiable {
         let id: AyahKey
         var items: [QiraatPageSummaryItem]
     }
 
-    private var groups: [AyahGroup] {
-        // The store is not observable. Reading this revision makes a live update invalidate the list.
-        _ = liveRevision
-        guard let store else { return [] }
-        var result: [AyahGroup] = []
-        for page in Set(pages).sorted() {
-            guard let mushaf = library.page(page), let data = store.page(page) else { continue }
-            let items = QiraatPageSummary.build(page: page, words: mushaf.lines.flatMap(\.words), data: data,
-                marks: QiraatMarks(catalog: store.catalog, page: data), catalog: store.catalog, filter: filter)
-            for item in items {
-                if result.last?.id == item.word.ayahKey {
-                    result[result.count - 1].items.append(item)
-                } else {
-                    result.append(AyahGroup(id: item.word.ayahKey, items: [item]))
-                }
-            }
-        }
-        return result
+    private struct LoadID: Hashable, Sendable {
+        let pages: [Int]
+        let filter: QiraatFilter
+        let revision: Int
+    }
+
+    private var loadID: LoadID {
+        LoadID(pages: Array(Set(pages)).sorted(), filter: filter, revision: liveRevision)
     }
 
     var body: some View {
-        let sections = groups
+        let sections = groups ?? []
         List {
-            if sections.isEmpty {
+            if groups == nil {
+                ProgressView("جارٍ إعداد خلافات الصفحة")
+                    .frame(maxWidth: .infinity, minHeight: 44)
+                    .listRowBackground(Color(uiColor: .mushafPaper))
+            } else if sections.isEmpty {
                 Text("لا خلاف في هذه الصفحة")
                     .font(.body)
                     .frame(maxWidth: .infinity, minHeight: 44)
@@ -73,8 +68,11 @@ struct QiraatPageSummaryView: View {
         .environment(\.layoutDirection, .rightToLeft)
         .navigationTitle("خلافات الصفحة")
         .accessibilityIdentifier("qiraat-page-summary")
+        .task(id: loadID) { await loadGroups() }
         .onReceive(NotificationCenter.default.publisher(for: .qiraatPageDidChange)) { notification in
-            guard let page = notification.userInfo?["page"] as? Int, pages.contains(page) else { return }
+            // A transport bucket can contain rulings printed on another page, so any changed
+            // bucket may affect the visible summary after coordinate resolution.
+            guard notification.userInfo?["page"] as? Int != nil else { return }
             liveRevision &+= 1
         }
     }
@@ -96,14 +94,16 @@ struct QiraatPageSummaryView: View {
                     }
                 }
             }
-            ForEach(item.rulings) { ruling in
+            ForEach(item.rulingGroups) { group in
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(verbatim: "باب: \(ruling.categoryAr)").font(.subheadline.bold())
-                    ForEach(ruling.actionGroups, id: \.action) { group in
-                        Text(verbatim: group.action).font(.subheadline)
-                        authorities(group.authorities)
+                    Text(verbatim: "باب: \(group.categoryAr)").font(.subheadline.bold())
+                    ForEach(group.rulings) { ruling in
+                        ForEach(ruling.actionGroups, id: \.action) { actionGroup in
+                            Text(verbatim: actionGroup.action).font(.subheadline)
+                            authorities(actionGroup.authorities)
+                        }
                     }
-                    if ruling.ruling.verificationStatus == "NEEDS_MANUAL_REVIEW" {
+                    if group.rulings.contains(where: { $0.ruling.verificationStatus == "NEEDS_MANUAL_REVIEW" }) {
                         Text("بحاجة إلى مراجعة").font(.caption)
                     }
                 }
@@ -112,7 +112,74 @@ struct QiraatPageSummaryView: View {
         .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
         .padding(.vertical, 6)
         .contentShape(Rectangle())
-        .accessibilityElement(children: .combine)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(Text(verbatim: accessibilityLabel(for: item)))
+    }
+
+    @MainActor private func loadGroups() async {
+        guard let store else {
+            groups = []
+            return
+        }
+        let requested = loadID
+        let databaseURL = library.database.url
+        guard let index = await QiraatResolvedPageCache.shared.index(
+            store: store,
+            databaseURL: databaseURL,
+            revision: requested.revision
+        ) else {
+            guard !Task.isCancelled else { return }
+            groups = []
+            return
+        }
+        let catalog = store.catalog
+        let items = await Task.detached(priority: .userInitiated) {
+            guard let database = try? MushafDatabase(url: databaseURL) else {
+                return [QiraatPageSummaryItem]()
+            }
+            return requested.pages.flatMap { page -> [QiraatPageSummaryItem] in
+                guard let mushaf = try? database.page(page), let data = index.page(page) else { return [] }
+                return QiraatPageSummary.build(
+                    page: page,
+                    words: mushaf.lines.flatMap(\.words),
+                    data: data,
+                    marks: QiraatMarks(catalog: catalog, page: data),
+                    catalog: catalog,
+                    filter: requested.filter
+                )
+            }
+        }.value
+        guard !Task.isCancelled, requested == loadID else { return }
+
+        var result: [AyahGroup] = []
+        for item in items {
+            if result.last?.id == item.word.ayahKey {
+                result[result.count - 1].items.append(item)
+            } else {
+                result.append(AyahGroup(id: item.word.ayahKey, items: [item]))
+            }
+        }
+        groups = result
+    }
+
+    private func accessibilityLabel(for item: QiraatPageSummaryItem) -> String {
+        var parts = ["نص المصحف: \(item.word.textUthmani)"]
+        for variant in item.variants {
+            parts.append("القراءة: \(variant.readingText)")
+            let names = variant.authorities.map(\.name).joined(separator: "، ")
+            if !names.isEmpty { parts.append("القارئون: \(names)") }
+        }
+        for group in item.rulingGroups {
+            parts.append("باب: \(group.categoryAr)")
+            for ruling in group.rulings {
+                for action in ruling.actionGroups {
+                    parts.append("الأداء: \(action.action)")
+                    let names = action.authorities.map(\.name).joined(separator: "، ")
+                    if !names.isEmpty { parts.append("القارئون: \(names)") }
+                }
+            }
+        }
+        return parts.joined(separator: ". ")
     }
 
     private func authorities(_ pills: [AuthorityPill]) -> some View {
