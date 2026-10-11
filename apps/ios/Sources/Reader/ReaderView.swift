@@ -33,6 +33,7 @@ struct ReaderView: View {
     @State private var qiraat = QiraatPreferences()
     @State private var qiraatSelection: QiraatWordSelection?
     @State private var qiraatRoute: QiraatHubRoute?
+    @State private var pendingQiraatWord: (page: MushafPage, word: MushafWord)?
     @State private var showingQiraatFilter = false
     @State private var bookmarkActionTarget: (page: MushafPage, ayah: AyahKey)? = nil
     @AppStorage("mushaf1441:theme:v1") private var theme = MushafAppearance.system.rawValue
@@ -78,6 +79,7 @@ struct ReaderView: View {
                 qiraat: qiraat,
                 qiraatCatalog: library.qiraat?.catalog,
                 openQiraatFilter: { showingQiraatFilter = true },
+                openQiraatRoute: { qiraatRoute = $0 },
                 memorizationMarks: memorizationMarks,
                 memorizationLanguage: appLanguage,
                 openMemorizationPage: { pageSheetRequest = PageSheetRequest(page: $0) },
@@ -124,7 +126,9 @@ struct ReaderView: View {
                             wordFont: try? library.fonts.font(page: item.word.page, size: 40)) { qiraatSelection = nil }
             }
         }
-        .sheet(item: $qiraatRoute) { route in qiraatDestination(route) }
+        .sheet(item: $qiraatRoute, onDismiss: presentPendingQiraatWord) { route in
+            qiraatDestination(route)
+        }
         .sheet(isPresented: $showingQiraatFilter) {
             if let catalog = library.qiraat?.catalog {
                 QiraatReaderPicker(catalog: catalog, selection: $qiraat.filter)
@@ -376,6 +380,44 @@ struct ReaderView: View {
         return "جزء \(ArabicDigits.string(meta.juz))   ◐ حزب \(ArabicDigits.string(meta.hizb))"
     }
 
+    /// The pager presents a spread as [left, right] = [right + 1, right].
+    var qiraatVisiblePages: [Int] {
+        isSpread ? [Spread.leftPage(of: page), Spread.rightPage(of: page)] : [page]
+    }
+
+    var activeQiraatFilter: QiraatFilter { qiraat.filter }
+
+    /// Turns to a result and defers the existing word-opening path until the route sheet is gone.
+    func openQiraatHubWord(page targetPage: Int, surah: Int, ayah: Int, token: Int) {
+        let targetPage = clampPage(targetPage)
+        page = targetPage
+        highlightedWordIDs = []
+        pendingQiraatWord = nil
+
+        if qiraat.enabled,
+           let mushafPage = library.page(targetPage),
+           let word = mushafPage.lines.flatMap(\.words).first(where: {
+               $0.ayahKey.surah == surah && $0.ayahKey.ayah == ayah && $0.indexInAyah == token
+           }),
+           let marks = library.qiraat?.marks(page: targetPage),
+           marks.selection(surah: surah, ayah: ayah, token: token, filter: qiraat.filter) != nil {
+            pendingQiraatWord = (mushafPage, word)
+        }
+        qiraatRoute = nil
+    }
+
+    /// Usul places turn the reader to the page without opening a word sheet.
+    func openQiraatHubPage(_ targetPage: Int) {
+        page = clampPage(targetPage)
+        highlightedWordIDs = []
+        pendingQiraatWord = nil
+        qiraatRoute = nil
+    }
+
+    func closeQiraatHubRoute() {
+        pendingQiraatWord = nil
+        qiraatRoute = nil
+    }
 
     private func jumpToBookmark(_ bookmark: QuranBookmark) {
         page = bookmark.page
@@ -395,6 +437,12 @@ struct ReaderView: View {
                                               token: word.indexInAyah, filter: qiraat.filter) else { return }
         Haptics.wordPress()
         qiraatSelection = QiraatWordSelection(word: word, selection: selection)
+    }
+
+    private func presentPendingQiraatWord() {
+        guard let pendingQiraatWord else { return }
+        self.pendingQiraatWord = nil
+        openQiraat(pendingQiraatWord.page, pendingQiraatWord.word)
     }
 
 }

@@ -3,6 +3,11 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-11 — Qiraat hub destinations wired into the reader
+- Added direct Qiraat-menu entries for the colour key, visible-page/spread summary, offline search and cached Usul index, preserving their accessibility identifiers and the fixed 52 pt top bar.
+- Summary and search results now dismiss their route sheet, turn to the real Mushaf page, clear search highlighting and open the existing filtered Qiraat word sheet only after dismissal; an unavailable/filtered word just opens its page. Usul places navigate to the page without opening a word sheet.
+- Spread summaries follow the pager's `[left, right]` order (`[right + 1, right]`). The reader/narrator filter remains a nested Qiraat submenu.
+
 ## [Unreleased] — 2026-10-11 — Qiraat section localized to English (chrome only; data stays Arabic)
 - **What changed:** every Arabic string the Qiraat section shows as app chrome now has an English translation in `Sources/Localizable.xcstrings`, so switching the app to English translates the word sheet, the reader and narrator picker and the ruling/variant labels. Quran text, reader and narrator names, category names, conditions, notes and source notes stay Arabic, as the data.
 - **Code (`Sources/Qiraat/`):** `QiraatBadge` takes a `Text`, so chrome badges are localized (`وجه %lld`, «تحتاج مراجعة يدوية») and category badges stay verbatim. The variant difference kind is a namespaced key (`qiraat.difference.<CODE>`, with Arabic and English values), because bare words such as «حذف» or «أخرى» are used elsewhere in the app. The reader picker's rows are localized (`كل القراء والرواة`, `روايتا الإمام %@`); narrator names stay verbatim. «الخلاف: %@» is a localized format.
