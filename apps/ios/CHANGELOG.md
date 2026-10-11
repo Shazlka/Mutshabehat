@@ -3,6 +3,12 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-10 — Marked-word sheet navigation and variant face numbering (WS-04)
+- Added `MarkedWordRef` and `QiraatWordOrder.markedWords`, using the page view's exact `wordMarks(for:filter:)` predicate and Quran coordinate order across lines/pages, including reversed iPad spread inputs. Ordered refs offer next/previous lookup without wrapping or navigating from a missing selection.
+- Added `variantWajhNumbers` for appearance-ordered, one-based face numbers, omitted when fewer than two distinct variants are displayed.
+- Added the standalone `QiraatSheetNavigator`: Arabic previous/next labels, Arabic-Indic position, directional chevrons, 44 pt targets, disabled ends, Mushaf colours, and an accessibility-size stacked layout. Integration into the sheet and variant cards is left to the owning workstream.
+- **Verification:** `swift test --package-path MushafCore --filter QiraatWordOrderTests` passed (9 tests: real-page ordering for pages 1, 2, 2+1 and the reversed 209/208 spread, next/previous at line, page and list ends, filter parity with the page view, wajh numbering); full `swift test --package-path MushafCore` passed (379 tests in 41 suites); `make project` succeeded; `xb.sh -destination 'platform=iOS Simulator,name=QX-04' build` ** BUILD SUCCEEDED ** (app target incl. `QiraatSheetNavigator`). Simulator/device interaction, VoiceOver, contrast and Dynamic Type appearance are not verified yet.
+
 ## [Unreleased] — 2026-10-10 — QiraatSheet split into VariantCard / RulingCard / QiraatPills / FlowLayout (refactor, no behaviour change)
 - **Refactor only:** `Sources/Qiraat/QiraatSheet.swift` is split by piece. `QiraatSheet` keeps `QiraatWordSelection`, the sheet body and header, and wiring. `VariantCard` (variant card, scoped reader filter, Uthmani variant font), `RulingCard` (أصول ruling card, per-action performance lines, الخلاف notes) and the shared `QiraatPills` / `QiraatBadge` / `QiraatNeedsReviewBadge` move into their own files, with `FlowLayout` unchanged in `FlowLayout.swift`.
 - Each card takes exactly what it reads (the variant or ruling, the catalog, and the filter for variants). Strings, fonts, colours, padding, modifiers and accessibility identifiers are unchanged; colours are not touched yet.
