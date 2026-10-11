@@ -12,6 +12,7 @@ struct QiraatPageSummaryView: View {
     let onSelect: (QiraatPageSummaryItem) -> Void
 
     @ScaledMetric(relativeTo: .title2) private var wordSize: CGFloat = 30
+    @Environment(\.dismiss) private var dismiss
     @State private var liveRevision = 0
     @State private var groups: [AyahGroup]?
 
@@ -67,6 +68,12 @@ struct QiraatPageSummaryView: View {
         .foregroundStyle(Color(uiColor: .mushafInk))
         .environment(\.layoutDirection, .rightToLeft)
         .navigationTitle("خلافات الصفحة")
+        .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                Button("إغلاق") { dismiss() }
+                    .accessibilityIdentifier("qiraat-page-summary-close")
+            }
+        }
         .accessibilityIdentifier("qiraat-page-summary")
         .task(id: loadID) { await loadGroups() }
         .onReceive(NotificationCenter.default.publisher(for: .qiraatPageDidChange)) { notification in
@@ -98,7 +105,7 @@ struct QiraatPageSummaryView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("باب: \(group.categoryAr)").font(.subheadline.bold())
                     ForEach(group.rulings) { ruling in
-                        ForEach(ruling.actionGroups, id: \.action) { actionGroup in
+                        ForEach(Array(ruling.actionGroups.enumerated()), id: \.offset) { _, actionGroup in
                             Text(verbatim: actionGroup.action).font(.subheadline)
                             authorities(actionGroup.authorities)
                         }
@@ -163,19 +170,19 @@ struct QiraatPageSummaryView: View {
     }
 
     private func accessibilityLabel(for item: QiraatPageSummaryItem) -> String {
-        var parts = ["نص المصحف: \(item.word.textUthmani)"]
+        var parts = [appLocalized("نص المصحف:") + " " + item.word.textUthmani]
         for variant in item.variants {
-            parts.append("القراءة: \(variant.readingText)")
+            parts.append(appLocalized("القراءة:") + " " + variant.readingText)
             let names = variant.authorities.map(\.name).joined(separator: "، ")
-            if !names.isEmpty { parts.append("القارئون: \(names)") }
+            if !names.isEmpty { parts.append(appLocalized("القارئون:") + " " + names) }
         }
         for group in item.rulingGroups {
-            parts.append("باب: \(group.categoryAr)")
+            parts.append(appLocalized("باب:") + " " + group.categoryAr)
             for ruling in group.rulings {
                 for action in ruling.actionGroups {
-                    parts.append("الأداء: \(action.action)")
+                    parts.append(appLocalized("الأداء:") + " " + action.action)
                     let names = action.authorities.map(\.name).joined(separator: "، ")
-                    if !names.isEmpty { parts.append("القارئون: \(names)") }
+                    if !names.isEmpty { parts.append(appLocalized("القارئون:") + " " + names) }
                 }
             }
         }

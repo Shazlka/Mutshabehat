@@ -260,7 +260,7 @@ struct QiraatReaderPicker: View {
         if let idx = selectedManyIDs.firstIndex(of: id) {
             selectedManyIDs.remove(at: idx)
         } else {
-            if selectedManyIDs.count >= maxSelectable {
+            if selectedManyIDs.count >= maxSelectable, !selectedManyIDs.isEmpty {
                 selectedManyIDs.removeFirst()
             }
             selectedManyIDs.append(id)

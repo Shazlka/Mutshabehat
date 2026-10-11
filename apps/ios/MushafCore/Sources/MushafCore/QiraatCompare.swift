@@ -187,6 +187,21 @@ public enum QiraatCompare {
         }
     }
 
+    /// The place to show first when comparison opens on a tapped word: the word's own single-word place if it
+    /// has a text variant (that is the difference the reader tapped to see), then any place with a text
+    /// variant, then the word's own place, then the first. Position order alone would put an أصول span that
+    /// starts in an earlier ayah (the idgham across an ayah end) ahead of the word itself.
+    public static func defaultLocus(in loci: [QiraatComparisonLocus], word: MushafWord) -> QiraatComparisonLocus? {
+        func isWordItself(_ locus: QiraatComparisonLocus) -> Bool {
+            locus.surah == word.ayahKey.surah && locus.ayah == word.ayahKey.ayah && locus.endAyah == locus.ayah
+                && locus.startToken == word.indexInAyah && locus.endToken == word.indexInAyah
+        }
+        return loci.first { isWordItself($0) && !$0.selection.variants.isEmpty }
+            ?? loci.first { !$0.selection.variants.isEmpty }
+            ?? loci.first(where: isWordItself)
+            ?? loci.first
+    }
+
     /// Requires the complete page selection. Nil means comparison is unavailable; a filtered
     /// fallback would falsely make omitted readers appear to follow the Mushaf base.
     public static func unfilteredSelection(for word: MushafWord, marks: QiraatMarks?) -> QiraatSelection? {

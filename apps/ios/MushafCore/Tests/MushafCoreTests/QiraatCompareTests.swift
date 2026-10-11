@@ -40,6 +40,39 @@ private func locus(_ selection: QiraatSelection, start: Int? = nil, end: Int? = 
 }
 
 @Suite struct QiraatCompareTests {
+    // MARK: The first place shown
+
+    /// 1:4 مَـٰلِكِ: the word's own variant (ملك) must open first, not the إدغام كبير span that starts at 1:3:2.
+    @Test func comparisonOpensOnTheTappedWordsOwnVariantNotAnEarlierSpan() throws {
+        let catalog = try snapshotCatalog()
+        let (selection, word, _) = try realSelection(page: 1, 1, 4, 1, catalog: catalog)
+        let loci = QiraatCompare.loci(selection: selection)
+        #expect(loci.count > 1)
+        #expect(loci.first?.selection.variants.isEmpty == true, "position order puts the idgham span first")
+
+        let chosen = try #require(QiraatCompare.defaultLocus(in: loci, word: word))
+        #expect(!chosen.selection.variants.isEmpty)
+        #expect(chosen.surah == 1 && chosen.ayah == 4 && chosen.startToken == 1 && chosen.endToken == 1)
+
+        // The pair then names a reader of the variant, not only the idgham narrator.
+        let pair = try #require(QiraatCompare.defaultPair(selection: chosen.selection, catalog: catalog))
+        #expect(pair.0 == QiraatCompare.hafsReadingId)
+        #expect(chosen.selection.variants.flatMap(\.readingIds).contains(pair.1))
+        let (_, other, same) = QiraatCompare.compare(pair.0, pair.1, locus: chosen, word: word, catalog: catalog)
+        #expect(!same)
+        #expect(!other.voices.isEmpty)
+    }
+
+    @Test func withNoVariantAnywhereTheWordsOwnPlaceThenTheFirstIsChosen() throws {
+        let catalog = try snapshotCatalog()
+        let (selection, word, _) = try realSelection(page: 1, 1, 3, 2, catalog: catalog)
+        let onlyRulings = QiraatSelection(variants: [], rulings: selection.rulings)
+        let loci = QiraatCompare.loci(selection: onlyRulings)
+        let chosen = try #require(QiraatCompare.defaultLocus(in: loci, word: word))
+        #expect(chosen.id == (loci.first { $0.surah == 1 && $0.ayah == 3 && $0.startToken == 2 && $0.endToken == 2 } ?? loci[0]).id)
+        #expect(QiraatCompare.defaultLocus(in: [], word: word) == nil)
+    }
+
     // MARK: One وجه — 1:4 (page 1)
 
     @Test func oneWajhHafsAgainstAReaderWhoseNarratorsAgree() throws {

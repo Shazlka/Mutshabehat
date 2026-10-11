@@ -36,7 +36,7 @@ struct QiraatCompareView: View {
          initialPair: (String, String)? = nil) {
         let fullItem = Self.unfiltered(item, store: store)
         let loci = fullItem.map { QiraatCompare.loci(selection: $0.selection) } ?? []
-        let initialLocus = loci.first
+        let initialLocus = QiraatCompare.defaultLocus(in: loci, word: item.word)
         self.item = fullItem
         self.catalog = catalog
         let pair = initialPair
@@ -129,9 +129,9 @@ struct QiraatCompareView: View {
         Menu {
             ForEach(catalog.readers.sorted { $0.sortOrder < $1.sortOrder }) { reader in
                 Section("الإمام \(reader.nameAr)") {
-                    choice("الإمام \(reader.nameArShort) (روايتاه)", id: reader.id, selection: selection)
+                    choice(Text("الإمام \(reader.nameArShort) (روايتاه)"), id: reader.id, selection: selection)
                     ForEach(catalog.narrators(of: reader.id)) { narrator in
-                        choice("الراوي \(narrator.nameAr)", id: narrator.id, selection: selection)
+                        choice(Text("الراوي \(narrator.nameAr)"), id: narrator.id, selection: selection)
                     }
                 }
             }
@@ -152,9 +152,17 @@ struct QiraatCompareView: View {
         .accessibilityIdentifier("qiraat-compare-picker-\(side)")
     }
 
-    private func choice(_ title: String, id: String, selection: Binding<String>) -> some View {
+    private func choice(_ title: Text, id: String, selection: Binding<String>) -> some View {
         Button { withMotion { selection.wrappedValue = id } } label: {
-            Label(title, systemImage: selection.wrappedValue == id ? "checkmark" : "")
+            if selection.wrappedValue == id {
+                Label {
+                    title
+                } icon: {
+                    Image(systemName: "checkmark")
+                }
+            } else {
+                title
+            }
         }
     }
 
@@ -247,10 +255,11 @@ struct QiraatCompareView: View {
 
     // MARK: Names
 
-    /// «كحفص» only when the data implies it: Hafs has no recorded difference here either.
+    /// «بلا اختلاف مسجّل هنا» when neither this reading nor Hafs has a recorded difference here: the data says no more
+    /// than that, so the label does not claim «like Hafs».
     private func baseLabel(sameAsHafs: Bool, voice: QiraatComparedReading.Voice) -> String {
         if voice.narratorIds.contains(QiraatCompare.hafsReadingId) { return "على رسم المصحف" }
-        return sameAsHafs ? "كحفص" : "على رسم المصحف، بلا وجه مسجّل هنا"
+        return sameAsHafs ? "بلا اختلاف مسجّل هنا" : "على رسم المصحف، بلا وجه مسجّل هنا"
     }
 
     private func name(of id: String) -> String {

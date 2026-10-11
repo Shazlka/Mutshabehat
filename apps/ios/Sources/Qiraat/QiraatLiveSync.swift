@@ -92,6 +92,9 @@ final class QiraatLiveSync: ObservableObject {
 
     @discardableResult
     private func record(_ outcome: Outcome, for page: Int, now: Date = Date()) -> Outcome {
+        // A skipped check changes nothing the reader can see; recording it would re-render every observer
+        // (the word sheet) each time a page flips faster than the minimum interval.
+        if outcome == .skipped, pageStates[page] != nil { return outcome }
         let lastConfirmation: Date?
         switch outcome {
         case .updated, .unchanged:

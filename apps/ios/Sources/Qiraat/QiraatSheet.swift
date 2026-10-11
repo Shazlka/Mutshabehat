@@ -24,6 +24,7 @@ struct QiraatSheet: View {
 
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @ObservedObject private var liveSync = QiraatLiveSync.shared
+    @State private var detent: PresentationDetent = .large
 
     /// The header glyph is drawn at the size it was loaded at (40 pt) and follows the title metric up to 72 pt.
     private func scaledWordFont(_ font: CTFont) -> CTFont {
@@ -65,7 +66,8 @@ struct QiraatSheet: View {
                 }
             }
         }
-        .presentationDetents([.medium, .large])
+        .tint(Color(uiColor: .mushafBrown))
+        .presentationDetents([.medium, .large], selection: $detent)
     }
 
     /// «الفرش» (the words that differ) and «الأصول» (the rules that colour a word), as VoiceOver headings.
