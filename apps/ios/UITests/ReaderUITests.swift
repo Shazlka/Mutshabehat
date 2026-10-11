@@ -135,8 +135,40 @@ final class ReaderUITests: XCTestCase {
         picker.tap()
 
         XCTAssertTrue(app.navigationBars["اختر القارئ أو الراوي"].waitForExistence(timeout: 3))
-        XCTAssertTrue(app.buttons["qiraat-reader-Q01"].exists)
-        XCTAssertTrue(app.buttons["qiraat-narrator-Q01-R02"].exists)
+        let reader = app.buttons["qiraat-reader-Q01"]
+        XCTAssertTrue(reader.waitForExistence(timeout: 3))
+        XCTAssertTrue(reader.label.contains("نافع (روايتاه)"))
+
+        let narrator = app.buttons["qiraat-narrator-Q01-R02"]
+        XCTAssertTrue(narrator.waitForExistence(timeout: 3))
+        XCTAssertTrue(narrator.label.contains("ورش"))
+    }
+
+    func testQiraatReaderPickerSearchAndDismiss() {
+        let app = launch(atPage: 1)
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 10))
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        app.buttons["settings-button"].tap()
+        let toggle = app.switches["qiraat-toggle"]
+        XCTAssertTrue(toggle.waitForExistence(timeout: 3))
+        toggle.switches.firstMatch.tap()
+        let picker = app.buttons["open-qiraat-picker"]
+        XCTAssertTrue(picker.waitForExistence(timeout: 3))
+        picker.tap()
+
+        XCTAssertTrue(app.navigationBars["اختر القارئ أو الراوي"].waitForExistence(timeout: 3))
+        let search = app.searchFields.firstMatch
+        XCTAssertTrue(search.waitForExistence(timeout: 3))
+        search.tap()
+        search.typeText("ورش")
+        XCTAssertTrue(app.buttons["qiraat-narrator-Q01-R02"].waitForExistence(timeout: 3))
+        XCTAssertFalse(app.buttons["qiraat-reader-Q02"].exists)
+
+        // Single selection dismisses on tap
+        app.buttons["qiraat-narrator-Q01-R02"].tap()
+        let gone = expectation(for: NSPredicate(format: "exists == false"),
+                               evaluatedWith: app.navigationBars["اختر القارئ أو الراوي"])
+        wait(for: [gone], timeout: 5)
     }
 
     func testMutshabehatOpensAsAFullScreenReaderDestination() {
