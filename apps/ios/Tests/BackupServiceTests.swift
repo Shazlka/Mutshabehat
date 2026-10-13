@@ -104,13 +104,14 @@ final class BackupServiceTests: XCTestCase {
         let latest = backups.appendingPathComponent("latest")
         let manifest = try manifest(at: latest)
         let names = Set(manifest.files.map(\.name))
-        XCTAssertTrue(Set(["memorization.json", "memorization.sqlite", "reading.sqlite", "mutshabehat.sqlite",
-                           "shared/qiraat.qiraatdata"]).isSubset(of: names), "\(names)")
+        XCTAssertTrue(Set(["memorization.json", "memorization.sqlite", "reading.sqlite", "mutshabehat.sqlite"])
+            .isSubset(of: names), "\(names)")
+        let qiraatEntry = try XCTUnwrap(manifest.files.first { $0.name.hasPrefix("shared/qiraat-") })
         for entry in manifest.files where !entry.name.hasPrefix("shared/") {
             let file = latest.appendingPathComponent(entry.name)
             XCTAssertEqual(try BackupHash.sha256Hex(ofFileAt: file), entry.sha256, entry.name)
         }
-        let shared = backups.appendingPathComponent("shared/qiraat.qiraatdata")
+        let shared = backups.appendingPathComponent(qiraatEntry.name)
         XCTAssertEqual(try Data(contentsOf: shared), qiraat.payload)
         XCTAssertEqual(historyFolders().count, 1)
         XCTAssertEqual(try MemorizationExport.decode(Data(contentsOf: latest.appendingPathComponent("memorization.json"))).records.count, 1)
@@ -154,10 +155,28 @@ final class BackupServiceTests: XCTestCase {
         clock = clock.addingTimeInterval(120)
         _ = try await service.runBackup(reason: .manual)
         XCTAssertEqual(qiraat.calls, 2)
-        XCTAssertEqual(try Data(contentsOf: backups.appendingPathComponent("shared/qiraat.qiraatdata")), qiraat.payload)
         let latestManifest = try manifest(at: backups.appendingPathComponent("latest"))
-        XCTAssertEqual(latestManifest.files.first { $0.name == "shared/qiraat.qiraatdata" }?.sha256,
-                       BackupHash.sha256Hex(qiraat.payload))
+        let entry = try XCTUnwrap(latestManifest.files.first { $0.name.hasPrefix("shared/qiraat-") })
+        XCTAssertEqual(try Data(contentsOf: backups.appendingPathComponent(entry.name)), qiraat.payload)
+        XCTAssertEqual(entry.sha256, BackupHash.sha256Hex(qiraat.payload))
+    }
+
+    func testOlderSnapshotKeepsItsQiraatArchiveAfterARefresh() async throws {
+        let service = makeService()
+        _ = try await service.runBackup(reason: .manual)
+        let oldManifest = try manifest(at: backups.appendingPathComponent("latest"))
+        let oldEntry = try XCTUnwrap(oldManifest.files.first { $0.name.hasPrefix("shared/qiraat-") })
+
+        qiraat.setPayload(Data("qiraat-v2".utf8))
+        try addRow("reading")
+        clock = clock.addingTimeInterval(86_400)
+        _ = try await service.runBackup(reason: .manual)
+        let newManifest = try manifest(at: backups.appendingPathComponent("latest"))
+        let newEntry = try XCTUnwrap(newManifest.files.first { $0.name.hasPrefix("shared/qiraat-") })
+
+        XCTAssertNotEqual(oldEntry.name, newEntry.name)
+        XCTAssertEqual(try BackupHash.sha256Hex(ofFileAt: backups.appendingPathComponent(oldEntry.name)), oldEntry.sha256)
+        XCTAssertEqual(try BackupHash.sha256Hex(ofFileAt: backups.appendingPathComponent(newEntry.name)), newEntry.sha256)
     }
 
     func testRetentionKeepsFourteenDays() async throws {

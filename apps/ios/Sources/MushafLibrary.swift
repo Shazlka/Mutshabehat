@@ -107,8 +107,9 @@ final class MushafLibrary {
 
     func installQiraatBackup(_ data: Data) throws {
         // A backup replaces the snapshot; pages fetched live earlier were laid over the old one.
-        try? FileManager.default.removeItem(at: QiraatLiveSync.overlayDirectory)
         let installed = try QiraatBackupService.install(data)
-        qiraat = try QiraatStore(directory: installed.directory, overlayDirectory: QiraatLiveSync.overlayDirectory)
+        let replacement = try QiraatStore(directory: installed.directory, overlayDirectory: QiraatLiveSync.overlayDirectory)
+        try? FileManager.default.removeItem(at: QiraatLiveSync.overlayDirectory)
+        qiraat = replacement
     }
 }

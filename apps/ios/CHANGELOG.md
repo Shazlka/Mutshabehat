@@ -3,6 +3,13 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-13 — Reading sync and backup integrity repairs
+- Reading data now publishes a separate snapshot per device and merges all available snapshots before publishing; a late upload can no longer replace another device's file. The old root `reading.sqlite` remains readable for migration.
+- Bookmark and surah removals now carry deletion records. Reading activity carries identified events, so distinct sessions add across devices without counting the same event twice. SQLite merge operations fail and roll back on errors; sync reports failures instead of marking a failed reading merge as successful.
+- Backup history refers to immutable, content-addressed Qiraat archives. Restore resolves the archive named by each snapshot manifest, and retention removes archives after no retained snapshot refers to them. Failed Qiraat imports preserve the existing live-page overlay.
+- Bookmark edits schedule cloud sync. Generated `MushafCore/build` output is excluded from Git.
+- Added database, backup-history and two-device simulator regression tests. Physical iCloud Drive acceptance is still required.
+
 ## [Unreleased] — 2026-10-11 — Qiraat features and UX round (branch `ios/qiraat-ux`)
 The per-workstream entries of this round are in [CHANGELOG-archive.md](CHANGELOG-archive.md).
 - **Reader top bar:** five 44 pt icons (search, bookmarks, Qiraat menu, «المزيد», settings). The Qiraat menu holds the layer switch, the reader/narrator filter, the colour key, the page summary, Qiraat search and the usul index. A filter chip in the reading header shows an active filter without moving the page.

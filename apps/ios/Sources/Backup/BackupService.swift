@@ -127,7 +127,7 @@ struct BackupWorker: Sendable {
     let calendar: Calendar
     let beforeVerify: (@Sendable (URL) -> Void)?
 
-    private static let qiraatName = "shared/qiraat.qiraatdata"
+    private static func qiraatName(hash: String) -> String { "shared/qiraat-\(hash).qiraatdata" }
     private var sqliteSources: [(name: String, url: URL)] {
         var files: [(name: String, url: URL)] = [("memorization.sqlite", sources.memorizationFileURL),
          ("reading.sqlite", sources.readingFileURL),
@@ -175,15 +175,19 @@ struct BackupWorker: Sendable {
             if previous?.files.first(where: { $0.name == source.name })?.sha256 != hash { sqliteChanged = true }
         }
 
-        var qiraatEntry = previous?.files.first { $0.name == Self.qiraatName }
+        var qiraatEntry = previous?.files.first { $0.name.hasPrefix("shared/qiraat") }
         var newQiraatData: Data?
-        let sharedFile = sharedURL.appendingPathComponent("qiraat.qiraatdata")
-        if let makeArchive = sources.qiraatArchive, reason == .manual || !fileManager.fileExists(atPath: sharedFile.path) {
+        let previousSharedFile = qiraatEntry.map { root.appendingPathComponent($0.name) }
+        let archiveIsValid = qiraatEntry != nil &&
+            previousSharedFile.flatMap { try? BackupHash.sha256Hex(ofFileAt: $0) } == qiraatEntry?.sha256
+        if let makeArchive = sources.qiraatArchive, reason == .manual || !archiveIsValid {
             let data = try makeArchive()
             let hash = BackupHash.sha256Hex(data)
-            if hash != qiraatEntry?.sha256 || !fileManager.fileExists(atPath: sharedFile.path) {
+            let name = Self.qiraatName(hash: hash)
+            let existingHash = try? BackupHash.sha256Hex(ofFileAt: root.appendingPathComponent(name))
+            if hash != qiraatEntry?.sha256 || existingHash != hash {
                 newQiraatData = data
-                qiraatEntry = BackupFileEntry(name: Self.qiraatName, sha256: hash, size: data.count, rowCount: nil)
+                qiraatEntry = BackupFileEntry(name: name, sha256: hash, size: data.count, rowCount: nil)
             }
         }
         if let qiraatEntry { entries.append(qiraatEntry) }
@@ -198,15 +202,23 @@ struct BackupWorker: Sendable {
         let manifest = BackupManifest(createdAt: now, deviceID: sources.deviceID, appVersion: sources.appVersion, files: entries)
         try BackupCoding.encoder().encode(manifest).write(to: staging.appendingPathComponent("manifest.json"))
 
-        if let data = newQiraatData {
+        if let data = newQiraatData, let qiraatEntry {
             try coordinated(writingTo: sharedURL) {
                 try fileManager.createDirectory(at: sharedURL, withIntermediateDirectories: true)
                 let temporary = sharedURL.appendingPathComponent(".qiraat-\(UUID().uuidString)")
                 try data.write(to: temporary)
+                let sharedFile = root.appendingPathComponent(qiraatEntry.name)
                 if fileManager.fileExists(atPath: sharedFile.path) {
-                    _ = try fileManager.replaceItemAt(sharedFile, withItemAt: temporary)
+                    if try BackupHash.sha256Hex(ofFileAt: sharedFile) == qiraatEntry.sha256 {
+                        try fileManager.removeItem(at: temporary)
+                    } else {
+                        _ = try fileManager.replaceItemAt(sharedFile, withItemAt: temporary)
+                    }
                 } else {
                     try fileManager.moveItem(at: temporary, to: sharedFile)
+                }
+                guard try BackupHash.sha256Hex(ofFileAt: sharedFile) == qiraatEntry.sha256 else {
+                    throw BackupError.verificationFailed(qiraatEntry.name)
                 }
             }
         }
@@ -229,6 +241,7 @@ struct BackupWorker: Sendable {
         }
 
         applyRetention(in: historyURL)
+        pruneUnusedQiraatArchives(in: sharedURL, history: historyURL, latest: latestURL)
         return BackupResult(createdAt: now, skipped: false, files: entries)
     }
 
@@ -286,6 +299,22 @@ struct BackupWorker: Sendable {
             guard let position = doomed.firstIndex(of: entry.date) else { continue }
             doomed.remove(at: position)
             try? coordinated(writingTo: history) { try fileManager.removeItem(at: history.appendingPathComponent(entry.name)) }
+        }
+    }
+
+    private func pruneUnusedQiraatArchives(in shared: URL, history: URL, latest: URL) {
+        let fileManager = FileManager.default
+        guard let names = try? fileManager.contentsOfDirectory(atPath: history.path),
+              let latestManifest = Self.loadManifest(in: latest) else { return }
+        var referenced = Set(latestManifest.files.map(\.name))
+        for name in names {
+            guard let manifest = Self.loadManifest(in: history.appendingPathComponent(name)) else { return }
+            referenced.formUnion(manifest.files.map(\.name))
+        }
+        for name in (try? fileManager.contentsOfDirectory(atPath: shared.path)) ?? []
+            where name.hasPrefix("qiraat-") && name.hasSuffix(".qiraatdata") {
+            guard !referenced.contains("shared/\(name)") else { continue }
+            try? coordinated(writingTo: shared) { try fileManager.removeItem(at: shared.appendingPathComponent(name)) }
         }
     }
 

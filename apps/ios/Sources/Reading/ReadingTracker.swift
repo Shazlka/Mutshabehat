@@ -460,6 +460,7 @@ final class ReadingTracker: ObservableObject {
             db.addBookmark(type: .ayah, surah: surah, ayah: ayah, page: page, note: note)
         }
         refreshBookmarksCache()
+        ICloudDatabaseSyncService.shared.scheduleDebouncedReadingPush()
     }
 
     func togglePageBookmark(page: Int, surah: Int, ayah: Int, note: String? = nil) {
@@ -469,11 +470,13 @@ final class ReadingTracker: ObservableObject {
             db.addBookmark(type: .page, surah: surah, ayah: ayah, page: page, note: note)
         }
         refreshBookmarksCache()
+        ICloudDatabaseSyncService.shared.scheduleDebouncedReadingPush()
     }
 
     func removeBookmark(id: String) {
         db.removeBookmark(id: id)
         refreshBookmarksCache()
+        ICloudDatabaseSyncService.shared.scheduleDebouncedReadingPush()
     }
 
     func allBookmarks(type: BookmarkType? = nil, query: String? = nil) -> [QuranBookmark] {

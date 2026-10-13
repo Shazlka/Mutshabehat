@@ -98,7 +98,7 @@ final class ReadingDatabaseTransferTests: XCTestCase {
         _ = target.recordReadAyahs(khatmaId: targetKhatma.id, items: [(1, 3, 1), (1, 4, 1)])
 
         let sourceURL = directory.appendingPathComponent("source.sqlite")
-        let stats = try target.mergeDatabase(from: sourceURL)
+        _ = try target.mergeDatabase(from: sourceURL)
 
         XCTAssertEqual(target.readAyahsCount(khatmaId: targetKhatma.id), 4)
         XCTAssertEqual(target.allBookmarks().count, 2)
@@ -127,7 +127,7 @@ final class ReadingDatabaseTransferTests: XCTestCase {
         XCTAssertEqual(target.readAyahsCount(khatmaId: tgtKhatma1.id), 4)
     }
 
-    func testMergeReadingDaysTakesMaxActivity() throws {
+    func testMergeReadingDaysAddsDistinctActivity() throws {
         let source = makeDatabase("source_days.sqlite")
         let date = Date()
         source.recordDailyReadingActivity(ayahsCount: 10, pagesCount: 1, seconds: 300, on: date)
@@ -140,9 +140,9 @@ final class ReadingDatabaseTransferTests: XCTestCase {
 
         let days = target.allReadingDays()
         XCTAssertEqual(days.count, 1)
-        XCTAssertEqual(days[0].ayahsRead, 10)
-        XCTAssertEqual(days[0].pagesRead, 2)
-        XCTAssertEqual(days[0].secondsRead, 500)
+        XCTAssertEqual(days[0].ayahsRead, 15)
+        XCTAssertEqual(days[0].pagesRead, 3)
+        XCTAssertEqual(days[0].secondsRead, 800)
     }
 
     func testMarkSurahCompletedAndUnmark() {
@@ -160,5 +160,79 @@ final class ReadingDatabaseTransferTests: XCTestCase {
         db.removeReadAyahsForSurah(khatmaId: khatma.id, surah: 1)
         XCTAssertEqual(db.readAyahsCountForSurah(khatmaId: khatma.id, surah: 1), 0)
         XCTAssertEqual(db.completedSurahsCount(khatmaId: khatma.id, surahAyahCounts: [1: 7]), 0)
+    }
+
+    func testDeletedSurahAndBookmarkStayDeletedAfterStaleSnapshotMerge() throws {
+        let first = makeDatabase("delete-first.sqlite")
+        let khatma = first.getOrCreateActiveKhatma()
+        first.addBookmark(type: .ayah, surah: 1, ayah: 1, page: 1)
+        _ = first.recordReadAyahs(khatmaId: khatma.id, items: [(1, 1, 1)])
+
+        let second = makeDatabase("delete-second.sqlite")
+        _ = try second.mergeDatabase(from: first.fileURL)
+        second.removeBookmark(type: .ayah, surah: 1, ayah: 1, page: 1)
+        second.removeReadAyahsForSurah(khatmaId: second.getOrCreateActiveKhatma().id, surah: 1)
+        _ = try second.mergeDatabase(from: first.fileURL)
+
+        XCTAssertTrue(second.allBookmarks().isEmpty)
+        XCTAssertEqual(second.readAyahsCount(khatmaId: second.getOrCreateActiveKhatma().id), 0)
+        _ = try first.mergeDatabase(from: second.fileURL)
+        XCTAssertTrue(first.allBookmarks().isEmpty)
+        XCTAssertEqual(first.readAyahsCount(khatmaId: khatma.id), 0)
+    }
+
+    func testDistinctDailyEventsAddAcrossDevicesWithoutDoubleCounting() throws {
+        let first = makeDatabase("events-first.sqlite")
+        let second = makeDatabase("events-second.sqlite")
+        let date = Date(timeIntervalSince1970: 1_790_000_000)
+        first.recordDailyReadingActivity(ayahsCount: 3, pagesCount: 1, seconds: 60, on: date)
+        second.recordDailyReadingActivity(ayahsCount: 4, pagesCount: 1, seconds: 90, on: date)
+
+        _ = try first.mergeDatabase(from: second.fileURL)
+        _ = try first.mergeDatabase(from: second.fileURL)
+        let day = try XCTUnwrap(first.allReadingDays().first)
+        XCTAssertEqual(day.ayahsRead, 7)
+        XCTAssertEqual(day.pagesRead, 2)
+        XCTAssertEqual(day.secondsRead, 150)
+    }
+
+    func testMalformedSourceRollsBackWithoutChangingLocalRows() throws {
+        let target = makeDatabase("rollback-target.sqlite")
+        target.addBookmark(type: .ayah, surah: 1, ayah: 1, page: 1)
+        let invalid = directory.appendingPathComponent("rollback-invalid.sqlite")
+        var handle: OpaquePointer?
+        XCTAssertEqual(sqlite3_open(invalid.path, &handle), SQLITE_OK)
+        sqlite3_exec(handle, """
+            CREATE TABLE bookmarks (id TEXT);
+            CREATE TABLE khatmas (id TEXT);
+            CREATE TABLE khatma_read_ayahs (khatma_id TEXT);
+            CREATE TABLE reading_days (date_string TEXT);
+            CREATE TABLE reading_metadata (key TEXT);
+            """, nil, nil, nil)
+        sqlite3_close(handle)
+
+        XCTAssertThrowsError(try target.mergeDatabase(from: invalid))
+        XCTAssertEqual(target.allBookmarks().count, 1)
+    }
+
+    func testLegacyReadingDaysWithoutSecondsStillImport() throws {
+        let target = makeDatabase("legacy-target.sqlite")
+        let legacy = directory.appendingPathComponent("legacy-source.sqlite")
+        var handle: OpaquePointer?
+        XCTAssertEqual(sqlite3_open(legacy.path, &handle), SQLITE_OK)
+        sqlite3_exec(handle, """
+            CREATE TABLE bookmarks (id TEXT PRIMARY KEY, type TEXT, surah INTEGER, ayah INTEGER, page INTEGER, note TEXT, created_at TEXT, UNIQUE(type,surah,ayah,page));
+            CREATE TABLE khatmas (id TEXT, khatma_number INTEGER, started_at TEXT, completed_at TEXT, status TEXT, percent_complete REAL);
+            CREATE TABLE khatma_read_ayahs (khatma_id TEXT, surah INTEGER, ayah INTEGER, page INTEGER, read_at TEXT);
+            CREATE TABLE reading_days (date_string TEXT, ayahs_read INTEGER, pages_read INTEGER, last_read_at TEXT);
+            CREATE TABLE reading_metadata (key TEXT);
+            INSERT INTO reading_days VALUES ('2026-10-13', 4, 1, '2026-10-13T00:00:00Z');
+            """, nil, nil, nil)
+        sqlite3_close(handle)
+
+        _ = try target.mergeDatabase(from: legacy)
+        let day = try XCTUnwrap(target.allReadingDays().first)
+        XCTAssertEqual(day.ayahsRead, 4)
+        XCTAssertEqual(day.secondsRead, 80, "legacy activity uses the existing per-ayah estimate")
     }
 }
