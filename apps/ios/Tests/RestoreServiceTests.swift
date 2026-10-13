@@ -209,7 +209,8 @@ final class RestoreServiceTests: XCTestCase {
 
     func testMissingQiraatArchiveReportsUnavailableAndRestoreOfOtherStoresStillWorks() async throws {
         let info = try await makeBackup()
-        try FileManager.default.removeItem(at: root.appendingPathComponent("Backups/shared/qiraat.qiraatdata"))
+        let entry = try XCTUnwrap(info.manifest.files.first { $0.name.hasPrefix("shared/qiraat") })
+        try FileManager.default.removeItem(at: root.appendingPathComponent("Backups").appendingPathComponent(entry.name))
         let service = makeService()
         XCTAssertFalse(try service.preview(info).stores.contains(.qiraat))
         let report = try service.restore(info, stores: [.reading], memorizationMode: .merge)

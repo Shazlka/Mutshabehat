@@ -65,7 +65,9 @@ final class RestoreService {
     private let safetyDirectory: URL
     private let now: () -> Date
     private let calendar: Calendar
-    private static let qiraatName = "shared/qiraat.qiraatdata"
+    private static func qiraatEntry(in manifest: BackupManifest) -> BackupFileEntry? {
+        manifest.files.first { $0.name.hasPrefix("shared/qiraat") && $0.name.hasSuffix(".qiraatdata") }
+    }
 
     init(backupsRoot: URL, targets: Targets, safetyDirectory: URL, now: @escaping () -> Date = { Date() },
          calendar: Calendar = .current) {
@@ -84,8 +86,8 @@ final class RestoreService {
         let names = Set(info.manifest.files.map(\.name))
         if names.contains("reading.sqlite") { stores.insert(.reading) }
         if names.contains("mutshabehat.sqlite") { stores.insert(.mutshabehat) }
-        if names.contains(Self.qiraatName),
-           FileManager.default.fileExists(atPath: backupsRoot.appendingPathComponent("shared/qiraat.qiraatdata").path) {
+        if let entry = Self.qiraatEntry(in: info.manifest),
+           FileManager.default.fileExists(atPath: backupsRoot.appendingPathComponent(entry.name).path) {
             stores.insert(.qiraat)
         }
         return RestorePreview(info: info, ayahRecords: export.records.count, batches: export.batches.count, stores: stores)
@@ -108,8 +110,8 @@ final class RestoreService {
                 throw RestoreError.hashMismatch(entry.name)
             }
         }
-        if includingQiraat, let entry = info.manifest.files.first(where: { $0.name == Self.qiraatName }) {
-            let file = backupsRoot.appendingPathComponent("shared/qiraat.qiraatdata")
+        if includingQiraat, let entry = Self.qiraatEntry(in: info.manifest) {
+            let file = backupsRoot.appendingPathComponent(entry.name)
             try requirePresent(file, name: entry.name)
             guard let hash = try? BackupHash.sha256Hex(ofFileAt: file), hash == entry.sha256 else {
                 throw RestoreError.hashMismatch(entry.name)
@@ -157,7 +159,8 @@ final class RestoreService {
                     try targets.mutshabehatImport(Data(contentsOf: info.url.appendingPathComponent("mutshabehat.sqlite")))
                 case .qiraat:
                     guard let install = targets.qiraatInstall else { throw RestoreError.storeUnavailable("Qiraat") }
-                    try install(Data(contentsOf: backupsRoot.appendingPathComponent("shared/qiraat.qiraatdata")))
+                    guard let entry = Self.qiraatEntry(in: info.manifest) else { throw RestoreError.fileMissing("Qiraat") }
+                    try install(Data(contentsOf: backupsRoot.appendingPathComponent(entry.name)))
                 }
                 report.restored.insert(store)
             } catch {

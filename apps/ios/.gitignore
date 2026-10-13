@@ -4,6 +4,7 @@ Generated/
 Mutshabehat.xcodeproj/
 DerivedData/
 MushafCore/.build/
+MushafCore/build/
 MushafCore/.swiftpm/
 *.xcresult
 xcuserdata/

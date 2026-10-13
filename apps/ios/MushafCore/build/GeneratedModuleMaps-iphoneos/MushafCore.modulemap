@@ -1,4 +1,0 @@
-module MushafCore {
-header "MushafCore-Swift.h"
-export *
-}

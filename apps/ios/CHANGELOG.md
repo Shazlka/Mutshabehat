@@ -3,6 +3,13 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-13 — Reading sync and backup integrity repairs
+- Reading data now publishes a separate snapshot per device and merges all available snapshots before publishing; a late upload can no longer replace another device's file. The old root `reading.sqlite` remains readable for migration.
+- Bookmark and surah removals now carry deletion records. Reading activity carries identified events, so distinct sessions add across devices without counting the same event twice. SQLite merge operations fail and roll back on errors; sync reports failures instead of marking a failed reading merge as successful.
+- Backup history refers to immutable, content-addressed Qiraat archives. Restore resolves the archive named by each snapshot manifest, and retention removes archives after no retained snapshot refers to them. Failed Qiraat imports preserve the existing live-page overlay.
+- Bookmark edits schedule cloud sync. Generated `MushafCore/build` output is excluded from Git.
+- Added database, backup-history and two-device simulator regression tests. Physical iCloud Drive acceptance is still required.
+
 ## [Unreleased] — 2026-10-10 — The memorization mark no longer sits on the surah name in the top banner
 - **Owner report:** on every page the memorization status mark overlapped the surah name while the top banner was showing.
 - **Cause:** the mark was an overlay floating over the banner, not part of its layout. With the controls showing it was placed a fixed distance past the icons, right on top of the index button's surah name and page details (measured on iPhone 18 Pro, page 4: mark at x 234–282, page details from x 244); with the reading header showing it sat in the middle whatever the length of the surah name or the juz/hizb text.

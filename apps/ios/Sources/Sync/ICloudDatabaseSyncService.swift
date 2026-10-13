@@ -210,14 +210,12 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
         }
 
         let mutshabehatFile = folder.appendingPathComponent("mutshabehat.sqlite")
-        guard FileManager.default.fileExists(atPath: mutshabehatFile.path) else {
-            throw NSError(domain: "ICloudSync", code: 4, userInfo: [NSLocalizedDescriptionKey: "ملف mutshabehat.sqlite غير موجود في مجلد المزامنة"])
+        if FileManager.default.fileExists(atPath: mutshabehatFile.path) {
+            // This store is optional; reading progress can sync in a fresh iCloud folder.
+            let mutshData = try Data(contentsOf: mutshabehatFile)
+            try MutshabehatDatabase.shared.importDatabase(mutshData)
+            NotificationCenter.default.post(name: .mutshabehatDatabaseDidUpdate, object: nil)
         }
-
-        // Read and import Mutshabehat database (importDatabase validates schema safely in sandbox temp directory)
-        let mutshData = try Data(contentsOf: mutshabehatFile)
-        try MutshabehatDatabase.shared.importDatabase(mutshData)
-        NotificationCenter.default.post(name: .mutshabehatDatabaseDidUpdate, object: nil)
 
         // Sync Qiraat if archive exists
         var qiraatPages = 0
@@ -235,44 +233,14 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
             }
         }
 
-        // Sync Reading & Khatma if reading.sqlite exists in folder or Backups/latest
-        var readingKhatmasMerged = 0
-        let readingFile = folder.appendingPathComponent("reading.sqlite")
-        let backupReadingFile = folder.appendingPathComponent("Backups/latest/reading.sqlite")
-        let targetReadingURL: URL? = {
-            if FileManager.default.fileExists(atPath: readingFile.path) {
-                return readingFile
-            } else if FileManager.default.fileExists(atPath: backupReadingFile.path) {
-                return backupReadingFile
-            }
-            return nil
-        }()
-
-        if let targetURL = targetReadingURL {
-            if targetURL.lastPathComponent.hasPrefix(".") && targetURL.pathExtension == "icloud" {
-                try? FileManager.default.startDownloadingUbiquitousItem(at: targetURL)
-            }
-
-            do {
-                let stats = try QuranReadingDatabase.shared.mergeDatabase(from: targetURL)
-                readingKhatmasMerged = stats.khatmasMerged
-                ReadingTracker.shared.reloadFromDatabase()
-                NotificationCenter.default.post(name: .readingDatabaseDidUpdate, object: nil)
-
-                // Ensure root folder has the updated reading.sqlite
-                if !FileManager.default.fileExists(atPath: readingFile.path) {
-                    if let exportData = try? QuranReadingDatabase.shared.exportDatabase() {
-                        try? exportData.write(to: readingFile, options: .atomic)
-                    }
-                }
-            } catch {
-                print("Notice: Reading database merge failed: \(error.localizedDescription)")
-            }
-        } else {
-            // Upload current local reading database to iCloud if not present
-            if let exportData = try? QuranReadingDatabase.shared.exportDatabase() {
-                try? exportData.write(to: readingFile, options: .atomic)
-            }
+        // Each device owns one snapshot. Merge all visible snapshots before publishing ours.
+        // The legacy root file remains an input for installations using the earlier layout.
+        do {
+            _ = try syncReadingSnapshots(in: folder)
+        } catch {
+            lastStatusMessage = "تعذرت مزامنة القراءة: \(error.localizedDescription)"
+            NotificationCenter.default.post(name: .iCloudSyncStatusDidChange, object: nil)
+            throw error
         }
 
         let now = Date()
@@ -302,6 +270,55 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
     // MARK: - Reading Database Push to iCloud
 
     private var debouncedPushTask: Task<Void, Never>?
+    private let readingDeviceIDKey = "reading:sync:device-id:v1"
+
+    private var readingDeviceID: String {
+        if let existing = defaults.string(forKey: readingDeviceIDKey) { return existing }
+        let created = UUID().uuidString.lowercased()
+        defaults.set(created, forKey: readingDeviceIDKey)
+        return created
+    }
+
+    @MainActor
+    @discardableResult
+    func syncReadingSnapshots(in folder: URL, database: QuranReadingDatabase = .shared,
+                              deviceID: String? = nil) throws -> Int {
+        let fileManager = FileManager.default
+        let devices = folder.appendingPathComponent("ReadingDevices", isDirectory: true)
+        try fileManager.createDirectory(at: devices, withIntermediateDirectories: true)
+        var sources: [URL] = []
+        let legacy = folder.appendingPathComponent("reading.sqlite")
+        let backup = folder.appendingPathComponent("Backups/latest/reading.sqlite")
+        if fileManager.fileExists(atPath: folder.appendingPathComponent(".reading.sqlite.icloud").path) &&
+            !fileManager.fileExists(atPath: legacy.path) {
+            try? fileManager.startDownloadingUbiquitousItem(at: legacy)
+            throw NSError(domain: "ICloudSync", code: 12,
+                          userInfo: [NSLocalizedDescriptionKey: "ملف القراءة لم يكتمل تنزيله بعد"])
+        }
+        if fileManager.fileExists(atPath: legacy.path) { sources.append(legacy) }
+        else if fileManager.fileExists(atPath: backup.path) { sources.append(backup) }
+        let deviceContents = try fileManager.contentsOfDirectory(at: devices, includingPropertiesForKeys: nil)
+        for placeholder in deviceContents where placeholder.pathExtension == "icloud" {
+            let filename = String(placeholder.lastPathComponent.dropFirst().dropLast(".icloud".count))
+            try? fileManager.startDownloadingUbiquitousItem(at: devices.appendingPathComponent(filename))
+            throw NSError(domain: "ICloudSync", code: 12,
+                          userInfo: [NSLocalizedDescriptionKey: "ملف قراءة من جهاز آخر لم يكتمل تنزيله بعد"])
+        }
+        sources += deviceContents.filter { $0.pathExtension == "sqlite" }
+            .sorted { $0.lastPathComponent < $1.lastPathComponent }
+
+        var merged = 0
+        for source in sources {
+            merged += try database.mergeDatabase(from: source).khatmasMerged
+        }
+        let own = devices.appendingPathComponent("\(deviceID ?? readingDeviceID).sqlite")
+        try database.exportDatabase().write(to: own, options: .atomic)
+        if database === QuranReadingDatabase.shared {
+            ReadingTracker.shared.reloadFromDatabase()
+            NotificationCenter.default.post(name: .readingDatabaseDidUpdate, object: nil)
+        }
+        return merged
+    }
 
     @MainActor
     func scheduleDebouncedReadingPush() {
@@ -317,23 +334,12 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
     func pushReadingToICloud() {
         guard let folder = resolveSyncFolder() else { return }
 
-        Task.detached(priority: .utility) {
+        Task { @MainActor in
             do {
-                let data = try QuranReadingDatabase.shared.exportDatabase()
-                let destURL = folder.appendingPathComponent("reading.sqlite")
-                try data.write(to: destURL, options: .atomic)
-
-                let backupLatest = folder.appendingPathComponent("Backups/latest")
-                if FileManager.default.fileExists(atPath: backupLatest.path) {
-                    let backupDest = backupLatest.appendingPathComponent("reading.sqlite")
-                    try? data.write(to: backupDest, options: .atomic)
-                }
-
-                await MainActor.run {
-                    NotificationCenter.default.post(name: .readingDatabaseDidUpdate, object: nil)
-                }
+                try self.syncReadingSnapshots(in: folder)
             } catch {
-                print("Notice: pushReadingToICloud failed: \(error.localizedDescription)")
+                self.lastStatusMessage = error.localizedDescription
+                NotificationCenter.default.post(name: .iCloudSyncStatusDidChange, object: nil)
             }
         }
     }
