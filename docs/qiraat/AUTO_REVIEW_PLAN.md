@@ -48,6 +48,24 @@ unreachable when this was written, so **the first job of WP5 is to re-run it aga
   (`Hamza.csv`, 1:7 عليهم, narrators `Q06-R01, Q06-R02`) agrees with the entry and S1 simply lists Hamza in another group.
   So **S2/S3/S4 are the arbiters for tier B**.
 
+## 2b. Live-database findings (2026-10-13, dump taken from the Mac Mini and restored on a scratch Postgres 16)
+
+* The Mac Mini database was down (Docker VM disk 100 % full, Postgres crash-looping). 21.5 GB of unused Docker build cache
+  was removed; Postgres recovered. Fresh dump: iCloud `Mushaf_Qiraat/database_backup.sql` (the 3 Oct one is kept as
+  `database_backup_2026-10-03.sql`).
+* Live state: 34,447 live entries. **Already `reviewed`: ~19,000**, almost all created by the 6 Oct bulk nquran rule imports
+  (`device_id = bulk-*`, mim-jam, sakt/naql, hamzah, kisai, khalaf, hisham...) plus ~650 by hand. **Still `unreviewed`:
+  14,690** (`phase3-migration` legacy imports: 10,973 rulings + 2,968 variants, plus ~470 with no device id) and 872 `flagged`.
+  Pages 1–18 are fully reviewed already, so the 10-page pilot is **pages 19–28**, not 1–10.
+* Dry-run on pages 19–28 (`scripts/qiraat/auto-review-live.ts`, 812 rows, 295 already reviewed and skipped, 517 judged):
+  A2 (nquran + a second book agree) **141**, A1 (nquran agrees, no second source covers the readers yet) **270**,
+  B (sources disagree) **98**, C (nothing documents the word) **8**. Farsh sub-categories: تشكيل 45, زيادة 21, إبدال حرف 7, حذف 2;
+  for 31 farsh entries the derived sub-category differs from the stored `variant_type` and must be queued, not overwritten.
+* Second source today covers only 6 narrators (Qalun, Warsh, Ibn Kathir x2, Hamza x2) from `Hamza/qaloon/ebn_katheer/warsh` CSVs;
+  `warsh.csv` is partial, so its silence is not treated as a contradiction. A1 can only be approved after WP2 extracts the PDFs.
+* Many legacy entries are one-narrator splits of a larger nquran group; the reviewer treats them as consistent when all the
+  entry's narrators sit inside one nquran group.
+
 ## 3. Decision table (implement exactly this)
 
 For one entry at one word, collect what each available source says about its narrator set and reading.
