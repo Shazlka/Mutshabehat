@@ -38,6 +38,13 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-10-13 — Automatic Qiraat review: pilot dry-run (pages 1–10) and execution plan
+- **Owner request:** review every Qiraat entry word by word against trusted sources (nquran.com plus the books in the iCloud folder `القراءات العشر`), approve what the sources confirm as **«معتمد آليًا»** (distinct from manual approval), fix what they contradict, and give every entry a category (فرش / أصول) and a sub-category.
+- **Done (no database writes):** `scripts/qiraat/auto-review-pilot.ts` compares the 246 entries of pages 1–10 (fixture snapshot; the live database was unreachable) with the nquran reference, reusing the existing matcher and reader-label resolver. Result: tier A (sources agree) 169, tier B (partial disagreement) 71, tier C (not documented) 6. Farsh sub-categories are derived from the two spellings (تشكيل 33, زيادة 8, حرف 6, حذف 3). A second source is needed to arbitrate tier B: checked one case by hand, `Hamza.csv` agrees with the entry where nquran groups Hamza elsewhere.
+- **Plan for the implementing agent:** `docs/qiraat/AUTO_REVIEW_PLAN.md` (sources and trust order, decision table, schema change `review_source`, PDF extraction, reviewer, pilot gate, batches, rollback).
+- **Not done:** no migration, no database write, nothing deployed. **DB migration:** none yet (planned in the plan, WP1).
+- **Files:** `scripts/qiraat/auto-review-pilot.ts`, `docs/qiraat/AUTO_REVIEW_PLAN.md`.
+
 ## 2026-10-06 — Data: Yaqub «قرأ بكسر الهاء ووقف بهاء السكت باتفاق.» (16 entries) and Hamzah «قرأ بكسر الهاء وصلاً ووقفاً، وله في الهمزة التحقيق والإبدال ياء مفتوحة وقفا.» (3 entries) added from nquran
 - **Owner request:** same pass for these two wordings (the owner's first message also listed the Hisham «تحقيق الهمزة المتطرفة…» wording, but that message was interrupted and re-sent without it; that exact wording had already been done earlier today, 421 entries, so nothing was repeated).
 - **Yaqub** → `USUL_SAKT` (as the hand-made Yaqub هاء السكت entries), `Q09-R01` + `Q09-R02`: 16 nquran locations (فهي، وهي…) → 16 words, **16 new**. **Hamzah** → `USUL_TAHQIQ` (as the earlier Hamzah passes; no hand-made entry exists for this wording): 3 locations («بأيديهم» at 2:79:5, 6:7:8, 59:2:35) → 3 words, **3 new**. Both: the nquran wording as «الأداء», وصل and وقف on, created as `reviewed`, 0 errors, no word already covered.
