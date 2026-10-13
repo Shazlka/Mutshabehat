@@ -7,15 +7,34 @@ struct RulingCard: View {
     let ruling: QiraatRuling
     let catalog: QiraatCatalog
 
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
     var body: some View {
         let color = Color(qiraatHex: ruling.color)
         let distinct = distinctRulingText(ruling.text, categoryAr: ruling.categoryAr, actions: ruling.attribution.map(\.action))
         VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                QiraatBadge(category: ruling.categoryAr, hex: ruling.color)
+            HStack(alignment: .firstTextBaseline) {
+                QiraatClassificationLine(ruling: ruling)
                 Spacer()
                 if let condition = ruling.condition {
                     Text(verbatim: condition).font(.caption2.bold()).foregroundStyle(.secondary)
+                }
+            }
+            if !ruling.baseText.isEmpty {
+                VStack(spacing: 4) {
+                    Text(verbatim: ruling.baseText)
+                        .font(rulingWordFont)
+                        .foregroundStyle(color)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.65)
+                        .allowsTightening(true)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity)
+                        .accessibilityIdentifier("qiraat-ruling-word")
+                    Text("تُقرأ هكذا")
+                        .font(.caption2.bold())
+                        .foregroundStyle(.secondary)
                 }
             }
             ForEach(ruling.attributionByAction, id: \.action) { group in
@@ -42,16 +61,25 @@ struct RulingCard: View {
         .overlay(RoundedRectangle(cornerRadius: 10).stroke(color))
     }
 
+    private var rulingWordFont: Font {
+        _ = dynamicTypeSize
+        let baseFont = UIFont(name: "KFGQPCUthmanicScriptHAFS", size: 40)
+            ?? UIFont(name: "DamascusBold", size: 40)
+            ?? UIFont.systemFont(ofSize: 40, weight: .bold)
+        return Font(UIFontMetrics(forTextStyle: .title1)
+            .scaledFont(for: baseFont, maximumPointSize: VariantCard.maxWordSize))
+    }
+
     /// The notes and the source notes, in the order the web shows them.
     private var noteParagraphs: [String] {
         ([ruling.notes].compactMap { $0 } + (ruling.sourceNotes ?? [])).filter { !$0.isEmpty }
     }
 
-    /// How the readers above read it: wajh numbers, the action (unless it repeats the category),
-    /// conditions, and the الخلاف notes — the web's `renderReaderPerformance`.
+    /// How the readers above read it: wajh numbers, the action (shown once under the category line,
+    /// never hidden because it repeats the category), conditions, and the الخلاف notes.
     @ViewBuilder
     private func performance(_ group: RulingActionGroup, ruling: QiraatRuling) -> some View {
-        let showAction = !isRedundantActionLabel(group.action, categoryAr: ruling.categoryAr)
+        let showAction = QiraatClassification.shouldShowAction(group.action, categoryAr: ruling.categoryAr)
         let conditions = unique(group.entries.compactMap { $0.condition?.trimmingCharacters(in: .whitespaces) })
         let notes = unique(group.entries.compactMap { $0.wajhNote?.trimmingCharacters(in: .whitespaces) })
         let wajhs = ruling.hasSeveralWajhs ? Array(Set(group.entries.compactMap(\.wajhOrder))).sorted() : []

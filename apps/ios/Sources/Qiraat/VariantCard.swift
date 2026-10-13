@@ -17,14 +17,7 @@ struct VariantCard: View {
         let performanceOnly = variant.isPerformanceOnly && variant.performanceNote != nil
         let text = variant.uthmaniText ?? (performanceOnly ? variant.hafsText : variant.variantText)
         VStack(alignment: .leading, spacing: 8) {
-            FlowLayout(spacing: 6) {
-                QiraatBadge(performanceOnly
-                    ? Text("qiraat.difference.PERFORMANCE")
-                    : differenceLabel(variant.differenceType))
-                if let note = variant.performanceNote {
-                    Text(verbatim: note).font(.caption2.bold()).foregroundStyle(.secondary)
-                }
-            }
+            QiraatClassificationLine(variant: variant)
             Text(verbatim: text)
                 .font(variantFont)
                 .foregroundStyle(.qiraatVariantInk)
@@ -35,6 +28,16 @@ struct VariantCard: View {
                 .fixedSize(horizontal: false, vertical: true)
                 .frame(maxWidth: .infinity)
                 .accessibilityIdentifier("qiraat-variant-text")
+            if let description = variant.description?.trimmingCharacters(in: .whitespacesAndNewlines), !description.isEmpty {
+                Text(verbatim: description)
+                    .font(.caption)
+                    .foregroundStyle(Color(uiColor: .mushafBrown))
+            }
+            if let note = variant.performanceNote?.trimmingCharacters(in: .whitespacesAndNewlines), !note.isEmpty, note != variant.description {
+                Text(verbatim: note)
+                    .font(.caption.bold())
+                    .foregroundStyle(.secondary)
+            }
             QiraatPills(pills: rollupAuthorityPills(scopedReadingIds, catalog: catalog))
             if variant.verificationStatus == "NEEDS_MANUAL_REVIEW" { QiraatNeedsReviewBadge() }
         }

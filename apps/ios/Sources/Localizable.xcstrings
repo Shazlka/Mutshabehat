@@ -1951,13 +1951,13 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "حرف"
+            "value" : "إبدال حرف"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Letter"
+            "value" : "Letter substitution"
           }
         }
       }
@@ -1967,13 +1967,13 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "زيادة"
+            "value" : "زيادة حرف"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Addition"
+            "value" : "Letter addition"
           }
         }
       }
@@ -1983,13 +1983,13 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "حذف"
+            "value" : "حذف حرف"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Omission"
+            "value" : "Letter omission"
           }
         }
       }
@@ -2137,7 +2137,178 @@
           }
         }
       }
+    },
+    "qiraat.difference.WORD_FORM" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تقديم وتأخير"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Word form / reordering"
+          }
+        }
+      }
+    },
+    "qiraat.difference.REORDER" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تقديم وتأخير"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Reordering"
+          }
+        }
+      }
+    },
+    "qiraat.category.farsh" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فرش الحروف"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Word variants"
+          }
+        }
+      }
+    },
+    "qiraat.category.usul" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أصول القراءات"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Qira’at Usul"
+          }
+        }
+      }
+    },
+    "qiraat.caption.read_as" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تُقرأ هكذا"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Read like this"
+          }
+        }
+      }
+    },
+    "فرش الحروف" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Word variants"
+          }
+        }
+      }
+    },
+    "إبدال حرف" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Letter substitution"
+          }
+        }
+      }
+    },
+    "زيادة حرف" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Letter addition"
+          }
+        }
+      }
+    },
+    "حذف حرف" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Letter omission"
+          }
+        }
+      }
+    },
+    "تقديم وتأخير" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Word form / reordering"
+          }
+        }
+      }
+    },
+    "تُقرأ هكذا" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Read like this"
+          }
+        }
+      }
+    },
+    "تشكيل" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Vowel marks"
+          }
+        }
+      }
+    },
+    "أصول القراءات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Qira’at Usul"
+          }
+        }
+      }
+    },
+    "أخرى" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Other"
+          }
+        }
+      }
     }
   },
   "version" : "1.3"
 }
+

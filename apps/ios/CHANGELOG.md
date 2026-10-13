@@ -3,6 +3,14 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-13 — Qiraat word sheet full Arabic details
+- In the word sheet «القراءات العشر» the details section now shows:
+  - Classification line «الفئة › الفرعي › التفصيل»: «فرش الحروف › {sub-category}» (mapping HARAKAH→تشكيل, LETTER→إبدال حرف, ADDITION→زيادة حرف, OMISSION→حذف حرف, WORD_FORM/reorder→تقديم وتأخير, other→أخرى) and «أصول القراءات › {باب} › {sub-detail}» with sub-detail included when adding informative detail beyond the category name.
+  - Word drawn as read in large Quran face (`KFGQPCUthmanicScriptHAFS` capped at `VariantCard.maxWordSize = 72`), including for أصول rulings (`ruling.baseText`, identifier `qiraat-ruling-word`) with caption «تُقرأ هكذا». Farsh variants keep drawing the variant reading (`qiraat-variant-text`).
+  - Full Arabic explanation: `variant.description` and `variant.performanceNote` on farsh variants; distinct action texts and conditions on أصول rulings, shown once under the category line instead of dropped when matching the category name.
+- Files: `Sources/Qiraat/QiraatClassification.swift`, `Sources/Qiraat/QiraatClassificationLine.swift`, `Sources/Qiraat/VariantCard.swift`, `Sources/Qiraat/RulingCard.swift`, `Sources/Qiraat/QiraatPills.swift`, `Sources/Localizable.xcstrings`, `Tests/QiraatDetailsTests.swift`, `UITests/QiraatFeaturesUITests.swift`.
+- Not yet built or tested.
+
 ## [Unreleased] — 2026-10-13 — Reading sync and backup integrity repairs
 - Reading data now publishes a separate snapshot per device and merges all available snapshots before publishing; a late upload can no longer replace another device's file. The old root `reading.sqlite` remains readable for migration.
 - Bookmark and surah removals now carry deletion records. Reading activity carries identified events, so distinct sessions add across devices without counting the same event twice. SQLite merge operations fail and roll back on errors; sync reports failures instead of marking a failed reading merge as successful.

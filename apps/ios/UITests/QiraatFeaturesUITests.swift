@@ -413,4 +413,39 @@ final class QiraatFeaturesUITests: XCTestCase {
         closeButton.tap()
         XCTAssertFalse(sheetTitle.waitForExistence(timeout: 5))
     }
+
+    // MARK: - Flow 10: Classification and drawn word in word sheet details
+
+    /// Flow 10: Word sheet details show classification line and drawn word for readings and rulings.
+    func testWordSheetDetailsShowClassificationAndDrawnWord() {
+        let app = launch(atPage: 1)
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 10))
+
+        let word = app.descendants(matching: .any)["qiraat-word-1:4:1"]
+        XCTAssertTrue(word.waitForExistence(timeout: 10))
+        word.tap()
+
+        let sheetTitle = app.navigationBars["القراءات العشر"]
+        XCTAssertTrue(sheetTitle.waitForExistence(timeout: 5))
+
+        let classification = app.descendants(matching: .any)["qiraat-classification"].firstMatch
+        XCTAssertTrue(classification.waitForExistence(timeout: 5), "Word details must display classification line")
+        XCTAssertTrue(
+            classification.label.contains("أصول القراءات") || classification.label.contains("فرش الحروف"),
+            "Classification label must contain «أصول القراءات» or «فرش الحروف»"
+        )
+
+        let variantText = app.descendants(matching: .any)["qiraat-variant-text"].firstMatch
+        let rulingWord = app.descendants(matching: .any)["qiraat-ruling-word"].firstMatch
+        XCTAssertTrue(
+            variantText.waitForExistence(timeout: 5) || rulingWord.waitForExistence(timeout: 5),
+            "Word details must draw the word as read (qiraat-variant-text or qiraat-ruling-word)"
+        )
+
+        let closeButton = app.buttons["qiraat-sheet-close"]
+        XCTAssertTrue(closeButton.waitForExistence(timeout: 5))
+        closeButton.tap()
+        XCTAssertFalse(sheetTitle.waitForExistence(timeout: 5))
+    }
 }
+

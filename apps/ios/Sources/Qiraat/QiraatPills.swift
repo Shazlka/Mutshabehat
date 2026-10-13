@@ -73,6 +73,11 @@ extension QiraatBadge {
         self.init(label, foreground: .qiraatBadgeInk, background: .qiraatBadgeFill)
     }
 
+    /// A quiet gold badge initialized with a localized key.
+    init(key: LocalizedStringKey) {
+        self.init(Text(key))
+    }
+
     /// The quiet gold badge: a variant kind, a wajh number.
     init(text: String) {
         self.init(Text(verbatim: text))
