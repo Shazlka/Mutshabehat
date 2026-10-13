@@ -1,13 +1,13 @@
 // DRY-RUN of the automatic Qiraat review on LIVE rows (exported from a restored database dump).
 // Writes nothing. Usage:
-//   npx tsx scripts/qiraat/auto-review-live.ts artifacts/live-p19-28.json artifacts/qiraat-auto-review-live-p19-28
+//   npx tsx scripts/qiraat/auto-review-live.ts artifacts/live-p19-28.json artifacts/qiraat-auto-review-live-p19-28 [--s2 <path>]
 //
 // Sources: S1 = nquran.com reference files; S2 = per-reader book extractions (artifacts/s2-index.json,
 // built from Hamza/qaloon/ebn_katheer/warsh CSVs). See docs/qiraat/AUTO_REVIEW_PLAN.md §3 for the table.
 // Entries already approved (status reviewed) are never judged: they are listed as "skipped".
 
 import { readFileSync, writeFileSync } from 'node:fs'
-import { join } from 'node:path'
+import { join, isAbsolute } from 'node:path'
 import { findNquranDifferencesForWord, resolveDifferenceGroups, type NquranAyahEntry } from '../../src/app/mushaf-1441/review/_lib/nquranReference'
 
 const ROOT = join(__dirname, '..', '..')
@@ -28,19 +28,37 @@ export function farshSubCategory(hafs: string, variant: string): string {
   if (b.length > a.length) return b.includes(a) ? 'addition' : 'addition'
   return a.includes(b) ? 'omission' : 'omission'
 }
-const SUB_AR: Record<string, string> = { vowel: 'تشكيل', consonant: 'إبدال حرف', addition: 'زيادة', omission: 'حذف', word_form: 'تقديم وتأخير', other: 'أخرى' }
+export const SUB_AR: Record<string, string> = { vowel: 'تشكيل', consonant: 'إبدال حرف', addition: 'زيادة', omission: 'حذف', word_form: 'تقديم وتأخير', other: 'أخرى' }
 
-interface Row {
+export interface Row {
   id: string; kind: 'variant' | 'ruling'; status: string; device_id: string | null; page: number
   surah: number; ayah: number; word: number; end_word: number | null; base_text: string
   reading_text: string | null; variant_type: string | null; category_code: string | null; narrators: string[]
 }
-interface S2 { byPosition: Record<string, string[]>; byWord: Record<string, string[]>; covers: string[] }
+export interface S2 { byPosition: Record<string, string[]>; byWord: Record<string, string[]>; covers: string[] }
 interface WordsPage { lines: { words: { surahNumber: number; ayahNumber: number; wordIndexInAyah: number; textUthmani: string; charTypeName: string }[] }[] }
 
-const s2 = readJson<S2>(join(ROOT, 'artifacts/s2-index.json'))
-const s2Covers = new Set(s2.covers.filter((n) => n !== 'Q01-R02')) // warsh.csv is partial: can confirm, silence proves nothing
-const s2CanConfirm = (n: string) => s2.covers.includes(n)
+let s2: S2
+let s2Covers: Set<string>
+let s2CanConfirm: (n: string) => boolean
+
+export function loadS2(customPath?: string) {
+  const p = customPath
+    ? (isAbsolute(customPath) ? customPath : join(ROOT, customPath))
+    : join(ROOT, 'artifacts/s2-index.json')
+  s2 = readJson<S2>(p)
+  s2Covers = new Set(s2.covers.filter((n) => n !== 'Q01-R02')) // warsh.csv is partial: can confirm, silence proves nothing
+  s2CanConfirm = (n: string) => s2.covers.includes(n)
+}
+
+try {
+  loadS2()
+} catch {
+  s2 = { byPosition: {}, byWord: {}, covers: [] }
+  s2Covers = new Set()
+  s2CanConfirm = () => false
+}
+
 const nq = new Map<number, NquranAyahEntry[]>()
 const nquranFor = (s: number) => {
   let v = nq.get(s)
@@ -63,8 +81,14 @@ function ayahWords(surah: number, ayah: number, pages: number[]) {
 }
 const setEq = (a: readonly string[], b: readonly string[]) => a.length === b.length && a.every((x) => b.includes(x))
 
-type Tier = 'A2' | 'A1' | 'A-S2' | 'B' | 'C' | 'skip'
-interface Verdict { id: string; kind: string; page: number; ref: string; word: string; tier: Tier; reason: string; category: string; subCategory: string; subCategoryAgreesWithDb: boolean | null; narrators: string[]; s1Groups: string[]; s2Confirmed: string[]; s2Missing: string[] }
+export type Tier = 'A2' | 'A1' | 'A-S2' | 'B' | 'C' | 'skip'
+export interface Verdict {
+  id: string; kind: string; page: number; ref: string; word: string; tier: Tier;
+  reason: string; category: string; subCategory: string;
+  subCategoryAgreesWithDb: boolean | null;
+  storedVariantType?: string | null;
+  narrators: string[]; s1Groups: string[]; s2Confirmed: string[]; s2Missing: string[]
+}
 
 function s2Confirms(row: Row, narrator: string): boolean {
   const end = row.end_word ?? row.word
@@ -72,13 +96,14 @@ function s2Confirms(row: Row, narrator: string): boolean {
   return row.base_text.split(/\s+/).some((t) => s2.byWord[`${row.surah}:${row.ayah}:${skeleton(t)}`]?.includes(narrator))
 }
 
-function judge(row: Row, pages: number[]): Verdict {
+export function judge(row: Row, pages: number[]): Verdict {
   const isVariant = row.kind === 'variant'
   const sub = isVariant ? farshSubCategory(row.base_text, row.reading_text ?? row.base_text) : row.category_code ?? ''
   const v: Verdict = {
     id: row.id, kind: row.kind, page: row.page, ref: `${row.surah}:${row.ayah}:${row.word}`, word: row.base_text, tier: 'C', reason: '',
     category: isVariant ? 'فرش' : 'أصول', subCategory: isVariant ? SUB_AR[sub] : sub,
     subCategoryAgreesWithDb: isVariant ? (row.variant_type ? row.variant_type === sub : null) : null,
+    storedVariantType: isVariant ? row.variant_type : null,
     narrators: row.narrators, s1Groups: [], s2Confirmed: [], s2Missing: [],
   }
   if (row.status === 'reviewed') return { ...v, tier: 'skip', reason: `already reviewed (${row.device_id ?? 'manual'})` }
@@ -115,8 +140,34 @@ function judge(row: Row, pages: number[]): Verdict {
   return { ...v, reason: s1 === 'none' ? 'no source documents this word' : 'unclear' }
 }
 
-function main() {
-  const [input, outPrefix] = [process.argv[2], process.argv[3]]
+export function parseArgs(argv = process.argv.slice(2)) {
+  let s2Path = 'artifacts/s2-index.json'
+  const positional: string[] = []
+  for (let i = 0; i < argv.length; i++) {
+    if (argv[i] === '--s2') {
+      if (argv[i + 1]) {
+        s2Path = argv[i + 1]
+        i++
+      }
+    } else {
+      positional.push(argv[i])
+    }
+  }
+  if (positional[2] && s2Path === 'artifacts/s2-index.json') {
+    s2Path = positional[2]
+  }
+  return { input: positional[0], outPrefix: positional[1], s2Path }
+}
+
+export function main() {
+  const { input, outPrefix, s2Path } = parseArgs()
+  if (!input || !outPrefix) {
+    console.error('Usage: npx tsx scripts/qiraat/auto-review-live.ts <input.json> <outPrefix> [--s2 <path>]')
+    process.exit(1)
+  }
+  if (s2Path) {
+    loadS2(s2Path)
+  }
   const rows = readJson<Row[]>(join(ROOT, input))
   const ps = rows.map((r) => r.page)
   const pages = [...new Set([Math.min(...ps) - 1, ...ps, Math.max(...ps) + 1])].filter((p) => p >= 1 && p <= 604)
@@ -131,5 +182,18 @@ function main() {
   }
   writeFileSync(join(ROOT, `${outPrefix}.json`), JSON.stringify({ summary, verdicts }, null, 2))
   console.log(JSON.stringify(summary, null, 2))
+
+  console.log('\nPer-page tier counts:')
+  const sortedPages = [...new Set(verdicts.map((v) => v.page))].sort((a, b) => a - b)
+  for (const p of sortedPages) {
+    const pageVs = verdicts.filter((v) => v.page === p)
+    const breakdown = tiers
+      .map((t) => `${t}: ${pageVs.filter((v) => v.tier === t).length}`)
+      .join(', ')
+    console.log(`Page ${p}: ${breakdown}`)
+  }
 }
-main()
+
+if (process.argv[1] && process.argv[1].includes('auto-review-live')) {
+  main()
+}

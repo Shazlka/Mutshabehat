@@ -1,0 +1,21 @@
+{
+ "rows": 812,
+ "tiers": {
+  "A2": 141,
+  "A-S2": 0,
+  "A1": 270,
+  "B": 98,
+  "C": 8,
+  "skip": 295
+ },
+ "farshSubCategories": {
+  "تشكيل": 45,
+  "زيادة": 21,
+  "إبدال حرف": 7,
+  "حذف": 2
+ },
+ "farshSubCategoryDisagreesWithDb": 31,
+ "reasonsC": {
+  "no source documents this word": 8
+ }
+}
