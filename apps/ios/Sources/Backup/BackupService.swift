@@ -171,7 +171,7 @@ struct BackupWorker: Sendable {
             }
             let hash = try BackupHash.sha256Hex(ofFileAt: target)
             let size = (try? fileManager.attributesOfItem(atPath: target.path)[.size] as? Int) ?? 0
-            entries.append(BackupFileEntry(name: source.name, sha256: hash, size: size ?? 0, rowCount: nil))
+            entries.append(BackupFileEntry(name: source.name, sha256: hash, size: size, rowCount: nil))
             if previous?.files.first(where: { $0.name == source.name })?.sha256 != hash { sqliteChanged = true }
         }
 
@@ -323,7 +323,7 @@ struct BackupWorker: Sendable {
         for name in (try? fileManager.contentsOfDirectory(atPath: root.path)) ?? [] where name.hasPrefix(".staging-") || name.hasPrefix(".latest-") {
             let url = root.appendingPathComponent(name)
             let modified = (try? fileManager.attributesOfItem(atPath: url.path)[.modificationDate] as? Date) ?? .distantPast
-            if now.timeIntervalSince(modified ?? .distantPast) > 3_600 { try? fileManager.removeItem(at: url) }
+            if now.timeIntervalSince(modified) > 3_600 { try? fileManager.removeItem(at: url) }
         }
     }
 

@@ -140,7 +140,7 @@ struct AyahSearchView: View {
                 .pickerStyle(.segmented)
                 .accessibilityIdentifier("search-mode")
                 .padding(.horizontal, 20)
-                .onChange(of: mode) { _ in
+                .onChange(of: mode) {
                     performSearch()
                 }
 
@@ -237,7 +237,7 @@ struct AyahSearchView: View {
                     .ignoresSafeArea(edges: .bottom)
             )
         }
-        .onChange(of: query) { newQuery in
+        .onChange(of: query) { _, newQuery in
             if newQuery.trimmingCharacters(in: .whitespacesAndNewlines).count >= 2 {
                 performSearch()
             } else if newQuery.isEmpty {

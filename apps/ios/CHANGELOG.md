@@ -3,6 +3,10 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-15 — No build warnings
+- Fixed the 10 warnings Xcode showed for the app (`BackupService` two redundant `??`, `Motion` main-actor flag read, `MutshabehatGroupEditorView` unused `withMotion` result, five deprecated `onChange(of:perform:)` in `MutshabehatView` / `AyahSearchView`, one unused `ayahCount` in `MushafPageView`) and the 11 in the unit tests (`QiraatLiveSyncTests` main-actor/Sendable, `QiraatReaderPickerTests` unused variable).
+- Verification: clean build of the app and `build-for-testing` print no warning or error; the 273 unit tests pass; the MushafCore package builds with no warning. UI tests were compiled but not run.
+
 ## [Unreleased] — 2026-10-15 — Ruling card: the reading forms apply to every ruling, including rules across two words
 - Owner request: the rules must apply to the whole Mushaf, not only the three words checked. They run for every ruling card (measured on all 604 live pages: the rounded-zero mark appears in 1,051 rulings; صلة ميم الجمع gets its small waw in 13,365 of 13,377 narrator groups — the 12 others are data rows whose word is not a meem word).
 - صلة ميم الجمع now also covers a meem that already has a damma (before a wasl alef) and one with no vowel («قُلُوبِهِم»); a kasra/fatha meem is left alone.

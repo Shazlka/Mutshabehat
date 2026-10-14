@@ -844,7 +844,6 @@ final class MushafPageView: UIView {
         context.restoreGState()
 
         let surahName = library.surahNames[number] ?? "\(number)"
-        let ayahCount = library.surahAyahCounts[number] ?? 0
         let displaySurahName = Self.canonicalSurahTitles[number] ?? surahName
         let titleStr = "سُورَةُ \(displaySurahName)" as NSString
         var titleFontSize = fontSize * 0.72

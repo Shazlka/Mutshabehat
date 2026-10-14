@@ -122,12 +122,11 @@ final class QiraatReaderPickerTests: XCTestCase {
 
     @MainActor
     func testMultiSelectionPickerInitializesForCompare() {
-        var picked: [String] = []
         let picker = QiraatReaderPicker(
             catalog: sampleCatalog,
             selectionMode: .multiple(max: 2),
             selectedIDs: ["Q01", "Q05"]
-        ) { picked = $0 }
+        ) { _ in }
         XCTAssertNotNil(picker)
     }
 }

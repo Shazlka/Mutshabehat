@@ -3,11 +3,20 @@ import MushafCore
 import XCTest
 @testable import Mutshabehat
 
+/// Pages announced by the notification, safe to append from whichever thread posts it.
+private final class AnnouncementLog: @unchecked Sendable {
+    private let lock = NSLock()
+    private var values: [Int] = []
+    func append(_ page: Int) { lock.withLock { values.append(page) } }
+    var pages: [Int] { lock.withLock { values } }
+}
+
 @MainActor
 final class QiraatLiveSyncTests: XCTestCase {
-    private var directory: URL!
-    private var overlay: URL!
-    private var store: QiraatStore!
+    // XCTest calls setUp/tearDown off the main actor, so the fixture state is declared non-isolated.
+    nonisolated(unsafe) private var directory: URL!
+    nonisolated(unsafe) private var overlay: URL!
+    nonisolated(unsafe) private var store: QiraatStore!
 
     private let emptyPage = #"{"pageNumber":8,"variants":[],"rulings":[],"rules":[]}"#
     private let pageWithVariant = #"{"pageNumber":8,"variants":[{"id":"v-live","surah":2,"ayah":51,"startToken":11,"hafsText":"a","variantText":"b","verificationStatus":"REVIEWED","readingIds":["Q06-R01"]}],"rulings":[],"rules":[]}"#
@@ -35,9 +44,9 @@ final class QiraatLiveSyncTests: XCTestCase {
 
     func testAChangedLivePageIsInstalledAndAnnouncedOnce() async {
         let sync = QiraatLiveSync(fetch: { _ in Data(self.pageWithVariant.utf8) }, minInterval: 0)
-        var announced: [Int] = []
+        let announcements = AnnouncementLog()
         let token = NotificationCenter.default.addObserver(forName: .qiraatPageDidChange, object: nil, queue: nil) { note in
-            announced.append(note.userInfo?["page"] as? Int ?? -1)
+            announcements.append(note.userInfo?["page"] as? Int ?? -1)
         }
         defer { NotificationCenter.default.removeObserver(token) }
 
@@ -46,7 +55,7 @@ final class QiraatLiveSyncTests: XCTestCase {
         XCTAssertEqual(store.page(8)?.variants.map(\.id), ["v-live"])
         let second = await sync.refresh(page: 8, store: store)
         XCTAssertEqual(second, .unchanged)
-        XCTAssertEqual(announced, [8], "only a real change redraws the page")
+        XCTAssertEqual(announcements.pages, [8], "only a real change redraws the page")
     }
 
     func testAFailedFetchKeepsWhatIsShown() async {

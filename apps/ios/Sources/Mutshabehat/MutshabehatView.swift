@@ -215,9 +215,9 @@ struct MutshabehatView: View {
                 surahs = db.allSurahNames()
                 loadData()
             }
-            .onChange(of: selectedTab) { _ in loadData() }
-            .onChange(of: searchText) { _ in loadData() }
-            .onChange(of: selectedSurah) { _ in loadData() }
+            .onChange(of: selectedTab) { loadData() }
+            .onChange(of: searchText) { loadData() }
+            .onChange(of: selectedSurah) { loadData() }
             .onReceive(NotificationCenter.default.publisher(for: .mutshabehatDatabaseDidUpdate)) { _ in
                 surahs = db.allSurahNames()
                 loadData()

@@ -8,6 +8,9 @@ extension Animation {
 
 /// `withAnimation`, except that with Reduce Motion on, changes that move things happen at once.
 /// Colour and opacity changes can keep using `withAnimation`: Reduce Motion is about movement.
+@discardableResult
 func withMotion<Result>(_ animation: Animation = .stateChange, _ body: () throws -> Result) rethrows -> Result {
-    try withAnimation(UIAccessibility.isReduceMotionEnabled ? nil : animation, body)
+    // Called from view code, which runs on the main thread; the accessibility flag is main-actor isolated.
+    let reduceMotion = MainActor.assumeIsolated { UIAccessibility.isReduceMotionEnabled }
+    return try withAnimation(reduceMotion ? nil : animation, body)
 }
