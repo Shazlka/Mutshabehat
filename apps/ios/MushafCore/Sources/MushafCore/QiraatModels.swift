@@ -110,6 +110,8 @@ public struct QiraatRuling: Codable, Sendable, Hashable, Identifiable {
     public let attribution: [QiraatRulingAttribution]
     public let readings: [QiraatRulingReading]
     public let text: String?
+    /// التصنيف الفرعي from the closed list of the باب (nil when none was assigned yet).
+    public let subCategory: String?
     public let condition: String?
     public let countSchools: [String]?
     public let notes: String?
@@ -118,13 +120,13 @@ public struct QiraatRuling: Codable, Sendable, Hashable, Identifiable {
     public init(id: String, category: String, categoryAr: String, color: String, wordAnchored: Bool,
                 surah: Int, ayah: Int, startToken: Int, endToken: Int, endAyah: Int? = nil, baseText: String,
                 verificationStatus: String, hasAlternate: Bool, attribution: [QiraatRulingAttribution],
-                readings: [QiraatRulingReading], text: String? = nil, condition: String? = nil,
+                readings: [QiraatRulingReading], text: String? = nil, subCategory: String? = nil, condition: String? = nil,
                 countSchools: [String]? = nil, notes: String? = nil, sourceNotes: [String]? = nil) {
         self.id = id; self.category = category; self.categoryAr = categoryAr; self.color = color
         self.wordAnchored = wordAnchored; self.surah = surah; self.ayah = ayah; self.startToken = startToken
         self.endToken = endToken; self.endAyah = endAyah; self.baseText = baseText
         self.verificationStatus = verificationStatus; self.hasAlternate = hasAlternate
-        self.attribution = attribution; self.readings = readings; self.text = text; self.condition = condition
+        self.attribution = attribution; self.readings = readings; self.text = text; self.subCategory = subCategory; self.condition = condition
         self.countSchools = countSchools; self.notes = notes; self.sourceNotes = sourceNotes
     }
 
@@ -146,6 +148,7 @@ public struct QiraatRuling: Codable, Sendable, Hashable, Identifiable {
         attribution = try c.decodeIfPresent([QiraatRulingAttribution].self, forKey: .attribution) ?? []
         readings = try c.decodeIfPresent([QiraatRulingReading].self, forKey: .readings) ?? []
         text = try c.decodeIfPresent(String.self, forKey: .text)
+        subCategory = try c.decodeIfPresent(String.self, forKey: .subCategory)
         condition = try c.decodeIfPresent(String.self, forKey: .condition)
         countSchools = try c.decodeIfPresent([String].self, forKey: .countSchools)
         notes = try c.decodeIfPresent(String.self, forKey: .notes)

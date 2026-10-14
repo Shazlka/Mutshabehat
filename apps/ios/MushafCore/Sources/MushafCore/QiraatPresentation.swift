@@ -104,9 +104,9 @@ extension QiraatRuling {
 public func differenceTypeLabelAr(_ type: String?) -> String {
     switch type {
     case "HARAKAH": "تشكيل"
-    case "LETTER": "حرف"
-    case "ADDITION": "زيادة"
-    case "OMISSION": "حذف"
+    case "LETTER": "إبدال حرف"
+    case "ADDITION": "زيادة حرف أو كلمة"
+    case "OMISSION": "حذف حرف أو كلمة"
     case "MADD": "مد"
     case "HAMZ": "همز"
     case "IMALAH": "إمالة"
@@ -114,8 +114,11 @@ public func differenceTypeLabelAr(_ type: String?) -> String {
     case "WAQF": "وقف"
     case "NAQL": "نقل"
     case "SILAH": "صلة"
-    case "ORTHOGRAPHY": "رسم"
-    default: "أخرى"
+    case "ORTHOGRAPHY": "خلاف في الرسم"
+    case "WORD_FORM", "REORDER": "تقديم وتأخير"
+    case "WORD_CHANGE": "اختلاف كلمة"
+    case "SAKT": "سكت"
+    default: "غير مصنَّف"
     }
 }
 

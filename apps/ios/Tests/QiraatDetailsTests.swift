@@ -12,15 +12,16 @@ final class QiraatDetailsTests: XCTestCase {
     func testSubCategoryLabelForEachDifferenceType() {
         XCTAssertEqual(QiraatClassification.subCategory(for: "HARAKAH"), "تشكيل")
         XCTAssertEqual(QiraatClassification.subCategory(for: "LETTER"), "إبدال حرف")
-        XCTAssertEqual(QiraatClassification.subCategory(for: "ADDITION"), "زيادة حرف")
-        XCTAssertEqual(QiraatClassification.subCategory(for: "OMISSION"), "حذف حرف")
+        XCTAssertEqual(QiraatClassification.subCategory(for: "ADDITION"), "زيادة حرف أو كلمة")
+        XCTAssertEqual(QiraatClassification.subCategory(for: "OMISSION"), "حذف حرف أو كلمة")
         XCTAssertEqual(QiraatClassification.subCategory(for: "WORD_FORM"), "تقديم وتأخير")
         XCTAssertEqual(QiraatClassification.subCategory(for: "REORDER"), "تقديم وتأخير")
         XCTAssertEqual(QiraatClassification.subCategory(for: "reorder"), "تقديم وتأخير")
-        XCTAssertEqual(QiraatClassification.subCategory(for: "OTHER"), "أخرى")
-        XCTAssertEqual(QiraatClassification.subCategory(for: "MADD"), "أخرى")
-        XCTAssertEqual(QiraatClassification.subCategory(for: nil), "أخرى")
-        XCTAssertEqual(QiraatClassification.subCategory(for: ""), "أخرى")
+        XCTAssertEqual(QiraatClassification.subCategory(for: "OTHER"), "غير مصنَّف")
+        XCTAssertEqual(QiraatClassification.subCategory(for: "MADD"), "مد")
+        XCTAssertEqual(QiraatClassification.subCategory(for: "WORD_CHANGE"), "اختلاف كلمة")
+        XCTAssertEqual(QiraatClassification.subCategory(for: nil), "غير مصنَّف")
+        XCTAssertEqual(QiraatClassification.subCategory(for: ""), "غير مصنَّف")
     }
 
     // MARK: - Farsh classification text
@@ -34,10 +35,10 @@ final class QiraatDetailsTests: XCTestCase {
         XCTAssertEqual(QiraatClassification.classification(for: letter), "فرش الحروف › إبدال حرف")
 
         let addition = makeVariant(differenceType: "ADDITION")
-        XCTAssertEqual(QiraatClassification.classification(for: addition), "فرش الحروف › زيادة حرف")
+        XCTAssertEqual(QiraatClassification.classification(for: addition), "فرش الحروف › زيادة حرف أو كلمة")
 
         let omission = makeVariant(differenceType: "OMISSION")
-        XCTAssertEqual(QiraatClassification.classification(for: omission), "فرش الحروف › حذف حرف")
+        XCTAssertEqual(QiraatClassification.classification(for: omission), "فرش الحروف › حذف حرف أو كلمة")
 
         let wordForm = makeVariant(differenceType: "WORD_FORM")
         XCTAssertEqual(QiraatClassification.classification(for: wordForm), "فرش الحروف › تقديم وتأخير")
@@ -46,7 +47,7 @@ final class QiraatDetailsTests: XCTestCase {
         XCTAssertEqual(QiraatClassification.classification(for: reorder), "فرش الحروف › تقديم وتأخير")
 
         let other = makeVariant(differenceType: "UNKNOWN")
-        XCTAssertEqual(QiraatClassification.classification(for: other), "فرش الحروف › أخرى")
+        XCTAssertEqual(QiraatClassification.classification(for: other), "فرش الحروف › غير مصنَّف")
     }
 
     // MARK: - Usul classification text
@@ -64,6 +65,16 @@ final class QiraatDetailsTests: XCTestCase {
         let tarqiq = makeRuling(categoryAr: "ترقيق الراءات", action: "ترقيق")
         XCTAssertEqual(QiraatClassification.classification(for: tarqiq), "أصول القراءات › ترقيق الراءات › ترقيق")
         XCTAssertEqual(QiraatClassification.subDetail(for: tarqiq), "ترقيق")
+    }
+
+    func testUsulClassificationPrefersTheDatabaseSubCategory() {
+        let base = makeRuling(categoryAr: "ميم الجمع", action: "قرأ بصلة ميم الجمع وصلاً بخلف عنه.")
+        let labelled = QiraatRuling(id: base.id, category: base.category, categoryAr: base.categoryAr, color: base.color, wordAnchored: base.wordAnchored,
+                                    surah: base.surah, ayah: base.ayah, startToken: base.startToken, endToken: base.endToken, baseText: base.baseText,
+                                    verificationStatus: base.verificationStatus, hasAlternate: base.hasAlternate, attribution: base.attribution,
+                                    readings: base.readings, subCategory: "صلة ميم الجمع (أوجه متعددة)")
+        XCTAssertEqual(QiraatClassification.classification(for: labelled), "أصول القراءات › ميم الجمع › صلة ميم الجمع (أوجه متعددة)")
+        XCTAssertEqual(QiraatClassification.usulSubCategory(for: labelled), "صلة ميم الجمع (أوجه متعددة)")
     }
 
     func testUsulClassificationTextWhenActionRepeatsCategory() {

@@ -3,6 +3,12 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-15 — Qiraat word sheet: sub-category from the database, «أخرى» removed
+- The word sheet reads the new closed-list sub-category: usul rulings show «أصول القراءات › {الباب} › {التصنيف الفرعي}» (the label the database assigned; the short action text is used only while none exists). `QiraatRuling` decodes the new `subCategory` field (absent = nil).
+- Farsh labels follow the web: تشكيل، إبدال حرف، زيادة حرف أو كلمة، حذف حرف أو كلمة، تقديم وتأخير، همز، خلاف في الرسم، **اختلاف كلمة**، إمالة، إدغام، سكت، نقل، مد. A type nobody has chosen yet reads «غير مصنَّف»; «أخرى» no longer exists (`differenceTypeLabelAr`, `QiraatClassification.subCategory`, `qiraat.difference.*` strings).
+- Verification: MushafCore Qiraat suites (27 tests) pass; `QiraatDetailsTests` 7/7 on the iPhone 18 Pro Max simulator. Not run: the full `make test`, a device install, and a check against the live web export (the backend was unreachable when this was written).
+- Files: `MushafCore/Sources/MushafCore/{QiraatModels,QiraatPresentation}.swift`, `Sources/Qiraat/{QiraatClassification,QiraatClassificationLine,VariantCard}.swift`, `Sources/Localizable.xcstrings`, tests `Tests/QiraatDetailsTests.swift`, `MushafCore/Tests/MushafCoreTests/QiraatMarkersTests.swift`.
+
 ## [Unreleased] — 2026-10-13 — Qiraat word sheet full Arabic details
 - In the word sheet «القراءات العشر» the details section now shows:
   - Classification line «الفئة › الفرعي › التفصيل»: «فرش الحروف › {sub-category}» (mapping HARAKAH→تشكيل, LETTER→إبدال حرف, ADDITION→زيادة حرف, OMISSION→حذف حرف, WORD_FORM/reorder→تقديم وتأخير, other→أخرى) and «أصول القراءات › {باب} › {sub-detail}» with sub-detail included when adding informative detail beyond the category name.

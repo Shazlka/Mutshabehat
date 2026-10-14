@@ -1967,7 +1967,7 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "زيادة حرف"
+            "value" : "زيادة حرف أو كلمة"
           }
         },
         "en" : {
@@ -1983,7 +1983,7 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "حذف حرف"
+            "value" : "حذف حرف أو كلمة"
           }
         },
         "en" : {
@@ -2111,7 +2111,7 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "رسم"
+            "value" : "خلاف في الرسم"
           }
         },
         "en" : {
@@ -2127,7 +2127,7 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "أخرى"
+            "value" : "غير مصنَّف"
           }
         },
         "en" : {
@@ -2150,6 +2150,38 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Word form / reordering"
+          }
+        }
+      }
+    },
+    "qiraat.difference.WORD_CHANGE" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اختلاف كلمة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Different word"
+          }
+        }
+      }
+    },
+    "qiraat.difference.SAKT" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سكت"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Pause without breath"
           }
         }
       }

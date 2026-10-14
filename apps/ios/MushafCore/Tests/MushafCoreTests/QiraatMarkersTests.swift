@@ -251,8 +251,9 @@ private func marks(_ variants: [QiraatVariant] = [], _ rulings: [QiraatRuling] =
 
     @Test func differenceTypesUseTheWebsArabicLabels() {
         #expect(differenceTypeLabelAr("HARAKAH") == "تشكيل")
-        #expect(differenceTypeLabelAr("ORTHOGRAPHY") == "رسم")
-        #expect(differenceTypeLabelAr(nil) == "أخرى")
-        #expect(differenceTypeLabelAr("SOMETHING_NEW") == "أخرى")
+        #expect(differenceTypeLabelAr("ORTHOGRAPHY") == "خلاف في الرسم")
+        #expect(differenceTypeLabelAr("WORD_CHANGE") == "اختلاف كلمة")
+        #expect(differenceTypeLabelAr(nil) == "غير مصنَّف")
+        #expect(differenceTypeLabelAr("SOMETHING_NEW") == "غير مصنَّف")
     }
 }

@@ -61,6 +61,9 @@ struct VariantCard: View {
         case "NAQL": Text("qiraat.difference.NAQL")
         case "SILAH": Text("qiraat.difference.SILAH")
         case "ORTHOGRAPHY": Text("qiraat.difference.ORTHOGRAPHY")
+        case "WORD_FORM", "REORDER": Text("qiraat.difference.WORD_FORM")
+        case "WORD_CHANGE": Text("qiraat.difference.WORD_CHANGE")
+        case "SAKT": Text("qiraat.difference.SAKT")
         default: Text("qiraat.difference.OTHER")
         }
     }

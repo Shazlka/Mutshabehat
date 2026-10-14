@@ -6,26 +6,11 @@ public enum QiraatClassification {
     public static let farshCategoryTitle = "فرش الحروف"
     public static let usulCategoryTitle = "أصول القراءات"
 
-    /// Maps `differenceType` to the standard Arabic sub-category for farsh variants:
-    /// HARAKAH→تشكيل, LETTER→إبدال حرف, ADDITION→زيادة حرف, OMISSION→حذف حرف, WORD_FORM or reorder→تقديم وتأخير, everything else→أخرى.
+    /// Maps `differenceType` to the Arabic sub-category for farsh variants (the web's labels, shared through
+    /// `differenceTypeLabelAr`). A type nobody has chosen yet reads «غير مصنَّف» — «أخرى» is no longer a choice.
     public static func subCategory(for differenceType: String?) -> String {
-        guard let raw = differenceType?.trimmingCharacters(in: .whitespaces), !raw.isEmpty else {
-            return "أخرى"
-        }
-        switch raw.uppercased() {
-        case "HARAKAH":
-            return "تشكيل"
-        case "LETTER":
-            return "إبدال حرف"
-        case "ADDITION":
-            return "زيادة حرف"
-        case "OMISSION":
-            return "حذف حرف"
-        case "WORD_FORM", "REORDER":
-            return "تقديم وتأخير"
-        default:
-            return "أخرى"
-        }
+        let raw = differenceType?.trimmingCharacters(in: .whitespaces).uppercased() ?? ""
+        return differenceTypeLabelAr(raw.isEmpty ? nil : raw)
     }
 
     /// Sub-category for a given farsh variant.
@@ -108,10 +93,17 @@ public enum QiraatClassification {
         return only
     }
 
-    /// Classification segments for an usul ruling: [«أصول القراءات», «{باب}»] or [«أصول القراءات», «{باب}», «{sub-detail}»].
+    /// The sub-category line of an usul ruling: the closed-list label the database assigned; only when none was
+    /// assigned yet does the short action text stand in.
+    public static func usulSubCategory(for ruling: QiraatRuling) -> String? {
+        if let label = ruling.subCategory?.trimmingCharacters(in: .whitespacesAndNewlines), !label.isEmpty { return label }
+        return subDetail(for: ruling)
+    }
+
+    /// Classification segments for an usul ruling: [«أصول القراءات», «{باب}»] or [«أصول القراءات», «{باب}», «{التصنيف الفرعي}»].
     public static func classificationSegments(for ruling: QiraatRuling) -> [String] {
         var segments = [usulCategoryTitle, ruling.categoryAr]
-        if let detail = subDetail(for: ruling), !detail.isEmpty {
+        if let detail = usulSubCategory(for: ruling), !detail.isEmpty {
             segments.append(detail)
         }
         return segments

@@ -33,7 +33,7 @@ struct QiraatClassificationLine: View {
             Chip(name: QiraatClassification.usulCategoryTitle),
             Chip(name: ruling.categoryAr, colorHex: ruling.color)
         ]
-        if let subDetail = QiraatClassification.subDetail(for: ruling), !subDetail.isEmpty {
+        if let subDetail = QiraatClassification.usulSubCategory(for: ruling), !subDetail.isEmpty {
             items.append(Chip(name: subDetail))
         }
         self.chips = items
