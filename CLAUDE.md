@@ -38,6 +38,12 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-10-15 — Qiraat: one entry per rule — split rulings merged and ياءات repeats removed (live database)
+- **Owner report (iPhone word sheet):** فتح ياء الإضافة was listed three times for one word — once for السوسي, once for الدوري (as a farsh card) and once for the other readers — although there is no disagreement.
+- `scripts/qiraat/merge-split-rulings.sql`: usul entries on the same word (same surah/ayah/start word) with the same category and the same single-rule sub-category and the same وصل/وقف flags are merged into one entry (survivor: human-approved, else automatically approved, else the widest span); the narrators of the others move to it (never duplicated), the others are soft-deleted. A human-approved entry only absorbs entries whose narrators it already has; a union of automatically approved entries stays approved; a mix of approved and unreviewed becomes unreviewed so the automatic judge can re-approve it. Entries with hamzah detail, a second wajh or an «أوجه متعددة / وجهان» family label are never touched. Farsh entries that only repeat a ياءات rule (فتح/إسكان/إثبات الياء) for narrators the ruling already lists are soft-deleted.
+- Applied 2026-10-15 (backup `pre-merge-rulings-20261015.dump`, rehearsed on a restored copy; gate equals): 460 clusters, 601 entries merged away (381 of them added narrators to the survivor) and 72 repeating farsh entries removed; live entries 36,275 → 35,602, rule violations 545 → 538, human-approved fingerprint unchanged. 6 clusters involving a human-approved entry were left for a person.
+- Undo: `edit_log` / the backup. **DB migration:** none (data only).
+
 ## 2026-10-15 — Qiraat: 41 exact duplicate entries soft-deleted on the live database
 - `scripts/qiraat/dedupe-exact.sql`: an entry is an exact duplicate when another live entry covers the same word span with the same diacritized reading (farsh) or the same باب and the same narrator+action pairs (usul) and holds all its narrators. Never dropped: human-approved entries. Kept: the better ranked (human > automatic approval > open flags > longer explanation). Dropped entries get `deleted_at` and a note «مكرر تمامًا للسجل …»; their open flags are marked corrected; emptied locations are soft-deleted. Undoable through `edit_log`.
 - Applied 2026-10-15 (backup `pre-dedupe-20261015.dump`): 41 entries (28 farsh, 13 usul). Gate equals the rehearsal: live entries 36,316 → 36,275, rule violations 679 → 545, human-approved fingerprint unchanged.
