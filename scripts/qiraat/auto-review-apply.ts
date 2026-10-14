@@ -42,12 +42,15 @@ export function escapeSqlString(str: string): string {
   return str.replace(/'/g, "''")
 }
 
+const BOOK_NAMES: Record<string, string> = {
+  'Q01-R01': 'قالون', 'Q01-R02': 'ورش', 'Q02-R01': 'ابن كثير', 'Q02-R02': 'ابن كثير',
+  'Q03-R01': 'الدوري', 'Q03-R02': 'السوسي', 'Q04-R01': 'ابن عامر', 'Q04-R02': 'ابن عامر',
+  'Q05-R01': 'شعبة', 'Q06-R01': 'حمزة', 'Q06-R02': 'حمزة', 'Q07-R01': 'الكسائي', 'Q07-R02': 'الكسائي',
+  'Q08-R01': 'أبو جعفر', 'Q08-R02': 'أبو جعفر', 'Q09-R01': 'يعقوب', 'Q09-R02': 'يعقوب',
+  'Q10-R01': 'خلف العاشر', 'Q10-R02': 'خلف العاشر',
+}
 export function narratorToBookName(narratorId: string): string {
-  if (narratorId === 'Q01-R01') return 'قالون'
-  if (narratorId === 'Q01-R02') return 'ورش'
-  if (narratorId === 'Q02-R01' || narratorId === 'Q02-R02') return 'ابن كثير'
-  if (narratorId === 'Q06-R01' || narratorId === 'Q06-R02') return 'حمزة'
-  return narratorId
+  return BOOK_NAMES[narratorId] ?? narratorId
 }
 
 export function buildReviewNote(tier: string, s2Confirmed: string[] = []): string {
@@ -137,6 +140,16 @@ export function generateApplySql(verdicts: Verdict[], options: GenerateSqlOption
     const note = buildReviewNote(v.tier, v.s2Confirmed)
     lines.push(
       `UPDATE qiraat_entries SET review_status = 'reviewed', review_source = '${escapeSqlString(source ?? '')}', review_note = '${escapeSqlString(note)}' WHERE id = '${escapeSqlString(v.id)}' AND review_status = 'unreviewed' AND deleted_at IS NULL;`
+    )
+  }
+
+  // An entry the first pass approved on nquran alone may now be confirmed by a book too: refresh its label only.
+  lines.push('\n-- 1b. Refresh the source label of earlier automatic approvals (never touches human approvals)')
+  for (const v of approvedVerdicts) {
+    const source = getReviewSource(v.tier)
+    const note = buildReviewNote(v.tier, v.s2Confirmed)
+    lines.push(
+      `UPDATE qiraat_entries SET review_source = '${escapeSqlString(source ?? '')}', review_note = '${escapeSqlString(note)}' WHERE id = '${escapeSqlString(v.id)}' AND review_status = 'reviewed' AND review_source LIKE 'auto:%' AND (review_source IS DISTINCT FROM '${escapeSqlString(source ?? '')}' OR review_note IS DISTINCT FROM '${escapeSqlString(note)}');`
     )
   }
 

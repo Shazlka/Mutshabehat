@@ -227,8 +227,12 @@ test('auto-review-apply: idempotency (only touches unreviewed rows, never overwr
   const sql = generateApplySql(mockVerdicts)
 
   // 1. Every entry update guards review_status = 'unreviewed' AND deleted_at IS NULL
-  const updateEntryLines = sql.split('\n').filter((l) => l.startsWith('UPDATE qiraat_entries'))
+  const updateEntryLines = sql.split('\n').filter((l) => l.startsWith('UPDATE qiraat_entries SET review_status'))
   assert.equal(updateEntryLines.length, 2)
+  // 1b. The label refresh only ever touches rows already approved automatically, never a human approval
+  const refreshLines = sql.split('\n').filter((l) => l.startsWith('UPDATE qiraat_entries SET review_source'))
+  assert.equal(refreshLines.length, 2)
+  for (const line of refreshLines) assert.ok(line.includes("review_source LIKE 'auto:%'"), 'refresh must be limited to automatic approvals')
   for (const line of updateEntryLines) {
     assert.ok(line.includes("review_status = 'unreviewed'"), 'Must guard review_status = unreviewed')
     assert.ok(line.includes('deleted_at IS NULL'), 'Must guard deleted_at IS NULL')
