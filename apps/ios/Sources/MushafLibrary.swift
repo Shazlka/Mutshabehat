@@ -97,6 +97,19 @@ final class MushafLibrary {
         try? database.page(clampPage(number))
     }
 
+    /// The text of one Quran word (surah, ayah, word index), looked up on `page` and the pages next to it,
+    /// or nil when it is not there. Used to show a Qiraat rule that works across a word boundary.
+    func wordText(surah: Int, ayah: Int, token: Int, near page: Int) -> String? {
+        for number in [page, page + 1, page - 1] where (1...mushafPageCount).contains(number) {
+            guard let p = self.page(number) else { continue }
+            for word in p.lines.flatMap(\.words) where word.charType == .word
+                && word.ayahKey.surah == surah && word.ayahKey.ayah == ayah && word.indexInAyah == token {
+                return word.textUthmani
+            }
+        }
+        return nil
+    }
+
     func page(of ayah: AyahKey) -> Int? {
         try? database.page(of: ayah)
     }

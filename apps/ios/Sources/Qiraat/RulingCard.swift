@@ -8,6 +8,7 @@ struct RulingCard: View {
     let catalog: QiraatCatalog
 
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.qiraatWordText) private var wordText
 
     var body: some View {
         let color = Color(qiraatHex: ruling.color)
@@ -70,7 +71,18 @@ struct RulingCard: View {
 
     /// How each narrator group reads the word (nil when its action leaves the writing as it is).
     private func form(of group: RulingActionGroup) -> String? {
-        QiraatReadingForm.form(baseText: ruling.baseText, action: group.action, categoryCode: ruling.category)
+        QiraatReadingForm.form(baseText: ruling.baseText, action: group.action, categoryCode: ruling.category,
+                               previousWord: neighbour(-1), nextWord: neighbour(+1))
+    }
+
+    /// The Mushaf word just before (-1) or after (+1) the ruling's span, in its ayah or across the ayah end.
+    private func neighbour(_ step: Int) -> String? {
+        guard let lookup = wordText?.text else { return nil }
+        if step < 0 {
+            return ruling.startToken > 1 ? lookup(ruling.surah, ruling.ayah, ruling.startToken - 1) : nil
+        }
+        let endAyah = ruling.endAyah ?? ruling.ayah
+        return lookup(ruling.surah, endAyah, ruling.endToken + 1) ?? lookup(ruling.surah, endAyah + 1, 1)
     }
 
     /// When every group reads the word the same changed way (صلة ميم الجمع: «كأنهمُۥ»), the card's word is drawn that way.

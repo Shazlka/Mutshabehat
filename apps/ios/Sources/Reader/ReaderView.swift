@@ -133,6 +133,9 @@ struct ReaderView: View {
                             store: library.qiraat, orderedRefs: qiraatMarkedWords,
                             wordFont: try? library.fonts.font(page: item.word.page, size: 40),
                             onSelect: openQiraatSheetWord) { qiraatSelection = nil }
+                    .environment(\.qiraatWordText, QiraatWordLookup { [library, page = item.word.page] surah, ayah, token in
+                        library.wordText(surah: surah, ayah: ayah, token: token, near: page)
+                    })
             }
         }
         .sheet(item: $qiraatRoute, onDismiss: presentPendingQiraatWord) { route in

@@ -3,6 +3,13 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-15 — Ruling card: the reading forms apply to every ruling, including rules across two words
+- Owner request: the rules must apply to the whole Mushaf, not only the three words checked. They run for every ruling card (measured on all 604 live pages: the rounded-zero mark appears in 1,051 rulings; صلة ميم الجمع gets its small waw in 13,365 of 13,377 narrator groups — the 12 others are data rows whose word is not a meem word).
+- صلة ميم الجمع now also covers a meem that already has a damma (before a wasl alef) and one with no vowel («قُلُوبِهِم»); a kasra/fatha meem is left alone.
+- نقل حركة الهمزة works across a word boundary, which is how most of the 5,491 naql groups are written («مِنْ ءَامَنَ» → «مِنَ امَنَ»): the card looks up the neighbouring Mushaf word (`MushafLibrary.wordText`, passed to the sheet through the `qiraatWordText` environment value) when the ruling is anchored on either of the two words, also across the ayah end. Tanween before the hamza is not rewritten (no form is shown rather than a guess).
+- Verification: MushafCore tests for the helper pass (6); device build installed. The cross-word cases were tested on constructed examples, not yet counted across the whole Mushaf, and not looked at on the device.
+- Files: `MushafCore/Sources/MushafCore/QiraatReadingForm.swift`, `Sources/MushafLibrary.swift`, `Sources/Qiraat/{QiraatWordLookup,RulingCard}.swift`, `Sources/Reader/ReaderView.swift`, tests.
+
 ## [Unreleased] — 2026-10-15 — Qiraat ruling card: the word as it is read
 - **Owner report (iPhone):** the big «تسهيل» mark cut the word in two; صلة ميم الجمع showed «كأنهم» with no small waw; with نقل the word still showed the hamza.
 - The large dotted circle was the small high rounded zero (U+06DF, the silent-letter mark, as in «أُو۟لَـٰٓئِكَ») which the Quran font draws as a big ring between the letters. The card's word is now drawn without that mark, so the letters stay joined.

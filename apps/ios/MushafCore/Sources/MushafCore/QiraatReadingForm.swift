@@ -27,12 +27,16 @@ public enum QiraatReadingForm {
     }
 
     /// The word as read for one narrator group's action, or nil when the action does not change the writing.
-    public static func form(baseText: String, action: String, categoryCode: String) -> String? {
+    /// `previousWord` / `nextWord` are the Mushaf words around the ruling's span (same ayah or across the ayah end):
+    /// نقل حركة الهمزة happens across a word boundary (مِنْ + آمَنَ → مِنَ امَنَ), so the two words are drawn together.
+    public static func form(baseText: String, action: String, categoryCode: String,
+                            previousWord: String? = nil, nextWord: String? = nil) -> String? {
         let clean = display(baseText)
         let result: String?
         if appliesSilat(action) { result = withSilat(clean) }
-        else if appliesNaql(action, categoryCode: categoryCode) { result = withNaql(clean) }
-        else { result = nil }
+        else if appliesNaql(action, categoryCode: categoryCode) {
+            result = withNaql(clean) ?? withNaqlAcross(clean, previous: previousWord.map(display), next: nextWord.map(display))
+        } else { result = nil }
         guard let result, result != clean else { return nil }
         return result
     }
@@ -60,24 +64,27 @@ public enum QiraatReadingForm {
 
     // MARK: Transformations
 
-    /// Meem + sukun at the end of the first word that has one → damma + small waw.
+    /// The meem at the end of the first word that ends in one: sukun → damma, a damma stays, no vowel → damma; then the small waw.
     static func withSilat(_ text: String) -> String? {
         var scalars = Array(text.unicodeScalars)
         var i = 0
         while i < scalars.count {
-            // find the end of the current word
             var end = i
             while end < scalars.count, scalars[end].value != 0x20 { end += 1 }
             // walk back over marks (and the pause sign) to the last base letter of the word
             var j = end - 1
-            var sukunAt: Int?
-            while j >= i, isMark(scalars[j].value) || scalars[j].value == 0x06DA {
-                if sukun.contains(scalars[j].value) { sukunAt = j }
-                j -= 1
-            }
-            if j >= i, scalars[j].value == meem, let s = sukunAt {
-                scalars[s] = Unicode.Scalar(damma)!
-                scalars.insert(Unicode.Scalar(smallWaw)!, at: s + 1)
+            while j >= i, isMark(scalars[j].value) || scalars[j].value == 0x06DA { j -= 1 }
+            if j >= i, scalars[j].value == meem {
+                let marks = scalars[(j + 1)..<end].map(\.value)
+                if marks.contains(where: { $0 == 0x0650 || $0 == 0x064E }) { i = end + 1; continue } // kasra / fatha: not this rule
+                if let s = (j + 1..<end).first(where: { sukun.contains(scalars[$0].value) }) {
+                    scalars[s] = Unicode.Scalar(damma)!
+                    scalars.insert(Unicode.Scalar(smallWaw)!, at: s + 1)
+                } else if let d = (j + 1..<end).first(where: { scalars[$0].value == damma }) {
+                    scalars.insert(Unicode.Scalar(smallWaw)!, at: d + 1)
+                } else {
+                    scalars.insert(contentsOf: [Unicode.Scalar(damma)!, Unicode.Scalar(smallWaw)!], at: j + 1)
+                }
                 return String(String.UnicodeScalarView(scalars))
             }
             i = end + 1
@@ -118,6 +125,60 @@ public enum QiraatReadingForm {
             s.removeSubrange(carrier..<q)
             s[sk] = Unicode.Scalar(moved)!
             return String(String.UnicodeScalarView(s))
+        }
+        return nil
+    }
+
+    /// A word's first letter is a hamza that carries a short vowel; returns that vowel and the word without hamza and vowel.
+    private static func splitInitialHamza(_ word: String) -> (vowel: UInt32, rest: String)? {
+        let s = Array(word.unicodeScalars)
+        var i = 0
+        while i < s.count, s[i].value == 0x0671 { i += 1 } // alef wasla does not start a hamza word
+        guard i == 0, i < s.count, hamzaLetters.contains(s[i].value) || s[i].value == 0x0622 else { return nil }
+        var vowel: UInt32?
+        var q = i + 1
+        while q < s.count, isMark(s[q].value) {
+            if shortVowels.contains(s[q].value), vowel == nil, ![0x064B, 0x064C, 0x064D].contains(s[q].value) { vowel = s[q].value }
+            q += 1
+        }
+        if s[i].value == 0x0622 { // آ = hamza with fatha + alef
+            var rest = Array(s[(i + 1)...]); rest.insert(Unicode.Scalar(0x0627)!, at: 0)
+            return (0x064E, String(String.UnicodeScalarView(rest)))
+        }
+        guard let v = vowel else { return nil }
+        return (v, String(String.UnicodeScalarView(Array(s[q...]))))
+    }
+
+    /// The word ends in a letter carrying a sukun: returns it with that sukun replaced by `vowel`.
+    private static func giveVowel(_ word: String, _ vowel: UInt32) -> String? {
+        var s = Array(word.unicodeScalars)
+        var p = s.count - 1
+        var sukunAt: Int?
+        while p >= 0, isMark(s[p].value) || s[p].value == 0x06DA { if sukun.contains(s[p].value) { sukunAt = p }; p -= 1 }
+        guard p >= 0, let sk = sukunAt else { return nil }
+        s[sk] = Unicode.Scalar(vowel)!
+        return String(String.UnicodeScalarView(s))
+    }
+
+    /// Hamza word next to a word whose last letter is at rest: the hamza goes, its vowel moves to that letter.
+    /// Tries (this word, next word), then (previous word, this word); returns the two words as read.
+    static func withNaqlAcross(_ text: String, previous: String?, next: String?) -> String? {
+        let words = text.split(separator: " ").map(String.init)
+        // the span itself holds two words
+        if words.count >= 2 {
+            for k in 0..<(words.count - 1) {
+                if let h = splitInitialHamza(words[k + 1]), let moved = giveVowel(words[k], h.vowel) {
+                    var out = words; out[k] = moved; out[k + 1] = h.rest
+                    return out.joined(separator: " ")
+                }
+            }
+        }
+        guard let last = words.last, let first = words.first else { return nil }
+        if let next, let h = splitInitialHamza(next), let moved = giveVowel(last, h.vowel) {
+            return (words.dropLast() + [moved, h.rest]).joined(separator: " ")
+        }
+        if let previous, let h = splitInitialHamza(first), let moved = giveVowel(previous, h.vowel) {
+            return ([moved, h.rest] + words.dropFirst()).joined(separator: " ")
         }
         return nil
     }
