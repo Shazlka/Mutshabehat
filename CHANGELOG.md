@@ -1,3 +1,9 @@
+## 2026-10-15 — Qiraat: 41 exact duplicate entries soft-deleted on the live database
+- `scripts/qiraat/dedupe-exact.sql`: an entry is an exact duplicate when another live entry covers the same word span with the same diacritized reading (farsh) or the same باب and the same narrator+action pairs (usul) and holds all its narrators. Never dropped: human-approved entries. Kept: the better ranked (human > automatic approval > open flags > longer explanation). Dropped entries get `deleted_at` and a note «مكرر تمامًا للسجل …»; their open flags are marked corrected; emptied locations are soft-deleted. Undoable through `edit_log`.
+- Applied 2026-10-15 (backup `pre-dedupe-20261015.dump`): 41 entries (28 farsh, 13 usul). Gate equals the rehearsal: live entries 36,316 → 36,275, rule violations 679 → 545, human-approved fingerprint unchanged.
+- Not touched (human queue): 8 farsh pairs with partly shared narrators and 21 cases where one narrator has two different readings as the first wajh.
+- **DB migration:** none (data change only).
+
 ## 2026-10-15 — Review editor and reader: sub-category everywhere, «أخرى» removed (branch only, not deployed)
 - **Editor:** the farsh «نوع الاختلاف» list is now تشكيل، إبدال حرف، زيادة، حذف، تقديم وتأخير، همز، خلاف في الرسم، **اختلاف كلمة**، إمالة، إدغام، سكت، نقل، مد — no «أخرى». An entry still stored as `other` shows «غير مصنَّف — اختر نوعًا» and cannot be saved until a type is chosen. Usul gets «التصنيف الفرعي»: single-choice chips from the closed list of the chosen باب (`SubCategoryChips.tsx`, used by the desktop picker and by `UsulRuleGrid` for desktop/mobile); changing the باب drops a label that does not belong to it.
 - **API:** `review-http.ts` refuses `other` on create and update, maps «اختلاف كلمة» → `word_change`, accepts/forwards `subCategory`, and maps the database refusal to a clear Arabic message.
