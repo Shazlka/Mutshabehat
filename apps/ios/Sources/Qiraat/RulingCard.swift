@@ -22,7 +22,7 @@ struct RulingCard: View {
             }
             if !ruling.baseText.isEmpty {
                 VStack(spacing: 4) {
-                    Text(verbatim: ruling.baseText)
+                    Text(verbatim: sharedForm ?? QiraatReadingForm.display(ruling.baseText))
                         .font(rulingWordFont)
                         .foregroundStyle(color)
                         .multilineTextAlignment(.center)
@@ -41,6 +41,13 @@ struct RulingCard: View {
                 VStack(alignment: .leading, spacing: 4) {
                     QiraatPills(pills: rollupAuthorityPills(group.entries.map(\.authorityId), catalog: catalog))
                     performance(group, ruling: ruling)
+                    // One group reads the word differently from the others (نقل حركة الهمزة): show how it is written.
+                    if sharedForm == nil, let changed = form(of: group) {
+                        Text(verbatim: changed)
+                            .font(smallWordFont)
+                            .foregroundStyle(color)
+                            .accessibilityIdentifier("qiraat-ruling-group-word")
+                    }
                 }
             }
             if let distinct { Text(verbatim: distinct).font(.caption).foregroundStyle(Color(uiColor: .mushafBrown)) }
@@ -59,6 +66,25 @@ struct RulingCard: View {
             RoundedRectangle(cornerRadius: 10).fill(color.opacity(0.06))
         }
         .overlay(RoundedRectangle(cornerRadius: 10).stroke(color))
+    }
+
+    /// How each narrator group reads the word (nil when its action leaves the writing as it is).
+    private func form(of group: RulingActionGroup) -> String? {
+        QiraatReadingForm.form(baseText: ruling.baseText, action: group.action, categoryCode: ruling.category)
+    }
+
+    /// When every group reads the word the same changed way (صلة ميم الجمع: «كأنهمُۥ»), the card's word is drawn that way.
+    private var sharedForm: String? {
+        let groups = ruling.attributionByAction
+        let forms = groups.map(form(of:))
+        guard let first = forms.first, let value = first, forms.allSatisfy({ $0 == value }) else { return nil }
+        return value
+    }
+
+    private var smallWordFont: Font {
+        _ = dynamicTypeSize
+        let baseFont = UIFont(name: "KFGQPCUthmanicScriptHAFS", size: 28) ?? UIFont.systemFont(ofSize: 28, weight: .bold)
+        return Font(UIFontMetrics(forTextStyle: .title2).scaledFont(for: baseFont, maximumPointSize: 44))
     }
 
     private var rulingWordFont: Font {

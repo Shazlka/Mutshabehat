@@ -3,6 +3,14 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-15 — Qiraat ruling card: the word as it is read
+- **Owner report (iPhone):** the big «تسهيل» mark cut the word in two; صلة ميم الجمع showed «كأنهم» with no small waw; with نقل the word still showed the hamza.
+- The large dotted circle was the small high rounded zero (U+06DF, the silent-letter mark, as in «أُو۟لَـٰٓئِكَ») which the Quran font draws as a big ring between the letters. The card's word is now drawn without that mark, so the letters stay joined.
+- New `QiraatReadingForm` (MushafCore, 4 tests): صلة ميم الجمع gives the meem a damma and adds the small waw («كَأَنَّهُمُۥ»); نقل حركة الهمزة drops the hamza and moves its vowel to the letter before it inside the word («وَٱلْأَرْضَ» → «وَٱلَرْضَ»). It applies only where the action says the word is read that way while continuing (not «ووقف بالنقل»), never across a word boundary, and returns nothing when the writing does not change.
+- `RulingCard`: when every narrator group reads the word the same changed way (ميم الجمع) the card's word is drawn that way; when only some groups change it (نقل beside سكت/تحقيق) each such group gets its own small line with its written form under its readers.
+- Verification: MushafCore tests for the new helper pass (4/4) and the Qiraat suites still pass; device build installed. Not looked at on the device after the change; no UI test run.
+- Files: `MushafCore/Sources/MushafCore/QiraatReadingForm.swift`, `Sources/Qiraat/RulingCard.swift`, tests `MushafCore/Tests/MushafCoreTests/QiraatReadingFormTests.swift`.
+
 ## [Unreleased] — 2026-10-15 — Qiraat colours ready when the page turns
 - **Owner report:** after flipping a page the Qiraat colours appeared late.
 - `QiraatMarks` now buckets the page's variants and rulings by ayah when it is created, so each word looks at the few entries of its own ayah instead of scanning every ruling of the page three times per word (the cost that ran on the main thread when a page appeared).
