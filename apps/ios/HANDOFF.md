@@ -43,6 +43,7 @@ Everything is on the branch `ios/qiraat-ux` (based on `ios/memorization`). It is
 
 ---
 
+
 ## Memorization module (حفظ القرآن), branch `ios/memorization` (2026-10-06)
 
 Built, tested and committed on `ios/memorization`; **not pushed, not merged into `ios/main`** (waits for the owner).
