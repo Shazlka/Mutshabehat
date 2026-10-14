@@ -62,6 +62,15 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 - **Tests:** `tests/qiraat/auto-review.test.ts` added to `test:qiraat:review` in `package.json` covering farsh sub-category derivation across all codes, rejection of B/C/skip/A-S2, quote escaping in notes, and update idempotency.
 - **Files:** `supabase/migrations/20261013120000_qiraat_review_source.sql`, `supabase/rollbacks/20261013120000_qiraat_review_source.down.sql`, `scripts/qiraat/export-live-rows.sh`, `scripts/qiraat/auto-review-apply.ts`, `scripts/qiraat/auto-review-live.ts`, `tests/qiraat/auto-review.test.ts`, `package.json`, `CHANGELOG.md`, `CLAUDE.md`.
 
+## 2026-10-14 — Descriptions cleaned of source mentions (sources moved to the sources table) and empty Hafs words filled from the Mushaf
+- **Owner request:** no source named in any description, descriptions in Arabic, every locus on the right Mushaf word.
+- **Cause:** the explanation texts added earlier today ended with «[المصدر: nquran.com؛ كتاب …]» and the farsh additions carried `sources:` notes; 242 older notes were English import notes.
+- **Cleaned (`scripts/qiraat/clean-provenance.py`):** 25,885 ruling texts, 122 variant descriptions, 2 performance notes and 3,127 notes lost their source text; every source is parsed into `qiraat_entry_sources` (one row per entry and document, with the page or CSV row; 15 new source documents: nquran.com, one book per reader, editorial notes). Result on live: 0 descriptions mention a source, 0 contain Latin letters (one false positive: the word «الكتاب» inside a quoted Arabic phrase).
+- **Hafs words (`scripts/qiraat/fill-base-text.sql`):** 13,617 live loci had an empty `base_text` (mostly the 6 Oct bulk rule imports), so «التفاصيل» could not draw their word; filled from `quran_words`. Checked all 28,006 single-ayah loci: 27,998 equal the Mushaf word(s); 8 differ (4 mis-anchored: 26:222:5, 88:22:1, 33:49:14, 22:22:7, kept for correction).
+- **Applied to live:** backup `pre-clean-…dump`, rehearsed on a restored copy; only the intended fields changed (edit-log check: text_ar, description_ar, performance_note, notes). Ids of RPC-created entries differ between copies, so the blocks were regenerated from production's own export.
+- **Next:** sub-category vocabulary proposal `docs/qiraat/SUBCATEGORY_VOCABULARY_PROPOSAL.md` (awaiting the owner's review), duplicate merge, further imports.
+- **DB migration:** none.
+
 ## 2026-10-14 — Full import, phase 4b: unmatched book rows re-anchored by their Hafs word and imported (rules only)
 - **Owner request:** most of the 18,708 unmatched book rows are correct and only missing because nquran does not list them; if a row's Hafs word differs from the Mushaf word, find the word in the same ayah, then in the ayahs before and after.
 - **Re-anchoring (`reanchor.ts`, Codex then finished by the orchestrator):** of the 18,708 rows 14,927 were already aligned (their Hafs word is the Mushaf word at the stated position, so they were simply absent from the database, not mis-mapped), 2,386 moved inside the same ayah, 42 moved to a neighbouring ayah, 1,268 not found, 85 without a Hafs word, a few ambiguous (queued).
