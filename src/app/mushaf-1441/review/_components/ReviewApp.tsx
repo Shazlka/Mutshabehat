@@ -163,6 +163,7 @@ function applyFieldsToRow(
   if (fields.performanceNote !== undefined) next.performanceNote = fields.performanceNote
   if (fields.variantType !== undefined) next.variantType = fields.variantType
   if (fields.rulingText !== undefined) next.rulingText = fields.rulingText
+  if (fields.subCategory !== undefined) next.subCategory = fields.subCategory
   if (fields.appliesWasl !== undefined) next.appliesWasl = fields.appliesWasl
   if (fields.appliesWaqf !== undefined) next.appliesWaqf = fields.appliesWaqf
   if (fields.hamzahDetail !== undefined) next.hamzahDetail = fields.hamzahDetail
@@ -201,6 +202,7 @@ function buildTempRow(tempId: string, draft: CreateEntryInput, page: ReviewPage)
     performanceNote: draft.performanceNote ?? null,
     variantType: draft.variantType ?? null,
     rulingText: draft.rulingText ?? null,
+    subCategory: draft.subCategory ?? null,
     options: null,
     notes: draft.notes ?? null,
     reviewStatus: 'unreviewed',

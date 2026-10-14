@@ -25,6 +25,7 @@ export function row(overrides: Partial<Omit<ReviewRow, 'narrators'>> & { narrato
     performanceNote: null,
     variantType: null,
     rulingText: null,
+    subCategory: null,
     options: null,
     notes: null,
     reviewStatus: 'unreviewed',

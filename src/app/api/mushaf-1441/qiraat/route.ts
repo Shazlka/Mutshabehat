@@ -49,12 +49,18 @@ function mapDifferenceType(variantType?: string | null): DifferenceType {
   if (!variantType) return 'OTHER'
   const upper = variantType.toUpperCase()
   switch (upper) {
-    case 'HARAKAH': return 'HARAKAH'
-    case 'LETTER': return 'LETTER'
+    case 'HARAKAH':
+    case 'VOWEL': return 'HARAKAH'
+    case 'LETTER':
+    case 'CONSONANT': return 'LETTER'
     case 'ADDITION': return 'ADDITION'
     case 'OMISSION': return 'OMISSION'
+    case 'WORD_FORM': return 'WORD_FORM'
+    case 'WORD_CHANGE': return 'WORD_CHANGE'
+    case 'SAKT': return 'SAKT'
     case 'MADD': return 'MADD'
-    case 'HAMZ': return 'HAMZ'
+    case 'HAMZ':
+    case 'HAMZA': return 'HAMZ'
     case 'IMALAH': return 'IMALAH'
     case 'IDGHAM': return 'IDGHAM'
     case 'WAQF': return 'WAQF'
@@ -91,6 +97,7 @@ interface ExportRulingDetail {
   categoryAr: string
   ruleId?: string
   text?: string
+  subCategory?: string
   options?: string[]
   wordAnchored?: boolean
 }
@@ -218,6 +225,7 @@ function mapExportRuling(entry: ExportEntry, pageNumber: number): QiraatRuling {
     readings,
     hasAlternate: (entry.alternates ?? []).length > 0,
     text: entry.ruling?.text ?? undefined,
+    subCategory: entry.ruling?.subCategory ?? undefined,
     condition: entry.attribution?.[0]?.condition ?? undefined,
     countSchools: entry.countSchools ?? undefined,
     notes: entry.notes ?? undefined,

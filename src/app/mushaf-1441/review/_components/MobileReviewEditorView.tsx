@@ -92,6 +92,8 @@ export default function MobileReviewEditorView({
     setReadingText,
     variantType,
     setVariantType,
+    subCategory,
+    setSubCategory,
     rulingText,
     setRulingText,
     description,
@@ -739,6 +741,9 @@ export default function MobileReviewEditorView({
               onChangeReadingText={setReadingText}
               rulingText={rulingText}
               onChangeRulingText={setRulingText}
+              subCategory={subCategory}
+              onChangeSubCategory={setSubCategory}
+              subCategoryOptions={page.subCategories}
               availableCategories={page.categories}
               appliesWasl={appliesWasl}
               onChangeAppliesWasl={setAppliesWasl}

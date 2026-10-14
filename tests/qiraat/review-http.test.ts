@@ -400,3 +400,32 @@ test('validatePostBody rejects a suggest request with a missing or invalid posit
   assert.equal(validatePostBody({ action: 'suggest', surah: 0, ayah: 7, word: 1 }).ok, false)
   assert.equal(validatePostBody({ action: 'suggest', surah: 2, ayah: 7, word: 1.5 }).ok, false)
 })
+
+test('«أخرى» is no longer an accepted farsh type: create and update are refused', () => {
+  const create = validatePostBody({
+    action: 'create', deviceId: 'd',
+    entry: { surah: 2, ayah: 6, startWord: 1, kind: 'farsh', readingText: 'أَنَّ', variantType: 'أخرى', narrators: [{ id: 'Q01-R01' }] },
+  })
+  assert.equal(create.ok, false)
+  const patch = validatePatchBody({ action: 'update', entryId: 'e', version: 'v', fields: { variantType: 'other' } })
+  assert.equal(patch.ok, false)
+})
+
+test('the new farsh type «اختلاف كلمة» maps to word_change and a sub-category passes through', () => {
+  assert.equal(toDbVariantType('اختلاف كلمة'), 'word_change')
+  assert.equal(toDbVariantType('word_change'), 'word_change')
+  const patch = validatePatchBody({ action: 'update', entryId: 'e', version: 'v', fields: { variantType: 'اختلاف كلمة', subCategory: null } })
+  assert.equal(patch.ok, true)
+  const create = validatePostBody({
+    action: 'create', deviceId: 'd',
+    entry: { surah: 2, ayah: 6, startWord: 1, kind: 'usul', categoryCode: 'IMALAH_TAQLIL', subCategory: 'إمالة', narrators: [{ id: 'Q01-R01' }] },
+  })
+  assert.equal(create.ok, true)
+  if (create.ok && create.value.action === 'create') assert.equal(create.value.entry.subCategory, 'إمالة')
+})
+
+test('the database refusal of a new «أخرى» farsh entry reads as a clear Arabic message', () => {
+  const mapped = mapReviewDatabaseError('QIRAAT_SUBCATEGORY_REQUIRED: choose a specific difference type')
+  assert.equal(mapped.status, 422)
+  assert.equal((mapped.body as { error: string }).error, 'SUBCATEGORY_REQUIRED')
+})

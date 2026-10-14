@@ -3885,8 +3885,15 @@ export default function Mushaf1441Viewer({
           return (
             <div key={ruling.id} className="rounded-lg border p-2.5" style={{ borderColor: ruling.color, background: `color-mix(in srgb, ${ruling.color} 5%, white)` }}>
               <div className="mb-1.5 flex items-center justify-between gap-2">
-                <span className="rounded-full px-2 py-0.5 text-[11px] font-bold text-white" style={{ background: ruling.color }}>
-                  {ruling.categoryAr}
+                <span className="flex flex-wrap items-center gap-1">
+                  <span className="rounded-full px-2 py-0.5 text-[11px] font-bold text-white" style={{ background: ruling.color }}>
+                    {ruling.categoryAr}
+                  </span>
+                  {ruling.subCategory ? (
+                    <span className="rounded-full border px-2 py-0.5 text-[11px] font-bold" style={{ borderColor: ruling.color, color: ruling.color }}>
+                      {ruling.subCategory}
+                    </span>
+                  ) : null}
                 </span>
                 {ruling.condition ? (
                   <span className="text-[11px] font-bold text-[var(--mushaf-muted)]">{ruling.condition}</span>
@@ -4164,11 +4171,18 @@ export default function Mushaf1441Viewer({
                   }}
                 >
                   <div className="mb-2 flex items-center justify-between gap-2">
-                    <span
-                      className="rounded-full px-2 py-0.5 text-[11px] font-bold text-white"
-                      style={{ background: ruling.color }}
-                    >
-                      {ruling.categoryAr}
+                    <span className="flex flex-wrap items-center gap-1">
+                      <span
+                        className="rounded-full px-2 py-0.5 text-[11px] font-bold text-white"
+                        style={{ background: ruling.color }}
+                      >
+                        {ruling.categoryAr}
+                      </span>
+                      {ruling.subCategory ? (
+                        <span className="rounded-full border px-2 py-0.5 text-[11px] font-bold" style={{ borderColor: ruling.color, color: ruling.color }}>
+                          {ruling.subCategory}
+                        </span>
+                      ) : null}
                     </span>
                     {ruling.condition ? (
                       <span className="text-[11px] font-bold text-[var(--mushaf-muted)]">{ruling.condition}</span>

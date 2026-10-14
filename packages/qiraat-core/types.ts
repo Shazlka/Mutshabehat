@@ -77,13 +77,13 @@ export type VariantOperation =
 
 export type DifferenceType =
   | 'HARAKAH' | 'LETTER' | 'ADDITION' | 'OMISSION' | 'MADD' | 'HAMZ'
-  | 'IMALAH' | 'IDGHAM' | 'WAQF' | 'NAQL' | 'SILAH' | 'ORTHOGRAPHY' | 'OTHER'
+  | 'IMALAH' | 'IDGHAM' | 'WAQF' | 'NAQL' | 'SILAH' | 'ORTHOGRAPHY' | 'WORD_FORM' | 'WORD_CHANGE' | 'SAKT' | 'OTHER'
 
 export const DIFFERENCE_TYPE_LABELS_AR: Record<DifferenceType, string> = {
   HARAKAH: 'تشكيل',
-  LETTER: 'حرف',
-  ADDITION: 'زيادة',
-  OMISSION: 'حذف',
+  LETTER: 'إبدال حرف',
+  ADDITION: 'زيادة حرف أو كلمة',
+  OMISSION: 'حذف حرف أو كلمة',
   MADD: 'مد',
   HAMZ: 'همز',
   IMALAH: 'إمالة',
@@ -91,8 +91,11 @@ export const DIFFERENCE_TYPE_LABELS_AR: Record<DifferenceType, string> = {
   WAQF: 'وقف',
   NAQL: 'نقل',
   SILAH: 'صلة',
-  ORTHOGRAPHY: 'رسم',
-  OTHER: 'أخرى',
+  ORTHOGRAPHY: 'خلاف في الرسم',
+  WORD_FORM: 'تقديم وتأخير',
+  WORD_CHANGE: 'اختلاف كلمة',
+  SAKT: 'سكت',
+  OTHER: 'غير مصنَّف',
 }
 
 /**
@@ -275,6 +278,8 @@ export interface QiraatRuling {
   /** True when some Riwayah has two valid وجهان here — the word is marked ذو وجهين. */
   hasAlternate: boolean
   text?: string
+  /** التصنيف الفرعي from the closed list (qiraat_sub_categories); absent when none was assigned. */
+  subCategory?: string
   condition?: string
   /** عد الآي only: ayah-counting schools, a taxonomy unrelated to the ten readers. */
   countSchools?: string[]

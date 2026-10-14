@@ -140,6 +140,7 @@ test('filterReviewRows handles kind and status filtering correctly', () => {
       performanceNote: null,
       variantType: 'تشكيل',
       rulingText: null,
+      subCategory: null,
       options: null,
       notes: null,
       reviewStatus: 'unreviewed',
@@ -178,6 +179,7 @@ test('filterReviewRows handles kind and status filtering correctly', () => {
       performanceNote: null,
       variantType: null,
       rulingText: 'تقليل',
+      subCategory: null,
       options: null,
       notes: null,
       reviewStatus: 'reviewed',
@@ -442,6 +444,7 @@ test('serializeDraftSnapshot accurately identifies dirty changes', () => {
     readingText: 'مَلِكِ',
     variantType: 'تشكيل',
     rulingText: null,
+    subCategory: null,
     description: 'قراءة عاصم والكسائي',
     performanceNote: null,
     appliesWasl: true,
@@ -530,6 +533,7 @@ function makeRow(overrides: Partial<ReviewRow>): ReviewRow {
     performanceNote: null,
     variantType: null,
     rulingText: null,
+    subCategory: null,
     options: null,
     notes: null,
     reviewStatus: 'unreviewed',
@@ -584,3 +588,11 @@ test('summarizeActiveRows: feature 4 -- summarizes farsh + usul rows compactly, 
 })
 
 
+
+test('validateEntryDraft refuses a farsh entry without a chosen difference type (أخرى is not a choice)', () => {
+  assert.deepEqual(validateEntryDraft('farsh', 'مَلِكِ', null, 1, ''), { valid: false, error: 'اختر نوع الاختلاف' })
+  assert.deepEqual(validateEntryDraft('farsh', 'مَلِكِ', null, 1, 'other'), { valid: false, error: 'اختر نوع الاختلاف' })
+  assert.deepEqual(validateEntryDraft('farsh', 'مَلِكِ', null, 1, 'word_change'), { valid: true })
+  assert.deepEqual(validateEntryDraft('farsh', 'مَلِكِ', null, 1), { valid: true }) // omitted: not checked
+  assert.deepEqual(validateEntryDraft('usul', '', 'TAGHYIR_HAMZ', 1, ''), { valid: true }) // usul has no farsh type
+})

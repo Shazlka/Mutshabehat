@@ -14,6 +14,7 @@ import {
 } from '../../../../../packages/quran-data/mushaf1441/pageMetadata'
 import ReaderNarratorSelector from './ReaderNarratorSelector'
 import UsulRuleGrid, { FALLBACK_USUL_CATEGORIES } from './UsulRuleGrid'
+import SubCategoryChips from './SubCategoryChips'
 import { CANONICAL_VARIANT_TYPES, normalizeVariantType } from './FarshFields'
 import { isHamzahCategory } from './HamzahDetailFields'
 import { isImalahCategory } from './ImalahDetailFields'
@@ -119,6 +120,8 @@ export default function ReviewEditorPane({
     setReadingText,
     variantType,
     setVariantType,
+    subCategory,
+    setSubCategory,
     rulingText,
     setRulingText,
     description,
@@ -906,6 +909,9 @@ export default function ReviewEditorPane({
               onChangeReadingText={setReadingText}
               rulingText={rulingText}
               onChangeRulingText={setRulingText}
+              subCategory={subCategory}
+              onChangeSubCategory={setSubCategory}
+              subCategoryOptions={page.subCategories}
               availableCategories={page.categories}
               appliesWasl={appliesWasl}
               onChangeAppliesWasl={setAppliesWasl}
@@ -989,6 +995,9 @@ export default function ReviewEditorPane({
                       )
                     })}
                   </div>
+                  {!normalizeVariantType(variantType) ? (
+                    <p className="text-[11px] font-bold text-amber-700">غير مصنَّف — اختر نوعًا</p>
+                  ) : null}
                 </div>
               ) : (
                 /* Standard Usul Category Picker: every باب listed (no inner scroll), several can be ticked */
@@ -1032,6 +1041,13 @@ export default function ReviewEditorPane({
                       )
                     })}
                   </div>
+                  <SubCategoryChips
+                    categoryCode={categoryCode}
+                    options={page.subCategories}
+                    value={subCategory}
+                    onChange={setSubCategory}
+                    disabled={isSaving}
+                  />
                 </div>
               )}
             </div>

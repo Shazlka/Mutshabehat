@@ -38,6 +38,7 @@ function row(overrides: Partial<Omit<ReviewRow, 'narrators'>> & { narrators: { i
     performanceNote: null,
     variantType: null,
     rulingText: null,
+    subCategory: null,
     options: null,
     notes: null,
     reviewStatus: 'unreviewed',

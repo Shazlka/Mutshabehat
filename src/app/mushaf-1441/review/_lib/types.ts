@@ -72,6 +72,7 @@ export type ReviewRow = {
   performanceNote: string | null
   variantType: string | null
   rulingText: string | null
+  subCategory: string | null
   options: string[] | null
   notes: string | null
   reviewStatus: ReviewStatus
@@ -106,6 +107,8 @@ export type ReviewPage = {
   narrators: CatalogNarrator[]
   categories: { code: string; nameAr: string }[]
   variantTypes: string[]
+  /** The closed list of usul sub-categories (qiraat_sub_categories), sorted. */
+  subCategories: { categoryCode: string; labelAr: string }[]
 }
 
 export type PageProgress = { page: number; total: number; unreviewed: number; reviewed: number; flagged: number }
@@ -129,6 +132,7 @@ export type CreateEntryInput = {
   variantType?: string
   categoryCode?: string
   rulingText?: string | null
+  subCategory?: string | null
   notes?: string | null
   narrators: NarratorInput[]
   appliesWasl?: boolean
@@ -145,6 +149,7 @@ export type EntryFields = Partial<{
   variantType: string
   categoryCode: string
   rulingText: string | null
+  subCategory: string | null
   appliesWasl: boolean
   appliesWaqf: boolean
   hamzahDetail: HamzahDetail | null

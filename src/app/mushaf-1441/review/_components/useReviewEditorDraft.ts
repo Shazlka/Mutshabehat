@@ -29,8 +29,13 @@ export function validateEntryDraft(
   kind: 'farsh' | 'usul',
   readingText: string,
   categoryCode: string | null,
-  narratorCount: number
+  narratorCount: number,
+  /** farsh only: pass the chosen type to refuse an unchosen one («أخرى» is no longer a choice); omit to skip the check. */
+  variantType?: string | null
 ): { valid: boolean; error?: string } {
+  if (kind === 'farsh' && variantType !== undefined && !normalizeVariantType(variantType)) {
+    return { valid: false, error: 'اختر نوع الاختلاف' }
+  }
   if (kind === 'farsh' && !readingText.trim()) {
     return { valid: false, error: 'نص القراءة مطلوب لفرش الحروف' }
   }
@@ -49,6 +54,7 @@ export function serializeDraftSnapshot(state: {
   readingText: string
   variantType: string | null
   rulingText: string | null
+  subCategory?: string | null
   description: string | null
   performanceNote: string | null
   appliesWasl: boolean
@@ -100,6 +106,7 @@ export function useReviewEditorDraft({
   const [readingText, setReadingText] = useState('')
   const [variantType, setVariantType] = useState<string | null>(null)
   const [rulingText, setRulingText] = useState<string | null>(null)
+  const [subCategory, setSubCategory] = useState<string | null>(null)
   const [description, setDescription] = useState<string | null>(null)
   const [performanceNote, setPerformanceNote] = useState<string | null>(null)
   const [narrators, setNarrators] = useState<NarratorInput[]>([])
@@ -141,6 +148,7 @@ export function useReviewEditorDraft({
       const nextReadingText = selectedRow.readingText ?? selectedRow.hafsText ?? ''
       const nextVariantType = selectedRow.variantType ? normalizeVariantType(selectedRow.variantType) : null
       const nextRulingText = selectedRow.rulingText
+      const nextSubCategory = selectedRow.subCategory ?? null
       const nextDescription = selectedRow.description
       const nextPerformanceNote = selectedRow.performanceNote
       const nextAppliesWasl = selectedRow.appliesWasl
@@ -159,6 +167,7 @@ export function useReviewEditorDraft({
       setReadingText(nextReadingText)
       setVariantType(nextVariantType)
       setRulingText(nextRulingText)
+      setSubCategory(nextSubCategory)
       setDescription(nextDescription)
       setPerformanceNote(nextPerformanceNote)
       setAppliesWasl(nextAppliesWasl)
@@ -172,6 +181,7 @@ export function useReviewEditorDraft({
         readingText: nextReadingText,
         variantType: nextVariantType,
         rulingText: nextRulingText,
+        subCategory: nextSubCategory,
         description: nextDescription,
         performanceNote: nextPerformanceNote,
         appliesWasl: nextAppliesWasl,
@@ -190,6 +200,7 @@ export function useReviewEditorDraft({
       const nextReadingText = newEntryDraft.readingText ?? newEntryDraft.uthmaniText ?? ''
       const nextVariantType = newEntryDraft.variantType ? normalizeVariantType(newEntryDraft.variantType) : 'vowel'
       const nextRulingText = newEntryDraft.rulingText ?? null
+      const nextSubCategory = newEntryDraft.subCategory ?? null
       const nextDescription = newEntryDraft.description ?? null
       const nextPerformanceNote = newEntryDraft.performanceNote ?? null
       const nextAppliesWasl = true
@@ -203,6 +214,7 @@ export function useReviewEditorDraft({
       setReadingText(nextReadingText)
       setVariantType(nextVariantType)
       setRulingText(nextRulingText)
+      setSubCategory(nextSubCategory)
       setDescription(nextDescription)
       setPerformanceNote(nextPerformanceNote)
       setAppliesWasl(nextAppliesWasl)
@@ -216,6 +228,7 @@ export function useReviewEditorDraft({
         readingText: nextReadingText,
         variantType: nextVariantType,
         rulingText: nextRulingText,
+        subCategory: nextSubCategory,
         description: nextDescription,
         performanceNote: nextPerformanceNote,
         appliesWasl: nextAppliesWasl,
@@ -248,6 +261,7 @@ export function useReviewEditorDraft({
       readingText,
       variantType,
       rulingText,
+      subCategory,
       description,
       performanceNote,
       appliesWasl,
@@ -265,6 +279,7 @@ export function useReviewEditorDraft({
     readingText,
     variantType,
     rulingText,
+    subCategory,
     description,
     performanceNote,
     appliesWasl,
@@ -300,7 +315,7 @@ export function useReviewEditorDraft({
 
   async function handleSaveExisting(options?: SaveRowOptions): Promise<boolean> {
     if (!selectedRow) return false
-    const validation = validateEntryDraft(kind, readingText, categoryCode, narrators.length)
+    const validation = validateEntryDraft(kind, readingText, categoryCode, narrators.length, kind === 'farsh' ? variantType : undefined)
     if (!validation.valid) return false
 
     const isFarsh = kind === 'farsh'
@@ -317,6 +332,7 @@ export function useReviewEditorDraft({
             readingText: readingText.trim() || undefined,
             categoryCode: categoryCode || undefined,
             rulingText: rulingText?.trim() || null,
+            subCategory: subCategory ?? null,
           }),
       appliesWasl,
       appliesWaqf,
@@ -352,6 +368,7 @@ export function useReviewEditorDraft({
       readingText,
       variantType,
       rulingText,
+      subCategory,
       description,
       performanceNote,
       appliesWasl,
@@ -364,7 +381,7 @@ export function useReviewEditorDraft({
 
   async function handleCreate(): Promise<boolean> {
     if (!newEntryDraft) return false
-    const validation = validateEntryDraft(kind, readingText, categoryCode, narrators.length)
+    const validation = validateEntryDraft(kind, readingText, categoryCode, narrators.length, kind === 'farsh' ? variantType : undefined)
     if (!validation.valid) return false
 
     const draft: CreateEntryInput = {
@@ -374,6 +391,7 @@ export function useReviewEditorDraft({
       categoryCode: kind === 'usul' && categoryCode ? categoryCode : undefined,
       variantType: kind === 'farsh' && variantType ? normalizeVariantType(variantType) : undefined,
       rulingText: kind === 'usul' ? rulingText?.trim() || null : null,
+      subCategory: kind === 'usul' ? subCategory ?? null : null,
       description: description?.trim() || null,
       performanceNote: performanceNote?.trim() || null,
       narrators,
@@ -551,6 +569,8 @@ export function useReviewEditorDraft({
     setVariantType,
     rulingText,
     setRulingText,
+    subCategory,
+    setSubCategory,
     description,
     setDescription,
     performanceNote,

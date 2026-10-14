@@ -1,5 +1,6 @@
 'use client'
 
+import SubCategoryChips, { type SubCategoryOption } from './SubCategoryChips'
 import { useMemo, useState } from 'react'
 import type { HamzahDetail, NarratorInput } from '../_lib/types'
 import { cn } from '@/lib/cn'
@@ -52,6 +53,9 @@ type Props = {
   rulingText: string | null
   onChangeRulingText(text: string): void
   availableCategories?: CategoryOption[]
+  subCategory?: string | null
+  onChangeSubCategory?(value: string | null): void
+  subCategoryOptions?: readonly SubCategoryOption[]
   appliesWasl?: boolean
   onChangeAppliesWasl?(val: boolean): void
   appliesWaqf?: boolean
@@ -78,6 +82,9 @@ export default function UsulRuleGrid({
   rulingText,
   onChangeRulingText,
   availableCategories,
+  subCategory,
+  onChangeSubCategory,
+  subCategoryOptions,
   appliesWasl,
   onChangeAppliesWasl,
   appliesWaqf,
@@ -218,6 +225,16 @@ export default function UsulRuleGrid({
           </div>
         </div>
       )}
+
+      {onChangeSubCategory ? (
+        <SubCategoryChips
+          categoryCode={selectedCategoryCode}
+          options={subCategoryOptions}
+          value={subCategory ?? null}
+          onChange={onChangeSubCategory}
+          disabled={disabled}
+        />
+      ) : null}
 
       {/* Structured Imalah & Taqlil controls */}
       {isImalahCategory(selectedCategoryCode) ? (

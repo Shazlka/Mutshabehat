@@ -83,6 +83,7 @@ export type CreateEntryPayload = {
   variantType?: string
   categoryCode?: string
   rulingText?: string | null
+  subCategory?: string | null
   notes?: string | null
   narrators: Array<{
     id: string
@@ -155,6 +156,7 @@ const ENTRY_FIELD_KEYS = [
   'variantType',
   'categoryCode',
   'rulingText',
+  'subCategory',
   'appliesWasl',
   'appliesWaqf',
   'hamzahDetail',
@@ -163,7 +165,7 @@ const ENTRY_FIELD_KEYS = [
 export const VALID_VARIANT_TYPE_ENUMS = [
   'orthography', 'vowel', 'consonant', 'hamza', 'madd', 'idgham', 'ishmam',
   'imalah', 'taqlil', 'sakt', 'naql', 'ikhfa', 'ghunnah', 'pronoun',
-  'grammar', 'addition', 'omission', 'word_form', 'other'
+  'grammar', 'addition', 'omission', 'word_form', 'word_change', 'other'
 ] as const
 
 export function toDbVariantType(input: unknown): string {
@@ -199,7 +201,11 @@ export function toDbVariantType(input: unknown): string {
       return 'word_form'
     case 'orthography':
     case 'رسم':
+    case 'خلاف في الرسم':
       return 'orthography'
+    case 'word_change':
+    case 'اختلاف كلمة':
+      return 'word_change'
     case 'hamza':
     case 'hamz':
     case 'همز':
@@ -337,7 +343,9 @@ function validateEntryFields(fields: unknown): ValidationResult<Record<string, u
       if (value.length > MAX_SHORT_CODE_LENGTH) {
         return failure('variantType is too long')
       }
-      (fields as Record<string, unknown>).variantType = toDbVariantType(value)
+      const dbType = toDbVariantType(value)
+      if (dbType === 'other') return failure('variantType must be a specific difference type')
+      ;(fields as Record<string, unknown>).variantType = dbType
       continue
     }
 
@@ -703,9 +711,13 @@ export function validatePostBody(input: unknown): ValidationResult<ValidatedPost
   const rawVariantType = entry.variantType !== undefined ? validateOptionalText(entry.variantType, 'variantType') : undefined
   if (isFailure(rawVariantType)) return rawVariantType
   const variantType = rawVariantType !== undefined ? (rawVariantType ? toDbVariantType(rawVariantType) : undefined) : undefined
+  if (variantType === 'other') return failure('variantType must be a specific difference type')
 
   const rulingText = validateOptionalText(entry.rulingText, 'rulingText')
   if (isFailure(rulingText)) return rulingText
+
+  const subCategory = validateOptionalText(entry.subCategory, 'subCategory')
+  if (isFailure(subCategory)) return subCategory
 
   const notes = validateOptionalText(entry.notes, 'notes')
   if (isFailure(notes)) return notes
@@ -730,6 +742,7 @@ export function validatePostBody(input: unknown): ValidationResult<ValidatedPost
         performanceNote,
         variantType: variantType ?? undefined,
         rulingText,
+        subCategory,
         notes,
       },
     },
@@ -775,6 +788,18 @@ export function mapReviewDatabaseError(message: string): {
         messageAr: 'لا بد أن ينطبق الموضع على الوصل أو الوقف على الأقل',
       },
     }
+  }
+  if (upperMessage.startsWith('QIRAAT_SUBCATEGORY_REQUIRED')) {
+    return {
+      status: 422,
+      body: {
+        error: 'SUBCATEGORY_REQUIRED',
+        messageAr: 'اختر نوع الاختلاف: «أخرى» لم تعد من الخيارات',
+      },
+    }
+  }
+  if (/qiraat_ruling_details_sub_category_fk/i.test(rawMessage)) {
+    return { status: 400, body: { error: 'invalid subCategory for this category' } }
   }
   if (upperMessage.startsWith('QIRAAT_EMPTY_LOCUS')) {
     return {

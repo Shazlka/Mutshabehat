@@ -9,16 +9,24 @@ export interface CanonicalVariantTypeItem {
 }
 
 export const CANONICAL_VARIANT_TYPES: readonly CanonicalVariantTypeItem[] = [
-  { code: 'تشكيل', label: 'تشكيل / حركة', dbEnum: 'vowel' },
+  { code: 'تشكيل', label: 'تشكيل (حركة)', dbEnum: 'vowel' },
   { code: 'حرف', label: 'إبدال حرف', dbEnum: 'consonant' },
-  { code: 'زيادة', label: 'زيادة حرف/كلمة', dbEnum: 'addition' },
-  { code: 'حذف', label: 'حذف حرف/كلمة', dbEnum: 'omission' },
+  { code: 'زيادة', label: 'زيادة حرف أو كلمة', dbEnum: 'addition' },
+  { code: 'حذف', label: 'حذف حرف أو كلمة', dbEnum: 'omission' },
   { code: 'تقديم وتأخير', label: 'تقديم وتأخير', dbEnum: 'word_form' },
-  { code: 'أخرى', label: 'أخرى', dbEnum: 'other' },
+  { code: 'همز', label: 'همز', dbEnum: 'hamza' },
+  { code: 'رسم', label: 'خلاف في الرسم', dbEnum: 'orthography' },
+  { code: 'اختلاف كلمة', label: 'اختلاف كلمة', dbEnum: 'word_change' },
+  { code: 'إمالة', label: 'إمالة', dbEnum: 'imalah' },
+  { code: 'إدغام', label: 'إدغام', dbEnum: 'idgham' },
+  { code: 'سكت', label: 'سكت', dbEnum: 'sakt' },
+  { code: 'نقل', label: 'نقل', dbEnum: 'naql' },
+  { code: 'مد', label: 'مد', dbEnum: 'madd' },
 ] as const
 
+/** The stored value «other» (أخرى) is no longer a choice: it reads as "not chosen" (empty string). */
 export function normalizeVariantType(raw: string | null | undefined): string {
-  if (!raw) return 'other'
+  if (!raw) return ''
   const trimmed = raw.trim().toLowerCase()
   switch (trimmed) {
     case 'vowel':
@@ -89,9 +97,12 @@ export function normalizeVariantType(raw: string | null | undefined): string {
     case 'grammar':
     case 'إعراب':
       return 'grammar'
+    case 'word_change':
+    case 'اختلاف كلمة':
+      return 'word_change'
     case 'other':
     case 'أخرى':
-      return 'other'
+      return ''
     default:
       return trimmed
   }
@@ -165,6 +176,7 @@ export default function FarshFields({
             )
           })}
         </div>
+        {!normSelected ? <p className="mt-1 text-[11px] font-bold text-amber-700">غير مصنَّف — اختر نوعًا</p> : null}
       </div>
 
       {/* Description & Performance Note */}
