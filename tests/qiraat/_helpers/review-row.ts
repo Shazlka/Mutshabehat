@@ -28,6 +28,8 @@ export function row(overrides: Partial<Omit<ReviewRow, 'narrators'>> & { narrato
     options: null,
     notes: null,
     reviewStatus: 'unreviewed',
+    reviewSource: null,
+    reviewNote: null,
     locationReviewStatus: 'unreviewed',
     verificationStatus: 'unverified',
     legacyRef: null,

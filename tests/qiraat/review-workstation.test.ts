@@ -13,6 +13,7 @@ import {
   canonicalKeyForWord,
 } from '../../src/app/mushaf-1441/review/_components/ReviewMushafPane'
 import {
+  approvalKind,
   worstStatus,
   filterReviewRows,
 } from '../../src/app/mushaf-1441/review/_components/statusMeta'
@@ -142,6 +143,8 @@ test('filterReviewRows handles kind and status filtering correctly', () => {
       options: null,
       notes: null,
       reviewStatus: 'unreviewed',
+      reviewSource: null,
+      reviewNote: null,
       locationReviewStatus: 'unreviewed',
       verificationStatus: 'verified',
       legacyRef: null,
@@ -178,6 +181,8 @@ test('filterReviewRows handles kind and status filtering correctly', () => {
       options: null,
       notes: null,
       reviewStatus: 'reviewed',
+      reviewSource: null,
+      reviewNote: null,
       locationReviewStatus: 'reviewed',
       verificationStatus: 'verified',
       legacyRef: null,
@@ -196,6 +201,33 @@ test('filterReviewRows handles kind and status filtering correctly', () => {
   assert.equal(filterReviewRows(dummyRows, 'reviewed', 'all').length, 1)
   assert.equal(filterReviewRows(dummyRows, 'all', 'farsh').length, 1)
   assert.equal(filterReviewRows(dummyRows, 'all', 'usul').length, 1)
+
+  const testRows = [
+    { ...dummyRows[0], entryId: 'r1', reviewStatus: 'reviewed', reviewSource: 'auto:nquran' },
+    { ...dummyRows[0], entryId: 'r2', reviewStatus: 'reviewed', reviewSource: null },
+    { ...dummyRows[0], entryId: 'r3', reviewStatus: 'unreviewed', reviewSource: null },
+    { ...dummyRows[0], entryId: 'r4', reviewStatus: 'flagged', reviewSource: null },
+  ] as ReviewRow[]
+
+  assert.equal(filterReviewRows(testRows, 'all', 'all').length, 4)
+  assert.equal(filterReviewRows(testRows, 'auto', 'all').length, 1)
+  assert.equal(filterReviewRows(testRows, 'auto', 'all')[0].entryId, 'r1')
+  assert.equal(filterReviewRows(testRows, 'manual', 'all').length, 1)
+  assert.equal(filterReviewRows(testRows, 'manual', 'all')[0].entryId, 'r2')
+  assert.equal(filterReviewRows(testRows, 'needs-review', 'all').length, 2)
+})
+
+test('approvalKind returns manual, auto, or none', () => {
+  assert.equal(approvalKind({ reviewStatus: 'reviewed', reviewSource: 'auto:nquran' }), 'auto')
+  assert.equal(approvalKind({ reviewStatus: 'reviewed', reviewSource: 'auto:nquran+book' }), 'auto')
+  assert.equal(approvalKind({ reviewStatus: 'reviewed', reviewSource: null }), 'manual')
+  assert.equal(approvalKind({ reviewStatus: 'reviewed', reviewSource: undefined }), 'manual')
+  assert.equal(approvalKind({ reviewStatus: 'unreviewed', reviewSource: 'auto:nquran' }), 'none')
+  assert.equal(approvalKind({ reviewStatus: 'unreviewed', reviewSource: null }), 'none')
+  assert.equal(approvalKind({ reviewStatus: 'flagged', reviewSource: 'auto:nquran' }), 'none')
+  assert.equal(approvalKind({ reviewStatus: 'flagged', reviewSource: null }), 'none')
+  assert.equal(approvalKind(null), 'none')
+  assert.equal(approvalKind(undefined), 'none')
 })
 
 test('isImalahCategory recognizes IMALAH_TAQLIL correctly', () => {

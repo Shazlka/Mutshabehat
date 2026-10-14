@@ -64,6 +64,7 @@ def main(folder: str, out: str):
     report = []
 
     file_recs = []   # (key_pos, key_word, rec, hafs_first_word) for the file being read
+    flat = []        # every record once, with its source file and row number
 
     def add(key_pos, key_word, rec, hafs_first=""):
         file_recs.append((key_pos, key_word, rec, hafs_first))
@@ -80,6 +81,7 @@ def main(folder: str, out: str):
                 ok += 1 if w and skeleton(w) == skeleton(hafs_first) else 0
         use_positions = checked == 0 or ok / checked >= 0.9
         for key_pos, key_word, rec, _ in file_recs:
+            flat.append({**rec, "positions": [k for k in key_pos] if use_positions else [], "hafsWords": sorted({k.split(":", 2)[2] for k in key_word})})
             if use_positions:
                 for k in key_pos:
                     by_position[k].append(rec)
@@ -110,7 +112,8 @@ def main(folder: str, out: str):
                     continue
                 kind = "farsh" if r["نوع_السجل"].startswith("فرش") else "usul"
                 rec = {"n": ns, "kind": kind, "type": r["نوع_الخلاف_أو_الباب"], "text": r.get(reader_col, ""),
-                       "explain": r.get("البيان_والشرح", ""), "note": r.get("ملاحظة_الأداء", ""), "wajh": r.get("رقم_الوجه", ""), "src": name}
+                       "explain": r.get("البيان_والشرح", ""), "note": r.get("ملاحظة_الأداء", ""), "wajh": r.get("رقم_الوجه", ""), "src": name,
+                       "surah": s, "ayah": a, "w0": ws[0], "w1": ws[-1], "hafs": r["نص_حفص"], "page": r.get("رقم_الصفحة_بالمصحف") or r.get("رقم_الصفحة") or "", "srcPage": r.get("صفحة_المصدر") or r.get("صفحة_المصدر_pdf") or "", "row": len(file_recs) + 2}
                 add([f"{s}:{a}:{w}" for w in ws], [f"{s}:{a}:{skeleton(t)}" for t in r["نص_حفص"].split()], rec, (r["نص_حفص"].split() or [""])[0])
                 used += 1
         elif "readingIds" in cols and "startToken" in cols:           # Ibn Kathir export
@@ -126,7 +129,8 @@ def main(folder: str, out: str):
                     continue
                 kind = "farsh" if r["recordType"].upper().startswith("VAR") else "usul"
                 rec = {"n": ns, "kind": kind, "type": r.get("category") or r.get("differenceType", ""), "text": r.get("variantText", ""),
-                       "explain": r.get("description", ""), "note": "", "wajh": "", "src": name}
+                       "explain": r.get("description", ""), "note": "", "wajh": "", "src": name,
+                       "surah": s, "ayah": a, "w0": w0, "w1": w1, "hafs": r["hafsText"], "page": r.get("pageNumber", ""), "srcPage": r.get("pdfPage", ""), "row": len(file_recs) + 2}
                 add([f"{s}:{a}:{w}" for w in range(w0, w1 + 1)], [f"{s}:{a}:{skeleton(t)}" for t in r["hafsText"].split()], rec, (r["hafsText"].split() or [""])[0])
                 used += 1
         elif "رواية ورش" in cols:                                      # warsh.csv: no word position
@@ -136,7 +140,8 @@ def main(folder: str, out: str):
                 except (ValueError, KeyError):
                     skipped += 1
                     continue
-                rec = {"n": ["Q01-R02"], "kind": "farsh", "type": r["نوع الاختلاف"], "text": r["رواية ورش"], "explain": r["البيان والتوجيه"], "note": "", "wajh": "", "src": name}
+                rec = {"n": ["Q01-R02"], "kind": "farsh", "type": r["نوع الاختلاف"], "text": r["رواية ورش"], "explain": r["البيان والتوجيه"], "note": "", "wajh": "", "src": name,
+                       "surah": s, "ayah": a, "w0": None, "w1": None, "hafs": r["قراءة حفص"], "page": r.get("صفحة المصحف", ""), "srcPage": "", "row": len(file_recs) + 2}
                 add([], [f"{s}:{a}:{skeleton(t)}" for t in r["قراءة حفص"].split()], rec)
                 used += 1
         else:
@@ -147,6 +152,9 @@ def main(folder: str, out: str):
 
     json.dump({"byPosition": by_position, "byWord": by_word, "covers": sorted(covers), "report": report},
               open(out, "w"), ensure_ascii=False)
+    flat_out = out.replace(".json", "-records.json")
+    json.dump(flat, open(flat_out, "w"), ensure_ascii=False)
+    print("flat records:", len(flat), "->", flat_out)
     for r in report:
         print(r)
     print("positions:", len(by_position), "words:", len(by_word), "narrators covered:", sorted(covers))

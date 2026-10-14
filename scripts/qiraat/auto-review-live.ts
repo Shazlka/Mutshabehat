@@ -15,7 +15,7 @@ const pad = (n: number, w = 3) => String(n).padStart(w, '0')
 const readJson = <T,>(p: string): T => JSON.parse(readFileSync(p, 'utf8')) as T
 
 const MARKS = /[ً-ٰٟۖ-ۭـ]/g
-const skeleton = (s: string) => s.replace(MARKS, '').replace(/[ٱأإآ]/g, 'ا').replace(/ى/g, 'ي').replace(/ة/g, 'ه').replace(/\s+/g, '')
+export const skeleton = (s: string) => s.replace(MARKS, '').replace(/[ٱأإآ]/g, 'ا').replace(/ى/g, 'ي').replace(/ة/g, 'ه').replace(/\s+/g, '')
 
 export function farshSubCategory(hafs: string, variant: string): string {
   const a = skeleton(hafs), b = skeleton(variant)
@@ -105,7 +105,7 @@ function s2Records(row: Row, narrator: string): S2Record[] {
  *  something else is not a confirmation (it is reported as a conflict by the caller). */
 // The books and the database name the same rule differently (a book's «IMALAH» row is the database's
 // IMALAH_TAQLIL ruling). Two names agree when they belong to the same family.
-const FAMILIES: string[][] = [
+export const FAMILIES: string[][] = [
   ['IMALAH', 'IMALAH_TAQLIL', 'USUL_IMALAH', 'TAQLIL'],
   ['MIM_JAM', 'USUL_MIM_JAM'],
   ['SILAT_HA', 'HA_KINAYAH', 'SILAH'],
@@ -117,7 +117,7 @@ const FAMILIES: string[][] = [
   ['WAQF_RASM', 'WAQF_MARSOOM', 'WAQF_HAMZA'],
   ['TARQIQ_RA', 'TAGHLIZ_LAM'],
 ]
-function sameFamily(a: string, b: string): boolean {
+export function sameFamily(a: string, b: string): boolean {
   const x = a.toUpperCase(), y = b.toUpperCase()
   return x === y || FAMILIES.some((f) => f.includes(x) && f.includes(y))
 }

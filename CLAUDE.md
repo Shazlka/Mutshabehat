@@ -38,6 +38,12 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-10-14 — Qiraat Phase 2 explanations: every sentence attributed to its source reader group
+- **Review fix:** explanation composition now emits one line per matching nquran group or book record as `«القراء: النص»`, preserving nquran's exact reader labels. It deduplicates only an identical `(label, sentence)` pair, so similar wording for different reader groups is never merged.
+- **Coverage and cap:** JSON outputs mark entries whose emitted items do not cover all entry narrators with `partial: true`; the 600-character limit drops whole trailing items and marks `truncated: true`. A lone matching group for a lone narrator may omit its label. Provenance remains the final line, existing non-empty text remains protected, and generated SQL remains additive/idempotent.
+- **Real-file dry run:** 24,135 entries receive text, 4,270 are partial, 25 truncated, and 10,311 queued/skipped. No database was read or written.
+- **Tests:** focused explanation suite 13/13 and the full `test:qiraat:review` suite pass. **DB migration:** none.
+
 ## 2026-10-13 — Automatic Qiraat review: tiers A1/A2 approval scripts and review_source migration (not applied to any database yet)
 - **Owner request:** automatic approval «معتمد آليًا» for tiers A1 and A2 (web repo, scripts + SQL only).
 - **Migration & rollback:** `supabase/migrations/20261013120000_qiraat_review_source.sql` and `supabase/rollbacks/20261013120000_qiraat_review_source.down.sql` (idempotent; adds `review_source` and `review_note` columns to `qiraat_entries` with partial index on `review_source WHERE review_source IS NOT NULL`). Not applied to any database yet.
@@ -46,6 +52,14 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 - **Extended reviewer:** `scripts/qiraat/auto-review-live.ts` extended to accept optional `--s2 <path>` (default `artifacts/s2-index.json`) and prints per-tier counts per page while preserving existing summary and output shape.
 - **Tests:** `tests/qiraat/auto-review.test.ts` added to `test:qiraat:review` in `package.json` covering farsh sub-category derivation across all codes, rejection of B/C/skip/A-S2, quote escaping in notes, and update idempotency.
 - **Files:** `supabase/migrations/20261013120000_qiraat_review_source.sql`, `supabase/rollbacks/20261013120000_qiraat_review_source.down.sql`, `scripts/qiraat/export-live-rows.sh`, `scripts/qiraat/auto-review-apply.ts`, `scripts/qiraat/auto-review-live.ts`, `tests/qiraat/auto-review.test.ts`, `package.json`, `CHANGELOG.md`, `CLAUDE.md`.
+
+## 2026-10-14 — Full import, phases 1–2: gap analysis and Arabic explanations applied to the live database
+- **Owner request (`/goal`):** import everything the sources hold (nquran.com + all per-reader CSV/JSON books) and the full Arabic explanation; no wrong entries. Plan and gates: `docs/qiraat/FULL_IMPORT_PLAN.md`; work split between Codex (`gpt-5.6-sol`, medium effort, files only) and Agy, reviewed and run by the orchestrator.
+- **Phase 1 (Codex), `scripts/qiraat/{match-sources,import-gap-analysis}.ts`:** every book record (34,475) and nquran group (57,792 non-baseline) classified against the live entries: books MATCHED 15,767 / NARRATORS_MISSING 138 / TEXT_CONFLICT 877 / MISSING 17,693; nquran MATCHED 46,582 / NARRATORS_MISSING 450 / MISSING 10,760. Spot-checks found no wrong MATCHED (25/25); the TEXT_CONFLICT rows are spelling-convention differences. Many MISSING book rows are OCR-noisy extractions (garbled words, a Hafs word that does not match the position), so they are NOT imported blindly.
+- **Phase 2 (Codex), `scripts/qiraat/explanations*.ts`:** 24,135 entries (24,124 rulings + 11 farsh) got a full Arabic explanation composed only from source sentences, one line per reader group «<readers as written by the source>: <sentence>» plus `[المصدر: …]`, filled only where the field was empty. A first version merged sentences of different reader groups (it told Ibn Kathir and Abu Jafar «بخلف عنه»): caught in review, fixed and regression-tested before anything was applied. Independent checks: 42,153 labelled lines checked, none about a narrator the entry does not have; every nquran sentence found verbatim in its source file.
+- **Applied to live (Mac Mini):** backup `pre-explanations-20261014T…dump`; rehearsed on the restored copy; gate identical except the intended counts (empty ruling explanations 59 → 17, variants 25 → 14); human-approval fingerprint, violations (679) and `quran_words` checksum unchanged. SQL kept in `docs/qiraat/applied-explanations-2026-10-14.sql`.
+- **Not done yet:** phases 3–7 (sub-category refinement, corroborated missing farsh entries, approval roll-out beyond pages 19–28, editor badge, iOS refresh).
+- **Files:** `scripts/qiraat/{match-sources,import-gap-analysis,explanations,explanations-sql}.ts`, `scripts/qiraat/{gate.sh,gate.sql,export-live-full.sql,build-s2-index.py}`, tests `tests/qiraat/{match-sources,explanations}.test.ts`, docs listed above. **DB migration:** none.
 
 ## 2026-10-14 — Automatic review: all readers' books added as the second source (pages 19–28 re-judged and corrected on live)
 - **Owner request:** use the new per-reader CSV/JSON extractions in the iCloud folder `القراءات العشر` as the second source beside nquran.com.
