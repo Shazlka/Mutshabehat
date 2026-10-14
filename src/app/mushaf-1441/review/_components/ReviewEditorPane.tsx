@@ -17,7 +17,7 @@ import UsulRuleGrid, { FALLBACK_USUL_CATEGORIES } from './UsulRuleGrid'
 import { CANONICAL_VARIANT_TYPES, normalizeVariantType } from './FarshFields'
 import { isHamzahCategory } from './HamzahDetailFields'
 import { isImalahCategory } from './ImalahDetailFields'
-import { STATUS_LABEL_AR, KIND_LABEL_AR } from './statusMeta'
+import { STATUS_LABEL_AR, KIND_LABEL_AR, approvalKind } from './statusMeta'
 import { cn } from '@/lib/cn'
 import { normalizeArabic } from '@/lib/arabic'
 import { describeNarratorGroup } from './narratorDisplay'
@@ -364,16 +364,26 @@ export default function ReviewEditorPane({
           </div>
 
           {selectedRow ? (
-            <span
-              className={cn(
-                'rounded-full px-2 py-0.2 text-[11px] font-bold',
-                selectedRow.reviewStatus === 'reviewed' && 'bg-green-100 text-green-800',
-                selectedRow.reviewStatus === 'unreviewed' && 'bg-amber-100 text-amber-800',
-                selectedRow.reviewStatus === 'flagged' && 'bg-red-100 text-red-800'
-              )}
-            >
-              {STATUS_LABEL_AR[selectedRow.reviewStatus]}
-            </span>
+            approvalKind(selectedRow) === 'auto' ? (
+              <span
+                className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-slate-100 px-2 py-0.2 text-[11px] font-bold text-slate-700"
+                title={selectedRow.reviewNote ?? 'معتمد آليًا'}
+              >
+                <span aria-hidden="true">⚙</span>
+                <span>معتمد آليًا</span>
+              </span>
+            ) : (
+              <span
+                className={cn(
+                  'rounded-full px-2 py-0.2 text-[11px] font-bold',
+                  selectedRow.reviewStatus === 'reviewed' && 'bg-green-100 text-green-800',
+                  selectedRow.reviewStatus === 'unreviewed' && 'bg-amber-100 text-amber-800',
+                  selectedRow.reviewStatus === 'flagged' && 'bg-red-100 text-red-800'
+                )}
+              >
+                {STATUS_LABEL_AR[selectedRow.reviewStatus]}
+              </span>
+            )
           ) : (
             <span className="rounded-full bg-blue-100 px-2 py-0.2 text-[11px] font-bold text-blue-800">
               + موضع جديد
@@ -387,17 +397,31 @@ export default function ReviewEditorPane({
             <button
               type="button"
               onClick={() => (isDirty ? void handleSaveExisting({ approve: true }) : onConfirmRow(selectedRow))}
-              title={isDirty ? 'يحفظ تعديلاتك الحالية ثم يعتمد الوجه' : undefined}
+              title={
+                isDirty
+                  ? 'يحفظ تعديلاتك الحالية ثم يعتمد الوجه'
+                  : selectedRow.reviewSource
+                    ? 'اعتماد يدوي (يحوّل الاعتماد الآلي إلى اعتماد بشري)'
+                    : undefined
+              }
               disabled={isSaving}
               className={cn(
                 'flex items-center gap-1 rounded px-2 py-0.5 text-xs font-bold transition-all shadow-xs disabled:opacity-50 cursor-pointer',
-                selectedRow.reviewStatus === 'reviewed'
+                selectedRow.reviewStatus === 'reviewed' && !selectedRow.reviewSource
                   ? 'bg-green-700 text-white ring-2 ring-green-500/50'
                   : 'bg-green-600 hover:bg-green-700 text-white'
               )}
             >
               <span>✓</span>
-              <span>{isDirty ? 'حفظ واعتماد' : selectedRow.reviewStatus === 'reviewed' ? 'مُعتمد' : 'اعتماد'}</span>
+              <span>
+                {isDirty
+                  ? 'حفظ واعتماد'
+                  : selectedRow.reviewSource
+                    ? 'اعتماد يدوي'
+                    : selectedRow.reviewStatus === 'reviewed'
+                      ? 'مُعتمد'
+                      : 'اعتماد'}
+              </span>
             </button>
 
             <button
@@ -524,11 +548,29 @@ export default function ReviewEditorPane({
                         ? 'border border-[var(--color-primary)] bg-[var(--color-primary)] text-white shadow-xs'
                         : 'border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-soft)] hover:bg-[var(--color-surface-2)]'
                     )}
-                    title={narratorNames}
+                    title={
+                      approvalKind(row) === 'auto'
+                        ? (row.reviewNote ? `${narratorNames} — معتمد آليًا: ${row.reviewNote}` : `${narratorNames} — معتمد آليًا`)
+                        : narratorNames
+                    }
                   >
                     <span>{idx + 1}. </span>
                     <span>{row.kind === 'usul' ? row.categoryNameAr ?? 'أصل' : row.readingText}</span>
                     <NarratorBadges items={narratorDisplay} />
+                    {approvalKind(row) === 'auto' ? (
+                      <span
+                        className={cn(
+                          'inline-flex items-center gap-0.5 rounded px-1 py-0 text-[10px] font-bold',
+                          isSelected && !multiSelectMode
+                            ? 'bg-white/20 text-white'
+                            : 'bg-slate-100 text-slate-700 border border-slate-300'
+                        )}
+                        title={row.reviewNote ?? 'معتمد آليًا'}
+                      >
+                        <span aria-hidden="true">⚙</span>
+                        <span>معتمد آليًا</span>
+                      </span>
+                    ) : null}
                   </button>
                 </span>
               )

@@ -75,6 +75,8 @@ export type ReviewRow = {
   options: string[] | null
   notes: string | null
   reviewStatus: ReviewStatus
+  reviewSource: string | null
+  reviewNote: string | null
   locationReviewStatus: ReviewStatus
   verificationStatus: string
   legacyRef: string | null

@@ -28,6 +28,7 @@ import ReviewStatsBar from './ReviewStatsBar'
 import ReviewEditorPane, { type WordMeta } from './ReviewEditorPane'
 import type { SaveRowOptions } from './useReviewEditorDraft'
 import ReviewNav from './ReviewNav'
+import { filterReviewRows, type StatusFilter } from './statusMeta'
 import MobileReviewMushafView from './MobileReviewMushafView'
 import MobileReviewEditorView from './MobileReviewEditorView'
 import ReviewSaveStatusBar, { type SaveFailure } from './ReviewSaveStatusBar'
@@ -203,6 +204,8 @@ function buildTempRow(tempId: string, draft: CreateEntryInput, page: ReviewPage)
     options: null,
     notes: draft.notes ?? null,
     reviewStatus: 'unreviewed',
+    reviewSource: null,
+    reviewNote: null,
     locationReviewStatus: 'unreviewed',
     verificationStatus: 'REVIEWED',
     legacyRef: null,
@@ -245,6 +248,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
   const [pageError, setPageError] = useState<string | null>(null)
 
   const [overview, setOverview] = useState<ReviewOverview | null>(null)
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>('all')
 
   // Latest page/pageNumber for background save jobs, which outlive the render that started them.
   const pageRef = useRef<ReviewPage | null>(null)
@@ -430,7 +434,11 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
   }
 
   function applyRowUpdate(row: ReviewRow) {
-    upsertRow(row)
+    upsertRow({
+      ...row,
+      reviewSource: row.reviewSource ?? null,
+      reviewNote: row.reviewNote ?? null,
+    })
   }
 
   function removeRow(entryId: string) {
@@ -518,19 +526,23 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
   // Active rows for the currently selected word
   const activeRowsForWord = useMemo(() => {
     if (!page || !selectedWordKey) return []
-    return page.rows.filter(
+    const covering = page.rows.filter(
       (row) => !row.deleted && row.startKey <= selectedWordKey && selectedWordKey <= row.endKey
     )
-  }, [page, selectedWordKey])
+    return filterReviewRows(covering, statusFilter, 'all')
+  }, [page, selectedWordKey, statusFilter])
 
   // Currently selected row
   const selectedRow = useMemo(() => {
     if (!page) return null
     if (selectedRowId) {
-      return page.rows.find((row) => row.entryId === selectedRowId && !row.deleted) ?? null
+      const match = page.rows.find((row) => row.entryId === selectedRowId && !row.deleted)
+      if (match && (statusFilter === 'all' || filterReviewRows([match], statusFilter, 'all').length > 0)) {
+        return match
+      }
     }
     return activeRowsForWord[0] ?? null
-  }, [page, selectedRowId, activeRowsForWord])
+  }, [page, selectedRowId, activeRowsForWord, statusFilter])
 
   // Handle word selection on the authentic Mushaf
   const handleSelectWord = useCallback(
@@ -1110,6 +1122,8 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
               page={page}
               overview={overview}
               historyOpen={historyOpen}
+              statusFilter={statusFilter}
+              onStatusFilterChange={setStatusFilter}
               onGoToPage={goToPage}
               onToggleHistory={() => setHistoryOpen((open) => !open)}
             />
@@ -1122,6 +1136,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
                   selectedWordKey={selectedWordKey}
                   selectedRow={selectedRow}
                   hoveredRowId={hoveredRowId}
+                  statusFilter={statusFilter}
                   onSelectWord={handleSelectWord}
                   onHoverWord={(rowIds) => setHoveredRowId(rowIds?.[0] ?? null)}
                   spanEndKey={spanEndKey}
@@ -1180,6 +1195,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
                 selectedWordKey={selectedWordKey}
                 selectedRow={selectedRow}
                 hoveredRowId={hoveredRowId}
+                statusFilter={statusFilter}
                 onSelectWord={handleSelectWord}
                 onHoverWord={(rowIds) => setHoveredRowId(rowIds?.[0] ?? null)}
                 onGoToPage={goToPage}

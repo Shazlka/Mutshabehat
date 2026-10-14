@@ -5,16 +5,26 @@
 
 import { useState, type FormEvent } from 'react'
 import type { ReviewOverview, ReviewPage } from '../_lib/types'
+import type { StatusFilter } from './statusMeta'
 import { cn } from '@/lib/cn'
 
 const MIN_PAGE = 1
 const MAX_PAGE = 604
+
+const FILTER_OPTIONS: { id: StatusFilter; label: string }[] = [
+  { id: 'all', label: 'الكل' },
+  { id: 'manual', label: 'معتمد يدويًا' },
+  { id: 'auto', label: 'معتمد آليًا' },
+  { id: 'needs-review', label: 'يحتاج مراجعة' },
+]
 
 type Props = {
   pageNumber: number
   page: ReviewPage | null
   overview: ReviewOverview | null
   historyOpen: boolean
+  statusFilter?: StatusFilter
+  onStatusFilterChange?(filter: StatusFilter): void
   onGoToPage(page: number): void
   onToggleHistory(): void
 }
@@ -28,7 +38,16 @@ function findNextPageWith(overview: ReviewOverview | null, current: number, key:
   return wrapped ? wrapped.page : null
 }
 
-export default function ReviewNav({ pageNumber, page, overview, historyOpen, onGoToPage, onToggleHistory }: Props) {
+export default function ReviewNav({
+  pageNumber,
+  page,
+  overview,
+  historyOpen,
+  statusFilter = 'all',
+  onStatusFilterChange,
+  onGoToPage,
+  onToggleHistory,
+}: Props) {
   const [jumpValue, setJumpValue] = useState(String(pageNumber))
 
   function submitJump(event: FormEvent) {
@@ -101,6 +120,34 @@ export default function ReviewNav({ pageNumber, page, overview, historyOpen, onG
           الصفحة التالية غير المراجَعة
         </button>
       </div>
+
+      {onStatusFilterChange ? (
+        <div
+          role="group"
+          aria-label="تصفية الحالات"
+          className="flex items-center rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-2)]/60 p-0.5 text-xs font-bold"
+        >
+          {FILTER_OPTIONS.map((opt) => {
+            const active = statusFilter === opt.id
+            return (
+              <button
+                key={opt.id}
+                type="button"
+                aria-pressed={active}
+                onClick={() => onStatusFilterChange(opt.id)}
+                className={cn(
+                  'min-h-7 rounded-md px-2.5 py-1 text-xs font-bold transition-all cursor-pointer',
+                  active
+                    ? 'bg-[var(--color-surface)] text-[var(--color-ink)] shadow-2xs border border-[var(--color-border)]/50'
+                    : 'text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]'
+                )}
+              >
+                {opt.label}
+              </button>
+            )
+          })}
+        </div>
+      ) : null}
 
       {page ? (
         <p className="text-xs text-[var(--color-ink-muted)]" aria-live="polite">

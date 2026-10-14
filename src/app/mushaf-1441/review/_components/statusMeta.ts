@@ -4,18 +4,30 @@
 import type { CSSProperties } from 'react'
 import type { ReviewRow, ReviewStatus } from '../_lib/types'
 
-export type StatusFilter = 'all' | ReviewStatus | 'deleted'
+export type ApprovalKind = 'manual' | 'auto' | 'none'
+
+export function approvalKind(
+  row: { reviewStatus?: string | null; reviewSource?: string | null } | null | undefined
+): ApprovalKind {
+  if (!row || row.reviewStatus !== 'reviewed') return 'none'
+  return row.reviewSource ? 'auto' : 'manual'
+}
+
+export type StatusFilter = 'all' | 'manual' | 'auto' | 'needs-review' | ReviewStatus | 'deleted'
 export type KindFilter = 'all' | 'farsh' | 'usul'
 
-// Shared between VariantTable (renders the filtered list) and ReviewApp (keyboard j/k needs the
-// exact same order/membership the table shows).
+// Shared between review workstation (renders the filtered list) and ReviewApp (keyboard navigation
+// needs the exact same order/membership shown).
 export function filterReviewRows(rows: ReviewRow[], statusFilter: StatusFilter, kindFilter: KindFilter): ReviewRow[] {
   return rows.filter((row) => {
     if (statusFilter === 'deleted') return row.deleted
     if (row.deleted) return false
     if (kindFilter !== 'all' && row.kind !== kindFilter) return false
-    if (statusFilter !== 'all' && row.reviewStatus !== statusFilter) return false
-    return true
+    if (statusFilter === 'all') return true
+    if (statusFilter === 'manual') return approvalKind(row) === 'manual'
+    if (statusFilter === 'auto') return approvalKind(row) === 'auto'
+    if (statusFilter === 'needs-review') return row.reviewStatus === 'unreviewed' || row.reviewStatus === 'flagged'
+    return row.reviewStatus === statusFilter
   })
 }
 

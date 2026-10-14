@@ -14,7 +14,7 @@ import ReaderNarratorSelector from './ReaderNarratorSelector'
 import UsulRuleGrid from './UsulRuleGrid'
 import FarshFields from './FarshFields'
 import { describeNarratorGroup } from './narratorDisplay'
-import { STATUS_LABEL_AR } from './statusMeta'
+import { STATUS_LABEL_AR, approvalKind } from './statusMeta'
 import { useReviewEditorDraft, type SaveRowOptions, type WordMeta } from './useReviewEditorDraft'
 import { NarratorBadges } from './NarratorBadges'
 import { labelForRow } from './facesSummary'
@@ -235,30 +235,55 @@ export default function MobileReviewEditorView({
           <div className="flex items-center gap-1.5 flex-wrap">
             {selectedRow ? (
               <>
-                <span
-                  className={cn(
-                    'rounded-full px-2.5 py-0.5 text-[11px] font-bold',
-                    selectedRow.reviewStatus === 'reviewed' && 'bg-green-100 text-green-800',
-                    selectedRow.reviewStatus === 'unreviewed' && 'bg-amber-100 text-amber-800',
-                    selectedRow.reviewStatus === 'flagged' && 'bg-red-100 text-red-800'
-                  )}
-                >
-                  {STATUS_LABEL_AR[selectedRow.reviewStatus]}
-                </span>
+                {approvalKind(selectedRow) === 'auto' ? (
+                  <span
+                    className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-slate-100 px-2.5 py-0.5 text-[11px] font-bold text-slate-700"
+                    title={selectedRow.reviewNote ?? 'معتمد آليًا'}
+                  >
+                    <span aria-hidden="true">⚙</span>
+                    <span>معتمد آليًا</span>
+                  </span>
+                ) : (
+                  <span
+                    className={cn(
+                      'rounded-full px-2.5 py-0.5 text-[11px] font-bold',
+                      selectedRow.reviewStatus === 'reviewed' && 'bg-green-100 text-green-800',
+                      selectedRow.reviewStatus === 'unreviewed' && 'bg-amber-100 text-amber-800',
+                      selectedRow.reviewStatus === 'flagged' && 'bg-red-100 text-red-800'
+                    )}
+                  >
+                    {STATUS_LABEL_AR[selectedRow.reviewStatus]}
+                  </span>
+                )}
 
                 <button
                   type="button"
                   onClick={() => (isDirty ? void handleSaveExisting({ approve: true }) : onConfirmRow(selectedRow))}
+                  title={
+                    isDirty
+                      ? 'يحفظ تعديلاتك الحالية ثم يعتمد الوجه'
+                      : selectedRow.reviewSource
+                        ? 'اعتماد يدوي (يحوّل الاعتماد الآلي إلى اعتماد بشري)'
+                        : undefined
+                  }
                   disabled={isSaving}
                   className={cn(
                     'flex min-h-9 items-center gap-1 rounded-lg px-2.5 text-xs font-bold transition-all shadow-xs disabled:opacity-50 active:scale-95',
-                    selectedRow.reviewStatus === 'reviewed'
+                    selectedRow.reviewStatus === 'reviewed' && !selectedRow.reviewSource
                       ? 'bg-green-700 text-white ring-2 ring-green-500/50'
                       : 'bg-green-600 hover:bg-green-700 text-white'
                   )}
                 >
                   <span>✓</span>
-                  <span>{isDirty ? 'حفظ واعتماد' : selectedRow.reviewStatus === 'reviewed' ? 'مُعتمد' : 'اعتماد'}</span>
+                  <span>
+                    {isDirty
+                      ? 'حفظ واعتماد'
+                      : selectedRow.reviewSource
+                        ? 'اعتماد يدوي'
+                        : selectedRow.reviewStatus === 'reviewed'
+                          ? 'مُعتمد'
+                          : 'اعتماد'}
+                  </span>
                 </button>
 
                 <button
@@ -425,16 +450,26 @@ export default function MobileReviewEditorView({
                     </div>
 
                     <div className="flex shrink-0 items-center gap-1.5">
-                      <span
-                        className={cn(
-                          'rounded-full px-2 py-0.2 text-[11px] font-bold',
-                          row.reviewStatus === 'reviewed' && 'bg-green-100 text-green-800',
-                          row.reviewStatus === 'unreviewed' && 'bg-amber-100 text-amber-800',
-                          row.reviewStatus === 'flagged' && 'bg-red-100 text-red-800'
-                        )}
-                      >
-                        {STATUS_LABEL_AR[row.reviewStatus]}
-                      </span>
+                      {approvalKind(row) === 'auto' ? (
+                        <span
+                          className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-slate-100 px-2 py-0.2 text-[11px] font-bold text-slate-700"
+                          title={row.reviewNote ?? 'معتمد آليًا'}
+                        >
+                          <span aria-hidden="true">⚙</span>
+                          <span>معتمد آليًا</span>
+                        </span>
+                      ) : (
+                        <span
+                          className={cn(
+                            'rounded-full px-2 py-0.2 text-[11px] font-bold',
+                            row.reviewStatus === 'reviewed' && 'bg-green-100 text-green-800',
+                            row.reviewStatus === 'unreviewed' && 'bg-amber-100 text-amber-800',
+                            row.reviewStatus === 'flagged' && 'bg-red-100 text-red-800'
+                          )}
+                        >
+                          {STATUS_LABEL_AR[row.reviewStatus]}
+                        </span>
+                      )}
                     </div>
                   </div>
                 )

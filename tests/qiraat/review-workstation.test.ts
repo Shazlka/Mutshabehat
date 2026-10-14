@@ -533,6 +533,8 @@ function makeRow(overrides: Partial<ReviewRow>): ReviewRow {
     options: null,
     notes: null,
     reviewStatus: 'unreviewed',
+    reviewSource: null,
+    reviewNote: null,
     locationReviewStatus: 'unreviewed',
     verificationStatus: 'REVIEWED',
     legacyRef: null,

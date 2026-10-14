@@ -3,7 +3,10 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { ReviewPage, ReviewRow } from '../_lib/types'
 import {
+  approvalKind,
+  filterReviewRows,
   worstStatus,
+  type StatusFilter,
 } from './statusMeta'
 import {
   getMushaf1441PageMetadata,
@@ -30,6 +33,7 @@ type Props = {
   selectedWordKey: string | null
   selectedRow: ReviewRow | null
   hoveredRowId: string | null
+  statusFilter?: StatusFilter
   // `extend` is true on a Ctrl/Cmd-click (desktop) -- or, on mobile, when `extendNextSelection`
   // ("ربط بالكلمة التالية") is armed -- meaning "extend the current selection into a span
   // ending at this word" rather than "select this word instead".
@@ -74,6 +78,7 @@ export default function ReviewMushafPane({
   selectedWordKey,
   selectedRow,
   hoveredRowId,
+  statusFilter = 'all',
   onSelectWord,
   onHoverWord,
   isMobile = false,
@@ -171,14 +176,16 @@ export default function ReviewMushafPane({
   // Build covering rows map for fast word lookup: key -> ReviewRow[]
   const wordRowsMap = useMemo(() => {
     const map = new Map<string, ReviewRow[]>()
-    const rows = page.rows.filter((row) => !row.deleted)
+    const rows = statusFilter
+      ? filterReviewRows(page.rows, statusFilter, 'all')
+      : page.rows.filter((row) => !row.deleted)
     // Check all words present in page
     for (const word of page.words) {
       const covering = rows.filter((row) => row.startKey <= word.key && word.key <= row.endKey)
       if (covering.length) map.set(word.key, covering)
     }
     return map
-  }, [page.rows, page.words])
+  }, [page.rows, page.words, statusFilter])
 
   // Fallback lines from page.words if mushafPage not yet loaded
   const fallbackLines = useMemo(() => {
@@ -405,9 +412,18 @@ export default function ReviewMushafPane({
                       let textStyle: string | undefined = undefined
                       let ringStyle: string | undefined = undefined
 
+                      const isAutoReviewed = status === 'reviewed' && covering?.every((r) => approvalKind(r) === 'auto')
+                      const autoNote = isAutoReviewed ? covering?.find((r) => r.reviewNote)?.reviewNote : null
+                      const autoTooltip = isAutoReviewed ? (autoNote ? `معتمد آليًا: ${autoNote}` : 'معتمد آليًا') : null
+
                       if (status === 'reviewed') {
-                        bgStyle = 'rgba(34, 197, 94, 0.16)'
-                        textStyle = '#15803d'
+                        if (isAutoReviewed) {
+                          bgStyle = 'rgba(100, 116, 139, 0.18)'
+                          textStyle = '#334155'
+                        } else {
+                          bgStyle = 'rgba(34, 197, 94, 0.16)'
+                          textStyle = '#15803d'
+                        }
                       } else if (status === 'flagged') {
                         bgStyle = 'rgba(239, 68, 68, 0.18)'
                         textStyle = '#b91c1c'
@@ -424,6 +440,13 @@ export default function ReviewMushafPane({
                         ringStyle = '1.5px dashed #b99b51'
                       }
 
+                      const defaultWordTitle = isMobile
+                        ? undefined
+                        : 'اضغط مع Ctrl (أو Cmd) لربط هذه الكلمة بالكلمة المحددة في موضع واحد يمتد بينهما'
+                      const wordTitle = autoTooltip
+                        ? (defaultWordTitle ? `${autoTooltip} — ${defaultWordTitle}` : autoTooltip)
+                        : defaultWordTitle
+
                       return (
                         <button
                           key={word.id}
@@ -435,11 +458,7 @@ export default function ReviewMushafPane({
                           onMouseLeave={() => onHoverWord(null)}
                           data-word-key={key}
                           aria-label={`${word.textUthmani} — ${word.surahNumber}:${word.ayahNumber}:${word.wordIndexInAyah}`}
-                          title={
-                            isMobile
-                              ? undefined
-                              : 'اضغط مع Ctrl (أو Cmd) لربط هذه الكلمة بالكلمة المحددة في موضع واحد يمتد بينهما'
-                          }
+                          title={wordTitle}
                           className={cn(
                             'relative inline-flex items-center justify-center rounded-[3px] px-0.5 py-0 select-none transition-all cursor-pointer focus:outline-none',
                             isMobile && 'before:absolute before:-inset-y-1.5 before:-inset-x-1 before:content-[""] active:scale-95 active:bg-[#d8c9a3]/70',
@@ -457,6 +476,11 @@ export default function ReviewMushafPane({
                           }}
                         >
                           <span>{fontLoaded && word.glyph ? word.glyph : word.textUthmani}</span>
+                          {isAutoReviewed ? (
+                            <span className="ms-0.5 text-[9px] leading-none opacity-85 select-none" aria-hidden="true" title={autoTooltip ?? 'معتمد آليًا'}>
+                              ⚙
+                            </span>
+                          ) : null}
                           {covering && covering.length > 1 ? (
                             <span
                               className="absolute -top-1 -right-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-[var(--color-primary)] text-[11px] font-bold text-white shadow-xs"
