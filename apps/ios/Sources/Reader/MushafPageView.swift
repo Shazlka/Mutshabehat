@@ -50,7 +50,7 @@ final class MushafPageView: UIView {
         didSet {
             guard qiraat != oldValue else { return }
             refreshQiraatMarks()
-            if qiraat.enabled { refreshLiveQiraat(force: true) }
+            if qiraat.enabled { refreshLiveQiraat(force: true); prefetchNeighbourQiraat() }
         }
     }
     var highlightedWordIDs: Set<String> = [] {
@@ -169,6 +169,21 @@ final class MushafPageView: UIView {
         ]
         liveInterval = QiraatLiveSync.firstPollInterval
         refreshLiveQiraat(force: true)
+        prefetchNeighbourQiraat()
+    }
+
+    /// Decodes the Qiraat data of the pages around this one off the main thread (and fetches their live
+    /// copy once), so turning the page finds the colours ready instead of loading them after the flip.
+    private func prefetchNeighbourQiraat() {
+        guard qiraat.enabled, let store = library.qiraat else { return }
+        let number = page.number
+        let neighbours = (max(1, number - 3)...min(mushafPageCount, number + 3)).filter { $0 != number }
+        Task.detached(priority: .userInitiated) {
+            for n in neighbours { _ = store.page(n) }
+            for n in neighbours where abs(n - number) == 1 {
+                _ = await QiraatLiveSync.shared.refresh(page: n, store: store, force: false)
+            }
+        }
     }
 
     private func stopLiveQiraat() {

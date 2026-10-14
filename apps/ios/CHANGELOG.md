@@ -3,6 +3,14 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-15 — Qiraat colours ready when the page turns
+- **Owner report:** after flipping a page the Qiraat colours appeared late.
+- `QiraatMarks` now buckets the page's variants and rulings by ayah when it is created, so each word looks at the few entries of its own ayah instead of scanning every ruling of the page three times per word (the cost that ran on the main thread when a page appeared).
+- `MushafPageView` decodes the Qiraat data of the three pages before and after the current one in the background and fetches the live copy of the two next to it once, as soon as a page is on screen (and when the layer is switched on), so a flip finds the data in memory and the colours drawn with the first frame. The live copy is kept on disk (`Application Support/QiraatLive`) and survives relaunch.
+- The installed build also carries a fresh bundled snapshot of the web data, so a page never shown before is no longer drawn from the 3 October data.
+- Verification: MushafCore Qiraat suites (90 tests) pass; device build installed on the iPhone. Not measured on the device with a profiler; no UI test run.
+- Files: `MushafCore/Sources/MushafCore/QiraatMarks.swift`, `Sources/Reader/MushafPageView.swift`.
+
 ## [Unreleased] — 2026-10-15 — Qiraat word sheet: sub-category from the database, «أخرى» removed
 - The word sheet reads the new closed-list sub-category: usul rulings show «أصول القراءات › {الباب} › {التصنيف الفرعي}» (the label the database assigned; the short action text is used only while none exists). `QiraatRuling` decodes the new `subCategory` field (absent = nil).
 - Farsh labels follow the web: تشكيل، إبدال حرف، زيادة حرف أو كلمة، حذف حرف أو كلمة، تقديم وتأخير، همز، خلاف في الرسم، **اختلاف كلمة**، إمالة، إدغام، سكت، نقل، مد. A type nobody has chosen yet reads «غير مصنَّف»; «أخرى» no longer exists (`differenceTypeLabelAr`, `QiraatClassification.subCategory`, `qiraat.difference.*` strings).

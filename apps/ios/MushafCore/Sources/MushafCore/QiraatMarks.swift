@@ -76,16 +76,31 @@ public struct QiraatSelection: Hashable, Sendable {
 public struct QiraatMarks: Sendable {
     public let catalog: QiraatCatalog
     public let page: QiraatPageData
+    /// The page's variants and rulings bucketed by ayah (a ruling that spans ayahs sits in each of them), built once,
+    /// so a word only looks at the few entries of its own ayah instead of scanning the whole page for every word.
+    private let variantsByAyah: [Int: [QiraatVariant]]
+    private let rulingsByAyah: [Int: [QiraatRuling]]
+
+    private static func ayahKey(_ surah: Int, _ ayah: Int) -> Int { surah * 1000 + ayah }
 
     public init(catalog: QiraatCatalog, page: QiraatPageData) {
         self.catalog = catalog
         self.page = page
+        var variants: [Int: [QiraatVariant]] = [:]
+        for variant in page.variants { variants[Self.ayahKey(variant.surah, variant.ayah), default: []].append(variant) }
+        var rulings: [Int: [QiraatRuling]] = [:]
+        for ruling in page.rulings where ruling.wordAnchored {
+            let last = max(ruling.endAyah ?? ruling.ayah, ruling.ayah)
+            for ayah in ruling.ayah...min(last, ruling.ayah + 300) { rulings[Self.ayahKey(ruling.surah, ayah), default: []].append(ruling) }
+        }
+        variantsByAyah = variants
+        rulingsByAyah = rulings
     }
 
     // MARK: Variants
 
     public func variants(surah: Int, ayah: Int, token: Int) -> [QiraatVariant] {
-        page.variants.filter { $0.surah == surah && $0.ayah == ayah && token >= $0.startToken && token <= $0.endToken }
+        (variantsByAyah[Self.ayahKey(surah, ayah)] ?? []).filter { token >= $0.startToken && token <= $0.endToken }
     }
 
     public func matches(_ variant: QiraatVariant, _ filter: QiraatFilter) -> Bool {
@@ -156,7 +171,7 @@ public struct QiraatMarks: Sendable {
 
     /// Port of `rulingMarkerForWord`.
     public func rulingMarker(surah: Int, ayah: Int, token: Int, filter: QiraatFilter) -> RulingMarker? {
-        let matched = page.rulings.filter {
+        let matched = (rulingsByAyah[Self.ayahKey(surah, ayah)] ?? []).filter {
             $0.wordAnchored && $0.touches(surah: surah, ayah: ayah, token: token) && matches($0, filter)
         }
         guard let first = matched.first else { return nil }
@@ -178,7 +193,7 @@ public struct QiraatMarks: Sendable {
 
     /// Port of `imalahTaqlilMarkerForWord`.
     public func imalahTaqlilMarker(surah: Int, ayah: Int, token: Int, filter: QiraatFilter) -> ImalahTaqlilMarker? {
-        let matched = page.rulings.filter {
+        let matched = (rulingsByAyah[Self.ayahKey(surah, ayah)] ?? []).filter {
             $0.category == "IMALAH_TAQLIL" && $0.wordAnchored && $0.touches(surah: surah, ayah: ayah, token: token)
                 && matches($0, filter)
         }
