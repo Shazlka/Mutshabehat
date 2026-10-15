@@ -159,6 +159,9 @@ final class MushafPageView: UIView {
                     self.refreshQiraatMarks()
                 }
             },
+            center.addObserver(forName: .qiraatDatabaseDidUpdate, object: nil, queue: .main) { [weak self] _ in
+                MainActor.assumeIsolated { self?.refreshQiraatMarks() }
+            },
             center.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) { [weak self] _ in
                 MainActor.assumeIsolated {
                     guard let self else { return }
@@ -167,6 +170,9 @@ final class MushafPageView: UIView {
                 }
             },
         ]
+        // A snapshot can change while this page is detached and has no observers. Its size may
+        // be unchanged on return, so layoutPage() alone would keep the old marks and hit map.
+        refreshQiraatMarks()
         liveInterval = QiraatLiveSync.firstPollInterval
         refreshLiveQiraat(force: true)
         prefetchNeighbourQiraat()

@@ -62,6 +62,12 @@ final class QiraatLiveSync: ObservableObject {
     /// The site signs a visitor in with a cookie on the first request and redirects back; the shared
     /// session keeps the cookie and follows the redirect. The response is never cached.
     nonisolated static func fetchFromWeb(_ url: URL) async throws -> Data {
+#if DEBUG
+        // Simulator regression runs use the existing snapshot and cannot contact production.
+        if ProcessInfo.processInfo.environment["QIRAAT_TEST_ISOLATION"] == "1" {
+            throw URLError(.notConnectedToInternet)
+        }
+#endif
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 15)
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("Qiraat-iOS-Live", forHTTPHeaderField: "User-Agent")

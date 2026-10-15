@@ -115,7 +115,8 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
 #if DEBUG
         // A UI test on a throw-away reading database must never merge with, or push to, the real folder:
         // in the simulator that folder is the Mac's own iCloud Drive.
-        if ProcessInfo.processInfo.arguments.contains("-reading-fresh") { return nil }
+        if ProcessInfo.processInfo.arguments.contains("-reading-fresh") ||
+            ProcessInfo.processInfo.environment["QIRAAT_TEST_ISOLATION"] == "1" { return nil }
 #endif
         // 1. Check custom saved security-scoped bookmark
         if let bookmarkData = defaults.data(forKey: bookmarkKey) {
@@ -226,7 +227,6 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
                     let qiraatData = try Data(contentsOf: qiraatArchive)
                     try library.installQiraatBackup(qiraatData)
                     qiraatPages = 604
-                    NotificationCenter.default.post(name: .qiraatDatabaseDidUpdate, object: nil)
                 } catch {
                     print("Notice: Qiraat archive install failed: \(error.localizedDescription)")
                 }

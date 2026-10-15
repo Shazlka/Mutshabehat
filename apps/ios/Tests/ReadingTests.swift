@@ -480,6 +480,11 @@ final class ReadingTests: XCTestCase {
         let service = ICloudDatabaseSyncService.shared
         service.refreshConnectionStatus()
         let folder = service.resolveSyncFolder()
+        if ProcessInfo.processInfo.environment["QIRAAT_TEST_ISOLATION"] == "1" {
+            XCTAssertNil(folder, "An isolated test launch must not resolve the host's iCloud folder")
+            XCTAssertFalse(service.isConnected)
+            return
+        }
         // On macOS with iCloud Drive, folder should resolve to Mushaf_Qiraat
         XCTAssertNotNil(folder)
         if let folder {

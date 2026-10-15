@@ -35,7 +35,7 @@ final class MushafLibrary {
         return MemorizationRuntime.makeBackupController(library: self, store: store)
     }()
 
-    init(bundle: Bundle = .main) throws {
+    init(bundle: Bundle = .main, qiraatStore: QiraatStore? = nil) throws {
         guard let databaseURL = bundle.url(forResource: "mushaf", withExtension: "sqlite") else {
             throw MushafLibraryError.missingResource("mushaf.sqlite")
         }
@@ -49,9 +49,16 @@ final class MushafLibrary {
         juzStartPages = try database.juzStartPages()
         surahAyahCounts = Dictionary(uniqueKeysWithValues: surahs.map { ($0.number, $0.ayahCount) })
         surahNames = Dictionary(uniqueKeysWithValues: surahs.map { ($0.number, $0.name) })
+#if DEBUG
+        if ProcessInfo.processInfo.environment["QIRAAT_TEST_ISOLATION"] == "1" {
+            qiraat = qiraatStore ?? bundle.url(forResource: "Qiraat", withExtension: nil)
+                .flatMap { try? QiraatStore(directory: $0) }
+            return
+        }
+#endif
         let imported = QiraatBackupService.importedDirectory
         let live = QiraatLiveSync.overlayDirectory
-        qiraat = (try? QiraatStore(directory: imported, overlayDirectory: live))
+        qiraat = qiraatStore ?? (try? QiraatStore(directory: imported, overlayDirectory: live))
             ?? bundle.url(forResource: "Qiraat", withExtension: nil).flatMap { try? QiraatStore(directory: $0, overlayDirectory: live) }
     }
 
@@ -124,5 +131,6 @@ final class MushafLibrary {
         let replacement = try QiraatStore(directory: installed.directory, overlayDirectory: QiraatLiveSync.overlayDirectory)
         try? FileManager.default.removeItem(at: QiraatLiveSync.overlayDirectory)
         qiraat = replacement
+        NotificationCenter.default.post(name: .qiraatDatabaseDidUpdate, object: nil)
     }
 }

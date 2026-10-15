@@ -8,7 +8,8 @@ final class QiraatUITests: XCTestCase {
 
     private func launch(atPage page: Int, layer: String? = "qiraat", filter: String = "all") -> XCUIApplication {
         let app = XCUIApplication()
-        app.launchArguments = ["-mushaf1441:last-page:v1", "\(page)", "-mushaf1441:qiraat-filter:v1", filter]
+        app.launchArguments = ["-mushaf1441:last-page:v1", "\(page)", "-mushaf1441:qiraat-filter:v1", filter,
+                               "-reading-fresh", "-app:language:v1", "ar"]
         if let layer { app.launchArguments += ["-mushaf1441:reader-layer:v1", layer] }
         app.launch()
         return app
@@ -16,6 +17,34 @@ final class QiraatUITests: XCTestCase {
 
     private func element(_ id: String, in app: XCUIApplication) -> XCUIElement {
         app.descendants(matching: .any)[id]
+    }
+
+    func testColdLaunchWordTapsSurviveBackgroundAndSettingsWithoutAPageTurn() {
+        let app = launch(atPage: 1)
+        let wordID = "qiraat-word-1:4:1"
+        let word = element(wordID, in: app)
+        XCTAssertTrue(word.waitForExistence(timeout: 10))
+
+        func openAndCloseWord() {
+            element(wordID, in: app).tap()
+            let close = app.buttons["qiraat-sheet-close"]
+            XCTAssertTrue(close.waitForExistence(timeout: 5))
+            XCTAssertTrue(app.staticTexts["الإمام نافع"].exists)
+            close.tap()
+            XCTAssertTrue(element("mushaf-page-1", in: app).exists)
+        }
+
+        openAndCloseWord()
+        XCUIDevice.shared.press(.home)
+        app.activate()
+        openAndCloseWord()
+
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()
+        app.buttons["settings-button"].tap()
+        let done = app.buttons["تم"]
+        XCTAssertTrue(done.waitForExistence(timeout: 5))
+        done.tap()
+        openAndCloseWord()
     }
 
     /// 1:4 مَـٰلِكِ / مَلِكِ: six readers read ملك; عاصم reads it like Hafs, so he is not listed.
@@ -64,7 +93,7 @@ final class QiraatUITests: XCTestCase {
         app.terminate()
 
         let relaunched = XCUIApplication()
-        relaunched.launchArguments = ["-mushaf1441:last-page:v1", "1"]
+        relaunched.launchArguments = ["-mushaf1441:last-page:v1", "1", "-reading-fresh"]
         relaunched.launch()
         XCTAssertTrue(element("mushaf-page-1", in: relaunched).waitForExistence(timeout: 10))
         XCTAssertFalse(element("qiraat-word-1:4:1", in: relaunched).exists)

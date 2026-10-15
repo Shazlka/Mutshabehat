@@ -3,6 +3,12 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-15 — Phase 1: word taps follow startup snapshot updates
+- Reproduced two stale-hit-map paths with unchanged real page-001 snapshot bytes: a visible page ignored the whole-database update notification, and a detached page kept its old marks when reattached at the same size. Both regression tests failed before the fix.
+- A successful Qiraat snapshot install now announces its replacement from `MushafLibrary`; visible page views refresh their derived marks on that notification and when reattaching. The page layout, hit-box geometry, fonts, colours and verified source records are unchanged.
+- Added first-layout/reader/narrator checks across six real pages and a simulator cold-launch, background/resume and settings-return test that never turns the page. The 12 focused checks pass; broader verification and the physical-device checklist are recorded in `docs/phase-1-word-taps.md`.
+- Added `scripts/test_existing_snapshot.py`: builds against existing generated data and isolates both the test host and the UI target app from live Qiraat fetching and the host iCloud folder in DEBUG. Updated folder-discovery expectations for isolated tests. The first unisolated baseline had written a reading-sync snapshot to host iCloud before it was stopped; the report records the file and time.
+
 ## [Unreleased] — 2026-10-15 — No build warnings
 - Fixed the 10 warnings Xcode showed for the app (`BackupService` two redundant `??`, `Motion` main-actor flag read, `MutshabehatGroupEditorView` unused `withMotion` result, five deprecated `onChange(of:perform:)` in `MutshabehatView` / `AyahSearchView`, one unused `ayahCount` in `MushafPageView`) and the 11 in the unit tests (`QiraatLiveSyncTests` main-actor/Sendable, `QiraatReaderPickerTests` unused variable).
 - Verification: clean build of the app and `build-for-testing` print no warning or error; the 273 unit tests pass; the MushafCore package builds with no warning. UI tests were compiled but not run.
