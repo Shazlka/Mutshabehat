@@ -70,6 +70,11 @@ public struct WordMarks: Hashable, Sendable {
 public struct QiraatSelection: Hashable, Sendable {
     public let variants: [QiraatVariant]
     public let rulings: [QiraatRuling]
+
+    public init(variants: [QiraatVariant] = [], rulings: [QiraatRuling] = []) {
+        self.variants = variants
+        self.rulings = rulings
+    }
 }
 
 /// Marker computations for one page of Qiraat data.

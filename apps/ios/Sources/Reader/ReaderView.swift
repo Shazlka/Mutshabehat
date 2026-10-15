@@ -129,13 +129,34 @@ struct ReaderView: View {
         .preferredColorScheme(appearance.colorScheme)
         .sheet(item: $qiraatSelection) { item in
             if let catalog = library.qiraat?.catalog {
-                QiraatSheet(item: item, catalog: catalog, filter: qiraat.filter,
-                            store: library.qiraat, orderedRefs: qiraatMarkedWords,
-                            wordFont: try? library.fonts.font(page: item.word.page, size: 40),
-                            onSelect: openQiraatSheetWord) { qiraatSelection = nil }
-                    .environment(\.qiraatWordText, QiraatWordLookup { [library, page = item.word.page] surah, ayah, token in
-                        library.wordText(surah: surah, ayah: ayah, token: token, near: page)
-                    })
+                QiraatSheet(
+                    item: item,
+                    catalog: catalog,
+                    filter: qiraat.filter,
+                    store: library.qiraat,
+                    orderedRefs: qiraatMarkedWords,
+                    wordFont: try? library.fonts.font(page: item.word.page, size: 40),
+                    pageWordsProvider: { pageNum in
+                        library.page(pageNum)?.lines.flatMap(\.words) ?? []
+                    },
+                    fontProvider: { pageNum in
+                        try? library.fonts.font(page: pageNum, size: 40)
+                    },
+                    onWordChanged: { word in
+                        highlightedWordIDs = [word.id]
+                        if word.page != page {
+                            page = word.page
+                        }
+                    },
+                    onSelect: openQiraatSheetWord,
+                    onClose: {
+                        qiraatSelection = nil
+                        highlightedWordIDs = []
+                    }
+                )
+                .environment(\.qiraatWordText, QiraatWordLookup { [library, page = item.word.page] surah, ayah, token in
+                    library.wordText(surah: surah, ayah: ayah, token: token, near: page)
+                })
             }
         }
         .sheet(item: $qiraatRoute, onDismiss: presentPendingQiraatWord) { route in
@@ -468,6 +489,7 @@ struct ReaderView: View {
                                               token: word.indexInAyah, filter: qiraat.filter) else { return }
         UserDefaults.standard.set(true, forKey: QiraatFirstUseHint.storageKey)
         Haptics.wordPress()
+        highlightedWordIDs = [word.id]
         qiraatSelection = QiraatWordSelection(word: word, selection: selection)
     }
 
@@ -480,6 +502,10 @@ struct ReaderView: View {
                   token: word.indexInAyah,
                   filter: qiraat.filter
               ) else { return }
+        highlightedWordIDs = [word.id]
+        if word.page != page {
+            page = word.page
+        }
         qiraatSelection = QiraatWordSelection(word: word, selection: selection)
     }
 
