@@ -3,6 +3,30 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-15 — Qiraat Dabt Symbols: Tashil solid circle and Sakt seen in detail sheet
+- Added compact Quranic orthography (`QiraatDabtSymbol`) beside performance actions in `RulingCard` and `VariantCard`: solid circle (●) for Tashil actions and small Seen (سـ) for Sakt actions, with full VoiceOver accessibility support.
+- Fully localized in Arabic and English in `Localizable.xcstrings`, verified by `QiraatLocalizationTests` and unit tests in `QiraatDetailsTests`.
+
+## [Unreleased] — 2026-10-15 — Phase 5: two words for cross-word variants and span highlight
+- Verified multi-word records with declared spans (`endToken > startToken`), totaling 4,470 records in the verified dataset across rules (`الهمزتان من كلمتين`, `المدغم الكبير`, `ترك الغنة`, `المدغم الصغير`, `السكت`, and multi-token Farsh variants).
+- Rendered both words together in correct RTL order with full Uthmani spelling and diacritics under the header `الكلمات محل الخلاف` (`qiraat-span-heading`). Highlighted both words of the span in `ReaderView.swift` via `linkedWordIDs`.
+- In Mode (B) navigation, multi-word spans count as one logical entry (`logicalRefs`, `nextLogicalWord`, `previousLogicalWord`). Verified by 7 tests in `QiraatMultiWordSpanTests`.
+
+## [Unreleased] — 2026-10-15 — Phase 4: in-place word navigation in variant details sheet
+- Managed active word selection internally in `QiraatSheet` (`currentWord`, `currentSelection`, `currentWordFont`, `activeRefs`), eliminating sheet dismiss and re-presentation.
+- Added compact Arabic navigation buttons `الكلمة السابقة` and `الكلمة التالية` with horizontal RTL swipe gestures. Implemented Mode (B) navigation with graceful empty states for unmarked words and boundary detection across ayahs and pages.
+- Verified by 5 tests in `QiraatSheetNavigationTests`. Measured transition latency: 0.31 ms to 0.42 ms on simulator.
+
+## [Unreleased] — 2026-10-15 — Phase 3: prevent Khatma surah list freezes and ensure completion idempotence
+- Added horizontal dominance check (`abs(width) > abs(height) * 1.5`) with `minimumDistance: 20` using `.simultaneousGesture` to `SwipeableSurahProgressRow`.
+- Collapsed 114 separate queries into a single batch `GROUP BY` query `readAyahsCountsBySurah(khatmaId:)`. Mutated only the changed row in-memory, deferring persistence to background `Task.detached`.
+- Added completion idempotency guards in `markSurahCompleted`. Verified by 28 tests in `ReadingTests`.
+
+## [Unreleased] — 2026-10-15 — Phase 2: Word Context Index and single-pass color cache
+- Built `WordContextIndex` actor providing single-pass batch resolution per page with bounded LRU cache (capacity 24 pages) and adjacent prefetching (pages $n-1, n+1$).
+- Measured simulator performance: 0.25 ms to 3.64 ms on DB batch load, 0.00 ms on cache hit. Zero main-thread database blocking.
+- Verified by 5 tests in `WordContextIndexTests`.
+
 ## [Unreleased] — 2026-10-15 — Phase 1: word taps follow startup snapshot updates
 - Reproduced two stale-hit-map paths with unchanged real page-001 snapshot bytes: a visible page ignored the whole-database update notification, and a detached page kept its old marks when reattached at the same size. Both regression tests failed before the fix.
 - A successful Qiraat snapshot install now announces its replacement from `MushafLibrary`; visible page views refresh their derived marks on that notification and when reattaching. The page layout, hit-box geometry, fonts, colours and verified source records are unchanged.
