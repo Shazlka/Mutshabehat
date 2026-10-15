@@ -40,9 +40,14 @@ struct VariantCard: View {
                     .foregroundStyle(Color(uiColor: .mushafBrown))
             }
             if let note = variant.performanceNote?.trimmingCharacters(in: .whitespacesAndNewlines), !note.isEmpty, note != variant.description {
-                Text(verbatim: note)
-                    .font(.caption.bold())
-                    .foregroundStyle(.secondary)
+                HStack(spacing: 4) {
+                    ForEach(QiraatDabtSymbol.symbols(for: note), id: \.self) { symbol in
+                        QiraatDabtSymbol(kind: symbol)
+                    }
+                    Text(verbatim: note)
+                        .font(.caption.bold())
+                        .foregroundStyle(.secondary)
+                }
             }
             QiraatPills(pills: rollupAuthorityPills(scopedReadingIds, catalog: catalog))
             if variant.verificationStatus == "NEEDS_MANUAL_REVIEW" { QiraatNeedsReviewBadge() }

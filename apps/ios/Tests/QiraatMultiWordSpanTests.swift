@@ -57,8 +57,6 @@ final class QiraatMultiWordSpanTests: XCTestCase {
     /// 2. المدغم الكبير: 2:20 tokens 17..18 (لَذَهَبَ بِسَمْعِهِمْ)
     func testAlIdghamAlKabirSpan() throws {
         let store = try XCTUnwrap(library.qiraat)
-        let page4 = try XCTUnwrap(library.page(4))
-        let words = page4.lines.flatMap(\.words)
         let marks = try XCTUnwrap(store.marks(page: 4))
 
         let sel1 = try XCTUnwrap(marks.selection(surah: 2, ayah: 20, token: 17, filter: .all))
@@ -78,8 +76,6 @@ final class QiraatMultiWordSpanTests: XCTestCase {
     /// 3. ترك الغنة: 2:58 tokens 10..11 (رَغَدًۭا وَٱدْخُلُوا۟)
     func testTarkAlGhunnahSpan() throws {
         let store = try XCTUnwrap(library.qiraat)
-        let page9 = try XCTUnwrap(library.page(9))
-        let words = page9.lines.flatMap(\.words)
         let marks = try XCTUnwrap(store.marks(page: 9))
 
         let sel1 = try XCTUnwrap(marks.selection(surah: 2, ayah: 58, token: 10, filter: .all))
@@ -99,8 +95,6 @@ final class QiraatMultiWordSpanTests: XCTestCase {
     /// 4. المدغم الصغير: 2:58 tokens 16..17 (نَّغْفِرْ لَكُمْ)
     func testAlIdghamAlSaghirSpan() throws {
         let store = try XCTUnwrap(library.qiraat)
-        let page9 = try XCTUnwrap(library.page(9))
-        let words = page9.lines.flatMap(\.words)
         let marks = try XCTUnwrap(store.marks(page: 9))
 
         let sel1 = try XCTUnwrap(marks.selection(surah: 2, ayah: 58, token: 16, filter: .all))
@@ -125,8 +119,6 @@ final class QiraatMultiWordSpanTests: XCTestCase {
     /// 5. السكت: 19:6 tokens 3..4 (مِنْ ءَالِ)
     func testSaktSpan() throws {
         let store = try XCTUnwrap(library.qiraat)
-        let page305 = try XCTUnwrap(library.page(305))
-        let words = page305.lines.flatMap(\.words)
         let marks = try XCTUnwrap(store.marks(page: 305))
 
         let sel1 = try XCTUnwrap(marks.selection(surah: 19, ayah: 6, token: 3, filter: .all))
@@ -146,8 +138,6 @@ final class QiraatMultiWordSpanTests: XCTestCase {
     /// 6. Multi-token Farsh Variant: 2:31 tokens 12..13 (هَـٰٓؤُلَآءِ إِن -> هَؤُلَا إِن)
     func testMultiTokenFarshVariant() throws {
         let store = try XCTUnwrap(library.qiraat)
-        let page6 = try XCTUnwrap(library.page(6))
-        let words = page6.lines.flatMap(\.words)
         let marks = try XCTUnwrap(store.marks(page: 6))
 
         let sel1 = try XCTUnwrap(marks.selection(surah: 2, ayah: 31, token: 12, filter: .all))
@@ -167,7 +157,6 @@ final class QiraatMultiWordSpanTests: XCTestCase {
     /// 7. Single-word variants on a word that also participates in a multi-word span are preserved separately.
     func testSingleWordVariantsAreNotMergedIntoSpan() throws {
         let store = try XCTUnwrap(library.qiraat)
-        let page3 = try XCTUnwrap(library.page(3))
         let marks = try XCTUnwrap(store.marks(page: 3))
 
         let sel1 = try XCTUnwrap(marks.selection(surah: 2, ayah: 13, token: 12, filter: .all))

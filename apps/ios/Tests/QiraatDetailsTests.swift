@@ -137,4 +137,67 @@ final class QiraatDetailsTests: XCTestCase {
             readings: []
         )
     }
+
+    // MARK: - Dabt Symbols (Tashil & Sakt)
+
+    func testTashilSymbolDetectedFromVariousActions() {
+        let actions = [
+            "التسهيل مع الإدخال",
+            "تسهيل الثانية بين بين",
+            "التسهيل بدون إدخال",
+            "تسهيل الأولى وصلاً",
+            "تسهيل الهمزة بالروم"
+        ]
+        for action in actions {
+            let symbols = QiraatDabtSymbol.symbols(for: action)
+            XCTAssertTrue(symbols.contains(.tashil), "Expected .tashil for action: \(action)")
+            XCTAssertFalse(symbols.contains(.sakt), "Did not expect .sakt for action: \(action)")
+        }
+    }
+
+    func testSaktSymbolDetectedFromVariousActions() {
+        let actions = [
+            "السكت",
+            "السكت وصلاً",
+            "السكت اللطيف",
+            "وقف بهاء السكت باتفاق.",
+            "سكت على الساكن قبل الهمز"
+        ]
+        for action in actions {
+            let symbols = QiraatDabtSymbol.symbols(for: action)
+            XCTAssertTrue(symbols.contains(.sakt), "Expected .sakt for action: \(action)")
+            XCTAssertFalse(symbols.contains(.tashil), "Did not expect .tashil for action: \(action)")
+        }
+    }
+
+    func testActionWithBothTashilAndSakt() {
+        let action = "السكت في الأولى، وتسهيل الثانية"
+        let symbols = QiraatDabtSymbol.symbols(for: action)
+        XCTAssertEqual(symbols, [.tashil, .sakt], "Expected both symbols when action mentions both")
+    }
+
+    func testUnrelatedActionsReturnNoSymbols() {
+        let unrelated = [
+            "إبدال الهمزة ياء",
+            "نقل حركة الهمزة",
+            "إمالة كبرى",
+            "تقليل",
+            "ترك الغنة",
+            "تحقيق"
+        ]
+        for action in unrelated {
+            let symbols = QiraatDabtSymbol.symbols(for: action)
+            XCTAssertTrue(symbols.isEmpty, "Expected no symbols for unrelated action: \(action)")
+        }
+    }
+
+    @MainActor
+    func testDabtSymbolViewsCanBeInstantiated() {
+        let tashilView = QiraatDabtSymbol(kind: .tashil)
+        XCTAssertNotNil(tashilView.body)
+
+        let saktView = QiraatDabtSymbol(kind: .sakt)
+        XCTAssertNotNil(saktView.body)
+    }
 }
+

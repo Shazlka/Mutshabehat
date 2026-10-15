@@ -132,7 +132,12 @@ struct RulingCard: View {
                 ForEach(wajhs, id: \.self) { n in
                     QiraatBadge(Text("وجه \(n)"))
                 }
-                if showAction { Text(verbatim: group.action).font(.caption.bold()) }
+                if showAction {
+                    ForEach(QiraatDabtSymbol.symbols(for: group.action), id: \.self) { symbol in
+                        QiraatDabtSymbol(kind: symbol)
+                    }
+                    Text(verbatim: group.action).font(.caption.bold())
+                }
                 if !conditions.isEmpty {
                     Text(verbatim: (showAction ? "— " : "") + conditions.joined(separator: "، "))
                         .font(.caption).foregroundStyle(.secondary)
@@ -203,3 +208,47 @@ private struct HeightReader: View {
         }
     }
 }
+
+/// Compact Quranic orthography / dabt symbol shown alongside performance actions in ruling and variant cards.
+///
+/// Symbols:
+/// - `.tashil`: A small filled circle (دائرة صغيرة مطموسة الوسط بدون حركة) representing the easing of hamzah (بين بين).
+/// - `.sakt`: A small Arabic letter Seen (سين صغيرة سـ) representing breath-holding pause without cutting off recitation.
+struct QiraatDabtSymbol: View {
+    enum Kind: Hashable, CaseIterable, Sendable {
+        case tashil
+        case sakt
+    }
+
+    let kind: Kind
+
+    var body: some View {
+        switch kind {
+        case .tashil:
+            Circle()
+                .fill(Color.primary)
+                .frame(width: 7, height: 7)
+                .accessibilityLabel(Text("علامة ضبط التسهيل: دائرة مطموسة الوسط"))
+                .accessibilityIdentifier("qiraat-dabt-tashil")
+        case .sakt:
+            Text("سـ")
+                .font(.system(size: 11, weight: .bold))
+                .foregroundStyle(.secondary)
+                .accessibilityLabel(Text("علامة ضبط السكت: سين صغيرة فوق الحرف"))
+                .accessibilityIdentifier("qiraat-dabt-sakt")
+        }
+    }
+
+    /// Derives the appropriate dabt symbols for an action or rule text.
+    nonisolated static func symbols(for action: String) -> [Kind] {
+        var kinds: [Kind] = []
+        if action.contains("تسهيل") {
+            kinds.append(.tashil)
+        }
+        if action.contains("سكت") {
+            kinds.append(.sakt)
+        }
+        return kinds
+    }
+}
+
