@@ -229,22 +229,31 @@ final class ReadingTracker: ObservableObject {
         if completed {
             let maxAyahs = library.surahAyahCounts[surahNumber] ?? 0
             if maxAyahs > 0 {
+                let currentRead = db.readAyahsCountForSurah(khatmaId: activeKhatma.id, surah: surahNumber)
+                guard currentRead < maxAyahs else {
+                    // Already completed in this khatma; do not create duplicate records
+                    return
+                }
                 var items: [(surah: Int, ayah: Int, page: Int)] = []
                 for a in 1...maxAyahs {
                     let p = library.page(of: AyahKey(surah: surahNumber, ayah: a)) ?? 1
                     items.append((surah: surahNumber, ayah: a, page: p))
                 }
                 let inserted = db.recordReadAyahs(khatmaId: activeKhatma.id, items: items, at: Date())
-                let distinctPages = Set(items.map(\.page)).count
-                let estimatedSeconds = max(60, maxAyahs * 15)
-                db.recordDailyReadingActivity(
-                    ayahsCount: max(1, inserted > 0 ? inserted : items.count),
-                    pagesCount: distinctPages,
-                    seconds: estimatedSeconds,
-                    on: Date()
-                )
+                if inserted > 0 {
+                    let distinctPages = Set(items.map(\.page)).count
+                    let estimatedSeconds = max(60, inserted * 15)
+                    db.recordDailyReadingActivity(
+                        ayahsCount: inserted,
+                        pagesCount: distinctPages,
+                        seconds: estimatedSeconds,
+                        on: Date()
+                    )
+                }
             }
         } else {
+            let currentRead = db.readAyahsCountForSurah(khatmaId: activeKhatma.id, surah: surahNumber)
+            guard currentRead > 0 else { return }
             db.removeReadAyahsForSurah(khatmaId: activeKhatma.id, surah: surahNumber)
         }
 
@@ -509,8 +518,9 @@ final class ReadingTracker: ObservableObject {
     }
 
     func allSurahProgress(library: MushafLibrary) -> [SurahProgress] {
-        library.surahs.map { surah in
-            let readCount = db.readAyahsCountForSurah(khatmaId: activeKhatma.id, surah: surah.number)
+        let counts = db.readAyahsCountsBySurah(khatmaId: activeKhatma.id)
+        return library.surahs.map { surah in
+            let readCount = counts[surah.number] ?? 0
             return SurahProgress(
                 surahNumber: surah.number,
                 surahName: surah.name,

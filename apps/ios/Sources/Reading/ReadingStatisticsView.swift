@@ -184,7 +184,7 @@ struct ReadingStatisticsView: View {
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 32)
                         } else {
-                            ForEach(filteredSurahs) { item in
+                            ForEach(filteredSurahs, id: \.surahNumber) { item in
                                 SwipeableSurahProgressRow(
                                     progress: item,
                                     onSelect: {
@@ -195,10 +195,7 @@ struct ReadingStatisticsView: View {
                                         }
                                     },
                                     onToggleCompleted: {
-                                        withMotion {
-                                            tracker.markSurahCompleted(item.surahNumber, completed: !item.isCompleted, library: library)
-                                            loadData()
-                                        }
+                                        toggleSurahCompletion(for: item.surahNumber)
                                     }
                                 )
                             }
@@ -240,6 +237,29 @@ struct ReadingStatisticsView: View {
         }
         .onReceive(NotificationCenter.default.publisher(for: .readingDatabaseDidUpdate)) { _ in
             loadData()
+        }
+    }
+
+    private func toggleSurahCompletion(for surahNumber: Int) {
+        guard let idx = surahsProgress.firstIndex(where: { $0.surahNumber == surahNumber }) else { return }
+        let current = surahsProgress[idx]
+        let willComplete = !current.isCompleted
+        let updated = SurahProgress(
+            surahNumber: current.surahNumber,
+            surahName: current.surahName,
+            readAyahsCount: willComplete ? current.totalAyahsCount : 0,
+            totalAyahsCount: current.totalAyahsCount,
+            firstPage: current.firstPage
+        )
+        withMotion {
+            surahsProgress[idx] = updated
+        }
+
+        Task {
+            tracker.markSurahCompleted(surahNumber, completed: willComplete, library: library)
+            overview = tracker.statsOverview(library: library)
+            weeklyDays = tracker.currentWeekReadingDays()
+            recentDays = QuranReadingDatabase.shared.allReadingDays()
         }
     }
 
@@ -518,10 +538,11 @@ private struct SwipeableSurahProgressRow: View {
             SurahProgressItemRow(progress: progress)
                 .offset(x: dragOffset)
                 .contentShape(Rectangle())
-                .gesture(
-                    DragGesture(minimumDistance: 12)
+                .simultaneousGesture(
+                    DragGesture(minimumDistance: 20)
                         .onChanged { value in
-                            if abs(value.translation.width) > abs(value.translation.height) {
+                            let isHorizontal = abs(value.translation.width) > abs(value.translation.height) * 1.5
+                            if isHorizontal || dragOffset != 0 {
                                 if value.translation.width > 0 {
                                     dragOffset = min(130, value.translation.width)
                                 } else {
@@ -538,13 +559,13 @@ private struct SwipeableSurahProgressRow: View {
                         }
                         .onEnded { value in
                             let triggered = abs(dragOffset) >= actionThreshold
-                            if triggered {
-                                UINotificationFeedbackGenerator().notificationOccurred(.success)
-                                onToggleCompleted()
-                            }
                             withMotion {
                                 dragOffset = 0
                                 hasPassedThreshold = false
+                            }
+                            if triggered {
+                                UINotificationFeedbackGenerator().notificationOccurred(.success)
+                                onToggleCompleted()
                             }
                         }
                 )

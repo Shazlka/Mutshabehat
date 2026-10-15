@@ -932,6 +932,26 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         return count
     }
 
+    public func readAyahsCountsBySurah(khatmaId: String) -> [Int: Int] {
+        lock.lock()
+        defer { lock.unlock() }
+        guard let db = db else { return [:] }
+
+        let sql = "SELECT surah, COUNT(DISTINCT ayah) FROM khatma_read_ayahs WHERE khatma_id = ? GROUP BY surah;"
+        var stmt: OpaquePointer?
+        var counts: [Int: Int] = [:]
+        if sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK {
+            sqlite3_bind_text(stmt, 1, (khatmaId as NSString).utf8String, -1, nil)
+            while sqlite3_step(stmt) == SQLITE_ROW {
+                let surah = Int(sqlite3_column_int64(stmt, 0))
+                let count = Int(sqlite3_column_int64(stmt, 1))
+                counts[surah] = count
+            }
+        }
+        sqlite3_finalize(stmt)
+        return counts
+    }
+
     public func readAyahsCountForSurah(khatmaId: String, surah: Int) -> Int {
         lock.lock()
         defer { lock.unlock() }
@@ -971,9 +991,10 @@ public final class QuranReadingDatabase: @unchecked Sendable {
     }
 
     public func completedSurahsCount(khatmaId: String, surahAyahCounts: [Int: Int]) -> Int {
+        let counts = readAyahsCountsBySurah(khatmaId: khatmaId)
         var completed = 0
         for (surah, total) in surahAyahCounts {
-            let read = readAyahsCountForSurah(khatmaId: khatmaId, surah: surah)
+            let read = counts[surah] ?? 0
             if read >= total && total > 0 {
                 completed += 1
             }

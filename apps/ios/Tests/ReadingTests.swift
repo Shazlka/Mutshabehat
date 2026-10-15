@@ -652,12 +652,64 @@ final class ReadingTests: XCTestCase {
         XCTAssertEqual(map[todayStr], 900)
         XCTAssertEqual(map[yesterdayStr], 1800)
 
-        // Test WeeklyDayStatus formatting
         let status = WeeklyDayStatus(dateString: todayStr, dayNameAr: "الأحد", dayNumber: "١", isRead: true, isToday: true, readingSeconds: 900)
         XCTAssertTrue(status.formattedDuration.contains("١٥") && status.formattedDuration.contains("د"))
 
         let statusLong = WeeklyDayStatus(dateString: yesterdayStr, dayNameAr: "السبت", dayNumber: "٣٠", isRead: true, isToday: false, readingSeconds: 3900) // 1h 5m
         XCTAssertTrue(statusLong.formattedDuration.contains("١") && statusLong.formattedDuration.contains("س"))
+    }
+
+    @MainActor
+    func testMarkSurahCompletedTwiceDoesNotDuplicateRecords() throws {
+        let tracker = ReadingTracker(database: testDB)
+        let library = try MushafLibrary()
+
+        // Complete Surah 1 (Al-Fatihah, 7 ayahs)
+        tracker.markSurahCompleted(1, completed: true, library: library)
+        let firstRead = testDB.readAyahsCountForSurah(khatmaId: tracker.activeKhatma.id, surah: 1)
+        XCTAssertEqual(firstRead, 7)
+        let firstStats = tracker.statsOverview(library: library)
+        XCTAssertEqual(firstStats.totalAyahsReadInCurrentKhatma, 7)
+
+        // Complete Surah 1 AGAIN (must be idempotent: no duplicate records)
+        tracker.markSurahCompleted(1, completed: true, library: library)
+        let secondRead = testDB.readAyahsCountForSurah(khatmaId: tracker.activeKhatma.id, surah: 1)
+        XCTAssertEqual(secondRead, 7, "Selecting an already completed surah must not duplicate read ayah records")
+        let secondStats = tracker.statsOverview(library: library)
+        XCTAssertEqual(secondStats.totalAyahsReadInCurrentKhatma, 7, "Total ayahs read must remain 7")
+    }
+
+    @MainActor
+    func testSurahProgressBatchLoadingAndPersistenceRoundTrip() throws {
+        let tracker = ReadingTracker(database: testDB)
+        let library = try MushafLibrary()
+
+        // 1. Mark Surahs 1 and 114 completed
+        tracker.markSurahCompleted(1, completed: true, library: library)
+        tracker.markSurahCompleted(114, completed: true, library: library)
+
+        // 2. Batch load all progress
+        let allProgress = tracker.allSurahProgress(library: library)
+        XCTAssertEqual(allProgress.count, 114)
+        let s1 = try XCTUnwrap(allProgress.first { $0.surahNumber == 1 })
+        XCTAssertTrue(s1.isCompleted)
+        XCTAssertEqual(s1.readAyahsCount, 7)
+        let s114 = try XCTUnwrap(allProgress.first { $0.surahNumber == 114 })
+        XCTAssertTrue(s114.isCompleted)
+        XCTAssertEqual(s114.readAyahsCount, 6)
+
+        // 3. Deselect Surah 1
+        tracker.markSurahCompleted(1, completed: false, library: library)
+        let updatedProgress = tracker.allSurahProgress(library: library)
+        let s1Updated = try XCTUnwrap(updatedProgress.first { $0.surahNumber == 1 })
+        XCTAssertFalse(s1Updated.isCompleted)
+        XCTAssertEqual(s1Updated.readAyahsCount, 0)
+
+        // 4. Persistence round-trip: reopen DB at same URL
+        let reopenedDB = QuranReadingDatabase(url: testDB.fileURL)
+        let reopenedCounts = reopenedDB.readAyahsCountsBySurah(khatmaId: tracker.activeKhatma.id)
+        XCTAssertNil(reopenedCounts[1])
+        XCTAssertEqual(reopenedCounts[114], 6)
     }
 }
 
