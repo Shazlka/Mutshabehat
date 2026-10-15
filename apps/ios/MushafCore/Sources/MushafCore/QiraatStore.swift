@@ -85,6 +85,7 @@ public final class QiraatStore: @unchecked Sendable {
             pages[number] = .some(incoming)
             touch(number)
         }
+        WordContextIndex.shared.invalidate()
         return true
     }
 
@@ -95,6 +96,7 @@ public final class QiraatStore: @unchecked Sendable {
             pages.removeAll()
             order.removeAll()
         }
+        WordContextIndex.shared.invalidate()
     }
 
     public func marks(page number: Int) -> QiraatMarks? {

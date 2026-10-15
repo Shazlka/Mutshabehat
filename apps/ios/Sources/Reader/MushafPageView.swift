@@ -101,6 +101,7 @@ final class MushafPageView: UIView {
         }
     }
     private(set) var marks: [String: WordMarks] = [:]
+    private(set) var wordContext: PageWordContext?
 
     init(page: MushafPage, library: MushafLibrary, appearance: MushafAppearance) {
         self.page = page
@@ -160,6 +161,7 @@ final class MushafPageView: UIView {
                 }
             },
             center.addObserver(forName: .qiraatDatabaseDidUpdate, object: nil, queue: .main) { [weak self] _ in
+                WordContextIndex.shared.invalidate()
                 MainActor.assumeIsolated { self?.refreshQiraatMarks() }
             },
             center.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) { [weak self] _ in
@@ -178,15 +180,23 @@ final class MushafPageView: UIView {
         prefetchNeighbourQiraat()
     }
 
-    /// Decodes the Qiraat data of the pages around this one off the main thread (and fetches their live
-    /// copy once), so turning the page finds the colours ready instead of loading them after the flip.
+    /// Prefetches Qiraat context of adjacent pages off the main thread so page turns find
+    /// colours ready in memory with zero delay.
     private func prefetchNeighbourQiraat() {
         guard qiraat.enabled, let store = library.qiraat else { return }
         let number = page.number
-        let neighbours = (max(1, number - 3)...min(mushafPageCount, number + 3)).filter { $0 != number }
-        Task.detached(priority: .userInitiated) {
-            for n in neighbours { _ = store.page(n) }
-            for n in neighbours where abs(n - number) == 1 {
+        let filter = qiraat.filter
+        WordContextIndex.shared.cancelObsolete(around: number, maxDistance: 2)
+        let neighbours = [number - 1, number + 1].filter { (1...mushafPageCount).contains($0) }
+        var wordsMap: [Int: [MushafWord]] = [:]
+        for n in neighbours {
+            if let p = library.page(n) {
+                wordsMap[n] = p.lines.flatMap(\.words)
+            }
+        }
+        WordContextIndex.shared.prefetch(pages: neighbours, filter: filter, qiraatStore: store, wordsMap: wordsMap)
+        Task.detached(priority: .background) {
+            for n in neighbours {
                 _ = await QiraatLiveSync.shared.refresh(page: n, store: store, force: false)
             }
         }
@@ -223,15 +233,27 @@ final class MushafPageView: UIView {
     }
 
     private func refreshQiraatMarks() {
-        var next: [String: WordMarks] = [:]
-        if qiraat.enabled, let layout, let pageMarks = library.qiraat?.marks(page: page.number) {
-            for box in layout.lines.flatMap(\.boxes) {
-                if let m = pageMarks.wordMarks(for: box.word, filter: qiraat.filter) { next[box.word.id] = m }
-            }
+        guard qiraat.enabled, let store = library.qiraat else {
+            marks = [:]
+            wordContext = nil
+            updateAccessibilityElements()
+            setNeedsDisplay()
+            return
         }
-        marks = next
+
+        let words = page.lines.flatMap(\.words)
+        let resolved = WordContextIndex.shared.resolveSync(
+            page: page.number,
+            filter: qiraat.filter,
+            qiraatStore: store,
+            pageWords: words,
+            queryCount: 0
+        )
+        marks = resolved.marksByWordID
+        wordContext = resolved
         updateAccessibilityElements()
         setNeedsDisplay()
+        prefetchNeighbourQiraat()
     }
 
     /// The memorization status to show under this word, when it is an ayah-end marker with a visible status.
