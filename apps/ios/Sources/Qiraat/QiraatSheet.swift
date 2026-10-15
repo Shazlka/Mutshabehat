@@ -86,7 +86,7 @@ struct QiraatSheet: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 12) {
                     QiraatSheetNavigator(
-                        orderedRefs: activeRefs,
+                        orderedRefs: logicalRefs,
                         currentRef: currentRef,
                         canNavigatePrevious: canNavigatePrevious,
                         canNavigateNext: canNavigateNext,
@@ -236,30 +236,89 @@ struct QiraatSheet: View {
         )
     }
 
+    private var logicalRefs: [MarkedWordRef] {
+        var result: [MarkedWordRef] = []
+        for ref in activeRefs {
+            if let last = result.last, isSameLogicalSpan(wordA: last.word, wordB: ref.word) {
+                continue
+            }
+            result.append(ref)
+        }
+        return result
+    }
+
+    private func isSameLogicalSpan(wordA: MushafWord, wordB: MushafWord) -> Bool {
+        guard wordA.ayahKey == wordB.ayahKey, let store else { return false }
+        let pWords = pageWordsProvider?(wordA.page) ?? []
+        let ctx = WordContextIndex.shared.resolveSync(
+            page: wordA.page,
+            filter: filter,
+            qiraatStore: store,
+            pageWords: pWords
+        )
+        guard let ctxA = ctx.words[wordA.id], let ctxB = ctx.words[wordB.id] else { return false }
+        let hasSharedSpanVariant = ctxA.variants.contains { v in
+            v.endToken > v.startToken && ctxB.variants.contains(where: { $0.id == v.id })
+        }
+        let hasSharedSpanRuling = ctxA.rulings.contains { r in
+            r.endToken > r.startToken && ctxB.rulings.contains(where: { $0.id == r.id })
+        }
+        guard hasSharedSpanVariant || hasSharedSpanRuling else { return false }
+        let extraVariants = ctxB.variants.filter { !ctxA.variants.contains($0) }
+        let extraRulings = ctxB.rulings.filter { !ctxA.rulings.contains($0) }
+        return extraVariants.isEmpty && extraRulings.isEmpty
+    }
+
     private var canNavigatePrevious: Bool {
-        if activeRefs.previous(before: currentRef) != nil { return true }
-        return findPreviousPageMarkedWord(beforePage: currentWord.page) != nil
+        previousLogicalWord(before: currentRef) != nil
     }
 
     private var canNavigateNext: Bool {
-        if activeRefs.next(after: currentRef) != nil { return true }
-        return findNextPageMarkedWord(afterPage: currentWord.page) != nil
+        nextLogicalWord(after: currentRef) != nil
     }
 
     private func navigateToPrevious() {
-        if let prev = activeRefs.previous(before: currentRef) {
-            selectWord(prev.word)
-        } else if let prevWord = findPreviousPageMarkedWord(beforePage: currentWord.page) {
-            selectWord(prevWord)
+        if let prev = previousLogicalWord(before: currentRef) {
+            selectWord(prev)
         }
     }
 
     private func navigateToNext() {
-        if let next = activeRefs.next(after: currentRef) {
-            selectWord(next.word)
-        } else if let nextWord = findNextPageMarkedWord(afterPage: currentWord.page) {
-            selectWord(nextWord)
+        if let next = nextLogicalWord(after: currentRef) {
+            selectWord(next)
         }
+    }
+
+    private func nextLogicalWord(after currentRef: MarkedWordRef) -> MushafWord? {
+        guard let currentIndex = activeRefs.firstIndex(where: { $0.id == currentRef.id }) else {
+            return activeRefs.first(where: { !QiraatWordOrder.comesBefore($0.word, currentRef.word) })?.word
+        }
+        var nextIndex = currentIndex + 1
+        while nextIndex < activeRefs.count {
+            let candidate = activeRefs[nextIndex].word
+            if isSameLogicalSpan(wordA: currentRef.word, wordB: candidate) {
+                nextIndex += 1
+            } else {
+                return candidate
+            }
+        }
+        return findNextPageMarkedWord(afterPage: currentRef.word.page)
+    }
+
+    private func previousLogicalWord(before currentRef: MarkedWordRef) -> MushafWord? {
+        guard let currentIndex = activeRefs.firstIndex(where: { $0.id == currentRef.id }) else {
+            return activeRefs.last(where: { QiraatWordOrder.comesBefore($0.word, currentRef.word) })?.word
+        }
+        var prevIndex = currentIndex - 1
+        while prevIndex >= 0 {
+            let candidate = activeRefs[prevIndex].word
+            if prevIndex > 0 && isSameLogicalSpan(wordA: activeRefs[prevIndex - 1].word, wordB: candidate) {
+                prevIndex -= 1
+            } else {
+                return candidate
+            }
+        }
+        return findPreviousPageMarkedWord(beforePage: currentRef.word.page)
     }
 
     private func findPreviousPageMarkedWord(beforePage: Int) -> MushafWord? {

@@ -143,7 +143,8 @@ struct ReaderView: View {
                         try? library.fonts.font(page: pageNum, size: 40)
                     },
                     onWordChanged: { word in
-                        highlightedWordIDs = [word.id]
+                        let linked = linkedWordIDs(for: word)
+                        highlightedWordIDs = Set([word.id] + linked)
                         if word.page != page {
                             page = word.page
                         }
@@ -483,13 +484,26 @@ struct ReaderView: View {
         }
     }
 
+    private func linkedWordIDs(for word: MushafWord) -> [String] {
+        guard let store = library.qiraat else { return [] }
+        let pWords = library.page(word.page)?.lines.flatMap(\.words) ?? []
+        let ctx = WordContextIndex.shared.resolveSync(
+            page: word.page,
+            filter: qiraat.filter,
+            qiraatStore: store,
+            pageWords: pWords
+        )
+        return ctx.words[word.id]?.linkedWordIDs ?? []
+    }
+
     private func openQiraat(_ tappedPage: MushafPage, _ word: MushafWord) {
         guard qiraat.enabled, let marks = library.qiraat?.marks(page: tappedPage.number),
               let selection = marks.selection(surah: word.ayahKey.surah, ayah: word.ayahKey.ayah,
                                               token: word.indexInAyah, filter: qiraat.filter) else { return }
         UserDefaults.standard.set(true, forKey: QiraatFirstUseHint.storageKey)
         Haptics.wordPress()
-        highlightedWordIDs = [word.id]
+        let linked = linkedWordIDs(for: word)
+        highlightedWordIDs = Set([word.id] + linked)
         qiraatSelection = QiraatWordSelection(word: word, selection: selection)
     }
 
@@ -502,7 +516,8 @@ struct ReaderView: View {
                   token: word.indexInAyah,
                   filter: qiraat.filter
               ) else { return }
-        highlightedWordIDs = [word.id]
+        let linked = linkedWordIDs(for: word)
+        highlightedWordIDs = Set([word.id] + linked)
         if word.page != page {
             page = word.page
         }

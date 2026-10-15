@@ -23,6 +23,12 @@ struct RulingCard: View {
             }
             if !ruling.baseText.isEmpty {
                 VStack(spacing: 4) {
+                    if ruling.endToken > ruling.startToken {
+                        Text("الكلمات محل الخلاف")
+                            .font(.caption.bold())
+                            .foregroundStyle(Color(uiColor: .mushafBrown))
+                            .accessibilityIdentifier("qiraat-span-heading")
+                    }
                     Text(verbatim: sharedForm ?? QiraatReadingForm.display(ruling.baseText))
                         .font(rulingWordFont)
                         .foregroundStyle(color)

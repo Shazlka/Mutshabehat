@@ -18,6 +18,12 @@ struct VariantCard: View {
         let text = variant.uthmaniText ?? (performanceOnly ? variant.hafsText : variant.variantText)
         VStack(alignment: .leading, spacing: 8) {
             QiraatClassificationLine(variant: variant)
+            if variant.endToken > variant.startToken {
+                Text("الكلمات محل الخلاف")
+                    .font(.caption.bold())
+                    .foregroundStyle(Color(uiColor: .mushafBrown))
+                    .accessibilityIdentifier("qiraat-span-heading")
+            }
             Text(verbatim: text)
                 .font(variantFont)
                 .foregroundStyle(.qiraatVariantInk)

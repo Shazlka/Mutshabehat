@@ -7,7 +7,7 @@ public struct MarkedWordRef: Identifiable, Hashable, Sendable {
 }
 
 public enum QiraatWordOrder {
-    fileprivate static func comesBefore(_ lhs: MushafWord, _ rhs: MushafWord) -> Bool {
+    public static func comesBefore(_ lhs: MushafWord, _ rhs: MushafWord) -> Bool {
         (lhs.ayahKey.surah, lhs.ayahKey.ayah, lhs.indexInAyah, lhs.page, lhs.line, lhs.indexInLine)
             < (rhs.ayahKey.surah, rhs.ayahKey.ayah, rhs.indexInAyah, rhs.page, rhs.line, rhs.indexInLine)
     }
