@@ -27,6 +27,8 @@ struct UpdateSheet: View {
     @State private var search = ""
     @State private var pendingPlan: BatchPlan?
     @State private var errorMessage: String?
+    /// Which text field has the keyboard (by its accessibility identifier); setting it to nil dismisses the keyboard.
+    @FocusState private var focusedField: String?
 
     init(store: MemorizationStore, library: MushafLibrary, language: AppLanguage, initial: MemorizationSelection?,
          onApplied: @escaping (MemorizationStore.ApplyResult, BatchPlan) -> Void) {
@@ -77,6 +79,7 @@ struct UpdateSheet: View {
                 Section {
                     TextField(copy("اكتب: يس · البقرة ٢٥٥ · صفحة ٥٨٢", "Type: Yasin · Baqarah 255 · page 582"), text: $search)
                         .onSubmit(applySearch)
+                        .focused($focusedField, equals: "memo-update-search")
                         .accessibilityIdentifier("memo-update-search")
                 }
                 Section {
@@ -124,7 +127,9 @@ struct UpdateSheet: View {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
                     Button(copy("تم", "Done")) {
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                        // Focus state is what SwiftUI honours on iPad too; the responder-chain action did not
+                        // reach the field there, so the keyboard stayed up.
+                        focusedField = nil
                     }
                     .accessibilityIdentifier("memo-keyboard-done")
                 }
@@ -205,6 +210,9 @@ struct UpdateSheet: View {
             TextField("", value: value, format: .number)
                 .keyboardType(.numberPad)
                 .textFieldStyle(.roundedBorder)
+                .focused($focusedField, equals: identifier)
+                .submitLabel(.done)
+                .onSubmit { focusedField = nil }   // iPad's number keyboard has a Return key
                 .accessibilityIdentifier(identifier)
         }
     }

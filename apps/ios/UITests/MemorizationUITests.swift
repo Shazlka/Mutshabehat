@@ -44,8 +44,7 @@ final class MemorizationUITests: XCTestCase {
             field.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: current.count))
         }
         field.typeText(text)
-        let done = app.buttons["memo-keyboard-done"]   // the keyboard can cover the controls below
-        if done.waitForExistence(timeout: 2) { done.tap() }
+        if app.keyboards.firstMatch.waitForExistence(timeout: 2) { app.dismissNumberKeyboard() }   // the keyboard can cover the controls below
     }
 
     private func strictLabel(_ app: XCUIApplication) -> String {
@@ -160,6 +159,21 @@ final class MemorizationUITests: XCTestCase {
         XCTAssertTrue(element("memo-update-page-from", in: app).exists)
     }
 
+    /// The keyboard's «تم» button must really dismiss the keyboard, on iPad as well as iPhone.
+    func testKeyboardDoneDismissesTheKeyboard() {
+        let app = launch()
+        openUpdateSheet(app)
+        search("آل عمران 5", in: app)
+        let field = app.textFields["memo-update-to"]
+        XCTAssertTrue(field.waitForExistence(timeout: 5))
+        field.tap()
+        let keyboard = app.keyboards.firstMatch
+        XCTAssertTrue(keyboard.waitForExistence(timeout: 5))
+        app.dismissNumberKeyboard()
+        let gone = expectation(for: NSPredicate(format: "exists == false"), evaluatedWith: keyboard)
+        wait(for: [gone], timeout: 10)
+    }
+
     func testReversedRangeStillApplies() {
         // Review focus: from > to means the same range.
         let app = launch()
@@ -178,7 +192,7 @@ final class MemorizationUITests: XCTestCase {
         openUpdateSheet(app)
         search("آل عمران 42", in: app)
         replaceText(in: app.textFields["memo-update-to"], with: "51")
-        if app.buttons["memo-keyboard-done"].waitForExistence(timeout: 2) { app.buttons["memo-keyboard-done"].tap() }
+        if app.keyboards.firstMatch.waitForExistence(timeout: 2) { app.dismissNumberKeyboard() }
         let toggle = app.switches["memo-update-set-current"]
         XCTAssertTrue(toggle.waitForExistence(timeout: 5))
         // It is the last row of the form: on a shorter phone it starts behind the summary-and-save bar,
@@ -400,7 +414,7 @@ final class MemorizationUITests: XCTestCase {
         openUpdateSheet(app)
         search("البقرة 100", in: app)
         replaceText(in: app.textFields["memo-update-to"], with: "125")
-        if app.buttons["memo-keyboard-done"].waitForExistence(timeout: 2) { app.buttons["memo-keyboard-done"].tap() }
+        if app.keyboards.firstMatch.waitForExistence(timeout: 2) { app.dismissNumberKeyboard() }
         chooseStatus(status, in: app)
         app.buttons["memo-update-apply"].tap()
         XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 10))

@@ -39,7 +39,7 @@ final class MemorizationProgressUITests: XCTestCase {
         let to = app.textFields["memo-update-to"]
         to.tap()
         to.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 3) + "125")
-        if app.buttons["memo-keyboard-done"].waitForExistence(timeout: 2) { app.buttons["memo-keyboard-done"].tap() }
+        if app.keyboards.firstMatch.waitForExistence(timeout: 2) { app.dismissNumberKeyboard() }
         element("memo-status-\(status)", in: app).tap()
         app.buttons["memo-update-apply"].tap()
         XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 10))
