@@ -6,7 +6,7 @@ final class MemorizationProgressUITests: XCTestCase {
     override nonisolated func setUp() { continueAfterFailure = false }
 
     private func launch(seed: String = "demo") -> XCUIApplication {
-        let app = XCUIApplication.isolated()
+        let app = XCUIApplication.isolated(animations: false)
         app.launchArguments = ["-memorization-seed", seed, "-app:language:v1", "ar", "-mushaf1441:reader-layer:v1", "none",
                                "-open-memorization", "-backup-folder", "none"]
         app.launch()

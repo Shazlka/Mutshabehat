@@ -7,7 +7,7 @@ final class MemorizationReaderUITests: XCTestCase {
     override nonisolated func setUp() { continueAfterFailure = false }
 
     private func launch(page: Int, chrome: Bool = false, layer: String = "none", extra: [String] = []) -> XCUIApplication {
-        let app = XCUIApplication.isolated()
+        let app = XCUIApplication.isolated(animations: false)
         var arguments = ["-memorization-seed", "demo", "-app:language:v1", "ar", "-mushaf1441:last-page:v1", "\(page)",
                          "-mushaf1441:reader-layer:v1", layer]
         if chrome { arguments.append("-show-chrome") }

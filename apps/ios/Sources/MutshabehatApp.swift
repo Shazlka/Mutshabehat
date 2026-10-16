@@ -1,8 +1,19 @@
 import SwiftUI
+import UIKit
 
 @main
 struct MutshabehatApp: App {
     @State private var library = MushafLibrary.load()
+
+    init() {
+#if DEBUG
+        // The iPad UI tests set this: the simulator's keyboard hide animation sometimes never reports completion
+        // to the test runner, which then waits minutes for an idle app that is in fact idle. DEBUG builds only.
+        if ProcessInfo.processInfo.environment["QIRAAT_UI_TEST_NO_ANIMATIONS"] == "1" {
+            UIView.setAnimationsEnabled(false)
+        }
+#endif
+    }
 
     var body: some Scene {
         WindowGroup {

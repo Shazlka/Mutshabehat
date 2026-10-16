@@ -7,7 +7,7 @@ final class MemorizationUITests: XCTestCase {
     override nonisolated func setUp() { continueAfterFailure = false }
 
     private func launch(seed: String = "demo", openModule: Bool = true, extra: [String] = []) -> XCUIApplication {
-        let app = XCUIApplication.isolated()
+        let app = XCUIApplication.isolated(animations: false)
         var arguments = ["-memorization-seed", seed, "-app:language:v1", "ar", "-mushaf1441:reader-layer:v1", "none"]
         if openModule { arguments.append("-open-memorization") }
         app.launchArguments = arguments + extra
@@ -38,7 +38,7 @@ final class MemorizationUITests: XCTestCase {
         button.tap()
     }
 
-    private func replaceText(in field: XCUIElement, with text: String, app: XCUIApplication = XCUIApplication.isolated()) {
+    private func replaceText(in field: XCUIElement, with text: String, app: XCUIApplication = XCUIApplication.isolated(animations: false)) {
         field.tap()
         if let current = field.value as? String, !current.isEmpty {
             field.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: current.count))

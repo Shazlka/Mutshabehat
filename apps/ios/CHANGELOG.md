@@ -3,6 +3,10 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-17 — iPad UI test stability (keyboard animation stalls, legend scrolling)
+- On the iPad simulator the UI test runner sometimes waited 6–10 minutes ("App animations complete notification not received") after the memorization sheet's keyboard was dismissed, although the screen was settled and the app idle (checked with screenshots 3 s apart). DEBUG builds now honour `QIRAAT_UI_TEST_NO_ANIMATIONS=1` (`UIView.setAnimationsEnabled(false)`); only the Memorization UI tests set it, and only on iPad (`XCUIApplication.isolated(animations: false)`). Turning animations off everywhere made the legend test fail, so it is not the default. Release builds are unaffected.
+- `QiraatFeaturesUITests.testLegendOpensListsReaderRowsAndCloses` scrolls the legend with an explicit press-and-drag instead of `swipeUp()`, which the iPad sheet's own drag gesture sometimes took (the list did not move). 5 of 5 runs pass on iPad, and it passes on iPhone.
+
 ## [Unreleased] — 2026-10-16 — iPad: the keyboard of the memorization update sheet could not be dismissed
 - On iPad the update sheet's number fields use a full keyboard. The «تم» accessory button called `sendAction(resignFirstResponder)`, which did not reach the field there, so the keyboard stayed up; the UI tests then waited minutes for the app to go idle (6–8 minute failures, 20 "animations complete notification not received" stalls on the iPad run). The button now clears a `@FocusState` (which SwiftUI honours on iPad), and Return on the iPad keyboard also submits and dismisses (`.submitLabel(.done)` + `.onSubmit`).
 - UI tests: `XCUIApplication.dismissNumberKeyboard()` presses Return on iPad (the accessory button is reported not hittable there) and «تم» on iPhone; new `MemorizationUITests.testKeyboardDoneDismissesTheKeyboard` (failed on iPad before the fix).

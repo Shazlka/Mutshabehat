@@ -67,6 +67,14 @@ final class QiraatFeaturesUITests: XCTestCase {
     // MARK: - Tests
 
     /// Flow 1: Legend opens from reader menu, lists reader rows, and closes cleanly.
+    /// Scrolls a list in a sheet with an explicit drag. A plain `swipeUp()` is sometimes taken by the iPad sheet's
+    /// own drag gesture and the list does not move.
+    private func scrollUp(_ list: XCUIElement) {
+        let start = list.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.85))
+        let end = list.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.25))
+        start.press(forDuration: 0.1, thenDragTo: end)
+    }
+
     func testLegendOpensListsReaderRowsAndCloses() {
         let app = launch(atPage: 1)
         XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 10))
@@ -86,7 +94,7 @@ final class QiraatFeaturesUITests: XCTestCase {
         let nafiRow = app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS 'نافع'")).firstMatch
         var swipes = 0
         while !nafiRow.exists && swipes < 8 {   // the reader rows are below the mark samples
-            legend.swipeUp()
+            scrollUp(legend)
             swipes += 1
         }
         XCTAssertTrue(nafiRow.waitForExistence(timeout: 5), "Legend must list reader rows such as Imam Nafi")
@@ -94,7 +102,7 @@ final class QiraatFeaturesUITests: XCTestCase {
         let asimRow = app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS 'عاصم'")).firstMatch
         swipes = 0
         while !asimRow.exists && swipes < 8 {
-            legend.swipeUp()
+            scrollUp(legend)
             swipes += 1
         }
         XCTAssertTrue(asimRow.waitForExistence(timeout: 5), "Legend must list reader rows such as Imam Asim")
