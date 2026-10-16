@@ -3,6 +3,9 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-16 — make test / test-ipad no longer stall after a failure
+- The `test` and `test-ipad` targets pass `-collect-test-diagnostics never`; without it Xcode 27 spent about 10 minutes in `simctl diagnose` after any failing test before reporting.
+
 ## [Unreleased] — 2026-10-16 — Database import hardening
 - `SQLiteFile.replaceContents`: when a failed swap cannot be recovered cleanly (the connection did not close, the old bytes could not be written back, or a leftover `-wal` could not be removed) it no longer reopens a database on top of that; the error ends with «not reopened».
 - `checkpointTruncate(_:busyTimeoutMs:)`: Mutshabehat and Reading imports wait up to 2 s for a reader (a backup copying the file) before giving up, instead of failing at once.

@@ -79,7 +79,7 @@ build: all
 	$(XCB) -destination 'platform=iOS Simulator,name=$(SIM)' build
 
 test: check-isolation all data-test core-test release-guard
-	$(XCB) -destination 'platform=iOS Simulator,name=$(SIM)' test
+	$(XCB) -destination 'platform=iOS Simulator,name=$(SIM)' -collect-test-diagnostics never test
 
 # A Release build must carry nothing of the DEBUG-only review editor (symbols, API path, bundled reference data).
 RELEASE_APP := $(DERIVED)/Build/Products/Release-iphonesimulator/Mutshabehat.app
@@ -88,7 +88,7 @@ release-guard: all
 	python3 scripts/release_guard.py $(RELEASE_APP)
 
 test-ipad: all
-	$(XCB) -destination 'platform=iOS Simulator,name=$(IPAD)' test
+	$(XCB) -destination 'platform=iOS Simulator,name=$(IPAD)' -collect-test-diagnostics never test
 
 run: build
 	xcrun simctl boot "$(SIM)" 2>/dev/null || true
