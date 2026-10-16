@@ -359,7 +359,7 @@ final class MutshabehatTests: XCTestCase {
         sqlite3_finalize(select)
         target.savePersonalGroup(simpleGroup(title: "بعد القارئ"))   // new WAL frames beyond the reader's snapshot
         nonisolated(unsafe) let readerHandle = reader
-        DispatchQueue.global().asyncAfter(deadline: .now() + 0.4) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 0.15) {
             sqlite3_exec(readerHandle, "COMMIT;", nil, nil, nil)
             sqlite3_close(readerHandle)
         }

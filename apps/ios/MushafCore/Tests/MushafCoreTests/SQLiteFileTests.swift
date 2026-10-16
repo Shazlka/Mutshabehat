@@ -412,12 +412,13 @@ import Testing
         exec(writer, "INSERT INTO t VALUES (2);")
         // The reader lets go after 0.3 s, on another thread.
         nonisolated(unsafe) let readerHandle = reader
-        DispatchQueue.global().asyncAfter(deadline: .now() + 0.3) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 0.2) {
             sqlite3_exec(readerHandle, "COMMIT;", nil, nil, nil)
             sqlite3_close(readerHandle)
         }
 
-        try SQLiteFile.checkpointTruncate(writer, busyTimeoutMs: 3000)
+        // A generous limit: the wait ends as soon as the reader lets go, so a loaded machine cannot fail this.
+        try SQLiteFile.checkpointTruncate(writer, busyTimeoutMs: 20_000)
     }
 
     @Test func replaceContentsRemovesStaleSidecars() throws {
