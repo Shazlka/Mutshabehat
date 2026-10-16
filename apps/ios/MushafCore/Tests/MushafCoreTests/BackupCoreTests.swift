@@ -144,6 +144,24 @@ import Testing
         #expect(rowCount(at: destination) == 6)
     }
 
+    @Test func copyLeavesOnlyTheDestinationFile() throws {
+        let sourceDirectory = try temporaryDirectory()
+        let destinationDirectory = try temporaryDirectory()
+        defer {
+            try? FileManager.default.removeItem(at: sourceDirectory)
+            try? FileManager.default.removeItem(at: destinationDirectory)
+        }
+        let source = sourceDirectory.appendingPathComponent("source.sqlite")
+        let destination = destinationDirectory.appendingPathComponent("copy.sqlite")
+        let writer = try makeDatabase(at: source, rows: 50)   // stays open in WAL mode
+        defer { sqlite3_close(writer) }
+
+        try SQLiteSnapshot.copy(from: source, to: destination)
+
+        let names = try FileManager.default.contentsOfDirectory(atPath: destinationDirectory.path)
+        #expect(names == ["copy.sqlite"])
+    }
+
     @Test func snapshotOfMissingSourceThrows() {
         let missing = FileManager.default.temporaryDirectory.appendingPathComponent("none-\(UUID().uuidString).sqlite")
         let destination = FileManager.default.temporaryDirectory.appendingPathComponent("dest-\(UUID().uuidString).sqlite")

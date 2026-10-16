@@ -37,14 +37,27 @@ public enum SQLiteSnapshot {
         let partial = directory.appendingPathComponent(".\(destination.lastPathComponent).partial-\(UUID().uuidString)")
         defer { try? FileManager.default.removeItem(at: partial) }
 
+        // The destination handle has one owner: this variable. It is cleared only when `sqlite3_close`
+        // succeeded, and the `defer` closes whatever is still open (close_v2 never double-frees).
         var destinationHandle: OpaquePointer?
         guard sqlite3_open_v2(partial.path, &destinationHandle, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil) == SQLITE_OK,
-              let destinationHandle else {
+              destinationHandle != nil else {
             let detail = destinationHandle.map { String(cString: sqlite3_errmsg($0)) } ?? "no handle"
-            sqlite3_close(destinationHandle)
+            if let destinationHandle { sqlite3_close_v2(destinationHandle) }
             throw SQLiteSnapshotError.openFailed(detail)
         }
-        defer { sqlite3_close(destinationHandle) }
+        defer {
+            if let handle = destinationHandle { sqlite3_close_v2(handle) }
+            for suffix in ["-wal", "-shm"] { try? FileManager.default.removeItem(atPath: partial.path + suffix) }
+        }
+
+        func closeDestination() throws {
+            guard let handle = destinationHandle else { return }
+            guard sqlite3_close(handle) == SQLITE_OK else {
+                throw SQLiteSnapshotError.backupFailed("close: \(String(cString: sqlite3_errmsg(handle)))")
+            }
+            destinationHandle = nil
+        }
 
         guard let backup = sqlite3_backup_init(destinationHandle, "main", sourceHandle, "main") else {
             throw SQLiteSnapshotError.backupFailed(String(cString: sqlite3_errmsg(destinationHandle)))
@@ -55,8 +68,10 @@ public enum SQLiteSnapshot {
             throw SQLiteSnapshotError.backupFailed("code \(stepResult)/\(finishResult)")
         }
         // Fold the copy into one self-contained file.
-        sqlite3_exec(destinationHandle, "PRAGMA journal_mode = DELETE;", nil, nil, nil)
-        sqlite3_close(destinationHandle)
+        guard sqlite3_exec(destinationHandle, "PRAGMA journal_mode = DELETE;", nil, nil, nil) == SQLITE_OK else {
+            throw SQLiteSnapshotError.backupFailed("journal_mode: \(String(cString: sqlite3_errmsg(destinationHandle)))")
+        }
+        try closeDestination()
 
         if FileManager.default.fileExists(atPath: destination.path) {
             _ = try FileManager.default.replaceItemAt(destination, withItemAt: partial)
