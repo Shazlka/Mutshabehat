@@ -84,8 +84,14 @@ public enum SQLiteFile {
     // MARK: Connection helpers (called by the owner of the handle)
 
     /// Runs `PRAGMA wal_checkpoint(TRUNCATE)` and throws unless it completed: a reader holding an older
-    /// snapshot makes it report busy, and the WAL must not be deleted in that case.
-    public static func checkpointTruncate(_ db: OpaquePointer) throws {
+    /// snapshot makes it report busy, and the WAL must not be deleted in that case. With `busyTimeoutMs > 0` it
+    /// waits that long for such a reader (a backup copying the file) before giving up; the connection's own
+    /// timeout is put back to 0 afterwards, which is what the callers' connections use.
+    public static func checkpointTruncate(_ db: OpaquePointer, busyTimeoutMs: Int32 = 0) throws {
+        if busyTimeoutMs > 0 {
+            sqlite3_busy_timeout(db, busyTimeoutMs)
+        }
+        defer { if busyTimeoutMs > 0 { sqlite3_busy_timeout(db, 0) } }
         var statement: OpaquePointer?
         guard sqlite3_prepare_v2(db, "PRAGMA wal_checkpoint(TRUNCATE)", -1, &statement, nil) == SQLITE_OK, let statement else {
             throw SQLiteFileError.replaceFailed("checkpoint: \(String(cString: sqlite3_errmsg(db)))")
@@ -187,12 +193,19 @@ public enum SQLiteFile {
             original = describe(error)
         }
 
-        // Recovery: put the old file back and reopen it, keeping every failure.
+        // Recovery: put the old file back and reopen it, keeping every failure. A database is opened on the
+        // restored file only if the connection really closed, the old bytes are back and no WAL is left to be
+        // replayed onto them; otherwise it stays closed and the message says so.
         var problems: [String] = []
-        do { try close() } catch { problems.append("close: \(describe(error))") }
-        do { try previous.write(to: target, options: .atomic) } catch { problems.append("restore: \(describe(error))") }
-        do { try removeSidecars(of: target) } catch { problems.append(describe(error)) }
-        do { try reopen() } catch { problems.append("reopen: \(describe(error))") }
+        var safeToReopen = true
+        do { try close() } catch { problems.append("close: \(describe(error))"); safeToReopen = false }
+        do { try previous.write(to: target, options: .atomic) } catch { problems.append("restore: \(describe(error))"); safeToReopen = false }
+        do { try removeSidecars(of: target) } catch { problems.append(describe(error)); safeToReopen = false }
+        if safeToReopen {
+            do { try reopen() } catch { problems.append("reopen: \(describe(error))") }
+        } else {
+            problems.append("not reopened")
+        }
         throw SQLiteFileError.replaceFailed(problems.isEmpty ? original : "\(original); recovery failed: \(problems.joined(separator: ", "))")
     }
 

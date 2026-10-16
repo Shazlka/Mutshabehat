@@ -101,7 +101,8 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         do {
             try SQLiteFile.replaceContents(
                 of: databaseURL, with: data, requiredTables: Self.requiredTables,
-                checkpoint: { if let db { try SQLiteFile.checkpointTruncate(db) } },
+                // With no open connection (it failed to open) there is nothing to fold in, as before.
+                checkpoint: { if let db { try SQLiteFile.checkpointTruncate(db, busyTimeoutMs: 2000) } },
                 close: { try closeConnection() },
                 reopen: { try reopenDatabase() })
         } catch let error as SQLiteFileError {

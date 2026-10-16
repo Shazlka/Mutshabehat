@@ -373,6 +373,53 @@ import Testing
         #expect(scalarText(replaced, "SELECT group_concat(name) FROM sqlite_master WHERE type = 'table'") == "new")
     }
 
+    @Test func replaceContentsDoesNotReopenWhenRecoveryCannotCleanUp() throws {
+        let f = try fixture()
+        defer { try? FileManager.default.removeItem(at: f.directory) }
+        defer { try? FileManager.default.setAttributes([.posixPermissions: 0o755], ofItemAtPath: f.directory.path) }
+        var reopens = 0
+
+        let error = failure {
+            try SQLiteFile.replaceContents(of: f.target, with: f.replacement, requiredTables: ["new"],
+                                           checkpoint: {}, close: {}, reopen: {
+                reopens += 1
+                // The failed reopen leaves a WAL behind and the directory turns read-only: recovery can neither
+                // delete the WAL nor restore the old bytes, so it must not open a database on top of them.
+                try Data([1]).write(to: URL(fileURLWithPath: f.target.path + "-wal"))
+                try FileManager.default.setAttributes([.posixPermissions: 0o555], ofItemAtPath: f.directory.path)
+                throw Boom()
+            })
+        }
+
+        #expect(reopens == 1)
+        #expect(message(error).contains("recovery failed"))
+        #expect(message(error).contains("not reopened"))
+    }
+
+    @Test func checkpointTruncateWaitsForABriefReader() throws {
+        let directory = try temporaryDirectory()
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let url = directory.appendingPathComponent("brief.sqlite")
+        let writer = try open(url)
+        defer { sqlite3_close(writer) }
+        exec(writer, "PRAGMA journal_mode = WAL; CREATE TABLE t (x INTEGER); INSERT INTO t VALUES (1);")
+        let reader = try open(url)
+        exec(reader, "BEGIN;")
+        var select: OpaquePointer?
+        #expect(sqlite3_prepare_v2(reader, "SELECT count(*) FROM t", -1, &select, nil) == SQLITE_OK)
+        #expect(sqlite3_step(select) == SQLITE_ROW)
+        sqlite3_finalize(select)
+        exec(writer, "INSERT INTO t VALUES (2);")
+        // The reader lets go after 0.3 s, on another thread.
+        nonisolated(unsafe) let readerHandle = reader
+        DispatchQueue.global().asyncAfter(deadline: .now() + 0.3) {
+            sqlite3_exec(readerHandle, "COMMIT;", nil, nil, nil)
+            sqlite3_close(readerHandle)
+        }
+
+        try SQLiteFile.checkpointTruncate(writer, busyTimeoutMs: 3000)
+    }
+
     @Test func replaceContentsRemovesStaleSidecars() throws {
         let f = try fixture()
         defer { try? FileManager.default.removeItem(at: f.directory) }

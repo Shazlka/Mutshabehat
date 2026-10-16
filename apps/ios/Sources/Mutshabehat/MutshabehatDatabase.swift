@@ -553,13 +553,20 @@ public final class MutshabehatDatabase: @unchecked Sendable {
     /// Replaces the whole database with `data` after checking that it is a SQLite file holding the Mutshabehat
     /// tables. If the swap fails, the previous file is put back (see `SQLiteFile.replaceContents`).
     public func importDatabase(_ data: Data) throws {
+        try replaceContents(with: data)
+        // Posted after the lock is released: observers run synchronously and read this database.
+        NotificationCenter.default.post(name: Notification.Name("mutshabehatDatabaseDidUpdate"), object: nil)
+    }
+
+    private func replaceContents(with data: Data) throws {
         lock.lock()
         defer { lock.unlock() }
 
         do {
             try SQLiteFile.replaceContents(
                 of: databaseURL, with: data, requiredTables: ["groups", "verses", "parts", "automated_groups"],
-                checkpoint: { if let db { try SQLiteFile.checkpointTruncate(db) } },
+                // With no open connection (it failed to open) there is nothing to fold in, as before.
+                checkpoint: { if let db { try SQLiteFile.checkpointTruncate(db, busyTimeoutMs: 2000) } },
                 close: { try closeConnection() },
                 reopen: { try reopenDatabase() })
         } catch let error as SQLiteFileError {
@@ -568,7 +575,6 @@ public final class MutshabehatDatabase: @unchecked Sendable {
             case .replaceFailed: throw DatabaseTransferError.databaseUnavailable
             }
         }
-        NotificationCenter.default.post(name: Notification.Name("mutshabehatDatabaseDidUpdate"), object: nil)
     }
 
     /// Closes the connection and clears `db` only if SQLite agreed to close it.

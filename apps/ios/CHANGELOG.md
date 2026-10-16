@@ -3,6 +3,12 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-16 — Database import hardening
+- `SQLiteFile.replaceContents`: when a failed swap cannot be recovered cleanly (the connection did not close, the old bytes could not be written back, or a leftover `-wal` could not be removed) it no longer reopens a database on top of that; the error ends with «not reopened».
+- `checkpointTruncate(_:busyTimeoutMs:)`: Mutshabehat and Reading imports wait up to 2 s for a reader (a backup copying the file) before giving up, instead of failing at once.
+- `MutshabehatDatabase.importDatabase` posts `mutshabehatDatabaseDidUpdate` after releasing its lock, so a synchronous observer that reads the database cannot deadlock.
+- Tests: `replaceContentsDoesNotReopenWhenRecoveryCannotCleanUp`, `checkpointTruncateWaitsForABriefReader`, `testImportWaitsForABriefReaderInsteadOfFailing`, `testImportNotificationCanBeObservedByCodeThatReadsTheDatabase` (the last two fail against the previous code).
+
 ## [Unreleased] — 2026-10-16 — Memorization writes reuse prepared statements
 - A write transaction (`apply`, undo, restore/replace) prepared the upsert and the event statement again for every ayah. They are now prepared once per transaction (`StatementCache`, finalized when the transaction ends) and reused. A whole-Quran update (6,236 ayat) went from 176–275 ms to 120–170 ms on the simulator, which also removes the flaky failures of `testWholeQuranApplyIsFast` (300 ms budget) under load. Behaviour and data are unchanged.
 

@@ -339,6 +339,57 @@ final class MutshabehatTests: XCTestCase {
         XCTAssertNoThrow(try target.importDatabase(bytes))
     }
 
+    /// A backup reading the database for a moment must delay an import, not fail it.
+    func testImportWaitsForABriefReaderInsteadOfFailing() throws {
+        let sourceURL = temporaryDatabaseURL()
+        let targetURL = temporaryDatabaseURL()
+        defer { removeDatabaseFiles(sourceURL); removeDatabaseFiles(targetURL) }
+        let source = MutshabehatDatabase(url: sourceURL)
+        source.savePersonalGroup(simpleGroup(title: "مصدر"))
+        let exported = try source.exportDatabase()
+        let target = MutshabehatDatabase(url: targetURL)
+        target.savePersonalGroup(simpleGroup(title: "قبل"))
+
+        var reader: OpaquePointer?
+        XCTAssertEqual(sqlite3_open(targetURL.path, &reader), SQLITE_OK)
+        sqlite3_exec(reader, "BEGIN;", nil, nil, nil)
+        var select: OpaquePointer?
+        sqlite3_prepare_v2(reader, "SELECT count(*) FROM groups", -1, &select, nil)
+        XCTAssertEqual(sqlite3_step(select), SQLITE_ROW)
+        sqlite3_finalize(select)
+        target.savePersonalGroup(simpleGroup(title: "بعد القارئ"))   // new WAL frames beyond the reader's snapshot
+        nonisolated(unsafe) let readerHandle = reader
+        DispatchQueue.global().asyncAfter(deadline: .now() + 0.4) {
+            sqlite3_exec(readerHandle, "COMMIT;", nil, nil, nil)
+            sqlite3_close(readerHandle)
+        }
+
+        XCTAssertNoThrow(try target.importDatabase(exported))
+    }
+
+    /// Observers of `mutshabehatDatabaseDidUpdate` run synchronously on the importing thread and read the
+    /// database, so the notification must not be posted while the database lock is held.
+    func testImportNotificationCanBeObservedByCodeThatReadsTheDatabase() throws {
+        let sourceURL = temporaryDatabaseURL()
+        let targetURL = temporaryDatabaseURL()
+        defer { removeDatabaseFiles(sourceURL); removeDatabaseFiles(targetURL) }
+        let source = MutshabehatDatabase(url: sourceURL)
+        source.savePersonalGroup(simpleGroup(title: "مصدر"))
+        let exported = try source.exportDatabase()
+        let target = MutshabehatDatabase(url: targetURL)
+
+        let observed = expectation(description: "the observer read the database during the notification")
+        let token = NotificationCenter.default.addObserver(
+            forName: Notification.Name("mutshabehatDatabaseDidUpdate"), object: nil, queue: nil) { _ in
+            _ = target.allSurahNames()   // takes the database lock: deadlocks if the import still holds it
+            observed.fulfill()
+        }
+        defer { NotificationCenter.default.removeObserver(token) }
+
+        DispatchQueue.global().async { try? target.importDatabase(exported) }
+        wait(for: [observed], timeout: 5)
+    }
+
     func testExportContainsLatestWriteWhileOpen() throws {
         let sourceURL = temporaryDatabaseURL()
         let targetURL = temporaryDatabaseURL()
