@@ -3,6 +3,9 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-16 — Memorization writes reuse prepared statements
+- A write transaction (`apply`, undo, restore/replace) prepared the upsert and the event statement again for every ayah. They are now prepared once per transaction (`StatementCache`, finalized when the transaction ends) and reused. A whole-Quran update (6,236 ayat) went from 176–275 ms to 120–170 ms on the simulator, which also removes the flaky failures of `testWholeQuranApplyIsFast` (300 ms budget) under load. Behaviour and data are unchanged.
+
 ## [Unreleased] — 2026-10-16 — Qiraat word sheet: classification chips follow the app language again
 - The «فرش الحروف › {sub-category}» and «أصول القراءات › …» chips were drawn with `Text(verbatim:)` and read as one Arabic-only accessibility label, so an English app showed Arabic chips and the two English `QiraatLocalizationUITests` failed. The farsh category, the usul category title and the farsh sub-category now resolve through the string catalog (`QiraatClassification.subCategoryKey(for:)`, keys `qiraat.difference.*`, which already had English values); ruling categories and sub-categories stay Arabic data. The line's accessibility label reads the same localized chips.
 - Tests: `QiraatDetailsTests.testSubCategoryKeyResolvesToTheArabicLabelAndAnEnglishTranslation` (every type has an Arabic value equal to the web label and an English translation); `QiraatLocalizationUITests` now read the `qiraat-classification` element. Removed the unused `VariantCard.differenceLabel`.

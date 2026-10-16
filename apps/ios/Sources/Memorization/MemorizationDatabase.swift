@@ -6,6 +6,8 @@ public final class MemorizationDatabase: @unchecked Sendable {
     /// The handle and lock are internal so the history and transfer extensions in sibling files share them.
     var db: OpaquePointer?
     let lock = NSLock()
+    /// Prepared statements reused for the rows of one write transaction (set only while `lock` is held).
+    var statementCache: StatementCache?
     public let fileURL: URL
 
     public init(url: URL? = nil, migrations: [MemorizationMigration] = MemorizationMigrations.all) {
@@ -288,5 +290,26 @@ public final class MemorizationDatabase: @unchecked Sendable {
         sqlite3_bind_int64(stmt, 14, record.updatedAt.epochMilliseconds)
 
         _ = sqlite3_step(stmt)
+    }
+}
+
+/// Statements prepared once per SQL text and reused for every row of a transaction, so a whole-Quran update
+/// parses each statement once instead of 6,236 times. Used under the database lock, then finalized.
+final class StatementCache {
+    private var statements: [String: OpaquePointer] = [:]
+
+    func statement(for sql: String, db: OpaquePointer) throws -> OpaquePointer {
+        if let cached = statements[sql] { return cached }
+        var statement: OpaquePointer?
+        guard sqlite3_prepare_v2(db, sql, -1, &statement, nil) == SQLITE_OK, let statement else {
+            throw MemorizationError.writeFailed(String(cString: sqlite3_errmsg(db)))
+        }
+        statements[sql] = statement
+        return statement
+    }
+
+    func finalizeAll() {
+        for statement in statements.values { sqlite3_finalize(statement) }
+        statements.removeAll()
     }
 }

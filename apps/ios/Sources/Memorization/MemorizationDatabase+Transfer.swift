@@ -61,6 +61,8 @@ extension MemorizationDatabase {
         guard sqlite3_exec(db, "BEGIN IMMEDIATE;", nil, nil, nil) == SQLITE_OK else {
             throw MemorizationError.writeFailed(String(cString: sqlite3_errmsg(db)))
         }
+        statementCache = StatementCache()
+        defer { statementCache?.finalizeAll(); statementCache = nil }
         do {
             for table in ["memorization_events", "memorization_batches", "memorization_ayahs", "memorization_goals"] {
                 try runLocked("DELETE FROM \(table)", db: db) { _ in }

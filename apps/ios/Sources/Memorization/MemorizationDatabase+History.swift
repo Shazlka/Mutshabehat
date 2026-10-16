@@ -119,6 +119,8 @@ extension MemorizationDatabase {
         guard sqlite3_exec(db, "BEGIN IMMEDIATE;", nil, nil, nil) == SQLITE_OK else {
             throw MemorizationError.writeFailed(String(cString: sqlite3_errmsg(db)))
         }
+        statementCache = StatementCache()
+        defer { statementCache?.finalizeAll(); statementCache = nil }
         do {
             try insertBatchLocked(batch, db: db)
             let encoder = BackupCoding.encoder()
@@ -152,6 +154,17 @@ extension MemorizationDatabase {
     // MARK: Statements (all expect the lock to be held)
 
     func runLocked(_ sql: String, db: OpaquePointer, bind: (OpaquePointer) -> Void) throws {
+        if let cache = statementCache {
+            let cached = try cache.statement(for: sql, db: db)
+            sqlite3_reset(cached)
+            sqlite3_clear_bindings(cached)
+            bind(cached)
+            let result = sqlite3_step(cached)
+            let message = result == SQLITE_DONE ? "" : String(cString: sqlite3_errmsg(db))
+            sqlite3_reset(cached)
+            guard result == SQLITE_DONE else { throw MemorizationError.writeFailed(message) }
+            return
+        }
         var statement: OpaquePointer?
         guard sqlite3_prepare_v2(db, sql, -1, &statement, nil) == SQLITE_OK, let statement else {
             throw MemorizationError.writeFailed(String(cString: sqlite3_errmsg(db)))
