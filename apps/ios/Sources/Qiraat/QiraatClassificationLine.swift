@@ -8,11 +8,19 @@ struct QiraatClassificationLine: View {
         let id: String
         let name: String
         let colorHex: String?
+        /// A string-catalog key when the chip is app chrome that follows the app's language; nil for data
+        /// (ruling categories, sub-categories) that stays Arabic.
+        let localizationKey: String?
 
-        init(name: String, colorHex: String? = nil) {
+        init(name: String, colorHex: String? = nil, localizationKey: String? = nil) {
             self.id = name
             self.name = name
             self.colorHex = colorHex
+            self.localizationKey = localizationKey
+        }
+
+        var text: Text {
+            if let localizationKey { Text(LocalizedStringKey(localizationKey)) } else { Text(verbatim: name) }
         }
     }
 
@@ -22,15 +30,15 @@ struct QiraatClassificationLine: View {
     init(variant: QiraatVariant) {
         let sub = QiraatClassification.subCategory(for: variant)
         self.chips = [
-            Chip(name: QiraatClassification.farshCategoryTitle),
-            Chip(name: sub)
+            Chip(name: QiraatClassification.farshCategoryTitle, localizationKey: QiraatClassification.farshCategoryTitle),
+            Chip(name: sub, localizationKey: QiraatClassification.subCategoryKey(for: variant.differenceType))
         ]
         self.fullClassification = QiraatClassification.classification(for: variant)
     }
 
     init(ruling: QiraatRuling) {
         var items = [
-            Chip(name: QiraatClassification.usulCategoryTitle),
+            Chip(name: QiraatClassification.usulCategoryTitle, localizationKey: QiraatClassification.usulCategoryTitle),
             Chip(name: ruling.categoryAr, colorHex: ruling.color)
         ]
         if let subDetail = QiraatClassification.usulSubCategory(for: ruling), !subDetail.isEmpty {
@@ -57,12 +65,19 @@ struct QiraatClassificationLine: View {
                 if let hex = chip.colorHex {
                     QiraatBadge(category: chip.name, hex: hex)
                 } else {
-                    QiraatBadge(text: chip.name)
+                    QiraatBadge(chip.text)
                 }
             }
         }
         .accessibilityElement(children: .ignore)
         .accessibilityIdentifier("qiraat-classification")
-        .accessibilityLabel(fullClassification)
+        .accessibilityLabel(accessibilityText)
+    }
+
+    /// The chips read in order, in the app's language where a chip follows it (VoiceOver and UI tests read this).
+    private var accessibilityText: Text {
+        chips.dropFirst().reduce(chips.first?.text ?? Text(verbatim: "")) { line, chip in
+            line + Text(verbatim: " › ") + chip.text
+        }
     }
 }

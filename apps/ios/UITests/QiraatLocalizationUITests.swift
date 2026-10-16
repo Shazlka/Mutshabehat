@@ -33,8 +33,9 @@ final class QiraatLocalizationUITests: XCTestCase {
         let close = app.buttons["qiraat-sheet-close"]
         XCTAssertTrue(close.waitForExistence(timeout: 3))
         XCTAssertEqual(close.label, "Close")
-        XCTAssertTrue(app.staticTexts["Orthography"].exists, "the difference-kind badge is English")
-        XCTAssertFalse(app.staticTexts["رسم"].exists)
+        XCTAssertTrue(classificationLine(containing: "Orthography", in: app).waitForExistence(timeout: 3),
+                      "the difference-kind badge is English")
+        XCTAssertFalse(classificationLine(containing: "خلاف في الرسم", in: app).exists)
         saveScreenshot(named: "qiraat-sheet-english", app: app)
     }
 
@@ -45,8 +46,15 @@ final class QiraatLocalizationUITests: XCTestCase {
         word.tap()
 
         XCTAssertTrue(app.navigationBars["القراءات العشر"].waitForExistence(timeout: 5), "sheet title is Arabic")
-        XCTAssertTrue(app.staticTexts["رسم"].exists, "the difference-kind badge is Arabic")
-        XCTAssertFalse(app.staticTexts["Orthography"].exists)
+        XCTAssertTrue(classificationLine(containing: "خلاف في الرسم", in: app).waitForExistence(timeout: 3),
+                      "the difference-kind badge is Arabic")
+        XCTAssertFalse(classificationLine(containing: "Orthography", in: app).exists)
+    }
+
+    /// The word sheet's classification line («فرش الحروف › {sub-category}») whose spoken label contains `text`.
+    private func classificationLine(containing text: String, in app: XCUIApplication) -> XCUIElement {
+        app.descendants(matching: .any).matching(identifier: "qiraat-classification")
+            .matching(NSPredicate(format: "label CONTAINS %@", text)).firstMatch
     }
 
     private func saveScreenshot(named name: String, app: XCUIApplication) {

@@ -24,6 +24,27 @@ final class QiraatDetailsTests: XCTestCase {
         XCTAssertEqual(QiraatClassification.subCategory(for: ""), "غير مصنَّف")
     }
 
+    /// The classification chips are translated through the string catalog, so every difference type needs a
+    /// catalog key whose Arabic value is the web's label and which has an English translation.
+    func testSubCategoryKeyResolvesToTheArabicLabelAndAnEnglishTranslation() throws {
+        let arabic = try XCTUnwrap(Bundle(path: try XCTUnwrap(Bundle.main.path(forResource: "ar", ofType: "lproj"))))
+        let english = try XCTUnwrap(Bundle(path: try XCTUnwrap(Bundle.main.path(forResource: "en", ofType: "lproj"))))
+        let types: [String?] = ["HARAKAH", "LETTER", "ADDITION", "OMISSION", "MADD", "HAMZ", "IMALAH", "IDGHAM", "WAQF", "NAQL",
+                                "SILAH", "ORTHOGRAPHY", "WORD_FORM", "REORDER", "WORD_CHANGE", "SAKT", "OTHER", "weird", "", nil]
+        for type in types {
+            let key = QiraatClassification.subCategoryKey(for: type)
+            XCTAssertEqual(arabic.localizedString(forKey: key, value: "MISSING", table: nil),
+                           QiraatClassification.subCategory(for: type), "Arabic value of \(key)")
+            let text = english.localizedString(forKey: key, value: "MISSING", table: nil)
+            XCTAssertNotEqual(text, "MISSING", "\(key) has an English value")
+            XCTAssertNil(text.range(of: "\\p{Arabic}", options: .regularExpression), "\(key) is translated: \(text)")
+        }
+        for title in [QiraatClassification.farshCategoryTitle, QiraatClassification.usulCategoryTitle] {
+            let text = english.localizedString(forKey: title, value: "MISSING", table: nil)
+            XCTAssertNil(text.range(of: "\\p{Arabic}", options: .regularExpression), "\(title) is translated: \(text)")
+        }
+    }
+
     // MARK: - Farsh classification text
 
     func testFarshClassificationText() {

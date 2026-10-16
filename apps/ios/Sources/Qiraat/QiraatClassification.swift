@@ -13,6 +13,29 @@ public enum QiraatClassification {
         return differenceTypeLabelAr(raw.isEmpty ? nil : raw)
     }
 
+    /// The string-catalog key of a farsh sub-category: its Arabic value is `subCategory(for:)` and it has an
+    /// English translation, so the word sheet can show the label in the app's language.
+    public static func subCategoryKey(for differenceType: String?) -> String {
+        switch differenceType?.trimmingCharacters(in: .whitespaces).uppercased() ?? "" {
+        case "HARAKAH": "qiraat.difference.HARAKAH"
+        case "LETTER": "qiraat.difference.LETTER"
+        case "ADDITION": "qiraat.difference.ADDITION"
+        case "OMISSION": "qiraat.difference.OMISSION"
+        case "MADD": "qiraat.difference.MADD"
+        case "HAMZ": "qiraat.difference.HAMZ"
+        case "IMALAH": "qiraat.difference.IMALAH"
+        case "IDGHAM": "qiraat.difference.IDGHAM"
+        case "WAQF": "qiraat.difference.WAQF"
+        case "NAQL": "qiraat.difference.NAQL"
+        case "SILAH": "qiraat.difference.SILAH"
+        case "ORTHOGRAPHY": "qiraat.difference.ORTHOGRAPHY"
+        case "WORD_FORM", "REORDER": "qiraat.difference.WORD_FORM"
+        case "WORD_CHANGE": "qiraat.difference.WORD_CHANGE"
+        case "SAKT": "qiraat.difference.SAKT"
+        default: "qiraat.difference.OTHER"
+        }
+    }
+
     /// Sub-category for a given farsh variant.
     public static func subCategory(for variant: QiraatVariant) -> String {
         subCategory(for: variant.differenceType)
