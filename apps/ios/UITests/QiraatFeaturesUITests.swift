@@ -19,7 +19,7 @@ final class QiraatFeaturesUITests: XCTestCase {
         filter: String = "all",
         extra: [String] = []
     ) -> XCUIApplication {
-        let app = XCUIApplication()
+        let app = XCUIApplication.isolated()
         app.launchArguments = [
             "-mushaf1441:last-page:v1", "\(page)",
             "-mushaf1441:reader-layer:v1", layer,

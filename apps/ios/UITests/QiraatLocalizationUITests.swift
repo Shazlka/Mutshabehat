@@ -11,7 +11,7 @@ final class QiraatLocalizationUITests: XCTestCase {
     override nonisolated func setUp() { continueAfterFailure = false }
 
     private func launch(language: String) -> XCUIApplication {
-        let app = XCUIApplication()
+        let app = XCUIApplication.isolated()
         app.launchArguments = [
             "-mushaf1441:last-page:v1", "1",
             "-mushaf1441:reader-layer:v1", "qiraat",

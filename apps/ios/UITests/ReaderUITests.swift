@@ -11,7 +11,7 @@ final class ReaderUITests: XCTestCase {
     /// `pinLanguage` forces Arabic through the argument domain, which also shadows anything the app writes to that
     /// key; the language test therefore launches without it.
     private func launch(atPage page: Int, arabic: Bool = false, pinLanguage: Bool = true) -> XCUIApplication {
-        let app = XCUIApplication()
+        let app = XCUIApplication.isolated()
         // Paging tests run on the plain mushaf: with the Qiraat layer on, a tap on a marked word
         // opens its card instead of the chrome.
         // `-reading-fresh`: a throw-away reading database, so earlier tests' reading progress cannot move
@@ -74,7 +74,7 @@ final class ReaderUITests: XCTestCase {
         XCTAssertTrue(page(51, in: app).waitForExistence(timeout: 5))
         app.terminate()
 
-        let relaunched = XCUIApplication()  // no launch arguments: only what the app saved
+        let relaunched = XCUIApplication.isolated()  // no launch arguments: only what the app saved
         relaunched.launch()
         XCTAssertTrue(page(51, in: relaunched).waitForExistence(timeout: 10))
     }

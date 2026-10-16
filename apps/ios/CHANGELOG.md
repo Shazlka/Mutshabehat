@@ -3,6 +3,10 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-16 — UI tests: isolated launch, longer cold-launch wait
+- Every UI test now launches the app through `XCUIApplication.isolated()` (`QIRAAT_TEST_ISOLATION=1`): the Qiraat layer stays on the bundled snapshot, with no live fetch from the production site and no overlay or imported pages from earlier runs, and the real iCloud folder stays out of reach. A result no longer depends on what the live database holds.
+- `QiraatUITests.testColdLaunchWordTapsSurviveBackgroundAndSettingsWithoutAPageTurn` waits up to 30 s (was 10 s) for the first marked word after a cold launch; on a busy machine the launch passed 10 s about one run in three, and the word appeared after 1.3 s on every quiet run.
+
 ## [Unreleased] — 2026-10-16 — make test / test-ipad no longer stall after a failure
 - The `test` and `test-ipad` targets pass `-collect-test-diagnostics never`; without it Xcode 27 spent about 10 minutes in `simctl diagnose` after any failing test before reporting.
 

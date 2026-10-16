@@ -7,7 +7,7 @@ final class QiraatSheetAccessibilityUITests: XCTestCase {
     override nonisolated func setUp() { continueAfterFailure = false }
 
     func testVariantWordFitsAtAccessibilityExtraExtraLargeText() {
-        let app = XCUIApplication()
+        let app = XCUIApplication.isolated()
         app.launchArguments = ["-mushaf1441:last-page:v1", "1", "-mushaf1441:qiraat-filter:v1", "all",
                                "-mushaf1441:reader-layer:v1", "qiraat",
                                "-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXL"]

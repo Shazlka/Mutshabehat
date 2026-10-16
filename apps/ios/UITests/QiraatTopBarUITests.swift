@@ -8,7 +8,7 @@ final class QiraatTopBarUITests: XCTestCase {
     override nonisolated func setUp() { continueAfterFailure = false }
 
     private func launch(page: Int = 1, filter: String = "all", layer: String = "qiraat") -> XCUIApplication {
-        let app = XCUIApplication()
+        let app = XCUIApplication.isolated()
         app.launchArguments = ["-mushaf1441:last-page:v1", "\(page)", "-mushaf1441:qiraat-filter:v1", filter,
                                "-mushaf1441:reader-layer:v1", layer, "-app:language:v1", "ar",
                                "-reading-fresh", "-memorization-seed", "empty", "-backup-folder", "none"]

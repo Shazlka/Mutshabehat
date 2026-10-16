@@ -6,7 +6,7 @@ final class ReviewBulkUITests: XCTestCase {
     override nonisolated func setUp() { continueAfterFailure = false }
 
     private func launch(page: Int = 8) -> XCUIApplication {
-        let app = XCUIApplication()
+        let app = XCUIApplication.isolated()
         app.launchArguments = ["-review-stub", "-mushaf1441:last-page:v1", "\(page)", "-review:last-page:v1", "\(page)",
                                "-mushaf1441:reader-layer:v1", "none"]
         app.launch()

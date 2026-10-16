@@ -7,7 +7,7 @@ final class QiraatUITests: XCTestCase {
     override nonisolated func setUp() { continueAfterFailure = false }
 
     private func launch(atPage page: Int, layer: String? = "qiraat", filter: String = "all") -> XCUIApplication {
-        let app = XCUIApplication()
+        let app = XCUIApplication.isolated()
         app.launchArguments = ["-mushaf1441:last-page:v1", "\(page)", "-mushaf1441:qiraat-filter:v1", filter,
                                "-reading-fresh", "-app:language:v1", "ar"]
         if let layer { app.launchArguments += ["-mushaf1441:reader-layer:v1", layer] }
@@ -23,7 +23,8 @@ final class QiraatUITests: XCTestCase {
         let app = launch(atPage: 1)
         let wordID = "qiraat-word-1:4:1"
         let word = element(wordID, in: app)
-        XCTAssertTrue(word.waitForExistence(timeout: 10))
+        // A cold launch loads the page font and the Qiraat snapshot; on a busy machine that can pass 10 s.
+        XCTAssertTrue(word.waitForExistence(timeout: 30))
 
         func openAndCloseWord() {
             element(wordID, in: app).tap()
@@ -92,7 +93,7 @@ final class QiraatUITests: XCTestCase {
         XCTAssertFalse(element("qiraat-word-1:4:1", in: app).waitForExistence(timeout: 2))
         app.terminate()
 
-        let relaunched = XCUIApplication()
+        let relaunched = XCUIApplication.isolated()
         relaunched.launchArguments = ["-mushaf1441:last-page:v1", "1", "-reading-fresh"]
         relaunched.launch()
         XCTAssertTrue(element("mushaf-page-1", in: relaunched).waitForExistence(timeout: 10))
