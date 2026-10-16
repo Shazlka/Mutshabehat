@@ -416,32 +416,6 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
         }
     }
 
-    private func validateSqliteDatabase(at url: URL, requiredTables: [String]) throws {
-        var db: OpaquePointer?
-        guard sqlite3_open_v2(url.path, &db, SQLITE_OPEN_READONLY, nil) == SQLITE_OK, let db else {
-            if let db { sqlite3_close(db) }
-            throw NSError(domain: "ICloudSync", code: 8, userInfo: [NSLocalizedDescriptionKey: "قاعدة البيانات غير صالحة"])
-        }
-        defer { sqlite3_close(db) }
-
-        var stmt: OpaquePointer?
-        guard sqlite3_prepare_v2(db, "SELECT name FROM sqlite_master WHERE type='table'", -1, &stmt, nil) == SQLITE_OK else {
-            throw NSError(domain: "ICloudSync", code: 9, userInfo: [NSLocalizedDescriptionKey: "تعذر قراءة جداول قاعدة البيانات"])
-        }
-        defer { sqlite3_finalize(stmt) }
-
-        var tables = Set<String>()
-        while sqlite3_step(stmt) == SQLITE_ROW, let text = sqlite3_column_text(stmt, 0) {
-            tables.insert(String(cString: text))
-        }
-
-        for req in requiredTables {
-            if !tables.contains(req) {
-                throw NSError(domain: "ICloudSync", code: 10, userInfo: [NSLocalizedDescriptionKey: "الجدول \(req) مفقود في قاعدة البيانات"])
-            }
-        }
-    }
-
     private func compileMutshabehatSqlite(payload: WebExportPayload, outputURL: URL) throws {
         var db: OpaquePointer?
         guard sqlite3_open(outputURL.path, &db) == SQLITE_OK, let db else {

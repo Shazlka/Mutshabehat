@@ -3,6 +3,13 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-16 — SQLiteFile helper for database import and export
+- New `SQLiteFile` in `MushafCore`: validates a candidate SQLite file (100-byte `SQLite format 3` header, required tables, `PRAGMA quick_check`) and replaces a live database file with rollback. Order is checkpoint (checked, fails when a reader holds the WAL) → read old bytes → close (checked) → remove `-wal`/`-shm` (checked) → write → reopen (checked WAL and foreign keys); a failed write or reopen restores the old bytes and the error says if recovery also failed.
+- `MutshabehatDatabase` and `QuranReadingDatabase` import through it, replacing two drifted copies. Mutshabehat import now also runs `quick_check`; Mutshabehat export now uses the online backup API (`SQLiteSnapshot.copy`) like Reading. Invalid input is still `invalidDatabase`; low-level failures are reported as `databaseUnavailable` and no `SQLiteFileError` or `SQLiteSnapshotError` reaches a caller. Reading's `init` setup is unchanged; a strict variant is used only when an import reopens the file.
+- `SQLiteSnapshot.copy` no longer closes its destination handle twice, checks the results of `journal_mode` and `close`, and removes the partial file's `-wal`/`-shm`.
+- Removed the unused `ICloudDatabaseSyncService.validateSqliteDatabase`.
+- Tests: `SQLiteFileTests` (18), `copyLeavesOnlyTheDestinationFile`, six new Mutshabehat import/export tests, three new Reading tests, and a restore test through real databases. File formats and the sync protocol are unchanged.
+
 ## [Unreleased] — 2026-10-15 — Qiraat Dabt Symbols: Tashil solid circle and Sakt seen in detail sheet
 - Added compact Quranic orthography (`QiraatDabtSymbol`) beside performance actions in `RulingCard` and `VariantCard`: solid circle (●) for Tashil actions and small Seen (سـ) for Sakt actions, with full VoiceOver accessibility support.
 - Fully localized in Arabic and English in `Localizable.xcstrings`, verified by `QiraatLocalizationTests` and unit tests in `QiraatDetailsTests`.
