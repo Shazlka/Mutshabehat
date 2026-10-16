@@ -14,13 +14,15 @@ final class BackupController {
     private let library: MushafLibrary
     private let store: MemorizationStore
     private let folder: BackupFolder
+    private let stores: UserStores
     private let backupsRootProvider: () -> URL?
     private var pending: Task<Void, Never>?
 
     private(set) var folderAvailable: Bool
 
     init(library: MushafLibrary, store: MemorizationStore, folder: BackupFolder = .iCloud,
-         defaults: UserDefaults = .standard) {
+         defaults: UserDefaults = .standard, stores: UserStores = .live) {
+        self.stores = stores
         self.library = library
         self.store = store
         self.folder = folder
@@ -34,15 +36,15 @@ final class BackupController {
         let sources = BackupService.Sources(
             memorizationExport: { database.exportAll(now: Date()) },
             memorizationFileURL: database.fileURL,
-            readingFileURL: QuranReadingDatabase.shared.fileURL,
-            mutshabehatFileURL: MutshabehatDatabase.shared.fileURL,
+            readingFileURL: stores.reading.fileURL,
+            mutshabehatFileURL: stores.mutshabehat.fileURL,
             qiraatArchive: archive,
             deviceID: database.deviceID,
             appVersion: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "0",
-            qiraatNotesFileURL: QiraatNotesStore.shared.fileURL)
+            qiraatNotesFileURL: stores.qiraatNotes().fileURL)
         service = BackupService(folder: folder, sources: sources, defaults: defaults)
         store.onDataChanged = { [weak self] in self?.dataChanged() }
-        QiraatNotesStore.shared.onDataChanged = { [weak self] in self?.dataChanged() }
+        stores.qiraatNotes().onDataChanged = { [weak self] in self?.dataChanged() }
     }
 
     var lastSuccess: Date? { service.lastSuccess }
@@ -119,13 +121,13 @@ final class BackupController {
             memorizationMerge: { try database.merge($0, now: Date()) },
             memorizationReplace: { try database.replaceAll(with: $0) },
             memorizationFileURL: database.fileURL,
-            readingFileURL: QuranReadingDatabase.shared.fileURL,
-            mutshabehatFileURL: MutshabehatDatabase.shared.fileURL,
-            readingImport: { try QuranReadingDatabase.shared.importDatabase($0) },
-            mutshabehatImport: { try MutshabehatDatabase.shared.importDatabase($0) },
+            readingFileURL: stores.reading.fileURL,
+            mutshabehatFileURL: stores.mutshabehat.fileURL,
+            readingImport: { [stores] in try stores.reading.importDatabase($0) },
+            mutshabehatImport: { [stores] in try stores.mutshabehat.importDatabase($0) },
             qiraatInstall: { try library.installQiraatBackup($0) },
-            qiraatNotesFileURL: QiraatNotesStore.shared.fileURL,
-            qiraatNotesImport: { try QiraatNotesStore.shared.importDatabase($0) })
+            qiraatNotesFileURL: stores.qiraatNotes().fileURL,
+            qiraatNotesImport: { [stores] in try stores.qiraatNotes().importDatabase($0) })
         let safety = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
             .appendingPathComponent("BackupSafetyCopies", isDirectory: true)
         return RestoreService(backupsRoot: root, targets: targets, safetyDirectory: safety)
@@ -134,6 +136,6 @@ final class BackupController {
     /// After a restore or import changed what the stores hold.
     func didRestore() {
         store.reloadFromDatabase()
-        ReadingTracker.shared.refreshBookmarksCache()
+        stores.tracker().refreshBookmarksCache()
     }
 }

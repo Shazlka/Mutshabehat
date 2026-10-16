@@ -84,7 +84,11 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
     var isConnected: Bool = false
     var manifest: SyncManifest?
 
-    private let defaults = UserDefaults.standard
+    private let defaults: UserDefaults
+    /// The stores this service imports into and publishes from (the app's own ones unless a test gives others).
+    private let stores: UserStores
+    /// Replaces the folder lookup (tests); nil means the normal resolution below.
+    private let folderProvider: (() -> URL?)?
     private let lock = NSLock()
 
     private let lastSyncKey = "icloud:sync:last_date"
@@ -102,7 +106,10 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
         }
     }
 
-    init() {
+    init(defaults: UserDefaults = .standard, stores: UserStores = .live, folderProvider: (() -> URL?)? = nil) {
+        self.defaults = defaults
+        self.stores = stores
+        self.folderProvider = folderProvider
         if let ts = defaults.object(forKey: lastSyncKey) as? Date {
             self.lastSyncDate = ts
         }
@@ -112,6 +119,7 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
     // MARK: - Folder Resolution
 
     func resolveSyncFolder() -> URL? {
+        if let folderProvider { return folderProvider() }
 #if DEBUG
         // A UI test on a throw-away reading database must never merge with, or push to, the real folder:
         // in the simulator that folder is the Mac's own iCloud Drive.
@@ -214,7 +222,7 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
         if FileManager.default.fileExists(atPath: mutshabehatFile.path) {
             // This store is optional; reading progress can sync in a fresh iCloud folder.
             let mutshData = try Data(contentsOf: mutshabehatFile)
-            try MutshabehatDatabase.shared.importDatabase(mutshData)
+            try stores.mutshabehat.importDatabase(mutshData)
             NotificationCenter.default.post(name: .mutshabehatDatabaseDidUpdate, object: nil)
         }
 
@@ -250,8 +258,8 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
             defaults.set(hash, forKey: lastHashKey)
         }
 
-        let groupCount = currentManifest?.databases["mutshabehat"]?.groupsCount ?? MutshabehatDatabase.shared.fetchPersonalGroups().count
-        let khatmaNum = QuranReadingDatabase.shared.getOrCreateActiveKhatma().khatmaNumber
+        let groupCount = currentManifest?.databases["mutshabehat"]?.groupsCount ?? stores.mutshabehat.fetchPersonalGroups().count
+        let khatmaNum = stores.reading.getOrCreateActiveKhatma().khatmaNumber
         let message = "تمت المزامنة بنجاح: \(groupCount) مجموعة متشابهات، \(qiraatPages) صفحة قراءات، والختمة #\(khatmaNum)"
         self.lastStatusMessage = message
         self.isConnected = true
@@ -261,7 +269,7 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
         return SyncSummary(
             mutshabehatGroupsCount: groupCount,
             qiraatPagesCount: qiraatPages,
-            readingKhatmasCount: QuranReadingDatabase.shared.completedKhatmasCount(),
+            readingKhatmasCount: stores.reading.completedKhatmasCount(),
             syncedAt: now,
             message: message
         )
@@ -281,8 +289,9 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
 
     @MainActor
     @discardableResult
-    func syncReadingSnapshots(in folder: URL, database: QuranReadingDatabase = .shared,
+    func syncReadingSnapshots(in folder: URL, database requestedDatabase: QuranReadingDatabase? = nil,
                               deviceID: String? = nil) throws -> Int {
+        let database = requestedDatabase ?? stores.reading
         let fileManager = FileManager.default
         let devices = folder.appendingPathComponent("ReadingDevices", isDirectory: true)
         try fileManager.createDirectory(at: devices, withIntermediateDirectories: true)
@@ -313,8 +322,8 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
         }
         let own = devices.appendingPathComponent("\(deviceID ?? readingDeviceID).sqlite")
         try database.exportDatabase().write(to: own, options: .atomic)
-        if database === QuranReadingDatabase.shared {
-            ReadingTracker.shared.reloadFromDatabase()
+        if database === stores.reading {
+            stores.tracker().reloadFromDatabase()
             NotificationCenter.default.post(name: .readingDatabaseDidUpdate, object: nil)
         }
         return merged
@@ -377,7 +386,7 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
         let sqliteData = try Data(contentsOf: tempURL)
 
         // Import into MutshabehatDatabase
-        try MutshabehatDatabase.shared.importDatabase(sqliteData)
+        try stores.mutshabehat.importDatabase(sqliteData)
         NotificationCenter.default.post(name: .mutshabehatDatabaseDidUpdate, object: nil)
 
         // If iCloud folder is available, also update it

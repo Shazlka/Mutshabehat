@@ -44,8 +44,10 @@ sits in the iCloud service. The two live copies have drifted:
 4. **The three user databases stay three files.** Reconsider only if a feature needs a cross-domain query.
 5. **Not validated:** column-level schema compatibility of an imported file (today's code does not check it
    either). Possible follow-up: a caller-supplied validator.
-6. **Out of scope** (separate plans if wanted): moving the Qiraat JSON pages into SQLite; conditional requests in
-   `QiraatLiveSync`; replacing the `.shared` singletons with a composition root (22 call sites today).
+6. **Follow-ups, decided afterwards (2026-10-17, see `CHANGELOG.md`):** the Qiraat pages stay JSON (measured: 0.23 s
+   to read all 604 pages cold, 1.9 ms worst page); conditional requests for the live sync are not possible without
+   a web change (the endpoint sends no ETag); the sync and backup services now take their stores by injection
+   (`UserStores`) while the screens keep the live instances.
 
 ## 3. Behaviour changes (deliberate)
 
