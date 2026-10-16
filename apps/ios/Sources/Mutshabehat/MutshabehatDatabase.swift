@@ -1,4 +1,5 @@
 import Foundation
+import MushafCore
 import SQLite3
 
 public final class MutshabehatDatabase: @unchecked Sendable {
@@ -538,74 +539,61 @@ public final class MutshabehatDatabase: @unchecked Sendable {
         lock.lock()
         defer { lock.unlock() }
         guard db != nil else { throw DatabaseTransferError.databaseUnavailable }
-        execute("PRAGMA wal_checkpoint(TRUNCATE);")
-        return try Data(contentsOf: databaseURL)
+        let snapshot = FileManager.default.temporaryDirectory
+            .appendingPathComponent("mutshabehat-export-\(UUID().uuidString).sqlite")
+        defer { try? FileManager.default.removeItem(at: snapshot) }
+        do {
+            try SQLiteSnapshot.copy(from: databaseURL, to: snapshot)
+            return try Data(contentsOf: snapshot)
+        } catch {
+            throw DatabaseTransferError.databaseUnavailable
+        }
     }
 
+    /// Replaces the whole database with `data` after checking that it is a SQLite file holding the Mutshabehat
+    /// tables. If the swap fails, the previous file is put back (see `SQLiteFile.replaceContents`).
     public func importDatabase(_ data: Data) throws {
-        let stagingURL = FileManager.default.temporaryDirectory
-            .appendingPathComponent("mutshabehat-import-\(UUID().uuidString).sqlite")
-        defer { try? FileManager.default.removeItem(at: stagingURL) }
-        try data.write(to: stagingURL, options: .atomic)
-        try Self.validateDatabase(at: stagingURL)
-
         lock.lock()
         defer { lock.unlock() }
 
-        execute("PRAGMA wal_checkpoint(TRUNCATE);")
-        let previous = try Data(contentsOf: databaseURL)
-        if let db {
-            sqlite3_close(db)
-            self.db = nil
-        }
-        removeSidecars()
-
         do {
-            try data.write(to: databaseURL, options: .atomic)
-            try reopenDatabase()
-            NotificationCenter.default.post(name: Notification.Name("mutshabehatDatabaseDidUpdate"), object: nil)
-        } catch {
-            try? previous.write(to: databaseURL, options: .atomic)
-            try? reopenDatabase()
-            throw error
+            try SQLiteFile.replaceContents(
+                of: databaseURL, with: data, requiredTables: ["groups", "verses", "parts", "automated_groups"],
+                checkpoint: { if let db { try SQLiteFile.checkpointTruncate(db) } },
+                close: { try closeConnection() },
+                reopen: { try reopenDatabase() })
+        } catch let error as SQLiteFileError {
+            switch error {
+            case .unreadable, .missingTables, .integrity: throw DatabaseTransferError.invalidDatabase
+            case .replaceFailed: throw DatabaseTransferError.databaseUnavailable
+            }
         }
+        NotificationCenter.default.post(name: Notification.Name("mutshabehatDatabaseDidUpdate"), object: nil)
     }
 
+    /// Closes the connection and clears `db` only if SQLite agreed to close it.
+    private func closeConnection() throws {
+        guard let handle = db else { return }
+        guard sqlite3_close(handle) == SQLITE_OK else { throw DatabaseTransferError.databaseUnavailable }
+        db = nil
+    }
+
+    /// Opens the file and checks the connection is configured; on any failure nothing stays open.
     private func reopenDatabase() throws {
-        guard sqlite3_open(databaseURL.path, &db) == SQLITE_OK else {
+        var handle: OpaquePointer?
+        guard sqlite3_open(databaseURL.path, &handle) == SQLITE_OK, let opened = handle else {
+            if let handle { sqlite3_close_v2(handle) }
             db = nil
             throw DatabaseTransferError.databaseUnavailable
         }
-        execute("PRAGMA journal_mode = WAL;")
-        execute("PRAGMA foreign_keys = ON;")
-    }
-
-    private func removeSidecars() {
-        for suffix in ["-wal", "-shm"] {
-            try? FileManager.default.removeItem(atPath: databaseURL.path + suffix)
+        do {
+            try SQLiteFile.enableWALAndForeignKeys(opened)
+        } catch {
+            sqlite3_close_v2(opened)
+            db = nil
+            throw DatabaseTransferError.databaseUnavailable
         }
-    }
-
-    private static func validateDatabase(at url: URL) throws {
-        var candidate: OpaquePointer?
-        guard sqlite3_open_v2(url.path, &candidate, SQLITE_OPEN_READWRITE, nil) == SQLITE_OK,
-              let candidate else {
-            if let candidate { sqlite3_close(candidate) }
-            throw DatabaseTransferError.invalidDatabase
-        }
-        defer { sqlite3_close(candidate) }
-
-        let required = Set(["groups", "verses", "parts", "automated_groups"])
-        var found = Set<String>()
-        var statement: OpaquePointer?
-        guard sqlite3_prepare_v2(candidate, "SELECT name FROM sqlite_master WHERE type='table'", -1, &statement, nil) == SQLITE_OK else {
-            throw DatabaseTransferError.invalidDatabase
-        }
-        defer { sqlite3_finalize(statement) }
-        while sqlite3_step(statement) == SQLITE_ROW, let value = sqlite3_column_text(statement, 0) {
-            found.insert(String(cString: value))
-        }
-        guard required.isSubset(of: found) else { throw DatabaseTransferError.invalidDatabase }
+        db = opened
     }
 }
 

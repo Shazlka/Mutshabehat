@@ -1,3 +1,4 @@
+import SQLite3
 import XCTest
 @testable import Mutshabehat
 
@@ -233,5 +234,119 @@ final class MutshabehatTests: XCTestCase {
             XCTAssertNotNil(importedGroup)
             XCTAssertEqual(importedGroup?.title, "تصدير تجريبي")
         }
+    }
+
+    // MARK: - Import / export safety
+
+    private func temporaryDatabaseURL() -> URL {
+        URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("test_mutshabehat_\(UUID().uuidString).sqlite")
+    }
+
+    private func removeDatabaseFiles(_ url: URL) {
+        for suffix in ["", "-wal", "-shm"] { try? FileManager.default.removeItem(atPath: url.path + suffix) }
+    }
+
+    private func simpleGroup(title: String) -> PersonalGroup {
+        let groupId = UUID().uuidString
+        let part = PersonalPart(id: UUID().uuidString, type: "normal", text: title, sortOrder: 0)
+        let verse = PersonalVerse(id: UUID().uuidString, groupId: groupId, surah: "الكهف", ayah: 1, parts: [part])
+        return PersonalGroup(id: groupId, title: title, color: "#6366F1", verses: [verse])
+    }
+
+    /// A real SQLite file with only the given tables.
+    private func databaseData(tables: [String]) throws -> Data {
+        let url = temporaryDatabaseURL()
+        defer { removeDatabaseFiles(url) }
+        var handle: OpaquePointer?
+        XCTAssertEqual(sqlite3_open(url.path, &handle), SQLITE_OK)
+        for table in tables { sqlite3_exec(handle, "CREATE TABLE \(table) (id TEXT PRIMARY KEY);", nil, nil, nil) }
+        sqlite3_close(handle)
+        return try Data(contentsOf: url)
+    }
+
+    func testImportCorruptFileKeepsExistingData() throws {
+        let url = temporaryDatabaseURL()
+        defer { removeDatabaseFiles(url) }
+        let db = MutshabehatDatabase(url: url)
+        let kept = simpleGroup(title: "باقية")
+        db.savePersonalGroup(kept)
+
+        XCTAssertThrowsError(try db.importDatabase(Data(repeating: 0x41, count: 4096))) { error in
+            XCTAssertEqual(error as? DatabaseTransferError, .invalidDatabase)
+        }
+
+        XCTAssertEqual(db.fetchPersonalGroup(id: kept.id)?.title, "باقية")
+        let later = simpleGroup(title: "بعد الفشل")
+        db.savePersonalGroup(later)   // the connection is still open and writable
+        XCTAssertEqual(db.fetchPersonalGroup(id: later.id)?.title, "بعد الفشل")
+    }
+
+    func testImportMissingTablesKeepsExistingData() throws {
+        let url = temporaryDatabaseURL()
+        defer { removeDatabaseFiles(url) }
+        let db = MutshabehatDatabase(url: url)
+        let kept = simpleGroup(title: "باقية")
+        db.savePersonalGroup(kept)
+
+        XCTAssertThrowsError(try db.importDatabase(try databaseData(tables: ["groups"]))) { error in
+            XCTAssertEqual(error as? DatabaseTransferError, .invalidDatabase)
+        }
+
+        XCTAssertEqual(db.fetchPersonalGroup(id: kept.id)?.title, "باقية")
+    }
+
+    func testImportPostsNotificationOnlyOnSuccess() throws {
+        let sourceURL = temporaryDatabaseURL()
+        let targetURL = temporaryDatabaseURL()
+        defer { removeDatabaseFiles(sourceURL); removeDatabaseFiles(targetURL) }
+        let source = MutshabehatDatabase(url: sourceURL)
+        source.savePersonalGroup(simpleGroup(title: "مصدر"))
+        let exported = try source.exportDatabase()
+        let target = MutshabehatDatabase(url: targetURL)
+
+        var posts = 0
+        let token = NotificationCenter.default.addObserver(
+            forName: Notification.Name("mutshabehatDatabaseDidUpdate"), object: nil, queue: nil) { _ in posts += 1 }
+        defer { NotificationCenter.default.removeObserver(token) }
+
+        XCTAssertThrowsError(try target.importDatabase(Data(repeating: 0x41, count: 4096)))
+        XCTAssertEqual(posts, 0)
+        try target.importDatabase(exported)
+        XCTAssertEqual(posts, 1)
+    }
+
+    func testExportContainsLatestWriteWhileOpen() throws {
+        let sourceURL = temporaryDatabaseURL()
+        let targetURL = temporaryDatabaseURL()
+        defer { removeDatabaseFiles(sourceURL); removeDatabaseFiles(targetURL) }
+        let source = MutshabehatDatabase(url: sourceURL)
+        let group = simpleGroup(title: "آخر كتابة")
+        source.savePersonalGroup(group)
+
+        let exported = try source.exportDatabase()   // no manual checkpoint; the source stays open
+
+        let target = MutshabehatDatabase(url: targetURL)
+        try target.importDatabase(exported)
+        XCTAssertEqual(target.fetchPersonalGroup(id: group.id)?.title, "آخر كتابة")
+    }
+
+    func testExportFailureMapsToDatabaseUnavailable() {
+        let url = temporaryDatabaseURL()
+        let db = MutshabehatDatabase(url: url)
+        removeDatabaseFiles(url)   // the file disappears while the connection is open
+
+        XCTAssertThrowsError(try db.exportDatabase()) { error in
+            XCTAssertEqual(error as? DatabaseTransferError, .databaseUnavailable)
+        }
+    }
+
+    func testBundledSeedStillImports() throws {
+        let seedURL = try XCTUnwrap(Bundle.main.url(forResource: "mutshabehat", withExtension: "sqlite"),
+                                    "the build must bundle Generated/mutshabehat.sqlite")
+        let targetURL = temporaryDatabaseURL()
+        defer { removeDatabaseFiles(targetURL) }
+        let target = MutshabehatDatabase(url: targetURL)
+
+        XCTAssertNoThrow(try target.importDatabase(try Data(contentsOf: seedURL)))
     }
 }
