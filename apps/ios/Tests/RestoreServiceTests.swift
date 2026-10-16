@@ -141,6 +141,46 @@ final class RestoreServiceTests: XCTestCase {
                                               "qiraat.install", "qiraat-notes.import"])
     }
 
+    func testRestoreImportsIntoRealReadingAndMutshabehatDatabases() async throws {
+        let sourceReading = QuranReadingDatabase(url: base.appendingPathComponent("src-reading.sqlite"))
+        sourceReading.addBookmark(type: .ayah, surah: 2, ayah: 255, page: 42)
+        let sourceMutshabehat = MutshabehatDatabase(url: base.appendingPathComponent("src-mutshabehat.sqlite"))
+        let groupId = UUID().uuidString
+        let part = PersonalPart(id: UUID().uuidString, type: "normal", text: "نص", sortOrder: 0)
+        let verse = PersonalVerse(id: UUID().uuidString, groupId: groupId, surah: "الكهف", ayah: 1, parts: [part])
+        sourceMutshabehat.savePersonalGroup(PersonalGroup(id: groupId, title: "مجموعة الاستعادة", color: "#6366F1", verses: [verse]))
+        let export = sampleExport()
+        let sources = BackupService.Sources(
+            memorizationExport: { export }, memorizationFileURL: databaseURL("memorization"),
+            readingFileURL: sourceReading.fileURL, mutshabehatFileURL: sourceMutshabehat.fileURL,
+            qiraatArchive: nil, deviceID: "dev", appVersion: "test")
+        let backup = BackupService(folder: BackupFolder(provider: { [root] in root }), sources: sources,
+                                   now: { [unowned self] in self.clock }, calendar: calendar,
+                                   defaults: UserDefaults(suiteName: "restore-real-\(UUID().uuidString)")!)
+        _ = try await backup.runBackup(reason: .manual)
+        let info = try XCTUnwrap(backup.listSnapshots().first)
+
+        let targetReading = QuranReadingDatabase(url: base.appendingPathComponent("tgt-reading.sqlite"))
+        targetReading.addBookmark(type: .ayah, surah: 3, ayah: 1, page: 50)   // replaced by the restore
+        let targetMutshabehat = MutshabehatDatabase(url: base.appendingPathComponent("tgt-mutshabehat.sqlite"))
+        let targets = RestoreService.Targets(
+            memorizationCurrentExport: { export }, memorizationMerge: { _ in }, memorizationReplace: { _ in },
+            memorizationFileURL: databaseURL("memorization"),
+            readingFileURL: targetReading.fileURL, mutshabehatFileURL: targetMutshabehat.fileURL,
+            readingImport: { try targetReading.importDatabase($0) },
+            mutshabehatImport: { try targetMutshabehat.importDatabase($0) },
+            qiraatInstall: nil)
+        let service = RestoreService(backupsRoot: root.appendingPathComponent("Backups"), targets: targets,
+                                     safetyDirectory: safety, now: { [unowned self] in self.clock }, calendar: calendar)
+
+        let report = try service.restore(info, stores: [.reading, .mutshabehat], memorizationMode: .merge)
+
+        XCTAssertTrue(report.failed.isEmpty, "\(report.failed)")
+        XCTAssertEqual(report.restored, [.reading, .mutshabehat])
+        XCTAssertEqual(targetReading.allBookmarks().map(\.page), [42])
+        XCTAssertEqual(targetMutshabehat.fetchPersonalGroup(id: groupId)?.title, "مجموعة الاستعادة")
+    }
+
     func testRestoreMakesSafetyCopyAndKeepsLastThree() async throws {
         let info = try await makeBackup()
         let service = makeService()

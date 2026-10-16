@@ -85,42 +85,57 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         guard db != nil else { throw TransferError.databaseUnavailable }
         let snapshot = FileManager.default.temporaryDirectory.appendingPathComponent("reading-export-\(UUID().uuidString).sqlite")
         defer { try? FileManager.default.removeItem(at: snapshot) }
-        try SQLiteSnapshot.copy(from: databaseURL, to: snapshot)
-        return try Data(contentsOf: snapshot)
+        do {
+            try SQLiteSnapshot.copy(from: databaseURL, to: snapshot)
+            return try Data(contentsOf: snapshot)
+        } catch {
+            throw TransferError.databaseUnavailable
+        }
     }
 
     /// Replaces the whole database with `data` after checking that it holds the reading tables. If anything
-    /// fails after the swap starts, the previous contents are restored.
+    /// fails after the swap starts, the previous contents are restored (see `SQLiteFile.replaceContents`).
     public func importDatabase(_ data: Data) throws {
-        let stagingURL = FileManager.default.temporaryDirectory
-            .appendingPathComponent("reading-import-\(UUID().uuidString).sqlite")
-        defer { try? FileManager.default.removeItem(at: stagingURL) }
-        try data.write(to: stagingURL, options: .atomic)
-        try Self.validateDatabase(at: stagingURL)
-
         lock.lock()
         defer { lock.unlock() }
-        execute("PRAGMA wal_checkpoint(TRUNCATE);")
-        let previous = try Data(contentsOf: databaseURL)
-        if let db {
-            sqlite3_close(db)
-            self.db = nil
-        }
-        for suffix in ["-wal", "-shm"] { try? FileManager.default.removeItem(atPath: databaseURL.path + suffix) }
-
         do {
-            try data.write(to: databaseURL, options: .atomic)
-            guard sqlite3_open(databaseURL.path, &db) == SQLITE_OK else {
-                db = nil
-                throw TransferError.databaseUnavailable
+            try SQLiteFile.replaceContents(
+                of: databaseURL, with: data, requiredTables: Self.requiredTables,
+                checkpoint: { if let db { try SQLiteFile.checkpointTruncate(db) } },
+                close: { try closeConnection() },
+                reopen: { try reopenDatabase() })
+        } catch let error as SQLiteFileError {
+            switch error {
+            case .unreadable, .missingTables, .integrity: throw TransferError.invalidDatabase
+            case .replaceFailed: throw TransferError.databaseUnavailable
             }
-            setupTables()
-        } catch {
-            if let db { sqlite3_close(db) }
+        }
+    }
+
+    private static let requiredTables: Set<String> = ["bookmarks", "khatmas", "khatma_read_ayahs", "reading_days", "reading_metadata"]
+
+    /// Closes the connection and clears `db` only if SQLite agreed to close it.
+    private func closeConnection() throws {
+        guard let handle = db else { return }
+        guard sqlite3_close(handle) == SQLITE_OK else { throw TransferError.databaseUnavailable }
+        db = nil
+    }
+
+    /// Opens the file and runs the strict schema setup; on any failure nothing stays open.
+    private func reopenDatabase() throws {
+        var handle: OpaquePointer?
+        guard sqlite3_open(databaseURL.path, &handle) == SQLITE_OK, let opened = handle else {
+            if let handle { sqlite3_close_v2(handle) }
             db = nil
-            try? previous.write(to: databaseURL, options: .atomic)
-            if sqlite3_open(databaseURL.path, &db) == SQLITE_OK { setupTables() } else { db = nil }
-            throw error
+            throw TransferError.databaseUnavailable
+        }
+        db = opened
+        do {
+            try setupTablesStrict()
+        } catch {
+            sqlite3_close_v2(opened)
+            db = nil
+            throw TransferError.databaseUnavailable
         }
     }
 
@@ -132,7 +147,9 @@ public final class QuranReadingDatabase: @unchecked Sendable {
     /// - Bookmarks are unioned by (type, surah, ayah, page).
     @discardableResult
     public func mergeDatabase(from sourceURL: URL) throws -> (khatmasMerged: Int, ayahsMerged: Int, daysMerged: Int) {
-        try Self.validateDatabase(at: sourceURL)
+        do { try SQLiteFile.validate(at: sourceURL, requiredTables: Self.requiredTables) } catch {
+            throw TransferError.invalidDatabase
+        }
 
         lock.lock()
         defer { lock.unlock() }
@@ -340,36 +357,8 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         return try mergeDatabase(from: stagingURL)
     }
 
-    private static func validateDatabase(at url: URL) throws {
-        var candidate: OpaquePointer?
-        guard sqlite3_open_v2(url.path, &candidate, SQLITE_OPEN_READONLY, nil) == SQLITE_OK, let candidate else {
-            if let candidate { sqlite3_close(candidate) }
-            throw TransferError.invalidDatabase
-        }
-        defer { sqlite3_close(candidate) }
-        var statement: OpaquePointer?
-        guard sqlite3_prepare_v2(candidate, "SELECT name FROM sqlite_master WHERE type='table'", -1, &statement, nil) == SQLITE_OK,
-              let statement else { throw TransferError.invalidDatabase }
-        defer { sqlite3_finalize(statement) }
-        var found = Set<String>()
-        while sqlite3_step(statement) == SQLITE_ROW, let text = sqlite3_column_text(statement, 0) {
-            found.insert(String(cString: text))
-        }
-        let required: Set<String> = ["bookmarks", "khatmas", "khatma_read_ayahs", "reading_days", "reading_metadata"]
-        guard required.isSubset(of: found) else { throw TransferError.invalidDatabase }
-        var integrity: OpaquePointer?
-        guard sqlite3_prepare_v2(candidate, "PRAGMA quick_check", -1, &integrity, nil) == SQLITE_OK,
-              let integrity else { throw TransferError.invalidDatabase }
-        defer { sqlite3_finalize(integrity) }
-        guard sqlite3_step(integrity) == SQLITE_ROW,
-              let result = sqlite3_column_text(integrity, 0),
-              String(cString: result) == "ok" else { throw TransferError.invalidDatabase }
-    }
-
-    private func setupTables() {
-        execute("""
-        PRAGMA journal_mode = WAL;
-        PRAGMA foreign_keys = ON;
+    /// The tables and indexes (no PRAGMAs). Kept as one batch: `sqlite3_exec` stops a batch at its first error.
+    private static let schemaSQL = """
 
         CREATE TABLE IF NOT EXISTS bookmarks (
             id TEXT PRIMARY KEY,
@@ -434,18 +423,35 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         CREATE INDEX IF NOT EXISTS idx_bookmarks_page ON bookmarks(page);
         CREATE INDEX IF NOT EXISTS idx_khatma_surah ON khatma_read_ayahs(khatma_id, surah);
         CREATE INDEX IF NOT EXISTS idx_khatma_page ON khatma_read_ayahs(khatma_id, page);
-        """)
+        """
+
+    private static let legacyMigrationSQL = """
+            INSERT INTO reading_days_legacy(date_string, ayahs_read, pages_read, seconds_read, last_read_at)
+            SELECT date_string, ayahs_read, pages_read, seconds_read, last_read_at FROM reading_days
+            WHERE NOT EXISTS (SELECT 1 FROM reading_metadata WHERE key = 'reading_events_migrated');
+            INSERT OR IGNORE INTO reading_metadata(key, value) VALUES ('reading_events_migrated', '1');
+            """
+
+    /// Best effort, used by `init`: errors are ignored, exactly as before.
+    private func setupTables() {
+        execute("PRAGMA journal_mode = WAL;\nPRAGMA foreign_keys = ON;\n" + Self.schemaSQL)
 
         // Safely migrate existing databases that might not have seconds_read column yet
         if let db, !tableHasColumn(db, table: "reading_days", column: "seconds_read") {
             execute("ALTER TABLE reading_days ADD COLUMN seconds_read INTEGER NOT NULL DEFAULT 0;")
         }
-        execute("""
-            INSERT INTO reading_days_legacy(date_string, ayahs_read, pages_read, seconds_read, last_read_at)
-            SELECT date_string, ayahs_read, pages_read, seconds_read, last_read_at FROM reading_days
-            WHERE NOT EXISTS (SELECT 1 FROM reading_metadata WHERE key = 'reading_events_migrated');
-            INSERT OR IGNORE INTO reading_metadata(key, value) VALUES ('reading_events_migrated', '1');
-            """)
+        execute(Self.legacyMigrationSQL)
+    }
+
+    /// The same setup, but every step is checked; used when an import reopens the database.
+    private func setupTablesStrict() throws {
+        guard let db else { throw TransferError.databaseUnavailable }
+        do { try SQLiteFile.enableWALAndForeignKeys(db) } catch { throw TransferError.databaseUnavailable }
+        try checkedExec(db, Self.schemaSQL)
+        if !tableHasColumn(db, table: "reading_days", column: "seconds_read") {
+            try checkedExec(db, "ALTER TABLE reading_days ADD COLUMN seconds_read INTEGER NOT NULL DEFAULT 0;")
+        }
+        try checkedExec(db, Self.legacyMigrationSQL)
     }
 
     private func execute(_ sql: String) {

@@ -86,6 +86,57 @@ final class ReadingDatabaseTransferTests: XCTestCase {
         sqlite3_close(handle)
     }
 
+    func testReadingExportFailureMapsToDatabaseUnavailable() {
+        let db = makeDatabase("gone.sqlite")
+        for suffix in ["", "-wal", "-shm"] { try? FileManager.default.removeItem(atPath: db.fileURL.path + suffix) }
+
+        XCTAssertThrowsError(try db.exportDatabase()) { error in
+            guard case .databaseUnavailable? = error as? QuranReadingDatabase.TransferError else {
+                return XCTFail("expected databaseUnavailable, got \(error)")
+            }
+        }
+    }
+
+    /// A candidate that has every required table and passes the integrity check, but whose schema setup
+    /// fails because a table owns the name of an index the setup creates.
+    func testImportThatFailsSchemaSetupRestoresPreviousData() throws {
+        let source = makeDatabase("source.sqlite")
+        source.addBookmark(type: .ayah, surah: 9, ayah: 9, page: 99)
+        let planted = directory.appendingPathComponent("planted.sqlite")
+        try source.exportDatabase().write(to: planted)
+        var handle: OpaquePointer?
+        XCTAssertEqual(sqlite3_open(planted.path, &handle), SQLITE_OK)
+        XCTAssertEqual(sqlite3_exec(handle, "DROP INDEX idx_bookmarks_type; CREATE TABLE idx_bookmarks_type (x INTEGER);",
+                                    nil, nil, nil), SQLITE_OK)
+        sqlite3_close(handle)
+
+        let target = makeDatabase("target.sqlite")
+        target.addBookmark(type: .ayah, surah: 2, ayah: 1, page: 2)
+
+        XCTAssertThrowsError(try target.importDatabase(Data(contentsOf: planted)))
+
+        XCTAssertEqual(target.allBookmarks().map(\.page), [2], "the previous data must be back")
+        target.addBookmark(type: .ayah, surah: 3, ayah: 1, page: 50)
+        XCTAssertEqual(Set(target.allBookmarks().map(\.page)), [2, 50], "and the database must be usable")
+    }
+
+    func testInitEnablesWALAndForeignKeys() {
+        let db = makeDatabase("wal.sqlite")
+        var handle: OpaquePointer?
+        XCTAssertEqual(sqlite3_open_v2(db.fileURL.path, &handle, SQLITE_OPEN_READONLY, nil), SQLITE_OK)
+        var statement: OpaquePointer?
+        sqlite3_prepare_v2(handle, "PRAGMA journal_mode", -1, &statement, nil)
+        XCTAssertEqual(sqlite3_step(statement), SQLITE_ROW)
+        XCTAssertEqual(String(cString: sqlite3_column_text(statement, 0)), "wal")
+        sqlite3_finalize(statement)
+        sqlite3_close(handle)
+
+        // Foreign keys are per connection, so check enforcement through the public API: a read ayah of a
+        // khatma that does not exist is refused.
+        XCTAssertEqual(db.recordReadAyahs(khatmaId: "missing", items: [(1, 1, 1)]), 0)
+        XCTAssertEqual(db.readAyahsCount(khatmaId: "missing"), 0)
+    }
+
     func testMergeDatabasesUnifiesAyahsAndBookmarks() throws {
         let source = makeDatabase("source.sqlite")
         source.addBookmark(type: .ayah, surah: 2, ayah: 255, page: 42, note: "Kursi")
