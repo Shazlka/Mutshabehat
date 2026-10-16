@@ -352,6 +352,27 @@ import Testing
         #expect(try Data(contentsOf: f.target) == f.original)
     }
 
+    @Test func replaceContentsAcceptsAWALModeCandidateStagedWithoutSidecars() throws {
+        // What the web sync produces: a database built with `journal_mode = WAL` and then closed; only the main
+        // file's bytes travel. A read-only open of such a file fails, so the staged copy is validated read-write.
+        let f = try fixture()
+        defer { try? FileManager.default.removeItem(at: f.directory) }
+        let walFile = f.directory.appendingPathComponent("wal.sqlite")
+        let db = try open(walFile)
+        exec(db, "PRAGMA journal_mode = WAL; CREATE TABLE new (x INTEGER); INSERT INTO new VALUES (1);")
+        sqlite3_close(db)
+        let bytes = try Data(contentsOf: walFile)
+        #expect(bytes[18] == 2 && bytes[19] == 2, "the candidate must carry the WAL format flags")
+
+        try SQLiteFile.replaceContents(of: f.target, with: bytes, requiredTables: ["new"],
+                                       checkpoint: {}, close: {}, reopen: {})
+
+        // Read back read-write: the replaced file still has the WAL flags and no sidecars.
+        let replaced = try open(f.target)
+        defer { sqlite3_close(replaced) }
+        #expect(scalarText(replaced, "SELECT group_concat(name) FROM sqlite_master WHERE type = 'table'") == "new")
+    }
+
     @Test func replaceContentsRemovesStaleSidecars() throws {
         let f = try fixture()
         defer { try? FileManager.default.removeItem(at: f.directory) }

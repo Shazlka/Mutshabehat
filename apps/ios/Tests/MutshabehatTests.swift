@@ -315,6 +315,30 @@ final class MutshabehatTests: XCTestCase {
         XCTAssertEqual(posts, 1)
     }
 
+    /// The web sync builds its file with `PRAGMA journal_mode = WAL` (ICloudDatabaseSyncService.compileMutshabehatSqlite),
+    /// so the bytes it imports carry the WAL format flags and travel without sidecars.
+    func testImportsAWALModeDatabaseLikeTheWebSyncBuildsIt() throws {
+        let walURL = temporaryDatabaseURL()
+        let targetURL = temporaryDatabaseURL()
+        defer { removeDatabaseFiles(walURL); removeDatabaseFiles(targetURL) }
+        var handle: OpaquePointer?
+        XCTAssertEqual(sqlite3_open(walURL.path, &handle), SQLITE_OK)
+        sqlite3_exec(handle, """
+            PRAGMA journal_mode = WAL;
+            CREATE TABLE groups (id TEXT PRIMARY KEY);
+            CREATE TABLE verses (id TEXT PRIMARY KEY);
+            CREATE TABLE parts (id TEXT PRIMARY KEY);
+            CREATE TABLE automated_groups (id TEXT PRIMARY KEY);
+            """, nil, nil, nil)
+        sqlite3_close(handle)
+        let bytes = try Data(contentsOf: walURL)   // the main file only
+        XCTAssertEqual(Array(bytes[18...19]), [2, 2], "the candidate must carry the WAL format flags")
+        let target = MutshabehatDatabase(url: targetURL)
+        target.savePersonalGroup(simpleGroup(title: "قبل الاستيراد"))
+
+        XCTAssertNoThrow(try target.importDatabase(bytes))
+    }
+
     func testExportContainsLatestWriteWhileOpen() throws {
         let sourceURL = temporaryDatabaseURL()
         let targetURL = temporaryDatabaseURL()

@@ -22,9 +22,17 @@ public enum SQLiteFile {
     // MARK: Validation
 
     public static func tableNames(at url: URL) throws -> Set<String> {
+        try tableNames(at: url, readOnly: true)
+    }
+
+    /// `readOnly: false` is for a private staged copy only: a database in WAL format cannot be opened read-only
+    /// when its `-wal`/`-shm` files are missing (the web sync builds its file in WAL mode and only the main
+    /// file's bytes travel), so the staged copy is opened read-write; its sidecars are removed afterwards.
+    private static func tableNames(at url: URL, readOnly: Bool) throws -> Set<String> {
         guard hasSQLiteHeader(url) else { throw SQLiteFileError.unreadable }
         var handle: OpaquePointer?
-        guard sqlite3_open_v2(url.path, &handle, SQLITE_OPEN_READONLY, nil) == SQLITE_OK, let handle else {
+        guard sqlite3_open_v2(url.path, &handle, readOnly ? SQLITE_OPEN_READONLY : SQLITE_OPEN_READWRITE, nil) == SQLITE_OK,
+              let handle else {
             if let handle { sqlite3_close(handle) }
             throw SQLiteFileError.unreadable
         }
@@ -42,12 +50,17 @@ public enum SQLiteFile {
 
     /// Throws unless `url` is a SQLite file holding every required table and passing `PRAGMA quick_check`.
     public static func validate(at url: URL, requiredTables: Set<String>) throws {
-        let found = try tableNames(at: url)
+        try validate(at: url, requiredTables: requiredTables, readOnly: true)
+    }
+
+    private static func validate(at url: URL, requiredTables: Set<String>, readOnly: Bool) throws {
+        let found = try tableNames(at: url, readOnly: readOnly)
         let missing = requiredTables.subtracting(found)
         guard missing.isEmpty else { throw SQLiteFileError.missingTables(missing.sorted()) }
 
         var handle: OpaquePointer?
-        guard sqlite3_open_v2(url.path, &handle, SQLITE_OPEN_READONLY, nil) == SQLITE_OK, let handle else {
+        guard sqlite3_open_v2(url.path, &handle, readOnly ? SQLITE_OPEN_READONLY : SQLITE_OPEN_READWRITE, nil) == SQLITE_OK,
+              let handle else {
             if let handle { sqlite3_close(handle) }
             throw SQLiteFileError.unreadable
         }
@@ -147,7 +160,7 @@ public enum SQLiteFile {
         do { try data.write(to: staging, options: .atomic) } catch {
             throw SQLiteFileError.replaceFailed("staging: \(describe(error))")
         }
-        try validate(at: staging, requiredTables: requiredTables)
+        try validate(at: staging, requiredTables: requiredTables, readOnly: false)
 
         do { try checkpoint() } catch { throw SQLiteFileError.replaceFailed("checkpoint: \(describe(error))") }
         let previous: Data
