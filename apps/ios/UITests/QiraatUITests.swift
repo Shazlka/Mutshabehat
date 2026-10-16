@@ -27,9 +27,14 @@ final class QiraatUITests: XCTestCase {
         XCTAssertTrue(word.waitForExistence(timeout: 30))
 
         func openAndCloseWord() {
-            element(wordID, in: app).tap()
             let close = app.buttons["qiraat-sheet-close"]
-            XCTAssertTrue(close.waitForExistence(timeout: 5))
+            // The first touch in the instant after the app returns from the background can be dropped by the
+            // system before it reaches the page (the app logs no tap at all), so a lost tap is repeated once.
+            for attempt in 1...2 {
+                element(wordID, in: app).tap()
+                if close.waitForExistence(timeout: attempt == 1 ? 3 : 5) { break }
+            }
+            XCTAssertTrue(close.exists)
             XCTAssertTrue(app.staticTexts["الإمام نافع"].exists)
             close.tap()
             XCTAssertTrue(element("mushaf-page-1", in: app).exists)
@@ -38,6 +43,8 @@ final class QiraatUITests: XCTestCase {
         openAndCloseWord()
         XCUIDevice.shared.press(.home)
         app.activate()
+        XCTAssertTrue(app.wait(for: .runningForeground, timeout: 10))
+        XCTAssertTrue(element("mushaf-page-1", in: app).waitForExistence(timeout: 10))
         openAndCloseWord()
 
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()
@@ -71,7 +78,7 @@ final class QiraatUITests: XCTestCase {
 
     func testANewInstallStartsWithTheQiraatLayerOn() {
         let app = launch(atPage: 1, layer: nil)
-        XCTAssertTrue(element("qiraat-word-1:4:1", in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(element("qiraat-word-1:4:1", in: app).waitForExistence(timeout: 30))
     }
 
     func testTheLayerToggleTurnsMarksOffAndIsRemembered() {

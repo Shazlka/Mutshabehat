@@ -80,7 +80,7 @@ final class QiraatTopBarUITests: XCTestCase {
         app.buttons["qiraat-button"].tap()
         XCTAssertTrue(element("qiraat-hub-toggle", in: app).waitForExistence(timeout: 3))
         element("qiraat-hub-toggle", in: app).tap()
-        XCTAssertTrue(element("qiraat-word-1:4:1", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("qiraat-word-1:4:1", in: app).waitForExistence(timeout: 20))
     }
 
     func testNoChipWhileTheFilterIsAll() {

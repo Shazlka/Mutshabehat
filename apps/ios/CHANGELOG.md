@@ -3,6 +3,10 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-16 — UI tests: a tap dropped right after the app returns from the background
+- Tracing the app (scene phase, page marks, both tap recognisers) showed that in `testColdLaunchWordTapsSurviveBackgroundAndSettingsWithoutAPageTurn` the first tap sent right after `XCUIDevice.press(.home)` + `app.activate()` never reached the app: the scene was already `active`, the page still had its marks, and neither the word tap nor the centre tap fired. It is a test-timing problem, not an app bug. The test now waits for the app to be in the foreground and the page to exist before tapping, and repeats a lost tap once.
+- `testANewInstallStartsWithTheQiraatLayerOn` and `QiraatTopBarUITests.testTheQiraatMenuSwitchesTheLayerOffAndOn` wait up to 30 s and 20 s for the marked word (they missed their 10 s and 5 s windows once in a 35-minute run); both classes pass repeatedly on their own.
+
 ## [Unreleased] — 2026-10-16 — UI tests: isolated launch, longer cold-launch wait
 - Every UI test now launches the app through `XCUIApplication.isolated()` (`QIRAAT_TEST_ISOLATION=1`): the Qiraat layer stays on the bundled snapshot, with no live fetch from the production site and no overlay or imported pages from earlier runs, and the real iCloud folder stays out of reach. A result no longer depends on what the live database holds.
 - `QiraatUITests.testColdLaunchWordTapsSurviveBackgroundAndSettingsWithoutAPageTurn` waits up to 30 s (was 10 s) for the first marked word after a cold launch; on a busy machine the launch passed 10 s about one run in three, and the word appeared after 1.3 s on every quiet run.
