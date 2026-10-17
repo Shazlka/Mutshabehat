@@ -15,6 +15,7 @@ final class QiraatLocalizationTests: XCTestCase {
     private var appRoot: URL { URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent() }
 
     func testEveryArabicQiraatLiteralHasAnEnglishTranslation() throws {
+        try HostFiles.requireBuildMachineFiles()
         let catalog = try loadCatalog()
         let literals = try qiraatLiterals()
         let arabic = literals.filter { Self.containsArabic($0.value) }
@@ -27,6 +28,7 @@ final class QiraatLocalizationTests: XCTestCase {
     }
 
     func testArabicChromeIsNotPassedAsVerbatimText() throws {
+        try HostFiles.requireBuildMachineFiles()
         let verbatim = try qiraatLiterals()
             .filter { ["verbatim", "text", "title"].contains($0.label) && Self.containsArabic($0.value) }
             .map { "\($0.file): \($0.label ?? "") \($0.value)" }
@@ -34,6 +36,7 @@ final class QiraatLocalizationTests: XCTestCase {
     }
 
     func testTheDifferenceKindKeysHaveArabicAndEnglish() throws {
+        try HostFiles.requireBuildMachineFiles()
         let catalog = try loadCatalog()
         let keys = try qiraatLiterals().map(\.value).filter { $0.hasPrefix("qiraat.") }
         XCTAssertGreaterThanOrEqual(keys.count, 13, "every difference kind is a namespaced key")

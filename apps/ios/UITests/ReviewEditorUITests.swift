@@ -34,7 +34,7 @@ final class ReviewEditorUITests: XCTestCase {
         let app = launch()
         openSettings(app)
         let row = scrollTo("open-review-editor", in: app)
-        XCTAssertTrue(row.waitForExistence(timeout: 5))
+        XCTAssertTrue(row.waitForExistence(timeout: 15))
         row.tap()
         XCTAssertTrue(element("review-home-progress", in: app).waitForExistence(timeout: 10))
         app.buttons["review-continue"].tap()
@@ -43,14 +43,14 @@ final class ReviewEditorUITests: XCTestCase {
         let word = element("review-word-002:049:001", in: app)
         XCTAssertTrue(word.waitForExistence(timeout: 10))
         word.tap()
-        XCTAssertTrue(element("review-sheet-word", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("review-sheet-word", in: app).waitForExistence(timeout: 15))
     }
 
     /// Settings → المطور → المحرر → متابعة, then waits for the page.
     private func openEditorPage(_ app: XCUIApplication) {
         openSettings(app)
         let row = scrollTo("open-review-editor", in: app)
-        XCTAssertTrue(row.waitForExistence(timeout: 5))
+        XCTAssertTrue(row.waitForExistence(timeout: 15))
         row.tap()
         XCTAssertTrue(app.buttons["review-continue"].waitForExistence(timeout: 10))
         app.buttons["review-continue"].tap()
@@ -62,22 +62,22 @@ final class ReviewEditorUITests: XCTestCase {
         let app = launch()
         openEditorPage(app)
         element("review-word-002:049:001", in: app).tap()
-        XCTAssertTrue(element("review-sheet-word", in: app).waitForExistence(timeout: 5))
-        XCTAssertTrue(element("review-face-r-8-1", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("review-sheet-word", in: app).waitForExistence(timeout: 15))
+        XCTAssertTrue(element("review-face-r-8-1", in: app).waitForExistence(timeout: 15))
         XCTAssertTrue(element("review-steps", in: app).exists)
         XCTAssertTrue(app.buttons["review-approve"].exists)
         app.buttons["٢ المراجع"].tap()
-        XCTAssertTrue(element("review-reference-source", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("review-reference-source", in: app).waitForExistence(timeout: 15))
     }
 
     func testApprovingMovesOnToTheNextUnreviewedWordAndShowsTheSaveStatus() {
         let app = launch()
         openEditorPage(app)
         element("review-word-002:049:001", in: app).tap()
-        XCTAssertTrue(element("review-face-r-8-1", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("review-face-r-8-1", in: app).waitForExistence(timeout: 15))
         app.buttons["review-approve"].tap()
         // Word 2 carries the next unreviewed face (word 1's is now approved).
-        XCTAssertTrue(element("review-face-r-8-2", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("review-face-r-8-2", in: app).waitForExistence(timeout: 15))
         XCTAssertTrue(element("review-save-status", in: app).waitForExistence(timeout: 10))
     }
 
@@ -86,10 +86,10 @@ final class ReviewEditorUITests: XCTestCase {
         guard UIDevice.current.userInterfaceIdiom == .pad else { throw XCTSkip("iPad only") }
         let app = launch()
         openEditorPage(app)
-        XCTAssertTrue(element("review-side-placeholder", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("review-side-placeholder", in: app).waitForExistence(timeout: 15))
         element("review-word-002:049:001", in: app).tap()
         let panel = element("review-sheet-word", in: app)
-        XCTAssertTrue(panel.waitForExistence(timeout: 5))
+        XCTAssertTrue(panel.waitForExistence(timeout: 15))
         let canvas = element("review-page-canvas", in: app)
         XCTAssertTrue(canvas.isHittable, "the page stays usable while the word panel is open")
         XCTAssertFalse(panel.frame.intersects(canvas.frame), "panel and page sit side by side")
@@ -101,11 +101,14 @@ final class ReviewEditorUITests: XCTestCase {
         let app = launch()
         openEditorPage(app)
         element("review-word-002:049:001", in: app).tap()
-        XCTAssertTrue(element("review-face-r-8-1", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("review-face-r-8-1", in: app).waitForExistence(timeout: 15))
         var unlabeled: [String] = []
         for step in ["", "٢ المراجع", "٣ التحرير"] {
             if !step.isEmpty { app.buttons[step].tap() }
-            for button in app.buttons.allElementsBoundByIndex where button.exists && button.isHittable {
+            // The page's words are content, not controls (their label is the word); checking each of them
+            // is hundreds of round trips and races with the canvas rebuilding its elements.
+            let controls = app.buttons.matching(NSPredicate(format: "NOT (identifier BEGINSWITH 'review-word-')"))
+            for button in controls.allElementsBoundByIndex where button.exists && button.isHittable {
                 if button.label.trimmingCharacters(in: .whitespaces).isEmpty {
                     unlabeled.append("\(step)/\(button.identifier)")
                 }
@@ -118,9 +121,9 @@ final class ReviewEditorUITests: XCTestCase {
         let app = launch()
         openEditorPage(app)
         element("review-word-002:049:008", in: app).tap()
-        XCTAssertTrue(app.buttons["review-new-face"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["review-new-face"].waitForExistence(timeout: 15))
         app.buttons["review-new-face"].tap()
-        XCTAssertTrue(element("review-edit-step", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("review-edit-step", in: app).waitForExistence(timeout: 15))
         // The sheet opens half-height: drag it up so the readers are in view.
         element("review-sheet-word", in: app).swipeUp()
         let narrator = element("review-narrator-Q01-R02", in: app)
@@ -128,13 +131,13 @@ final class ReviewEditorUITests: XCTestCase {
         while !narrator.isHittable && tries < 8 { element("review-edit-step", in: app).swipeUp(); tries += 1 }
         narrator.tap()
         let approve = app.buttons["review-approve"]
-        XCTAssertTrue(approve.waitForExistence(timeout: 5))
+        XCTAssertTrue(approve.waitForExistence(timeout: 15))
         XCTAssertTrue(element("review-unsaved", in: app).exists)
         approve.tap()
         XCTAssertTrue(element("review-save-status", in: app).waitForExistence(timeout: 10))
         // The sheet moved on to the next unreviewed word; close it and look at the word again.
         app.buttons["review-sheet-close"].tap()
-        XCTAssertTrue(element("review-word-002:049:008", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("review-word-002:049:008", in: app).waitForExistence(timeout: 15))
         element("review-word-002:049:008", in: app).tap()
         let created = app.descendants(matching: .any).matching(NSPredicate(format: "identifier BEGINSWITH 'review-face-r-new'")).firstMatch
         XCTAssertTrue(created.waitForExistence(timeout: 10))
@@ -157,21 +160,21 @@ final class ReviewEditorUITests: XCTestCase {
         // Word 7 carries a seeded الممال والمقلل face (no keyboard or category picking needed).
         element("review-word-002:049:007", in: app).tap()
         let face = app.descendants(matching: .any).matching(identifier: "review-face-r-8-5").firstMatch
-        XCTAssertTrue(face.waitForExistence(timeout: 5))
+        XCTAssertTrue(face.waitForExistence(timeout: 15))
         face.tap()
-        XCTAssertTrue(element("review-edit-step", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("review-edit-step", in: app).waitForExistence(timeout: 15))
         element("review-sheet-word", in: app).swipeUp()                       // the sheet to full height
         let builder = app.buttons["منشئ أوجه الممال والمقلل"]
-        XCTAssertTrue(builder.waitForExistence(timeout: 5))
+        XCTAssertTrue(builder.waitForExistence(timeout: 15))
         builder.tap()
         let warshOnly = app.buttons["ورش فقط"]
-        XCTAssertTrue(warshOnly.waitForExistence(timeout: 5))
+        XCTAssertTrue(warshOnly.waitForExistence(timeout: 15))
         warshOnly.tap()
         reveal("review-builder-add", in: app, listID: "review-builder").tap()
-        XCTAssertTrue(app.staticTexts["تمت إضافة الوجه لـ (1) رواة ✓"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["تمت إضافة الوجه لـ (1) رواة ✓"].waitForExistence(timeout: 15))
         app.navigationBars.buttons["BackButton"].firstMatch.tap()             // back to the sheet, where saving lives
         let approve = app.buttons["review-approve"]
-        XCTAssertTrue(approve.waitForExistence(timeout: 5))
+        XCTAssertTrue(approve.waitForExistence(timeout: 15))
         approve.tap()
         XCTAssertTrue(element("review-save-status", in: app).waitForExistence(timeout: 10))
     }

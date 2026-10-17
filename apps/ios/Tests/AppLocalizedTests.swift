@@ -37,6 +37,7 @@ final class AppLocalizedTests: XCTestCase {
     }
 
     func testTheLegendRowsFollowTheAppLanguage() throws {
+        try HostFiles.requireBuildMachineFiles()
         let catalogURL = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent()
             .appendingPathComponent("Generated/Qiraat/catalog.json")
         let catalog = try JSONDecoder().decode(QiraatCatalog.self, from: Data(contentsOf: catalogURL))

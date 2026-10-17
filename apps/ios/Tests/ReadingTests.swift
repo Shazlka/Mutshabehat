@@ -476,7 +476,12 @@ final class ReadingTests: XCTestCase {
         XCTAssertEqual(manifest.databases["qiraat"]?.rulingsCount, 12391)
     }
 
-    func testICloudSyncFolderDiscovery() {
+    func testICloudSyncFolderDiscovery() throws {
+#if !targetEnvironment(simulator)
+        // A device finds the folder only through one the user picked (or an iCloud container the app is entitled
+        // to); with neither it is correctly not connected. Only the simulator can resolve the Mac's folder.
+        throw XCTSkip("the host's iCloud Drive folder exists only in the simulator")
+#endif
         let service = ICloudDatabaseSyncService.shared
         service.refreshConnectionStatus()
         let folder = service.resolveSyncFolder()
@@ -499,6 +504,7 @@ final class ReadingTests: XCTestCase {
     }
 
     func testPage008QiraatRulingsMatchWebapp() throws {
+        try HostFiles.requireBuildMachineFiles()
         let qiraatDir = URL(fileURLWithPath: "/Users/amrelshazly/Projects/qiraat-ios/apps/ios/Generated/Qiraat")
         let store = try QiraatStore(directory: qiraatDir)
         guard let page8 = store.page(8) else {

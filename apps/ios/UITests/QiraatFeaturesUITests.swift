@@ -453,7 +453,8 @@ final class QiraatFeaturesUITests: XCTestCase {
         let closeButton = app.buttons["qiraat-sheet-close"]
         XCTAssertTrue(closeButton.waitForExistence(timeout: 5))
         closeButton.tap()
-        XCTAssertFalse(sheetTitle.waitForExistence(timeout: 5))
+        let gone = expectation(for: NSPredicate(format: "exists == false"), evaluatedWith: sheetTitle)
+        wait(for: [gone], timeout: 5)
     }
 }
 
