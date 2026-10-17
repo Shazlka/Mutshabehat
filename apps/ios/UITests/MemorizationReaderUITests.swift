@@ -46,7 +46,7 @@ final class MemorizationReaderUITests: XCTestCase {
         let app = launch(page: 1)
         XCTAssertTrue(mark(1, in: app).waitForExistence(timeout: 15))
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()   // a tap on the page toggles the chrome
-        XCTAssertTrue(app.buttons["open-index"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["open-index"].waitForExistence(timeout: 20))
         XCTAssertTrue(mark(1, in: app).exists)
         let markFrame = mark(1, in: app).frame
         for id in ["search-button", "bookmarks-button", "qiraat-button", "more-button", "settings-button"] {
@@ -64,13 +64,13 @@ final class MemorizationReaderUITests: XCTestCase {
             let markFrame = mark(4, in: app).frame
             for id in ids {
                 let text = app.staticTexts[id]
-                XCTAssertTrue(text.waitForExistence(timeout: 5), id)
+                XCTAssertTrue(text.waitForExistence(timeout: 20), id)
                 XCTAssertFalse(markFrame.intersects(text.frame), "\(id) is covered by the mark: \(markFrame) vs \(text.frame)")
             }
         }
         assertClear(["reading-surah-title", "reading-section-text"])
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()   // show the controls
-        XCTAssertTrue(app.buttons["open-index"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["open-index"].waitForExistence(timeout: 20))
         assertClear(["surah-title", "page-number"])
     }
 
@@ -96,9 +96,9 @@ final class MemorizationReaderUITests: XCTestCase {
         XCTAssertTrue(mark(600, in: app).waitForExistence(timeout: 15))
         mark(600, in: app).tap()
         let apply = element("memo-page-status-1", in: app)
-        XCTAssertTrue(apply.waitForExistence(timeout: 5))
+        XCTAssertTrue(apply.waitForExistence(timeout: 20))
         apply.tap()
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 20))
         XCTAssertTrue(mark(600, in: app).label.contains("متقن"), mark(600, in: app).label)
     }
 
@@ -108,13 +108,13 @@ final class MemorizationReaderUITests: XCTestCase {
         mark(600, in: app).tap()
         element("memo-page-pick", in: app).tap()
         let first = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'memo-page-ayah-row-'")).firstMatch
-        XCTAssertTrue(first.waitForExistence(timeout: 5))
+        XCTAssertTrue(first.waitForExistence(timeout: 20))
         first.tap()
         let status = element("memo-page-status-1", in: app)
         XCTAssertTrue(status.waitForExistence(timeout: 12))
         XCTAssertTrue(status.isEnabled, "choosing an ayah must enable the status buttons")
         status.tap()
-        let toast = element("memo-undo-toast", in: app).waitForExistence(timeout: 10)
+        let toast = element("memo-undo-toast", in: app).waitForExistence(timeout: 20)
         if !toast { print("DEBUGTREE-BEGIN\n" + app.debugDescription + "\nDEBUGTREE-END") }
         XCTAssertTrue(toast)
         XCTAssertTrue(mark(600, in: app).label.contains("غير محفوظ"),
@@ -144,7 +144,7 @@ final class MemorizationReaderUITests: XCTestCase {
         let app = launch(page: 600)
         XCTAssertTrue(mark(600, in: app).waitForExistence(timeout: 15))
         longPressFirstAyah(in: app)
-        XCTAssertTrue(element("ayah-sheet-bookmark-ayah", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("ayah-sheet-bookmark-ayah", in: app).waitForExistence(timeout: 20))
         XCTAssertTrue(element("ayah-sheet-bookmark-page", in: app).exists)
         for raw in 1...4 { XCTAssertTrue(element("memo-ayah-status-\(raw)", in: app).exists, "status \(raw)") }
         XCTAssertTrue(element("memo-range-start", in: app).exists)
@@ -155,11 +155,11 @@ final class MemorizationReaderUITests: XCTestCase {
         XCTAssertTrue(mark(600, in: app).waitForExistence(timeout: 15))
         longPressFirstAyah(in: app)
         let bookmark = element("ayah-sheet-bookmark-page", in: app)
-        XCTAssertTrue(bookmark.waitForExistence(timeout: 5))
+        XCTAssertTrue(bookmark.waitForExistence(timeout: 20))
         bookmark.tap()
         // The page bookmark is now stored: the same sheet offers to remove it.
         longPressFirstAyah(in: app)
-        XCTAssertTrue(element("ayah-sheet-bookmark-page", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("ayah-sheet-bookmark-page", in: app).waitForExistence(timeout: 20))
         XCTAssertTrue(element("ayah-sheet-bookmark-page", in: app).label.contains("إزالة"), element("ayah-sheet-bookmark-page", in: app).label)
         element("ayah-sheet-bookmark-page", in: app).tap()   // leave the simulator as we found it
     }
@@ -171,7 +171,7 @@ final class MemorizationReaderUITests: XCTestCase {
         let status = element("memo-ayah-status-1", in: app)
         XCTAssertTrue(status.waitForExistence(timeout: 12))
         status.tap()
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 20))
     }
 
     func testRangeModeShowsThePillAndCanBeCancelled() {
@@ -179,7 +179,7 @@ final class MemorizationReaderUITests: XCTestCase {
         XCTAssertTrue(mark(600, in: app).waitForExistence(timeout: 15))
         longPressFirstAyah(in: app)
         element("memo-range-start", in: app).tap()
-        XCTAssertTrue(element("memo-range-pill", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("memo-range-pill", in: app).waitForExistence(timeout: 20))
         element("memo-range-cancel", in: app).tap()
         XCTAssertFalse(element("memo-range-pill", in: app).waitForExistence(timeout: 2))
     }
@@ -189,13 +189,13 @@ final class MemorizationReaderUITests: XCTestCase {
         XCTAssertTrue(mark(600, in: app).waitForExistence(timeout: 15))
         longPressFirstAyah(in: app)
         element("memo-range-start", in: app).tap()
-        XCTAssertTrue(element("memo-range-pill", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("memo-range-pill", in: app).waitForExistence(timeout: 20))
         // A second long press somewhere lower on the same page ends the range.
         for y in [0.75, 0.7, 0.8, 0.66, 0.85] {
             app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: y)).press(forDuration: 0.8)
             if element("memo-update-count", in: app).waitForExistence(timeout: 1.5) { break }
         }
-        XCTAssertTrue(element("memo-update-count", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("memo-update-count", in: app).waitForExistence(timeout: 20))
         XCTAssertTrue(element("memo-status-1", in: app).exists)
     }
 
@@ -206,6 +206,6 @@ final class MemorizationReaderUITests: XCTestCase {
         off.terminate()
         let on = launch(page: 1, extra: ["-memorization-ayah-marker", "YES"])
         XCTAssertTrue(on.descendants(matching: .any)["mushaf-page-1"].waitForExistence(timeout: 15))
-        XCTAssertTrue(element("memo-ayah-marker-1-1", in: on).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("memo-ayah-marker-1-1", in: on).waitForExistence(timeout: 20))
     }
 }

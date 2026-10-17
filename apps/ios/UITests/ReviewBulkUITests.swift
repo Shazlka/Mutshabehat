@@ -18,7 +18,7 @@ final class ReviewBulkUITests: XCTestCase {
     private func openSettings(_ app: XCUIApplication) {
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()   // margin tap shows the chrome
         let settings = app.buttons["settings-button"]
-        XCTAssertTrue(settings.waitForExistence(timeout: 10))
+        XCTAssertTrue(settings.waitForExistence(timeout: 20))
         settings.tap()
     }
 
@@ -33,19 +33,19 @@ final class ReviewBulkUITests: XCTestCase {
     private func openEditorPage(_ app: XCUIApplication) {
         openSettings(app)
         let row = scrollTo("open-review-editor", in: app)
-        XCTAssertTrue(row.waitForExistence(timeout: 5))
+        XCTAssertTrue(row.waitForExistence(timeout: 20))
         row.tap()
-        XCTAssertTrue(app.buttons["review-continue"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.buttons["review-continue"].waitForExistence(timeout: 20))
         app.buttons["review-continue"].tap()
-        XCTAssertTrue(element("review-page-canvas", in: app).waitForExistence(timeout: 10))
-        XCTAssertTrue(element("review-word-002:049:001", in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(element("review-page-canvas", in: app).waitForExistence(timeout: 20))
+        XCTAssertTrue(element("review-word-002:049:001", in: app).waitForExistence(timeout: 20))
     }
 
     func testFirstWordShowsSuggestionAndAddButton() {
         let app = launch(page: 8)
         openEditorPage(app)
         element("review-word-002:049:001", in: app).tap()
-        XCTAssertTrue(element("review-sheet-word", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("review-sheet-word", in: app).waitForExistence(timeout: 20))
         element("review-sheet-word", in: app).swipeUp()
         // The card sits low in a lazy list: one swipe does not always lift the sheet off its half detent
         // (a slow machine drops it), so drag the list until the card is built.
@@ -56,7 +56,7 @@ final class ReviewBulkUITests: XCTestCase {
                 .press(forDuration: 0.05, thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.3)))
             drags += 1
         }
-        XCTAssertTrue(card.waitForExistence(timeout: 10))
+        XCTAssertTrue(card.waitForExistence(timeout: 20))
         let add = app.buttons["review-suggestion-add-stub-exact"]
         XCTAssertTrue(add.exists)
         XCTAssertEqual(add.label, "➕ إضافة")

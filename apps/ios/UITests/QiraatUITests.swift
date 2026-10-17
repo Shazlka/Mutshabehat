@@ -44,13 +44,13 @@ final class QiraatUITests: XCTestCase {
         XCUIDevice.shared.press(.home)
         app.activate()
         XCTAssertTrue(app.wait(for: .runningForeground, timeout: 10))
-        XCTAssertTrue(element("mushaf-page-1", in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(element("mushaf-page-1", in: app).waitForExistence(timeout: 20))
         openAndCloseWord()
 
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()
         app.buttons["settings-button"].tap()
         let done = app.buttons["تم"]
-        XCTAssertTrue(done.waitForExistence(timeout: 5))
+        XCTAssertTrue(done.waitForExistence(timeout: 20))
         done.tap()
         openAndCloseWord()
     }
@@ -59,9 +59,9 @@ final class QiraatUITests: XCTestCase {
     func testTappingAMarkedWordShowsWhoReadsIt() {
         let app = launch(atPage: 1)
         let word = element("qiraat-word-1:4:1", in: app)
-        XCTAssertTrue(word.waitForExistence(timeout: 10))
+        XCTAssertTrue(word.waitForExistence(timeout: 20))
         word.tap()
-        XCTAssertTrue(app.staticTexts["الإمام نافع"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["الإمام نافع"].waitForExistence(timeout: 20))
         XCTAssertTrue(app.staticTexts["الإمام أبو جعفر"].exists)
         XCTAssertFalse(app.staticTexts["الإمام عاصم"].exists)
         saveScreenshot(named: "qiraat-sheet-1-4", app: app)
@@ -70,9 +70,9 @@ final class QiraatUITests: XCTestCase {
     func testANarratorFilterNarrowsTheCardToThatNarrator() {
         let app = launch(atPage: 1, filter: "reading:Q01-R02")
         let word = element("qiraat-word-1:4:1", in: app)
-        XCTAssertTrue(word.waitForExistence(timeout: 10))
+        XCTAssertTrue(word.waitForExistence(timeout: 20))
         word.tap()
-        XCTAssertTrue(app.staticTexts["الراوي ورش"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["الراوي ورش"].waitForExistence(timeout: 20))
         XCTAssertFalse(app.staticTexts["الإمام ابن كثير"].exists)
     }
 
@@ -83,18 +83,18 @@ final class QiraatUITests: XCTestCase {
 
     func testTheLayerToggleTurnsMarksOffAndIsRemembered() {
         let app = launch(atPage: 1)
-        XCTAssertTrue(element("qiraat-word-1:4:1", in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(element("qiraat-word-1:4:1", in: app).waitForExistence(timeout: 20))
         saveScreenshot(named: "qiraat-page-1", app: app)
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()  // margin tap to toggle chrome safely
         let settingsButton = app.buttons["settings-button"]
-        XCTAssertTrue(settingsButton.waitForExistence(timeout: 5))
+        XCTAssertTrue(settingsButton.waitForExistence(timeout: 20))
         settingsButton.tap()
 
         let toggle = app.switches["qiraat-toggle"]
-        XCTAssertTrue(toggle.waitForExistence(timeout: 5))
+        XCTAssertTrue(toggle.waitForExistence(timeout: 20))
         toggle.switches.firstMatch.tap()   // the row is one element; only the switch inside it reacts
         let done = app.buttons["تم"]
-        XCTAssertTrue(done.waitForExistence(timeout: 5))
+        XCTAssertTrue(done.waitForExistence(timeout: 20))
         done.tap()
 
         XCTAssertFalse(element("qiraat-word-1:4:1", in: app).waitForExistence(timeout: 2))
@@ -103,7 +103,7 @@ final class QiraatUITests: XCTestCase {
         let relaunched = XCUIApplication.isolated()
         relaunched.launchArguments = ["-mushaf1441:last-page:v1", "1", "-reading-fresh"]
         relaunched.launch()
-        XCTAssertTrue(element("mushaf-page-1", in: relaunched).waitForExistence(timeout: 10))
+        XCTAssertTrue(element("mushaf-page-1", in: relaunched).waitForExistence(timeout: 20))
         XCTAssertFalse(element("qiraat-word-1:4:1", in: relaunched).exists)
 
         // Leave the device as a new install would be, so the other tests start from the default.
@@ -111,7 +111,7 @@ final class QiraatUITests: XCTestCase {
         relaunched.buttons["settings-button"].tap()
         relaunched.switches["qiraat-toggle"].switches.firstMatch.tap()
         relaunched.buttons["تم"].tap()
-        XCTAssertTrue(element("qiraat-word-1:4:1", in: relaunched).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("qiraat-word-1:4:1", in: relaunched).waitForExistence(timeout: 20))
     }
 
     private func saveScreenshot(named name: String, app: XCUIApplication) {

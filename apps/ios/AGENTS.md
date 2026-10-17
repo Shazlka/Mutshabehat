@@ -36,6 +36,10 @@ make review-golden             # generate golden files in Generated/Review/golde
 make release-guard             # build Release and verify no review editor code or reference data leaked
 ```
 
+UI tests (XCUITest) run on the simulators only, never on the user's physical iPhone or iPad (user decision,
+2026-10-17): a phone locks mid-run ("Not authorized for performing UI testing actions"), is slower than the
+simulator, and the tests touch the real install's data. A physical device gets `make device` plus a launch check.
+
 Xcode 27 ships no `Simulator.app`. When iterating on a failing UI test, pass
 `-collect-test-diagnostics never` to xcodebuild, or it spends 600 s collecting diagnostics.
 

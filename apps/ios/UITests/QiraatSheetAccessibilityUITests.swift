@@ -13,13 +13,13 @@ final class QiraatSheetAccessibilityUITests: XCTestCase {
                                "-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXL"]
         app.launch()
         let word = app.descendants(matching: .any)["qiraat-word-1:4:1"]
-        XCTAssertTrue(word.waitForExistence(timeout: 10))
+        XCTAssertTrue(word.waitForExistence(timeout: 20))
         word.tap()
 
         let close = app.buttons["qiraat-sheet-close"]
-        XCTAssertTrue(close.waitForExistence(timeout: 5))
+        XCTAssertTrue(close.waitForExistence(timeout: 20))
         let variant = app.staticTexts["qiraat-variant-text"].firstMatch
-        XCTAssertTrue(variant.waitForExistence(timeout: 5))
+        XCTAssertTrue(variant.waitForExistence(timeout: 20))
 
         // The sheet opens at a medium height; scroll its content until the word is on screen.
         let window = app.windows.firstMatch.frame

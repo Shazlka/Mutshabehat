@@ -26,20 +26,20 @@ final class MemorizationBackupUITests: XCTestCase {
 
     private func openBackup(_ app: XCUIApplication) {
         let link = scrollTo("memo-backup-link", in: app)
-        XCTAssertTrue(link.waitForExistence(timeout: 10))
+        XCTAssertTrue(link.waitForExistence(timeout: 20))
         link.tap()
-        XCTAssertTrue(element("memo-backup", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("memo-backup", in: app).waitForExistence(timeout: 20))
     }
 
     func testDashboardWarnsWhenNoBackupFolderIsSet() {
         let app = launch(folder: "none")
-        XCTAssertTrue(scrollTo("memo-backup-banner", in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(scrollTo("memo-backup-banner", in: app).waitForExistence(timeout: 20))
     }
 
     func testUpdateSucceedsWhenBackupFolderIsMissing() {
         let app = launch(folder: "none")
         let button = app.buttons["memo-update-button"]
-        XCTAssertTrue(button.waitForExistence(timeout: 10))
+        XCTAssertTrue(button.waitForExistence(timeout: 20))
         button.tap()
         let field = app.textFields["memo-update-search"]
         if !field.waitForExistence(timeout: 6) { button.tap() }   // the first tap can land during the launch transition
@@ -50,14 +50,14 @@ final class MemorizationBackupUITests: XCTestCase {
         XCTAssertTrue(status.waitForExistence(timeout: 12))
         status.tap()
         app.buttons["memo-update-apply"].tap()
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 20))
     }
 
     func testBackupNowCreatesASnapshotAndSavesTheLastTime() {
         let app = launch(folder: "temp")
         openBackup(app)
         let now = element("memo-backup-now", in: app)
-        XCTAssertTrue(now.waitForExistence(timeout: 5))
+        XCTAssertTrue(now.waitForExistence(timeout: 20))
         now.tap()
         let alert = app.alerts.firstMatch
         XCTAssertTrue(alert.waitForExistence(timeout: 30))
@@ -65,7 +65,7 @@ final class MemorizationBackupUITests: XCTestCase {
         alert.buttons["حسنًا"].tap()
         XCTAssertNotEqual(element("memo-backup-last", in: app).label, "لا توجد")
         let snapshot = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'memo-backup-snapshot-'")).firstMatch
-        XCTAssertTrue(snapshot.waitForExistence(timeout: 5))
+        XCTAssertTrue(snapshot.waitForExistence(timeout: 20))
     }
 
     func testRestoreBringsBackTheBackedUpState() {
@@ -82,7 +82,7 @@ final class MemorizationBackupUITests: XCTestCase {
 
         // Change the memorization after the backup: al-Baqarah 100-125 to mastered.
         let update = app.buttons["memo-update-button"]
-        XCTAssertTrue(update.waitForExistence(timeout: 10))
+        XCTAssertTrue(update.waitForExistence(timeout: 20))
         update.tap()
         let field = app.textFields["memo-update-search"]
         XCTAssertTrue(field.waitForExistence(timeout: 12))
@@ -94,27 +94,27 @@ final class MemorizationBackupUITests: XCTestCase {
         if app.keyboards.firstMatch.waitForExistence(timeout: 2) { app.dismissNumberKeyboard() }
         element("memo-status-1", in: app).tap()
         app.buttons["memo-update-apply"].tap()
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 20))
         XCTAssertNotEqual(element("memo-strict", in: app).label, before)
 
         openBackup(app)
         let snapshot = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'memo-backup-snapshot-'")).firstMatch
-        XCTAssertTrue(snapshot.waitForExistence(timeout: 5))
+        XCTAssertTrue(snapshot.waitForExistence(timeout: 20))
         snapshot.tap()
         let replace = app.switches["memo-restore-replace"]
-        XCTAssertTrue(replace.waitForExistence(timeout: 10))
+        XCTAssertTrue(replace.waitForExistence(timeout: 20))
         replace.tap()
         for dx in [0.08, 0.92] where replace.value as? String != "1" {
             replace.coordinate(withNormalizedOffset: CGVector(dx: dx, dy: 0.5)).tap()
         }
         element("memo-restore-apply", in: app).tap()
         let confirm = app.buttons.matching(identifier: "memo-restore-confirm").firstMatch
-        XCTAssertTrue(confirm.waitForExistence(timeout: 5))
+        XCTAssertTrue(confirm.waitForExistence(timeout: 20))
         confirm.tap()
         XCTAssertTrue(element("memo-restore-report", in: app).waitForExistence(timeout: 20))
         app.buttons["إغلاق"].tap()
         app.navigationBars.buttons.element(boundBy: 0).tap()
-        XCTAssertTrue(element("memo-strict", in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(element("memo-strict", in: app).waitForExistence(timeout: 20))
         XCTAssertEqual(element("memo-strict", in: app).label, before)
     }
 }

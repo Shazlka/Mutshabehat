@@ -77,19 +77,19 @@ final class QiraatFeaturesUITests: XCTestCase {
 
     func testLegendOpensListsReaderRowsAndCloses() {
         let app = launch(atPage: 1)
-        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
 
         showControls(in: app)
         let qiraatButton = app.buttons["qiraat-button"]
-        XCTAssertTrue(qiraatButton.waitForExistence(timeout: 5))
+        XCTAssertTrue(qiraatButton.waitForExistence(timeout: 20))
         qiraatButton.tap()
 
         let legendItem = app.buttons["qiraat-hub-legend"]
-        XCTAssertTrue(legendItem.waitForExistence(timeout: 5))
+        XCTAssertTrue(legendItem.waitForExistence(timeout: 20))
         legendItem.tap()
 
         let legend = app.descendants(matching: .any)["qiraat-legend"]
-        XCTAssertTrue(legend.waitForExistence(timeout: 5))
+        XCTAssertTrue(legend.waitForExistence(timeout: 20))
 
         let nafiRow = app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS 'نافع'")).firstMatch
         var swipes = 0
@@ -97,7 +97,7 @@ final class QiraatFeaturesUITests: XCTestCase {
             scrollUp(legend)
             swipes += 1
         }
-        XCTAssertTrue(nafiRow.waitForExistence(timeout: 5), "Legend must list reader rows such as Imam Nafi")
+        XCTAssertTrue(nafiRow.waitForExistence(timeout: 20), "Legend must list reader rows such as Imam Nafi")
 
         let asimRow = app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS 'عاصم'")).firstMatch
         swipes = 0
@@ -105,10 +105,10 @@ final class QiraatFeaturesUITests: XCTestCase {
             scrollUp(legend)
             swipes += 1
         }
-        XCTAssertTrue(asimRow.waitForExistence(timeout: 5), "Legend must list reader rows such as Imam Asim")
+        XCTAssertTrue(asimRow.waitForExistence(timeout: 20), "Legend must list reader rows such as Imam Asim")
 
         let closeButton = app.buttons["qiraat-legend-close"]
-        XCTAssertTrue(closeButton.waitForExistence(timeout: 5))
+        XCTAssertTrue(closeButton.waitForExistence(timeout: 20))
         closeButton.tap()
 
         XCTAssertFalse(legend.waitForExistence(timeout: 5), "Legend sheet must dismiss when close button is tapped")
@@ -118,7 +118,7 @@ final class QiraatFeaturesUITests: XCTestCase {
     func testFilterChangeFromReaderShowsFilterChipAndPageFrameDoesNotMove() {
         let app = launch(atPage: 1, filter: "all")
         let mushafPage = page(1, in: app)
-        XCTAssertTrue(mushafPage.waitForExistence(timeout: 10))
+        XCTAssertTrue(mushafPage.waitForExistence(timeout: 20))
         let frameBefore = mushafPage.frame
 
         let filterChip = app.descendants(matching: .any)["qiraat-filter-chip"]
@@ -126,48 +126,48 @@ final class QiraatFeaturesUITests: XCTestCase {
 
         showControls(in: app)
         let qiraatButton = app.buttons["qiraat-button"]
-        XCTAssertTrue(qiraatButton.waitForExistence(timeout: 5))
+        XCTAssertTrue(qiraatButton.waitForExistence(timeout: 20))
         qiraatButton.tap()
 
         let filterSubmenu = app.buttons["qiraat-filter"]
-        XCTAssertTrue(filterSubmenu.waitForExistence(timeout: 5))
+        XCTAssertTrue(filterSubmenu.waitForExistence(timeout: 20))
         filterSubmenu.tap()
 
         let nafi = byLabel("الإمام", "نافع", in: app)
-        XCTAssertTrue(nafi.waitForExistence(timeout: 5))
+        XCTAssertTrue(nafi.waitForExistence(timeout: 20))
         nafi.tap()
         let warsh = byLabel("الراوي", "ورش", in: app)
-        XCTAssertTrue(warsh.waitForExistence(timeout: 5))
+        XCTAssertTrue(warsh.waitForExistence(timeout: 20))
         warsh.tap()
 
         showControls(in: app)
 
-        XCTAssertTrue(filterChip.waitForExistence(timeout: 5), "Filter chip must appear in reading header when active filter is not all")
+        XCTAssertTrue(filterChip.waitForExistence(timeout: 20), "Filter chip must appear in reading header when active filter is not all")
         XCTAssertEqual(mushafPage.frame, frameBefore, "Changing filter must not alter or shift the Mushaf page frame")
 
         filterChip.tap()
         let menuPresented = app.buttons.matching(NSPredicate(format: "label CONTAINS 'الكل' OR label CONTAINS 'نافع' OR identifier CONTAINS 'qiraat-filter'")).firstMatch
-        XCTAssertTrue(menuPresented.waitForExistence(timeout: 5), "Tapping filter chip must open filter options")
+        XCTAssertTrue(menuPresented.waitForExistence(timeout: 20), "Tapping filter chip must open filter options")
     }
 
     /// Flow 3: Word sheet next/prev changes the shown word without closing the sheet.
     func testSheetNextAndPreviousChangesShownWord() {
         let app = launch(atPage: 2)
-        XCTAssertTrue(page(2, in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(page(2, in: app).waitForExistence(timeout: 20))
 
         let firstWord = app.descendants(matching: .any).matching(NSPredicate(format: "identifier BEGINSWITH 'qiraat-word-'")).firstMatch
-        XCTAssertTrue(firstWord.waitForExistence(timeout: 10))
+        XCTAssertTrue(firstWord.waitForExistence(timeout: 20))
         firstWord.tap()
 
         let sheetTitle = app.navigationBars["القراءات العشر"]
-        XCTAssertTrue(sheetTitle.waitForExistence(timeout: 5))
+        XCTAssertTrue(sheetTitle.waitForExistence(timeout: 20))
 
         let position = app.descendants(matching: .any)["qiraat-sheet-position"]
-        XCTAssertTrue(position.waitForExistence(timeout: 5))
+        XCTAssertTrue(position.waitForExistence(timeout: 20))
         let initialPosition = position.label
 
         let nextButton = app.buttons["qiraat-sheet-next"]
-        XCTAssertTrue(nextButton.waitForExistence(timeout: 5))
+        XCTAssertTrue(nextButton.waitForExistence(timeout: 20))
         XCTAssertTrue(nextButton.isEnabled)
         nextButton.tap()
 
@@ -176,7 +176,7 @@ final class QiraatFeaturesUITests: XCTestCase {
         XCTAssertTrue(sheetTitle.exists, "Sheet must remain open when advancing to next word")
 
         let prevButton = app.buttons["qiraat-sheet-prev"]
-        XCTAssertTrue(prevButton.waitForExistence(timeout: 5))
+        XCTAssertTrue(prevButton.waitForExistence(timeout: 20))
         XCTAssertTrue(prevButton.isEnabled)
         prevButton.tap()
 
@@ -185,7 +185,7 @@ final class QiraatFeaturesUITests: XCTestCase {
         XCTAssertTrue(sheetTitle.exists, "Sheet must remain open when returning to previous word")
 
         let closeButton = app.buttons["qiraat-sheet-close"]
-        XCTAssertTrue(closeButton.waitForExistence(timeout: 5))
+        XCTAssertTrue(closeButton.waitForExistence(timeout: 20))
         closeButton.tap()
         XCTAssertFalse(sheetTitle.waitForExistence(timeout: 5))
     }
@@ -193,34 +193,34 @@ final class QiraatFeaturesUITests: XCTestCase {
     /// Flow 4: Page summary on page 2 lists rows and tapping one opens that word's sheet.
     func testPageSummaryOnPageTwoListsRowsAndOpensWordSheet() {
         let app = launch(atPage: 2)
-        XCTAssertTrue(page(2, in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(page(2, in: app).waitForExistence(timeout: 20))
 
         showControls(in: app)
         let qiraatButton = app.buttons["qiraat-button"]
-        XCTAssertTrue(qiraatButton.waitForExistence(timeout: 5))
+        XCTAssertTrue(qiraatButton.waitForExistence(timeout: 20))
         qiraatButton.tap()
 
         let summaryButton = app.buttons["qiraat-hub-page-summary"]
-        XCTAssertTrue(summaryButton.waitForExistence(timeout: 5))
+        XCTAssertTrue(summaryButton.waitForExistence(timeout: 20))
         summaryButton.tap()
 
         let summaryView = app.descendants(matching: .any)["qiraat-page-summary"]
-        XCTAssertTrue(summaryView.waitForExistence(timeout: 5))
+        XCTAssertTrue(summaryView.waitForExistence(timeout: 20))
 
         let emptyNotice = app.descendants(matching: .any)["qiraat-page-summary-empty"]
         XCTAssertFalse(emptyNotice.exists, "Page 2 must contain differences and not display empty summary state")
 
         let summaryRow = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'qiraat-summary-'")).firstMatch
-        XCTAssertTrue(summaryRow.waitForExistence(timeout: 5))
+        XCTAssertTrue(summaryRow.waitForExistence(timeout: 20))
         summaryRow.tap()
 
         XCTAssertFalse(summaryView.waitForExistence(timeout: 5), "Tapping a summary row must close the page summary view")
 
         let sheetTitle = app.navigationBars["القراءات العشر"]
-        XCTAssertTrue(sheetTitle.waitForExistence(timeout: 5), "Tapping a summary row must open that word's Qiraat sheet")
+        XCTAssertTrue(sheetTitle.waitForExistence(timeout: 20), "Tapping a summary row must open that word's Qiraat sheet")
 
         let closeButton = app.buttons["qiraat-sheet-close"]
-        XCTAssertTrue(closeButton.waitForExistence(timeout: 5))
+        XCTAssertTrue(closeButton.waitForExistence(timeout: 20))
         closeButton.tap()
         XCTAssertFalse(sheetTitle.waitForExistence(timeout: 5))
     }
@@ -228,31 +228,31 @@ final class QiraatFeaturesUITests: XCTestCase {
     /// Flow 5: Search for a narrator returns results and tapping one opens the page and sheet.
     func testSearchForNarratorReturnsResultsAndOpensPage() {
         let app = launch(atPage: 50)
-        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
 
         showControls(in: app)
         let qiraatButton = app.buttons["qiraat-button"]
-        XCTAssertTrue(qiraatButton.waitForExistence(timeout: 5))
+        XCTAssertTrue(qiraatButton.waitForExistence(timeout: 20))
         qiraatButton.tap()
 
         let searchButton = app.buttons["qiraat-hub-search"]
-        XCTAssertTrue(searchButton.waitForExistence(timeout: 5))
+        XCTAssertTrue(searchButton.waitForExistence(timeout: 20))
         searchButton.tap()
 
         let searchView = app.descendants(matching: .any)["qiraat-search"]
-        XCTAssertTrue(searchView.waitForExistence(timeout: 5))
+        XCTAssertTrue(searchView.waitForExistence(timeout: 20))
 
         let searchField = app.textFields["qiraat-search-field"]
-        XCTAssertTrue(searchField.waitForExistence(timeout: 5))
+        XCTAssertTrue(searchField.waitForExistence(timeout: 20))
         searchField.tap()
         searchField.typeText("ورش")
 
         let warshOption = app.buttons.matching(NSPredicate(format: "label CONTAINS 'ورش'")).firstMatch
-        XCTAssertTrue(warshOption.waitForExistence(timeout: 5))
+        XCTAssertTrue(warshOption.waitForExistence(timeout: 20))
         warshOption.tap()
 
         let resultRow = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'qiraat-search-result-'")).firstMatch
-        XCTAssertTrue(resultRow.waitForExistence(timeout: 10), "Searching for narrator must return result rows")
+        XCTAssertTrue(resultRow.waitForExistence(timeout: 20), "Searching for narrator must return result rows")
 
         let resultId = resultRow.identifier.replacingOccurrences(of: "qiraat-search-result-", with: "")
         let targetPage = Int(resultId.split(separator: "-")[0]) ?? 1
@@ -260,13 +260,13 @@ final class QiraatFeaturesUITests: XCTestCase {
         resultRow.tap()
 
         XCTAssertFalse(searchView.waitForExistence(timeout: 5), "Tapping a search result must dismiss search view")
-        XCTAssertTrue(page(targetPage, in: app).waitForExistence(timeout: 5), "Tapping a search result must turn to its page")
+        XCTAssertTrue(page(targetPage, in: app).waitForExistence(timeout: 20), "Tapping a search result must turn to its page")
 
         let sheetTitle = app.navigationBars["القراءات العشر"]
-        XCTAssertTrue(sheetTitle.waitForExistence(timeout: 5), "Tapping a search result must open that word's Qiraat sheet")
+        XCTAssertTrue(sheetTitle.waitForExistence(timeout: 20), "Tapping a search result must open that word's Qiraat sheet")
 
         let closeButton = app.buttons["qiraat-sheet-close"]
-        XCTAssertTrue(closeButton.waitForExistence(timeout: 5))
+        XCTAssertTrue(closeButton.waitForExistence(timeout: 20))
         closeButton.tap()
         XCTAssertFalse(sheetTitle.waitForExistence(timeout: 5))
     }
@@ -274,26 +274,26 @@ final class QiraatFeaturesUITests: XCTestCase {
     /// Flow 6: Usul index lists categories and a place opens its page.
     func testUsulIndexListsCategoriesAndPlaceOpensItsPage() {
         let app = launch(atPage: 50)
-        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
 
         showControls(in: app)
         let qiraatButton = app.buttons["qiraat-button"]
-        XCTAssertTrue(qiraatButton.waitForExistence(timeout: 5))
+        XCTAssertTrue(qiraatButton.waitForExistence(timeout: 20))
         qiraatButton.tap()
 
         let usulButton = app.buttons["qiraat-hub-usul-index"]
-        XCTAssertTrue(usulButton.waitForExistence(timeout: 5))
+        XCTAssertTrue(usulButton.waitForExistence(timeout: 20))
         usulButton.tap()
 
         let usulView = app.descendants(matching: .any)["usul-index"]
-        XCTAssertTrue(usulView.waitForExistence(timeout: 10))
+        XCTAssertTrue(usulView.waitForExistence(timeout: 20))
 
         let categoryRow = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'usul-category-'")).firstMatch
-        XCTAssertTrue(categoryRow.waitForExistence(timeout: 10), "Usul index must list category rows")
+        XCTAssertTrue(categoryRow.waitForExistence(timeout: 20), "Usul index must list category rows")
         categoryRow.tap()
 
         let placeRow = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'usul-place-'")).firstMatch
-        XCTAssertTrue(placeRow.waitForExistence(timeout: 10), "Selecting category must list place rows")
+        XCTAssertTrue(placeRow.waitForExistence(timeout: 20), "Selecting category must list place rows")
 
         let placeId = placeRow.identifier.replacingOccurrences(of: "usul-place-", with: "")
         let targetPage = Int(placeId.split(separator: "-")[0]) ?? 1
@@ -301,36 +301,36 @@ final class QiraatFeaturesUITests: XCTestCase {
         placeRow.tap()
 
         XCTAssertFalse(usulView.waitForExistence(timeout: 5), "Tapping a place must dismiss usul index")
-        XCTAssertTrue(page(targetPage, in: app).waitForExistence(timeout: 5), "Tapping a place must navigate to that place's page")
+        XCTAssertTrue(page(targetPage, in: app).waitForExistence(timeout: 20), "Tapping a place must navigate to that place's page")
     }
 
     /// Flow 7: Compare opens from the sheet and shows two columns and a verdict.
     func testCompareOpensFromSheetAndShowsTwoColumnsAndVerdict() {
         let app = launch(atPage: 1)
-        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
 
         let word = app.descendants(matching: .any)["qiraat-word-1:4:1"]
-        XCTAssertTrue(word.waitForExistence(timeout: 10))
+        XCTAssertTrue(word.waitForExistence(timeout: 20))
         word.tap()
 
         let sheetTitle = app.navigationBars["القراءات العشر"]
-        XCTAssertTrue(sheetTitle.waitForExistence(timeout: 5))
+        XCTAssertTrue(sheetTitle.waitForExistence(timeout: 20))
 
         let compareOpen = app.descendants(matching: .any)["qiraat-compare-open"]
-        XCTAssertTrue(compareOpen.waitForExistence(timeout: 5))
+        XCTAssertTrue(compareOpen.waitForExistence(timeout: 20))
         compareOpen.tap()
 
         let compareView = app.descendants(matching: .any)["qiraat-compare"]
-        XCTAssertTrue(compareView.waitForExistence(timeout: 5))
+        XCTAssertTrue(compareView.waitForExistence(timeout: 20))
 
         let colFirst = app.descendants(matching: .any)["qiraat-compare-column-first"]
-        XCTAssertTrue(colFirst.waitForExistence(timeout: 5), "Compare view must display first reader column")
+        XCTAssertTrue(colFirst.waitForExistence(timeout: 20), "Compare view must display first reader column")
 
         let colSecond = app.descendants(matching: .any)["qiraat-compare-column-second"]
-        XCTAssertTrue(colSecond.waitForExistence(timeout: 5), "Compare view must display second reader column")
+        XCTAssertTrue(colSecond.waitForExistence(timeout: 20), "Compare view must display second reader column")
 
         let verdict = app.descendants(matching: .any)["qiraat-compare-verdict"]
-        XCTAssertTrue(verdict.waitForExistence(timeout: 5), "Compare view must display comparison verdict")
+        XCTAssertTrue(verdict.waitForExistence(timeout: 20), "Compare view must display comparison verdict")
         XCTAssertTrue(
             verdict.label.contains("تتفقان") || verdict.label.contains("تختلفان"),
             "Verdict label must declare agreement or difference between readings"
@@ -346,30 +346,30 @@ final class QiraatFeaturesUITests: XCTestCase {
     /// Flow 8: Picker opens as a sheet from Settings, search narrows rows, single tap selects and dismisses.
     func testReaderPickerOpensAsSheetSearchNarrowsAndSingleTapSelects() {
         let app = launch(atPage: 1)
-        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
 
         showControls(in: app)
         let settingsButton = app.buttons["settings-button"]
-        XCTAssertTrue(settingsButton.waitForExistence(timeout: 5))
+        XCTAssertTrue(settingsButton.waitForExistence(timeout: 20))
         settingsButton.tap()
 
-        XCTAssertTrue(app.navigationBars["الإعدادات"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.navigationBars["الإعدادات"].waitForExistence(timeout: 20))
 
         let pickerRow = settingsRow("open-qiraat-picker", in: app)
-        XCTAssertTrue(pickerRow.waitForExistence(timeout: 5))
+        XCTAssertTrue(pickerRow.waitForExistence(timeout: 20))
         pickerRow.tap()
 
         let pickerNavBar = app.navigationBars["اختر القارئ أو الراوي"]
-        XCTAssertTrue(pickerNavBar.waitForExistence(timeout: 5))
+        XCTAssertTrue(pickerNavBar.waitForExistence(timeout: 20))
         XCTAssertTrue(app.buttons["qiraat-reader-all"].exists)
 
         let searchField = app.searchFields.firstMatch
-        XCTAssertTrue(searchField.waitForExistence(timeout: 5))
+        XCTAssertTrue(searchField.waitForExistence(timeout: 20))
         searchField.tap()
         searchField.typeText("عاصم")
 
         let asimRow = app.buttons["qiraat-reader-Q05"]
-        XCTAssertTrue(asimRow.waitForExistence(timeout: 5), "Search must display matching reader row")
+        XCTAssertTrue(asimRow.waitForExistence(timeout: 20), "Search must display matching reader row")
         XCTAssertFalse(app.buttons["qiraat-reader-all"].exists, "Search must filter out non-matching rows")
 
         asimRow.tap()
@@ -381,17 +381,17 @@ final class QiraatFeaturesUITests: XCTestCase {
     /// Flow 9: Favourite toggle persists state after closing and reopening the sheet.
     func testFavoriteTogglePersistsAfterClosingAndReopeningSheet() {
         let app = launch(atPage: 1, extra: ["-qiraat-notes-fresh"])
-        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
 
         let word = app.descendants(matching: .any)["qiraat-word-1:4:1"]
-        XCTAssertTrue(word.waitForExistence(timeout: 10))
+        XCTAssertTrue(word.waitForExistence(timeout: 20))
         word.tap()
 
         let sheetTitle = app.navigationBars["القراءات العشر"]
-        XCTAssertTrue(sheetTitle.waitForExistence(timeout: 5))
+        XCTAssertTrue(sheetTitle.waitForExistence(timeout: 20))
 
         let favToggle = app.descendants(matching: .any)["qiraat-favorite-toggle"]
-        XCTAssertTrue(favToggle.waitForExistence(timeout: 5))
+        XCTAssertTrue(favToggle.waitForExistence(timeout: 20))
 
         let stateBefore = (favToggle.isSelected, favToggle.value as? String, favToggle.label)
         favToggle.tap()
@@ -403,15 +403,15 @@ final class QiraatFeaturesUITests: XCTestCase {
         )
 
         let closeButton = app.buttons["qiraat-sheet-close"]
-        XCTAssertTrue(closeButton.waitForExistence(timeout: 5))
+        XCTAssertTrue(closeButton.waitForExistence(timeout: 20))
         closeButton.tap()
         XCTAssertFalse(sheetTitle.waitForExistence(timeout: 5))
 
         word.tap()
-        XCTAssertTrue(sheetTitle.waitForExistence(timeout: 5))
+        XCTAssertTrue(sheetTitle.waitForExistence(timeout: 20))
 
         let reopenedFav = app.descendants(matching: .any)["qiraat-favorite-toggle"]
-        XCTAssertTrue(reopenedFav.waitForExistence(timeout: 5))
+        XCTAssertTrue(reopenedFav.waitForExistence(timeout: 20))
         let reopenedState = (reopenedFav.isSelected, reopenedFav.value as? String, reopenedFav.label)
 
         XCTAssertEqual(reopenedState.0, stateAfter.0, "Favorite isSelected state must persist across sheet close and reopen")
@@ -427,17 +427,17 @@ final class QiraatFeaturesUITests: XCTestCase {
     /// Flow 10: Word sheet details show classification line and drawn word for readings and rulings.
     func testWordSheetDetailsShowClassificationAndDrawnWord() {
         let app = launch(atPage: 1)
-        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
 
         let word = app.descendants(matching: .any)["qiraat-word-1:4:1"]
-        XCTAssertTrue(word.waitForExistence(timeout: 10))
+        XCTAssertTrue(word.waitForExistence(timeout: 20))
         word.tap()
 
         let sheetTitle = app.navigationBars["القراءات العشر"]
-        XCTAssertTrue(sheetTitle.waitForExistence(timeout: 5))
+        XCTAssertTrue(sheetTitle.waitForExistence(timeout: 20))
 
         let classification = app.descendants(matching: .any)["qiraat-classification"].firstMatch
-        XCTAssertTrue(classification.waitForExistence(timeout: 5), "Word details must display classification line")
+        XCTAssertTrue(classification.waitForExistence(timeout: 20), "Word details must display classification line")
         XCTAssertTrue(
             classification.label.contains("أصول القراءات") || classification.label.contains("فرش الحروف"),
             "Classification label must contain «أصول القراءات» or «فرش الحروف»"
@@ -446,12 +446,12 @@ final class QiraatFeaturesUITests: XCTestCase {
         let variantText = app.descendants(matching: .any)["qiraat-variant-text"].firstMatch
         let rulingWord = app.descendants(matching: .any)["qiraat-ruling-word"].firstMatch
         XCTAssertTrue(
-            variantText.waitForExistence(timeout: 5) || rulingWord.waitForExistence(timeout: 5),
+            variantText.waitForExistence(timeout: 20) || rulingWord.waitForExistence(timeout: 20),
             "Word details must draw the word as read (qiraat-variant-text or qiraat-ruling-word)"
         )
 
         let closeButton = app.buttons["qiraat-sheet-close"]
-        XCTAssertTrue(closeButton.waitForExistence(timeout: 5))
+        XCTAssertTrue(closeButton.waitForExistence(timeout: 20))
         closeButton.tap()
         let gone = expectation(for: NSPredicate(format: "exists == false"), evaluatedWith: sheetTitle)
         wait(for: [gone], timeout: 5)

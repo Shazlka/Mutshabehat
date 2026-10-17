@@ -28,12 +28,12 @@ final class QiraatLocalizationUITests: XCTestCase {
         XCTAssertTrue(word.waitForExistence(timeout: 15))
         word.tap()
 
-        XCTAssertTrue(app.navigationBars["The Ten Qira\u{2019}at"].waitForExistence(timeout: 5), "sheet title is English")
+        XCTAssertTrue(app.navigationBars["The Ten Qira\u{2019}at"].waitForExistence(timeout: 20), "sheet title is English")
         XCTAssertFalse(app.navigationBars["القراءات العشر"].exists)
         let close = app.buttons["qiraat-sheet-close"]
-        XCTAssertTrue(close.waitForExistence(timeout: 3))
+        XCTAssertTrue(close.waitForExistence(timeout: 20))
         XCTAssertEqual(close.label, "Close")
-        XCTAssertTrue(classificationLine(containing: "Orthography", in: app).waitForExistence(timeout: 3),
+        XCTAssertTrue(classificationLine(containing: "Orthography", in: app).waitForExistence(timeout: 20),
                       "the difference-kind badge is English")
         XCTAssertFalse(classificationLine(containing: "خلاف في الرسم", in: app).exists)
         saveScreenshot(named: "qiraat-sheet-english", app: app)
@@ -45,8 +45,8 @@ final class QiraatLocalizationUITests: XCTestCase {
         XCTAssertTrue(word.waitForExistence(timeout: 15))
         word.tap()
 
-        XCTAssertTrue(app.navigationBars["القراءات العشر"].waitForExistence(timeout: 5), "sheet title is Arabic")
-        XCTAssertTrue(classificationLine(containing: "خلاف في الرسم", in: app).waitForExistence(timeout: 3),
+        XCTAssertTrue(app.navigationBars["القراءات العشر"].waitForExistence(timeout: 20), "sheet title is Arabic")
+        XCTAssertTrue(classificationLine(containing: "خلاف في الرسم", in: app).waitForExistence(timeout: 20),
                       "the difference-kind badge is Arabic")
         XCTAssertFalse(classificationLine(containing: "Orthography", in: app).exists)
     }

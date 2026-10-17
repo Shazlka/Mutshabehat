@@ -30,13 +30,13 @@ final class QiraatTopBarUITests: XCTestCase {
     /// The reader / narrator filter is a submenu of the Qiraat menu.
     private func openFilterSubmenu(_ app: XCUIApplication) {
         let submenu = element("qiraat-filter", in: app)
-        XCTAssertTrue(submenu.waitForExistence(timeout: 3), "the filter submenu is in the Qiraat menu")
+        XCTAssertTrue(submenu.waitForExistence(timeout: 20), "the filter submenu is in the Qiraat menu")
         submenu.tap()
     }
 
     private func showChrome(_ app: XCUIApplication) {
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()
-        XCTAssertTrue(app.buttons["open-index"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["open-index"].waitForExistence(timeout: 20))
     }
 
     func testTheBarHasExactlyFiveIconsOfAtLeast44Points() {
@@ -47,7 +47,7 @@ final class QiraatTopBarUITests: XCTestCase {
         var frames: [CGRect] = []
         for id in ids {
             let icon = app.buttons[id]
-            XCTAssertTrue(icon.waitForExistence(timeout: 5), id)
+            XCTAssertTrue(icon.waitForExistence(timeout: 20), id)
             XCTAssertGreaterThanOrEqual(icon.frame.width, 43.5, id)
             XCTAssertGreaterThanOrEqual(icon.frame.height, 43.5, id)
             frames.append(icon.frame)
@@ -64,7 +64,7 @@ final class QiraatTopBarUITests: XCTestCase {
         let app = launch()
         showChrome(app)
         app.buttons["more-button"].tap()
-        XCTAssertTrue(app.buttons["mutshabehat-button"].waitForExistence(timeout: 3))
+        XCTAssertTrue(app.buttons["mutshabehat-button"].waitForExistence(timeout: 20))
         XCTAssertTrue(app.buttons["memorization-button"].exists)
     }
 
@@ -74,11 +74,11 @@ final class QiraatTopBarUITests: XCTestCase {
         showChrome(app)
         app.buttons["qiraat-button"].tap()
         let toggle = element("qiraat-hub-toggle", in: app)
-        XCTAssertTrue(toggle.waitForExistence(timeout: 3))
+        XCTAssertTrue(toggle.waitForExistence(timeout: 20))
         toggle.tap()
         XCTAssertFalse(element("qiraat-word-1:4:1", in: app).waitForExistence(timeout: 2))
         app.buttons["qiraat-button"].tap()
-        XCTAssertTrue(element("qiraat-hub-toggle", in: app).waitForExistence(timeout: 3))
+        XCTAssertTrue(element("qiraat-hub-toggle", in: app).waitForExistence(timeout: 20))
         element("qiraat-hub-toggle", in: app).tap()
         XCTAssertTrue(element("qiraat-word-1:4:1", in: app).waitForExistence(timeout: 20))
     }
@@ -104,7 +104,7 @@ final class QiraatTopBarUITests: XCTestCase {
         XCTAssertFalse(app.staticTexts["الراوي ورش"].exists)
         for id in ["reading-surah-title", "reading-section-text"] {
             let text = app.staticTexts[id]
-            XCTAssertTrue(text.waitForExistence(timeout: 5), id)
+            XCTAssertTrue(text.waitForExistence(timeout: 20), id)
             XCTAssertFalse(chip.frame.intersects(text.frame), "\(id) is covered by the chip: \(chip.frame) vs \(text.frame)")
         }
         XCTAssertLessThanOrEqual(chip.frame.height, 52)
@@ -118,12 +118,12 @@ final class QiraatTopBarUITests: XCTestCase {
         XCTAssertTrue(mushafPage.waitForExistence(timeout: 15))
         let before = mushafPage.frame
         let chip = element("qiraat-filter-chip", in: app)
-        XCTAssertTrue(chip.waitForExistence(timeout: 5))
+        XCTAssertTrue(chip.waitForExistence(timeout: 20))
         chip.tap()
         let nafi = app.buttons["qiraat-reader-Q01"]
-        XCTAssertTrue(nafi.waitForExistence(timeout: 5))
+        XCTAssertTrue(nafi.waitForExistence(timeout: 20))
         nafi.tap()
-        XCTAssertTrue(chip.waitForExistence(timeout: 5))
+        XCTAssertTrue(chip.waitForExistence(timeout: 20))
         XCTAssertTrue(chip.label.contains("نافع"), chip.label)
         XCTAssertEqual(mushafPage.frame, before, "the page moved when the filter changed")
 
@@ -133,7 +133,7 @@ final class QiraatTopBarUITests: XCTestCase {
         openFilterSubmenu(app)
         // Items inside a menu are exposed by label.
         let all = app.buttons["الكل"]
-        XCTAssertTrue(all.waitForExistence(timeout: 3))
+        XCTAssertTrue(all.waitForExistence(timeout: 20))
         all.tap()
         XCTAssertEqual(mushafPage.frame, before, "the page moved when the filter changed from the menu")
 
@@ -149,12 +149,12 @@ final class QiraatTopBarUITests: XCTestCase {
         app.buttons["qiraat-button"].tap()
         openFilterSubmenu(app)
         let nafi = byLabel("الإمام", "نافع", in: app)
-        XCTAssertTrue(nafi.waitForExistence(timeout: 3))
+        XCTAssertTrue(nafi.waitForExistence(timeout: 20))
         nafi.tap()
         let warsh = byLabel("الراوي", "ورش", in: app)
-        XCTAssertTrue(warsh.waitForExistence(timeout: 3))
+        XCTAssertTrue(warsh.waitForExistence(timeout: 20))
         warsh.tap()
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()
-        XCTAssertTrue(element("qiraat-filter-chip", in: app).waitForExistence(timeout: 5))
+        XCTAssertTrue(element("qiraat-filter-chip", in: app).waitForExistence(timeout: 20))
     }
 }

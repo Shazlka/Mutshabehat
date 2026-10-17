@@ -30,7 +30,7 @@ final class MemorizationProgressUITests: XCTestCase {
     private func applyBaqarahRange(status: Int, in app: XCUIApplication) {
         scrollUp(app)
         let button = app.buttons["memo-update-button"]
-        XCTAssertTrue(button.waitForExistence(timeout: 10))
+        XCTAssertTrue(button.waitForExistence(timeout: 20))
         button.tap()
         let field = app.textFields["memo-update-search"]
         XCTAssertTrue(field.waitForExistence(timeout: 12))
@@ -42,32 +42,32 @@ final class MemorizationProgressUITests: XCTestCase {
         if app.keyboards.firstMatch.waitForExistence(timeout: 2) { app.dismissNumberKeyboard() }
         element("memo-status-\(status)", in: app).tap()
         app.buttons["memo-update-apply"].tap()
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 20))
     }
 
     func testAddGoalShowsProgress() {
         let app = launch()
         let add = scrollTo("memo-goal-add", in: app)
-        XCTAssertTrue(add.waitForExistence(timeout: 10))
+        XCTAssertTrue(add.waitForExistence(timeout: 20))
         add.tap()
         let save = element("memo-goal-save", in: app)
-        XCTAssertTrue(save.waitForExistence(timeout: 5))
+        XCTAssertTrue(save.waitForExistence(timeout: 20))
         save.tap()
         let fraction = scrollTo("memo-goal-fraction", in: app)
-        XCTAssertTrue(fraction.waitForExistence(timeout: 5))
+        XCTAssertTrue(fraction.waitForExistence(timeout: 20))
         XCTAssertFalse(fraction.label.isEmpty)
     }
 
     func testChartRendersForEveryRange() {
         let app = launch()
         let picker = scrollTo("memo-chart-range", in: app)
-        XCTAssertTrue(picker.waitForExistence(timeout: 10))
+        XCTAssertTrue(picker.waitForExistence(timeout: 20))
         for title in ["٧ أيام", "٣٠ يوم", "٣ أشهر", "٦ أشهر", "سنة", "الكل"] {
             scrollTo("memo-chart-range", in: app).tap()
             let option = app.buttons[title]
-            XCTAssertTrue(option.waitForExistence(timeout: 5), title)
+            XCTAssertTrue(option.waitForExistence(timeout: 20), title)
             option.tap()
-            XCTAssertTrue(element("memo-chart", in: app).waitForExistence(timeout: 5), title)
+            XCTAssertTrue(element("memo-chart", in: app).waitForExistence(timeout: 20), title)
         }
     }
 
@@ -91,7 +91,7 @@ final class MemorizationProgressUITests: XCTestCase {
     func testMilestoneAppearsInTheToastWhenASurahIsFinished() {
         let app = launch(seed: "empty")
         let button = app.buttons["memo-update-button"]
-        XCTAssertTrue(button.waitForExistence(timeout: 10))
+        XCTAssertTrue(button.waitForExistence(timeout: 20))
         button.tap()
         let field = app.textFields["memo-update-search"]
         XCTAssertTrue(field.waitForExistence(timeout: 12))
@@ -101,9 +101,9 @@ final class MemorizationProgressUITests: XCTestCase {
         app.buttons["memo-update-apply"].tap()
         let confirm = app.alerts.firstMatch
         if confirm.waitForExistence(timeout: 2) { confirm.buttons.element(boundBy: 1).tap() }
-        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 10))
+        XCTAssertTrue(element("memo-undo-toast", in: app).waitForExistence(timeout: 20))
         let milestone = app.descendants(matching: .any).matching(identifier: "memo-milestone").firstMatch
-        XCTAssertTrue(milestone.waitForExistence(timeout: 3))
+        XCTAssertTrue(milestone.waitForExistence(timeout: 20))
         XCTAssertTrue(milestone.label.contains("الفاتحة"), milestone.label)
     }
 }

@@ -3,6 +3,10 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-17 — UI tests run on simulators only; longer UI waits
+- Decision (user, 2026-10-17): XCUITest runs on the simulators (`make test`, `make test-ipad`), not on the physical iPhone or iPad. A physical device gets `make device` and a launch check. Recorded in `AGENTS.md` §2. Unit tests may still run on a device.
+- The `waitForExistence` waits of 3, 5 and 10 s in the UI tests are now 20 s (waits that assert absence, and conditional checks, are unchanged). A wait that succeeds returns at once, so this only costs time when the app or the machine is slow. Three tests that failed once under load pass alone; the iPad simulator suite passes with the longer waits (108 tests).
+
 ## [Unreleased] — 2026-10-17 — Tests run on a physical iPhone and iPad
 - With the Apple ID added in Xcode, the whole suite ran on the user's iPhone Air and iPad Pro 11" (M4). Results: iPad 108 UI tests and 310 unit tests pass; iPhone unit tests pass (310, 6 skipped), the reader and review editor UI classes pass, the rest passed in the first full run.
 - Five unit tests read repository files by path (generated Qiraat data, the string catalog, Swift sources), which a phone does not have: they now skip on a device (`Tests/HostFiles.swift`) and still run on the Mac and in the simulators. `testICloudSyncFolderDiscovery` is simulator-only: a device finds a sync folder only if the user picked one, and with none it is correctly not connected.
