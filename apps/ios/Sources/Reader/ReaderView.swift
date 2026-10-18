@@ -32,6 +32,9 @@ struct ReaderView: View {
     @State private var highlightedWordIDs: Set<String> = []
     @State private var qiraat = QiraatPreferences()
     @State private var qiraatSelection: QiraatWordSelection?
+#if DEBUG
+    @State private var cardReview = QiraatCardReviewHost()
+#endif
     @State private var qiraatRoute: QiraatHubRoute?
     @State private var pendingQiraatWord: (page: MushafPage, word: MushafWord)?
     @State private var showingQiraatFilter = false
@@ -100,6 +103,7 @@ struct ReaderView: View {
             ReadingPosition().page = newPage
             tracker.pageDidChange(to: newPage, library: library)
         }
+        .task(id: qiraat.enabled) { startQiraatBulkSync() }
         .onAppear {
             tracker.configureScreenAwake(enabled: keepScreenAwake, scenePhase: scenePhase)
             tracker.pageDidChange(to: page, library: library)
@@ -111,6 +115,7 @@ struct ReaderView: View {
         }
         .onChange(of: scenePhase) { _, newPhase in
             library.backupController?.scenePhaseChanged(newPhase)
+            if newPhase == .active { startQiraatBulkSync() }
             tracker.configureScreenAwake(enabled: keepScreenAwake, scenePhase: newPhase)
             if newPhase != .active {
                 tracker.flushCurrentPageDwell(library: library)
@@ -158,6 +163,9 @@ struct ReaderView: View {
                 .environment(\.qiraatWordText, QiraatWordLookup { [library, page = item.word.page] surah, ayah, token in
                     library.wordText(surah: surah, ayah: ayah, token: token, near: page)
                 })
+#if DEBUG
+                .environment(\.qiraatCardReviewStore, cardReview.store(library: library))
+#endif
             }
         }
         .sheet(item: $qiraatRoute, onDismiss: presentPendingQiraatWord) { route in
@@ -415,6 +423,13 @@ struct ReaderView: View {
     }
 
     /// The pager presents a spread as [left, right] = [right + 1, right].
+    /// Pulls every page's latest Qiraat data from the web app in the background (nearest pages first), so
+    /// all colours and variants are there without swiping to each page. A no-op while the layer is off.
+    private func startQiraatBulkSync() {
+        guard qiraat.enabled else { return }
+        QiraatBulkSync.shared.start(around: page, store: library.qiraat)
+    }
+
     var qiraatVisiblePages: [Int] {
         isSpread ? [Spread.leftPage(of: page), Spread.rightPage(of: page)] : [page]
     }

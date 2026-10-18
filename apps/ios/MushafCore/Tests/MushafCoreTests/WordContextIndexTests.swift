@@ -45,6 +45,38 @@ import Testing
         #expect(index.cachedContext(store: store, page: 1, filter: .all) == nil)
     }
 
+    @Test func invalidatingOnePageKeepsTheOthersCached() throws {
+        let db = try openDatabase()
+        let store = try realStore()
+        let index = WordContextIndex(capacity: 10)
+        for number in [1, 2] {
+            let words = try db.page(number).lines.flatMap(\.words)
+            _ = index.resolveSync(page: number, filter: .all, qiraatStore: store, pageWords: words)
+        }
+        index.invalidate(page: 1)
+        #expect(index.cachedContext(store: store, page: 1, filter: .all) == nil)
+        #expect(index.cachedContext(store: store, page: 2, filter: .all) != nil)
+
+        // A page invalidated again afterwards still recomputes and caches under its new revision.
+        let words = try db.page(1).lines.flatMap(\.words)
+        _ = index.resolveSync(page: 1, filter: .all, qiraatStore: store, pageWords: words)
+        #expect(index.cachedContext(store: store, page: 1, filter: .all) != nil)
+    }
+
+    @Test func aLookupWithoutThePagesWordsIsNeverCached() throws {
+        let db = try openDatabase()
+        let store = try realStore()
+        let index = WordContextIndex(capacity: 10)
+        // A caller that does not have the page's words yet must not leave an empty page behind for everyone else.
+        let empty = index.resolveSync(page: 1, filter: .all, qiraatStore: store, pageWords: [])
+        #expect(empty.words.isEmpty)
+        #expect(index.cachedContext(store: store, page: 1, filter: .all) == nil)
+
+        let words = try db.page(1).lines.flatMap(\.words)
+        let real = index.resolveSync(page: 1, filter: .all, qiraatStore: store, pageWords: words)
+        #expect(!real.words.isEmpty)
+    }
+
     @Test func resolvesMultiWordLinksWhenDeclaredInSource() throws {
         let db = try openDatabase()
         let store = try realStore()

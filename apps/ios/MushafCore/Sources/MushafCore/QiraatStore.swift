@@ -85,7 +85,7 @@ public final class QiraatStore: @unchecked Sendable {
             pages[number] = .some(incoming)
             touch(number)
         }
-        WordContextIndex.shared.invalidate()
+        WordContextIndex.shared.invalidate(page: number)
         return true
     }
 

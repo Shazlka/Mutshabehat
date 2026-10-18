@@ -9,6 +9,8 @@ struct ReviewWordSheet: View {
     /// Beside the page (iPad): the editor's own navigation stack is used, and close / next sit in the header
     /// (a second stack nested inside the pushed page pops it).
     var embedded = false
+    /// The step shown when the sheet opens (the word card opens it straight on ٣ التحرير to edit a face).
+    var initialStep: Step = .faces
 
     enum Step: Int, CaseIterable, Identifiable {
         case faces, references, edit
@@ -27,12 +29,15 @@ struct ReviewWordSheet: View {
     private var word: ReviewWord? { store.selectedKey.flatMap(store.word(forKey:)) }
 
     var body: some View {
-        if embedded {
-            panel.modifier(WordSheetBehaviour(store: store, step: $step))
-        } else {
-            NavigationStack { panel.navigationBarTitleDisplayMode(.inline).toolbar { toolbarItems } }
-                .modifier(WordSheetBehaviour(store: store, step: $step))
+        Group {
+            if embedded {
+                panel.modifier(WordSheetBehaviour(store: store, step: $step))
+            } else {
+                NavigationStack { panel.navigationBarTitleDisplayMode(.inline).toolbar { toolbarItems } }
+                    .modifier(WordSheetBehaviour(store: store, step: $step))
+            }
         }
+        .onAppear { step = initialStep }
     }
 
     @ToolbarContentBuilder private var toolbarItems: some ToolbarContent {

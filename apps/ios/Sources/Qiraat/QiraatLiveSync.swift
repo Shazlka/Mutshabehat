@@ -76,23 +76,27 @@ final class QiraatLiveSync: ObservableObject {
         return data
     }
 
+    /// `announceProgress: false` is for the background pass over every page (`QiraatBulkSync`): it still installs
+    /// and announces changed pages, but leaves `pageStates` alone so the open word card does not re-render
+    /// for every one of the ~600 pages.
     @discardableResult
-    func refresh(page: Int, store: QiraatStore?, force: Bool = false) async -> Outcome {
-        guard let store, !inFlight.contains(page) else { return record(.skipped, for: page) }
+    func refresh(page: Int, store: QiraatStore?, force: Bool = false, announceProgress: Bool = true) async -> Outcome {
+        func note(_ outcome: Outcome) -> Outcome { announceProgress ? record(outcome, for: page) : outcome }
+        guard let store, !inFlight.contains(page) else { return note(.skipped) }
         if !force, let last = lastChecked[page], Date().timeIntervalSince(last) < minInterval {
-            return record(.skipped, for: page)
+            return note(.skipped)
         }
         inFlight.insert(page)
         defer { inFlight.remove(page) }
         lastChecked[page] = Date()
         do {
             let data = try await fetch(Self.liveURL(page: page))
-            guard try store.applyLivePage(data, number: page) else { return record(.unchanged, for: page) }
-            let outcome = record(.updated, for: page)
+            guard try store.applyLivePage(data, number: page) else { return note(.unchanged) }
+            let outcome = note(.updated)
             NotificationCenter.default.post(name: .qiraatPageDidChange, object: nil, userInfo: ["page": page])
             return outcome
         } catch {
-            return record(.failed, for: page)
+            return note(.failed)
         }
     }
 

@@ -96,6 +96,9 @@ struct QiraatSheet: View {
                     )
                     header
                     sheetActions
+#if DEBUG
+                    QiraatCardReviewSection(word: currentWord)
+#endif
                     if !currentSelection.variants.isEmpty {
                         sectionHeading("الفرش")
                         ForEach(currentSelection.variants) { VariantCard(variant: $0, catalog: catalog, filter: filter) }
@@ -137,6 +140,13 @@ struct QiraatSheet: View {
                     }
                 }
         )
+        .onReceive(NotificationCenter.default.publisher(for: .qiraatPageDidChange)) { note in
+            // Live data for the word's page arrived (a background sync, or a face saved from this card):
+            // show it now instead of keeping the selection the card opened with.
+            guard pageWordsProvider != nil, note.userInfo?["page"] as? Int == currentWord.page else { return }
+            let refreshed = resolvedSelection(for: currentWord)
+            if refreshed != currentSelection { withMotion { currentSelection = refreshed } }
+        }
         .onChange(of: item.word.id) { _, _ in
             withMotion {
                 currentWord = item.word
@@ -354,24 +364,21 @@ struct QiraatSheet: View {
         return QiraatWordOrder.markedWords(pages: [pageNumber], words: pWords, marks: pMarks, filter: filter)
     }
 
+    /// What the Qiraat data says about `word` under the active filter (empty when it has nothing).
+    private func resolvedSelection(for word: MushafWord) -> QiraatSelection {
+        guard let store else { return QiraatSelection(variants: [], rulings: []) }
+        let ctx = WordContextIndex.shared.resolveSync(
+            page: word.page,
+            filter: filter,
+            qiraatStore: store,
+            pageWords: pageWordsProvider?(word.page) ?? []
+        )
+        let wordCtx = ctx.words[word.id]
+        return QiraatSelection(variants: wordCtx?.variants ?? [], rulings: wordCtx?.rulings ?? [])
+    }
+
     private func selectWord(_ word: MushafWord) {
-        let pWords = pageWordsProvider?(word.page) ?? []
-        let newSelection: QiraatSelection
-        if let store {
-            let ctx = WordContextIndex.shared.resolveSync(
-                page: word.page,
-                filter: filter,
-                qiraatStore: store,
-                pageWords: pWords
-            )
-            let wordCtx = ctx.words[word.id]
-            newSelection = QiraatSelection(
-                variants: wordCtx?.variants ?? [],
-                rulings: wordCtx?.rulings ?? []
-            )
-        } else {
-            newSelection = QiraatSelection(variants: [], rulings: [])
-        }
+        let newSelection = resolvedSelection(for: word)
 
         let newFont = (word.page == currentWord.page) ? currentWordFont : (fontProvider?(word.page) ?? currentWordFont)
         let pageChanged = word.page != currentWord.page

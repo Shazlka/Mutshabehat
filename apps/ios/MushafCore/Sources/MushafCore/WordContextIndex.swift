@@ -95,6 +95,9 @@ public final class WordContextIndex: @unchecked Sendable {
     private var order: [Key] = []
     private var inFlight: [Key: Task<PageWordContext, Never>] = [:]
     private var revision: Int = 0
+    /// Bumped by `invalidate(page:)`. A page's key revision is `revision + pageRevisions[page]`, which only ever
+    /// grows, so a context computed before either kind of invalidation can never be cached afterwards.
+    private var pageRevisions: [Int: Int] = [:]
 
     public init(capacity: Int = 24) {
         self.capacity = capacity
@@ -103,7 +106,7 @@ public final class WordContextIndex: @unchecked Sendable {
     /// Fast synchronous lookup for an already computed page context.
     public func cachedContext(store: QiraatStore, page: Int, filter: QiraatFilter) -> PageWordContext? {
         lock.withLock {
-            let key = Key(store: store, page: page, filter: filter, revision: revision)
+            let key = Key(store: store, page: page, filter: filter, revision: revision(for: page))
             guard let found = cache[key] else { return nil }
             touch(key)
             return PageWordContext(
@@ -126,7 +129,7 @@ public final class WordContextIndex: @unchecked Sendable {
         pageWords: [MushafWord],
         queryCount: Int = 0
     ) -> PageWordContext {
-        let key = lock.withLock { Key(store: qiraatStore, page: page, filter: filter, revision: revision) }
+        let key = lock.withLock { Key(store: qiraatStore, page: page, filter: filter, revision: revision(for: page)) }
         if let cached = cachedContext(store: qiraatStore, page: page, filter: filter) {
             #if DEBUG
             print("[WordContextIndex] Page \(page) loaded from cache in 0.00ms (0 queries)")
@@ -143,7 +146,7 @@ public final class WordContextIndex: @unchecked Sendable {
         )
 
         lock.withLock {
-            if key.revision == revision {
+            if !pageWords.isEmpty, key.revision == revision(for: page) {
                 cache[key] = result
                 touch(key)
                 while order.count > capacity {
@@ -169,7 +172,7 @@ public final class WordContextIndex: @unchecked Sendable {
         queryCount: Int = 0
     ) async -> PageWordContext {
         let (key, existingTask) = lock.withLock { () -> (Key, Task<PageWordContext, Never>?) in
-            let key = Key(store: qiraatStore, page: page, filter: filter, revision: revision)
+            let key = Key(store: qiraatStore, page: page, filter: filter, revision: revision(for: page))
             if cache[key] != nil {
                 touch(key)
                 return (key, nil)
@@ -212,7 +215,7 @@ public final class WordContextIndex: @unchecked Sendable {
 
         lock.withLock {
             inFlight[key] = nil
-            if key.revision == revision {
+            if !pageWords.isEmpty, key.revision == revision(for: page) {
                 cache[key] = result
                 touch(key)
                 while order.count > capacity {
@@ -337,7 +340,7 @@ public final class WordContextIndex: @unchecked Sendable {
         wordsMap: [Int: [MushafWord]]
     ) {
         for p in pages where (1...mushafPageCount).contains(p) {
-            let key = lock.withLock { Key(store: qiraatStore, page: p, filter: filter, revision: revision) }
+            let key = lock.withLock { Key(store: qiraatStore, page: p, filter: filter, revision: revision(for: p)) }
             let isCached = lock.withLock { cache[key] != nil || inFlight[key] != nil }
             guard !isCached else { continue }
             let words = wordsMap[p] ?? []
@@ -362,6 +365,24 @@ public final class WordContextIndex: @unchecked Sendable {
                     inFlight[key] = nil
                 }
             }
+        }
+    }
+
+    /// Call with `lock` held.
+    private func revision(for page: Int) -> Int { revision &+ (pageRevisions[page] ?? 0) }
+
+    /// Drops the cached contexts of one page (every filter) and forgets work in flight for it, because that page's
+    /// Qiraat data changed. Other pages keep their contexts, so a background sync of all 604 pages does not
+    /// throw away what the neighbouring pages already computed.
+    public func invalidate(page: Int) {
+        lock.withLock {
+            pageRevisions[page, default: 0] += 1
+            for key in Array(inFlight.keys) where key.page == page {
+                inFlight[key]?.cancel()
+                inFlight[key] = nil
+            }
+            for key in Array(cache.keys) where key.page == page { cache[key] = nil }
+            order.removeAll { $0.page == page }
         }
     }
 
