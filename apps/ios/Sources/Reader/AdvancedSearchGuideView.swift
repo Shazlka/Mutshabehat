@@ -416,14 +416,7 @@ struct AdvancedSearchGuideView: View {
                                         .lineSpacing(3)
                                 }
                             }
-                            .padding(16)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .background(Color(uiColor: .secondarySystemGroupedBackground))
-                            .cornerRadius(16)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.black.opacity(0.04), lineWidth: 1)
-                            )
+                            .guideCard()
                         }
                         .buttonStyle(.plain)
                         .padding(.horizontal, 16)
@@ -467,14 +460,7 @@ struct AdvancedSearchGuideView: View {
                                     .background(queryBoxBackground)
                                     .cornerRadius(8)
                             }
-                            .padding(16)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .background(Color(uiColor: .secondarySystemGroupedBackground))
-                            .cornerRadius(16)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.black.opacity(0.04), lineWidth: 1)
-                            )
+                            .guideCard()
                         }
                         .buttonStyle(.plain)
                         .padding(.horizontal, 16)
@@ -485,5 +471,19 @@ struct AdvancedSearchGuideView: View {
             .padding(.bottom, bottomPadding)
         }
         .background(Color(uiColor: .systemGroupedBackground))
+    }
+}
+
+private extension View {
+    /// The rounded grouped-background card every guide entry sits on.
+    func guideCard() -> some View {
+        padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color(uiColor: .secondarySystemGroupedBackground))
+            .cornerRadius(16)
+            .overlay(
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(Color.black.opacity(0.04), lineWidth: 1)
+            )
     }
 }

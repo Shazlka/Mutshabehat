@@ -30,39 +30,8 @@ public struct AutoColorPickerView: View {
 
                     // Verse Pickers
                     HStack(spacing: 12) {
-                        VStack(alignment: .leading, spacing: 6) {
-                            Text("الآية الأولى (المرجع)")
-                                .font(.caption.bold())
-                                .foregroundStyle(.secondary)
-                            Picker("الآية الأولى", selection: $indexA) {
-                                ForEach(Array(verses.enumerated()), id: \.offset) { i, v in
-                                    Text("\(i + 1). \(v.surah.isEmpty ? "آية" : v.surah) — \(v.ayah)")
-                                        .tag(i)
-                                }
-                            }
-                            .pickerStyle(.menu)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(8)
-                            .background(Color(uiColor: .secondarySystemBackground))
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                        }
-
-                        VStack(alignment: .leading, spacing: 6) {
-                            Text("الآية الثانية (المقارنة)")
-                                .font(.caption.bold())
-                                .foregroundStyle(.secondary)
-                            Picker("الآية الثانية", selection: $indexB) {
-                                ForEach(Array(verses.enumerated()), id: \.offset) { i, v in
-                                    Text("\(i + 1). \(v.surah.isEmpty ? "آية" : v.surah) — \(v.ayah)")
-                                        .tag(i)
-                                }
-                            }
-                            .pickerStyle(.menu)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(8)
-                            .background(Color(uiColor: .secondarySystemBackground))
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                        }
+                        versePicker(caption: "الآية الأولى (المرجع)", pickerTitle: "الآية الأولى", selection: $indexA)
+                        versePicker(caption: "الآية الثانية (المقارنة)", pickerTitle: "الآية الثانية", selection: $indexB)
                     }
 
                     if indexA == indexB {
@@ -171,5 +140,26 @@ public struct AutoColorPickerView: View {
 
     private func textOfVerse(_ verse: PersonalVerse) -> String {
         verse.parts.map(\.text).joined(separator: " ").trimmingCharacters(in: .whitespaces)
+    }
+}
+
+private extension AutoColorPickerView {
+    func versePicker(caption: LocalizedStringKey, pickerTitle: LocalizedStringKey, selection: Binding<Int>) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(caption)
+                .font(.caption.bold())
+                .foregroundStyle(.secondary)
+            Picker(pickerTitle, selection: selection) {
+                ForEach(Array(verses.enumerated()), id: \.offset) { i, v in
+                    Text("\(i + 1). \(v.surah.isEmpty ? "آية" : v.surah) — \(v.ayah)")
+                        .tag(i)
+                }
+            }
+            .pickerStyle(.menu)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(8)
+            .background(Color(uiColor: .secondarySystemBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+        }
     }
 }

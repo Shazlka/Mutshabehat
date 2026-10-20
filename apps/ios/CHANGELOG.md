@@ -3,6 +3,11 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-20 — More splits and the last small view duplicates
+- **Splits (no behaviour change):** `ReadingStatisticsView` keeps the screen and moves its cards to `ReadingStatisticsCards.swift`; `ReaderView` moves the settings, theme and language screens to `ReaderSettingsView.swift`; `MushafPageView` moves the colour palette (`MushafColors.swift`) and the VoiceOver element (`MushafAccessibilityElement.swift`). `MushafPageView` itself stays one class (CoreText drawing state it shares).
+- **Duplicates:** the guide entry card (`AdvancedSearchGuideView.guideCard()`), the two verse pickers (`AutoColorPickerView.versePicker`) and the legend row text block (`QiraatLegendRow.titleAndExplanation`) are written once.
+- **Tests:** `MutshabehatTests` 325 pass; Reader, Qiraat features, localization and memorization-reader UI tests ran on the iPhone simulator: 49 run, 3 skipped, 0 failed.
+
 ## [Unreleased] — 2026-10-20 — Reading snapshots merge off the main thread; smaller duplicates removed
 - **Reading sync:** `syncReadingSnapshotsInBackground` reads every device's snapshot, merges and writes this device's file in a detached task (serialized by a lock so a push and a manual sync cannot interleave), then refreshes the tracker on the main actor. The synchronous `syncReadingSnapshots` stays for tests. `syncFromICloud` and the debounced push use the background one.
 - **Errors:** `MutshabehatDatabase.toggleFavorite` reports whether it saved; a failed copy of the web export into the iCloud folder is logged.

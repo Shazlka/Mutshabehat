@@ -288,35 +288,31 @@ private struct QiraatLegendRow: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @ScaledMetric(relativeTo: .body) private var sampleWidth: CGFloat = 84
 
+    private var titleAndExplanation: some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Text(verbatim: entry.title)
+                .font(.headline)
+                .foregroundStyle(.primary)
+            Text(verbatim: entry.explanation)
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+    }
+
     var body: some View {
         Group {
             if dynamicTypeSize.isAccessibilitySize {
                 VStack(alignment: .leading, spacing: 8) {
                     QiraatLegendSample(mark: entry.mark, colors: entry.colors, textColor: entry.textColor)
                         .frame(width: sampleWidth, alignment: .leading)
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(verbatim: entry.title)
-                            .font(.headline)
-                            .foregroundStyle(.primary)
-                        Text(verbatim: entry.explanation)
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
+                    titleAndExplanation
                 }
             } else {
                 HStack(alignment: .center, spacing: 12) {
                     QiraatLegendSample(mark: entry.mark, colors: entry.colors, textColor: entry.textColor)
                         .frame(width: sampleWidth)
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(verbatim: entry.title)
-                            .font(.headline)
-                            .foregroundStyle(.primary)
-                        Text(verbatim: entry.explanation)
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
+                    titleAndExplanation
                     Spacer(minLength: 0)
                 }
             }

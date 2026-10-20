@@ -2,28 +2,6 @@ import CoreText
 import MushafCore
 import UIKit
 
-extension UIColor {
-    static let mushafPaper = UIColor { traits in
-        traits.userInterfaceStyle == .dark
-            ? UIColor(red: 0.11, green: 0.105, blue: 0.09, alpha: 1)
-            : UIColor(red: 1, green: 0.992, blue: 0.965, alpha: 1)
-    }
-    static let mushafInk = UIColor { traits in
-        traits.userInterfaceStyle == .dark
-            ? UIColor(red: 0.92, green: 0.91, blue: 0.86, alpha: 1)
-            : UIColor(red: 0.09, green: 0.09, blue: 0.09, alpha: 1)
-    }
-    static let mushafGold = UIColor { traits in
-        traits.userInterfaceStyle == .dark
-            ? UIColor(red: 0.78, green: 0.67, blue: 0.38, alpha: 1)
-            : UIColor(red: 0.604, green: 0.482, blue: 0.208, alpha: 1)
-    }
-    static let mushafBrown = UIColor { traits in
-        traits.userInterfaceStyle == .dark
-            ? UIColor(red: 0.82, green: 0.74, blue: 0.55, alpha: 1)
-            : UIColor(red: 0.349, green: 0.275, blue: 0.114, alpha: 1)
-    }
-}
 
 /// Draws one Mushaf page with CoreText from a `PageLayout`: one draw pass per page, no view per word,
 /// so a page turn stays cheap. Words are positioned by `PageLayout` (right to left), never by CoreText.
@@ -1072,11 +1050,4 @@ final class MushafPageView: UIView {
         string.draw(at: CGPoint(x: rect.midX - measured.width / 2, y: rect.midY - measured.height / 2),
                     withAttributes: attributes)
     }
-}
-
-/// A VoiceOver element whose double-tap runs `onActivate` instead of a tap at its centre (an ayah's
-/// centre can fall on another ayah or a Qiraat word).
-private final class MushafAccessibilityElement: UIAccessibilityElement {
-    var onActivate: (() -> Bool)?
-    override func accessibilityActivate() -> Bool { onActivate?() ?? false }
 }
