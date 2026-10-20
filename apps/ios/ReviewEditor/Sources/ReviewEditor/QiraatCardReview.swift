@@ -19,7 +19,7 @@ public final class QiraatCardReviewHost {
 }
 
 private struct QiraatCardReviewStoreKey: EnvironmentKey {
-    nonisolated(unsafe) static let defaultValue: ReviewStore? = nil
+    static let defaultValue: ReviewStore? = nil
 }
 
 extension EnvironmentValues {

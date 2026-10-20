@@ -3,6 +3,11 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-20 — Xcode could not load the ReviewEditor package
+- **Fix:** Xcode reported "Couldn't load project ReviewEditor", "Couldn't load project xcode" and "Missing package product ReviewEditor". The cause was an empty `ReviewEditor/.swiftpm/xcode` folder Xcode had left in the package; it is removed, the project is regenerated, and `ReviewEditor/.build/` and `ReviewEditor/.swiftpm/` are git-ignored.
+- **Warning:** `nonisolated(unsafe)` on the review store environment key was unnecessary (the type is `Sendable`); removed.
+- **Verified:** `make device` builds and installs on the iPhone. Launch needs the phone unlocked.
+
 ## [Unreleased] — 2026-10-20 — More splits and the last small view duplicates
 - **Splits (no behaviour change):** `ReadingStatisticsView` keeps the screen and moves its cards to `ReadingStatisticsCards.swift`; `ReaderView` moves the settings, theme and language screens to `ReaderSettingsView.swift`; `MushafPageView` moves the colour palette (`MushafColors.swift`) and the VoiceOver element (`MushafAccessibilityElement.swift`). `MushafPageView` itself stays one class (CoreText drawing state it shares).
 - **Duplicates:** the guide entry card (`AdvancedSearchGuideView.guideCard()`), the two verse pickers (`AutoColorPickerView.versePicker`) and the legend row text block (`QiraatLegendRow.titleAndExplanation`) are written once.
