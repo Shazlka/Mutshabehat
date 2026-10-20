@@ -246,6 +246,69 @@ final class MutshabehatTests: XCTestCase {
         for suffix in ["", "-wal", "-shm"] { try? FileManager.default.removeItem(atPath: url.path + suffix) }
     }
 
+    // MARK: - Checked, transactional writes
+
+    func testFailedSaveRollsBackAndKeepsTheOldGroup() throws {
+        let url = temporaryDatabaseURL()
+        defer { removeDatabaseFiles(url) }
+        let db = MutshabehatDatabase(url: url)
+        let original = simpleGroup(title: "الأصل")
+        try db.saveGroup(original)
+
+        // Two parts share one id: the second insert violates the primary key halfway through the write.
+        var broken = original
+        broken.title = "معطوب"
+        broken.verses = [PersonalVerse(id: UUID().uuidString, groupId: original.id, surah: "الكهف", ayah: 2, parts: [
+            PersonalPart(id: "same", type: "normal", text: "أ", sortOrder: 0),
+            PersonalPart(id: "same", type: "normal", text: "ب", sortOrder: 1)])]
+        XCTAssertThrowsError(try db.saveGroup(broken)) { error in
+            guard case DatabaseTransferError.writeFailed = error else { return XCTFail("wrong error: \(error)") }
+        }
+        XCTAssertFalse(db.savePersonalGroup(broken))
+
+        let kept = try XCTUnwrap(db.fetchPersonalGroup(id: original.id))
+        XCTAssertEqual(kept.title, "الأصل")
+        XCTAssertEqual(kept.verses.map(\.ayah), [1])
+        XCTAssertEqual(kept.verses.first?.parts.map(\.text), ["الأصل"])
+    }
+
+    func testFetchReturnsEveryGroupWithItsOwnVersesInOrder() throws {
+        let url = temporaryDatabaseURL()
+        defer { removeDatabaseFiles(url) }
+        let db = MutshabehatDatabase(url: url)
+        var groups: [PersonalGroup] = []
+        for n in 1...3 {
+            let id = UUID().uuidString
+            let verses = (1...n).map { ayah in
+                PersonalVerse(id: UUID().uuidString, groupId: id, surah: "سورة \(n)", ayah: ayah, parts: [
+                    PersonalPart(id: UUID().uuidString, type: "diff", text: "\(n)-\(ayah)-a", sortOrder: 0),
+                    PersonalPart(id: UUID().uuidString, type: "normal", text: "\(n)-\(ayah)-b", sortOrder: 1)])
+            }
+            let group = PersonalGroup(id: id, title: "مجموعة \(n)", color: "#6366F1", verses: verses)
+            groups.append(group)
+            XCTAssertTrue(db.savePersonalGroup(group))
+        }
+        let fetched = db.fetchPersonalGroups()
+        XCTAssertEqual(fetched.count, 3)
+        for group in groups {
+            let got = try XCTUnwrap(fetched.first { $0.id == group.id })
+            XCTAssertEqual(got.verses.map(\.ayah), group.verses.map(\.ayah))
+            XCTAssertEqual(got.verses.flatMap { $0.parts.map(\.text) }, group.verses.flatMap { $0.parts.map(\.text) })
+        }
+        XCTAssertEqual(db.fetchPersonalGroups(surah: "سورة 2").map(\.title), ["مجموعة 2"])
+    }
+
+    func testSearchTreatsPercentAndUnderscoreAsLiteralText() {
+        let url = temporaryDatabaseURL()
+        defer { removeDatabaseFiles(url) }
+        let db = MutshabehatDatabase(url: url)
+        XCTAssertTrue(db.savePersonalGroup(simpleGroup(title: "100% نور")))
+        XCTAssertTrue(db.savePersonalGroup(simpleGroup(title: "نور آخر")))
+        XCTAssertEqual(db.fetchPersonalGroups(query: "%").map(\.title), ["100% نور"])
+        XCTAssertEqual(db.fetchPersonalGroups(query: "_").count, 0)
+        XCTAssertEqual(db.fetchPersonalGroups(query: "نور").count, 2)
+    }
+
     private func simpleGroup(title: String) -> PersonalGroup {
         let groupId = UUID().uuidString
         let part = PersonalPart(id: UUID().uuidString, type: "normal", text: title, sortOrder: 0)

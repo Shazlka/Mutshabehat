@@ -92,7 +92,6 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
     private let lock = NSLock()
 
     private let lastSyncKey = "icloud:sync:last_date"
-    private let lastHashKey = "icloud:sync:last_hash"
     private let autoSyncKey = "icloud:sync:auto_enabled"
     private let bookmarkKey = "icloud:sync:folder_bookmark"
 
@@ -194,6 +193,64 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
 
     // MARK: - Synchronize from iCloud
 
+    /// What the background import of the iCloud files produced. Applying it (state, notifications, the library)
+    /// happens afterwards on the main actor.
+    private struct CloudImport: Sendable {
+        var manifest: SyncManifest?
+        var mutshabehatMerged = false
+        var installedQiraat: QiraatStore?
+        var qiraatError: String?
+    }
+
+    private func importedKey(_ name: String) -> String { "icloud:sync:imported:\(name)" }
+
+    /// Identifies one version of an iCloud file: the hash the Mac wrote into the manifest, else size and date.
+    private nonisolated static func signature(of file: URL, manifestHash: String?) -> String? {
+        if let manifestHash, !manifestHash.isEmpty { return manifestHash }
+        guard let values = try? file.resourceValues(forKeys: [.fileSizeKey, .contentModificationDateKey]) else { return nil }
+        return "\(values.fileSize ?? 0)-\(values.contentModificationDate?.timeIntervalSince1970 ?? 0)"
+    }
+
+    /// Reads and applies the iCloud files. Runs off the main thread: it reads whole files and rewrites databases.
+    /// A file is imported only when its signature differs from the one last imported (or `force`), the personal
+    /// groups are merged into the local ones rather than replacing them, and the Qiraat archive is installed beside
+    /// the live pages, never over them.
+    private nonisolated func importCloudFiles(from folder: URL, force: Bool, includeQiraat: Bool) throws -> CloudImport {
+        var result = CloudImport()
+        try triggerDownloadsIfNeeded(in: folder)
+
+        if let data = try? Data(contentsOf: folder.appendingPathComponent("manifest.json")) {
+            result.manifest = try? JSONDecoder().decode(SyncManifest.self, from: data)
+        }
+
+        // This store is optional; reading progress can sync in a fresh iCloud folder.
+        let mutshabehatFile = folder.appendingPathComponent("mutshabehat.sqlite")
+        if FileManager.default.fileExists(atPath: mutshabehatFile.path),
+           let signature = Self.signature(of: mutshabehatFile, manifestHash: result.manifest?.databases["mutshabehat"]?.sha256),
+           force || defaults.string(forKey: importedKey("mutshabehat")) != signature {
+            // Merge from a private copy: the iCloud file may be rewritten while it is attached.
+            let copy = FileManager.default.temporaryDirectory.appendingPathComponent("icloud-mutsh-\(UUID().uuidString).sqlite")
+            defer { try? FileManager.default.removeItem(at: copy) }
+            try FileManager.default.copyItem(at: mutshabehatFile, to: copy)
+            try stores.mutshabehat.mergeDatabase(from: copy)
+            defaults.set(signature, forKey: importedKey("mutshabehat"))
+            result.mutshabehatMerged = true
+        }
+
+        let qiraatArchive = folder.appendingPathComponent("qiraat.qiraatdata")
+        if includeQiraat, FileManager.default.fileExists(atPath: qiraatArchive.path),
+           let signature = Self.signature(of: qiraatArchive, manifestHash: result.manifest?.databases["qiraat"]?.sha256),
+           force || defaults.string(forKey: importedKey("qiraat")) != signature {
+            do {
+                result.installedQiraat = try QiraatBackupService.install(Data(contentsOf: qiraatArchive))
+                defaults.set(signature, forKey: importedKey("qiraat"))
+            } catch {
+                result.qiraatError = error.localizedDescription
+            }
+        }
+        return result
+    }
+
     @MainActor
     func syncFromICloud(library: MushafLibrary? = nil, force: Bool = false) async throws -> SyncSummary {
         guard !isSyncing else {
@@ -207,38 +264,26 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
             throw NSError(domain: "ICloudSync", code: 3, userInfo: [NSLocalizedDescriptionKey: "لم يتم العثور على مجلد Mushaf_Qiraat في iCloud Drive"])
         }
 
-        // Trigger iCloud download if files are evicted (.icloud)
-        try triggerDownloadsIfNeeded(in: folder)
-
-        // Read manifest
-        let manifestURL = folder.appendingPathComponent("manifest.json")
-        var currentManifest: SyncManifest?
-        if let manifestData = try? Data(contentsOf: manifestURL) {
-            currentManifest = try? JSONDecoder().decode(SyncManifest.self, from: manifestData)
-            self.manifest = currentManifest
-        }
-
-        let mutshabehatFile = folder.appendingPathComponent("mutshabehat.sqlite")
-        if FileManager.default.fileExists(atPath: mutshabehatFile.path) {
-            // This store is optional; reading progress can sync in a fresh iCloud folder.
-            let mutshData = try Data(contentsOf: mutshabehatFile)
-            try stores.mutshabehat.importDatabase(mutshData)
+        let includeQiraat = library != nil
+        let imported = try await Task.detached(priority: .utility) { [self] in
+            try importCloudFiles(from: folder, force: force, includeQiraat: includeQiraat)
+        }.value
+        if let manifest = imported.manifest { self.manifest = manifest }
+        if imported.mutshabehatMerged {
             NotificationCenter.default.post(name: .mutshabehatDatabaseDidUpdate, object: nil)
         }
 
-        // Sync Qiraat if archive exists
-        var qiraatPages = 0
-        let qiraatArchive = folder.appendingPathComponent("qiraat.qiraatdata")
-        if FileManager.default.fileExists(atPath: qiraatArchive.path) {
-            if let library {
-                do {
-                    let qiraatData = try Data(contentsOf: qiraatArchive)
-                    try library.installQiraatBackup(qiraatData)
-                    qiraatPages = 604
-                } catch {
-                    print("Notice: Qiraat archive install failed: \(error.localizedDescription)")
-                }
+        var qiraatPages = library?.qiraat?.catalog.pageCount ?? 0
+        var qiraatNotice: String?
+        if let installed = imported.installedQiraat, let library {
+            do {
+                try library.adoptInstalledQiraat(installed, keepLivePages: true)
+                qiraatPages = installed.catalog.pageCount
+            } catch {
+                qiraatNotice = error.localizedDescription
             }
+        } else {
+            qiraatNotice = imported.qiraatError
         }
 
         // Each device owns one snapshot. Merge all visible snapshots before publishing ours.
@@ -254,13 +299,11 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
         let now = Date()
         self.lastSyncDate = now
         defaults.set(now, forKey: lastSyncKey)
-        if let hash = currentManifest?.databases["mutshabehat"]?.sha256 {
-            defaults.set(hash, forKey: lastHashKey)
-        }
 
-        let groupCount = currentManifest?.databases["mutshabehat"]?.groupsCount ?? stores.mutshabehat.fetchPersonalGroups().count
+        let groupCount = imported.manifest?.databases["mutshabehat"]?.groupsCount ?? stores.mutshabehat.fetchPersonalGroups().count
         let khatmaNum = stores.reading.getOrCreateActiveKhatma().khatmaNumber
-        let message = "تمت المزامنة بنجاح: \(groupCount) مجموعة متشابهات، \(qiraatPages) صفحة قراءات، والختمة #\(khatmaNum)"
+        var message = "تمت المزامنة بنجاح: \(groupCount) مجموعة متشابهات، \(qiraatPages) صفحة قراءات، والختمة #\(khatmaNum)"
+        if let qiraatNotice { message += "\nتعذر تحديث القراءات: \(qiraatNotice)" }
         self.lastStatusMessage = message
         self.isConnected = true
 
@@ -385,8 +428,8 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
         try compileMutshabehatSqlite(payload: decoded, outputURL: tempURL)
         let sqliteData = try Data(contentsOf: tempURL)
 
-        // Import into MutshabehatDatabase
-        try stores.mutshabehat.importDatabase(sqliteData)
+        // Merge into MutshabehatDatabase: groups made on this device stay, the newer copy of a shared group wins.
+        try stores.mutshabehat.mergeDatabase(from: tempURL)
         NotificationCenter.default.post(name: .mutshabehatDatabaseDidUpdate, object: nil)
 
         // If iCloud folder is available, also update it
@@ -432,7 +475,11 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
         }
         defer { sqlite3_close(db) }
 
-        sqlite3_exec(db, """
+        func failure(_ what: String) -> NSError {
+            NSError(domain: "ICloudSync", code: 11, userInfo: [NSLocalizedDescriptionKey: "\(what): \(String(cString: sqlite3_errmsg(db)))"])
+        }
+
+        guard sqlite3_exec(db, """
         PRAGMA journal_mode = WAL;
         PRAGMA foreign_keys = ON;
         CREATE TABLE groups (
@@ -458,7 +505,7 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
         CREATE INDEX idx_verses_surah ON verses(surah);
         CREATE INDEX idx_parts_verse ON parts(verse_id);
         CREATE INDEX idx_automated_title ON automated_groups(title);
-        """, nil, nil, nil)
+        """, nil, nil, nil) == SQLITE_OK else { throw failure("تعذر إنشاء جداول قاعدة البيانات المؤقتة") }
 
         let insertGroupSql = "INSERT INTO groups (id, title, color, status, favorite, completed, note, unote, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
         let insertVerseSql = "INSERT INTO verses (id, group_id, surah, ayah, label, sort_order) VALUES (?, ?, ?, ?, ?, ?);"
@@ -468,9 +515,12 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
         var verseStmt: OpaquePointer?
         var partStmt: OpaquePointer?
 
-        sqlite3_prepare_v2(db, insertGroupSql, -1, &groupStmt, nil)
-        sqlite3_prepare_v2(db, insertVerseSql, -1, &verseStmt, nil)
-        sqlite3_prepare_v2(db, insertPartSql, -1, &partStmt, nil)
+        guard sqlite3_prepare_v2(db, insertGroupSql, -1, &groupStmt, nil) == SQLITE_OK,
+              sqlite3_prepare_v2(db, insertVerseSql, -1, &verseStmt, nil) == SQLITE_OK,
+              sqlite3_prepare_v2(db, insertPartSql, -1, &partStmt, nil) == SQLITE_OK else {
+            sqlite3_finalize(groupStmt); sqlite3_finalize(verseStmt); sqlite3_finalize(partStmt)
+            throw failure("تعذر تجهيز استعلامات الإدراج")
+        }
 
         defer {
             sqlite3_finalize(groupStmt)
@@ -478,45 +528,51 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
             sqlite3_finalize(partStmt)
         }
 
-        sqlite3_exec(db, "BEGIN TRANSACTION;", nil, nil, nil)
+        guard sqlite3_exec(db, "BEGIN TRANSACTION;", nil, nil, nil) == SQLITE_OK else { throw failure("تعذر بدء الحفظ") }
+        var committed = false
+        defer { if !committed { sqlite3_exec(db, "ROLLBACK;", nil, nil, nil) } }
+        func done(_ stmt: OpaquePointer?) throws {
+            guard sqlite3_step(stmt) == SQLITE_DONE else { throw failure("تعذر حفظ مجموعة من خادم الويب") }
+        }
 
         for g in payload.groups {
             sqlite3_reset(groupStmt)
-            sqlite3_bind_text(groupStmt, 1, (g.id as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(groupStmt, 2, (g.title as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(groupStmt, 3, ((g.color ?? "") as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(groupStmt, 4, ((g.status ?? "draft") as NSString).utf8String, -1, nil)
+            SQLiteBind.text(groupStmt, 1, g.id)
+            SQLiteBind.text(groupStmt, 2, g.title)
+            SQLiteBind.text(groupStmt, 3, (g.color ?? ""))
+            SQLiteBind.text(groupStmt, 4, (g.status ?? "draft"))
             sqlite3_bind_int(groupStmt, 5, g.favorite ? 1 : 0)
             sqlite3_bind_int(groupStmt, 6, g.completed ? 1 : 0)
-            sqlite3_bind_text(groupStmt, 7, ((g.note ?? "") as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(groupStmt, 8, ((g.unote ?? "") as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(groupStmt, 9, (g.created_at as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(groupStmt, 10, (g.updated_at as NSString).utf8String, -1, nil)
-            sqlite3_step(groupStmt)
+            SQLiteBind.text(groupStmt, 7, (g.note ?? ""))
+            SQLiteBind.text(groupStmt, 8, (g.unote ?? ""))
+            SQLiteBind.text(groupStmt, 9, g.created_at)
+            SQLiteBind.text(groupStmt, 10, g.updated_at)
+            try done(groupStmt)
 
             for v in g.verses {
                 sqlite3_reset(verseStmt)
-                sqlite3_bind_text(verseStmt, 1, (v.id as NSString).utf8String, -1, nil)
-                sqlite3_bind_text(verseStmt, 2, (g.id as NSString).utf8String, -1, nil)
-                sqlite3_bind_text(verseStmt, 3, ((v.surah ?? "") as NSString).utf8String, -1, nil)
+                SQLiteBind.text(verseStmt, 1, v.id)
+                SQLiteBind.text(verseStmt, 2, g.id)
+                SQLiteBind.text(verseStmt, 3, (v.surah ?? ""))
                 sqlite3_bind_int(verseStmt, 4, Int32(v.ayah))
-                sqlite3_bind_text(verseStmt, 5, ((v.label ?? "") as NSString).utf8String, -1, nil)
+                SQLiteBind.text(verseStmt, 5, (v.label ?? ""))
                 sqlite3_bind_int(verseStmt, 6, Int32(v.sort_order))
-                sqlite3_step(verseStmt)
+                try done(verseStmt)
 
                 for p in v.parts {
                     sqlite3_reset(partStmt)
-                    sqlite3_bind_text(partStmt, 1, (p.id as NSString).utf8String, -1, nil)
-                    sqlite3_bind_text(partStmt, 2, (v.id as NSString).utf8String, -1, nil)
-                    sqlite3_bind_text(partStmt, 3, (p.type as NSString).utf8String, -1, nil)
-                    sqlite3_bind_text(partStmt, 4, (p.text as NSString).utf8String, -1, nil)
+                    SQLiteBind.text(partStmt, 1, p.id)
+                    SQLiteBind.text(partStmt, 2, v.id)
+                    SQLiteBind.text(partStmt, 3, p.type)
+                    SQLiteBind.text(partStmt, 4, p.text)
                     sqlite3_bind_int(partStmt, 5, Int32(p.sort_order))
-                    sqlite3_step(partStmt)
+                    try done(partStmt)
                 }
             }
         }
 
-        sqlite3_exec(db, "COMMIT;", nil, nil, nil)
+        guard sqlite3_exec(db, "COMMIT;", nil, nil, nil) == SQLITE_OK else { throw failure("تعذر إتمام الحفظ") }
+        committed = true
         sqlite3_exec(db, "PRAGMA wal_checkpoint(TRUNCATE);", nil, nil, nil)
     }
 

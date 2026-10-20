@@ -320,9 +320,13 @@ struct MutshabehatGroupEditorView: View {
             .alert("تأكيد الحذف", isPresented: $showDeleteConfirm) {
                 Button("حذف", role: .destructive) {
                     if let gid = initialGroup?.id {
-                        db.deletePersonalGroup(groupId: gid)
-                        onDelete?(gid)
-                        dismiss()
+                        do {
+                            try db.deleteGroup(groupId: gid)
+                            onDelete?(gid)
+                            dismiss()
+                        } catch {
+                            validationError = error.localizedDescription
+                        }
                     }
                 }
                 Button("إلغاء", role: .cancel) {}
@@ -395,7 +399,13 @@ struct MutshabehatGroupEditorView: View {
             verses: verses
         )
 
-        db.savePersonalGroup(savedGroup)
+        // A failed write leaves the stored group untouched; stay open so nothing typed is lost.
+        do {
+            try db.saveGroup(savedGroup)
+        } catch {
+            validationError = error.localizedDescription
+            return
+        }
         onSave(savedGroup)
         dismiss()
     }

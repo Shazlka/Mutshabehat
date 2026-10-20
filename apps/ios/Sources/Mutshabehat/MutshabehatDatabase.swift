@@ -88,12 +88,24 @@ public final class MutshabehatDatabase: @unchecked Sendable {
         return names
     }
 
+    // MARK: Personal groups
+
+    private static let groupColumns = "id, title, color, status, favorite, completed, note, unote, created_at, updated_at"
+
+    /// `%` and `_` typed by the user are literal characters, not wildcards.
+    private static func likePattern(_ text: String) -> String {
+        let escaped = text.replacingOccurrences(of: "\\", with: "\\\\")
+            .replacingOccurrences(of: "%", with: "\\%")
+            .replacingOccurrences(of: "_", with: "\\_")
+        return "%\(escaped)%"
+    }
+
     public func fetchPersonalGroups(surah: String? = nil, query: String? = nil) -> [PersonalGroup] {
         lock.lock()
         defer { lock.unlock() }
         guard let db = db else { return [] }
 
-        var sql = "SELECT id, title, color, status, favorite, completed, note, unote, created_at, updated_at FROM groups WHERE 1=1"
+        var sql = "SELECT \(Self.groupColumns) FROM groups WHERE 1=1"
         var params: [String] = []
 
         if let surah = surah, !surah.isEmpty {
@@ -101,244 +113,200 @@ public final class MutshabehatDatabase: @unchecked Sendable {
             params.append(surah)
         }
         if let query = query, !query.isEmpty {
-            sql += " AND (title LIKE ? OR id IN (SELECT v.group_id FROM verses v JOIN parts p ON p.verse_id = v.id WHERE p.text LIKE ?))"
-            params.append("%\(query)%")
-            params.append("%\(query)%")
+            sql += " AND (title LIKE ? ESCAPE '\\' OR id IN (SELECT v.group_id FROM verses v JOIN parts p ON p.verse_id = v.id WHERE p.text LIKE ? ESCAPE '\\'))"
+            params.append(Self.likePattern(query))
+            params.append(Self.likePattern(query))
         }
         sql += " ORDER BY favorite DESC, title ASC"
 
-        var stmt: OpaquePointer?
-        guard sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK else { return [] }
-        for (i, p) in params.enumerated() {
-            sqlite3_bind_text(stmt, Int32(i + 1), (p as NSString).utf8String, -1, nil)
-        }
-
-        var groups: [PersonalGroup] = []
-        while sqlite3_step(stmt) == SQLITE_ROW {
-            let id = String(cString: sqlite3_column_text(stmt, 0))
-            let title = String(cString: sqlite3_column_text(stmt, 1))
-            let color = sqlite3_column_text(stmt, 2).map { String(cString: $0) } ?? "#55b94f"
-            let status = sqlite3_column_text(stmt, 3).map { String(cString: $0) } ?? "draft"
-            let favorite = sqlite3_column_int(stmt, 4) != 0
-            let completed = sqlite3_column_int(stmt, 5) != 0
-            let note = sqlite3_column_text(stmt, 6).map { String(cString: $0) }
-            let unote = sqlite3_column_text(stmt, 7).map { String(cString: $0) }
-            let createdAt = sqlite3_column_text(stmt, 8).map { String(cString: $0) }
-            let updatedAt = sqlite3_column_text(stmt, 9).map { String(cString: $0) }
-
-            let verses = fetchVerses(forGroupId: id, in: db)
-            groups.append(PersonalGroup(
-                id: id, title: title, color: color, status: status,
-                favorite: favorite, completed: completed, note: note, unote: unote,
-                createdAt: createdAt, updatedAt: updatedAt, verses: verses
-            ))
-        }
-        sqlite3_finalize(stmt)
-        return groups
-    }
-
-    private func fetchVerses(forGroupId groupId: String, in db: OpaquePointer) -> [PersonalVerse] {
-        let sql = "SELECT id, surah, ayah, label, sort_order FROM verses WHERE group_id = ? ORDER BY sort_order ASC"
-        var stmt: OpaquePointer?
-        guard sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK else { return [] }
-        sqlite3_bind_text(stmt, 1, (groupId as NSString).utf8String, -1, nil)
-
-        var verses: [PersonalVerse] = []
-        while sqlite3_step(stmt) == SQLITE_ROW {
-            let vid = String(cString: sqlite3_column_text(stmt, 0))
-            let surah = sqlite3_column_text(stmt, 1).map { String(cString: $0) } ?? ""
-            let ayah = Int(sqlite3_column_int(stmt, 2))
-            let label = sqlite3_column_text(stmt, 3).map { String(cString: $0) }
-            let sortOrder = Int(sqlite3_column_int(stmt, 4))
-            let parts = fetchParts(forVerseId: vid, in: db)
-
-            verses.append(PersonalVerse(id: vid, groupId: groupId, surah: surah, ayah: ayah, label: label, sortOrder: sortOrder, parts: parts))
-        }
-        sqlite3_finalize(stmt)
-        return verses
-    }
-
-    private func fetchParts(forVerseId verseId: String, in db: OpaquePointer) -> [PersonalPart] {
-        let sql = "SELECT id, type, text, sort_order FROM parts WHERE verse_id = ? ORDER BY sort_order ASC"
-        var stmt: OpaquePointer?
-        guard sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK else { return [] }
-        sqlite3_bind_text(stmt, 1, (verseId as NSString).utf8String, -1, nil)
-
-        var parts: [PersonalPart] = []
-        while sqlite3_step(stmt) == SQLITE_ROW {
-            let pid = String(cString: sqlite3_column_text(stmt, 0))
-            let type = sqlite3_column_text(stmt, 1).map { String(cString: $0) } ?? "normal"
-            let text = sqlite3_column_text(stmt, 2).map { String(cString: $0) } ?? ""
-            let sortOrder = Int(sqlite3_column_int(stmt, 3))
-            parts.append(PersonalPart(id: pid, type: type, text: text, sortOrder: sortOrder))
-        }
-        sqlite3_finalize(stmt)
-        return parts
-    }
-
-    public func toggleFavorite(groupId: String) {
-        lock.lock()
-        defer { lock.unlock() }
-        guard let db = db else { return }
-        let sql = "UPDATE groups SET favorite = CASE WHEN favorite = 1 THEN 0 ELSE 1 END WHERE id = ?"
-        var stmt: OpaquePointer?
-        if sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK {
-            sqlite3_bind_text(stmt, 1, (groupId as NSString).utf8String, -1, nil)
-            sqlite3_step(stmt)
-        }
-        sqlite3_finalize(stmt)
+        return attachVerses(readGroups(db, sql: sql, params: params), in: db)
     }
 
     public func fetchPersonalGroup(id: String) -> PersonalGroup? {
         lock.lock()
         defer { lock.unlock() }
         guard let db = db else { return nil }
-
-        let sql = "SELECT id, title, color, status, favorite, completed, note, unote, created_at, updated_at FROM groups WHERE id = ? LIMIT 1"
-        var stmt: OpaquePointer?
-        guard sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK else { return nil }
-        sqlite3_bind_text(stmt, 1, (id as NSString).utf8String, -1, nil)
-
-        guard sqlite3_step(stmt) == SQLITE_ROW else {
-            sqlite3_finalize(stmt)
-            return nil
-        }
-
-        let gid = String(cString: sqlite3_column_text(stmt, 0))
-        let title = String(cString: sqlite3_column_text(stmt, 1))
-        let color = sqlite3_column_text(stmt, 2).map { String(cString: $0) } ?? "#55b94f"
-        let status = sqlite3_column_text(stmt, 3).map { String(cString: $0) } ?? "draft"
-        let favorite = sqlite3_column_int(stmt, 4) != 0
-        let completed = sqlite3_column_int(stmt, 5) != 0
-        let note = sqlite3_column_text(stmt, 6).map { String(cString: $0) }
-        let unote = sqlite3_column_text(stmt, 7).map { String(cString: $0) }
-        let createdAt = sqlite3_column_text(stmt, 8).map { String(cString: $0) }
-        let updatedAt = sqlite3_column_text(stmt, 9).map { String(cString: $0) }
-        sqlite3_finalize(stmt)
-
-        let verses = fetchVerses(forGroupId: gid, in: db)
-        return PersonalGroup(
-            id: gid, title: title, color: color, status: status,
-            favorite: favorite, completed: completed, note: note, unote: unote,
-            createdAt: createdAt, updatedAt: updatedAt, verses: verses
-        )
+        let groups = readGroups(db, sql: "SELECT \(Self.groupColumns) FROM groups WHERE id = ? LIMIT 1", params: [id])
+        return attachVerses(groups, in: db).first
     }
 
-    public func savePersonalGroup(_ group: PersonalGroup) {
+    /// The group rows only (no verses). A failed prepare returns nothing; NULL text columns read as empty.
+    private func readGroups(_ db: OpaquePointer, sql: String, params: [String]) -> [PersonalGroup] {
+        var stmt: OpaquePointer?
+        guard sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK else { return [] }
+        defer { sqlite3_finalize(stmt) }
+        for (i, p) in params.enumerated() { SQLiteBind.text(stmt, Int32(i + 1), p) }
+
+        func text(_ column: Int32) -> String? { sqlite3_column_text(stmt, column).map { String(cString: $0) } }
+        var groups: [PersonalGroup] = []
+        while sqlite3_step(stmt) == SQLITE_ROW {
+            groups.append(PersonalGroup(
+                id: text(0) ?? "", title: text(1) ?? "", color: text(2) ?? "#55b94f", status: text(3) ?? "draft",
+                favorite: sqlite3_column_int(stmt, 4) != 0, completed: sqlite3_column_int(stmt, 5) != 0,
+                note: text(6), unote: text(7), createdAt: text(8), updatedAt: text(9), verses: []))
+        }
+        return groups
+    }
+
+    /// Two queries for all groups at once (verses, then parts), instead of one per group and one per verse.
+    private func attachVerses(_ groups: [PersonalGroup], in db: OpaquePointer) -> [PersonalGroup] {
+        guard !groups.isEmpty else { return groups }
+        let ids = Set(groups.map(\.id))
+        // Restrict both queries to these groups while the list fits SQLite's variable limit; bigger lists read all.
+        let groupFilter = ids.count <= 500
+        let placeholders = groupFilter ? " WHERE v.group_id IN (\(Array(repeating: "?", count: ids.count).joined(separator: ",")))" : ""
+        let orderedIds = Array(ids)
+        func bindIds(_ stmt: OpaquePointer?) {
+            guard groupFilter else { return }
+            for (i, id) in orderedIds.enumerated() { SQLiteBind.text(stmt, Int32(i + 1), id) }
+        }
+        var versesByGroup: [String: [PersonalVerse]] = [:]
+        var partsByVerse: [String: [PersonalPart]] = [:]
+
+        var partStmt: OpaquePointer?
+        let partSQL = "SELECT p.verse_id, p.id, p.type, p.text, p.sort_order FROM parts p JOIN verses v ON v.id = p.verse_id\(placeholders) ORDER BY p.sort_order ASC"
+        if sqlite3_prepare_v2(db, partSQL, -1, &partStmt, nil) == SQLITE_OK {
+            bindIds(partStmt)
+            while sqlite3_step(partStmt) == SQLITE_ROW {
+                func text(_ column: Int32) -> String? { sqlite3_column_text(partStmt, column).map { String(cString: $0) } }
+                partsByVerse[text(0) ?? "", default: []].append(
+                    PersonalPart(id: text(1) ?? "", type: text(2) ?? "normal", text: text(3) ?? "",
+                                 sortOrder: Int(sqlite3_column_int(partStmt, 4))))
+            }
+        }
+        sqlite3_finalize(partStmt)
+
+        var verseStmt: OpaquePointer?
+        let verseSQL = "SELECT v.id, v.group_id, v.surah, v.ayah, v.label, v.sort_order FROM verses v\(placeholders) ORDER BY v.sort_order ASC"
+        if sqlite3_prepare_v2(db, verseSQL, -1, &verseStmt, nil) == SQLITE_OK {
+            bindIds(verseStmt)
+            while sqlite3_step(verseStmt) == SQLITE_ROW {
+                func text(_ column: Int32) -> String? { sqlite3_column_text(verseStmt, column).map { String(cString: $0) } }
+                let groupId = text(1) ?? ""
+                guard ids.contains(groupId) else { continue }
+                let verseId = text(0) ?? ""
+                versesByGroup[groupId, default: []].append(PersonalVerse(
+                    id: verseId, groupId: groupId, surah: text(2) ?? "", ayah: Int(sqlite3_column_int(verseStmt, 3)),
+                    label: text(4), sortOrder: Int(sqlite3_column_int(verseStmt, 5)),
+                    parts: partsByVerse[verseId] ?? []))
+            }
+        }
+        sqlite3_finalize(verseStmt)
+
+        return groups.map { group in
+            var group = group
+            group.verses = versesByGroup[group.id] ?? []
+            return group
+        }
+    }
+
+    public func toggleFavorite(groupId: String) {
         lock.lock()
         defer { lock.unlock() }
         guard let db = db else { return }
+        try? run(db, "UPDATE groups SET favorite = CASE WHEN favorite = 1 THEN 0 ELSE 1 END WHERE id = ?") { stmt in
+            SQLiteBind.text(stmt, 1, groupId)
+        }
+    }
 
-        execute("BEGIN TRANSACTION;")
+    /// Saves `group` and all its verses and parts in one transaction. Any failing statement rolls everything back,
+    /// so a half-written group is never committed over the old one.
+    public func saveGroup(_ group: PersonalGroup) throws {
+        lock.lock()
+        defer { lock.unlock() }
+        guard let db = db else { throw DatabaseTransferError.databaseUnavailable }
 
         let nowStr = ISO8601DateFormatter().string(from: Date())
-        let createdAt = group.createdAt ?? nowStr
-        let updatedAt = nowStr
-
-        let groupSql = """
-        INSERT OR REPLACE INTO groups (id, title, color, status, favorite, completed, note, unote, created_at, updated_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
-        """
-        var gStmt: OpaquePointer?
-        if sqlite3_prepare_v2(db, groupSql, -1, &gStmt, nil) == SQLITE_OK {
-            sqlite3_bind_text(gStmt, 1, (group.id as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(gStmt, 2, (group.title as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(gStmt, 3, (group.color as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(gStmt, 4, (group.status as NSString).utf8String, -1, nil)
-            sqlite3_bind_int(gStmt, 5, group.favorite ? 1 : 0)
-            sqlite3_bind_int(gStmt, 6, group.completed ? 1 : 0)
-            if let note = group.note { sqlite3_bind_text(gStmt, 7, (note as NSString).utf8String, -1, nil) }
-            else { sqlite3_bind_null(gStmt, 7) }
-            if let unote = group.unote { sqlite3_bind_text(gStmt, 8, (unote as NSString).utf8String, -1, nil) }
-            else { sqlite3_bind_null(gStmt, 8) }
-            sqlite3_bind_text(gStmt, 9, (createdAt as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(gStmt, 10, (updatedAt as NSString).utf8String, -1, nil)
-            sqlite3_step(gStmt)
-        }
-        sqlite3_finalize(gStmt)
-
-        // Clear existing verses & parts for this group to support re-ordering and deletions
-        let delPartsSql = "DELETE FROM parts WHERE verse_id IN (SELECT id FROM verses WHERE group_id = ?);"
-        var dpStmt: OpaquePointer?
-        if sqlite3_prepare_v2(db, delPartsSql, -1, &dpStmt, nil) == SQLITE_OK {
-            sqlite3_bind_text(dpStmt, 1, (group.id as NSString).utf8String, -1, nil)
-            sqlite3_step(dpStmt)
-        }
-        sqlite3_finalize(dpStmt)
-
-        let delVersesSql = "DELETE FROM verses WHERE group_id = ?;"
-        var dvStmt: OpaquePointer?
-        if sqlite3_prepare_v2(db, delVersesSql, -1, &dvStmt, nil) == SQLITE_OK {
-            sqlite3_bind_text(dvStmt, 1, (group.id as NSString).utf8String, -1, nil)
-            sqlite3_step(dvStmt)
-        }
-        sqlite3_finalize(dvStmt)
-
-        // Insert new verses and parts
-        for (vIndex, verse) in group.verses.enumerated() {
-            let vSql = "INSERT INTO verses (id, group_id, surah, ayah, label, sort_order) VALUES (?, ?, ?, ?, ?, ?);"
-            var vStmt: OpaquePointer?
-            if sqlite3_prepare_v2(db, vSql, -1, &vStmt, nil) == SQLITE_OK {
-                sqlite3_bind_text(vStmt, 1, (verse.id as NSString).utf8String, -1, nil)
-                sqlite3_bind_text(vStmt, 2, (group.id as NSString).utf8String, -1, nil)
-                sqlite3_bind_text(vStmt, 3, (verse.surah as NSString).utf8String, -1, nil)
-                sqlite3_bind_int(vStmt, 4, Int32(verse.ayah))
-                if let label = verse.label { sqlite3_bind_text(vStmt, 5, (label as NSString).utf8String, -1, nil) }
-                else { sqlite3_bind_null(vStmt, 5) }
-                sqlite3_bind_int(vStmt, 6, Int32(vIndex))
-                sqlite3_step(vStmt)
+        try inTransaction(db) {
+            try run(db, """
+            INSERT OR REPLACE INTO groups (id, title, color, status, favorite, completed, note, unote, created_at, updated_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+            """) { stmt in
+                SQLiteBind.text(stmt, 1, group.id)
+                SQLiteBind.text(stmt, 2, group.title)
+                SQLiteBind.text(stmt, 3, group.color)
+                SQLiteBind.text(stmt, 4, group.status)
+                sqlite3_bind_int(stmt, 5, group.favorite ? 1 : 0)
+                sqlite3_bind_int(stmt, 6, group.completed ? 1 : 0)
+                SQLiteBind.text(stmt, 7, group.note)
+                SQLiteBind.text(stmt, 8, group.unote)
+                SQLiteBind.text(stmt, 9, group.createdAt ?? nowStr)
+                SQLiteBind.text(stmt, 10, nowStr)
             }
-            sqlite3_finalize(vStmt)
-
-            for (pIndex, part) in verse.parts.enumerated() {
-                let pSql = "INSERT INTO parts (id, verse_id, type, text, sort_order) VALUES (?, ?, ?, ?, ?);"
-                var pStmt: OpaquePointer?
-                if sqlite3_prepare_v2(db, pSql, -1, &pStmt, nil) == SQLITE_OK {
-                    sqlite3_bind_text(pStmt, 1, (part.id as NSString).utf8String, -1, nil)
-                    sqlite3_bind_text(pStmt, 2, (verse.id as NSString).utf8String, -1, nil)
-                    sqlite3_bind_text(pStmt, 3, (part.type as NSString).utf8String, -1, nil)
-                    sqlite3_bind_text(pStmt, 4, (part.text as NSString).utf8String, -1, nil)
-                    sqlite3_bind_int(pStmt, 5, Int32(pIndex))
-                    sqlite3_step(pStmt)
+            // Clear existing verses & parts for this group to support re-ordering and deletions.
+            try deleteChildren(of: group.id, in: db)
+            for (vIndex, verse) in group.verses.enumerated() {
+                try run(db, "INSERT INTO verses (id, group_id, surah, ayah, label, sort_order) VALUES (?, ?, ?, ?, ?, ?);") { stmt in
+                    SQLiteBind.text(stmt, 1, verse.id)
+                    SQLiteBind.text(stmt, 2, group.id)
+                    SQLiteBind.text(stmt, 3, verse.surah)
+                    sqlite3_bind_int(stmt, 4, Int32(verse.ayah))
+                    SQLiteBind.text(stmt, 5, verse.label)
+                    sqlite3_bind_int(stmt, 6, Int32(vIndex))
                 }
-                sqlite3_finalize(pStmt)
+                for (pIndex, part) in verse.parts.enumerated() {
+                    try run(db, "INSERT INTO parts (id, verse_id, type, text, sort_order) VALUES (?, ?, ?, ?, ?);") { stmt in
+                        SQLiteBind.text(stmt, 1, part.id)
+                        SQLiteBind.text(stmt, 2, verse.id)
+                        SQLiteBind.text(stmt, 3, part.type)
+                        SQLiteBind.text(stmt, 4, part.text)
+                        sqlite3_bind_int(stmt, 5, Int32(pIndex))
+                    }
+                }
             }
         }
-
-        execute("COMMIT;")
     }
 
-    public func deletePersonalGroup(groupId: String) {
+    /// `saveGroup` for callers that only need to know whether it worked.
+    @discardableResult
+    public func savePersonalGroup(_ group: PersonalGroup) -> Bool {
+        do { try saveGroup(group); return true } catch { return false }
+    }
+
+    public func deleteGroup(groupId: String) throws {
         lock.lock()
         defer { lock.unlock() }
-        guard let db = db else { return }
-
-        execute("BEGIN TRANSACTION;")
-        let delParts = "DELETE FROM parts WHERE verse_id IN (SELECT id FROM verses WHERE group_id = ?);"
-        var pStmt: OpaquePointer?
-        if sqlite3_prepare_v2(db, delParts, -1, &pStmt, nil) == SQLITE_OK {
-            sqlite3_bind_text(pStmt, 1, (groupId as NSString).utf8String, -1, nil)
-            sqlite3_step(pStmt)
+        guard let db = db else { throw DatabaseTransferError.databaseUnavailable }
+        try inTransaction(db) {
+            try deleteChildren(of: groupId, in: db)
+            try run(db, "DELETE FROM groups WHERE id = ?;") { SQLiteBind.text($0, 1, groupId) }
         }
-        sqlite3_finalize(pStmt)
+    }
 
-        let delVerses = "DELETE FROM verses WHERE group_id = ?;"
-        var vStmt: OpaquePointer?
-        if sqlite3_prepare_v2(db, delVerses, -1, &vStmt, nil) == SQLITE_OK {
-            sqlite3_bind_text(vStmt, 1, (groupId as NSString).utf8String, -1, nil)
-            sqlite3_step(vStmt)
+    @discardableResult
+    public func deletePersonalGroup(groupId: String) -> Bool {
+        do { try deleteGroup(groupId: groupId); return true } catch { return false }
+    }
+
+    // MARK: Checked statements
+
+    private func deleteChildren(of groupId: String, in db: OpaquePointer) throws {
+        try run(db, "DELETE FROM parts WHERE verse_id IN (SELECT id FROM verses WHERE group_id = ?);") { SQLiteBind.text($0, 1, groupId) }
+        try run(db, "DELETE FROM verses WHERE group_id = ?;") { SQLiteBind.text($0, 1, groupId) }
+    }
+
+    /// Runs one statement and throws unless SQLite reports it finished.
+    private func run(_ db: OpaquePointer, _ sql: String, bind: (OpaquePointer?) -> Void = { _ in }) throws {
+        var stmt: OpaquePointer?
+        guard sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK else {
+            throw DatabaseTransferError.writeFailed(String(cString: sqlite3_errmsg(db)))
         }
-        sqlite3_finalize(vStmt)
-
-        let delGroup = "DELETE FROM groups WHERE id = ?;"
-        var gStmt: OpaquePointer?
-        if sqlite3_prepare_v2(db, delGroup, -1, &gStmt, nil) == SQLITE_OK {
-            sqlite3_bind_text(gStmt, 1, (groupId as NSString).utf8String, -1, nil)
-            sqlite3_step(gStmt)
+        defer { sqlite3_finalize(stmt) }
+        bind(stmt)
+        guard sqlite3_step(stmt) == SQLITE_DONE else {
+            throw DatabaseTransferError.writeFailed(String(cString: sqlite3_errmsg(db)))
         }
-        sqlite3_finalize(gStmt)
+    }
 
-        execute("COMMIT;")
+    private func inTransaction(_ db: OpaquePointer, _ body: () throws -> Void) throws {
+        try run(db, "BEGIN IMMEDIATE TRANSACTION;")
+        do {
+            try body()
+            try run(db, "COMMIT;")
+        } catch {
+            sqlite3_exec(db, "ROLLBACK;", nil, nil, nil)
+            throw error
+        }
     }
 
     public func fetchAutomatedGroups(surah: String? = nil, query: String? = nil) -> [AutomatedGroup] {
@@ -362,7 +330,7 @@ public final class MutshabehatDatabase: @unchecked Sendable {
         var stmt: OpaquePointer?
         guard sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK else { return [] }
         for (i, p) in params.enumerated() {
-            sqlite3_bind_text(stmt, Int32(i + 1), (p as NSString).utf8String, -1, nil)
+            SQLiteBind.text(stmt, Int32(i + 1), p)
         }
 
         var list: [AutomatedGroup] = []
@@ -435,11 +403,11 @@ public final class MutshabehatDatabase: @unchecked Sendable {
         """
         var gStmt: OpaquePointer?
         if sqlite3_prepare_v2(db, insertGroupSql, -1, &gStmt, nil) == SQLITE_OK {
-            sqlite3_bind_text(gStmt, 1, (newGroupId as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(gStmt, 2, (title as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(gStmt, 3, (color as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(gStmt, 4, (dateStr as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(gStmt, 5, (dateStr as NSString).utf8String, -1, nil)
+            SQLiteBind.text(gStmt, 1, newGroupId)
+            SQLiteBind.text(gStmt, 2, title)
+            SQLiteBind.text(gStmt, 3, color)
+            SQLiteBind.text(gStmt, 4, dateStr)
+            SQLiteBind.text(gStmt, 5, dateStr)
             sqlite3_step(gStmt)
         }
         sqlite3_finalize(gStmt)
@@ -450,11 +418,11 @@ public final class MutshabehatDatabase: @unchecked Sendable {
             let vSql = "INSERT INTO verses (id, group_id, surah, ayah, label, sort_order) VALUES (?, ?, ?, ?, ?, ?);"
             var vStmt: OpaquePointer?
             if sqlite3_prepare_v2(db, vSql, -1, &vStmt, nil) == SQLITE_OK {
-                sqlite3_bind_text(vStmt, 1, (vid as NSString).utf8String, -1, nil)
-                sqlite3_bind_text(vStmt, 2, (newGroupId as NSString).utf8String, -1, nil)
-                sqlite3_bind_text(vStmt, 3, (v.surah as NSString).utf8String, -1, nil)
+                SQLiteBind.text(vStmt, 1, vid)
+                SQLiteBind.text(vStmt, 2, newGroupId)
+                SQLiteBind.text(vStmt, 3, v.surah)
                 sqlite3_bind_int(vStmt, 4, Int32(v.ayah))
-                if let l = v.label { sqlite3_bind_text(vStmt, 5, (l as NSString).utf8String, -1, nil) }
+                if let l = v.label { SQLiteBind.text(vStmt, 5, l) }
                 else { sqlite3_bind_null(vStmt, 5) }
                 sqlite3_bind_int(vStmt, 6, Int32(vi))
                 sqlite3_step(vStmt)
@@ -466,10 +434,10 @@ public final class MutshabehatDatabase: @unchecked Sendable {
                 let pSql = "INSERT INTO parts (id, verse_id, type, text, sort_order) VALUES (?, ?, ?, ?, ?);"
                 var pStmt: OpaquePointer?
                 if sqlite3_prepare_v2(db, pSql, -1, &pStmt, nil) == SQLITE_OK {
-                    sqlite3_bind_text(pStmt, 1, (pid as NSString).utf8String, -1, nil)
-                    sqlite3_bind_text(pStmt, 2, (vid as NSString).utf8String, -1, nil)
-                    sqlite3_bind_text(pStmt, 3, (p.type as NSString).utf8String, -1, nil)
-                    sqlite3_bind_text(pStmt, 4, (p.text as NSString).utf8String, -1, nil)
+                    SQLiteBind.text(pStmt, 1, pid)
+                    SQLiteBind.text(pStmt, 2, vid)
+                    SQLiteBind.text(pStmt, 3, p.type)
+                    SQLiteBind.text(pStmt, 4, p.text)
                     sqlite3_bind_int(pStmt, 5, Int32(pi))
                     sqlite3_step(pStmt)
                 }
@@ -518,11 +486,11 @@ public final class MutshabehatDatabase: @unchecked Sendable {
             let payload = payloadData.flatMap { String(data: $0, encoding: .utf8) } ?? "{}"
 
             sqlite3_bind_int(stmt, 1, Int32(id))
-            sqlite3_bind_text(stmt, 2, (legacyId as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(stmt, 3, (title as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(stmt, 4, (color as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(stmt, 5, (surahs as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(stmt, 6, (payload as NSString).utf8String, -1, nil)
+            SQLiteBind.text(stmt, 2, legacyId)
+            SQLiteBind.text(stmt, 3, title)
+            SQLiteBind.text(stmt, 4, color)
+            SQLiteBind.text(stmt, 5, surahs)
+            SQLiteBind.text(stmt, 6, payload)
 
             if sqlite3_step(stmt) == SQLITE_DONE {
                 count += 1
@@ -558,13 +526,66 @@ public final class MutshabehatDatabase: @unchecked Sendable {
         NotificationCenter.default.post(name: Notification.Name("mutshabehatDatabaseDidUpdate"), object: nil)
     }
 
+    private static let requiredTables: Set<String> = ["groups", "verses", "parts", "automated_groups"]
+
+    /// Folds another Mutshabehat database (the Mac's or the web's export) into this one without losing local work:
+    /// - a group only here stays;
+    /// - a group only in `sourceURL` is added;
+    /// - a group in both keeps whichever copy was saved last (`updated_at`), with its verses and parts;
+    /// - automated candidates come from the source, and one copied to a personal group on either side stays marked copied.
+    /// A group deleted at the source is not deleted here. Posts no notification: the caller does, on the main thread.
+    public func mergeDatabase(from sourceURL: URL) throws {
+        do { try SQLiteFile.validate(at: sourceURL, requiredTables: Self.requiredTables) } catch {
+            throw DatabaseTransferError.invalidDatabase
+        }
+        lock.lock()
+        defer { lock.unlock() }
+        guard let db = db else { throw DatabaseTransferError.databaseUnavailable }
+
+        let escapedPath = sourceURL.path.replacingOccurrences(of: "'", with: "''")
+        try run(db, "ATTACH DATABASE '\(escapedPath)' AS source_db;")
+        defer { sqlite3_exec(db, "DETACH DATABASE source_db;", nil, nil, nil) }
+
+        try inTransaction(db) {
+            try run(db, """
+            CREATE TEMP TABLE sync_ids AS
+            SELECT s.id FROM source_db.groups s LEFT JOIN main.groups g ON g.id = s.id
+            WHERE g.id IS NULL OR COALESCE(julianday(s.updated_at), 0) > COALESCE(julianday(g.updated_at), 0);
+            """)
+            defer { sqlite3_exec(db, "DROP TABLE IF EXISTS temp.sync_ids;", nil, nil, nil) }
+            try run(db, "DELETE FROM parts WHERE verse_id IN (SELECT id FROM verses WHERE group_id IN (SELECT id FROM temp.sync_ids));")
+            try run(db, "DELETE FROM verses WHERE group_id IN (SELECT id FROM temp.sync_ids);")
+            try run(db, """
+            INSERT OR REPLACE INTO groups (id, title, color, status, favorite, completed, note, unote, created_at, updated_at)
+            SELECT id, title, color, status, favorite, completed, note, unote, created_at, updated_at
+            FROM source_db.groups WHERE id IN (SELECT id FROM temp.sync_ids);
+            """)
+            try run(db, """
+            INSERT INTO verses (id, group_id, surah, ayah, label, sort_order)
+            SELECT id, group_id, surah, ayah, label, sort_order
+            FROM source_db.verses WHERE group_id IN (SELECT id FROM temp.sync_ids);
+            """)
+            try run(db, """
+            INSERT INTO parts (id, verse_id, type, text, sort_order)
+            SELECT id, verse_id, type, text, sort_order FROM source_db.parts
+            WHERE verse_id IN (SELECT id FROM source_db.verses WHERE group_id IN (SELECT id FROM temp.sync_ids));
+            """)
+            try run(db, """
+            INSERT OR REPLACE INTO automated_groups (id, legacy_id, title, color, surahs, payload, copied)
+            SELECT s.id, s.legacy_id, s.title, s.color, s.surahs, s.payload,
+                   MAX(COALESCE(s.copied, 0), COALESCE((SELECT a.copied FROM main.automated_groups a WHERE a.id = s.id), 0))
+            FROM source_db.automated_groups s;
+            """)
+        }
+    }
+
     private func replaceContents(with data: Data) throws {
         lock.lock()
         defer { lock.unlock() }
 
         do {
             try SQLiteFile.replaceContents(
-                of: databaseURL, with: data, requiredTables: ["groups", "verses", "parts", "automated_groups"],
+                of: databaseURL, with: data, requiredTables: Self.requiredTables,
                 // With no open connection (it failed to open) there is nothing to fold in, as before.
                 checkpoint: { if let db { try SQLiteFile.checkpointTruncate(db, busyTimeoutMs: 2000) } },
                 close: { try closeConnection() },
@@ -603,14 +624,17 @@ public final class MutshabehatDatabase: @unchecked Sendable {
     }
 }
 
-public enum DatabaseTransferError: LocalizedError {
+public enum DatabaseTransferError: LocalizedError, Equatable {
     case databaseUnavailable
     case invalidDatabase
+    /// A statement failed; the text is SQLite's own message. Nothing of the failed write is kept.
+    case writeFailed(String)
 
     public var errorDescription: String? {
         switch self {
         case .databaseUnavailable: "تعذر فتح قاعدة البيانات"
         case .invalidDatabase: "الملف ليس قاعدة متشابهات صالحة"
+        case let .writeFailed(message): "تعذر حفظ التغييرات: \(message)"
         }
     }
 }

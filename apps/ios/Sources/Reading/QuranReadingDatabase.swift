@@ -248,8 +248,8 @@ public final class QuranReadingDatabase: @unchecked Sendable {
                     guard sqlite3_prepare_v2(db, updateSQL, -1, &updStmt, nil) == SQLITE_OK else {
                         throw TransferError.mergeFailed(String(cString: sqlite3_errmsg(db)))
                     }
-                    sqlite3_bind_text(updStmt, 1, (completedDateStr as NSString).utf8String, -1, nil)
-                    sqlite3_bind_text(updStmt, 2, (existingId as NSString).utf8String, -1, nil)
+                    SQLiteBind.text(updStmt, 1, completedDateStr)
+                    SQLiteBind.text(updStmt, 2, existingId)
                     guard sqlite3_step(updStmt) == SQLITE_DONE else { sqlite3_finalize(updStmt); throw TransferError.mergeFailed(String(cString: sqlite3_errmsg(db))) }
                     sqlite3_finalize(updStmt)
                 }
@@ -263,15 +263,15 @@ public final class QuranReadingDatabase: @unchecked Sendable {
                 guard sqlite3_prepare_v2(db, insertKhatmaSQL, -1, &insStmt, nil) == SQLITE_OK else {
                     throw TransferError.mergeFailed(String(cString: sqlite3_errmsg(db)))
                 }
-                sqlite3_bind_text(insStmt, 1, (srcKhatma.id as NSString).utf8String, -1, nil)
+                SQLiteBind.text(insStmt, 1, srcKhatma.id)
                 sqlite3_bind_int64(insStmt, 2, Int64(srcKhatma.number))
-                sqlite3_bind_text(insStmt, 3, (srcKhatma.startedAt as NSString).utf8String, -1, nil)
+                SQLiteBind.text(insStmt, 3, srcKhatma.startedAt)
                 if let comp = srcKhatma.completedAt {
-                    sqlite3_bind_text(insStmt, 4, (comp as NSString).utf8String, -1, nil)
+                    SQLiteBind.text(insStmt, 4, comp)
                 } else {
                     sqlite3_bind_null(insStmt, 4)
                 }
-                sqlite3_bind_text(insStmt, 5, (srcKhatma.status as NSString).utf8String, -1, nil)
+                SQLiteBind.text(insStmt, 5, srcKhatma.status)
                 sqlite3_bind_double(insStmt, 6, srcKhatma.percent)
                 guard sqlite3_step(insStmt) == SQLITE_DONE else { sqlite3_finalize(insStmt); throw TransferError.mergeFailed(String(cString: sqlite3_errmsg(db))) }
                 sqlite3_finalize(insStmt)
@@ -290,8 +290,8 @@ public final class QuranReadingDatabase: @unchecked Sendable {
             guard sqlite3_prepare_v2(db, copyAyahsSQL, -1, &copyStmt, nil) == SQLITE_OK else {
                 throw TransferError.mergeFailed(String(cString: sqlite3_errmsg(db)))
             }
-            sqlite3_bind_text(copyStmt, 1, (targetId as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(copyStmt, 2, (srcKhatma.id as NSString).utf8String, -1, nil)
+            SQLiteBind.text(copyStmt, 1, targetId)
+            SQLiteBind.text(copyStmt, 2, srcKhatma.id)
             guard sqlite3_step(copyStmt) == SQLITE_DONE else { sqlite3_finalize(copyStmt); throw TransferError.mergeFailed(String(cString: sqlite3_errmsg(db))) }
             ayahsMerged += Int(sqlite3_changes(db))
             sqlite3_finalize(copyStmt)
@@ -328,9 +328,9 @@ public final class QuranReadingDatabase: @unchecked Sendable {
             guard sqlite3_prepare_v2(db, insActiveSQL, -1, &insActiveStmt, nil) == SQLITE_OK else {
                 throw TransferError.mergeFailed(String(cString: sqlite3_errmsg(db)))
             }
-            sqlite3_bind_text(insActiveStmt, 1, (newId as NSString).utf8String, -1, nil)
+            SQLiteBind.text(insActiveStmt, 1, newId)
             sqlite3_bind_int64(insActiveStmt, 2, Int64(nextNum))
-            sqlite3_bind_text(insActiveStmt, 3, (nowStr as NSString).utf8String, -1, nil)
+            SQLiteBind.text(insActiveStmt, 3, nowStr)
             guard sqlite3_step(insActiveStmt) == SQLITE_DONE else { sqlite3_finalize(insActiveStmt); throw TransferError.mergeFailed(String(cString: sqlite3_errmsg(db))) }
             sqlite3_finalize(insActiveStmt)
         }
@@ -472,7 +472,7 @@ public final class QuranReadingDatabase: @unchecked Sendable {
             throw TransferError.mergeFailed(String(cString: sqlite3_errmsg(db)))
         }
         defer { sqlite3_finalize(statement) }
-        sqlite3_bind_text(statement, 1, (name as NSString).utf8String, -1, nil)
+        SQLiteBind.text(statement, 1, name)
         return sqlite3_step(statement) == SQLITE_ROW
     }
 
@@ -557,13 +557,13 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         var statement: OpaquePointer?
         guard sqlite3_prepare_v2(db, sql, -1, &statement, nil) == SQLITE_OK else { return false }
         defer { sqlite3_finalize(statement) }
-        sqlite3_bind_text(statement, 1, (kind as NSString).utf8String, -1, nil)
+        SQLiteBind.text(statement, 1, kind)
         sqlite3_bind_int64(statement, 2, Int64(khatmaNumber))
         sqlite3_bind_int64(statement, 3, Int64(surah))
         sqlite3_bind_int64(statement, 4, Int64(ayah))
         sqlite3_bind_int64(statement, 5, Int64(page))
         let time = Self.isoFormatter.string(from: Date())
-        sqlite3_bind_text(statement, 6, (time as NSString).utf8String, -1, nil)
+        SQLiteBind.text(statement, 6, time)
         return sqlite3_step(statement) == SQLITE_DONE
     }
 
@@ -610,17 +610,17 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         """
         var stmt: OpaquePointer?
         if sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK {
-            sqlite3_bind_text(stmt, 1, (id as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(stmt, 2, (type.rawValue as NSString).utf8String, -1, nil)
+            SQLiteBind.text(stmt, 1, id)
+            SQLiteBind.text(stmt, 2, type.rawValue)
             sqlite3_bind_int64(stmt, 3, Int64(surah))
             sqlite3_bind_int64(stmt, 4, Int64(ayah))
             sqlite3_bind_int64(stmt, 5, Int64(page))
             if let note = note {
-                sqlite3_bind_text(stmt, 6, (note as NSString).utf8String, -1, nil)
+                SQLiteBind.text(stmt, 6, note)
             } else {
                 sqlite3_bind_null(stmt, 6)
             }
-            sqlite3_bind_text(stmt, 7, (dateStr as NSString).utf8String, -1, nil)
+            SQLiteBind.text(stmt, 7, dateStr)
             _ = sqlite3_step(stmt)
         }
         sqlite3_finalize(stmt)
@@ -634,7 +634,7 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         guard let db = db else { return }
         let sql = "DELETE FROM bookmarks WHERE type = ? AND surah = ? AND ayah = ? AND page = ?;"
         deleteWithTombstone(db, kind: "bookmark:\(type.rawValue)", surah: surah, ayah: ayah, page: page, sql: sql) { stmt in
-            sqlite3_bind_text(stmt, 1, (type.rawValue as NSString).utf8String, -1, nil)
+            SQLiteBind.text(stmt, 1, type.rawValue)
             sqlite3_bind_int64(stmt, 2, Int64(surah))
             sqlite3_bind_int64(stmt, 3, Int64(ayah))
             sqlite3_bind_int64(stmt, 4, Int64(page))
@@ -648,7 +648,7 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         var deletion: (kind: String, surah: Int, ayah: Int, page: Int)?
         var lookup: OpaquePointer?
         if sqlite3_prepare_v2(db, "SELECT type, surah, ayah, page FROM bookmarks WHERE id = ?", -1, &lookup, nil) == SQLITE_OK {
-            sqlite3_bind_text(lookup, 1, (id as NSString).utf8String, -1, nil)
+            SQLiteBind.text(lookup, 1, id)
             if sqlite3_step(lookup) == SQLITE_ROW, let typeText = sqlite3_column_text(lookup, 0) {
                 deletion = ("bookmark:\(String(cString: typeText))",
                             Int(sqlite3_column_int64(lookup, 1)),
@@ -662,7 +662,7 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         deleteWithTombstone(db, kind: deletion.kind, surah: deletion.surah,
                             ayah: deletion.ayah, page: deletion.page,
                             sql: "DELETE FROM bookmarks WHERE id = ?;") { stmt in
-            sqlite3_bind_text(stmt, 1, (id as NSString).utf8String, -1, nil)
+            SQLiteBind.text(stmt, 1, id)
         }
     }
 
@@ -742,7 +742,7 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         if sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK {
             if let query = query, !query.trimmingCharacters(in: .whitespaces).isEmpty {
                 let pattern = "%\(query)%"
-                sqlite3_bind_text(stmt, 1, (pattern as NSString).utf8String, -1, nil)
+                SQLiteBind.text(stmt, 1, pattern)
                 let num = Int(query) ?? -1
                 sqlite3_bind_int64(stmt, 2, Int64(num))
                 sqlite3_bind_int64(stmt, 3, Int64(num))
@@ -818,9 +818,9 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         let insertSql = "INSERT INTO khatmas (id, khatma_number, started_at, status, percent_complete) VALUES (?, ?, ?, 'active', 0.0);"
         var insertStmt: OpaquePointer?
         if sqlite3_prepare_v2(db, insertSql, -1, &insertStmt, nil) == SQLITE_OK {
-            sqlite3_bind_text(insertStmt, 1, (newId as NSString).utf8String, -1, nil)
+            SQLiteBind.text(insertStmt, 1, newId)
             sqlite3_bind_int64(insertStmt, 2, Int64(nextNumber))
-            sqlite3_bind_text(insertStmt, 3, (nowStr as NSString).utf8String, -1, nil)
+            SQLiteBind.text(insertStmt, 3, nowStr)
             _ = sqlite3_step(insertStmt)
         }
         sqlite3_finalize(insertStmt)
@@ -844,11 +844,11 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         if sqlite3_prepare_v2(db, insertSql, -1, &stmt, nil) == SQLITE_OK {
             for item in items {
                 sqlite3_reset(stmt)
-                sqlite3_bind_text(stmt, 1, (khatmaId as NSString).utf8String, -1, nil)
+                SQLiteBind.text(stmt, 1, khatmaId)
                 sqlite3_bind_int64(stmt, 2, Int64(item.surah))
                 sqlite3_bind_int64(stmt, 3, Int64(item.ayah))
                 sqlite3_bind_int64(stmt, 4, Int64(item.page))
-                sqlite3_bind_text(stmt, 5, (dateStr as NSString).utf8String, -1, nil)
+                SQLiteBind.text(stmt, 5, dateStr)
                 if sqlite3_step(stmt) == SQLITE_DONE {
                     if sqlite3_changes(db) > 0 {
                         newCount += 1
@@ -871,7 +871,7 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         var stmt: OpaquePointer?
         var count = 0
         if sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK {
-            sqlite3_bind_text(stmt, 1, (khatmaId as NSString).utf8String, -1, nil)
+            SQLiteBind.text(stmt, 1, khatmaId)
             if sqlite3_step(stmt) == SQLITE_ROW {
                 count = Int(sqlite3_column_int64(stmt, 0))
             }
@@ -930,7 +930,7 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         var stmt: OpaquePointer?
         var count = 0
         if sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK {
-            sqlite3_bind_text(stmt, 1, (khatmaId as NSString).utf8String, -1, nil)
+            SQLiteBind.text(stmt, 1, khatmaId)
             if sqlite3_step(stmt) == SQLITE_ROW {
                 count = Int(sqlite3_column_int64(stmt, 0))
             }
@@ -948,7 +948,7 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         var stmt: OpaquePointer?
         var counts: [Int: Int] = [:]
         if sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK {
-            sqlite3_bind_text(stmt, 1, (khatmaId as NSString).utf8String, -1, nil)
+            SQLiteBind.text(stmt, 1, khatmaId)
             while sqlite3_step(stmt) == SQLITE_ROW {
                 let surah = Int(sqlite3_column_int64(stmt, 0))
                 let count = Int(sqlite3_column_int64(stmt, 1))
@@ -968,7 +968,7 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         var stmt: OpaquePointer?
         var count = 0
         if sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK {
-            sqlite3_bind_text(stmt, 1, (khatmaId as NSString).utf8String, -1, nil)
+            SQLiteBind.text(stmt, 1, khatmaId)
             sqlite3_bind_int64(stmt, 2, Int64(surah))
             if sqlite3_step(stmt) == SQLITE_ROW {
                 count = Int(sqlite3_column_int64(stmt, 0))
@@ -987,7 +987,7 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         var stmt: OpaquePointer?
         var ayahs = Set<Int>()
         if sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK {
-            sqlite3_bind_text(stmt, 1, (khatmaId as NSString).utf8String, -1, nil)
+            SQLiteBind.text(stmt, 1, khatmaId)
             sqlite3_bind_int64(stmt, 2, Int64(surah))
             while sqlite3_step(stmt) == SQLITE_ROW {
                 ayahs.insert(Int(sqlite3_column_int64(stmt, 0)))
@@ -1017,7 +1017,7 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         var khatmaNumber: Int?
         var numberStatement: OpaquePointer?
         if sqlite3_prepare_v2(db, "SELECT khatma_number FROM khatmas WHERE id = ?", -1, &numberStatement, nil) == SQLITE_OK {
-            sqlite3_bind_text(numberStatement, 1, (khatmaId as NSString).utf8String, -1, nil)
+            SQLiteBind.text(numberStatement, 1, khatmaId)
             if sqlite3_step(numberStatement) == SQLITE_ROW {
                 khatmaNumber = Int(sqlite3_column_int64(numberStatement, 0))
             }
@@ -1026,7 +1026,7 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         guard let khatmaNumber else { return }
         deleteWithTombstone(db, kind: "surah", khatmaNumber: khatmaNumber, surah: surah,
                             sql: "DELETE FROM khatma_read_ayahs WHERE khatma_id = ? AND surah = ?;") { stmt in
-            sqlite3_bind_text(stmt, 1, (khatmaId as NSString).utf8String, -1, nil)
+            SQLiteBind.text(stmt, 1, khatmaId)
             sqlite3_bind_int64(stmt, 2, Int64(surah))
         }
     }
@@ -1041,8 +1041,8 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         let updateSql = "UPDATE khatmas SET status = 'completed', completed_at = ?, percent_complete = 100.0 WHERE id = ?;"
         var stmt: OpaquePointer?
         if sqlite3_prepare_v2(db, updateSql, -1, &stmt, nil) == SQLITE_OK {
-            sqlite3_bind_text(stmt, 1, (nowStr as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(stmt, 2, (khatmaId as NSString).utf8String, -1, nil)
+            SQLiteBind.text(stmt, 1, nowStr)
+            SQLiteBind.text(stmt, 2, khatmaId)
             _ = sqlite3_step(stmt)
         }
         sqlite3_finalize(stmt)
@@ -1059,7 +1059,7 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         let selectSql = "SELECT id, khatma_number, started_at, completed_at, status, percent_complete FROM khatmas WHERE id = ?;"
         var selectStmt: OpaquePointer?
         if sqlite3_prepare_v2(db, selectSql, -1, &selectStmt, nil) == SQLITE_OK {
-            sqlite3_bind_text(selectStmt, 1, (khatmaId as NSString).utf8String, -1, nil)
+            SQLiteBind.text(selectStmt, 1, khatmaId)
             if sqlite3_step(selectStmt) == SQLITE_ROW {
                 let id = String(cString: sqlite3_column_text(selectStmt, 0))
                 let num = Int(sqlite3_column_int64(selectStmt, 1))
@@ -1138,12 +1138,12 @@ public final class QuranReadingDatabase: @unchecked Sendable {
             return recalculateStreaks(asOf: date)
         }
         let id = UUID().uuidString
-        sqlite3_bind_text(eventStatement, 1, (id as NSString).utf8String, -1, nil)
-        sqlite3_bind_text(eventStatement, 2, (dateStr as NSString).utf8String, -1, nil)
+        SQLiteBind.text(eventStatement, 1, id)
+        SQLiteBind.text(eventStatement, 2, dateStr)
         sqlite3_bind_int64(eventStatement, 3, Int64(ayahsCount))
         sqlite3_bind_int64(eventStatement, 4, Int64(pagesCount))
         sqlite3_bind_int64(eventStatement, 5, Int64(seconds))
-        sqlite3_bind_text(eventStatement, 6, (nowStr as NSString).utf8String, -1, nil)
+        SQLiteBind.text(eventStatement, 6, nowStr)
         let eventSaved = sqlite3_step(eventStatement) == SQLITE_DONE
         sqlite3_finalize(eventStatement)
         guard eventSaved else { return recalculateStreaks(asOf: date) }
@@ -1159,11 +1159,11 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         """
         var stmt: OpaquePointer?
         if sqlite3_prepare_v2(db, upsertSql, -1, &stmt, nil) == SQLITE_OK {
-            sqlite3_bind_text(stmt, 1, (dateStr as NSString).utf8String, -1, nil)
+            SQLiteBind.text(stmt, 1, dateStr)
             sqlite3_bind_int64(stmt, 2, Int64(ayahsCount))
             sqlite3_bind_int64(stmt, 3, Int64(pagesCount))
             sqlite3_bind_int64(stmt, 4, Int64(seconds))
-            sqlite3_bind_text(stmt, 5, (nowStr as NSString).utf8String, -1, nil)
+            SQLiteBind.text(stmt, 5, nowStr)
             _ = sqlite3_step(stmt)
         }
         sqlite3_finalize(stmt)
@@ -1218,7 +1218,7 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         var ayahs = 0
         var pages = 0
         if sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK {
-            sqlite3_bind_text(stmt, 1, (dateString as NSString).utf8String, -1, nil)
+            SQLiteBind.text(stmt, 1, dateString)
             if sqlite3_step(stmt) == SQLITE_ROW {
                 sec = Int(sqlite3_column_int64(stmt, 0))
                 ayahs = Int(sqlite3_column_int64(stmt, 1))
@@ -1244,8 +1244,8 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         var stmt: OpaquePointer?
         var map: [String: Int] = [:]
         if sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK {
-            sqlite3_bind_text(stmt, 1, (startStr as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(stmt, 2, (endStr as NSString).utf8String, -1, nil)
+            SQLiteBind.text(stmt, 1, startStr)
+            SQLiteBind.text(stmt, 2, endStr)
             while sqlite3_step(stmt) == SQLITE_ROW {
                 let dateStr = String(cString: sqlite3_column_text(stmt, 0))
                 var sec = Int(sqlite3_column_int64(stmt, 1))
@@ -1273,8 +1273,8 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         var stmt: OpaquePointer?
         var set = Set<String>()
         if sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK {
-            sqlite3_bind_text(stmt, 1, (startStr as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(stmt, 2, (endStr as NSString).utf8String, -1, nil)
+            SQLiteBind.text(stmt, 1, startStr)
+            SQLiteBind.text(stmt, 2, endStr)
             while sqlite3_step(stmt) == SQLITE_ROW {
                 set.insert(String(cString: sqlite3_column_text(stmt, 0)))
             }

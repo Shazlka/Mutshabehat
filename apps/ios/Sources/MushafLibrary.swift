@@ -125,11 +125,19 @@ final class MushafLibrary {
         (try? database.searchAyaat(matching: query, mode: mode, limit: 200)) ?? []
     }
 
+    /// An explicit restore: the backup replaces the snapshot, so pages fetched live earlier (laid over the old one)
+    /// are dropped; `QiraatBulkSync` fetches them again.
     func installQiraatBackup(_ data: Data) throws {
-        // A backup replaces the snapshot; pages fetched live earlier were laid over the old one.
-        let installed = try QiraatBackupService.install(data)
-        let replacement = try QiraatStore(directory: installed.directory, overlayDirectory: QiraatLiveSync.overlayDirectory)
-        try? FileManager.default.removeItem(at: QiraatLiveSync.overlayDirectory)
+        try adoptInstalledQiraat(try QiraatBackupService.install(data), keepLivePages: false)
+    }
+
+    /// Starts reading from a Qiraat snapshot that is already installed on disk (the heavy install runs off the
+    /// main thread). `keepLivePages: true` is for automatic syncs: the live pages are newer than any archive and
+    /// still win over it.
+    func adoptInstalledQiraat(_ installed: QiraatStore, keepLivePages: Bool,
+                              overlayDirectory: URL = QiraatLiveSync.overlayDirectory) throws {
+        let replacement = try QiraatStore(directory: installed.directory, overlayDirectory: overlayDirectory)
+        if !keepLivePages { try? FileManager.default.removeItem(at: overlayDirectory) }
         qiraat = replacement
         NotificationCenter.default.post(name: .qiraatDatabaseDidUpdate, object: nil)
     }
