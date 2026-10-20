@@ -42,7 +42,7 @@ struct NarratorChipsView: View {
     var body: some View {
         ReviewFlowLayout(spacing: 6) {
             ForEach(items) { item in
-                let color = Color(UIColor(qiraatHex: item.color))
+                let color = Color(uiColor: .reviewColor(hex: item.color))
                 Text(item.label)
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(color)
@@ -51,6 +51,14 @@ struct NarratorChipsView: View {
                     .overlay(Capsule().stroke(color.opacity(0.35), lineWidth: 0.5))
             }
         }
+    }
+}
+
+extension UIColor {
+    /// A "#RRGGBB" colour from the Qiraat data; mid grey when the text is not one.
+    static func reviewColor(hex: String) -> UIColor {
+        guard let c = QiraatColor(hex: hex) else { return .systemGray }
+        return UIColor(red: c.red, green: c.green, blue: c.blue, alpha: 1)
     }
 }
 #endif

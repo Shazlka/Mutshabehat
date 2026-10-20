@@ -2,6 +2,7 @@
 import MushafCore
 import XCTest
 @testable import Mutshabehat
+@testable import ReviewEditor
 
 @MainActor
 final class ReviewHistoryTests: XCTestCase {

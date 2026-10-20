@@ -5,7 +5,7 @@ import SwiftUI
 /// One Mushaf page for review: tap a word to open its sheet; words are tinted by review status.
 struct ReviewPageScreen: View {
     @Bindable var store: ReviewStore
-    let library: MushafLibrary
+    let library: ReviewHost
     let initialPage: Int
     @AppStorage("review:last-page:v1") private var lastPage = 1
 

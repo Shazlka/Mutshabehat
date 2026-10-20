@@ -2,6 +2,9 @@
 import MushafCore
 import XCTest
 @testable import Mutshabehat
+#if DEBUG
+@testable import ReviewEditor
+#endif
 
 @MainActor
 final class ReviewBulkTests: XCTestCase {

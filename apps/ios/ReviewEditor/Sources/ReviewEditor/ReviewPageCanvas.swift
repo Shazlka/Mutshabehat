@@ -38,6 +38,8 @@ final class ReviewPageUIView: UIView {
     private var fonts: QCFFontStore?
     private var surahAyahCounts: [Int: Int] = [:]
     private var surahNames: [Int: String] = [:]
+    private var palette = ReviewPalette(paper: .systemBackground, ink: .label, gold: .systemYellow, brown: .brown)
+    private var mushafFont: (CGFloat) -> UIFont = { UIFont.systemFont(ofSize: $0) }
     private var statusFor: (String) -> WordStatus? = { _ in nil }
     private var selectedKeys: Set<String> = []
     private var onTap: (String) -> Void = { _ in }
@@ -45,7 +47,7 @@ final class ReviewPageUIView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .mushafPaper
+        backgroundColor = palette.paper
         contentMode = .redraw
         layer.cornerRadius = 6
         layer.masksToBounds = true
@@ -55,11 +57,14 @@ final class ReviewPageUIView: UIView {
     required init?(coder: NSCoder) { fatalError("not used") }
 
     @MainActor
-    func configure(page: MushafPage, library: MushafLibrary, statusFor: @escaping (String) -> WordStatus?,
+    func configure(page: MushafPage, library: ReviewHost, statusFor: @escaping (String) -> WordStatus?,
                    selectedKeys: Set<String>, onTap: @escaping (String) -> Void) {
         let samePage = self.page?.number == page.number
         self.page = page
         fonts = library.fonts
+        mushafFont = library.mushafFont
+        palette = library.palette
+        backgroundColor = palette.paper
         surahAyahCounts = library.surahAyahCounts
         surahNames = library.surahNames
         self.statusFor = statusFor
@@ -121,7 +126,7 @@ final class ReviewPageUIView: UIView {
             context.addPath(ring.cgPath)
             context.strokePath()
         }
-        let line = QCFFontStore.line(box.word.glyph, font: font, color: UIColor.mushafInk.cgColor)
+        let line = QCFFontStore.line(box.word.glyph, font: font, color: palette.ink.cgColor)
         let natural = CGFloat(CTLineGetTypographicBounds(line, nil, nil, nil))
         context.saveGState()
         context.translateBy(x: box.frame.minX, y: box.frame.maxY)
@@ -134,16 +139,16 @@ final class ReviewPageUIView: UIView {
     private func drawHeader(_ name: String, in rect: CGRect, size: CGFloat) {
         let frame = rect.insetBy(dx: 2, dy: max(1.5, rect.height * 0.08))
         let path = UIBezierPath(roundedRect: frame, cornerRadius: frame.height * 0.3)
-        UIColor.mushafGold.setStroke()
+        palette.gold.setStroke()
         path.lineWidth = 1.5
         path.stroke()
-        draw(name, in: frame, size: size * 0.8, color: .mushafBrown)
+        draw(name, in: frame, size: size * 0.8, color: palette.brown)
     }
 
     private func drawBasmala(in rect: CGRect, fontSize: CGFloat, fonts: QCFFontStore, context: CGContext) {
         guard let p1 = try? fonts.font(page: 1, size: fontSize * 1.05) else { return }
         let glyphs = ["ﱁ", "ﱂ", "ﱃ", "ﱄ"]
-        let lines = glyphs.map { QCFFontStore.line($0, font: p1, color: UIColor.mushafInk.cgColor) }
+        let lines = glyphs.map { QCFFontStore.line($0, font: p1, color: palette.ink.cgColor) }
         let widths = lines.map { CGFloat(CTLineGetTypographicBounds($0, nil, nil, nil)) }
         let gap = fontSize * PageLayoutConstants.centredGapEm
         var x = rect.midX + (widths.reduce(0, +) + CGFloat(glyphs.count - 1) * gap) / 2
@@ -160,11 +165,11 @@ final class ReviewPageUIView: UIView {
         }
     }
 
-    private func draw(_ text: String, in rect: CGRect, size: CGFloat, color: UIColor = .mushafInk) {
-        let font = MushafLibrary.mushafFont(size: size)
+    private func draw(_ text: String, in rect: CGRect, size: CGFloat, color: UIColor? = nil) {
+        let font = mushafFont(size)
         let style = NSMutableParagraphStyle()
         style.alignment = .center
-        let attributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: color, .paragraphStyle: style]
+        let attributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: color ?? palette.ink, .paragraphStyle: style]
         let height = (text as NSString).size(withAttributes: attributes).height
         (text as NSString).draw(in: CGRect(x: rect.minX, y: rect.midY - height / 2, width: rect.width, height: height),
                                 withAttributes: attributes)
@@ -203,7 +208,7 @@ final class ReviewPageUIView: UIView {
 
 struct ReviewPageCanvas: UIViewRepresentable {
     let page: MushafPage
-    let library: MushafLibrary
+    let library: ReviewHost
     let statusFor: (String) -> WordStatus?
     let selectedKeys: Set<String>
     let onTap: (String) -> Void

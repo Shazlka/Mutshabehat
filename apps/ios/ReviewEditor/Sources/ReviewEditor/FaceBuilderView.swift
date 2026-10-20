@@ -182,7 +182,7 @@ struct NarratorToggleList: View {
 
     var body: some View {
         ForEach(CanonicalReaders.all, id: \.id) { reader in
-            let color = Color(UIColor(qiraatHex: reader.color))
+            let color = Color(UIColor.reviewColor(hex: reader.color))
             let ids = reader.narrators.map(\.id)
             VStack(alignment: .leading, spacing: 6) {
                 Button {

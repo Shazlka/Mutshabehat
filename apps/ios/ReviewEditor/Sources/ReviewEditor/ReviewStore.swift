@@ -8,7 +8,10 @@ import Observation
 /// review API), one queued job per entry, so the server's rules and edit log apply unchanged.
 @MainActor
 @Observable
-final class ReviewStore {
+public final class ReviewStore {
+    /// The host's page colours, for the few views that match the Mushaf's look.
+    var palette = ReviewPalette(paper: .systemBackground, ink: .label, gold: .systemYellow, brown: .brown)
+
     enum LoadState: Equatable { case idle, loading, failed(String) }
     enum SaveStatus: Equatable { case idle, saving(Int), saved(Date), failed(String) }
 

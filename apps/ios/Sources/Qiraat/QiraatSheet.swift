@@ -1,5 +1,8 @@
 import CoreText
 import MushafCore
+#if DEBUG
+import ReviewEditor
+#endif
 import SwiftUI
 import UIKit
 

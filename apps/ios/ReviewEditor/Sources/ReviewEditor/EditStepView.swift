@@ -192,7 +192,7 @@ private struct ReaderNarratorPickerSection: View {
     }
 
     private func readerRow(_ reader: CanonicalReader) -> some View {
-        let color = Color(UIColor(qiraatHex: reader.color))
+        let color = Color(UIColor.reviewColor(hex: reader.color))
         let ids = reader.narrators.map(\.id)
         let count = ids.filter { id in narrators.contains { $0.id == id } }.count
         return VStack(alignment: .leading, spacing: 8) {

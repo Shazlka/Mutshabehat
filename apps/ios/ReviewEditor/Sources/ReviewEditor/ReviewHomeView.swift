@@ -5,7 +5,7 @@ import SwiftUI
 /// The start screen: how far the review has come, where to continue, and a way to any page or surah.
 struct ReviewHomeView: View {
     let store: ReviewStore
-    let library: MushafLibrary
+    let library: ReviewHost
     let openPage: (Int) -> Void
     let close: () -> Void
     @State private var confirmingClose = false

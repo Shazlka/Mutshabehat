@@ -5,12 +5,14 @@ import SwiftUI
 /// Keeps the one review store the word cards use alive for as long as the reader is: a save that is still
 /// running when a card is closed must not be dropped with the card.
 @MainActor
-final class QiraatCardReviewHost {
+public final class QiraatCardReviewHost {
+    public init() {}
+
     private var store: ReviewStore?
 
-    func store(library: MushafLibrary) -> ReviewStore {
+    public func store(host: ReviewHost) -> ReviewStore {
         if let store { return store }
-        let created = ReviewEditorEntry.makeStore(library: library)
+        let created = ReviewEditorEntry.makeStore(host: host)
         store = created
         return created
     }
@@ -22,7 +24,7 @@ private struct QiraatCardReviewStoreKey: EnvironmentKey {
 
 extension EnvironmentValues {
     /// Set by the reader (DEBUG builds only); the word card shows its review section when it is present.
-    var qiraatCardReviewStore: ReviewStore? {
+    public var qiraatCardReviewStore: ReviewStore? {
         get { self[QiraatCardReviewStoreKey.self] }
         set { self[QiraatCardReviewStoreKey.self] = newValue }
     }
@@ -32,11 +34,13 @@ extension EnvironmentValues {
 /// actions that used to need a trip to the editor: approve, edit, delete, add a face. It works on the same
 /// review store and web review API as the developer editor, so the server's rules and edit log apply, and a
 /// saved change reaches the Mushaf page through `QiraatLiveSync` like any other.
-struct QiraatCardReviewSection: View {
+public struct QiraatCardReviewSection: View {
     @Environment(\.qiraatCardReviewStore) private var store: ReviewStore?
     let word: MushafWord
 
-    var body: some View {
+    public init(word: MushafWord) { self.word = word }
+
+    public var body: some View {
         if let store { Content(store: store, word: word) }
     }
 
@@ -47,6 +51,10 @@ struct QiraatCardReviewSection: View {
         @State private var editorOpen = false
         @State private var editorStep: ReviewWordSheet.Step = .faces
         @State private var deleting: ReviewRow?
+
+        private var deletingBinding: Binding<Bool> {
+            Binding<Bool>(get: { deleting != nil }, set: { newValue in if !newValue { deleting = nil } })
+        }
 
         private var key: String? { ReviewWordKeys.key(for: word) }
         private var rows: [ReviewRow] { key.map(store.rows(forKey:)) ?? [] }
@@ -61,7 +69,7 @@ struct QiraatCardReviewSection: View {
                 VStack(alignment: .leading, spacing: 10) {
                     HStack {
                         Label("المراجعة والتحرير", systemImage: "checkmark.seal")
-                            .font(.subheadline.bold()).foregroundStyle(Color(uiColor: .mushafBrown))
+                            .font(.subheadline.bold()).foregroundStyle(Color(uiColor: store.palette.brown))
                             .accessibilityAddTraits(.isHeader)
                         Spacer()
                         if waiting.count > 1 {
@@ -86,8 +94,8 @@ struct QiraatCardReviewSection: View {
                         .presentationDragIndicator(.visible)
                         .environment(\.layoutDirection, .rightToLeft)
                 }
-                .onChange(of: store.selectedKey) { _, new in if new == nil { editorOpen = false } }
-                .confirmationDialog("حذف هذا الوجه؟", isPresented: Binding(get: { deleting != nil }, set: { if !$0 { deleting = nil } }),
+                .onChange(of: store.selectedKey) { _, new in selectedKeyChanged(to: new) }
+                .confirmationDialog("حذف هذا الوجه؟", isPresented: deletingBinding,
                                     titleVisibility: .visible, presenting: deleting) { row in
                     Button("حذف", role: .destructive) { store.delete(row) }
                         .accessibilityIdentifier("qiraat-card-confirm-delete")
@@ -138,6 +146,10 @@ struct QiraatCardReviewSection: View {
         private func ensureLoaded(force: Bool = false) async {
             if !force, store.page != nil, store.pageNumber == word.page { return }
             await store.load(page: word.page)
+        }
+
+        private func selectedKeyChanged(to newKey: String?) {
+            if newKey == nil { editorOpen = false }
         }
 
         private func open(_ row: ReviewRow) {

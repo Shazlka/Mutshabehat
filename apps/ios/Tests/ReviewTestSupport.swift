@@ -2,6 +2,9 @@
 import MushafCore
 import XCTest
 @testable import Mutshabehat
+#if DEBUG
+@testable import ReviewEditor
+#endif
 
 /// A stateful fake of the review server for the store tests: it keeps the rows, answers page reads from
 /// them and applies status, update, narrators, delete and create writes (each bumps the row's version).

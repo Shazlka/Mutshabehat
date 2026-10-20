@@ -1,4 +1,7 @@
 import MushafCore
+#if DEBUG
+import ReviewEditor
+#endif
 import SwiftUI
 import UIKit
 
@@ -160,7 +163,7 @@ struct ReaderView: View {
                     library.wordText(surah: surah, ayah: ayah, token: token, near: page)
                 })
 #if DEBUG
-                .environment(\.qiraatCardReviewStore, cardReview.store(library: library))
+                .environment(\.qiraatCardReviewStore, cardReview.store(host: .make(library: library)))
 #endif
             }
         }
@@ -687,7 +690,7 @@ private struct SettingsView: View {
             }
 #if DEBUG
             .fullScreenCover(isPresented: $showingReviewEditor) {
-                ReviewEditorEntry(library: library)
+                ReviewEditorEntry(host: .make(library: library))
             }
 #endif
             .sheet(isPresented: $showingQiraatPicker) {

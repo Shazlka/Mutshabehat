@@ -2,6 +2,7 @@
 import MushafCore
 import XCTest
 @testable import Mutshabehat
+@testable import ReviewEditor
 
 /// Fixes from the final review: wasl/waqf of suggestions, a dirty draft across pages, and two-word faces.
 @MainActor

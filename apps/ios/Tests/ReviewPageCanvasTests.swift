@@ -3,6 +3,9 @@ import MushafCore
 import UIKit
 import XCTest
 @testable import Mutshabehat
+#if DEBUG
+@testable import ReviewEditor
+#endif
 
 @MainActor
 final class ReviewPageCanvasTests: XCTestCase {
@@ -34,7 +37,7 @@ final class ReviewPageCanvasTests: XCTestCase {
         let page = try XCTUnwrap(library.page(8))
         let view = ReviewPageUIView(frame: CGRect(x: 0, y: 0, width: 390, height: 390 / PageLayoutConstants.pageAspect))
         var tapped: String?
-        view.configure(page: page, library: library, statusFor: { _ in nil }, selectedKeys: []) { tapped = $0 }
+        view.configure(page: page, library: .make(library: library), statusFor: { _ in nil }, selectedKeys: []) { tapped = $0 }
         view.layoutIfNeeded()
         let layout = try XCTUnwrap(view.currentLayout)
         let box = try XCTUnwrap(layout.lines.flatMap(\.boxes).first { ReviewWordKeys.key(for: $0.word) != nil })

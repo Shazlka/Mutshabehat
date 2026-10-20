@@ -4,21 +4,21 @@ import SwiftUI
 
 /// The developer review editor: opened from Settings → المطور, in DEBUG builds only. It runs against the web
 /// app's review API (`-review-stub` swaps in an in-memory fake for UI tests).
-struct ReviewEditorEntry: View {
-    let library: MushafLibrary
+public struct ReviewEditorEntry: View {
+    let host: ReviewHost
     @Environment(\.dismiss) private var dismiss
     @State private var store: ReviewStore
     @State private var path: [Int] = []
 
-    init(library: MushafLibrary) {
-        self.library = library
-        _store = State(initialValue: Self.makeStore(library: library))
+    public init(host: ReviewHost) {
+        self.host = host
+        _store = State(initialValue: Self.makeStore(host: host))
     }
 
-    static var usesStub: Bool { ProcessInfo.processInfo.arguments.contains("-review-stub") }
+    public static var usesStub: Bool { ProcessInfo.processInfo.arguments.contains("-review-stub") }
 
     @MainActor
-    static func makeStore(library: MushafLibrary) -> ReviewStore {
+    static func makeStore(host: ReviewHost) -> ReviewStore {
         let transport: any ReviewTransport
         if usesStub {
             // Never fall back to the live API when a test asked for the stub: those tests approve and create faces.
@@ -30,18 +30,18 @@ struct ReviewEditorEntry: View {
         } else {
             transport = URLSessionReviewTransport()
         }
-        let api = ReviewAPI(baseURL: QiraatLiveSync.baseURL, path: ReviewEndpoint.path, transport: transport,
-                           deviceId: DeviceID.current(key: ReviewEndpoint.deviceKey))
-        return ReviewStore(api: api, mushafPage: { library.page($0) }, liveRefresh: { page in
-            Task { @MainActor in _ = await QiraatLiveSync.shared.refresh(page: page, store: library.qiraat, force: true) }
-        })
+        let api = ReviewAPI(baseURL: host.baseURL, path: ReviewEndpoint.path, transport: transport,
+                           deviceId: host.deviceId)
+        let store = ReviewStore(api: api, mushafPage: { host.page($0) }, liveRefresh: { host.refreshLivePage($0) })
+        store.palette = host.palette
+        return store
     }
 
-    var body: some View {
+    public var body: some View {
         NavigationStack(path: $path) {
-            ReviewHomeView(store: store, library: library, openPage: { path.append($0) }, close: { dismiss() })
+            ReviewHomeView(store: store, library: host, openPage: { path.append($0) }, close: { dismiss() })
                 .navigationDestination(for: Int.self) { page in
-                    ReviewPageScreen(store: store, library: library, initialPage: page)
+                    ReviewPageScreen(store: store, library: host, initialPage: page)
                 }
         }
         .environment(\.layoutDirection, .rightToLeft)

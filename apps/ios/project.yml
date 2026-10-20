@@ -12,6 +12,8 @@ settings:
 packages:
   MushafCore:
     path: MushafCore
+  ReviewEditor:
+    path: ReviewEditor
 targets:
   Mutshabehat:
     type: application
@@ -33,6 +35,7 @@ targets:
         buildPhase: resources
     dependencies:
       - package: MushafCore
+      - package: ReviewEditor
     preBuildScripts:
       - name: Check generated Mushaf data
         basedOnDependencyAnalysis: false

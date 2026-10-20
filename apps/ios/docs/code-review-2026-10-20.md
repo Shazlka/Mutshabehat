@@ -26,7 +26,7 @@ refreshed from the live web database on 18 Oct (page 8 is now 8 / 87). One more 
 
 ## Progress (2026-10-20)
 
-Done: fix-plan step 1 (all tests green), P0-1, P0-2, P0-3, P0-4, P1-3, P1-5, and the unchecked SQLite calls in the web-export compile step. Also done: P1-1 (iOS guard only), P1-4, P1-6 (sync), P2-1, P2-5 (sync messages), P3 dead code and the magazine-card and sheet-alert duplicates. Still open: P1-2 (web decision), P2-3 (split large files), P2-4 (review editor target), remaining `try?` outside sync, reading-progress merge on the main actor, smaller duplicates (`WordContextIndex`, `QiraatCardReview`/`FacesStepView`, `ReadingTracker`, `QiraatLegendSheet`).
+Done: fix-plan step 1 (all tests green), P0-1, P0-2, P0-3, P0-4, P1-3, P1-5, and the unchecked SQLite calls in the web-export compile step. Also done: P1-1 (iOS guard only), P1-4, P1-6 (sync), P2-1, P2-5 (sync messages), P3 dead code and the magazine-card and sheet-alert duplicates. Also done: P2-3 (reading database and Mutshabehat view split) and P2-4 (review editor package). Still open: P1-2 (web decision), splitting `MushafPageView`/`ReaderView`/`ReadingStatisticsView`, remaining `try?` outside sync, reading-progress merge on the main actor, smaller duplicates (`WordContextIndex`, `QiraatCardReview`/`FacesStepView`, `ReadingTracker`, `QiraatLegendSheet`).
 
 ## P0: fix first (data loss or silent wrong data)
 
