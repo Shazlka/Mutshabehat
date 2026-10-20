@@ -157,24 +157,23 @@ import Testing
         let database = try MushafDatabase(url: generatedDirectory.appendingPathComponent("mushaf.sqlite"))
         let wordPages = try database.wordPageIndex()
         let index = QiraatResolvedPageIndex(store: store, wordPages: wordPages)
-        let misplaced = try #require(store.page(1)).rulings.filter { ruling in
-            wordPages[MushafWordCoordinate(
-                surah: ruling.surah,
-                ayah: ruling.ayah,
-                token: ruling.startToken
-            )] != 1
+
+        // A ruling whose words are on another page than its snapshot file (none in today's snapshot, so this
+        // also holds vacuously) must be absent from the file's page and present on its own page.
+        var misplacedByTarget: [Int: Set<String>] = [:]
+        for page in 1...mushafPageCount {
+            let misplaced = (store.page(page)?.rulings ?? []).compactMap { ruling -> (String, Int)? in
+                guard let resolved = wordPages[MushafWordCoordinate(
+                    surah: ruling.surah, ayah: ruling.ayah, token: ruling.startToken)], resolved != page else { return nil }
+                return (ruling.id, resolved)
+            }
+            let ids = Set(misplaced.map { $0.0 })
+            let shown = Set((index.page(page)?.rulings ?? []).map { $0.id })
+            #expect(shown.isDisjoint(with: ids))
+            for (id, resolved) in misplaced { misplacedByTarget[resolved, default: []].insert(id) }
         }
-        #expect(misplaced.count == 5)
-        #expect(Set(misplaced.compactMap { ruling in
-            wordPages[MushafWordCoordinate(surah: ruling.surah, ayah: ruling.ayah, token: ruling.startToken)]
-        }) == [3, 4, 7])
 
-        let misplacedIDs = Set(misplaced.map(\.id))
-        let pageOneIDs = Set(index.page(1)?.rulings.map(\.id) ?? [])
-        #expect(pageOneIDs.isDisjoint(with: misplacedIDs))
-
-        var summaryIDs = Set<String>()
-        for page in [3, 4, 7] {
+        for (page, ids) in misplacedByTarget.sorted(by: { $0.key < $1.key }).prefix(5) {
             let data = try #require(index.page(page))
             let words = try database.page(page).lines.flatMap(\.words)
             let items = QiraatPageSummary.build(
@@ -185,9 +184,8 @@ import Testing
                 catalog: store.catalog,
                 filter: .all
             )
-            summaryIDs.formUnion(items.flatMap(\.rulings).map(\.id))
+            #expect(ids.isSubset(of: Set(items.flatMap(\.rulings).map(\.id))))
         }
-        #expect(misplacedIDs.isSubset(of: summaryIDs))
     }
 
     @Test func emptyAndUnanchoredPagesHaveNoItems() {

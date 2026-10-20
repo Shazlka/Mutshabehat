@@ -185,23 +185,26 @@ private func locus(_ selection: QiraatSelection, start: Int? = nil, end: Int? = 
         #expect(khalaf.voices[0].content.wajhs[0].text == selection.variants[0].hafsText)
     }
 
-    // MARK: Duplicate records — 31:18 token 2 (page 412)
+    // MARK: Duplicate records (31:18 token 2)
 
+    /// Built here, not read from the snapshot: the web database removes such duplicates over time, which used to
+    /// turn this test red whenever the snapshot was refreshed.
     @Test func theSameReadingRecordedTwiceIsOneWajh() throws {
         let catalog = try snapshotCatalog()
-        let (selection, word, _) = try realSelection(page: 412, 31, 18, 2, catalog: catalog)
-        let records = selection.variants.filter { $0.readingIds.contains("Q03-R02") }
-        #expect(records.count == 3)
-        let duplicateRecords = try #require(Dictionary(grouping: records) { "\($0.startToken)-\($0.endToken)" }
-            .values.first { group in
-                let distinct = Set(group.map { ($0.uthmaniText ?? $0.variantText) + "|" + ($0.performanceNote ?? "") })
-                return distinct.count < group.count
-            })
-        let distinct = Set(duplicateRecords.map { ($0.uthmaniText ?? $0.variantText) + "|" + ($0.performanceNote ?? "") })
-        let selected = try locus(selection, start: duplicateRecords[0].startToken, end: duplicateRecords[0].endToken)
-        let susi = QiraatCompare.reading(of: "Q03-R02", locus: selected, word: word, catalog: catalog)
-        #expect(susi.voices[0].content.wajhs.count == distinct.count)
-        #expect(distinct.count < duplicateRecords.count)
+        func record(_ id: String, text: String, note: String? = nil) -> QiraatVariant {
+            QiraatVariant(id: id, surah: 31, ayah: 18, startToken: 2, endToken: 2, hafsText: "تُصَعِّرْ",
+                          variantText: text, uthmaniText: text, performanceNote: note,
+                          verificationStatus: "REVIEWED", readingIds: ["Q03-R02"])
+        }
+        let records = [record("first", text: "تُصَاعِرْ"), record("again", text: "تُصَاعِرْ"),
+                       record("other", text: "تُصَغِّرْ", note: "إشمام")]
+        let selection = QiraatSelection(variants: records, rulings: [])
+        let selected = try locus(selection, start: 2, end: 2)
+        let susi = QiraatCompare.reading(of: "Q03-R02", locus: selected, word: testWord(page: 412, 31, 18, 2),
+                                         catalog: catalog)
+        // Three records, two different readings: the repeated one is shown once.
+        #expect(susi.voices[0].content.wajhs.count == 2)
+        #expect(Set(susi.voices[0].content.wajhs.map(\.text)) == ["تُصَاعِرْ", "تُصَغِّرْ"])
     }
 
     // MARK: Exact loci and aggregated أصول
@@ -240,20 +243,28 @@ private func locus(_ selection: QiraatSelection, start: Int? = nil, end: Int? = 
 
     @Test func narratorRowsAtOneUsulLocusBecomeOneComparisonGroup() throws {
         let catalog = try snapshotCatalog()
-        let (selection, word, _) = try realSelection(page: 20, 2, 133, 3, catalog: catalog)
-        let singleWord = try locus(selection, start: 3, end: 3)
+        let narrators = ["Q01-R01", "Q01-R02", "Q02-R01", "Q02-R02", "Q03-R01"]
+        let rulings = narrators.map { id in
+            QiraatRuling(id: "r-\(id)", category: "HAMZATAN_KALIMATAYN", categoryAr: "الهمزتان من كلمتين",
+                         color: "#DC2626", wordAnchored: true, surah: 2, ayah: 133, startToken: 3, endToken: 3,
+                         baseText: "شُهَدَآءَ", verificationStatus: "REVIEWED", hasAlternate: false,
+                         attribution: [QiraatRulingAttribution(authorityId: id, action: "تسهيل")],
+                         readings: [QiraatRulingReading(readingId: id, action: "تسهيل", isDefault: true)])
+        }
+        let singleWord = try locus(QiraatSelection(variants: [], rulings: rulings), start: 3, end: 3)
         let group = try #require(QiraatCompare.usulGroups(selection: singleWord.selection).first {
             $0.category == "HAMZATAN_KALIMATAYN"
         })
 
-        #expect(group.rulings.count == 9)
+        #expect(group.rulings.count == narrators.count)
+        let word = testWord(page: 20, 2, 133, 3)
         let qalun = QiraatCompare.reading(of: "Q01-R01", locus: singleWord, word: word, catalog: catalog)
         let hamza = QiraatCompare.reading(of: "Q06-R01", locus: singleWord, word: word, catalog: catalog)
         let qalunUsul = try #require(qalun.voices[0].content.usul.first { $0.groupId == group.id })
         let hamzaUsul = try #require(hamza.voices[0].content.usul.first { $0.groupId == group.id })
         guard case .entries(let entries) = qalunUsul.status else { Issue.record("expected recorded entry"); return }
         #expect(entries.count == 1)
-        #expect(qalunUsul.sourceRulingIds.count == 9)
+        #expect(qalunUsul.sourceRulingIds.count == narrators.count)
         #expect(hamzaUsul.status == .base(sameAsHafs: true))
     }
 

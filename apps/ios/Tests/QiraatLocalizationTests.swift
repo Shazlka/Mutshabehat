@@ -78,8 +78,10 @@ final class QiraatLocalizationTests: XCTestCase {
         let files = try FileManager.default.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil)
             .filter { $0.pathExtension == "swift" }
         XCTAssertFalse(files.isEmpty, "no Qiraat sources found at \(directory.path)")
-        return try files.flatMap { file in
+        return try files.flatMap { file -> [Literal] in
             let source = try String(contentsOf: file, encoding: .utf8)
+            // A file wrapped entirely in `#if DEBUG` (the developer review tools) never reaches a Release build.
+            if source.trimmingCharacters(in: .whitespacesAndNewlines).hasPrefix("#if DEBUG") { return [] }
             return Self.literals(in: source).map { Literal(file: file.lastPathComponent, value: $0.value, label: $0.label) }
         }
     }

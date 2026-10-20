@@ -3,16 +3,21 @@ import Testing
 @testable import MushafCore
 
 @Suite struct UsulIndexTests {
+    /// The snapshot is refreshed from the live web database, so nothing here pins its size: every expectation is
+    /// derived from the raw page files.
     @Test func bundledSnapshotAggregatesRowsIntoNavigablePlacesWithoutLosingDetails() throws {
         let result = try buildBundledIndex()
+        let raw = try rawCategoryCounts()
 
-        #expect(result.categories.count == 23)
-        #expect(result.rawRulingCount == 12_506)
+        #expect(Set(result.categories.map(\.code)) == Set(raw.keys))
+        #expect(result.rawRulingCount == raw.values.reduce(0, +))
+        for category in result.categories {
+            #expect(category.places.flatMap(\.rulings).count == raw[category.code], "Lost rulings in \(category.code)")
+        }
 
         let places = result.categories.flatMap(\.places)
-        #expect(places.count == 12_297)
-        #expect(places.filter { $0.rulings.count > 1 }.count == 93)
-        #expect(places.map { $0.rulings.count }.max() == 11)
+        #expect(!places.isEmpty)
+        #expect(places.count <= result.rawRulingCount)
         #expect(places.flatMap(\.rulings).count == result.rawRulingCount)
 
         for category in result.categories {
@@ -25,22 +30,40 @@ import Testing
 
     @Test func pagesComeFromQuranCoordinatesInsteadOfSnapshotBuckets() throws {
         let store = try QiraatStore(directory: generatedDirectory.appendingPathComponent("Qiraat"))
-        let database = try openDatabase()
-        let wordPages = try database.wordPageIndex()
+        let wordPages = try openDatabase().wordPageIndex()
         let categories = UsulIndex.build(store: store, wordPages: wordPages)
+        let placePage = Dictionary(
+            categories.flatMap(\.places).flatMap { place in place.rulings.map { ($0.id, place.page) } },
+            uniquingKeysWith: { first, _ in first })
 
-        let pageOneRulings = try #require(store.page(1)?.rulings)
-        let incorrectlyFiled = pageOneRulings.filter { ruling in
-            wordPages[coordinate(of: ruling)] != 1
+        // Real snapshot: whatever page file a ruling sits in, its place is on the page its words are on.
+        for page in 1...mushafPageCount {
+            for ruling in store.page(page)?.rulings ?? [] {
+                guard let resolved = wordPages[coordinate(of: ruling)] else { continue }
+                #expect(placePage[ruling.id] == resolved, "\(ruling.id) filed under the wrong page")
+            }
         }
-        #expect(incorrectlyFiled.count == 5)
-        #expect(Set(incorrectlyFiled.compactMap { wordPages[coordinate(of: $0)] }) == [3, 4, 7])
+    }
 
-        let places = categories.flatMap(\.places)
-        for ruling in incorrectlyFiled {
-            let place = try #require(places.first { $0.rulings.contains { $0.id == ruling.id } })
-            #expect(place.page == wordPages[coordinate(of: ruling)])
-        }
+    /// The case the real snapshot no longer contains (the web database fixed its misfiled rulings): a ruling stored
+    /// in page 1's file whose words are on another page.
+    @Test func aRulingFiledInTheWrongPageFileIsPlacedByItsWords() throws {
+        let wordPages = try openDatabase().wordPageIndex()
+        let target = MushafWordCoordinate(surah: 2, ayah: 40, token: 1)
+        let resolved = try #require(wordPages[target])
+        #expect(resolved != 1)
+
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let catalogURL = try #require(Bundle.module.url(forResource: "qiraat-catalog", withExtension: "json", subdirectory: "Fixtures"))
+        try FileManager.default.copyItem(at: catalogURL, to: directory.appendingPathComponent("catalog.json"))
+        let page = #"{"pageNumber":1,"variants":[],"rules":[],"rulings":[{"id":"misfiled","category":"IMALAH_TAQLIL","surah":2,"ayah":40,"startToken":1,"endToken":1,"baseText":"x"}]}"#
+        try Data(page.utf8).write(to: directory.appendingPathComponent("page-001.json"))
+
+        let categories = UsulIndex.build(store: try QiraatStore(directory: directory), wordPages: wordPages)
+        let place = try #require(categories.flatMap(\.places).first { $0.rulings.contains { $0.id == "misfiled" } })
+        #expect(place.page == resolved)
     }
 
     @Test func categoriesAndPlacesHaveDeterministicReadingOrder() throws {
@@ -83,10 +106,13 @@ import Testing
             }
         }
 
-        // Keep the two source rows whose text is empty; do not invent Quran text for them.
-        let missingText = categories.flatMap(\.places).flatMap(\.rulings)
+        // Rows whose source text is empty stay in the index; no Quran text is invented for them.
+        let store = try QiraatStore(directory: generatedDirectory.appendingPathComponent("Qiraat"))
+        let sourceEmpty = (1...mushafPageCount).flatMap { store.page($0)?.rulings ?? [] }
             .filter { $0.baseText.isEmpty }.map(\.id).sorted()
-        #expect(missingText == ["r-l-2-33-16-6c3ade", "r-l-2-33-16-b8236e"])
+        let indexedEmpty = categories.flatMap(\.places).flatMap(\.rulings)
+            .filter { $0.baseText.isEmpty }.map(\.id).sorted()
+        #expect(indexedEmpty == sourceEmpty)
     }
 
     @Test func emptyStateWhenStoreHasNoPages() throws {
@@ -166,6 +192,19 @@ private func buildBundledIndex() throws -> (
         count += store.page(page)?.rulings.count ?? 0
     }
     return (UsulIndex.build(store: store, wordPages: wordPages), rawRulingCount)
+}
+
+/// Ruling count per category code, read straight from the page JSON files (not through `QiraatStore`).
+private func rawCategoryCounts() throws -> [String: Int] {
+    var counts: [String: Int] = [:]
+    for page in 1...mushafPageCount {
+        let url = generatedDirectory.appendingPathComponent(String(format: "Qiraat/page-%03d.json", page))
+        let raw = try #require(JSONSerialization.jsonObject(with: Data(contentsOf: url)) as? [String: Any])
+        for row in raw["rulings"] as? [[String: Any]] ?? [] {
+            counts[row["category"] as? String ?? "OTHER", default: 0] += 1
+        }
+    }
+    return counts
 }
 
 private func coordinate(of ruling: QiraatRuling) -> MushafWordCoordinate {
