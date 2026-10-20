@@ -541,6 +541,25 @@ final class ReadingTests: XCTestCase {
     }
 
     @MainActor
+    func testTrackerReportsProgressToTheInjectedSyncAndNotToTheSharedService() throws {
+        final class SpySync: ReadingSyncing {
+            @MainActor var pushes = 0
+            @MainActor var scheduled = 0
+            @MainActor func scheduleDebouncedReadingPush() { scheduled += 1 }
+            @MainActor func pushReadingToICloud() { pushes += 1 }
+        }
+        let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent("test_reading_\(UUID().uuidString).sqlite")
+        let spy = SpySync()
+        let tracker = ReadingTracker(database: QuranReadingDatabase(url: tempURL), sync: spy)
+        let library = try MushafLibrary()
+
+        tracker.markSurahCompleted(1, library: library)
+        XCTAssertEqual(spy.pushes, 1)
+        tracker.markSurahCompleted(1, completed: false, library: library)
+        XCTAssertEqual(spy.pushes, 2)
+    }
+
+    @MainActor
     func testNextUnreadAyahAndPageNavigation() throws {
         let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent("test_reading_\(UUID().uuidString).sqlite")
         let db = QuranReadingDatabase(url: tempURL)

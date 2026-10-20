@@ -29,7 +29,7 @@ DEFAULT_ICLOUD_DEST = os.path.expanduser("~/Library/Mobile Documents/com~apple~C
 
 ENV = dict(os.environ)
 ENV["PATH"] = "/Library/Developer/CommandLineTools/usr/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:" + ENV.get("PATH", "")
-ENV["DOCKER_HOST"] = "unix:///Users/amrelshazly/.colima/default/docker.sock"
+ENV["DOCKER_HOST"] = "unix://" + os.path.expanduser("~/.colima/default/docker.sock")
 
 
 def safe_copy(src: Path, dst: Path):

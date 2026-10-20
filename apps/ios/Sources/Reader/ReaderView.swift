@@ -108,9 +108,7 @@ struct ReaderView: View {
             tracker.configureScreenAwake(enabled: keepScreenAwake, scenePhase: scenePhase)
             tracker.pageDidChange(to: page, library: library)
             if ICloudDatabaseSyncService.shared.autoSyncEnabled {
-                Task {
-                    _ = try? await ICloudDatabaseSyncService.shared.syncFromICloud(library: library)
-                }
+                Task { await ICloudDatabaseSyncService.shared.automaticSync(library: library) }
             }
         }
         .onChange(of: scenePhase) { _, newPhase in
@@ -120,9 +118,7 @@ struct ReaderView: View {
             if newPhase != .active {
                 tracker.flushCurrentPageDwell(library: library)
             } else if ICloudDatabaseSyncService.shared.autoSyncEnabled {
-                Task {
-                    _ = try? await ICloudDatabaseSyncService.shared.syncFromICloud(library: library)
-                }
+                Task { await ICloudDatabaseSyncService.shared.automaticSync(library: library) }
             }
         }
         .onDisappear {

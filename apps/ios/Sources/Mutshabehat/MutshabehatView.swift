@@ -458,21 +458,21 @@ struct MutshabehatMagazineTheme {
     }
 }
 
-private enum MagazineBlock<T>: Identifiable {
+private enum MagazineBlock<T: Identifiable>: Identifiable {
     case hero(T)
     case pair(T, T)
     case single(T)
 
     var id: String {
         switch self {
-        case .hero(let item): return "hero-\(String(describing: item).hashValue)"
-        case .pair(let a, let b): return "pair-\(String(describing: a).hashValue)-\(String(describing: b).hashValue)"
-        case .single(let item): return "single-\(String(describing: item).hashValue)"
+        case .hero(let item): return "hero-\(item.id)"
+        case .pair(let a, let b): return "pair-\(a.id)-\(b.id)"
+        case .single(let item): return "single-\(item.id)"
         }
     }
 }
 
-private func buildMagazineBlocks<T>(from items: [T]) -> [MagazineBlock<T>] {
+private func buildMagazineBlocks<T: Identifiable>(from items: [T]) -> [MagazineBlock<T>] {
     var blocks: [MagazineBlock<T>] = []
     var i = 0
     var step = 0
@@ -501,79 +501,47 @@ extension Array where Element: Hashable {
     }
 }
 
-// MARK: - Personal Magazine Feed & Card
+// MARK: - Magazine feed and card (shared by personal and automated groups)
 
-private struct PersonalMagazineFeed: View {
-    let groups: [PersonalGroup]
-    let onToggleFavorite: (PersonalGroup) -> Void
-    let onEdit: (PersonalGroup) -> Void
-    let onSelect: (PersonalGroup) -> Void
+/// Lays items out as hero / pair / single blocks; `card` draws one item at the size the block gives it.
+private struct MagazineFeed<Item: Identifiable, Card: View>: View {
+    let items: [Item]
+    let card: (Item, MagazineCardSize) -> Card
 
     var body: some View {
-        let blocks = buildMagazineBlocks(from: groups)
         LazyVStack(spacing: 12) {
-            ForEach(blocks) { block in
+            ForEach(buildMagazineBlocks(from: items)) { block in
                 switch block {
-                case .hero(let group):
-                    PersonalMagazineCard(
-                        group: group,
-                        size: .hero,
-                        color: MutshabehatMagazineTheme.color(for: group.id, customColor: group.color),
-                        toggleFavorite: { onToggleFavorite(group) },
-                        onEdit: { onEdit(group) },
-                        onSelect: { onSelect(group) }
-                    )
+                case .hero(let item), .single(let item):
+                    card(item, .hero)
                 case .pair(let first, let second):
                     HStack(alignment: .top, spacing: 12) {
-                        PersonalMagazineCard(
-                            group: first,
-                            size: .tall,
-                            color: MutshabehatMagazineTheme.color(for: first.id, customColor: first.color),
-                            toggleFavorite: { onToggleFavorite(first) },
-                            onEdit: { onEdit(first) },
-                            onSelect: { onSelect(first) }
-                        )
-                        .frame(maxWidth: .infinity, alignment: .topLeading)
-
-                        PersonalMagazineCard(
-                            group: second,
-                            size: .tall,
-                            color: MutshabehatMagazineTheme.color(for: second.id, customColor: second.color),
-                            toggleFavorite: { onToggleFavorite(second) },
-                            onEdit: { onEdit(second) },
-                            onSelect: { onSelect(second) }
-                        )
-                        .frame(maxWidth: .infinity, alignment: .topLeading)
+                        card(first, .tall).frame(maxWidth: .infinity, alignment: .topLeading)
+                        card(second, .tall).frame(maxWidth: .infinity, alignment: .topLeading)
                     }
-                case .single(let group):
-                    PersonalMagazineCard(
-                        group: group,
-                        size: .hero,
-                        color: MutshabehatMagazineTheme.color(for: group.id, customColor: group.color),
-                        toggleFavorite: { onToggleFavorite(group) },
-                        onEdit: { onEdit(group) },
-                        onSelect: { onSelect(group) }
-                    )
                 }
             }
         }
     }
 }
 
-private struct PersonalMagazineCard: View {
-    let group: PersonalGroup
+/// The card both kinds of group share: surah tags and verse count, title, a diff preview of the first verse and the
+/// "more locations" footer. `accessory` is the kind-specific badge or button at the end of the header row.
+private struct MagazineCard<Accessory: View, Menu: View>: View {
+    let surahs: [String]
+    let verseCount: Int
+    let title: String
+    let firstVerseParts: [PersonalPart]?
     let size: MagazineCardSize
     let color: Color
-    let toggleFavorite: () -> Void
-    let onEdit: () -> Void
     let onSelect: () -> Void
+    @ViewBuilder let accessory: () -> Accessory
+    @ViewBuilder let menu: () -> Menu
 
     var body: some View {
         Button(action: onSelect) {
             VStack(alignment: .leading, spacing: 8) {
-                // Header: Surah tags and badges
                 HStack(spacing: 6) {
-                    let surahs = group.verses.map(\.surah).removingDuplicates()
                     if !surahs.isEmpty {
                         Text(surahs.joined(separator: " • "))
                             .font((size == .compact ? Font.caption2 : Font.caption).weight(.bold))
@@ -583,40 +551,33 @@ private struct PersonalMagazineCard: View {
 
                     Spacer(minLength: 4)
 
-                    Text("\(group.verses.count) مواضع")
+                    Text("\(verseCount) مواضع")
                         .font(.caption2.weight(.semibold))
                         .foregroundStyle(.secondary)
                         .padding(.horizontal, 6)
                         .padding(.vertical, 2)
                         .background(Color(uiColor: .tertiarySystemFill), in: Capsule())
 
-                    Button(action: toggleFavorite) {
-                        Image(systemName: group.favorite ? "star.fill" : "star")
-                            .font(.footnote)
-                            .foregroundColor(group.favorite ? .favorite : .secondary)
-                    }
-                    .buttonStyle(.plain)
+                    accessory()
                 }
 
-                // Title
-                Text(verbatim: group.title)
+                Text(verbatim: title)
                     .font((size == .hero ? Font.headline : Font.subheadline).weight(.bold))
                     .foregroundStyle(.primary)
                     .lineLimit(size == .compact ? 2 : 3)
                     .multilineTextAlignment(.leading)
 
                 // Preview excerpt with auto-color diff tags
-                if let firstVerse = group.verses.first {
+                if let firstVerseParts {
                     VStack(alignment: .leading, spacing: 4) {
-                        ArabicDiffView(parts: firstVerse.parts)
+                        ArabicDiffView(parts: firstVerseParts)
                             .lineLimit(size == .hero ? 3 : 2)
                     }
                 }
 
-                // Bottom footer: More count indicator and chevron
                 HStack {
-                    if group.verses.count > 1 {
-                        Text("+ \(group.verses.count - 1) مواضع أخرى")
+                    if verseCount > 1 {
+                        Text("+ \(verseCount - 1) مواضع أخرى")
                             .font(.caption2.weight(.medium))
                             .foregroundStyle(.secondary)
                     }
@@ -643,17 +604,44 @@ private struct PersonalMagazineCard: View {
             Button(action: onSelect) {
                 Label("عرض كامل التفاصيل", systemImage: "arrow.up.left.and.arrow.down.right")
             }
-            Button(action: onEdit) {
-                Label("تعديل المجموعة", systemImage: "pencil")
-            }
-            Button(action: toggleFavorite) {
-                Label(group.favorite ? "إزالة من المفضلة" : "إضافة إلى المفضلة", systemImage: group.favorite ? "star.slash" : "star")
-            }
+            menu()
         }
     }
 }
 
-// MARK: - Automated Magazine Feed & Card
+private struct PersonalMagazineFeed: View {
+    let groups: [PersonalGroup]
+    let onToggleFavorite: (PersonalGroup) -> Void
+    let onEdit: (PersonalGroup) -> Void
+    let onSelect: (PersonalGroup) -> Void
+
+    var body: some View {
+        MagazineFeed(items: groups) { group, size in
+            MagazineCard(
+                surahs: group.verses.map(\.surah).removingDuplicates(),
+                verseCount: group.verses.count,
+                title: group.title,
+                firstVerseParts: group.verses.first?.parts,
+                size: size,
+                color: MutshabehatMagazineTheme.color(for: group.id, customColor: group.color),
+                onSelect: { onSelect(group) },
+                accessory: {
+                    Button { onToggleFavorite(group) } label: {
+                        Image(systemName: group.favorite ? "star.fill" : "star")
+                            .font(.footnote)
+                            .foregroundColor(group.favorite ? .favorite : .secondary)
+                    }
+                    .buttonStyle(.plain)
+                },
+                menu: {
+                    Button { onEdit(group) } label: { Label("تعديل المجموعة", systemImage: "pencil") }
+                    Button { onToggleFavorite(group) } label: {
+                        Label(group.favorite ? "إزالة من المفضلة" : "إضافة إلى المفضلة", systemImage: group.favorite ? "star.slash" : "star")
+                    }
+                })
+        }
+    }
+}
 
 private struct AutomatedMagazineFeed: View {
     let groups: [AutomatedGroup]
@@ -661,135 +649,27 @@ private struct AutomatedMagazineFeed: View {
     let onSelect: (AutomatedGroup) -> Void
 
     var body: some View {
-        let blocks = buildMagazineBlocks(from: groups)
-        LazyVStack(spacing: 12) {
-            ForEach(blocks) { block in
-                switch block {
-                case .hero(let group):
-                    AutomatedMagazineCard(
-                        group: group,
-                        size: .hero,
-                        color: MutshabehatMagazineTheme.color(for: String(group.id), customColor: group.color),
-                        copyToPersonal: { onCopyToPersonal(group) },
-                        onSelect: { onSelect(group) }
-                    )
-                case .pair(let first, let second):
-                    HStack(alignment: .top, spacing: 12) {
-                        AutomatedMagazineCard(
-                            group: first,
-                            size: .tall,
-                            color: MutshabehatMagazineTheme.color(for: String(first.id), customColor: first.color),
-                            copyToPersonal: { onCopyToPersonal(first) },
-                            onSelect: { onSelect(first) }
-                        )
-                        .frame(maxWidth: .infinity, alignment: .topLeading)
-
-                        AutomatedMagazineCard(
-                            group: second,
-                            size: .tall,
-                            color: MutshabehatMagazineTheme.color(for: String(second.id), customColor: second.color),
-                            copyToPersonal: { onCopyToPersonal(second) },
-                            onSelect: { onSelect(second) }
-                        )
-                        .frame(maxWidth: .infinity, alignment: .topLeading)
-                    }
-                case .single(let group):
-                    AutomatedMagazineCard(
-                        group: group,
-                        size: .hero,
-                        color: MutshabehatMagazineTheme.color(for: String(group.id), customColor: group.color),
-                        copyToPersonal: { onCopyToPersonal(group) },
-                        onSelect: { onSelect(group) }
-                    )
-                }
-            }
-        }
-    }
-}
-
-private struct AutomatedMagazineCard: View {
-    let group: AutomatedGroup
-    let size: MagazineCardSize
-    let color: Color
-    let copyToPersonal: () -> Void
-    let onSelect: () -> Void
-
-    var body: some View {
-        Button(action: onSelect) {
-            VStack(alignment: .leading, spacing: 8) {
-                // Header: Surah tags and badges
-                HStack(spacing: 6) {
-                    if !group.surahs.isEmpty {
-                        Text(group.surahs.joined(separator: " • "))
-                            .font((size == .compact ? Font.caption2 : Font.caption).weight(.bold))
-                            .foregroundStyle(color)
-                            .lineLimit(1)
-                    }
-
-                    Spacer(minLength: 4)
-
-                    Text("\(group.verses.count) مواضع")
-                        .font(.caption2.weight(.semibold))
-                        .foregroundStyle(.secondary)
-                        .padding(.horizontal, 6)
-                        .padding(.vertical, 2)
-                        .background(Color(uiColor: .tertiarySystemFill), in: Capsule())
-
+        MagazineFeed(items: groups) { group, size in
+            MagazineCard(
+                surahs: group.surahs,
+                verseCount: group.verses.count,
+                title: group.title,
+                firstVerseParts: group.verses.first?.parts,
+                size: size,
+                color: MutshabehatMagazineTheme.color(for: String(group.id), customColor: group.color),
+                onSelect: { onSelect(group) },
+                accessory: {
                     if group.copied {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(.progress)
                             .font(.footnote)
                     }
-                }
-
-                // Title
-                Text(verbatim: group.title)
-                    .font((size == .hero ? Font.headline : Font.subheadline).weight(.bold))
-                    .foregroundStyle(.primary)
-                    .lineLimit(size == .compact ? 2 : 3)
-                    .multilineTextAlignment(.leading)
-
-                // Preview excerpt with auto-color diff tags
-                if let firstVerse = group.verses.first {
-                    VStack(alignment: .leading, spacing: 4) {
-                        ArabicDiffView(parts: firstVerse.parts)
-                            .lineLimit(size == .hero ? 3 : 2)
+                },
+                menu: {
+                    Button { onCopyToPersonal(group) } label: {
+                        Label("نسخ إلى مجموعاتي الخاصة", systemImage: "plus.square.on.square")
                     }
-                }
-
-                // Bottom footer: More count indicator and chevron
-                HStack {
-                    if group.verses.count > 1 {
-                        Text("+ \(group.verses.count - 1) مواضع أخرى")
-                            .font(.caption2.weight(.medium))
-                            .foregroundStyle(.secondary)
-                    }
-                    Spacer()
-                    Image(systemName: "chevron.left")
-                        .font(.caption2.weight(.semibold))
-                        .foregroundStyle(color.opacity(0.8))
-                }
-                .padding(.top, 2)
-            }
-            .padding(14)
-            .frame(maxWidth: .infinity, alignment: .topLeading)
-            .background(
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .fill(color.opacity(0.08))
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .strokeBorder(color.opacity(0.30), lineWidth: 1)
-            )
-        }
-        .buttonStyle(.plain)
-        .contextMenu {
-            Button(action: onSelect) {
-                Label("عرض كامل التفاصيل", systemImage: "arrow.up.left.and.arrow.down.right")
-            }
-            Button(action: copyToPersonal) {
-                Label("نسخ إلى مجموعاتي الخاصة", systemImage: "plus.square.on.square")
-            }
+                })
         }
     }
 }
@@ -1015,94 +895,9 @@ struct AutomatedGroupDetailView: View {
 
 // MARK: - Mutshabehat Card Shell
 
-private struct MutshabehatCardShell<Content: View>: View {
-    let color: Color
-    let isShowingDetails: Bool
-    @ViewBuilder let content: Content
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            content
-        }
-        .padding(14)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(
-            RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .fill(color.opacity(isShowingDetails ? 0.06 : 0.10))
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .strokeBorder(color.opacity(0.35), lineWidth: 1)
-        )
-    }
-}
-
 // MARK: - Mutshabehat Card Title
 
-private struct MutshabehatCardTitle: View {
-    let title: String
-    let color: Color
-    let isShowingDetails: Bool
-
-    var body: some View {
-        HStack(spacing: 10) {
-            Circle()
-                .fill(color)
-                .frame(width: 11, height: 11)
-
-            Text(verbatim: title)
-                .font(.headline.bold())
-                .foregroundStyle(.primary)
-                .multilineTextAlignment(.leading)
-
-            Spacer(minLength: 8)
-
-            Image(systemName: isShowingDetails ? "chevron.up.circle.fill" : "chevron.down.circle.fill")
-                .font(.title3)
-                .foregroundStyle(color)
-        }
-        .contentShape(Rectangle())
-        .accessibilityElement(children: .combine)
-        .accessibilityLabel(title)
-        .accessibilityHint(isShowingDetails ? "إخفاء تفاصيل المجموعة" : "إظهار تفاصيل المجموعة")
-        .accessibilityValue(isShowingDetails ? "مفتوحة" : "مغلقة")
-    }
-}
-
 // MARK: - Mutshabehat Verse Detail
-
-private struct MutshabehatVerseDetail: View {
-    let surah: String
-    let ayah: Int
-    let label: String?
-    let parts: [PersonalPart]
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack(spacing: 6) {
-                Text(surah)
-                    .font(.caption.bold())
-                    .foregroundStyle(Color.accentColor)
-
-                Text("— آية \(ArabicDigits.string(ayah))")
-                    .font(.caption.monospacedDigit())
-                    .foregroundStyle(.secondary)
-
-                if let label, !label.isEmpty {
-                    Text("(\(label))")
-                        .font(.caption2)
-                        .foregroundStyle(.secondary)
-                }
-                Spacer()
-            }
-
-            ArabicDiffView(parts: parts)
-        }
-        .padding(12)
-        .background(Color(uiColor: .secondarySystemBackground).opacity(0.85), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-    }
-
-}
 
 // MARK: - Color Hex Extension
 

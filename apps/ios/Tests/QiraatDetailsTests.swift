@@ -118,10 +118,6 @@ final class QiraatDetailsTests: XCTestCase {
         let ruling = makeRuling(categoryAr: "ترك الغنة", action: "ترك الغنة")
         // The action is never hidden in the explanation/card simply because it equals the category.
         XCTAssertTrue(QiraatClassification.shouldShowAction("ترك الغنة", categoryAr: "ترك الغنة"))
-        let actions = QiraatClassification.explanationActions(for: ruling)
-        XCTAssertEqual(actions, ["ترك الغنة"])
-        XCTAssertEqual(actions.count, 1)
-
         let groups = ruling.attributionByAction
         XCTAssertEqual(groups.count, 1)
         XCTAssertEqual(groups.first?.action, "ترك الغنة")

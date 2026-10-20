@@ -123,13 +123,3 @@ struct MemorizationView: View {
     }
 }
 
-private struct ComingSoonView: View {
-    let title: String
-    let identifier: String
-
-    var body: some View {
-        Text(verbatim: title)
-            .navigationTitle(title)
-            .accessibilityIdentifier(identifier)
-    }
-}

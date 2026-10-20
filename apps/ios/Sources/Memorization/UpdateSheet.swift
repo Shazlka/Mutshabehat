@@ -134,18 +134,9 @@ struct UpdateSheet: View {
                     .accessibilityIdentifier("memo-keyboard-done")
                 }
             }
-            .alert(confirmationTitle, isPresented: Binding(get: { pendingPlan != nil }, set: { if !$0 { pendingPlan = nil } })) {
-                Button(copy("تأكيد", "Confirm")) { if let pendingPlan { commit(pendingPlan) } }
-                Button(copy("إلغاء", "Cancel"), role: .cancel) { pendingPlan = nil }
-            } message: {
-                Text(verbatim: confirmationMessage)
-            }
-            .alert(copy("تعذر التحديث", "Could not update"),
-                   isPresented: Binding(get: { errorMessage != nil }, set: { if !$0 { errorMessage = nil } })) {
-                Button(copy("حسنًا", "OK"), role: .cancel) {}
-            } message: {
-                Text(verbatim: errorMessage ?? "")
-            }
+            .updateConfirmationAlert(title: confirmationTitle, language: language, pendingPlan: $pendingPlan,
+                                     message: confirmationMessage, commit: commit)
+            .updateFailureAlert(language: language, message: $errorMessage)
         }
         .environment(\.layoutDirection, language.layoutDirection)
         .presentationDetents([.large])

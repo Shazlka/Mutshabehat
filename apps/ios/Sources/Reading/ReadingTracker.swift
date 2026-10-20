@@ -4,6 +4,12 @@ import MushafCore
 import SwiftUI
 import UIKit
 
+/// Where the tracker tells the cloud that reading progress changed. The tracker never names the iCloud service itself.
+protocol ReadingSyncing: AnyObject {
+    @MainActor func scheduleDebouncedReadingPush()
+    @MainActor func pushReadingToICloud()
+}
+
 @MainActor
 final class ReadingTracker: ObservableObject {
     static let shared = ReadingTracker()
@@ -23,6 +29,7 @@ final class ReadingTracker: ObservableObject {
     @Published private(set) var bookmarksVersion: Int = 0
 
     private let db: QuranReadingDatabase
+    private let sync: any ReadingSyncing
     private var currentPage: Int?
     private var pageStartTime: Date?
     private var currentPageAyahs: [(surah: Int, ayah: Int, page: Int)] = []
@@ -34,8 +41,9 @@ final class ReadingTracker: ObservableObject {
     private var keepScreenAwake: Bool = true
     private var cachedTotalQuranAyahs: Int = 6236
 
-    init(database: QuranReadingDatabase = .shared) {
+    init(database: QuranReadingDatabase = .shared, sync: any ReadingSyncing = ICloudDatabaseSyncService.shared) {
         self.db = database
+        self.sync = sync
         self.activeKhatma = database.getOrCreateActiveKhatma()
         refreshStats()
         refreshBookmarksCache()
@@ -46,16 +54,6 @@ final class ReadingTracker: ObservableObject {
     func configureScreenAwake(enabled: Bool, scenePhase: ScenePhase) {
         self.keepScreenAwake = enabled
         self.isAppActive = (scenePhase == .active)
-        applyScreenAwakeState()
-    }
-
-    func setKeepScreenAwake(_ enabled: Bool) {
-        self.keepScreenAwake = enabled
-        applyScreenAwakeState()
-    }
-
-    func setScenePhase(_ phase: ScenePhase) {
-        self.isAppActive = (phase == .active)
         applyScreenAwakeState()
     }
 
@@ -211,7 +209,7 @@ final class ReadingTracker: ObservableObject {
             if totalAyahsRead >= cachedTotalQuranAyahs {
                 triggerKhatmaCompletion()
             } else {
-                ICloudDatabaseSyncService.shared.scheduleDebouncedReadingPush()
+                sync.scheduleDebouncedReadingPush()
             }
         }
     }
@@ -262,7 +260,7 @@ final class ReadingTracker: ObservableObject {
         if completed && totalAyahsRead >= cachedTotalQuranAyahs {
             triggerKhatmaCompletion()
         } else {
-            ICloudDatabaseSyncService.shared.pushReadingToICloud()
+            sync.pushReadingToICloud()
         }
     }
 
@@ -273,15 +271,8 @@ final class ReadingTracker: ObservableObject {
             // Start next Khatma at 0%
             activeKhatma = db.getOrCreateActiveKhatma()
             refreshStats()
-            ICloudDatabaseSyncService.shared.pushReadingToICloud()
+            sync.pushReadingToICloud()
         }
-    }
-
-    func startNewKhatmaManually() {
-        _ = db.completeActiveKhatma(khatmaId: activeKhatma.id)
-        activeKhatma = db.getOrCreateActiveKhatma()
-        refreshStats()
-        ICloudDatabaseSyncService.shared.pushReadingToICloud()
     }
 
     // MARK: - Manual Reading Session Recording
@@ -325,7 +316,7 @@ final class ReadingTracker: ObservableObject {
         if totalAyahsRead >= cachedTotalQuranAyahs {
             triggerKhatmaCompletion()
         } else {
-            ICloudDatabaseSyncService.shared.pushReadingToICloud()
+            sync.pushReadingToICloud()
         }
 
         return items.count
@@ -370,7 +361,7 @@ final class ReadingTracker: ObservableObject {
         if totalAyahsRead >= cachedTotalQuranAyahs {
             triggerKhatmaCompletion()
         } else {
-            ICloudDatabaseSyncService.shared.pushReadingToICloud()
+            sync.pushReadingToICloud()
         }
 
         return items.count
@@ -469,7 +460,7 @@ final class ReadingTracker: ObservableObject {
             db.addBookmark(type: .ayah, surah: surah, ayah: ayah, page: page, note: note)
         }
         refreshBookmarksCache()
-        ICloudDatabaseSyncService.shared.scheduleDebouncedReadingPush()
+        sync.scheduleDebouncedReadingPush()
     }
 
     func togglePageBookmark(page: Int, surah: Int, ayah: Int, note: String? = nil) {
@@ -479,13 +470,13 @@ final class ReadingTracker: ObservableObject {
             db.addBookmark(type: .page, surah: surah, ayah: ayah, page: page, note: note)
         }
         refreshBookmarksCache()
-        ICloudDatabaseSyncService.shared.scheduleDebouncedReadingPush()
+        sync.scheduleDebouncedReadingPush()
     }
 
     func removeBookmark(id: String) {
         db.removeBookmark(id: id)
         refreshBookmarksCache()
-        ICloudDatabaseSyncService.shared.scheduleDebouncedReadingPush()
+        sync.scheduleDebouncedReadingPush()
     }
 
     func allBookmarks(type: BookmarkType? = nil, query: String? = nil) -> [QuranBookmark] {

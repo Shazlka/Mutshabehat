@@ -230,7 +230,7 @@ struct ReadingStatisticsView: View {
             loadData()
             if ICloudDatabaseSyncService.shared.autoSyncEnabled {
                 Task {
-                    _ = try? await ICloudDatabaseSyncService.shared.syncFromICloud(library: library)
+                    await ICloudDatabaseSyncService.shared.automaticSync(library: library)
                     loadData()
                 }
             }

@@ -147,8 +147,4 @@ public enum QiraatClassification {
         return true
     }
 
-    /// Every distinct action text to show in the ruling's explanation section.
-    public static func explanationActions(for ruling: QiraatRuling) -> [String] {
-        distinctActions(for: ruling)
-    }
 }

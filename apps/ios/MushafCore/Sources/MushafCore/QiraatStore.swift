@@ -11,7 +11,15 @@ import Foundation
 public final class QiraatStore: @unchecked Sendable {
     public enum Failure: Error, Equatable { case missingCatalog, unreadableCatalog(String) }
     /// A live page that is not a valid Qiraat page of the requested number; nothing is replaced.
-    public enum LiveFailure: Error, Equatable { case invalidPage }
+    public enum LiveFailure: Error, Equatable {
+        case invalidPage
+        /// A page that is far smaller than the one held: the web route answers from its bundled fixtures when its
+        /// database is unreachable, and nothing in that answer says so. Pass `allowShrink` to accept it anyway.
+        case suspiciousShrink
+    }
+
+    /// Pages with fewer records than this are never protected against shrinking.
+    static let shrinkGuardMinimum = 10
 
     public let directory: URL
     public let overlayDirectory: URL?
@@ -75,10 +83,17 @@ public final class QiraatStore: @unchecked Sendable {
     /// (so callers redraw only then); throws `invalidPage` and changes nothing if the bytes are not a
     /// valid page `number`. The bytes are kept as received, so the next launch shows them too.
     @discardableResult
-    public func applyLivePage(_ data: Data, number: Int) throws -> Bool {
+    public func applyLivePage(_ data: Data, number: Int, allowShrink: Bool = false) throws -> Bool {
         guard (1...mushafPageCount).contains(number), let overlayDirectory,
               let incoming = Self.decodePage(data, number: number) else { throw LiveFailure.invalidPage }
-        if page(number) == incoming { return false }
+        let held = page(number)
+        if held == incoming { return false }
+        if !allowShrink, let held {
+            let before = held.variants.count + held.rulings.count
+            let after = incoming.variants.count + incoming.rulings.count
+            // More than a fifth of a sizeable page gone at once is a stale answer, not an editor's deletion.
+            if before >= Self.shrinkGuardMinimum, after * 5 < before * 4 { throw LiveFailure.suspiciousShrink }
+        }
         try FileManager.default.createDirectory(at: overlayDirectory, withIntermediateDirectories: true)
         try data.write(to: overlayDirectory.appendingPathComponent(String(format: "page-%03d.json", number)), options: .atomic)
         lock.withLock {

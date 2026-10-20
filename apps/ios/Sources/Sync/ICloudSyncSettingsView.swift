@@ -37,6 +37,12 @@ struct ICloudSyncSettingsView: View {
                 }
                 .padding(.vertical, 4)
 
+                if let error = syncService.lastError {
+                    Label(error, systemImage: "exclamationmark.triangle.fill")
+                        .font(.footnote)
+                        .foregroundStyle(.caution)
+                }
+
                 if let date = syncService.lastSyncDate {
                     HStack {
                         Text(copy("آخر مزامنة", "Last Synced"))

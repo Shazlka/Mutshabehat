@@ -89,6 +89,29 @@ import Testing
         #expect(store.page(7)?.variants.map(\.id) == ["v-live"])
     }
 
+    private func page7(variants count: Int) -> String {
+        let rows = (1...max(count, 1)).prefix(count).map {
+            #"{"id":"v\#($0)","surah":2,"ayah":51,"startToken":\#($0),"hafsText":"a","variantText":"b","verificationStatus":"REVIEWED","readingIds":["Q06-R01"]}"#
+        }
+        return #"{"pageNumber":7,"variants":[\#(rows.joined(separator: ","))],"rulings":[],"rules":[]}"#
+    }
+
+    /// The web route falls back to old fixtures when its database is down and says nothing; such an answer must not
+    /// replace a fuller page, but a small trim or a growing page is fine.
+    @Test func aMuchSmallerLivePageIsRejectedUnlessAllowed() throws {
+        let dir = try temporaryStoreDirectory(pages: [7: page7(variants: 20)])
+        let overlay = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: dir); try? FileManager.default.removeItem(at: overlay) }
+        let store = try QiraatStore(directory: dir, overlayDirectory: overlay)
+
+        #expect(throws: QiraatStore.LiveFailure.suspiciousShrink) { try store.applyLivePage(Data(page7(variants: 10).utf8), number: 7) }
+        #expect(store.page(7)?.variants.count == 20)
+        #expect(try store.applyLivePage(Data(page7(variants: 17).utf8), number: 7), "a trim of under a fifth is an edit")
+        #expect(try store.applyLivePage(Data(page7(variants: 30).utf8), number: 7), "growth is always accepted")
+        #expect(try store.applyLivePage(Data(page7(variants: 5).utf8), number: 7, allowShrink: true))
+        #expect(store.page(7)?.variants.count == 5)
+    }
+
     @Test func clearingTheOverlayGoesBackToTheSnapshot() throws {
         let dir = try temporaryStoreDirectory(pages: [7: #"{"pageNumber":7,"variants":[],"rulings":[],"rules":[]}"#])
         let overlay = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)

@@ -1,28 +1,6 @@
 import Foundation
 import SQLite3
 
-public struct AdvancedSearchResultItem: Identifiable, Sendable {
-    public let id: String
-    public let surah: Int
-    public let ayah: Int
-    public let page: Int
-    public let surahName: String
-    public let ayahText: String
-    public let matchedWordIDs: [String]
-    public let matchType: String
-
-    public init(id: String, surah: Int, ayah: Int, page: Int, surahName: String, ayahText: String, matchedWordIDs: [String], matchType: String = "advanced") {
-        self.id = id
-        self.surah = surah
-        self.ayah = ayah
-        self.page = page
-        self.surahName = surahName
-        self.ayahText = ayahText
-        self.matchedWordIDs = matchedWordIDs
-        self.matchType = matchType
-    }
-}
-
 public final class AdvancedQuranSearchEngine: @unchecked Sendable {
     private let dbHandle: OpaquePointer
 

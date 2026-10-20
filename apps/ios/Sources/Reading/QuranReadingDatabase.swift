@@ -1089,33 +1089,6 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         return count
     }
 
-    public func allCompletedKhatmas() -> [KhatmaRecord] {
-        lock.lock()
-        defer { lock.unlock() }
-        guard let db = db else { return [] }
-
-        let sql = "SELECT id, khatma_number, started_at, completed_at, status, percent_complete FROM khatmas WHERE status = 'completed' ORDER BY khatma_number DESC;"
-        var stmt: OpaquePointer?
-        var records: [KhatmaRecord] = []
-        if sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK {
-            while sqlite3_step(stmt) == SQLITE_ROW {
-                let id = String(cString: sqlite3_column_text(stmt, 0))
-                let num = Int(sqlite3_column_int64(stmt, 1))
-                let started = Self.isoFormatter.date(from: String(cString: sqlite3_column_text(stmt, 2))) ?? Date()
-                var completed: Date? = nil
-                if let compPtr = sqlite3_column_text(stmt, 3) {
-                    completed = Self.isoFormatter.date(from: String(cString: compPtr))
-                }
-                let status = String(cString: sqlite3_column_text(stmt, 4))
-                let pct = sqlite3_column_double(stmt, 5)
-
-                records.append(KhatmaRecord(id: id, khatmaNumber: num, startedAt: started, completedAt: completed, status: status, percentComplete: pct))
-            }
-        }
-        sqlite3_finalize(stmt)
-        return records
-    }
-
     // MARK: - Daily Reading & Streak Calculation
 
     @discardableResult

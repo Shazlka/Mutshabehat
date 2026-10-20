@@ -142,6 +142,21 @@ final class ICloudSyncInjectionTests: XCTestCase {
         XCTAssertNotNil(local.fetchPersonalGroup(id: remote.id), "a forced sync imports again")
     }
 
+    func testAutomaticSyncShowsAFailureInsteadOfDroppingIt() async throws {
+        let folder = try makeFolder()
+        try Data("not a database".utf8).write(to: folder.appendingPathComponent("mutshabehat.sqlite"))
+        let local = MutshabehatDatabase(url: base.appendingPathComponent("local-\(UUID().uuidString).sqlite"))
+        let service = try makeService(folder: folder, mutshabehat: local)
+        XCTAssertNil(service.lastError)
+
+        await service.automaticSync(library: nil)
+        XCTAssertNotNil(service.lastError, "a failed automatic sync is recorded for the sync settings")
+
+        try writeExport([group(title: "سليمة")], to: folder, updatedAt: "2000-01-01T00:00:00Z")
+        await service.automaticSync(library: nil)
+        XCTAssertNil(service.lastError, "the next good sync clears it")
+    }
+
     // MARK: - The live Qiraat pages survive an automatic sync
 
     func testAdoptingAnArchiveKeepsLivePagesUnlessAskedToDropThem() throws {

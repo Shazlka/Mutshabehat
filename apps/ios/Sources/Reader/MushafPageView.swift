@@ -8,11 +8,6 @@ extension UIColor {
             ? UIColor(red: 0.11, green: 0.105, blue: 0.09, alpha: 1)
             : UIColor(red: 1, green: 0.992, blue: 0.965, alpha: 1)
     }
-    static let mushafDesk = UIColor { traits in
-        traits.userInterfaceStyle == .dark
-            ? UIColor(red: 0.055, green: 0.05, blue: 0.04, alpha: 1)
-            : UIColor(red: 0.953, green: 0.929, blue: 0.867, alpha: 1)
-    }
     static let mushafInk = UIColor { traits in
         traits.userInterfaceStyle == .dark
             ? UIColor(red: 0.92, green: 0.91, blue: 0.86, alpha: 1)

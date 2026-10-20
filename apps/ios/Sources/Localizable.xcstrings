@@ -1,97 +1,148 @@
 {
   "sourceLanguage" : "ar",
   "strings" : {
+    "تعذر الوصول للمجلد المحدد" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعذر الوصول للمجلد المحدد"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cannot access the selected folder"
+          }
+        }
+      }
+    },
+    "المزامنة جارية بالفعل" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المزامنة جارية بالفعل"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A sync is already running"
+          }
+        }
+      }
+    },
+    "لم يتم العثور على مجلد Mushaf_Qiraat في iCloud Drive" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لم يتم العثور على مجلد Mushaf_Qiraat في iCloud Drive"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Mushaf_Qiraat folder was not found in iCloud Drive"
+          }
+        }
+      }
+    },
+    "ملف القراءة لم يكتمل تنزيله بعد" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ملف القراءة لم يكتمل تنزيله بعد"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The reading file has not finished downloading yet"
+          }
+        }
+      }
+    },
+    "ملف قراءة من جهاز آخر لم يكتمل تنزيله بعد" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ملف قراءة من جهاز آخر لم يكتمل تنزيله بعد"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A reading file from another device has not finished downloading yet"
+          }
+        }
+      }
+    },
+    "تعذر الاتصال بخادم الويب" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعذر الاتصال بخادم الويب"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not reach the web server"
+          }
+        }
+      }
+    },
+    "استجابة الخادم خالية من المجموعات" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استجابة الخادم خالية من المجموعات"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The server response has no groups"
+          }
+        }
+      }
+    },
+    "تعذر إنشاء ملف قاعدة البيانات المؤقت" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعذر إنشاء ملف قاعدة البيانات المؤقت"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not create the temporary database file"
+          }
+        }
+      }
+    },
     "" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "machine_translated",
             "value" : ""
-          }
-        }
-      }
-    },
-    "علامة ضبط التسهيل: دائرة مطموسة الوسط" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "علامة ضبط التسهيل: دائرة مطموسة الوسط"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tashil orthography sign: filled circle"
-          }
-        }
-      }
-    },
-    "علامة ضبط السكت: سين صغيرة فوق الحرف" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "علامة ضبط السكت: سين صغيرة فوق الحرف"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sakt orthography sign: small high seen"
-          }
-        }
-      }
-    },
-    "سـ" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "سـ"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "s"
-          }
-        }
-      }
-    },
-    "تسهيل" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تسهيل"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tashil"
-          }
-        }
-      }
-    },
-    "سكت" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "سكت"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sakt"
           }
         }
       }
@@ -703,6 +754,7 @@
       }
     },
     "qiraat.difference.ADDITION" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -719,6 +771,7 @@
       }
     },
     "qiraat.difference.HAMZ" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -735,6 +788,7 @@
       }
     },
     "qiraat.difference.HARAKAH" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -751,6 +805,7 @@
       }
     },
     "qiraat.difference.IDGHAM" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -767,6 +822,7 @@
       }
     },
     "qiraat.difference.IMALAH" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -783,6 +839,7 @@
       }
     },
     "qiraat.difference.LETTER" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -799,6 +856,7 @@
       }
     },
     "qiraat.difference.MADD" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -815,6 +873,7 @@
       }
     },
     "qiraat.difference.NAQL" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -831,6 +890,7 @@
       }
     },
     "qiraat.difference.OMISSION" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -847,6 +907,7 @@
       }
     },
     "qiraat.difference.ORTHOGRAPHY" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -863,6 +924,7 @@
       }
     },
     "qiraat.difference.OTHER" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -913,6 +975,7 @@
       }
     },
     "qiraat.difference.SAKT" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -929,6 +992,7 @@
       }
     },
     "qiraat.difference.SILAH" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -945,6 +1009,7 @@
       }
     },
     "qiraat.difference.WAQF" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -961,6 +1026,7 @@
       }
     },
     "qiraat.difference.WORD_CHANGE" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -977,6 +1043,7 @@
       }
     },
     "qiraat.difference.WORD_FORM" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -2414,6 +2481,23 @@
     "ترتيب المصحف" : {
 
     },
+    "تسهيل" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تسهيل"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tashil"
+          }
+        }
+      }
+    },
     "تشكيل" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -2978,6 +3062,23 @@
         }
       }
     },
+    "سـ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سـ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "s"
+          }
+        }
+      }
+    },
     "ساعات" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3013,6 +3114,23 @@
     },
     "سجل القراءة اليومي" : {
 
+    },
+    "سكت" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سكت"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sakt"
+          }
+        }
+      }
     },
     "سورة %@" : {
       "localizations" : {
@@ -3143,6 +3261,40 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Word marks"
+          }
+        }
+      }
+    },
+    "علامة ضبط التسهيل: دائرة مطموسة الوسط" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "علامة ضبط التسهيل: دائرة مطموسة الوسط"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tashil orthography sign: filled circle"
+          }
+        }
+      }
+    },
+    "علامة ضبط السكت: سين صغيرة فوق الحرف" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "علامة ضبط السكت: سين صغيرة فوق الحرف"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sakt orthography sign: small high seen"
           }
         }
       }

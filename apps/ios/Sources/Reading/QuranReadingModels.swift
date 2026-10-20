@@ -244,10 +244,6 @@ public struct ReadingStatsOverview: Sendable {
         return (Double(totalAyahsReadInCurrentKhatma) / Double(totalQuranAyahs)) * 100.0
     }
 
-    public var remainingAyahs: Int {
-        max(0, totalQuranAyahs - totalAyahsReadInCurrentKhatma)
-    }
-
     public var remainingPages: Int {
         max(0, 604 - totalPagesReadInCurrentKhatma)
     }

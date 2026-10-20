@@ -40,19 +40,9 @@ struct PageSheet: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button(copy("إغلاق", "Close")) { dismiss() } }
             }
-            .alert(copy("تأكيد التحديث", "Confirm update"),
-                   isPresented: Binding(get: { pendingPlan != nil }, set: { if !$0 { pendingPlan = nil } })) {
-                Button(copy("تأكيد", "Confirm")) { if let pendingPlan { commit(pendingPlan) } }
-                Button(copy("إلغاء", "Cancel"), role: .cancel) { pendingPlan = nil }
-            } message: {
-                Text(verbatim: confirmationMessage)
-            }
-            .alert(copy("تعذر التحديث", "Could not update"),
-                   isPresented: Binding(get: { errorMessage != nil }, set: { if !$0 { errorMessage = nil } })) {
-                Button(copy("حسنًا", "OK"), role: .cancel) {}
-            } message: {
-                Text(verbatim: errorMessage ?? "")
-            }
+            .updateConfirmationAlert(title: copy("تأكيد التحديث", "Confirm update"), language: language, pendingPlan: $pendingPlan,
+                                     message: confirmationMessage, commit: commit)
+            .updateFailureAlert(language: language, message: $errorMessage)
         }
         .environment(\.layoutDirection, language.layoutDirection)
         .presentationDetents([.large])

@@ -20,7 +20,7 @@ final class QiraatLiveSync: ObservableObject {
         let lastConfirmation: Date?
     }
 
-    nonisolated static let baseURL = URL(string: "https://mutshabehat-v2.vercel.app")!
+    nonisolated static let baseURL = AppEndpoints.webApp
     static let shared = QiraatLiveSync()
     /// The overlay lives in Application Support, next to the imported backup directory.
     static let overlayDirectory: URL = {

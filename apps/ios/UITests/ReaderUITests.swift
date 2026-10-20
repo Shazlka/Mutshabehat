@@ -390,7 +390,8 @@ final class ReaderUITests: XCTestCase {
         attachment.name = name
         attachment.lifetime = .keepAlways
         add(attachment)
-        let dir = "/Users/amrelshazly/.gemini/antigravity/brain/319516c9-6420-4424-a78d-77abeee99a05"
-        try? shot.pngRepresentation.write(to: URL(fileURLWithPath: dir).appendingPathComponent("\(name).png"))
+        if let dir = ProcessInfo.processInfo.environment["SCREENSHOT_DIR"] {
+            try? shot.pngRepresentation.write(to: URL(fileURLWithPath: dir).appendingPathComponent("\(name).png"))
+        }
     }
 }

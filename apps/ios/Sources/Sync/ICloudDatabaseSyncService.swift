@@ -1,5 +1,6 @@
 import Foundation
 import MushafCore
+import os
 import SQLite3
 import SwiftUI
 
@@ -75,15 +76,18 @@ struct SyncSummary: Sendable {
 // MARK: - Sync Service
 
 @Observable
-final class ICloudDatabaseSyncService: @unchecked Sendable {
+final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
     static let shared = ICloudDatabaseSyncService()
 
     var isSyncing: Bool = false
     var lastSyncDate: Date?
     var lastStatusMessage: String = ""
+    /// Why the last sync failed, or nil after a successful one. Shown in the sync settings.
+    var lastError: String?
     var isConnected: Bool = false
     var manifest: SyncManifest?
 
+    private static let log = Logger(subsystem: "com.shazlka.qiraat", category: "sync")
     private let defaults: UserDefaults
     /// The stores this service imports into and publishes from (the app's own ones unless a test gives others).
     private let stores: UserStores
@@ -159,10 +163,6 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
                 return simCloudDocs
             }
         }
-        let macFallback = URL(fileURLWithPath: "/Users/amrelshazly/Library/Mobile Documents/com~apple~CloudDocs/Mushaf_Qiraat")
-        if FileManager.default.fileExists(atPath: macFallback.path) {
-            return macFallback
-        }
         #endif
 
         return nil
@@ -170,7 +170,7 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
 
     func setCustomFolder(url: URL) throws {
         guard url.startAccessingSecurityScopedResource() else {
-            throw NSError(domain: "ICloudSync", code: 1, userInfo: [NSLocalizedDescriptionKey: "تعذر الوصول للمجلد المحدد"])
+            throw NSError(domain: "ICloudSync", code: 1, userInfo: [NSLocalizedDescriptionKey: appLocalized("تعذر الوصول للمجلد المحدد")])
         }
         defer { url.stopAccessingSecurityScopedResource() }
 
@@ -251,17 +251,30 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
         return result
     }
 
+    /// The sync that runs on its own (launch, foreground, statistics screen): a failure is logged and shown in the
+    /// sync settings instead of being dropped.
+    @MainActor
+    func automaticSync(library: MushafLibrary?) async {
+        do {
+            _ = try await syncFromICloud(library: library)
+        } catch {
+            Self.log.error("automatic sync failed: \(error.localizedDescription, privacy: .public)")
+            lastError = error.localizedDescription
+            NotificationCenter.default.post(name: .iCloudSyncStatusDidChange, object: nil)
+        }
+    }
+
     @MainActor
     func syncFromICloud(library: MushafLibrary? = nil, force: Bool = false) async throws -> SyncSummary {
         guard !isSyncing else {
-            throw NSError(domain: "ICloudSync", code: 2, userInfo: [NSLocalizedDescriptionKey: "المزامنة جارية بالفعل"])
+            throw NSError(domain: "ICloudSync", code: 2, userInfo: [NSLocalizedDescriptionKey: appLocalized("المزامنة جارية بالفعل")])
         }
 
         isSyncing = true
         defer { isSyncing = false }
 
         guard let folder = resolveSyncFolder() else {
-            throw NSError(domain: "ICloudSync", code: 3, userInfo: [NSLocalizedDescriptionKey: "لم يتم العثور على مجلد Mushaf_Qiraat في iCloud Drive"])
+            throw NSError(domain: "ICloudSync", code: 3, userInfo: [NSLocalizedDescriptionKey: appLocalized("لم يتم العثور على مجلد Mushaf_Qiraat في iCloud Drive")])
         }
 
         let includeQiraat = library != nil
@@ -292,12 +305,15 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
             _ = try syncReadingSnapshots(in: folder)
         } catch {
             lastStatusMessage = "تعذرت مزامنة القراءة: \(error.localizedDescription)"
+            lastError = error.localizedDescription
+            Self.log.error("reading snapshots failed: \(error.localizedDescription, privacy: .public)")
             NotificationCenter.default.post(name: .iCloudSyncStatusDidChange, object: nil)
             throw error
         }
 
         let now = Date()
         self.lastSyncDate = now
+        self.lastError = nil
         defaults.set(now, forKey: lastSyncKey)
 
         let groupCount = imported.manifest?.databases["mutshabehat"]?.groupsCount ?? stores.mutshabehat.fetchPersonalGroups().count
@@ -345,7 +361,7 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
             !fileManager.fileExists(atPath: legacy.path) {
             try? fileManager.startDownloadingUbiquitousItem(at: legacy)
             throw NSError(domain: "ICloudSync", code: 12,
-                          userInfo: [NSLocalizedDescriptionKey: "ملف القراءة لم يكتمل تنزيله بعد"])
+                          userInfo: [NSLocalizedDescriptionKey: appLocalized("ملف القراءة لم يكتمل تنزيله بعد")])
         }
         if fileManager.fileExists(atPath: legacy.path) { sources.append(legacy) }
         else if fileManager.fileExists(atPath: backup.path) { sources.append(backup) }
@@ -354,7 +370,7 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
             let filename = String(placeholder.lastPathComponent.dropFirst().dropLast(".icloud".count))
             try? fileManager.startDownloadingUbiquitousItem(at: devices.appendingPathComponent(filename))
             throw NSError(domain: "ICloudSync", code: 12,
-                          userInfo: [NSLocalizedDescriptionKey: "ملف قراءة من جهاز آخر لم يكتمل تنزيله بعد"])
+                          userInfo: [NSLocalizedDescriptionKey: appLocalized("ملف قراءة من جهاز آخر لم يكتمل تنزيله بعد")])
         }
         sources += deviceContents.filter { $0.pathExtension == "sqlite" }
             .sorted { $0.lastPathComponent < $1.lastPathComponent }
@@ -391,6 +407,8 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
                 try self.syncReadingSnapshots(in: folder)
             } catch {
                 self.lastStatusMessage = error.localizedDescription
+                self.lastError = error.localizedDescription
+                Self.log.error("reading push failed: \(error.localizedDescription, privacy: .public)")
                 NotificationCenter.default.post(name: .iCloudSyncStatusDidChange, object: nil)
             }
         }
@@ -401,24 +419,24 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
     @MainActor
     func syncDirectlyFromWeb(library: MushafLibrary? = nil) async throws -> SyncSummary {
         guard !isSyncing else {
-            throw NSError(domain: "ICloudSync", code: 5, userInfo: [NSLocalizedDescriptionKey: "المزامنة جارية بالفعل"])
+            throw NSError(domain: "ICloudSync", code: 5, userInfo: [NSLocalizedDescriptionKey: appLocalized("المزامنة جارية بالفعل")])
         }
 
         isSyncing = true
         defer { isSyncing = false }
 
-        let exportURL = URL(string: "https://mutshabehat-v2.vercel.app/api/groups/export?format=json")!
+        let exportURL = AppEndpoints.groupsExport
         var request = URLRequest(url: exportURL, timeoutInterval: 30)
         request.setValue("Mutshabehat-iOS-Client", forHTTPHeaderField: "User-Agent")
 
         let (data, response) = try await URLSession.shared.data(for: request)
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-            throw NSError(domain: "ICloudSync", code: 6, userInfo: [NSLocalizedDescriptionKey: "تعذر الاتصال بخادم الويب"])
+            throw NSError(domain: "ICloudSync", code: 6, userInfo: [NSLocalizedDescriptionKey: appLocalized("تعذر الاتصال بخادم الويب")])
         }
 
         let decoded = try JSONDecoder().decode(WebExportPayload.self, from: data)
         guard !decoded.groups.isEmpty else {
-            throw NSError(domain: "ICloudSync", code: 7, userInfo: [NSLocalizedDescriptionKey: "استجابة الخادم خالية من المجموعات"])
+            throw NSError(domain: "ICloudSync", code: 7, userInfo: [NSLocalizedDescriptionKey: appLocalized("استجابة الخادم خالية من المجموعات")])
         }
 
         // Build temporary SQLite database from export
@@ -471,7 +489,7 @@ final class ICloudDatabaseSyncService: @unchecked Sendable {
     private func compileMutshabehatSqlite(payload: WebExportPayload, outputURL: URL) throws {
         var db: OpaquePointer?
         guard sqlite3_open(outputURL.path, &db) == SQLITE_OK, let db else {
-            throw NSError(domain: "ICloudSync", code: 11, userInfo: [NSLocalizedDescriptionKey: "تعذر إنشاء ملف قاعدة البيانات المؤقت"])
+            throw NSError(domain: "ICloudSync", code: 11, userInfo: [NSLocalizedDescriptionKey: appLocalized("تعذر إنشاء ملف قاعدة البيانات المؤقت")])
         }
         defer { sqlite3_close(db) }
 

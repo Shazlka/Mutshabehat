@@ -91,12 +91,7 @@ struct AyahSheet: View {
             .navigationTitle(copy("خيارات الآية", "Ayah options"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { ToolbarItem(placement: .cancellationAction) { Button(copy("إغلاق", "Close")) { dismiss() } } }
-            .alert(copy("تعذر التحديث", "Could not update"),
-                   isPresented: Binding(get: { errorMessage != nil }, set: { if !$0 { errorMessage = nil } })) {
-                Button(copy("حسنًا", "OK"), role: .cancel) {}
-            } message: {
-                Text(verbatim: errorMessage ?? "")
-            }
+            .updateFailureAlert(language: language, message: $errorMessage)
         }
         .environment(\.layoutDirection, language.layoutDirection)
         .presentationDetents([.large])
