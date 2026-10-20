@@ -305,21 +305,8 @@ final class ReadingTracker: ObservableObject {
             }
         }
 
-        guard !items.isEmpty else { return 0 }
-
-        let newAyahsCount = db.recordReadAyahs(khatmaId: activeKhatma.id, items: items, at: sessionDate)
-        let distinctPages = Set(items.map(\.page)).count
-        let sessionSeconds = max(60, durationMinutes * 60)
-        db.recordDailyReadingActivity(ayahsCount: max(1, newAyahsCount > 0 ? newAyahsCount : items.count), pagesCount: distinctPages, seconds: sessionSeconds, on: sessionDate)
-        refreshStats()
-
-        if totalAyahsRead >= cachedTotalQuranAyahs {
-            triggerKhatmaCompletion()
-        } else {
-            sync.pushReadingToICloud()
-        }
-
-        return items.count
+        return commitManualSession(items: items, sessionDate: sessionDate, durationMinutes: durationMinutes,
+                                   pageCount: Set(items.map(\.page)).count)
     }
 
     @discardableResult
@@ -350,12 +337,20 @@ final class ReadingTracker: ObservableObject {
             }
         }
 
+        return commitManualSession(items: items, sessionDate: sessionDate, durationMinutes: durationMinutes,
+                                   pageCount: p2 - p1 + 1)
+    }
+
+    /// Records a logged session: the ayahs as read on its date, the day's activity, then completion or a cloud push.
+    /// Returns how many ayahs the session covered (0 when it covered none).
+    private func commitManualSession(items: [(surah: Int, ayah: Int, page: Int)], sessionDate: Date,
+                                     durationMinutes: Int, pageCount: Int) -> Int {
         guard !items.isEmpty else { return 0 }
 
         let newAyahsCount = db.recordReadAyahs(khatmaId: activeKhatma.id, items: items, at: sessionDate)
-        let distinctPages = p2 - p1 + 1
         let sessionSeconds = max(60, durationMinutes * 60)
-        db.recordDailyReadingActivity(ayahsCount: max(1, newAyahsCount > 0 ? newAyahsCount : items.count), pagesCount: distinctPages, seconds: sessionSeconds, on: sessionDate)
+        db.recordDailyReadingActivity(ayahsCount: max(1, newAyahsCount > 0 ? newAyahsCount : items.count),
+                                      pagesCount: pageCount, seconds: sessionSeconds, on: sessionDate)
         refreshStats()
 
         if totalAyahsRead >= cachedTotalQuranAyahs {

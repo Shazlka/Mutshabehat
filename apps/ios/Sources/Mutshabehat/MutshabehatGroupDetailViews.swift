@@ -72,30 +72,7 @@ struct PersonalGroupDetailView: View {
                         .foregroundColor(.primary)
 
                     ForEach(group.verses) { verse in
-                        VStack(alignment: .leading, spacing: 10) {
-                            HStack {
-                                Label("\(verse.surah) - آية \(ArabicDigits.string(verse.ayah))", systemImage: "book.fill")
-                                    .font(.subheadline.bold())
-                                    .foregroundColor(MutshabehatMagazineTheme.color(for: group.id, customColor: group.color))
-
-                                Spacer()
-
-                                if let label = verse.label, !label.isEmpty {
-                                    Text(label)
-                                        .font(.caption2.bold())
-                                        .padding(.horizontal, 8)
-                                        .padding(.vertical, 3)
-                                        .background(Color(uiColor: .tertiarySystemFill), in: Capsule())
-                                }
-                            }
-
-                            Divider()
-
-                            ArabicDiffView(parts: verse.parts)
-                                .padding(.vertical, 2)
-                        }
-                        .padding(16)
-                        .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 16))
+                        VerseDetailCard(surah: verse.surah, ayah: verse.ayah, label: verse.label, parts: verse.parts, color: MutshabehatMagazineTheme.color(for: group.id, customColor: group.color))
                     }
                 }
             }
@@ -185,30 +162,7 @@ struct AutomatedGroupDetailView: View {
                         .foregroundColor(.primary)
 
                     ForEach(Array(group.verses.enumerated()), id: \.offset) { _, verse in
-                        VStack(alignment: .leading, spacing: 10) {
-                            HStack {
-                                Label("\(verse.surah) - آية \(ArabicDigits.string(verse.ayah))", systemImage: "book.fill")
-                                    .font(.subheadline.bold())
-                                    .foregroundColor(MutshabehatMagazineTheme.color(for: String(group.id), customColor: group.color))
-
-                                Spacer()
-
-                                if let label = verse.label, !label.isEmpty {
-                                    Text(label)
-                                        .font(.caption2.bold())
-                                        .padding(.horizontal, 8)
-                                        .padding(.vertical, 3)
-                                        .background(Color(uiColor: .tertiarySystemFill), in: Capsule())
-                                }
-                            }
-
-                            Divider()
-
-                            ArabicDiffView(parts: verse.parts)
-                                .padding(.vertical, 2)
-                        }
-                        .padding(16)
-                        .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 16))
+                        VerseDetailCard(surah: verse.surah, ayah: verse.ayah, label: verse.label, parts: verse.parts, color: MutshabehatMagazineTheme.color(for: String(group.id), customColor: group.color))
                     }
                 }
             }
@@ -219,4 +173,40 @@ struct AutomatedGroupDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 
+}
+
+/// One verse of a group: its place, optional label and the colour-coded text.
+private struct VerseDetailCard: View {
+    let surah: String
+    let ayah: Int
+    let label: String?
+    let parts: [PersonalPart]
+    let color: Color
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack {
+                Label("\(surah) - آية \(ArabicDigits.string(ayah))", systemImage: "book.fill")
+                    .font(.subheadline.bold())
+                    .foregroundColor(color)
+
+                Spacer()
+
+                if let label, !label.isEmpty {
+                    Text(label)
+                        .font(.caption2.bold())
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 3)
+                        .background(Color(uiColor: .tertiarySystemFill), in: Capsule())
+                }
+            }
+
+            Divider()
+
+            ArabicDiffView(parts: parts)
+                .padding(.vertical, 2)
+        }
+        .padding(16)
+        .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 16))
+    }
 }

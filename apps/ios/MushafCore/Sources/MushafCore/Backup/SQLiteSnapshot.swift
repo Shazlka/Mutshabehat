@@ -14,6 +14,14 @@ public enum SQLiteSnapshotError: LocalizedError, Equatable {
 }
 
 public enum SQLiteSnapshot {
+    /// The bytes of a consistent snapshot of `source` (see `copy`), staged in a temporary file that is removed again.
+    public static func data(of source: URL) throws -> Data {
+        let staged = FileManager.default.temporaryDirectory.appendingPathComponent("snapshot-\(UUID().uuidString).sqlite")
+        defer { try? FileManager.default.removeItem(at: staged) }
+        try copy(from: source, to: staged)
+        return try Data(contentsOf: staged)
+    }
+
     /// Copies a database with SQLite's online backup API through a separate read connection, so the copy
     /// is consistent even while the app holds the source open in WAL mode. The copy is a single file
     /// (rollback-journal mode, no -wal/-shm) written beside the destination and then moved into place.

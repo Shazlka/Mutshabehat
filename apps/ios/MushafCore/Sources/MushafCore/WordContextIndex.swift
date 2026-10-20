@@ -121,6 +121,27 @@ public final class WordContextIndex: @unchecked Sendable {
         }
     }
 
+    /// Keeps `result` unless the page was invalidated while it was being computed. Call with `lock` held.
+    private func store(_ result: PageWordContext, for key: Key, page: Int, hasWords: Bool) {
+        guard hasWords, key.revision == revision(for: page) else { return }
+        cache[key] = result
+        touch(key)
+        while order.count > capacity {
+            let oldest = order.removeFirst()
+            cache[oldest] = nil
+        }
+    }
+
+    private func logLoad(page: Int, cached: Bool, result: PageWordContext?) {
+        #if DEBUG
+        if let result, !cached {
+            print("[WordContextIndex] Page \(page) loaded from \(result.source.rawValue) in \(String(format: "%.2f", result.durationMs))ms (\(result.queryCount) queries)")
+        } else {
+            print("[WordContextIndex] Page \(page) loaded from cache in 0.00ms (0 queries)")
+        }
+        #endif
+    }
+
     /// Synchronously computes or returns the cached page context in a single pass.
     public func resolveSync(
         page: Int,
@@ -131,9 +152,7 @@ public final class WordContextIndex: @unchecked Sendable {
     ) -> PageWordContext {
         let key = lock.withLock { Key(store: qiraatStore, page: page, filter: filter, revision: revision(for: page)) }
         if let cached = cachedContext(store: qiraatStore, page: page, filter: filter) {
-            #if DEBUG
-            print("[WordContextIndex] Page \(page) loaded from cache in 0.00ms (0 queries)")
-            #endif
+            logLoad(page: page, cached: true, result: nil)
             return cached
         }
 
@@ -146,19 +165,10 @@ public final class WordContextIndex: @unchecked Sendable {
         )
 
         lock.withLock {
-            if !pageWords.isEmpty, key.revision == revision(for: page) {
-                cache[key] = result
-                touch(key)
-                while order.count > capacity {
-                    let oldest = order.removeFirst()
-                    cache[oldest] = nil
-                }
-            }
+            store(result, for: key, page: page, hasWords: !pageWords.isEmpty)
         }
 
-        #if DEBUG
-        print("[WordContextIndex] Page \(page) loaded from \(result.source.rawValue) in \(String(format: "%.2f", result.durationMs))ms (\(result.queryCount) queries)")
-        #endif
+        logLoad(page: page, cached: false, result: result)
 
         return result
     }
@@ -184,9 +194,7 @@ public final class WordContextIndex: @unchecked Sendable {
         }
 
         if let cached = cachedContext(store: qiraatStore, page: page, filter: filter) {
-            #if DEBUG
-            print("[WordContextIndex] Page \(page) loaded from cache in 0.00ms (0 queries)")
-            #endif
+            logLoad(page: page, cached: true, result: nil)
             return cached
         }
 
@@ -215,19 +223,10 @@ public final class WordContextIndex: @unchecked Sendable {
 
         lock.withLock {
             inFlight[key] = nil
-            if !pageWords.isEmpty, key.revision == revision(for: page) {
-                cache[key] = result
-                touch(key)
-                while order.count > capacity {
-                    let oldest = order.removeFirst()
-                    cache[oldest] = nil
-                }
-            }
+            store(result, for: key, page: page, hasWords: !pageWords.isEmpty)
         }
 
-        #if DEBUG
-        print("[WordContextIndex] Page \(page) loaded from \(result.source.rawValue) in \(String(format: "%.2f", result.durationMs))ms (\(result.queryCount) queries)")
-        #endif
+        logLoad(page: page, cached: false, result: result)
 
         return result
     }

@@ -83,11 +83,8 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         lock.lock()
         defer { lock.unlock() }
         guard db != nil else { throw TransferError.databaseUnavailable }
-        let snapshot = FileManager.default.temporaryDirectory.appendingPathComponent("reading-export-\(UUID().uuidString).sqlite")
-        defer { try? FileManager.default.removeItem(at: snapshot) }
         do {
-            try SQLiteSnapshot.copy(from: databaseURL, to: snapshot)
-            return try Data(contentsOf: snapshot)
+            return try SQLiteSnapshot.data(of: databaseURL)
         } catch {
             throw TransferError.databaseUnavailable
         }

@@ -302,7 +302,7 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
         // Each device owns one snapshot. Merge all visible snapshots before publishing ours.
         // The legacy root file remains an input for installations using the earlier layout.
         do {
-            _ = try syncReadingSnapshots(in: folder)
+            _ = try await syncReadingSnapshotsInBackground(in: folder)
         } catch {
             lastStatusMessage = "تعذرت مزامنة القراءة: \(error.localizedDescription)"
             lastError = error.localizedDescription
@@ -346,11 +346,15 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
         return created
     }
 
-    @MainActor
-    @discardableResult
-    func syncReadingSnapshots(in folder: URL, database requestedDatabase: QuranReadingDatabase? = nil,
-                              deviceID: String? = nil) throws -> Int {
-        let database = requestedDatabase ?? stores.reading
+    /// Serializes the file work of two overlapping reading syncs (a push and a sync from the settings screen).
+    private let readingSyncLock = NSLock()
+
+    /// Reads every device's snapshot in `folder`, merges them into `database` and writes this device's own snapshot.
+    /// All file and database work; safe off the main thread. The caller refreshes the UI.
+    private nonisolated func mergeReadingSnapshots(in folder: URL, into database: QuranReadingDatabase,
+                                                   deviceID: String?) throws -> Int {
+        readingSyncLock.lock()
+        defer { readingSyncLock.unlock() }
         let fileManager = FileManager.default
         let devices = folder.appendingPathComponent("ReadingDevices", isDirectory: true)
         try fileManager.createDirectory(at: devices, withIntermediateDirectories: true)
@@ -381,10 +385,38 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
         }
         let own = devices.appendingPathComponent("\(deviceID ?? readingDeviceID).sqlite")
         try database.exportDatabase().write(to: own, options: .atomic)
+        return merged
+    }
+
+    @MainActor
+    private func finishReadingSync(database: QuranReadingDatabase) {
         if database === stores.reading {
             stores.tracker().reloadFromDatabase()
             NotificationCenter.default.post(name: .readingDatabaseDidUpdate, object: nil)
         }
+    }
+
+    /// Merges and publishes the reading snapshots off the main thread, then refreshes the tracker on it.
+    @MainActor
+    @discardableResult
+    func syncReadingSnapshotsInBackground(in folder: URL, database requestedDatabase: QuranReadingDatabase? = nil,
+                                          deviceID: String? = nil) async throws -> Int {
+        let database = requestedDatabase ?? stores.reading
+        let merged = try await Task.detached(priority: .utility) { [self] in
+            try mergeReadingSnapshots(in: folder, into: database, deviceID: deviceID)
+        }.value
+        finishReadingSync(database: database)
+        return merged
+    }
+
+    /// The same on the calling (main) thread, for tests that need it to finish before they continue.
+    @MainActor
+    @discardableResult
+    func syncReadingSnapshots(in folder: URL, database requestedDatabase: QuranReadingDatabase? = nil,
+                              deviceID: String? = nil) throws -> Int {
+        let database = requestedDatabase ?? stores.reading
+        let merged = try mergeReadingSnapshots(in: folder, into: database, deviceID: deviceID)
+        finishReadingSync(database: database)
         return merged
     }
 
@@ -404,7 +436,7 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
 
         Task { @MainActor in
             do {
-                try self.syncReadingSnapshots(in: folder)
+                try await self.syncReadingSnapshotsInBackground(in: folder)
             } catch {
                 self.lastStatusMessage = error.localizedDescription
                 self.lastError = error.localizedDescription
@@ -454,8 +486,13 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
         if let folder = resolveSyncFolder() {
             let destDB = folder.appendingPathComponent("mutshabehat.sqlite")
             let destJSON = folder.appendingPathComponent("mutshabehat.json")
-            try? sqliteData.write(to: destDB, options: .atomic)
-            try? data.write(to: destJSON, options: .atomic)
+            // Best effort: the local merge above already succeeded, but a failed copy is worth a log line.
+            do {
+                try sqliteData.write(to: destDB, options: .atomic)
+                try data.write(to: destJSON, options: .atomic)
+            } catch {
+                Self.log.error("could not copy the web export to the iCloud folder: \(error.localizedDescription, privacy: .public)")
+            }
         }
 
         let now = Date()

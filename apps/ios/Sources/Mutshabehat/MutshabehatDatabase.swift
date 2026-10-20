@@ -200,12 +200,19 @@ public final class MutshabehatDatabase: @unchecked Sendable {
         }
     }
 
-    public func toggleFavorite(groupId: String) {
+    /// False when the change could not be saved.
+    @discardableResult
+    public func toggleFavorite(groupId: String) -> Bool {
         lock.lock()
         defer { lock.unlock() }
-        guard let db = db else { return }
-        try? run(db, "UPDATE groups SET favorite = CASE WHEN favorite = 1 THEN 0 ELSE 1 END WHERE id = ?") { stmt in
-            SQLiteBind.text(stmt, 1, groupId)
+        guard let db = db else { return false }
+        do {
+            try run(db, "UPDATE groups SET favorite = CASE WHEN favorite = 1 THEN 0 ELSE 1 END WHERE id = ?") { stmt in
+                SQLiteBind.text(stmt, 1, groupId)
+            }
+            return true
+        } catch {
+            return false
         }
     }
 
@@ -507,12 +514,8 @@ public final class MutshabehatDatabase: @unchecked Sendable {
         lock.lock()
         defer { lock.unlock() }
         guard db != nil else { throw DatabaseTransferError.databaseUnavailable }
-        let snapshot = FileManager.default.temporaryDirectory
-            .appendingPathComponent("mutshabehat-export-\(UUID().uuidString).sqlite")
-        defer { try? FileManager.default.removeItem(at: snapshot) }
         do {
-            try SQLiteSnapshot.copy(from: databaseURL, to: snapshot)
-            return try Data(contentsOf: snapshot)
+            return try SQLiteSnapshot.data(of: databaseURL)
         } catch {
             throw DatabaseTransferError.databaseUnavailable
         }
