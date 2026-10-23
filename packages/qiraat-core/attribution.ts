@@ -1,5 +1,5 @@
 // Part 10/11: color/marker logic for "who reads this variant" — never "what kind of difference".
-import type { NarratorId, QiraatRulingAttribution, ReaderId, ReadingId } from './types'
+import type { NarratorId, ReaderId, ReadingId } from './types'
 import { readerColor, narratorColor } from './colors'
 import { getNarrator } from './narrators'
 import { getReading, getReadingOrNull } from './readings'
@@ -87,26 +87,6 @@ export type AuthorityPill = {
  * rolls them up into the Imam's name (e.g. "الإمام حمزة").
  * If only one narrator of a reader is present, displays that narrator alone (e.g. "الراوي ورش").
  */
-/**
- * The per-reader rows that apply to the readings a card is showing (a reader filter or one riwayah).
- * A row names a narrator (Q0N-R0M) or, when the source named the whole reader, a reader (Q0N); a
- * reader row applies when any shown reading belongs to that reader.
- */
-export function attributionForReadings(
-  attribution: readonly QiraatRulingAttribution[],
-  readingIds: readonly ReadingId[],
-): QiraatRulingAttribution[] {
-  const shown = new Set<string>(readingIds)
-  const shownReaders = new Set<string>()
-  for (const id of readingIds) {
-    const readerId = getReadingOrNull(id)?.readerId
-    if (readerId) shownReaders.add(readerId)
-  }
-  return attribution.filter((a) =>
-    a.authorityId.includes('-') ? shown.has(a.authorityId) : shownReaders.has(a.authorityId),
-  )
-}
-
 export function rollupAuthorityPills(authorityIds: readonly string[]): AuthorityPill[] {
   const normalizedIds = Array.from(new Set(authorityIds.filter(Boolean)))
   const readerMap = new Map<ReaderId, Set<NarratorId>>()

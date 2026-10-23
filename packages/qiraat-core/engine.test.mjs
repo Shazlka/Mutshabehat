@@ -6,7 +6,7 @@ import { QIRAAT_NARRATORS, narratorsOfReader } from './narrators.ts'
 import { QIRAAT_READINGS, getReading, getReadingOrNull } from './readings.ts'
 import { QIRAAT_MULTI_READER_COLOR, READER_COLOR, NARRATOR_COLOR, readerColor, narratorColor, readerCssVar, narratorCssVar } from './colors.ts'
 import { adaptColorForDark } from '../../src/app/mushaf-1441/_components/mushafTheme.ts'
-import { attributionForReadings, computeAttribution, gradientCss, readingsNotIn, rollupAuthorityPills } from './attribution.ts'
+import { computeAttribution, gradientCss, readingsNotIn, rollupAuthorityPills } from './attribution.ts'
 import { resolveTokenForReading, renderToken, differsFromHafs, tokenKey, ayahKeyOf, variantsForToken } from './engine.ts'
 import { BASE_READING } from './types.ts'
 import { GROUP_SYMBOLS, AUTHORITY_SYMBOLS, readingsOfGroupSymbol, resolveAuthoritySymbol } from './symbols.ts'
@@ -202,27 +202,6 @@ test('rollupAuthorityPills: rolls up both narrators to Imam, preserves standalon
   const explicitReader = rollupAuthorityPills(['Q07'])
   assert.equal(explicitReader.length, 1)
   assert.equal(explicitReader[0].name, 'الإمام الكسائي')
-})
-
-test('attributionForReadings: a card keeps each reader\'s own detail for the readings it shows', () => {
-  // ابن عامر at 2:124 (page 19): Hisham and Ibn Dhakwan read differently; the card must keep
-  // Ibn Dhakwan's own row (الألف والياء, wajh 2) instead of dropping it behind the reader pill.
-  const rows = [
-    { authorityId: 'Q04-R01', action: 'بالألف', wajhOrder: 1 },
-    { authorityId: 'Q04-R02', action: 'بالألف والياء', wajhOrder: 2, wajhNote: 'بخلف عنه' },
-    { authorityId: 'Q07', action: 'بالياء' },
-  ]
-  const both = attributionForReadings(rows, ['Q04-R01', 'Q04-R02'])
-  assert.deepEqual(both.map((r) => r.authorityId), ['Q04-R01', 'Q04-R02'])
-
-  const ibnDhakwanOnly = attributionForReadings(rows, ['Q04-R02'])
-  assert.deepEqual(ibnDhakwanOnly.map((r) => r.action), ['بالألف والياء'])
-  assert.equal(ibnDhakwanOnly[0].wajhOrder, 2)
-  assert.equal(ibnDhakwanOnly[0].wajhNote, 'بخلف عنه')
-
-  // A reader-level row applies when any shown reading belongs to that reader.
-  assert.deepEqual(attributionForReadings(rows, ['Q07-R01']).map((r) => r.authorityId), ['Q07'])
-  assert.deepEqual(attributionForReadings(rows, ['Q06-R01']), [])
 })
 
 test('attribution: multiple readers (Case C) builds one segmented marker, one slice per reader', () => {

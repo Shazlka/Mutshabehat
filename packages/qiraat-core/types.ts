@@ -172,11 +172,6 @@ export interface QiraatVariant {
    * alongside — or instead of — a text diff; never encoded as a fake spelling change.
    */
   performanceNote?: string
-  /**
-   * Per-reader detail from the database, verbatim: how each authority reads this word (الأداء),
-   * its wajh number and the reviewer's «الخلاف» note. Shown under the readers in the word's card.
-   */
-  attribution?: QiraatRulingAttribution[]
 }
 
 /**
