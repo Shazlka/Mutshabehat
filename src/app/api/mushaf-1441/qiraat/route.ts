@@ -129,6 +129,17 @@ interface ExportPagePayload {
   pageNotes?: Array<{ type: string; text: string }>
 }
 
+/** Per-reader rows exactly as the database stored them; a farsh row can carry no action text. */
+function mapExportAttribution(entry: ExportEntry, fallbackAction: string): QiraatRulingAttribution[] {
+  return (entry.attribution ?? []).map((a) => ({
+    authorityId: a.authorityId,
+    action: a.action ?? fallbackAction,
+    condition: a.condition ?? undefined,
+    wajhOrder: a.wajhOrder ?? undefined,
+    wajhNote: a.wajhNote?.trim() || undefined,
+  }))
+}
+
 function mapExportVariant(entry: ExportEntry): QiraatVariant {
   const isMulti =
     entry.locus.endWord > entry.locus.startWord ||
@@ -163,6 +174,7 @@ function mapExportVariant(entry: ExportEntry): QiraatVariant {
     createdAt: '2026-09-17T12:00:00.000Z',
     updatedAt: '2026-09-17T12:00:00.000Z',
     readingIds: (entry.readingIds ?? []) as ReadingId[],
+    attribution: mapExportAttribution(entry, ''),
     locusId: entry.locus.id,
     locusType: isPerf
       ? 'performance_variant'
@@ -178,15 +190,7 @@ function mapExportRuling(entry: ExportEntry, pageNumber: number): QiraatRuling {
   const color = CATEGORY_COLORS[category] ?? '#64748B'
   const wordAnchored = entry.ruling?.wordAnchored ?? true
 
-  const attribution: QiraatRulingAttribution[] = (entry.attribution ?? []).map(
-    (a) => ({
-      authorityId: a.authorityId,
-      action: a.action ?? categoryAr,
-      condition: a.condition ?? undefined,
-      wajhOrder: a.wajhOrder ?? undefined,
-      wajhNote: a.wajhNote?.trim() || undefined,
-    })
-  )
+  const attribution = mapExportAttribution(entry, categoryAr)
 
   const alternatesSet = new Set(entry.alternates ?? [])
   const readings: QiraatRulingReading[] = (entry.readingIds ?? []).map(

@@ -38,6 +38,13 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-10-23 — Mushaf card: each reader's performance details now show under the word's variant (e.g. ابن ذكوان at 2:124)
+- **Owner report:** on page 19, 2:124 and 2:125 «إبراهيم» read by ابن عامر as «إبراهام». The database records that ابن ذكوان reads it بالألف والياء (two faces, wajh 2 with «بخلف عنه»), but the word card showed only «إبراهام» and the reader pills, with no detail for ابن ذكوان.
+- **Cause:** the export already sends each entry's per-reader rows (action, wajh, الخلاف) for farsh variants too, but `mapExportVariant` kept only the reader IDs, and the variant blocks in the card (selection card and hover peek) rendered only reader pills. The per-reader detail was rendered for usul rulings only.
+- **Fix:** `QiraatVariant.attribution` carries the rows verbatim (`route.ts`, shared `mapExportAttribution`). The card groups a variant's rows by action, with each group's reader pills and its performance details (الأداء، وجه N، الخلاف), reusing the ruling renderer (`renderVariantReaders`, `Mushaf1441Viewer.tsx`). `attributionForReadings` (`attribution.ts`) keeps only the rows for the readings the card shows, so a reader filter or riwayah still narrows the details. Variants without per-reader rows keep the plain pills.
+- **Verification:** `npm run test:qiraat` (51/51 including the new `attributionForReadings` test), `tsc --noEmit`, eslint on touched files (0 errors). Browser check on the local dev server with the qiraat API stubbed for page 19 (the real page-19 fixture plus the reported rows for 2:124/2:125): the card shows «بالألف» for the first group, then ابن ذكوان with «وجه 2 · بالياء» and «الخلاف: بخلف عنه»; 0 failing assertions. The live database was not queried from this environment. **DB migration:** none; the export function already returned these fields.
+- **Files:** `packages/qiraat-core/types.ts`, `packages/qiraat-core/attribution.ts`, `packages/qiraat-core/engine.test.mjs`, `src/app/api/mushaf-1441/qiraat/route.ts`, `src/app/mushaf-1441/_components/Mushaf1441Viewer.tsx`.
+
 ## 2026-10-05 — Review editor: «اعتماد» now saves unsaved edits first; unsaved edits are flagged and guarded
 - **Owner report:** variants added from nquran and approved were gone after a refresh.
 - **Checked on the live system:** the Vercel runtime logs for the last 24 h show no 4xx/5xx on `/api/mushaf-1441/qiraat-review`; the database (via the site's own API) holds every saved face of page 8, all 58 reviewed, with their edit history; the Funnel to the Colima database answers in 0.2 s. So nothing that reached the server was lost.
