@@ -1,142 +1,6 @@
 {
   "sourceLanguage" : "ar",
   "strings" : {
-    "تعذر الوصول للمجلد المحدد" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تعذر الوصول للمجلد المحدد"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cannot access the selected folder"
-          }
-        }
-      }
-    },
-    "المزامنة جارية بالفعل" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "المزامنة جارية بالفعل"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A sync is already running"
-          }
-        }
-      }
-    },
-    "لم يتم العثور على مجلد Mushaf_Qiraat في iCloud Drive" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "لم يتم العثور على مجلد Mushaf_Qiraat في iCloud Drive"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The Mushaf_Qiraat folder was not found in iCloud Drive"
-          }
-        }
-      }
-    },
-    "ملف القراءة لم يكتمل تنزيله بعد" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ملف القراءة لم يكتمل تنزيله بعد"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The reading file has not finished downloading yet"
-          }
-        }
-      }
-    },
-    "ملف قراءة من جهاز آخر لم يكتمل تنزيله بعد" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ملف قراءة من جهاز آخر لم يكتمل تنزيله بعد"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A reading file from another device has not finished downloading yet"
-          }
-        }
-      }
-    },
-    "تعذر الاتصال بخادم الويب" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تعذر الاتصال بخادم الويب"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Could not reach the web server"
-          }
-        }
-      }
-    },
-    "استجابة الخادم خالية من المجموعات" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "استجابة الخادم خالية من المجموعات"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The server response has no groups"
-          }
-        }
-      }
-    },
-    "تعذر إنشاء ملف قاعدة البيانات المؤقت" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تعذر إنشاء ملف قاعدة البيانات المؤقت"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Could not create the temporary database file"
-          }
-        }
-      }
-    },
     "" : {
       "localizations" : {
         "en" : {
@@ -621,6 +485,12 @@
 
     },
     "Complete" : {
+
+    },
+    "Confirm" : {
+
+    },
+    "Could not update" : {
 
     },
     "Currently learning" : {
@@ -1170,6 +1040,7 @@
 
     },
     "أضف نجمة أو ملاحظة من تفاصيل كلمة في القراءات العشر." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1267,6 +1138,7 @@
       }
     },
     "إخفاء تفاصيل المجموعة" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1277,6 +1149,7 @@
       }
     },
     "إزالة النجمة" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1360,6 +1233,7 @@
 
     },
     "إضافة نجمة" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1370,6 +1244,7 @@
       }
     },
     "إظهار تفاصيل المجموعة" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1552,6 +1427,23 @@
     },
     "اختياري" : {
 
+    },
+    "استجابة الخادم خالية من المجموعات" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استجابة الخادم خالية من المجموعات"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The server response has no groups"
+          }
+        }
+      }
     },
     "استعلام البحث:" : {
 
@@ -2128,6 +2020,23 @@
     "المجموع: %lld صفحة" : {
 
     },
+    "المزامنة جارية بالفعل" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المزامنة جارية بالفعل"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A sync is already running"
+          }
+        }
+      }
+    },
     "المزيد" : {
       "localizations" : {
         "en" : {
@@ -2411,6 +2320,9 @@
     "بيانات المجموعة" : {
 
     },
+    "تأكيد" : {
+
+    },
     "تأكيد الحذف" : {
 
     },
@@ -2544,6 +2456,43 @@
         }
       }
     },
+    "تعذر إنشاء ملف قاعدة البيانات المؤقت" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعذر إنشاء ملف قاعدة البيانات المؤقت"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not create the temporary database file"
+          }
+        }
+      }
+    },
+    "تعذر الاتصال بخادم الويب" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعذر الاتصال بخادم الويب"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not reach the web server"
+          }
+        }
+      }
+    },
+    "تعذر التحديث" : {
+
+    },
     "تعذر الحفظ" : {
       "localizations" : {
         "en" : {
@@ -2554,7 +2503,25 @@
         }
       }
     },
+    "تعذر الوصول للمجلد المحدد" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعذر الوصول للمجلد المحدد"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cannot access the selected folder"
+          }
+        }
+      }
+    },
     "تعذر تحميل الملاحظات" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2747,6 +2714,7 @@
       }
     },
     "حذف الكلمة المحفوظة وملاحظتها؟" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3175,6 +3143,7 @@
       }
     },
     "سورة %lld · آية %lld · كلمة %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3516,6 +3485,7 @@
 
     },
     "لا توجد كلمات محفوظة" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3603,6 +3573,23 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "No Qira’at Usul data was found in this Mushaf."
+          }
+        }
+      }
+    },
+    "لم يتم العثور على مجلد Mushaf_Qiraat في iCloud Drive" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لم يتم العثور على مجلد Mushaf_Qiraat في iCloud Drive"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Mushaf_Qiraat folder was not found in iCloud Drive"
           }
         }
       }
@@ -3701,6 +3688,7 @@
 
     },
     "مغلقة" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3721,6 +3709,7 @@
       }
     },
     "مفتوحة" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3734,6 +3723,7 @@
 
     },
     "مفضلة وملاحظات القراءات" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3807,6 +3797,23 @@
     "ملاحظة: سيتم استبدال الأجزاء الحالية للآيتين بنتيجة المقارنة." : {
 
     },
+    "ملف القراءة لم يكتمل تنزيله بعد" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ملف القراءة لم يكتمل تنزيله بعد"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The reading file has not finished downloading yet"
+          }
+        }
+      }
+    },
     "ملف الملاحظات غير صالح." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3814,6 +3821,23 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "The notes file is invalid."
+          }
+        }
+      }
+    },
+    "ملف قراءة من جهاز آخر لم يكتمل تنزيله بعد" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ملف قراءة من جهاز آخر لم يكتمل تنزيله بعد"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A reading file from another device has not finished downloading yet"
           }
         }
       }
