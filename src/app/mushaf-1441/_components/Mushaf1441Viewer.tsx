@@ -27,12 +27,12 @@ import {
 import { SAMPLE_MUTSHABEHAT_LINK_SOURCE } from '../../../../packages/mutshabehat-core/sampleMushafLinks'
 import { getQiraatVariantsByAyahKey } from '../../../../packages/qiraat-core/qiraatAdapter'
 import { defaultQiraatRepository, variantsForToken } from '../../../../packages/qiraat-core/repository'
-import { attributionLabelsAr, readingsNotIn, rollupAuthorityPills } from '../../../../packages/qiraat-core/attribution'
+import { attributionForReadings, attributionLabelsAr, readingsNotIn, rollupAuthorityPills } from '../../../../packages/qiraat-core/attribution'
 import { getReadingOrNull, QIRAAT_READINGS } from '../../../../packages/qiraat-core/readings'
 import { getReader } from '../../../../packages/qiraat-core/readers'
 import { getNarrator } from '../../../../packages/qiraat-core/narrators'
 import { QIRAAT_MULTI_READER_COLOR, readerColor, narratorColor } from '../../../../packages/qiraat-core/colors'
-import { DIFFERENCE_TYPE_LABELS_AR, BASE_READING, type QiraatVariant, type QiraatRule, type QiraatRuling, type ReadingId } from '../../../../packages/qiraat-core/types'
+import { DIFFERENCE_TYPE_LABELS_AR, BASE_READING, type QiraatRulingAttribution, type QiraatVariant, type QiraatRule, type QiraatRuling, type ReadingId } from '../../../../packages/qiraat-core/types'
 import QiraatToolbar from './qiraat/QiraatToolbar'
 import QiraatReferenceSheet from './qiraat/QiraatReferenceSheet'
 import {
@@ -3819,6 +3819,35 @@ export default function Mushaf1441Viewer({
    * is read (the action, e.g. إمالة / تقليل / ترقيق الراء) and WHO reads it that way — grouped by
    * action, because one word routinely carries two different actions by two different groups.
    */
+  /** Who reads this word how, inside a variant's card: each action group shows its reader pills
+   *  and, under them, that group's performance details (الأداء، وجه N، الخلاف). Falls back to plain
+   *  reader pills only when the database returned no per-reader rows for this variant. */
+  function renderVariantReaders(variant: QiraatVariant, shownReadingIds: readonly ReadingId[], label: string) {
+    const rows = variant.attribution?.length ? attributionForReadings(variant.attribution, shownReadingIds) : []
+    if (rows.length === 0) {
+      return <div className="flex flex-wrap gap-1.5">{readerPillsForReadingIds(shownReadingIds).map(renderReaderPill)}</div>
+    }
+    const byAction = new Map<string, QiraatRulingAttribution[]>()
+    for (const a of rows) {
+      const list = byAction.get(a.action) ?? []
+      list.push(a)
+      byAction.set(a.action, list)
+    }
+    const multiWajh = rows.some((a) => (a.wajhOrder ?? 1) > 1)
+    return (
+      <div className="space-y-1.5">
+        {Array.from(byAction.entries()).map(([action, list]) => (
+          <div key={action}>
+            <div className="flex flex-wrap gap-1.5">
+              {rollupAuthorityPills(list.map((a) => a.authorityId)).map(renderReaderPill)}
+            </div>
+            {renderReaderPerformance(action, list, label, multiWajh)}
+          </div>
+        ))}
+      </div>
+    )
+  }
+
   function renderQiraatSelection(selection: QiraatSelection | null = qiraatSelection) {
     if (!selection) {
       return (
@@ -3849,24 +3878,17 @@ export default function Mushaf1441Viewer({
               <p className="text-center font-[family-name:var(--font-amiri-quran)] text-2xl font-bold text-[#7a1f1a]">
                 {variant.uthmaniText ?? (isPerformanceOnly ? variant.hafsText : variant.variantText)}
               </p>
-              <div className="mt-2 flex flex-wrap gap-1.5">
-                {readerPillsForReadingIds(
-                  (qiraatFilter.kind === 'reader' && qiraatMode === 'comparison'
+              <div className="mt-2">
+                {renderVariantReaders(variant, (() => {
+                  const filtered = qiraatFilter.kind === 'reader' && qiraatMode === 'comparison'
                     ? variant.readingIds.filter((id) => getReadingOrNull(id)?.readerId === qiraatFilter.readerId)
                     : qiraatFilter.kind === 'reading' && qiraatMode === 'comparison'
                       ? variant.readingIds.filter((id) => id === qiraatFilter.readingId)
                       : qiraatMode === 'riwayah'
                         ? variant.readingIds.filter((id) => id === qiraatSelectedReadingId)
-                        : variant.readingIds).length > 0
-                    ? (qiraatFilter.kind === 'reader' && qiraatMode === 'comparison'
-                        ? variant.readingIds.filter((id) => getReadingOrNull(id)?.readerId === qiraatFilter.readerId)
-                        : qiraatFilter.kind === 'reading' && qiraatMode === 'comparison'
-                          ? variant.readingIds.filter((id) => id === qiraatFilter.readingId)
-                          : qiraatMode === 'riwayah'
-                            ? variant.readingIds.filter((id) => id === qiraatSelectedReadingId)
-                            : variant.readingIds)
-                    : variant.readingIds
-                ).map(renderReaderPill)}
+                        : variant.readingIds
+                  return filtered.length > 0 ? filtered : variant.readingIds
+                })(), label)}
               </div>
             </div>
           )
@@ -4134,7 +4156,6 @@ export default function Mushaf1441Viewer({
                 : effectiveFilter.kind === 'reading'
                   ? variant.readingIds.filter((id) => id === effectiveFilter.readingId)
                   : variant.readingIds
-              const pills = readerPillsForReadingIds(displayedReadingIds.length > 0 ? displayedReadingIds : variant.readingIds)
               return (
                 <div key={variant.id} className="rounded-xl border border-[#e3d6b4] bg-white p-3">
                   <div className="mb-2 flex items-center justify-between gap-2">
@@ -4148,9 +4169,7 @@ export default function Mushaf1441Viewer({
                     {variant.uthmaniText ?? (isPerformanceOnly ? variant.hafsText : variant.variantText)}
                   </p>
                   <p className="mb-1.5 mt-2 text-[11px] font-bold text-[#8a7c5c]">القرّاء والرواة:</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {pills.map(renderReaderPill)}
-                  </div>
+                  {renderVariantReaders(variant, displayedReadingIds.length > 0 ? displayedReadingIds : variant.readingIds, rulingLabel)}
                 </div>
               )
             })}
