@@ -47,7 +47,7 @@ struct RulingCard: View {
             ForEach(ruling.attributionByAction, id: \.action) { group in
                 VStack(alignment: .leading, spacing: 4) {
                     QiraatPills(pills: rollupAuthorityPills(group.entries.map(\.authorityId), catalog: catalog))
-                    performance(group, ruling: ruling)
+                    QiraatGroupPerformance(group: group, categoryAr: ruling.categoryAr, showWajhs: ruling.hasSeveralWajhs)
                     // One group reads the word differently from the others (نقل حركة الهمزة): show how it is written.
                     if sharedForm == nil, let changed = form(of: group) {
                         Text(verbatim: changed)
@@ -117,40 +117,6 @@ struct RulingCard: View {
     /// The notes and the source notes, in the order the web shows them.
     private var noteParagraphs: [String] {
         ([ruling.notes].compactMap { $0 } + (ruling.sourceNotes ?? [])).filter { !$0.isEmpty }
-    }
-
-    /// How the readers above read it: wajh numbers, the action (shown once under the category line,
-    /// never hidden because it repeats the category), conditions, and the الخلاف notes.
-    @ViewBuilder
-    private func performance(_ group: RulingActionGroup, ruling: QiraatRuling) -> some View {
-        let showAction = QiraatClassification.shouldShowAction(group.action, categoryAr: ruling.categoryAr)
-        let conditions = unique(group.entries.compactMap { $0.condition?.trimmingCharacters(in: .whitespaces) })
-        let notes = unique(group.entries.compactMap { $0.wajhNote?.trimmingCharacters(in: .whitespaces) })
-        let wajhs = ruling.hasSeveralWajhs ? Array(Set(group.entries.compactMap(\.wajhOrder))).sorted() : []
-        if showAction || !conditions.isEmpty || !wajhs.isEmpty {
-            HStack(spacing: 4) {
-                ForEach(wajhs, id: \.self) { n in
-                    QiraatBadge(Text("وجه \(n)"))
-                }
-                if showAction {
-                    ForEach(QiraatDabtSymbol.symbols(for: group.action), id: \.self) { symbol in
-                        QiraatDabtSymbol(kind: symbol)
-                    }
-                    Text(verbatim: group.action).font(.caption.bold())
-                }
-                if !conditions.isEmpty {
-                    Text(verbatim: (showAction ? "— " : "") + conditions.joined(separator: "، "))
-                        .font(.caption).foregroundStyle(.secondary)
-                }
-            }
-        }
-        ForEach(notes, id: \.self) { Text("الخلاف: \($0)").font(.caption).foregroundStyle(.secondary) }
-    }
-
-    private func unique(_ values: [String]) -> [String] {
-        var seen: [String] = []
-        for v in values where !v.isEmpty && !seen.contains(v) { seen.append(v) }
-        return seen
     }
 }
 

@@ -22,16 +22,19 @@ public struct QiraatVariant: Codable, Sendable, Hashable, Identifiable {
     /// Reading ids are narrator ids ("Q01-R02" = ورش عن نافع).
     public let readingIds: [String]
     public let notes: String?
+    /// How each authority reads this word (الأداء), its wajh number and the «الخلاف» note, as the review
+    /// editor recorded them. Empty when the web sent none; the card then shows plain reader pills.
+    public let attribution: [QiraatRulingAttribution]
 
     public init(id: String, surah: Int, ayah: Int, startToken: Int, endToken: Int, operation: String? = nil,
                 hafsText: String, variantText: String, uthmaniText: String? = nil, description: String? = nil,
                 performanceNote: String? = nil, differenceType: String? = nil, verificationStatus: String,
-                readingIds: [String], notes: String? = nil) {
+                readingIds: [String], notes: String? = nil, attribution: [QiraatRulingAttribution] = []) {
         self.id = id; self.surah = surah; self.ayah = ayah; self.startToken = startToken; self.endToken = endToken
         self.operation = operation; self.hafsText = hafsText; self.variantText = variantText
         self.uthmaniText = uthmaniText; self.description = description; self.performanceNote = performanceNote
         self.differenceType = differenceType; self.verificationStatus = verificationStatus
-        self.readingIds = readingIds; self.notes = notes
+        self.readingIds = readingIds; self.notes = notes; self.attribution = attribution
     }
 
     public init(from decoder: Decoder) throws {
@@ -51,6 +54,7 @@ public struct QiraatVariant: Codable, Sendable, Hashable, Identifiable {
         verificationStatus = try c.decodeIfPresent(String.self, forKey: .verificationStatus) ?? "REVIEWED"
         readingIds = try c.decodeIfPresent([String].self, forKey: .readingIds) ?? []
         notes = try c.decodeIfPresent(String.self, forKey: .notes)
+        attribution = try c.decodeIfPresent([QiraatRulingAttribution].self, forKey: .attribution) ?? []
     }
 
     /// The text does not change; only the way it is recited (إشمام، إمالة، سكت …).

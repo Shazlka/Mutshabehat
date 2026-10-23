@@ -79,18 +79,44 @@ public struct RulingActionGroup: Hashable, Sendable {
     public let entries: [QiraatRulingAttribution]
 }
 
-extension QiraatRuling {
-    /// Attribution grouped by action, in first-appearance order: «إمالة → حمزة، الكسائي» and
-    /// «تقليل → ورش» stay two lines instead of one flattened list.
-    public var attributionByAction: [RulingActionGroup] {
+extension RulingActionGroup {
+    /// Rows grouped by action, in first-appearance order; a row with no action falls under `fallback`.
+    public static func grouping(_ rows: [QiraatRulingAttribution], fallback: String) -> [RulingActionGroup] {
         var order: [String] = []
         var groups: [String: [QiraatRulingAttribution]] = [:]
-        for entry in attribution {
-            let action = entry.action ?? categoryAr
+        for entry in rows {
+            let action = entry.action ?? fallback
             if groups[action] == nil { order.append(action) }
             groups[action, default: []].append(entry)
         }
         return order.map { RulingActionGroup(action: $0, entries: groups[$0]!) }
+    }
+}
+
+extension QiraatVariant {
+    /// The per-reader rows that apply to the readings a card shows (a reader or riwayah filter). A row
+    /// names a narrator ("Q04-R02") or, when the source named the whole reader, a reader ("Q04"); a reader
+    /// row applies when any shown reading belongs to that reader. Port of the web's `attributionForReadings`.
+    public func attribution(scopedTo readingIds: [String], catalog: QiraatCatalog) -> [QiraatRulingAttribution] {
+        let shown = Set(readingIds)
+        let shownReaders = Set(readingIds.compactMap { catalog.readerId(ofReading: $0) })
+        return attribution.filter { row in
+            row.authorityId.contains("-") ? shown.contains(row.authorityId) : shownReaders.contains(row.authorityId)
+        }
+    }
+
+    /// The rows for the shown readings grouped by action, so a reader who reads it another way (ابن ذكوان
+    /// «بالياء», wajh 2) keeps their own line under their own pill. A row with no action groups under "".
+    public func attributionByAction(scopedTo readingIds: [String], catalog: QiraatCatalog) -> [RulingActionGroup] {
+        RulingActionGroup.grouping(attribution(scopedTo: readingIds, catalog: catalog), fallback: "")
+    }
+}
+
+extension QiraatRuling {
+    /// Attribution grouped by action, in first-appearance order: «إمالة → حمزة، الكسائي» and
+    /// «تقليل → ورش» stay two lines instead of one flattened list.
+    public var attributionByAction: [RulingActionGroup] {
+        RulingActionGroup.grouping(attribution, fallback: categoryAr)
     }
 
     /// Readings whose second وجه is also valid.

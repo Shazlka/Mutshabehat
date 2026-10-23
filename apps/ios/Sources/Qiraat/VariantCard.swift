@@ -49,12 +49,32 @@ struct VariantCard: View {
                         .foregroundStyle(.secondary)
                 }
             }
-            QiraatPills(pills: rollupAuthorityPills(scopedReadingIds, catalog: catalog))
+            readers
             if variant.verificationStatus == "NEEDS_MANUAL_REVIEW" { QiraatNeedsReviewBadge() }
         }
         .padding(10)
         .background(RoundedRectangle(cornerRadius: 10).fill(.qiraatCardFill))
         .overlay(RoundedRectangle(cornerRadius: 10).stroke(.qiraatCardStroke))
+    }
+
+    /// Who reads it, and how: one group per action with its reader pills and that group's details (الأداء،
+    /// وجه N، الخلاف), so ابن ذكوان's own «بالياء» is not folded behind ابن عامر's pill. Plain pills when
+    /// the web sent no per-reader rows for this word.
+    @ViewBuilder private var readers: some View {
+        let groups = variant.attributionByAction(scopedTo: scopedReadingIds, catalog: catalog)
+        if groups.isEmpty {
+            QiraatPills(pills: rollupAuthorityPills(scopedReadingIds, catalog: catalog))
+        } else {
+            let showWajhs = groups.contains { $0.entries.contains { ($0.wajhOrder ?? 1) > 1 } }
+            let label = variant.performanceNote ?? differenceTypeLabelAr(variant.differenceType)
+            ForEach(groups, id: \.action) { group in
+                VStack(alignment: .leading, spacing: 4) {
+                    QiraatPills(pills: rollupAuthorityPills(group.entries.map(\.authorityId), catalog: catalog))
+                    QiraatGroupPerformance(group: group, categoryAr: label, showWajhs: showWajhs)
+                }
+                .accessibilityIdentifier("qiraat-variant-reader-group")
+            }
+        }
     }
 
     /// The readers to show: narrowed to the selected reader or reading when the filter names one.

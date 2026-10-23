@@ -3,6 +3,14 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-23 — Variant card shows each reader's own performance details
+- **Owner report:** at 2:124/2:125 «إبراهيم» (page 19) the card showed «إبراهام» and one «الإمام ابن عامر» pill, with nothing for ابن ذكوان, whose recorded faces are «بالألف» and «بالياء» (wajh 2, «بخلف عنه»).
+- **Cause:** `QiraatVariant` kept only the reading ids; the per-reader rows (action, wajh, الخلاف) the review editor records were never decoded, and `VariantCard` drew only rolled-up pills. Rulings already showed them.
+- **Change:** `QiraatVariant.attribution` (decodes to `[]` when absent), `QiraatVariant.attribution(scopedTo:catalog:)` / `attributionByAction(scopedTo:catalog:)` (a reader filter or riwayah still narrows the rows; a reader-level row applies when any of that reader's narrators is shown) and one shared `RulingActionGroup.grouping`, which rulings use too. `VariantCard` draws one group per action: its pills, then «وجه N», the action, conditions and «الخلاف». The ruling card's performance block became the shared `QiraatGroupPerformance` view (no behaviour change). A variant without per-reader rows keeps the plain pills.
+- **Verification:** 5 new MushafCore tests (`QiraatVariantAttributionTests`), `swift test` Qiraat suites 32/32, app `QiraatDetailsTests` + `QiraatLiveSyncTests` 19/19, and on the iPhone 17 simulator page 19, 2:124 shows «الإمام ابن عامر · وجه 1 · بالألف» and «الراوي ابن ذكوان · وجه 2 · بالياء · الخلاف: بخلف عنه». That run used the bundled snapshot with test rows added for 2:124/2:125 and live sync off (`QIRAAT_TEST_ISOLATION=1`), because the live web API does not send these rows yet.
+- **Needs the web app:** until `/api/mushaf-1441/qiraat` returns `attribution` for variants, a live-synced page overlays the snapshot and the card shows plain pills. The web change is on the web app's `main`, not here (`AGENTS.md` §1).
+- **Files:** `MushafCore/Sources/MushafCore/{QiraatModels,QiraatPresentation}.swift`, `MushafCore/Tests/MushafCoreTests/QiraatVariantAttributionTests.swift`, `Sources/Qiraat/{VariantCard,RulingCard,QiraatGroupPerformance}.swift`.
+
 ## [Unreleased] — 2026-10-20 — Xcode could not load the ReviewEditor package
 - **Fix:** Xcode reported "Couldn't load project ReviewEditor", "Couldn't load project xcode" and "Missing package product ReviewEditor". The cause was an empty `ReviewEditor/.swiftpm/xcode` folder Xcode had left in the package; it is removed, the project is regenerated, and `ReviewEditor/.build/` and `ReviewEditor/.swiftpm/` are git-ignored.
 - **Warning:** `nonisolated(unsafe)` on the review store environment key was unnecessary (the type is `Sendable`); removed.
