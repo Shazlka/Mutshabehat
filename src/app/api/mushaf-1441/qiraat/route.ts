@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 import { defaultQiraatRepository } from '../../../../../packages/qiraat-core/repository'
 import { isValidMushaf1441PageNumber } from '../../../../../packages/quran-data/mushaf1441/pageLoader'
+import { consistentUthmaniText } from './variant-text'
 import type {
   DifferenceType,
   QiraatRulingAttribution,
@@ -174,7 +175,7 @@ function mapExportVariant(entry: ExportEntry): QiraatVariant {
     hafsText: entry.locus.baseText,
     variantText: entry.variant?.readingText ?? entry.locus.baseText,
     description: entry.variant?.description ?? undefined,
-    uthmaniText: entry.variant?.uthmaniText ?? undefined,
+    uthmaniText: consistentUthmaniText(entry.locus.baseText, entry.variant?.readingText, entry.variant?.uthmaniText),
     performanceNote: entry.variant?.performanceNote ?? undefined,
     differenceType: diffType,
     notes: entry.notes ?? undefined,

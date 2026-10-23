@@ -38,6 +38,14 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-10-23 — Mushaf card showed «يعملون» where the editor's reading text is «تعملون» (2:144)
+- **Owner report:** in the review editor «نص الكلمة المقروء به» is «تَعْمَلُونَ» for ابن عامر، حمزة، الكسائي، أبو جعفر and روح, but the Mushaf card for the same variant read «يَعْمَلُونَ». The card should show the editor's text.
+- **Cause (checked on the live API, page 22):** `variantText` was «تَعْمَلُونَ» but `uthmaniText` was «يَعْمَلُونَ», the Hafs word. A variant created in the editor starts with the Hafs word copied into `uthmani_text`; editing the reading text updated only `reading_text`, and the card shows `uthmaniText` before `variantText`. This can affect any editor-made farsh variant whose reading text was changed after creation.
+- **Fix:** (1) `/api/mushaf-1441/qiraat` drops a `uthmaniText` that is still exactly the Hafs word while the reading differs (`variant-text.ts`, exact comparison so vowel-only changes count), so existing entries show the right text on the web and in the iOS app with no database change. (2) The editor now writes the Uthmani copy together with the reading text: on save when the reading text changed, and on create for farsh (`useReviewEditorDraft.ts`).
+- **Not changed:** the stale `uthmani_text` values already in the database stay as they are; the API hides them. A one-off cleanup would be a data change and was not done.
+- **Verification:** 5 new tests (`tests/qiraat/variant-text.test.ts`), `test:qiraat:review` 189/189, `tsc --noEmit`; eslint on the touched files shows only the 3 existing `react-hooks` errors in `useReviewEditorDraft.ts`. The live page was not re-checked yet (needs the deploy). **DB migration:** none.
+- **Files:** `src/app/api/mushaf-1441/qiraat/{route,variant-text}.ts`, `src/app/mushaf-1441/review/_components/useReviewEditorDraft.ts`, `tests/qiraat/variant-text.test.ts`, `package.json`.
+
 ## 2026-10-23 — Mushaf card: each reader's performance details now show under the word's variant (e.g. ابن ذكوان at 2:124)
 - **Owner report:** on page 19, 2:124 and 2:125 «إبراهيم» read by ابن عامر as «إبراهام». The database records that ابن ذكوان reads it بالألف والياء (two faces, wajh 2 with «بخلف عنه»), but the word card showed only «إبراهام» and the reader pills, with no detail for ابن ذكوان.
 - **Cause:** the export already sends each entry's per-reader rows (action, wajh, الخلاف) for farsh variants too, but `mapExportVariant` kept only the reader IDs, and the variant blocks in the card (selection card and hover peek) rendered only reader pills. The per-reader detail was rendered for usul rulings only.

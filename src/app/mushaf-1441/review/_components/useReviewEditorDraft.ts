@@ -324,6 +324,9 @@ export function useReviewEditorDraft({
       ...(isFarsh
         ? {
             readingText: readingText.trim(),
+            // When the reading changes, the Uthmani copy follows it; otherwise the Mushaf card keeps showing
+            // the text the entry started with (the Hafs word) instead of the reading the reviewer typed.
+            ...(readingText.trim() !== (selectedRow.readingText ?? '').trim() ? { uthmaniText: readingText.trim() } : {}),
             variantType: variantType ? normalizeVariantType(variantType) : undefined,
             description: description?.trim() || null,
             performanceNote: performanceNote?.trim() || null,
@@ -388,6 +391,7 @@ export function useReviewEditorDraft({
       ...newEntryDraft,
       kind,
       readingText: readingText.trim() || undefined,
+      ...(kind === 'farsh' && readingText.trim() ? { uthmaniText: readingText.trim() } : {}),
       categoryCode: kind === 'usul' && categoryCode ? categoryCode : undefined,
       variantType: kind === 'farsh' && variantType ? normalizeVariantType(variantType) : undefined,
       rulingText: kind === 'usul' ? rulingText?.trim() || null : null,
