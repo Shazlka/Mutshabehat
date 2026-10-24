@@ -39,16 +39,8 @@ enum MushafAppearance: String, CaseIterable, Identifiable {
         }
     }
 
-    func desk(for traits: UITraitCollection) -> UIColor {
-        switch self {
-        case .whitePage: UIColor(white: 0.92, alpha: 1)
-        case .blackPage: UIColor(white: 0.025, alpha: 1)
-        case .system:
-            traits.userInterfaceStyle == .dark ? Self.darkDesk : Self.lightDesk
-        case .light: Self.lightDesk
-        case .dark: Self.darkDesk
-        }
-    }
+    /// What shows around the page, under the header and footer: the page's own colour in every theme, never darker.
+    func desk(for traits: UITraitCollection) -> UIColor { paper(for: traits) }
 
     func ink(for traits: UITraitCollection) -> UIColor {
         switch self {
@@ -85,8 +77,6 @@ enum MushafAppearance: String, CaseIterable, Identifiable {
 
     private static let lightPaper = UIColor(red: 1, green: 0.992, blue: 0.965, alpha: 1)
     private static let darkPaper = UIColor(red: 0.11, green: 0.105, blue: 0.09, alpha: 1)
-    private static let lightDesk = UIColor(red: 0.953, green: 0.929, blue: 0.867, alpha: 1)
-    private static let darkDesk = UIColor(red: 0.055, green: 0.05, blue: 0.04, alpha: 1)
     private static let lightInk = UIColor(red: 0.09, green: 0.09, blue: 0.09, alpha: 1)
     private static let darkInk = UIColor(red: 0.92, green: 0.91, blue: 0.86, alpha: 1)
     private static let lightBrown = UIColor(red: 0.349, green: 0.275, blue: 0.114, alpha: 1)

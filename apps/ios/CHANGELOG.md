@@ -3,6 +3,12 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-24 — Header and footer follow the page colour in every theme
+- **Request:** the strips above and below the page were darker than the page (a grey desk around a white page).
+- **Change:** `MushafAppearance.desk` is now the page's own colour in all five themes (system, light, dark, white page, black page), and the reader's toolbar background is the page colour instead of a grey translucent material. The darker desk constants are removed.
+- **Verification:** new `MushafAppearanceTests` (desk equals paper for every theme in light and dark); on the iPhone 17 simulator the header and footer match the page in white, black and light themes, with and without the toolbar.
+- **Files:** `Sources/Reader/{MushafAppearance,ReaderTopBar}.swift`, `Tests/MushafAppearanceTests.swift`.
+
 ## [Unreleased] — 2026-10-24 — Setting: keep only فرش, hide أصول
 - **Request:** an option in Settings to hide أصول and keep only فرش.
 - **Change:** Settings › القراءات العشر has a new switch «فرش الحروف فقط (إخفاء الأصول)», off by default and kept per device (`mushaf1441:qiraat-hide-usul:v1`). While it is on, `QiraatStore.page(_:)` serves every page without its rulings, so everything that reads the store follows at once: no ruling colours, dots or dotted underlines on the Mushaf, no «الأصول» section or ruling cards in the word sheet and the compare view, no أصول rows in the page summary, key and search, and no «أصول القراءات» entry in the Qiraat menu. The rulings stay in the cache and on disk, so turning the switch off brings them back with no reload. Live-page comparison and the shrink guard use the stored page, so hiding never looks like a data change. `UsulIndexCache` keys on the choice, and `WordContextIndex` is invalidated when it changes.

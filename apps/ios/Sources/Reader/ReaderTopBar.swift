@@ -107,7 +107,7 @@ struct ReaderTopBar: View {
             }
             .padding(.horizontal, TopBarMetrics.edgePadding)
             .frame(height: 52)
-            .background(.regularMaterial)
+            .background(Color(uiColor: appearance.paper(for: traits)))
             .opacity(chromeVisible ? 1 : 0)
             .allowsHitTesting(chromeVisible)
         }
