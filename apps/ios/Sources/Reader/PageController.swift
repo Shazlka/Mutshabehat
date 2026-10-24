@@ -9,7 +9,6 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
     private var appearance: MushafAppearance
     private let surahLabel = UILabel()
     private let sectionLabel = UILabel()
-    private let pageNumberLabel = UILabel()
     private let isSpreadHalf: Bool
     private let onTapCentre: () -> Void
     private let onTapWord: (MushafPage, MushafWord) -> Void
@@ -73,7 +72,7 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
         let spine: PageLayoutConstants.SpineSide = !isSpreadHalf ? .none : page.isRightHandPage ? .left : .right
         pageView.spineSide = spine
         view.backgroundColor = appearance.desk(for: traitCollection)
-        for label in [surahLabel, sectionLabel, pageNumberLabel] {
+        for label in [surahLabel, sectionLabel] {
             label.textColor = appearance.ink(for: traitCollection)
         }
         pageView.qiraat = qiraat
@@ -163,7 +162,9 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
         let topBannerBottomInWindow = windowSafeTop + topBannerHeight
         let topY = max(0, topBannerBottomInWindow - viewOriginInWindow.y)
 
-        let footerHeight: CGFloat = 34
+        // The footer bar (44 pt, 6 pt above the screen's bottom edge) sits wholly below the paper: the slot under the
+        // paper plus the home-indicator inset is at least 50 pt, and 68 pt on a phone as before.
+        let footerHeight: CGFloat = max(34, 50 - windowSafeBottom)
         let windowBottomSafe = windowHeight - windowSafeBottom - footerHeight
         let bottomY = max(topY + 120, windowBottomSafe - viewOriginInWindow.y)
         let pageHeight = bottomY - topY
@@ -216,7 +217,7 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
 
     private func configureMetadataLabels() {
         let font = UIFont.systemFont(ofSize: isSpreadHalf ? 13 : 16, weight: .medium)
-        for label in [surahLabel, sectionLabel, pageNumberLabel] {
+        for label in [surahLabel, sectionLabel] {
             label.font = font
             label.textColor = appearance.ink(for: traitCollection)
             label.backgroundColor = .clear
@@ -225,31 +226,11 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
         }
         surahLabel.isHidden = true
         sectionLabel.isHidden = true
-        pageNumberLabel.text = ArabicDigits.string(page.number)
-        pageNumberLabel.textAlignment = .center
-        // The page element already says "صفحة N"; the printed number would repeat it.
-        pageNumberLabel.isAccessibilityElement = false
     }
 
     private func layoutMetadataLabels(around paperFrame: CGRect) {
         surahLabel.isHidden = true
         sectionLabel.isHidden = true
-
-        // Bottom page number location: odd number on the right, even number on the left
-        // Large clean numbers without ornamental ayah rosette
-        pageNumberLabel.isHidden = false
-        pageNumberLabel.font = UIFont.systemFont(ofSize: isSpreadHalf ? 18 : 22, weight: .bold)
-        let bottomY = paperFrame.maxY + 4
-        let isOdd = page.number % 2 != 0
-        let numberWidth: CGFloat = 90
-        let horizontalInset = max(16, paperFrame.width * 0.04)
-        if isOdd {
-            pageNumberLabel.frame = CGRect(x: paperFrame.maxX - horizontalInset - numberWidth, y: bottomY, width: numberWidth, height: 28)
-            pageNumberLabel.textAlignment = .right
-        } else {
-            pageNumberLabel.frame = CGRect(x: paperFrame.minX + horizontalInset, y: bottomY, width: numberWidth, height: 28)
-            pageNumberLabel.textAlignment = .left
-        }
     }
 
 

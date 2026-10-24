@@ -71,29 +71,43 @@ struct ReaderView: View {
         }
         .overlay(alignment: .top) {
             ReaderTopBar(
-                chromeVisible: chromeVisible,
                 surahTitle: surahTitle,
-                detailsText: detailsText,
+                pageNumbers: qiraatVisiblePages,
                 section: readerSection,
                 appearance: appearance,
                 traits: interfaceTraits,
-                openIndex: { showingIndex = true },
-                openSearch: { showingSearch = true },
-                openBookmarks: { showingBookmarks = true },
-                openMutshabehat: { showingMutshabehat = true },
-                openMemorization: { showingMemorization = true },
                 qiraat: qiraat,
                 qiraatCatalog: library.qiraat?.catalog,
                 openQiraatFilter: { showingQiraatFilter = true },
-                openQiraatRoute: { qiraatRoute = $0 },
                 memorizationMarks: memorizationMarks,
                 memorizationLanguage: appLanguage,
                 openMemorizationPage: { pageSheetRequest = PageSheetRequest(page: $0) },
-                openSettings: { showingSettings = true },
+                khatmaPercent: tracker.khatmaPercent,
+                openStatistics: { showingStatistics = true },
                 onTapHeader: {
                     withAnimation(.easeInOut(duration: 0.2)) { chromeVisible.toggle() }
                 }
             )
+        }
+        .overlay(alignment: .bottom) {
+            GeometryReader { _ in
+                ReaderBottomBar(
+                    chromeVisible: chromeVisible,
+                    appearance: appearance,
+                    traits: interfaceTraits,
+                    openIndex: { showingIndex = true },
+                    openSearch: { showingSearch = true },
+                    openBookmarks: { showingBookmarks = true },
+                    openMutshabehat: { showingMutshabehat = true },
+                    openMemorization: { showingMemorization = true },
+                    openSettings: { showingSettings = true },
+                    qiraat: qiraat,
+                    qiraatCatalog: library.qiraat?.catalog,
+                    openQiraatRoute: { qiraatRoute = $0 }
+                )
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+            }
+            .ignoresSafeArea(.container, edges: .bottom)
         }
         .overlay(alignment: .top) {
             if qiraat.enabled, library.qiraat != nil {
@@ -394,24 +408,6 @@ struct ReaderView: View {
             return names.map { "Surah \($0.replacingOccurrences(of: "سورة ", with: ""))" }.joined(separator: " · ")
         }
         return names.map { $0.hasPrefix("سورة") ? $0 : "سورة \($0)" }.joined(separator: " · ")
-    }
-
-    private var detailsText: String {
-        let base: String
-        if appLanguage == .english {
-            base = "Page \(page) | Juz \(metadata?.juz ?? 1) | Hizb \(metadata?.hizb ?? 1)"
-        } else {
-            base = "صفحة \(ArabicDigits.string(page)) | جزء \(ArabicDigits.string(metadata?.juz ?? 1)) | حزب \(ArabicDigits.string(metadata?.hizb ?? 1))"
-        }
-        if tracker.khatmaPercent > 0 {
-            let pct = Int(tracker.khatmaPercent)
-            if appLanguage == .english {
-                return "\(base) • Khatma \(pct)%"
-            } else {
-                return "\(base) • ختمة \(ArabicDigits.string(pct))٪"
-            }
-        }
-        return base
     }
 
     private var readerSection: ReaderSection? {

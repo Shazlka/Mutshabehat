@@ -101,15 +101,21 @@ final class QiraatUITests: XCTestCase {
         app.terminate()
 
         let relaunched = XCUIApplication.isolated()
-        relaunched.launchArguments = ["-mushaf1441:last-page:v1", "1", "-reading-fresh"]
+        relaunched.launchArguments = ["-mushaf1441:last-page:v1", "1", "-mushaf1441:qiraat-filter:v1", "all", "-reading-fresh"]
         relaunched.launch()
         XCTAssertTrue(element("mushaf-page-1", in: relaunched).waitForExistence(timeout: 20))
         XCTAssertFalse(element("qiraat-word-1:4:1", in: relaunched).exists)
 
         // Leave the device as a new install would be, so the other tests start from the default.
         relaunched.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()
+        XCTAssertTrue(relaunched.buttons["settings-button"].waitForExistence(timeout: 20))
         relaunched.buttons["settings-button"].tap()
-        relaunched.switches["qiraat-toggle"].switches.firstMatch.tap()
+        let relaunchedToggle = relaunched.switches["qiraat-toggle"]
+        XCTAssertTrue(relaunchedToggle.waitForExistence(timeout: 20))
+        XCTAssertTrue(relaunchedToggle.switches.firstMatch.waitForExistence(timeout: 20))
+        relaunchedToggle.switches.firstMatch.tap()
+        XCTAssertEqual(relaunchedToggle.switches.firstMatch.value as? String, "1", "the layer switch turned on")
+        XCTAssertTrue(relaunched.buttons["تم"].waitForExistence(timeout: 20))
         relaunched.buttons["تم"].tap()
         XCTAssertTrue(element("qiraat-word-1:4:1", in: relaunched).waitForExistence(timeout: 20))
     }

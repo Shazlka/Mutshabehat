@@ -39,17 +39,21 @@ final class QiraatTopBarUITests: XCTestCase {
         XCTAssertTrue(app.buttons["open-index"].waitForExistence(timeout: 20))
     }
 
-    func testTheBarHasExactlyFiveIconsOfAtLeast44Points() {
+    /// Every menu is in the footer bar: six icons of at least 44 points, wholly below the page, none on another.
+    func testTheFooterBarHasExactlySixIconsOfAtLeast44PointsBelowThePage() {
         let app = launch()
-        XCTAssertTrue(element("mushaf-page-1", in: app).waitForExistence(timeout: 15))
+        let mushafPage = element("mushaf-page-1", in: app)
+        XCTAssertTrue(mushafPage.waitForExistence(timeout: 15))
         showChrome(app)
-        let ids = ["search-button", "bookmarks-button", "qiraat-button", "more-button", "settings-button"]
+        let ids = ["open-index", "search-button", "bookmarks-button", "qiraat-button", "more-button", "settings-button"]
         var frames: [CGRect] = []
         for id in ids {
             let icon = app.buttons[id]
             XCTAssertTrue(icon.waitForExistence(timeout: 20), id)
             XCTAssertGreaterThanOrEqual(icon.frame.width, 43.5, id)
             XCTAssertGreaterThanOrEqual(icon.frame.height, 43.5, id)
+            // The bar sits wholly below the paper: it never covers the page.
+            XCTAssertGreaterThanOrEqual(icon.frame.minY, mushafPage.frame.maxY, "\(id) overlaps the page")
             frames.append(icon.frame)
         }
         for (i, a) in frames.enumerated() {
@@ -58,6 +62,27 @@ final class QiraatTopBarUITests: XCTestCase {
         // The two moved buttons are inside the menu, not in the bar.
         XCTAssertFalse(app.buttons["mutshabehat-button"].exists)
         XCTAssertFalse(app.buttons["memorization-button"].exists)
+    }
+
+    /// All the information stays at the top, with the bar hidden and showing: the surah, the juz and hizb and the
+    /// khatma progress are on screen above the page in both states, and the page does not move.
+    func testTheInformationStaysOnTopWhileTheFooterBarShowsAndHides() {
+        let app = launch()
+        let mushafPage = element("mushaf-page-1", in: app)
+        XCTAssertTrue(mushafPage.waitForExistence(timeout: 15))
+        let before = mushafPage.frame
+        let ids = ["reading-surah-title", "reading-section-text", "khatma-progress", "reading-page-number"]
+        func assertOnTop() {
+            for id in ids {
+                let item = element(id, in: app)
+                XCTAssertTrue(item.waitForExistence(timeout: 20), id)
+                XCTAssertLessThan(item.frame.maxY, mushafPage.frame.minY + 4, "\(id) is not above the page")
+            }
+        }
+        assertOnTop()
+        showChrome(app)
+        assertOnTop()
+        XCTAssertEqual(mushafPage.frame, before, "the page moved when the footer bar showed")
     }
 
     func testMoreMenuHoldsMutshabehatAndMemorization() {

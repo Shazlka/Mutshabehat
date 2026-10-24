@@ -1,130 +1,120 @@
 import MushafCore
 import SwiftUI
 
+/// The reading header: where the page sits and how the reading and memorization are going. Information only, always
+/// visible; every menu is in `ReaderBottomBar`. A tap on it shows or hides that bar.
 struct ReaderTopBar: View {
-    let chromeVisible: Bool
     let surahTitle: String
-    let detailsText: String
+    /// The printed number of the page, or of both pages of a spread; shown in the header, never under the paper.
+    var pageNumbers: [Int] = []
     /// Juz and hizb for the reading header; nil hides them.
     let section: ReaderSection?
     let appearance: MushafAppearance
     let traits: UITraitCollection
-    let openIndex: () -> Void
-    let openSearch: () -> Void
-    let openBookmarks: () -> Void
-    let openMutshabehat: () -> Void
-    let openMemorization: () -> Void
-    /// The Qiraat layer's state and catalog. The entry stays in the fixed five-icon group.
+    /// Where the Qiraat layer is narrowed to one reader or narrator, shown as a chip.
     var qiraat: QiraatPreferences
     var qiraatCatalog: QiraatCatalog?
     var openQiraatFilter: () -> Void = {}
-    var openQiraatRoute: (QiraatHubRoute) -> Void = { _ in }
-    /// Page-status marks for the banner (one page, or both pages of a spread), left to right; empty hides them.
+    /// Page-status marks for the header (one page, or both pages of a spread), left to right; empty hides them.
     var memorizationMarks: [(page: Int, progress: MemorizationPageProgress)] = []
     var memorizationLanguage: AppLanguage = .arabic
     var openMemorizationPage: (Int) -> Void = { _ in }
-    let openSettings: () -> Void
+    /// Progress of the current khatma, 0…100; a tap opens the reading statistics.
+    var khatmaPercent: Double = 0
+    var openStatistics: () -> Void = {}
     let onTapHeader: () -> Void
 
     var body: some View {
-        ZStack {
-            // Reading mode header: Surah name on right, Hizb & Juz on left, the page's memorization mark between
-            // them in a place of its own, so neither text ever runs under it.
-            HStack(alignment: .center, spacing: 8) {
-                Text(surahTitle)
-                    .font(Font(MushafLibrary.mushafFont(size: 20)))
-                    .foregroundStyle(Color(uiColor: appearance.ink(for: traits)))
-                    .lineLimit(1)
-                    .layoutPriority(1)
-                    .accessibilityIdentifier("reading-surah-title")
-
-                Spacer(minLength: 0)
-                if !chromeVisible {
-                    HStack(spacing: 8) {
-                        memorizationMarkRow(compact: false)
-                        qiraatFilterChip
-                    }
-                }
-                Spacer(minLength: 0)
-
-                if let section {
-                    HStack(spacing: 6) {
-                        Text(section.juzText)
-                        RubDisc(quarter: section.rubInHizb)
-                        Text(section.hizbText)
-                    }
-                    .font(.subheadline.weight(.medium))
-                    .foregroundStyle(Color(uiColor: appearance.ink(for: traits)))
-                    .lineLimit(1)
-                    .accessibilityElement(children: .ignore)
-                    .accessibilityLabel(section.accessibilityText)
-                    .accessibilityAddTraits(.isStaticText)
-                    .accessibilityIdentifier("reading-section-text")
-                }
-            }
-            .padding(.horizontal, 16)
-            .frame(height: 52)
-            .contentShape(Rectangle())
-            .onTapGesture { onTapHeader() }
-            .opacity(chromeVisible ? 0 : 1)
-
-            // Navigation chrome top bar: covers the reading header in the exact same top slot
-            HStack(spacing: 6) {
-                Button(action: openIndex) {
-                    VStack(alignment: .leading, spacing: 1) {
-                        Text(surahTitle)
-                            .font(Font(MushafLibrary.mushafFont(size: 18)))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.7)
-                            .accessibilityIdentifier("surah-title")
-                        Text(detailsText)
-                            .font(.caption2)
-                            .foregroundStyle(.secondary)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.75)
-                            .accessibilityIdentifier("page-number")
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 5)
-                    .background(RoundedRectangle(cornerRadius: 8).fill(Color(uiColor: .secondarySystemFill)))
-                }
-                .buttonStyle(.plain)
-                .layoutPriority(1)
-                .accessibilityIdentifier("open-index")
-                .accessibilityLabel("\(surahTitle)، \(detailsText)")
-
-                // Compact, between the title and the icons: the title shrinks to make room instead of sliding under it.
-                if chromeVisible { memorizationMarkRow(compact: true) }
-
-                HStack(spacing: 0) {
-                    TopBarIconButton(systemImage: "magnifyingglass", label: "بحث", identifier: "search-button", action: openSearch)
-                    TopBarIconButton(systemImage: "bookmark.fill", label: "الفواصل", identifier: "bookmarks-button", action: openBookmarks)
-                    TopBarIconMenu(systemImage: qiraat.enabled ? "character.book.closed.fill" : "character.book.closed",
-                                   label: "القراءات", identifier: "qiraat-button",
-                                   value: qiraat.enabled ? "مفعّلة" : "متوقفة") {
-                        QiraatHubContent(qiraat: qiraat, catalog: qiraatCatalog,
-                                         openRoute: openQiraatRoute)
-                    }
-                    TopBarIconMenu(systemImage: "ellipsis.circle", label: "المزيد", identifier: "more-button") {
-                        Button(action: openMutshabehat) { Label("المتشابهات", systemImage: "square.stack.3d.up.fill") }
-                            .accessibilityIdentifier("mutshabehat-button")
-                        Button(action: openMemorization) { Label("الحفظ", systemImage: "book.closed.fill") }
-                            .accessibilityIdentifier("memorization-button")
-                    }
-                    TopBarIconButton(systemImage: "gearshape.fill", label: "الإعدادات", identifier: "settings-button", action: openSettings)
-                }
-            }
-            .padding(.horizontal, TopBarMetrics.edgePadding)
-            .frame(height: 52)
-            .background(Color(uiColor: appearance.paper(for: traits)))
-            .opacity(chromeVisible ? 1 : 0)
-            .allowsHitTesting(chromeVisible)
+        // The row is tried at full size first; when a long surah name leaves no room it uses the compact memorization
+        // mark, then drops the percent next to the khatma ring. The juz and hizb are never cut.
+        ViewThatFits(in: .horizontal) {
+            row(showsPercent: true, compactMark: false)
+            row(showsPercent: true, compactMark: true)
+            row(showsPercent: false, compactMark: true)
+            row(showsPercent: false, compactMark: true).dynamicTypeSize(...DynamicTypeSize.large)
         }
-        .animation(.easeInOut(duration: 0.2), value: chromeVisible)
-        // The bar is a fixed 52 pt slot over the page: text grows with the user's size up to a point,
-        // and the icons show the large content viewer beyond it.
+        .padding(.horizontal, 16)
+        .frame(height: 52)
+        .contentShape(Rectangle())
+        .onTapGesture { onTapHeader() }
+        // The bar is a fixed 52 pt slot over the page: text grows with the user's size up to a point.
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
+    }
+
+    /// Surah name on the right, juz and hizb on the left, and between them the progress and the marks, in a place of
+    /// their own, so no text ever runs under them.
+    private func row(showsPercent: Bool, compactMark: Bool) -> some View {
+        HStack(alignment: .center, spacing: 8) {
+            Text(surahTitle)
+                .font(Font(MushafLibrary.mushafFont(size: 20)))
+                .foregroundStyle(Color(uiColor: appearance.ink(for: traits)))
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
+                .fixedSize(horizontal: true, vertical: false)
+                .accessibilityIdentifier("reading-surah-title")
+
+            Spacer(minLength: 0)
+            HStack(spacing: 8) {
+                memorizationMarkRow(compact: compactMark)
+                qiraatFilterChip
+                khatmaChip(showsPercent: showsPercent)
+            }
+            Spacer(minLength: 0)
+
+            if !pageNumbers.isEmpty {
+                Text(verbatim: pageNumbers.map { ArabicDigits.string($0) }.joined(separator: " – "))
+                    .font(.headline.weight(.bold))
+                    .monospacedDigit()
+                    .foregroundStyle(Color(uiColor: appearance.ink(for: traits)))
+                    .lineLimit(1)
+                    .fixedSize()
+                    .accessibilityLabel(Text(verbatim: (memorizationLanguage == .english ? "Page " : "صفحة ")
+                        + pageNumbers.map { ArabicDigits.string($0) }.joined(separator: memorizationLanguage == .english ? " and " : " و")))
+                    .accessibilityIdentifier("reading-page-number")
+            }
+
+            if let section {
+                HStack(spacing: 6) {
+                    Text(section.juzText)
+                    RubDisc(quarter: section.rubInHizb)
+                    Text(section.hizbText)
+                }
+                .font(.subheadline.weight(.medium))
+                .foregroundStyle(Color(uiColor: appearance.ink(for: traits)))
+                .lineLimit(1)
+                .fixedSize()
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel(section.accessibilityText)
+                .accessibilityAddTraits(.isStaticText)
+                .accessibilityIdentifier("reading-section-text")
+            }
+        }
+    }
+
+    /// The khatma ring and its percent; opens the reading statistics.
+    private func khatmaChip(showsPercent: Bool) -> some View {
+        let percent = Int(min(max(khatmaPercent, 0), 100))
+        return Button(action: openStatistics) {
+            HStack(spacing: 4) {
+                KhatmaRing(fraction: min(max(khatmaPercent, 0), 100) / 100)
+                    .frame(width: 16, height: 16)
+                if showsPercent {
+                    Text(verbatim: "\(ArabicDigits.string(percent))٪")
+                        .font(.caption.weight(.medium))
+                        .monospacedDigit()
+                        .lineLimit(1)
+                }
+            }
+            .foregroundStyle(Color(uiColor: appearance.ink(for: traits)))
+            .padding(.horizontal, 6)
+            .frame(minHeight: 44)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .fixedSize()
+        .accessibilityLabel(Text(verbatim: memorizationLanguage == .english ? "Khatma \(percent)%" : "ختمة \(ArabicDigits.string(percent))٪"))
+        .accessibilityHint(memorizationLanguage == .english ? "Opens reading statistics" : "يفتح إحصائيات القراءة")
+        .accessibilityIdentifier("khatma-progress")
     }
 
     /// The current reader or narrator while the Qiraat layer is narrowed to one; a tap opens the picker.
@@ -160,60 +150,6 @@ struct ReaderTopBar: View {
             .fixedSize()
             .environment(\.layoutDirection, .leftToRight)
         }
-    }
-}
-
-/// The bar's fixed geometry.
-private enum TopBarMetrics {
-    static let edgePadding: CGFloat = 8
-    static let iconSize: CGFloat = 44
-}
-
-private struct TopBarIconButton: View {
-    let systemImage: String
-    let label: LocalizedStringKey
-    let identifier: String
-    let action: () -> Void
-
-    var body: some View {
-        Button(action: action) {
-            Image(systemName: systemImage)
-                .font(.body.weight(.medium))
-                .frame(width: TopBarMetrics.iconSize, height: TopBarMetrics.iconSize)
-        }
-        .foregroundStyle(.primary)
-        .accessibilityLabel(label)
-        .accessibilityShowsLargeContentViewer {
-            Label(label, systemImage: systemImage)
-        }
-        .accessibilityIdentifier(identifier)
-    }
-}
-
-/// A top-bar icon that opens a menu; same size, label and large-content viewer as `TopBarIconButton`.
-private struct TopBarIconMenu<Content: View>: View {
-    let systemImage: String
-    let label: LocalizedStringKey
-    let identifier: String
-    var value: LocalizedStringKey?
-    @ViewBuilder let content: Content
-
-    var body: some View {
-        Menu {
-            content
-        } label: {
-            Image(systemName: systemImage)
-                .font(.body.weight(.medium))
-                .frame(width: TopBarMetrics.iconSize, height: TopBarMetrics.iconSize)
-                .contentShape(Rectangle())
-        }
-        .foregroundStyle(.primary)
-        .accessibilityLabel(label)
-        .accessibilityValue(value ?? "")
-        .accessibilityShowsLargeContentViewer {
-            Label(label, systemImage: systemImage)
-        }
-        .accessibilityIdentifier(identifier)
     }
 }
 
@@ -255,5 +191,20 @@ struct RubPie: Shape {
                     startAngle: .degrees(-90), endAngle: .degrees(-90 + 360 * min(fraction, 1)), clockwise: false)
         path.closeSubpath()
         return path
+    }
+}
+
+/// The khatma as a ring filled clockwise from twelve o'clock.
+struct KhatmaRing: View {
+    let fraction: Double
+
+    var body: some View {
+        ZStack {
+            Circle().stroke(lineWidth: 2.2).opacity(0.25)
+            Circle().trim(from: 0, to: max(fraction, 0.0001))
+                .stroke(style: StrokeStyle(lineWidth: 2.2, lineCap: .round))
+                .rotationEffect(.degrees(-90))
+        }
+        .accessibilityHidden(true)
     }
 }

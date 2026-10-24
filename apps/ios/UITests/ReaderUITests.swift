@@ -204,7 +204,7 @@ final class ReaderUITests: XCTestCase {
         XCTAssertTrue(app.buttons["الآلية"].exists)
     }
 
-    func testTopBarShowsFullSurahWithoutMovingThePage() {
+    func testShowingTheFooterBarKeepsTheFullSurahOnTopWithoutMovingThePage() {
         let app = launch(atPage: 50)
         let mushafPage = page(50, in: app)
         XCTAssertTrue(mushafPage.waitForExistence(timeout: 20))
@@ -213,10 +213,20 @@ final class ReaderUITests: XCTestCase {
 
         let index = app.buttons["open-index"]
         XCTAssertTrue(index.waitForExistence(timeout: 20))
-        XCTAssertTrue(app.staticTexts["surah-title"].label.contains("آل عمران"))
-        XCTAssertEqual(mushafPage.frame, frameBeforeShowingChrome, "Showing chrome must overlay the fixed Mushaf page")
-        XCTAssertTrue(app.staticTexts["page-number"].exists, "Page number is shown on top")
+        XCTAssertTrue(app.staticTexts["reading-surah-title"].label.contains("آل عمران"), "the surah stays on top")
+        XCTAssertEqual(mushafPage.frame, frameBeforeShowingChrome, "Showing the footer bar must overlay the fixed Mushaf page")
+        XCTAssertFalse(app.staticTexts["page-number"].exists, "the page number is the printed one under the page")
         XCTAssertFalse(app.sliders["page-slider"].exists, "Lower banner slider is removed")
+    }
+
+    /// The khatma progress is on top; a tap opens the reading statistics.
+    func testTappingTheKhatmaProgressOpensTheReadingStatistics() {
+        let app = launch(atPage: 1)
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
+        let khatma = app.buttons["khatma-progress"]
+        XCTAssertTrue(khatma.waitForExistence(timeout: 20))
+        khatma.tap()
+        XCTAssertTrue(app.navigationBars["إحصائيات القراءة والختمة"].waitForExistence(timeout: 10))
     }
 
     func testDeveloperDatabaseTransferControlsAreVisibleInDebugBuilds() {
