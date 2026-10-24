@@ -3,6 +3,13 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-24 — Reading header: the circle shows the quarter of the hizb
+- **Request:** the half-filled circle between «جزء» and «حزب» was a fixed character; it should show which ربع of the hizb the page is in.
+- **Change:** a small circle drawn as a pie, filled clockwise from twelve o'clock: first ربع 25%, second 50%, third 75%, fourth 100%, and the next hizb starts again at 25% (the fifth ربع of a juz is the first of its second hizb). `PageMetadata.rubInHizb` (1…4) comes from the database's `rubInJuz` (1…8), so no data changed. The header is now a juz label, the circle and a hizb label in one VoiceOver element that also says «الربع N من ٤» (English: «quarter N of 4»); the English header shows the circle too.
+- **Verification:** `RubInHizbTests` (the eight quarters of a juz, out-of-range values, real pages 1, 21, 22, 76); `MutshabehatTests` pass; `QiraatTopBarUITests` and `MemorizationReaderUITests` pass (the header stays a static text with the same id). On the iPhone 17 simulator: page 22 shows 25%, 76 shows 50%, 8 shows 75%, 21 shows 100%.
+- **Per page:** the quarter is the one the page's database row records (`rub_in_juz`), one value per page, even when a page crosses into the next quarter.
+- **Files:** `MushafCore/Sources/MushafCore/Models.swift`, `Sources/Reader/{ReaderTopBar,ReaderView}.swift`, `MushafCore/Tests/MushafCoreTests/RubInHizbTests.swift`.
+
 ## [Unreleased] — 2026-10-24 — Surah banner: plain, larger surah number and ayah count
 - **Request:** in the surah banner the two numbers (surah number on the right, ayah count on the left) sat inside a small ornamental circle and were very small.
 - **Cause:** the numbers were drawn in the Hafs Quran font, whose Arabic-Indic digits come with their own ayah-end medallion; the digit inside it is tiny.

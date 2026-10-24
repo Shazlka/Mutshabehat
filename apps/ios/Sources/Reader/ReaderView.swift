@@ -74,7 +74,7 @@ struct ReaderView: View {
                 chromeVisible: chromeVisible,
                 surahTitle: surahTitle,
                 detailsText: detailsText,
-                sectionText: sectionText,
+                section: readerSection,
                 appearance: appearance,
                 traits: interfaceTraits,
                 openIndex: { showingIndex = true },
@@ -414,12 +414,16 @@ struct ReaderView: View {
         return base
     }
 
-    private var sectionText: String {
-        guard let meta = metadata else { return "" }
+    private var readerSection: ReaderSection? {
+        guard let meta = metadata else { return nil }
+        let quarter = meta.rubInHizb
         if appLanguage == .english {
-            return "Juz \(meta.juz) · Hizb \(meta.hizb)"
+            return ReaderSection(juzText: "Juz \(meta.juz)", hizbText: "Hizb \(meta.hizb)", rubInHizb: quarter,
+                                 accessibilityText: "Juz \(meta.juz), Hizb \(meta.hizb), quarter \(quarter) of 4")
         }
-        return "جزء \(ArabicDigits.string(meta.juz))   ◐ حزب \(ArabicDigits.string(meta.hizb))"
+        return ReaderSection(juzText: "جزء \(ArabicDigits.string(meta.juz))", hizbText: "حزب \(ArabicDigits.string(meta.hizb))",
+                             rubInHizb: quarter,
+                             accessibilityText: "جزء \(ArabicDigits.string(meta.juz))، حزب \(ArabicDigits.string(meta.hizb))، الربع \(ArabicDigits.string(quarter)) من ٤")
     }
 
     /// The pager presents a spread as [left, right] = [right + 1, right].

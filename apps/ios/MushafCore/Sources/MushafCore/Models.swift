@@ -68,6 +68,9 @@ public struct PageMetadata: Hashable, Sendable {
     public let juz: Int
     public let hizb: Int
     public let rubInJuz: Int
+
+    /// Which quarter of its hizb the page is in, 1…4: a juz has eight (1…8), the first four are its first hizb.
+    public var rubInHizb: Int { (max(rubInJuz, 1) - 1) % 4 + 1 }
 }
 
 public struct Surah: Hashable, Sendable, Identifiable {

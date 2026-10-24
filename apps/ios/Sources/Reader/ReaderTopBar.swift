@@ -5,7 +5,8 @@ struct ReaderTopBar: View {
     let chromeVisible: Bool
     let surahTitle: String
     let detailsText: String
-    let sectionText: String
+    /// Juz and hizb for the reading header; nil hides them.
+    let section: ReaderSection?
     let appearance: MushafAppearance
     let traits: UITraitCollection
     let openIndex: () -> Void
@@ -46,11 +47,20 @@ struct ReaderTopBar: View {
                 }
                 Spacer(minLength: 0)
 
-                Text(sectionText)
+                if let section {
+                    HStack(spacing: 6) {
+                        Text(section.juzText)
+                        RubDisc(quarter: section.rubInHizb)
+                        Text(section.hizbText)
+                    }
                     .font(.subheadline.weight(.medium))
                     .foregroundStyle(Color(uiColor: appearance.ink(for: traits)))
                     .lineLimit(1)
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel(section.accessibilityText)
+                    .accessibilityAddTraits(.isStaticText)
                     .accessibilityIdentifier("reading-section-text")
+                }
             }
             .padding(.horizontal, 16)
             .frame(height: 52)
@@ -204,5 +214,46 @@ private struct TopBarIconMenu<Content: View>: View {
             Label(label, systemImage: systemImage)
         }
         .accessibilityIdentifier(identifier)
+    }
+}
+
+/// What the reading header says about where the page sits: its juz and hizb, and which quarter of the hizb it is in.
+struct ReaderSection: Equatable {
+    let juzText: String
+    let hizbText: String
+    /// 1…4.
+    let rubInHizb: Int
+    let accessibilityText: String
+}
+
+/// A small circle filled like a pie by quarter of the hizb: a quarter at the first, half at the second, three
+/// quarters at the third and full at the fourth; the next hizb starts again at a quarter.
+struct RubDisc: View {
+    let quarter: Int
+    var diameter: CGFloat = 13
+
+    var body: some View {
+        ZStack {
+            Circle().stroke(lineWidth: 1.3)
+            RubPie(fraction: Double(min(max(quarter, 0), 4)) / 4)
+        }
+        .frame(width: diameter, height: diameter)
+        .accessibilityHidden(true)
+    }
+}
+
+/// A pie slice from twelve o'clock, clockwise.
+struct RubPie: Shape {
+    let fraction: Double
+
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        guard fraction > 0 else { return path }
+        let center = CGPoint(x: rect.midX, y: rect.midY)
+        path.move(to: center)
+        path.addArc(center: center, radius: min(rect.width, rect.height) / 2,
+                    startAngle: .degrees(-90), endAngle: .degrees(-90 + 360 * min(fraction, 1)), clockwise: false)
+        path.closeSubpath()
+        return path
     }
 }
