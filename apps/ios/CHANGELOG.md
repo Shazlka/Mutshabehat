@@ -3,6 +3,13 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-24 — Surah banner: plain, larger surah number and ayah count
+- **Request:** in the surah banner the two numbers (surah number on the right, ayah count on the left) sat inside a small ornamental circle and were very small.
+- **Cause:** the numbers were drawn in the Hafs Quran font, whose Arabic-Indic digits come with their own ayah-end medallion; the digit inside it is tiny.
+- **Change:** the numbers are drawn in plain system digits (the same style as the page number), at half the banner's height (was 0.44, but the digit itself filled a fraction of its medallion), centred on the digits' cap height in each oval, and shrunk only when a three-digit number would be wider than the oval. The banner artwork and its two ovals are unchanged; a count such as 176 fits.
+- **Verification:** on the iPhone 17 simulator at page 76 (start of النساء) the banner shows «٤» and «١٧٦» without the medallions. `MutshabehatTests` pass.
+- **Files:** `Sources/Reader/MushafPageView.swift` (`drawHeaderNumber`).
+
 ## [Unreleased] — 2026-10-24 — Header and footer follow the page colour in every theme
 - **Request:** the strips above and below the page were darker than the page (a grey desk around a white page).
 - **Change:** `MushafAppearance.desk` is now the page's own colour in all five themes (system, light, dark, white page, black page), and the reader's toolbar background is the page colour instead of a grey translucent material. The darker desk constants are removed.

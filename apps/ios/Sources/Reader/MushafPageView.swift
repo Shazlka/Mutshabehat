@@ -685,35 +685,12 @@ final class MushafPageView: UIView {
         let surahName = library.surahNames[number] ?? "\(number)"
         let ayahCount = library.surahAyahCounts[number] ?? 0
 
-        let numberFont = MushafLibrary.mushafFont(size: frame.height * 0.44)
-
-        // 1. Right circle: Surah number ONLY (no "سورة" text)
-        let rightCircleCenterX = frame.maxX - (119.0 / 60.0) * frame.height
-        let rightCircleCenterY = frame.midY
-
-        let rightNum = ArabicDigits.string(number) as NSString
-        let rightNumAttrs: [NSAttributedString.Key: Any] = [
-            .font: numberFont,
-            .foregroundColor: titleColor
-        ]
-        let rightNumSize = rightNum.size(withAttributes: rightNumAttrs)
-        rightNum.draw(at: CGPoint(x: rightCircleCenterX - rightNumSize.width / 2,
-                                  y: rightCircleCenterY - rightNumSize.height / 2),
-                      withAttributes: rightNumAttrs)
-
-        // 2. Left circle: Ayah count ONLY (no "آياتها" text)
-        let leftCircleCenterX = frame.minX + (117.0 / 60.0) * frame.height
-        let leftCircleCenterY = frame.midY
-
-        let leftNum = ArabicDigits.string(ayahCount) as NSString
-        let leftNumAttrs: [NSAttributedString.Key: Any] = [
-            .font: numberFont,
-            .foregroundColor: titleColor
-        ]
-        let leftNumSize = leftNum.size(withAttributes: leftNumAttrs)
-        leftNum.draw(at: CGPoint(x: leftCircleCenterX - leftNumSize.width / 2,
-                                 y: leftCircleCenterY - leftNumSize.height / 2),
-                     withAttributes: leftNumAttrs)
+        // 1. Right oval: the surah number. 2. Left oval: the ayah count. Plain digits (the Hafs font draws its own
+        // medallion round every digit and leaves the number tiny), as large as the oval takes.
+        drawHeaderNumber(number, centerX: frame.maxX - (119.0 / 60.0) * frame.height,
+                         in: frame, color: titleColor, context: context)
+        drawHeaderNumber(ayahCount, centerX: frame.minX + (117.0 / 60.0) * frame.height,
+                         in: frame, color: titleColor, context: context)
 
         // 3. Center Cartouche: Surah title (aligned in the middle horizontally & vertically, NO makki/madani)
         let cartoucheMidX = frame.midX
@@ -740,6 +717,26 @@ final class MushafPageView: UIView {
         titleStr.draw(at: CGPoint(x: cartoucheMidX - titleSize.width / 2,
                                   y: frame.midY - titleSize.height / 2),
                       withAttributes: titleAttrs)
+    }
+
+    /// A number centred in one of the banner's two ovals, in plain Arabic-Indic digits: 0.5 of the banner's height,
+    /// shrunk only when a three-digit number would be wider than the oval is at the height of the digits.
+    private func drawHeaderNumber(_ value: Int, centerX: CGFloat, in frame: CGRect, color: UIColor, context: CGContext) {
+        let text = ArabicDigits.string(value) as NSString
+        let maxWidth = frame.height * 0.5
+        var fontSize = frame.height * 0.5
+        var font = UIFont.systemFont(ofSize: fontSize, weight: .semibold)
+        var attributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: color]
+        let width = text.size(withAttributes: attributes).width
+        if width > maxWidth, width > 0 {
+            fontSize *= maxWidth / width
+            font = UIFont.systemFont(ofSize: fontSize, weight: .semibold)
+            attributes[.font] = font
+        }
+        let size = text.size(withAttributes: attributes)
+        // Digits sit on the baseline and stand cap-height tall: centre that, not the line box.
+        let baseline = frame.midY + font.capHeight / 2
+        text.draw(at: CGPoint(x: centerX - size.width / 2, y: baseline - font.ascender), withAttributes: attributes)
     }
 
     private func drawTintedBannerPart(_ cgImage: CGImage, in rect: CGRect, color: UIColor, in context: CGContext) {
