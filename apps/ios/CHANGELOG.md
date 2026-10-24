@@ -3,6 +3,13 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-24 — Footer bar fills the footer like the system tab bar; page number at the far right; filter chip in the reader's colour
+- **Request:** the bar like the iOS 27 tab bar of the Ledger app (icons with names, filling the footer), the gliding glass lens missing, the page number at the top right of the header, and the Qiraat filter chip in the colour of the chosen reader or narrator, not always green.
+- **Bar (`ReaderBottomBar`):** a capsule across the footer, 56 pt tall and 12 pt from each side, six equal cells of icon over name (الفهرس، بحث، الفواصل، القراءات، المزيد، الإعدادات). The page keeps its place: the 68 pt under the paper (slot plus home indicator) holds the bar and a gap; screens without a home indicator get a taller slot (`PageController.footerHeight`).
+- **Glass lens:** a finger on the bar raises a glass lens (`.glassEffect(.regular.interactive())` in the same `GlassEffectContainer` as the bar) under the item it touches; it glides with a spring as the finger slides and fades on lift. Before iOS 26 it is a soft fill in the material bar. The buttons and menus underneath still get the tap (`simultaneousGesture`); the lens is feedback only, so lifting over another item does not open it.
+- **Header:** the page number is the first item on the right, then the surah name. The chip that shows the chosen reader or narrator is filled with that reader's or narrator's colour from the catalog (`FilterChip.selectedFill`); «الكل» keeps the app's green.
+- **Files:** `Sources/Reader/{ReaderBottomBar,ReaderTopBar,PageController}.swift`, `Sources/Design/FilterChip.swift`.
+
 ## [Unreleased] — 2026-10-24 — Reader: information on top, every menu in a Liquid Glass footer bar
 - **Request:** all progress and information at the top, all menus in the footer as Liquid Glass. Then: the footer bar must not overlap the Mushaf page, and the page number moves to the header.
 - **Top (`ReaderTopBar`, information only, always visible):** surah name, juz ◔ hizb, the memorization mark, the Qiraat filter chip, and a new **khatma ring with its percent** (tap: reading statistics, until now only reachable through Settings). The toolbar no longer replaces the header on a tap. When a long surah name leaves no room the row first uses the compact memorization mark, then drops the percent; the juz and hizb are never cut (checked with «آل عمران» and «المؤمنون»).

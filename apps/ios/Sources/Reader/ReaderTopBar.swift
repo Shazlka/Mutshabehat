@@ -41,10 +41,22 @@ struct ReaderTopBar: View {
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
     }
 
-    /// Surah name on the right, juz and hizb on the left, and between them the progress and the marks, in a place of
+    /// Page number at the far right, then the surah name; juz and hizb on the left, and between them the progress and the marks, in a place of
     /// their own, so no text ever runs under them.
     private func row(showsPercent: Bool, compactMark: Bool) -> some View {
         HStack(alignment: .center, spacing: 8) {
+            if !pageNumbers.isEmpty {
+                Text(verbatim: pageNumbers.map { ArabicDigits.string($0) }.joined(separator: " – "))
+                    .font(.headline.weight(.bold))
+                    .monospacedDigit()
+                    .foregroundStyle(Color(uiColor: appearance.ink(for: traits)))
+                    .lineLimit(1)
+                    .fixedSize()
+                    .accessibilityLabel(Text(verbatim: (memorizationLanguage == .english ? "Page " : "صفحة ")
+                        + pageNumbers.map { ArabicDigits.string($0) }.joined(separator: memorizationLanguage == .english ? " and " : " و")))
+                    .accessibilityIdentifier("reading-page-number")
+            }
+
             Text(surahTitle)
                 .font(Font(MushafLibrary.mushafFont(size: 20)))
                 .foregroundStyle(Color(uiColor: appearance.ink(for: traits)))
@@ -60,18 +72,6 @@ struct ReaderTopBar: View {
                 khatmaChip(showsPercent: showsPercent)
             }
             Spacer(minLength: 0)
-
-            if !pageNumbers.isEmpty {
-                Text(verbatim: pageNumbers.map { ArabicDigits.string($0) }.joined(separator: " – "))
-                    .font(.headline.weight(.bold))
-                    .monospacedDigit()
-                    .foregroundStyle(Color(uiColor: appearance.ink(for: traits)))
-                    .lineLimit(1)
-                    .fixedSize()
-                    .accessibilityLabel(Text(verbatim: (memorizationLanguage == .english ? "Page " : "صفحة ")
-                        + pageNumbers.map { ArabicDigits.string($0) }.joined(separator: memorizationLanguage == .english ? " and " : " و")))
-                    .accessibilityIdentifier("reading-page-number")
-            }
 
             if let section {
                 HStack(spacing: 6) {
@@ -117,12 +117,21 @@ struct ReaderTopBar: View {
         .accessibilityIdentifier("khatma-progress")
     }
 
+    /// The colour of the chosen reader or narrator, as the page draws it; the chip is never the app's green.
+    private var filterColor: Color {
+        switch qiraat.filter {
+        case .all: return .progressFill
+        case .reader(let id): return qiraatCatalog?.reader(id).map { Color(qiraatHex: $0.color) } ?? .progressFill
+        case .reading(let id): return qiraatCatalog?.narrator(id).map { Color(qiraatHex: $0.color) } ?? .progressFill
+        }
+    }
+
     /// The current reader or narrator while the Qiraat layer is narrowed to one; a tap opens the picker.
     @ViewBuilder
     private var qiraatFilterChip: some View {
         if qiraat.enabled, let name = qiraatCatalog?.filterShortName(qiraat.filter),
            let full = qiraatCatalog?.filterName(qiraat.filter) {
-            FilterChip(isSelected: true, action: openQiraatFilter) {
+            FilterChip(isSelected: true, selectedFill: filterColor, action: openQiraatFilter) {
                 Text(name).lineLimit(1).minimumScaleFactor(0.8)
             }
             .frame(maxWidth: 130)

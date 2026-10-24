@@ -162,9 +162,9 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
         let topBannerBottomInWindow = windowSafeTop + topBannerHeight
         let topY = max(0, topBannerBottomInWindow - viewOriginInWindow.y)
 
-        // The footer bar (44 pt, 6 pt above the screen's bottom edge) sits wholly below the paper: the slot under the
-        // paper plus the home-indicator inset is at least 50 pt, and 68 pt on a phone as before.
-        let footerHeight: CGFloat = max(34, 50 - windowSafeBottom)
+        // The footer bar (56 pt, 6 pt above the screen's bottom edge) sits wholly below the paper with a few points
+        // between: the slot under the paper plus the home-indicator inset is at least 68 pt, as on a phone.
+        let footerHeight: CGFloat = max(34, 68 - windowSafeBottom)
         let windowBottomSafe = windowHeight - windowSafeBottom - footerHeight
         let bottomY = max(topY + 120, windowBottomSafe - viewOriginInWindow.y)
         let pageHeight = bottomY - topY

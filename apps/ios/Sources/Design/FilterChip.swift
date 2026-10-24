@@ -5,6 +5,8 @@ import SwiftUI
 struct FilterChip<Label: View>: View {
     let isSelected: Bool
     var unselectedFill: Color = Color(uiColor: .tertiarySystemFill)
+    /// The fill while selected; the app's progress green unless a chip stands for a colour of its own.
+    var selectedFill: Color = .progressFill
     let action: () -> Void
     @ViewBuilder let label: Label
 
@@ -14,7 +16,7 @@ struct FilterChip<Label: View>: View {
                 .font(.caption.bold())
                 .padding(.horizontal, 14)
                 .padding(.vertical, 7)
-                .background(isSelected ? Color.progressFill : unselectedFill, in: Capsule())
+                .background(isSelected ? selectedFill : unselectedFill, in: Capsule())
                 .foregroundStyle(isSelected ? Color.white : Color.primary)
                 .frame(minHeight: 44)
                 .contentShape(Rectangle())
