@@ -100,9 +100,18 @@ struct QiraatLegendEntry: Identifiable, Hashable {
     let explanation: String
     /// A narrator row, shown under its reader.
     let isNarrator: Bool
+    /// A word of the Mushaf this reader or narrator alone reads in that way, as the sample; nil keeps the plain «كلمة».
+    var sampleWord: String? = nil
 
     /// What VoiceOver reads for the row: the shape in words, the name, then what it means.
     var accessibilityLabel: String { "\(mark.shapeWords). \(title). \(explanation)" }
+}
+
+/// A word of the Mushaf, with where it is, that one reader or narrator alone reads in a way of their own.
+struct QiraatLegendSampleWord: Hashable, Sendable {
+    let text: String
+    let surah: Int
+    let ayah: Int
 }
 
 /// The pure model behind `QiraatLegendSheet`.
@@ -111,7 +120,9 @@ enum QiraatLegend {
     static let imalahCategory = "IMALAH_TAQLIL"
 
     /// Every row of the key: the marks, then the readers with their narrators, then the أصول categories.
-    static func entries(catalog: QiraatCatalog, usulCategories: [QiraatLegendCategory] = []) -> [QiraatLegendEntry] {
+    static func entries(catalog: QiraatCatalog, usulCategories: [QiraatLegendCategory] = [],
+                        sampleWords: [String: QiraatLegendSampleWord] = [:],
+                        hidesUsul: Bool = false) -> [QiraatLegendEntry] {
         let readers = catalog.readers.sorted { $0.sortOrder < $1.sortOrder }
         let familyColor = usulCategories.first?.color ?? catalog.multiReaderColor
         let imalahColor = usulCategories.first { $0.code == imalahCategory }?.color ?? familyColor
@@ -165,20 +176,36 @@ enum QiraatLegend {
             explanation: appLocalized("حكم من أبواب الأصول بلا اختلاف في الرسم: يلوّن نص الكلمة بلا خط تحتها."),
             isNarrator: false))
 
+        /// The explanation, with where the sample word stands in the Mushaf when there is one.
+        func explained(_ text: String, _ sample: QiraatLegendSampleWord?) -> String {
+            guard let sample else { return text }
+            let place = "\(ArabicDigits.string(sample.surah)):\(ArabicDigits.string(sample.ayah))"
+            return "\(text) \(appLocalized("مثال في المصحف:")) \(place)"
+        }
+
         for reader in readers {
+            let readerSample = sampleWords[reader.id]
             rows.append(QiraatLegendEntry(
                 id: "reader-\(reader.id)", group: .readers, mark: .solidLine,
                 colors: [reader.color], textColor: reader.color,
                 title: appLocalized("الإمام \(reader.nameArShort)"),
-                explanation: appLocalized("يُلوَّن الخط ونص الكلمة بلونه إذا ذُكر راوياه معًا، أو قطعةً من الخط المقسَّم."),
-                isNarrator: false))
+                explanation: explained(appLocalized("يُلوَّن الخط ونص الكلمة بلونه إذا ذُكر راوياه معًا، أو قطعةً من الخط المقسَّم."), readerSample),
+                isNarrator: false, sampleWord: readerSample?.text))
             for narrator in catalog.narrators(of: reader.id) {
+                let sample = sampleWords[narrator.id]
                 rows.append(QiraatLegendEntry(
                     id: "narrator-\(narrator.id)", group: .readers, mark: .solidLine,
                     colors: [narrator.color], textColor: narrator.color,
                     title: appLocalized("الراوي \(narrator.nameAr)"),
-                    explanation: appLocalized("يُلوَّن بلونه إذا ذُكر وحده دون زميله من الإمام نفسه."), isNarrator: true))
+                    explanation: explained(appLocalized("يُلوَّن بلونه إذا ذُكر وحده دون زميله من الإمام نفسه."), sample),
+                    isNarrator: true, sampleWord: sample?.text))
             }
+        }
+
+        // «فرش فقط»: the page draws no أصول mark, so the key explains none and lists no باب.
+        if hidesUsul {
+            let usulMarks: Set<QiraatLegendMark> = [.dottedLine, .familyDot, .imalahFilled, .imalahRing, .rulingWord]
+            return rows.filter { !($0.group == .marks && usulMarks.contains($0.mark)) }
         }
 
         for category in usulCategories {
@@ -190,6 +217,33 @@ enum QiraatLegend {
                 isNarrator: false))
         }
         return rows
+    }
+
+    /// For each reader (both narrators together and nobody else) and each narrator (alone), a single word of the
+    /// Mushaf whose written form only that authority changes: the sample the key shows beside their colour.
+    /// Rows are taken in key order, and no two rows share a word, whatever its marks. An authority with no such
+    /// word is left out, and its row keeps the plain sample.
+    static func sampleWords<Pages: Sequence>(in pages: Pages, catalog: QiraatCatalog) -> [String: QiraatLegendSampleWord]
+    where Pages.Element == QiraatPageData {
+        var collector = SampleWordCollector(catalog: catalog)
+        for page in pages { collector.add(page) }
+        return collector.words()
+    }
+
+    /// The categories and the sample words of every page the store can read, in one pass over the 604 pages.
+    static func scan(store: QiraatStore) -> (categories: [QiraatLegendCategory], sampleWords: [String: QiraatLegendSampleWord]) {
+        var collector = SampleWordCollector(catalog: store.catalog)
+        var seen: Set<QiraatLegendCategory> = []
+        var categories: [QiraatLegendCategory] = []
+        for number in 1...mushafPageCount {
+            guard let page = store.page(number) else { continue }
+            collector.add(page)
+            for ruling in page.rulings where ruling.wordAnchored {
+                let category = QiraatLegendCategory(code: ruling.category, nameAr: ruling.categoryAr, color: ruling.color)
+                if seen.insert(category).inserted { categories.append(category) }
+            }
+        }
+        return (categories, collector.words())
     }
 
     /// The أصول categories that colour a word on these pages, one per name and colour, in first-seen order.
@@ -212,6 +266,86 @@ enum QiraatLegend {
     }
 }
 
+/// Gathers, page by page, the single-word variants one authority alone reads, then picks one word for each.
+private struct SampleWordCollector {
+    struct Candidate {
+        let word: QiraatLegendSampleWord
+        let verified: Bool
+        let letters: Int
+        let order: Int
+    }
+
+    let catalog: QiraatCatalog
+    private var candidates: [String: [Candidate]] = [:]
+    private var order = 0
+
+    init(catalog: QiraatCatalog) { self.catalog = catalog }
+
+    mutating func add(_ page: QiraatPageData) {
+        for variant in page.variants {
+            order += 1
+            guard variant.startToken == variant.endToken, variant.hafsText != variant.variantText,
+                  let owner = owner(of: variant.readingIds),
+                  let text = Self.cleaned(variant.hafsText) else { continue }
+            let verified = variant.verificationStatus == "VERIFIED" || variant.verificationStatus == "PUBLISHED"
+            candidates[owner, default: []].append(Candidate(
+                word: QiraatLegendSampleWord(text: text, surah: variant.surah, ayah: variant.ayah),
+                verified: verified, letters: Self.bareLetters(of: text).count, order: order))
+        }
+    }
+
+    func words() -> [String: QiraatLegendSampleWord] {
+        var taken: Set<String> = []
+        var result: [String: QiraatLegendSampleWord] = [:]
+        for reader in catalog.readers.sorted(by: { $0.sortOrder < $1.sortOrder }) {
+            for owner in [reader.id] + catalog.narrators(of: reader.id).map(\.id) {
+                let best = (candidates[owner] ?? [])
+                    .filter { !taken.contains(Self.bareLetters(of: $0.word.text)) }
+                    .min { lhs, rhs in
+                        if lhs.verified != rhs.verified { return lhs.verified }
+                        // A word of about five letters reads best in the small sample.
+                        let (l, r) = (abs(lhs.letters - 5), abs(rhs.letters - 5))
+                        return l != r ? l < r : lhs.order < rhs.order
+                    }
+                guard let best else { continue }
+                taken.insert(Self.bareLetters(of: best.word.text))
+                result[owner] = best.word
+            }
+        }
+        return result
+    }
+
+    /// The reader or narrator id this reading set belongs to alone: one narrator, or exactly both narrators of one reader.
+    private func owner(of readingIds: [String]) -> String? {
+        let ids = Set(readingIds)
+        guard !ids.isEmpty, ids.allSatisfy({ catalog.narrator($0) != nil }) else { return nil }
+        if ids.count == 1 { return ids.first }
+        let readers = Set(ids.compactMap { catalog.readerId(ofReading: $0) })
+        guard readers.count == 1, let reader = readers.first,
+              ids == Set(catalog.narrators(of: reader).map(\.id)) else { return nil }
+        return reader
+    }
+
+    /// The word without the stop signs the printed token may carry after it; nil when more than one word is left.
+    static func cleaned(_ text: String) -> String? {
+        let stopSigns: ClosedRange<UInt32> = 0x06D6...0x06DB
+        let scalars = text.unicodeScalars.filter { !stopSigns.contains($0.value) && $0.value != 0x06DE && $0.value != 0x06E9 }
+        var kept = Array(scalars)
+        // The iqlab meem sign printed after a tanween belongs to the next word's first letter; alone it draws a dotted circle.
+        while let last = kept.last, last.value == 0x06E2 || last.value == 0x06ED { kept.removeLast() }
+        let word = String(String.UnicodeScalarView(kept)).trimmingCharacters(in: .whitespacesAndNewlines)
+        return word.isEmpty || word.contains(where: \.isWhitespace) ? nil : word
+    }
+
+    /// The letters alone: no vowels or small signs, alef wasla as alef, no tatweel.
+    static func bareLetters(of text: String) -> String {
+        String(String.UnicodeScalarView(text.unicodeScalars.compactMap { scalar in
+            if scalar.properties.generalCategory == .nonspacingMark || scalar.value == 0x0640 { return nil }
+            return scalar.value == 0x0671 ? Unicode.Scalar(0x0627) : scalar
+        }))
+    }
+}
+
 /// The colour key, presented from the Qiraat layer. The rows come from `QiraatLegend`.
 struct QiraatLegendSheet: View {
     let catalog: QiraatCatalog
@@ -219,6 +353,7 @@ struct QiraatLegendSheet: View {
     let store: QiraatStore?
 
     @State private var usulCategories: [QiraatLegendCategory] = []
+    @State private var sampleWords: [String: QiraatLegendSampleWord] = [:]
     @State private var categoriesLoaded = false
     @Environment(\.dismiss) private var dismiss
 
@@ -228,7 +363,9 @@ struct QiraatLegendSheet: View {
     }
 
     var body: some View {
-        let rows = QiraatLegend.entries(catalog: catalog, usulCategories: usulCategories)
+        let hidesUsul = store?.hidesUsul ?? false
+        let rows = QiraatLegend.entries(catalog: catalog, usulCategories: usulCategories, sampleWords: sampleWords,
+                                        hidesUsul: hidesUsul)
         NavigationStack {
             List {
                 Section {
@@ -241,16 +378,18 @@ struct QiraatLegendSheet: View {
                 } header: {
                     Text("ألوان القرّاء والرواة")
                 }
-                Section {
-                    if categoriesLoaded {
-                        ForEach(rows.filter { $0.group == .usul }) { QiraatLegendRow(entry: $0) }
-                    } else {
-                        ProgressView()
-                            .frame(maxWidth: .infinity)
-                            .accessibilityLabel(Text("جارٍ تحميل أبواب الأصول"))
+                if !hidesUsul {
+                    Section {
+                        if categoriesLoaded {
+                            ForEach(rows.filter { $0.group == .usul }) { QiraatLegendRow(entry: $0) }
+                        } else {
+                            ProgressView()
+                                .frame(maxWidth: .infinity)
+                                .accessibilityLabel(Text("جارٍ تحميل أبواب الأصول"))
+                        }
+                    } header: {
+                        Text("أبواب الأصول")
                     }
-                } header: {
-                    Text("أبواب الأصول")
                 }
             }
             .accessibilityIdentifier("qiraat-legend")
@@ -275,9 +414,11 @@ struct QiraatLegendSheet: View {
             categoriesLoaded = true
             return
         }
-        usulCategories = await Task.detached(priority: .utility) {
-            QiraatLegend.usulCategories(store: store)
+        let scanned = await Task.detached(priority: .utility) {
+            QiraatLegend.scan(store: store)
         }.value
+        usulCategories = scanned.categories
+        sampleWords = scanned.sampleWords
         categoriesLoaded = true
     }
 }
@@ -304,13 +445,13 @@ private struct QiraatLegendRow: View {
         Group {
             if dynamicTypeSize.isAccessibilitySize {
                 VStack(alignment: .leading, spacing: 8) {
-                    QiraatLegendSample(mark: entry.mark, colors: entry.colors, textColor: entry.textColor)
+                    QiraatLegendSample(mark: entry.mark, colors: entry.colors, textColor: entry.textColor, word: entry.sampleWord)
                         .frame(width: sampleWidth, alignment: .leading)
                     titleAndExplanation
                 }
             } else {
                 HStack(alignment: .center, spacing: 12) {
-                    QiraatLegendSample(mark: entry.mark, colors: entry.colors, textColor: entry.textColor)
+                    QiraatLegendSample(mark: entry.mark, colors: entry.colors, textColor: entry.textColor, word: entry.sampleWord)
                         .frame(width: sampleWidth)
                     titleAndExplanation
                     Spacer(minLength: 0)
@@ -328,10 +469,13 @@ private struct QiraatLegendSample: View {
     let mark: QiraatLegendMark
     let colors: [String]
     let textColor: String?
+    /// A word of the Mushaf, drawn in the Mushaf's own font; nil draws the plain «كلمة».
+    var word: String? = nil
 
     var body: some View {
-        Text("كلمة")
-            .font(.title3)
+        sampleText
+            .lineLimit(1)
+            .minimumScaleFactor(0.5)
             .foregroundStyle(textColor.map { Color(qiraatHex: $0) } ?? Color(uiColor: .mushafInk))
             .padding(.horizontal, 12)
             .padding(.vertical, 14)
@@ -342,6 +486,14 @@ private struct QiraatLegendSample: View {
                 }
             }
             .accessibilityHidden(true)
+    }
+
+    @ViewBuilder private var sampleText: some View {
+        if let word {
+            Text(verbatim: word).font(Font(MushafLibrary.mushafFont(size: 22)))
+        } else {
+            Text("كلمة").font(.title3)
+        }
     }
 
     /// Same proportions as `drawQiraatMarks`: a bar of `thickness` under the word, a dotted line

@@ -3320,6 +3320,26 @@
         }
       }
     },
+    "فرش الحروف فقط (إخفاء الأصول)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Farsh only (hide Usul)"
+          }
+        }
+      }
+    },
+    "مثال في المصحف:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Example in the Mushaf:"
+          }
+        }
+      }
+    },
     "في المفضلة" : {
       "localizations" : {
         "en" : {
