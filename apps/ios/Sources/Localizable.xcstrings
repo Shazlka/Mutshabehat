@@ -518,6 +518,9 @@
     "Expected Result:" : {
 
     },
+    "Farsh only (hide Usul)" : {
+
+    },
     "History" : {
 
     },
@@ -3330,16 +3333,6 @@
         }
       }
     },
-    "مثال في المصحف:" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Example in the Mushaf:"
-          }
-        }
-      }
-    },
     "في المفضلة" : {
       "localizations" : {
         "en" : {
@@ -3646,6 +3639,16 @@
           "stringUnit" : {
             "state" : "machine_translated",
             "value" : "Off"
+          }
+        }
+      }
+    },
+    "مثال في المصحف:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Example in the Mushaf:"
           }
         }
       }

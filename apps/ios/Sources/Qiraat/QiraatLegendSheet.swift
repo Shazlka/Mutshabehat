@@ -29,6 +29,21 @@ enum QiraatLegendMark: Hashable, CaseIterable, Sendable {
     /// An أصول ruling and no variant: no line, the word's text takes the ruling colour.
     case rulingWord
 
+    /// The id of the key row that explains this mark.
+    var rowId: String {
+        switch self {
+        case .solidLine: "mark-solid"
+        case .segmentedLine: "mark-segmented"
+        case .performanceLine: "mark-performance"
+        case .unresolvedLine: "mark-unresolved"
+        case .dottedLine: "mark-dotted"
+        case .familyDot: "mark-family"
+        case .imalahFilled: "mark-imalah"
+        case .imalahRing: "mark-taqlil"
+        case .rulingWord: "mark-ruling-word"
+        }
+    }
+
     /// The mark a variant style is drawn with (`QiraatMarks.textColor(of:)` and the underline).
     static func of(_ style: VariantMarker.Style) -> QiraatLegendMark {
         switch style {
@@ -93,25 +108,44 @@ struct QiraatLegendEntry: Identifiable, Hashable {
     let group: Group
     let mark: QiraatLegendMark
     /// The colours the sample is drawn in: one per segment for a segmented line, none for a plain shape.
-    let colors: [String]
+    var colors: [String]
     /// The colour of the sample word's text, when the page colours the word's text in this mark's colour.
-    let textColor: String?
+    var textColor: String?
     let title: String
-    let explanation: String
+    var explanation: String
     /// A narrator row, shown under its reader.
     let isNarrator: Bool
     /// A word of the Mushaf this reader or narrator alone reads in that way, as the sample; nil keeps the plain «كلمة».
     var sampleWord: String? = nil
 
+    /// The row with a word of the Mushaf as its sample: the colours of the shape that word really carries, and where
+    /// the word stands, after the explanation.
+    func with(sample: QiraatLegendSampleWord?) -> QiraatLegendEntry {
+        guard let sample else { return self }
+        var row = self
+        row.sampleWord = sample.text
+        if !sample.colors.isEmpty {
+            row.colors = sample.colors
+            row.textColor = sample.textColor
+        }
+        let place = "\(ArabicDigits.string(sample.surah)):\(ArabicDigits.string(sample.ayah))"
+        row.explanation = "\(explanation) \(appLocalized("مثال في المصحف:")) \(place)"
+        return row
+    }
+
     /// What VoiceOver reads for the row: the shape in words, the name, then what it means.
     var accessibilityLabel: String { "\(mark.shapeWords). \(title). \(explanation)" }
 }
 
-/// A word of the Mushaf, with where it is, that one reader or narrator alone reads in a way of their own.
+/// A word of the Mushaf with where it is, drawn as a row's sample. `colors` is empty when the row keeps its own
+/// colours; a mark's word brings the colours of the shape it really carries.
 struct QiraatLegendSampleWord: Hashable, Sendable {
     let text: String
     let surah: Int
     let ayah: Int
+    var colors: [String] = []
+    /// The colour of the word's own text, for the marks that colour it.
+    var textColor: String? = nil
 }
 
 /// The pure model behind `QiraatLegendSheet`.
@@ -176,36 +210,26 @@ enum QiraatLegend {
             explanation: appLocalized("حكم من أبواب الأصول بلا اختلاف في الرسم: يلوّن نص الكلمة بلا خط تحتها."),
             isNarrator: false))
 
-        /// The explanation, with where the sample word stands in the Mushaf when there is one.
-        func explained(_ text: String, _ sample: QiraatLegendSampleWord?) -> String {
-            guard let sample else { return text }
-            let place = "\(ArabicDigits.string(sample.surah)):\(ArabicDigits.string(sample.ayah))"
-            return "\(text) \(appLocalized("مثال في المصحف:")) \(place)"
-        }
-
         for reader in readers {
-            let readerSample = sampleWords[reader.id]
             rows.append(QiraatLegendEntry(
                 id: "reader-\(reader.id)", group: .readers, mark: .solidLine,
                 colors: [reader.color], textColor: reader.color,
                 title: appLocalized("الإمام \(reader.nameArShort)"),
-                explanation: explained(appLocalized("يُلوَّن الخط ونص الكلمة بلونه إذا ذُكر راوياه معًا، أو قطعةً من الخط المقسَّم."), readerSample),
-                isNarrator: false, sampleWord: readerSample?.text))
+                explanation: appLocalized("يُلوَّن الخط ونص الكلمة بلونه إذا ذُكر راوياه معًا، أو قطعةً من الخط المقسَّم."),
+                isNarrator: false))
             for narrator in catalog.narrators(of: reader.id) {
-                let sample = sampleWords[narrator.id]
                 rows.append(QiraatLegendEntry(
                     id: "narrator-\(narrator.id)", group: .readers, mark: .solidLine,
                     colors: [narrator.color], textColor: narrator.color,
                     title: appLocalized("الراوي \(narrator.nameAr)"),
-                    explanation: explained(appLocalized("يُلوَّن بلونه إذا ذُكر وحده دون زميله من الإمام نفسه."), sample),
-                    isNarrator: true, sampleWord: sample?.text))
+                    explanation: appLocalized("يُلوَّن بلونه إذا ذُكر وحده دون زميله من الإمام نفسه."), isNarrator: true))
             }
         }
 
         // «فرش فقط»: the page draws no أصول mark, so the key explains none and lists no باب.
         if hidesUsul {
             let usulMarks: Set<QiraatLegendMark> = [.dottedLine, .familyDot, .imalahFilled, .imalahRing, .rulingWord]
-            return rows.filter { !($0.group == .marks && usulMarks.contains($0.mark)) }
+            return rows.filter { !($0.group == .marks && usulMarks.contains($0.mark)) }.map { $0.with(sample: sampleWords[$0.id]) }
         }
 
         for category in usulCategories {
@@ -216,7 +240,7 @@ enum QiraatLegend {
                 explanation: appLocalized("حكم أصولي على الكلمة: يلوّن نصها إن لم يكن فيها اختلاف قراءة، وتُرسم به النقطة والخط المنقّط."),
                 isNarrator: false))
         }
-        return rows
+        return rows.map { $0.with(sample: sampleWords[$0.id]) }
     }
 
     /// For each reader (both narrators together and nobody else) and each narrator (alone), a single word of the
@@ -266,53 +290,73 @@ enum QiraatLegend {
     }
 }
 
-/// Gathers, page by page, the single-word variants one authority alone reads, then picks one word for each.
+private extension QiraatRuling {
+    /// One word of one ayah (the data writes `endAyah` even when it is the ruling's own ayah).
+    var isSingleWord: Bool { startToken == endToken && (endAyah ?? ayah) == ayah }
+}
+
+/// Gathers, page by page, the words that can stand as a row's sample, then picks one for each row.
+///
+/// - Readers and narrators: a word only they read (one narrator alone, or both narrators of one reader and nobody
+///   else); failing that a word they read with the fewest others; حفص, who reads the Mushaf's own text, a word others
+///   read differently.
+/// - Marks: a word that really carries the shape, preferably only that shape (found with `QiraatMarks`, as the page does).
+/// - أبواب الأصول: a word the باب rules.
+///
+/// Rows are served readers and narrators first, then the أبواب, then the marks, and no two rows share a word.
 private struct SampleWordCollector {
     struct Candidate {
         let word: QiraatLegendSampleWord
         let verified: Bool
         let letters: Int
         let order: Int
+        /// Lower is better: 0 for a word only that authority reads, else how many others share it, or how many marks
+        /// the word carries besides the one asked for.
+        let rank: Int
     }
 
     let catalog: QiraatCatalog
     private var candidates: [String: [Candidate]] = [:]
+    private var usulKeys: [String] = []
     private var order = 0
 
     init(catalog: QiraatCatalog) { self.catalog = catalog }
 
     mutating func add(_ page: QiraatPageData) {
-        for variant in page.variants {
-            order += 1
-            guard variant.startToken == variant.endToken, variant.hafsText != variant.variantText,
-                  let owner = owner(of: variant.readingIds),
-                  let text = Self.cleaned(variant.hafsText) else { continue }
-            let verified = variant.verificationStatus == "VERIFIED" || variant.verificationStatus == "PUBLISHED"
-            candidates[owner, default: []].append(Candidate(
-                word: QiraatLegendSampleWord(text: text, surah: variant.surah, ayah: variant.ayah),
-                verified: verified, letters: Self.bareLetters(of: text).count, order: order))
-        }
+        addAuthorities(of: page)
+        addMarksAndUsul(of: page)
     }
 
-    func words() -> [String: QiraatLegendSampleWord] {
-        var taken: Set<String> = []
-        var result: [String: QiraatLegendSampleWord] = [:]
-        for reader in catalog.readers.sorted(by: { $0.sortOrder < $1.sortOrder }) {
-            for owner in [reader.id] + catalog.narrators(of: reader.id).map(\.id) {
-                let best = (candidates[owner] ?? [])
-                    .filter { !taken.contains(Self.bareLetters(of: $0.word.text)) }
-                    .min { lhs, rhs in
-                        if lhs.verified != rhs.verified { return lhs.verified }
-                        // A word of about five letters reads best in the small sample.
-                        let (l, r) = (abs(lhs.letters - 5), abs(rhs.letters - 5))
-                        return l != r ? l < r : lhs.order < rhs.order
-                    }
-                guard let best else { continue }
-                taken.insert(Self.bareLetters(of: best.word.text))
-                result[owner] = best.word
+    private mutating func put(_ key: String, _ word: QiraatLegendSampleWord, verified: Bool, rank: Int) {
+        order += 1
+        candidates[key, default: []].append(Candidate(word: word, verified: verified,
+                                                       letters: Self.bareLetters(of: word.text).count, order: order, rank: rank))
+    }
+
+    // MARK: Readers and narrators
+
+    private mutating func addAuthorities(of page: QiraatPageData) {
+        for variant in page.variants {
+            guard variant.startToken == variant.endToken, variant.hafsText != variant.variantText,
+                  let text = Self.cleaned(variant.hafsText) else { continue }
+            let word = QiraatLegendSampleWord(text: text, surah: variant.surah, ayah: variant.ayah)
+            let verified = Self.isVerified(variant.verificationStatus)
+            let known = Set(variant.readingIds).filter { catalog.narrator($0) != nil }
+            let exclusive = owner(of: variant.readingIds)
+            let exclusiveKey = exclusive.map { catalog.reader($0) != nil ? "reader-\($0)" : "narrator-\($0)" }
+            if let exclusiveKey { put(exclusiveKey, word, verified: verified, rank: 0) }
+            guard !known.isEmpty else { continue }
+            for id in known where "narrator-\(id)" != exclusiveKey {
+                put("narrator-\(id)", word, verified: verified, rank: known.count)
+            }
+            for reader in Set(known.compactMap { catalog.readerId(ofReading: $0) }) where "reader-\(reader)" != exclusiveKey {
+                put("reader-\(reader)", word, verified: verified, rank: known.count)
+            }
+            // حفص reads the Mushaf's own text: any word the others read differently is his.
+            if !known.contains(QiraatCompare.hafsReadingId) {
+                put("narrator-\(QiraatCompare.hafsReadingId)", word, verified: verified, rank: 10 + known.count)
             }
         }
-        return result
     }
 
     /// The reader or narrator id this reading set belongs to alone: one narrator, or exactly both narrators of one reader.
@@ -325,6 +369,105 @@ private struct SampleWordCollector {
               ids == Set(catalog.narrators(of: reader).map(\.id)) else { return nil }
         return reader
     }
+
+    // MARK: Marks and أبواب الأصول
+
+    private mutating func addMarksAndUsul(of page: QiraatPageData) {
+        let marks = QiraatMarks(catalog: catalog, page: page)
+        let anchored = page.rulings.filter { $0.wordAnchored }
+
+        // Every single-word position that carries something, with the word's text (the variant's first).
+        struct Spot: Hashable { let surah: Int; let ayah: Int; let token: Int }
+        var texts: [Spot: (text: String, verified: Bool)] = [:]
+        var spots: [Spot] = []
+        func note(_ spot: Spot, _ raw: String, _ status: String) {
+            guard texts[spot] == nil, let text = Self.cleaned(raw) else { return }
+            texts[spot] = (text, Self.isVerified(status))
+            spots.append(spot)
+        }
+        for variant in page.variants where variant.startToken == variant.endToken {
+            note(Spot(surah: variant.surah, ayah: variant.ayah, token: variant.startToken), variant.hafsText, variant.verificationStatus)
+        }
+        for ruling in anchored where ruling.isSingleWord {
+            note(Spot(surah: ruling.surah, ayah: ruling.ayah, token: ruling.startToken), ruling.baseText, ruling.verificationStatus)
+        }
+
+        for spot in spots {
+            // A longer span over this word would make the word's text only part of what the marks describe.
+            guard marks.variants(surah: spot.surah, ayah: spot.ayah, token: spot.token).allSatisfy({ $0.startToken == $0.endToken }),
+                  anchored.filter({ $0.touches(surah: spot.surah, ayah: spot.ayah, token: spot.token) })
+                      .allSatisfy({ $0.isSingleWord }),
+                  let wordMarks = marks.wordMarks(surah: spot.surah, ayah: spot.ayah, token: spot.token, filter: .all),
+                  let (text, verified) = texts[spot].map({ ($0.text, $0.verified) }) else { continue }
+            let drawn = QiraatLegendMark.drawn(by: wordMarks, catalog: catalog)
+            for mark in drawn {
+                guard let (colors, textColor) = Self.colours(of: mark, in: wordMarks) else { continue }
+                put(mark.rowId, QiraatLegendSampleWord(text: text, surah: spot.surah, ayah: spot.ayah,
+                                                       colors: colors, textColor: textColor),
+                    verified: verified, rank: drawn.count - 1)
+            }
+        }
+
+        for ruling in anchored where ruling.isSingleWord {
+            guard let text = Self.cleaned(ruling.baseText) else { continue }
+            let key = "usul-\(QiraatLegendCategory(code: ruling.category, nameAr: ruling.categoryAr, color: ruling.color).id)"
+            if candidates[key] == nil { usulKeys.append(key) }
+            put(key, QiraatLegendSampleWord(text: text, surah: ruling.surah, ayah: ruling.ayah),
+                verified: Self.isVerified(ruling.verificationStatus), rank: 0)
+        }
+    }
+
+    /// The colours the sample draws for `mark` on a word that carries it, and the colour of the word's own text.
+    private static func colours(of mark: QiraatLegendMark, in marks: WordMarks) -> ([String], String?)? {
+        switch mark {
+        case .solidLine, .performanceLine, .unresolvedLine:
+            if case .solid(let hex)? = marks.underline { return ([hex], marks.textColor) }
+            return nil
+        case .segmentedLine:
+            if case .segments(let hexes)? = marks.underline { return (hexes, marks.textColor) }
+            return nil
+        case .dottedLine: return marks.dottedUnderlineColor.map { ([$0], nil) }
+        case .familyDot: return marks.familyDotColor.map { ([$0], nil) }
+        case .imalahFilled, .imalahRing: return marks.imalahDot.map { ([$0.color], nil) }
+        case .rulingWord: return ([marks.textColor], marks.textColor)
+        }
+    }
+
+    // MARK: Choosing
+
+    func words() -> [String: QiraatLegendSampleWord] {
+        var taken: Set<String> = []
+        var result: [String: QiraatLegendSampleWord] = [:]
+        func take(_ key: String, exclusiveOnly: Bool = false) {
+            guard result[key] == nil else { return }
+            let best = (candidates[key] ?? [])
+                .filter { !taken.contains(Self.bareLetters(of: $0.word.text)) && (!exclusiveOnly || $0.rank == 0) }
+                .min { lhs, rhs in
+                    if lhs.rank != rhs.rank { return lhs.rank < rhs.rank }
+                    if lhs.verified != rhs.verified { return lhs.verified }
+                    // A word of about five letters reads best in the small sample.
+                    let (l, r) = (abs(lhs.letters - 5), abs(rhs.letters - 5))
+                    return l != r ? l < r : lhs.order < rhs.order
+                }
+            guard let best else { return }
+            taken.insert(Self.bareLetters(of: best.word.text))
+            result[key] = best.word
+        }
+        let authorities = catalog.readers.sorted(by: { $0.sortOrder < $1.sortOrder }).flatMap { reader in
+            ["reader-\(reader.id)"] + catalog.narrators(of: reader.id).map { "narrator-\($0.id)" }
+        }
+        // Words only one reader or narrator reads go first, so a row's fallback never takes another row's own word.
+        for key in authorities { take(key, exclusiveOnly: true) }
+        for key in authorities { take(key) }
+        // Every باب gets its example before the shapes do: a shape can use any of many words, a rare باب may have one.
+        for key in usulKeys { take(key) }
+        for mark in QiraatLegendMark.allCases { take(mark.rowId) }
+        return result
+    }
+
+    // MARK: Words
+
+    private static func isVerified(_ status: String) -> Bool { status == "VERIFIED" || status == "PUBLISHED" }
 
     /// The word without the stop signs the printed token may carry after it; nil when more than one word is left.
     static func cleaned(_ text: String) -> String? {

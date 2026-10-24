@@ -217,7 +217,11 @@ public struct QiraatMarks: Sendable {
     /// Nil for page furniture (ayah ends, pause marks) and for words with nothing to show.
     public func wordMarks(for word: MushafWord, filter: QiraatFilter) -> WordMarks? {
         guard word.charType == .word else { return nil }
-        let s = word.ayahKey.surah, a = word.ayahKey.ayah, t = word.indexInAyah
+        return wordMarks(surah: word.ayahKey.surah, ayah: word.ayahKey.ayah, token: word.indexInAyah, filter: filter)
+    }
+
+    /// The marks of the word at a position in an ayah, for callers that have no `MushafWord` (the colour key).
+    public func wordMarks(surah s: Int, ayah a: Int, token t: Int, filter: QiraatFilter) -> WordMarks? {
         let variant = variantMarker(surah: s, ayah: a, token: t, filter: filter)
         let ruling = rulingMarker(surah: s, ayah: a, token: t, filter: filter)
         guard variant != nil || ruling != nil else { return nil }
