@@ -3,6 +3,13 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-24 — Setting: keep only فرش, hide أصول
+- **Request:** an option in Settings to hide أصول and keep only فرش.
+- **Change:** Settings › القراءات العشر has a new switch «فرش الحروف فقط (إخفاء الأصول)», off by default and kept per device (`mushaf1441:qiraat-hide-usul:v1`). While it is on, `QiraatStore.page(_:)` serves every page without its rulings, so everything that reads the store follows at once: no ruling colours, dots or dotted underlines on the Mushaf, no «الأصول» section or ruling cards in the word sheet and the compare view, no أصول rows in the page summary, key and search, and no «أصول القراءات» entry in the Qiraat menu. The rulings stay in the cache and on disk, so turning the switch off brings them back with no reload. Live-page comparison and the shrink guard use the stored page, so hiding never looks like a data change. `UsulIndexCache` keys on the choice, and `WordContextIndex` is invalidated when it changes.
+- **Not hidden:** the DEBUG-only review editor card («المراجعة والتحرير») still lists أصول entries, because it reads the database directly and is an editing tool, not the reader. The page-level conventions (`rules`: عدّ الآي, الإدغام الكبير between surahs) are not rulings and still show in the page summary.
+- **Verification:** 2 new `QiraatStoreTests` (hide and restore, live updates unaffected), 2 new `QiraatHideUsulTests` (default, persistence); `swift test` 477/477, app `MutshabehatTests` 327/327. On the iPhone 17 simulator page 19: with the switch on, only the فرش underlines remain and the word sheet shows «الفرش» without «الأصول».
+- **Files:** `MushafCore/Sources/MushafCore/{QiraatStore,UsulIndex}.swift`, `Sources/Qiraat/{QiraatPreferences,QiraatHub}.swift`, `Sources/Reader/{ReaderSettingsView,ReaderView,MushafPageView}.swift`, `MushafCore/Tests/MushafCoreTests/QiraatStoreTests.swift`, `Tests/QiraatHideUsulTests.swift`.
+
 ## [Unreleased] — 2026-10-23 — Variant card shows each reader's own performance details
 - **Owner report:** at 2:124/2:125 «إبراهيم» (page 19) the card showed «إبراهام» and one «الإمام ابن عامر» pill, with nothing for ابن ذكوان, whose recorded faces are «بالألف» and «بالياء» (wajh 2, «بخلف عنه»).
 - **Cause:** `QiraatVariant` kept only the reading ids; the per-reader rows (action, wajh, الخلاف) the review editor records were never decoded, and `VariantCard` drew only rolled-up pills. Rulings already showed them.

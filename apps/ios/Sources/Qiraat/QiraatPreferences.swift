@@ -6,6 +6,8 @@ import UIKit
 struct QiraatDisplay: Equatable {
     var enabled: Bool
     var filter: QiraatFilter
+    /// «فرش فقط»: the أصول rulings are left out of everything the reader shows.
+    var hidesUsul: Bool = false
 
     static let off = QiraatDisplay(enabled: false, filter: .all)
 }
@@ -18,6 +20,7 @@ struct QiraatDisplay: Equatable {
 final class QiraatPreferences {
     static let layerKey = "mushaf1441:reader-layer:v1"
     static let filterKey = "mushaf1441:qiraat-filter:v1"
+    static let hidesUsulKey = "mushaf1441:qiraat-hide-usul:v1"
 
     @ObservationIgnored private let defaults: UserDefaults
 
@@ -29,13 +32,19 @@ final class QiraatPreferences {
         didSet { defaults.set(filter.storageValue, forKey: Self.filterKey) }
     }
 
+    /// Keep only فرش: no أصول marks, cards, search results, key rows or index. Off by default.
+    var hidesUsul: Bool {
+        didSet { defaults.set(hidesUsul, forKey: Self.hidesUsulKey) }
+    }
+
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
         enabled = (defaults.string(forKey: Self.layerKey) ?? "qiraat") == "qiraat"
         filter = defaults.string(forKey: Self.filterKey).flatMap(QiraatFilter.init(storageValue:)) ?? .all
+        hidesUsul = defaults.bool(forKey: Self.hidesUsulKey)
     }
 
-    var display: QiraatDisplay { QiraatDisplay(enabled: enabled, filter: filter) }
+    var display: QiraatDisplay { QiraatDisplay(enabled: enabled, filter: filter, hidesUsul: hidesUsul) }
 }
 
 extension UIColor {

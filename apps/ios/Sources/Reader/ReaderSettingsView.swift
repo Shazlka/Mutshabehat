@@ -71,6 +71,12 @@ struct SettingsView: View {
                         }
                         .disabled(!qiraat.enabled)
                         .accessibilityIdentifier("open-qiraat-picker")
+                        Toggle(
+                            appLanguage == .english ? "Farsh only (hide Usul)" : "فرش الحروف فقط (إخفاء الأصول)",
+                            isOn: $qiraat.hidesUsul
+                        )
+                        .disabled(!qiraat.enabled)
+                        .accessibilityIdentifier("qiraat-hide-usul-toggle")
                     }
                 }
                 Section(appLanguage == .english ? "Cloud Synchronization" : "مزامنة السحابة") {

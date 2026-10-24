@@ -211,6 +211,7 @@ public actor UsulIndexCache {
     private struct Key: Hashable {
         let store: ObjectIdentifier
         let databasePath: String
+        let hidesUsul: Bool
     }
 
     private var cached: [Key: [UsulCategory]] = [:]
@@ -220,7 +221,8 @@ public actor UsulIndexCache {
 
     public func categories(store: QiraatStore?, databaseURL: URL) async -> [UsulCategory] {
         guard let store else { return [] }
-        let key = Key(store: ObjectIdentifier(store), databasePath: databaseURL.standardizedFileURL.path)
+        let key = Key(store: ObjectIdentifier(store), databasePath: databaseURL.standardizedFileURL.path,
+                      hidesUsul: store.hidesUsul)
         if let categories = cached[key] { return categories }
         if let task = inFlight[key] { return await task.value }
 

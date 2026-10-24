@@ -79,10 +79,12 @@ struct QiraatHubContent: View {
                 Label("البحث في القراءات", systemImage: "magnifyingglass")
             }
             .accessibilityIdentifier("qiraat-hub-search")
-            Button { openRoute(.usulIndex) } label: {
-                Label("أصول القراءات", systemImage: "books.vertical")
+            if !qiraat.hidesUsul {
+                Button { openRoute(.usulIndex) } label: {
+                    Label("أصول القراءات", systemImage: "books.vertical")
+                }
+                .accessibilityIdentifier("qiraat-hub-usul-index")
             }
-            .accessibilityIdentifier("qiraat-hub-usul-index")
         }
     }
 }

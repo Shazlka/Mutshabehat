@@ -29,6 +29,21 @@ public final class QiraatStore: @unchecked Sendable {
     private var pages: [Int: QiraatPageData?] = [:]
     /// Least recently used first.
     private var order: [Int] = []
+    private var usulHidden = false
+
+    /// The reader's «فرش فقط» choice: while on, every page is served without its أصول rulings, so the marks, the
+    /// word sheet, the page summary, the search and the key all show فرش alone. The rulings stay in the cache and on
+    /// disk, so turning it off brings them back at once.
+    public var hidesUsul: Bool {
+        get { lock.withLock { usulHidden } }
+        set {
+            let changed = lock.withLock { () -> Bool in
+                defer { usulHidden = newValue }
+                return usulHidden != newValue
+            }
+            if changed { WordContextIndex.shared.invalidate() }
+        }
+    }
 
     public init(directory: URL, overlayDirectory: URL? = nil, capacity: Int = 16) throws {
         self.directory = directory
@@ -49,6 +64,13 @@ public final class QiraatStore: @unchecked Sendable {
     }
 
     public func page(_ number: Int) -> QiraatPageData? {
+        guard let held = storedPage(number) else { return nil }
+        guard hidesUsul, !held.rulings.isEmpty else { return held }
+        return QiraatPageData(pageNumber: held.pageNumber, variants: held.variants, rulings: [], rules: held.rules)
+    }
+
+    /// The page as installed, whatever the reader chose to hide.
+    private func storedPage(_ number: Int) -> QiraatPageData? {
         guard (1...mushafPageCount).contains(number) else { return nil }
         if let hit = lock.withLock({ () -> QiraatPageData?? in
             guard let cached = pages[number] else { return nil }
@@ -86,7 +108,7 @@ public final class QiraatStore: @unchecked Sendable {
     public func applyLivePage(_ data: Data, number: Int, allowShrink: Bool = false) throws -> Bool {
         guard (1...mushafPageCount).contains(number), let overlayDirectory,
               let incoming = Self.decodePage(data, number: number) else { throw LiveFailure.invalidPage }
-        let held = page(number)
+        let held = storedPage(number)
         if held == incoming { return false }
         if !allowShrink, let held {
             let before = held.variants.count + held.rulings.count

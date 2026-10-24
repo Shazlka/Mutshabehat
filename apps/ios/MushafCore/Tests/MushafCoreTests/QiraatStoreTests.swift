@@ -122,6 +122,38 @@ import Testing
         #expect(store.page(7)?.variants.isEmpty == true)
     }
 
+    // MARK: Hiding أصول (the reader keeps only فرش)
+
+    private let mixedPage7 = #"{"pageNumber":7,"variants":[{"id":"v1","surah":2,"ayah":51,"startToken":11,"hafsText":"a","variantText":"b","verificationStatus":"REVIEWED","readingIds":["Q06-R01"]}],"rulings":[{"id":"r1","surah":2,"ayah":51,"startToken":3,"baseText":"x"}],"rules":[]}"#
+
+    @Test func hidingUsulDropsRulingsButKeepsVariantsAndComesBack() throws {
+        let dir = try temporaryStoreDirectory(pages: [7: mixedPage7])
+        defer { try? FileManager.default.removeItem(at: dir) }
+        let store = try QiraatStore(directory: dir)
+        #expect(store.page(7)?.rulings.map(\.id) == ["r1"])
+
+        store.hidesUsul = true
+        #expect(store.page(7)?.rulings.isEmpty == true)
+        #expect(store.page(7)?.variants.map(\.id) == ["v1"])
+        #expect(store.marks(page: 7) != nil)
+
+        store.hidesUsul = false
+        #expect(store.page(7)?.rulings.map(\.id) == ["r1"], "the rulings are only hidden, never lost")
+    }
+
+    /// A live page is compared with the page held, not with what is shown, so hiding أصول must not make every
+    /// poll look like a change, nor trip the shrink guard.
+    @Test func hidingUsulDoesNotDisturbLiveUpdates() throws {
+        let dir = try temporaryStoreDirectory(pages: [7: mixedPage7])
+        let overlay = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: dir); try? FileManager.default.removeItem(at: overlay) }
+        let store = try QiraatStore(directory: dir, overlayDirectory: overlay)
+        store.hidesUsul = true
+        #expect(try store.applyLivePage(Data(mixedPage7.utf8), number: 7) == false, "the same page as the snapshot is no change")
+        store.hidesUsul = false
+        #expect(store.page(7)?.rulings.map(\.id) == ["r1"])
+    }
+
     @Test func aMissingCatalogIsAnError() throws {
         let dir = try temporaryStoreDirectory(pages: [:], catalog: false)
         defer { try? FileManager.default.removeItem(at: dir) }
