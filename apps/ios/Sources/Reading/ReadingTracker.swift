@@ -482,8 +482,10 @@ final class ReadingTracker: ObservableObject {
 
     func refreshStats() {
         totalAyahsRead = db.readAyahsCount(khatmaId: activeKhatma.id)
-        let pct = cachedTotalQuranAyahs > 0 ? (Double(totalAyahsRead) / Double(cachedTotalQuranAyahs)) * 100.0 : 0.0
-        khatmaPercent = min(100.0, pct)
+        khatmaPercent = KhatmaProgress.percent(
+            pagesRead: db.readPagesCount(khatmaId: activeKhatma.id),
+            allAyahsRead: cachedTotalQuranAyahs > 0 && totalAyahsRead >= cachedTotalQuranAyahs
+        )
 
         let streaks = db.calculateStreaks(asOf: Date())
         currentStreak = streaks.currentStreak

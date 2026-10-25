@@ -239,12 +239,29 @@ public struct ReadingStatsOverview: Sendable {
         }
     }
 
+    /// How far the khatma is, by pages (0…100); see `KhatmaProgress`.
     public var progressPercentage: Double {
-        guard totalQuranAyahs > 0 else { return 0 }
-        return (Double(totalAyahsReadInCurrentKhatma) / Double(totalQuranAyahs)) * 100.0
+        KhatmaProgress.percent(
+            pagesRead: totalPagesReadInCurrentKhatma,
+            allAyahsRead: totalQuranAyahs > 0 && totalAyahsReadInCurrentKhatma >= totalQuranAyahs
+        )
     }
 
     public var remainingPages: Int {
-        max(0, 604 - totalPagesReadInCurrentKhatma)
+        max(0, KhatmaProgress.totalPages - totalPagesReadInCurrentKhatma)
+    }
+}
+
+/// The khatma counted in pages of the Mushaf, not in ayahs: a page is read once any of its ayahs is, and the
+/// Mushaf has 604. The khatma itself still completes only when every ayah has been read, so the figure stays
+/// below 100 until then.
+public enum KhatmaProgress {
+    public static let totalPages = 604
+
+    /// 0…100. `allAyahsRead` lets it reach 100; before that a page count that already touches every page shows 99.
+    public static func percent(pagesRead: Int, allAyahsRead: Bool) -> Double {
+        if allAyahsRead { return 100 }
+        let pages = Double(min(max(pagesRead, 0), totalPages))
+        return min(pages / Double(totalPages) * 100, 99)
     }
 }

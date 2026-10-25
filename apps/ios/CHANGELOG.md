@@ -3,6 +3,13 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-25 — Khatma progress counts pages; juz and hizb at the left of the header, progress in the middle
+- **Request:** the khatma progress follows the pages, not the number of ayahs; the juz and hizb go to the left of the header and the progress in the middle.
+- **Progress (`KhatmaProgress`, `ReadingTracker.refreshStats`, `ReadingStatsOverview.progressPercentage`):** the percent is pages read ÷ 604, where a page counts once any of its ayahs is read (the same figure the statistics screen already printed as «x من ٦٠٤ صفحة»). The ring in the header and the big figure on the statistics screen now agree. The khatma still completes only when every ayah has been read, so the figure stops at 99 % until then and shows 100 % only at completion (a page with one unread ayah left can no longer fill the ring early).
+- **Header (`ReaderTopBar`):** page number and surah name at the right, the progress (memorization mark, filter chip, khatma) in the middle, «جزء ◔ حزب» at the left on one line. When the row is tight it first uses the compact mark, then stacks the juz over the hizb, and only then drops the percent, so the figure stays readable and nothing runs under anything.
+- **Tests:** `ReadingTests` (the page rule, and the tracker reporting 6 of 604 pages for 6 ayahs on 6 pages and no more for many ayahs on one page), `QiraatTopBarUITests` (surah right of the progress, progress right of the juz and hizb, progress in the middle).
+- **Files:** `Sources/Reading/{QuranReadingModels,ReadingTracker}.swift`, `Sources/Reader/ReaderTopBar.swift`, `Tests/ReadingTests.swift`, `UITests/QiraatTopBarUITests.swift`.
+
 ## [Unreleased] — 2026-10-25 — Header progress redesigned; footer bar larger with the lens behind the icons
 - **Request:** the progress status in the header was very small and hard to read: redesign it professionally with red, yellow and green shades for the progress; the footer glass did not look like Apple's iOS 27 Liquid Glass.
 - **Header (`ReaderTopBar`):** the page number (24 pt, rounded, bold) at the far right, then the surah name with «جزء ◔ حزب» under it (13 pt semibold), and at the other end the progress. The khatma is one tinted capsule 40 pt tall: a 28 pt ring with a 4 pt stroke and the percent in 17 pt bold rounded type, coloured by how far the khatma is, red at the start, through yellow, to green (`ProgressTint`, hue 0° → 130°); tapping it opens the reading statistics. The memorization mark (`PageStatusMark`) is larger too: 15 pt shape, 12 pt label, 64 pt bar, a 1 pt outline; its status colours are unchanged.

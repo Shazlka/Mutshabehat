@@ -26,12 +26,13 @@ struct ReaderTopBar: View {
 
     var body: some View {
         // The row is tried at full size first; when a long surah name leaves no room it uses the compact memorization
-        // mark, then drops the percent next to the khatma ring. The juz and hizb are never cut.
+        // mark, then stacks the juz over the hizb, and only then drops the percent next to the khatma ring. They are never cut.
         ViewThatFits(in: .horizontal) {
-            row(showsPercent: true, compactMark: false)
-            row(showsPercent: true, compactMark: true)
-            row(showsPercent: false, compactMark: true)
-            row(showsPercent: false, compactMark: true).dynamicTypeSize(...DynamicTypeSize.large)
+            row(showsPercent: true, compactMark: false, stackedSection: false)
+            row(showsPercent: true, compactMark: true, stackedSection: false)
+            row(showsPercent: true, compactMark: true, stackedSection: true)
+            row(showsPercent: false, compactMark: true, stackedSection: true)
+            row(showsPercent: false, compactMark: true, stackedSection: true).dynamicTypeSize(...DynamicTypeSize.large)
         }
         .padding(.horizontal, 16)
         .frame(height: 52)
@@ -41,9 +42,9 @@ struct ReaderTopBar: View {
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
     }
 
-    /// Page number at the far right, then the surah name with the juz and hizb under it; at the other end the progress
-    /// (memorization mark, filter chip, khatma), each in a place of its own so no text ever runs under it.
-    private func row(showsPercent: Bool, compactMark: Bool) -> some View {
+    /// Page number at the far right with the surah name beside it; the progress (memorization mark, filter chip,
+    /// khatma) in the middle; the juz and hizb at the far left. Each in a place of its own so no text runs under it.
+    private func row(showsPercent: Bool, compactMark: Bool, stackedSection: Bool) -> some View {
         let ink = Color(uiColor: appearance.ink(for: traits))
         return HStack(alignment: .center, spacing: 10) {
             if !pageNumbers.isEmpty {
@@ -58,38 +59,57 @@ struct ReaderTopBar: View {
                     .accessibilityIdentifier("reading-page-number")
             }
 
-            VStack(alignment: .leading, spacing: 1) {
-                Text(surahTitle)
-                    .font(Font(MushafLibrary.mushafFont(size: 19)))
-                    .foregroundStyle(ink)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.7)
-                    .fixedSize(horizontal: true, vertical: false)
-                    .accessibilityIdentifier("reading-surah-title")
-                if let section {
-                    HStack(spacing: 5) {
-                        Text(section.juzText)
-                        RubDisc(quarter: section.rubInHizb, diameter: 14)
-                        Text(section.hizbText)
-                    }
-                    .font(.system(size: 13, weight: .semibold))
-                    .foregroundStyle(ink.opacity(0.75))
-                    .lineLimit(1)
-                    .fixedSize()
-                    .accessibilityElement(children: .ignore)
-                    .accessibilityLabel(section.accessibilityText)
-                    .accessibilityAddTraits(.isStaticText)
-                    .accessibilityIdentifier("reading-section-text")
-                }
-            }
+            Text(surahTitle)
+                .font(Font(MushafLibrary.mushafFont(size: 19)))
+                .foregroundStyle(ink)
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
+                .fixedSize(horizontal: true, vertical: false)
+                .accessibilityIdentifier("reading-surah-title")
 
-            Spacer(minLength: 0)
+            Spacer(minLength: 8)
             HStack(spacing: 8) {
                 memorizationMarkRow(compact: compactMark)
                 qiraatFilterChip
                 khatmaChip(showsPercent: showsPercent)
             }
+            Spacer(minLength: 8)
+
+            if let section {
+                sectionLabel(section, ink: ink, stacked: stackedSection)
+            }
         }
+    }
+
+    /// The juz and hizb with the quarter disc between them: on one line, or the juz over the hizb when the row is tight.
+    @ViewBuilder
+    private func sectionLabel(_ section: ReaderSection, ink: Color, stacked: Bool) -> some View {
+        let content = Group {
+            if stacked {
+                VStack(alignment: .leading, spacing: 1) {
+                    Text(section.juzText)
+                    HStack(spacing: 5) {
+                        RubDisc(quarter: section.rubInHizb, diameter: 14)
+                        Text(section.hizbText)
+                    }
+                }
+            } else {
+                HStack(spacing: 5) {
+                    Text(section.juzText)
+                    RubDisc(quarter: section.rubInHizb, diameter: 14)
+                    Text(section.hizbText)
+                }
+            }
+        }
+        content
+            .font(.system(size: 13, weight: .semibold))
+            .foregroundStyle(ink.opacity(0.75))
+            .lineLimit(1)
+            .fixedSize()
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(section.accessibilityText)
+            .accessibilityAddTraits(.isStaticText)
+            .accessibilityIdentifier("reading-section-text")
     }
 
     /// The khatma progress: a ring and the percent in one tinted capsule, red while it has just begun, through

@@ -88,6 +88,22 @@ final class QiraatTopBarUITests: XCTestCase {
         XCTAssertEqual(mushafPage.frame, before, "the page moved when the footer bar showed")
     }
 
+    /// Page number and surah at the right, the khatma progress in the middle, the juz and hizb at the left.
+    func testTheHeaderPutsTheJuzOnTheLeftAndTheProgressInTheMiddle() {
+        let app = launch()
+        XCTAssertTrue(element("mushaf-page-1", in: app).waitForExistence(timeout: 15))
+        let surah = element("reading-surah-title", in: app)
+        let khatma = element("khatma-progress", in: app)
+        let section = element("reading-section-text", in: app)
+        for item in [surah, khatma, section] { XCTAssertTrue(item.waitForExistence(timeout: 20)) }
+        XCTAssertGreaterThan(surah.frame.midX, khatma.frame.midX, "the surah is right of the progress")
+        XCTAssertGreaterThan(khatma.frame.midX, section.frame.midX, "the progress is right of the juz and hizb")
+        XCTAssertLessThan(section.frame.midX, app.frame.midX, "the juz and hizb are on the left half")
+        XCTAssertEqual(khatma.frame.midX, app.frame.midX, accuracy: app.frame.width * 0.2, "the progress is in the middle")
+        XCTAssertFalse(khatma.frame.intersects(section.frame))
+        XCTAssertFalse(khatma.frame.intersects(surah.frame))
+    }
+
     func testMoreMenuHoldsMutshabehatAndMemorization() {
         let app = launch()
         showChrome(app)

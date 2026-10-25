@@ -202,6 +202,34 @@ final class ReadingTests: XCTestCase {
         XCTAssertEqual(streaks.totalReadingDays, 4)
     }
 
+    // MARK: - Khatma progress counts pages
+
+    func testKhatmaProgressCountsPagesNotAyahs() {
+        XCTAssertEqual(KhatmaProgress.percent(pagesRead: 0, allAyahsRead: false), 0)
+        XCTAssertEqual(KhatmaProgress.percent(pagesRead: 302, allAyahsRead: false), 50, accuracy: 0.001)
+        XCTAssertEqual(KhatmaProgress.percent(pagesRead: 604, allAyahsRead: true), 100)
+        // Every page touched but ayahs still unread: the khatma is not complete, so it never shows 100.
+        XCTAssertEqual(KhatmaProgress.percent(pagesRead: 604, allAyahsRead: false), 99)
+        XCTAssertEqual(KhatmaProgress.percent(pagesRead: 9999, allAyahsRead: false), 99)
+        XCTAssertEqual(KhatmaProgress.percent(pagesRead: -3, allAyahsRead: false), 0)
+    }
+
+    @MainActor
+    func testTrackerShowsThePercentOfPagesRead() throws {
+        let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent("test_page_pct_\(UUID().uuidString).sqlite")
+        let db = QuranReadingDatabase(url: tempURL)
+        let tracker = ReadingTracker(database: db)
+        let khatma = tracker.activeKhatma
+        // One ayah on each of 6 different pages is 6 of 604 pages, though it is 6 of 6236 ayahs.
+        _ = db.recordReadAyahs(khatmaId: khatma.id, items: (1...6).map { (surah: 2, ayah: $0, page: $0 + 1) })
+        tracker.refreshStats()
+        XCTAssertEqual(tracker.khatmaPercent, 6.0 / 604.0 * 100.0, accuracy: 0.0001)
+        // Many ayahs on one page is still one page.
+        _ = db.recordReadAyahs(khatmaId: khatma.id, items: (7...40).map { (surah: 2, ayah: $0, page: 2) })
+        tracker.refreshStats()
+        XCTAssertEqual(tracker.khatmaPercent, 6.0 / 604.0 * 100.0, accuracy: 0.0001)
+    }
+
     // MARK: - 4. Khatma Completion & Restart Tests
 
     func testCompleteKhatmaAndRestartNew() {
