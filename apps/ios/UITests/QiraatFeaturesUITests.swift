@@ -46,9 +46,9 @@ final class QiraatFeaturesUITests: XCTestCase {
         return app.descendants(matching: .any).matching(NSCompoundPredicate(andPredicateWithSubpredicates: predicates)).firstMatch
     }
 
-    /// A tap in the left margin shows or hides the controls; with the Qiraat layer on, the page centre can be a marked word.
+    /// A tap on the reading header shows or hides the controls; on the page, any spot can be a marked word.
     private func showControls(in app: XCUIApplication) {
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()
     }
 
     /// Scrolls the settings collection view to bring a target row into view.
@@ -91,6 +91,9 @@ final class QiraatFeaturesUITests: XCTestCase {
         let legend = app.descendants(matching: .any)["qiraat-legend"]
         XCTAssertTrue(legend.waitForExistence(timeout: 20))
 
+        // Three tabs: the marks first, then the readers' colours, then the أبواب.
+        XCTAssertTrue(app.descendants(matching: .any)["qiraat-legend-tabs"].exists)
+        app.segmentedControls["qiraat-legend-tabs"].buttons.element(boundBy: 1).tap()
         let nafiRow = app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS 'نافع'")).firstMatch
         var swipes = 0
         while !nafiRow.exists && swipes < 8 {   // the reader rows are below the mark samples
@@ -133,10 +136,7 @@ final class QiraatFeaturesUITests: XCTestCase {
         XCTAssertTrue(filterSubmenu.waitForExistence(timeout: 20))
         filterSubmenu.tap()
 
-        let nafi = byLabel("الإمام", "نافع", in: app)
-        XCTAssertTrue(nafi.waitForExistence(timeout: 20))
-        nafi.tap()
-        let warsh = byLabel("الراوي", "ورش", in: app)
+        let warsh = app.buttons["qiraat-narrator-Q01-R02"]
         XCTAssertTrue(warsh.waitForExistence(timeout: 20))
         warsh.tap()
 

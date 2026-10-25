@@ -41,6 +41,9 @@ struct ReaderView: View {
     @State private var qiraatRoute: QiraatHubRoute?
     @State private var pendingQiraatWord: (page: MushafPage, word: MushafWord)?
     @State private var showingQiraatFilter = false
+    @State private var showingQiraatLegend = false
+    /// The home-indicator inset of the screen, above which the footer bar floats.
+    @State private var safeBottom: CGFloat = 34
     @State private var bookmarkActionTarget: (page: MushafPage, ayah: AyahKey)? = nil
     @AppStorage("mushaf1441:theme:v1") private var theme = MushafAppearance.system.rawValue
     @AppStorage("app:language:v1") private var language = AppLanguage.arabic.rawValue
@@ -95,6 +98,7 @@ struct ReaderView: View {
                     chromeVisible: chromeVisible,
                     appearance: appearance,
                     traits: interfaceTraits,
+                    safeBottom: safeBottom,
                     openIndex: { showingIndex = true },
                     openSearch: { showingSearch = true },
                     openBookmarks: { showingBookmarks = true },
@@ -103,7 +107,13 @@ struct ReaderView: View {
                     openSettings: { showingSettings = true },
                     qiraat: qiraat,
                     qiraatCatalog: library.qiraat?.catalog,
-                    openQiraatRoute: { qiraatRoute = $0 }
+                    openQiraatRoute: { route in
+                        switch route {
+                        case .filter: showingQiraatFilter = true
+                        case .legend: showingQiraatLegend = true
+                        default: qiraatRoute = route
+                        }
+                    }
                 )
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
             }
@@ -116,6 +126,7 @@ struct ReaderView: View {
                     .padding(.top, 60)
             }
         }
+        .onGeometryChange(for: CGFloat.self) { $0.safeAreaInsets.bottom } action: { safeBottom = $0 }
         .onChange(of: page) { _, newPage in
             ReadingPosition().page = newPage
             tracker.pageDidChange(to: newPage, library: library)
@@ -185,9 +196,14 @@ struct ReaderView: View {
         .sheet(item: $qiraatRoute, onDismiss: presentPendingQiraatWord) { route in
             qiraatDestination(route)
         }
-        .sheet(isPresented: $showingQiraatFilter) {
+        .fullScreenCover(isPresented: $showingQiraatLegend) {
+            if let store = library.qiraat {
+                QiraatLegendSheet(catalog: store.catalog, store: store)
+            }
+        }
+        .fullScreenCover(isPresented: $showingQiraatFilter) {
             if let catalog = library.qiraat?.catalog {
-                QiraatReaderPicker(catalog: catalog, selection: $qiraat.filter)
+                QiraatFilterGrid(catalog: catalog, selection: $qiraat.filter)
             }
         }
         .sheet(isPresented: $showingIndex) {

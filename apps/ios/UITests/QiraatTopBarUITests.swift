@@ -1,6 +1,6 @@
 import XCTest
 
-/// A tap in the left margin shows or hides the controls: with the Qiraat layer on, the page centre is a marked word.
+/// A tap on the reading header shows or hides the controls: with the Qiraat layer on, the page centre is a marked word.
 /// The Qiraat entry in the reader's top bar: the icon and its menu, the filter chip in the reading
 /// header, and the «المزيد» menu that now holds المتشابهات and الحفظ.
 @MainActor
@@ -27,15 +27,16 @@ final class QiraatTopBarUITests: XCTestCase {
         return app.descendants(matching: .any).matching(NSCompoundPredicate(andPredicateWithSubpredicates: predicates)).firstMatch
     }
 
-    /// The reader / narrator filter is a submenu of the Qiraat menu.
-    private func openFilterSubmenu(_ app: XCUIApplication) {
-        let submenu = element("qiraat-filter", in: app)
-        XCTAssertTrue(submenu.waitForExistence(timeout: 20), "the filter submenu is in the Qiraat menu")
-        submenu.tap()
+    /// The reader / narrator filter is an entry of the Qiraat menu that opens the full-screen picker.
+    private func openFilterPicker(_ app: XCUIApplication) {
+        let entry = element("qiraat-filter", in: app)
+        XCTAssertTrue(entry.waitForExistence(timeout: 20), "the filter entry is in the Qiraat menu")
+        entry.tap()
+        XCTAssertTrue(app.buttons["qiraat-reader-all"].waitForExistence(timeout: 20), "the picker opened")
     }
 
     private func showChrome(_ app: XCUIApplication) {
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()
         XCTAssertTrue(app.buttons["open-index"].waitForExistence(timeout: 20))
     }
 
@@ -54,6 +55,8 @@ final class QiraatTopBarUITests: XCTestCase {
             XCTAssertGreaterThanOrEqual(icon.frame.height, 43.5, id)
             // The bar sits wholly below the paper: it never covers the page.
             XCTAssertGreaterThanOrEqual(icon.frame.minY, mushafPage.frame.maxY, "\(id) overlaps the page")
+            // Above the screen's bottom edge and its rounded corners, never cut by them.
+            XCTAssertLessThanOrEqual(icon.frame.maxY, app.windows.firstMatch.frame.maxY - 20, "\(id) is too low")
             frames.append(icon.frame)
         }
         for (i, a) in frames.enumerated() {
@@ -155,14 +158,11 @@ final class QiraatTopBarUITests: XCTestCase {
         showChrome(app)
         XCTAssertEqual(mushafPage.frame, before, "the page moved when the controls showed")
         app.buttons["qiraat-button"].tap()
-        openFilterSubmenu(app)
-        // Items inside a menu are exposed by label.
-        let all = app.buttons["الكل"]
-        XCTAssertTrue(all.waitForExistence(timeout: 20))
-        all.tap()
+        openFilterPicker(app)
+        app.buttons["qiraat-reader-all"].tap()
         XCTAssertEqual(mushafPage.frame, before, "the page moved when the filter changed from the menu")
 
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()   // back to the reading header
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()   // back to the reading header
         XCTAssertFalse(element("qiraat-filter-chip", in: app).waitForExistence(timeout: 2), "the filter is all again")
         XCTAssertEqual(mushafPage.frame, before)
     }
@@ -172,14 +172,52 @@ final class QiraatTopBarUITests: XCTestCase {
         XCTAssertTrue(element("mushaf-page-1", in: app).waitForExistence(timeout: 15))
         showChrome(app)
         app.buttons["qiraat-button"].tap()
-        openFilterSubmenu(app)
-        let nafi = byLabel("الإمام", "نافع", in: app)
-        XCTAssertTrue(nafi.waitForExistence(timeout: 20))
-        nafi.tap()
-        let warsh = byLabel("الراوي", "ورش", in: app)
+        openFilterPicker(app)
+        let warsh = app.buttons["qiraat-narrator-Q01-R02"]
         XCTAssertTrue(warsh.waitForExistence(timeout: 20))
         warsh.tap()
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()
         XCTAssertTrue(element("qiraat-filter-chip", in: app).waitForExistence(timeout: 20))
+    }
+
+    /// The picker is full screen with every reader and narrator in three columns, none behind a scroll.
+    func testThePickerShowsEveryReaderAndNarratorInThreeColumnsOnOneScreen() {
+        let app = launch()
+        XCTAssertTrue(element("mushaf-page-1", in: app).waitForExistence(timeout: 15))
+        showChrome(app)
+        app.buttons["qiraat-button"].tap()
+        openFilterPicker(app)
+        let screen = app.windows.firstMatch.frame
+        var columns = Set<Int>()
+        for n in 1...10 {
+            let id = String(format: "Q%02d", n)
+            let reader = app.buttons["qiraat-reader-\(id)"]
+            XCTAssertTrue(reader.exists, id)
+            XCTAssertTrue(screen.contains(reader.frame), "\(id) is not on the screen: \(reader.frame)")
+            columns.insert(Int((reader.frame.midX / 10).rounded()))
+            for r in 1...2 {
+                let narrator = app.buttons["qiraat-narrator-\(id)-R0\(r)"]
+                XCTAssertTrue(narrator.exists && screen.contains(narrator.frame), "\(id)-R0\(r) is not on the screen")
+            }
+        }
+        XCTAssertEqual(columns.count, 3, "the readers are in three columns: \(columns)")
+        app.buttons["qiraat-narrator-Q05-R01"].tap()
+        XCTAssertFalse(app.buttons["qiraat-reader-all"].waitForExistence(timeout: 3), "choosing closes the picker")
+        XCTAssertTrue(element("qiraat-filter-chip", in: app).waitForExistence(timeout: 20))
+    }
+
+    /// A finger on the bar raises the glass lens under the touched item and moves it as the finger slides.
+    func testTheGlassLensFollowsAFingerSlidingAlongTheBar() {
+        let app = launch()
+        XCTAssertTrue(element("mushaf-page-1", in: app).waitForExistence(timeout: 15))
+        showChrome(app)
+        let bar = element("footer-bar", in: app)
+        XCTAssertTrue(bar.waitForExistence(timeout: 20))
+        XCTAssertEqual(bar.value as? String, "slot:none last:none")
+        let left = app.buttons["settings-button"].coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
+        let right = app.buttons["open-index"].coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
+        // Touch the left slot and slide to the right one: the lens was under the last slot, and left with the finger.
+        left.press(forDuration: 0.2, thenDragTo: right, withVelocity: .slow, thenHoldForDuration: 0.3)
+        XCTAssertEqual(bar.value as? String, "slot:none last:5", "the lens followed the finger to the right end")
     }
 }

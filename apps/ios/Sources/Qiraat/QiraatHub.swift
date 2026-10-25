@@ -4,6 +4,8 @@ import SwiftUI
 /// Where the Qiraat menu can send the reader when its destination sheets are integrated.
 enum QiraatHubRoute: String, Identifiable {
     case legend, pageSummary, search, usulIndex
+    /// The reader / narrator picker; the reader shows it full screen itself, so no sheet is built for it.
+    case filter
 
     var id: String { rawValue }
 }
@@ -41,6 +43,8 @@ extension ReaderView {
                     onOpen: openQiraatHubWord
                 )
             }
+        case .filter:
+            EmptyView()
         case .usulIndex:
             if library.qiraat != nil {
                 UsulIndexLoaderView(
@@ -63,7 +67,10 @@ struct QiraatHubContent: View {
         Toggle("إظهار علامات القراءات", isOn: $qiraat.enabled)
             .accessibilityIdentifier("qiraat-hub-toggle")
         if let catalog {
-            QiraatFilterMenu(catalog: catalog, filter: $qiraat.filter)
+            Button { openRoute(.filter) } label: {
+                Label(catalog.filterName(qiraat.filter), systemImage: "line.3.horizontal.decrease.circle")
+            }
+            .accessibilityIdentifier("qiraat-filter")
             .disabled(!qiraat.enabled)
         }
         Button { openRoute(.legend) } label: {

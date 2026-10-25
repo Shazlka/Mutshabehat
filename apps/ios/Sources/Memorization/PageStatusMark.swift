@@ -16,10 +16,10 @@ struct PageStatusMark: View {
         let color = MemorizationTheme.color(status)
         VStack(spacing: 2) {
             HStack(spacing: 4) {
-                Text(verbatim: MemorizationTheme.shape(status)).font(.caption.weight(.bold))
+                Text(verbatim: MemorizationTheme.shape(status)).font(.subheadline.weight(.bold))
                 if !compact {
                     Text(verbatim: MemorizationTheme.shortLabel(status, language: language))
-                        .font(.caption2.weight(.semibold))
+                        .font(.caption.weight(.semibold))
                         .lineLimit(1)
                 }
                 if showsPageNumber {
@@ -29,13 +29,13 @@ struct PageStatusMark: View {
                 }
             }
             MemorizationMixBar(fractions: progress.mix.fractions)
-                .frame(width: compact ? 30 : 54)
+                .frame(width: compact ? 36 : 64)
         }
         .foregroundStyle(color)
-        .padding(.horizontal, 9)
-        .padding(.vertical, 4)
+        .padding(.horizontal, 10)
+        .padding(.vertical, 5)
         .background(Capsule().fill(color.opacity(0.12)))
-        .overlay(Capsule().strokeBorder(color.opacity(0.45), lineWidth: 0.5))
+        .overlay(Capsule().strokeBorder(color.opacity(0.55), lineWidth: 1))
         .environment(\.layoutDirection, language.layoutDirection)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(MemorizationTheme.pageSummary(page: page, progress: progress, language: language))

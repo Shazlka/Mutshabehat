@@ -41,15 +41,16 @@ struct ReaderTopBar: View {
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
     }
 
-    /// Page number at the far right, then the surah name; juz and hizb on the left, and between them the progress and the marks, in a place of
-    /// their own, so no text ever runs under them.
+    /// Page number at the far right, then the surah name with the juz and hizb under it; at the other end the progress
+    /// (memorization mark, filter chip, khatma), each in a place of its own so no text ever runs under it.
     private func row(showsPercent: Bool, compactMark: Bool) -> some View {
-        HStack(alignment: .center, spacing: 8) {
+        let ink = Color(uiColor: appearance.ink(for: traits))
+        return HStack(alignment: .center, spacing: 10) {
             if !pageNumbers.isEmpty {
                 Text(verbatim: pageNumbers.map { ArabicDigits.string($0) }.joined(separator: " – "))
-                    .font(.headline.weight(.bold))
+                    .font(.system(size: 24, weight: .bold, design: .rounded))
                     .monospacedDigit()
-                    .foregroundStyle(Color(uiColor: appearance.ink(for: traits)))
+                    .foregroundStyle(ink)
                     .lineLimit(1)
                     .fixedSize()
                     .accessibilityLabel(Text(verbatim: (memorizationLanguage == .english ? "Page " : "صفحة ")
@@ -57,13 +58,30 @@ struct ReaderTopBar: View {
                     .accessibilityIdentifier("reading-page-number")
             }
 
-            Text(surahTitle)
-                .font(Font(MushafLibrary.mushafFont(size: 20)))
-                .foregroundStyle(Color(uiColor: appearance.ink(for: traits)))
-                .lineLimit(1)
-                .minimumScaleFactor(0.7)
-                .fixedSize(horizontal: true, vertical: false)
-                .accessibilityIdentifier("reading-surah-title")
+            VStack(alignment: .leading, spacing: 1) {
+                Text(surahTitle)
+                    .font(Font(MushafLibrary.mushafFont(size: 19)))
+                    .foregroundStyle(ink)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
+                    .fixedSize(horizontal: true, vertical: false)
+                    .accessibilityIdentifier("reading-surah-title")
+                if let section {
+                    HStack(spacing: 5) {
+                        Text(section.juzText)
+                        RubDisc(quarter: section.rubInHizb, diameter: 14)
+                        Text(section.hizbText)
+                    }
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundStyle(ink.opacity(0.75))
+                    .lineLimit(1)
+                    .fixedSize()
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel(section.accessibilityText)
+                    .accessibilityAddTraits(.isStaticText)
+                    .accessibilityIdentifier("reading-section-text")
+                }
+            }
 
             Spacer(minLength: 0)
             HStack(spacing: 8) {
@@ -71,44 +89,32 @@ struct ReaderTopBar: View {
                 qiraatFilterChip
                 khatmaChip(showsPercent: showsPercent)
             }
-            Spacer(minLength: 0)
-
-            if let section {
-                HStack(spacing: 6) {
-                    Text(section.juzText)
-                    RubDisc(quarter: section.rubInHizb)
-                    Text(section.hizbText)
-                }
-                .font(.subheadline.weight(.medium))
-                .foregroundStyle(Color(uiColor: appearance.ink(for: traits)))
-                .lineLimit(1)
-                .fixedSize()
-                .accessibilityElement(children: .ignore)
-                .accessibilityLabel(section.accessibilityText)
-                .accessibilityAddTraits(.isStaticText)
-                .accessibilityIdentifier("reading-section-text")
-            }
         }
     }
 
-    /// The khatma ring and its percent; opens the reading statistics.
+    /// The khatma progress: a ring and the percent in one tinted capsule, red while it has just begun, through
+    /// yellow, to green as it completes; opens the reading statistics.
     private func khatmaChip(showsPercent: Bool) -> some View {
-        let percent = Int(min(max(khatmaPercent, 0), 100))
+        let fraction = min(max(khatmaPercent, 0), 100) / 100
+        let percent = Int(fraction * 100)
+        let tint = ProgressTint.color(fraction)
         return Button(action: openStatistics) {
-            HStack(spacing: 4) {
-                KhatmaRing(fraction: min(max(khatmaPercent, 0), 100) / 100)
-                    .frame(width: 16, height: 16)
+            HStack(spacing: 6) {
+                KhatmaRing(fraction: fraction, tint: tint)
+                    .frame(width: 28, height: 28)
                 if showsPercent {
                     Text(verbatim: "\(ArabicDigits.string(percent))٪")
-                        .font(.caption.weight(.medium))
+                        .font(.system(size: 17, weight: .bold, design: .rounded))
                         .monospacedDigit()
+                        .foregroundStyle(tint)
                         .lineLimit(1)
                 }
             }
-            .foregroundStyle(Color(uiColor: appearance.ink(for: traits)))
-            .padding(.horizontal, 6)
-            .frame(minHeight: 44)
-            .contentShape(Rectangle())
+            .padding(.horizontal, showsPercent ? 10 : 6)
+            .frame(height: 40)
+            .background(Capsule().fill(tint.opacity(0.14)))
+            .overlay(Capsule().strokeBorder(tint.opacity(0.55), lineWidth: 1))
+            .contentShape(Capsule())
         }
         .buttonStyle(.plain)
         .fixedSize()
@@ -206,14 +212,23 @@ struct RubPie: Shape {
 /// The khatma as a ring filled clockwise from twelve o'clock.
 struct KhatmaRing: View {
     let fraction: Double
+    var tint: Color = .primary
 
     var body: some View {
         ZStack {
-            Circle().stroke(lineWidth: 2.2).opacity(0.25)
-            Circle().trim(from: 0, to: max(fraction, 0.0001))
-                .stroke(style: StrokeStyle(lineWidth: 2.2, lineCap: .round))
+            Circle().stroke(tint.opacity(0.22), lineWidth: 4)
+            Circle().trim(from: 0, to: max(fraction, 0.015))
+                .stroke(tint, style: StrokeStyle(lineWidth: 4, lineCap: .round))
                 .rotationEffect(.degrees(-90))
         }
         .accessibilityHidden(true)
+    }
+}
+
+/// Progress as a colour: red at the start, through yellow, to green at the end (hue 0° → 130°).
+enum ProgressTint {
+    static func color(_ fraction: Double) -> Color {
+        let f = min(max(fraction, 0), 1)
+        return Color(hue: 0.36 * f, saturation: 0.88, brightness: 0.80)
     }
 }

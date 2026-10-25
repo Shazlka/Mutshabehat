@@ -17,7 +17,7 @@ final class ReviewEditorUITests: XCTestCase {
     private func element(_ id: String, in app: XCUIApplication) -> XCUIElement { app.descendants(matching: .any)[id] }
 
     private func openSettings(_ app: XCUIApplication) {
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: 0.5)).tap()   // margin tap shows the chrome
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()   // margin tap shows the chrome
         let settings = app.buttons["settings-button"]
         XCTAssertTrue(settings.waitForExistence(timeout: 20))
         settings.tap()

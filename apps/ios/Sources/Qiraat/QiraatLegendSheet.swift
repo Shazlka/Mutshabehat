@@ -498,6 +498,8 @@ struct QiraatLegendSheet: View {
     @State private var usulCategories: [QiraatLegendCategory] = []
     @State private var sampleWords: [String: QiraatLegendSampleWord] = [:]
     @State private var categoriesLoaded = false
+    /// The tab shown: the marks first, then the readers' colours, then the أبواب.
+    @State private var tab: QiraatLegendEntry.Group = .marks
     @Environment(\.dismiss) private var dismiss
 
     init(catalog: QiraatCatalog, store: QiraatStore? = nil) {
@@ -510,32 +512,33 @@ struct QiraatLegendSheet: View {
         let rows = QiraatLegend.entries(catalog: catalog, usulCategories: usulCategories, sampleWords: sampleWords,
                                         hidesUsul: hidesUsul)
         NavigationStack {
-            List {
-                Section {
-                    ForEach(rows.filter { $0.group == .marks }) { QiraatLegendRow(entry: $0) }
-                } header: {
-                    Text("علامات الكلمة")
-                }
-                Section {
-                    ForEach(rows.filter { $0.group == .readers }) { QiraatLegendRow(entry: $0) }
-                } header: {
-                    Text("ألوان القرّاء والرواة")
-                }
-                if !hidesUsul {
-                    Section {
-                        if categoriesLoaded {
-                            ForEach(rows.filter { $0.group == .usul }) { QiraatLegendRow(entry: $0) }
-                        } else {
-                            ProgressView()
-                                .frame(maxWidth: .infinity)
-                                .accessibilityLabel(Text("جارٍ تحميل أبواب الأصول"))
-                        }
-                    } header: {
-                        Text("أبواب الأصول")
+            VStack(spacing: 0) {
+                Picker("مفتاح الألوان", selection: $tab) {
+                    Text("علامات الكلمة").tag(QiraatLegendEntry.Group.marks)
+                        .accessibilityIdentifier("qiraat-legend-tab-marks")
+                    Text("ألوان القرّاء والرواة").tag(QiraatLegendEntry.Group.readers)
+                        .accessibilityIdentifier("qiraat-legend-tab-readers")
+                    if !hidesUsul {
+                        Text("أبواب الأصول").tag(QiraatLegendEntry.Group.usul)
+                            .accessibilityIdentifier("qiraat-legend-tab-usul")
                     }
                 }
+                .pickerStyle(.segmented)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 10)
+                .accessibilityIdentifier("qiraat-legend-tabs")
+
+                List {
+                    if tab == .usul, !categoriesLoaded {
+                        ProgressView()
+                            .frame(maxWidth: .infinity)
+                            .accessibilityLabel(Text("جارٍ تحميل أبواب الأصول"))
+                    } else {
+                        ForEach(rows.filter { $0.group == tab }) { QiraatLegendRow(entry: $0) }
+                    }
+                }
+                .accessibilityIdentifier("qiraat-legend")
             }
-            .accessibilityIdentifier("qiraat-legend")
             .navigationTitle("مفتاح الألوان")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -546,7 +549,6 @@ struct QiraatLegendSheet: View {
             }
         }
         .environment(\.layoutDirection, .rightToLeft)
-        .presentationDetents([.medium, .large])
         .task { await loadCategories() }
     }
 
