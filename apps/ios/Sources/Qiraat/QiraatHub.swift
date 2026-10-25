@@ -57,38 +57,41 @@ extension ReaderView {
     }
 }
 
-/// The content of the Qiraat menu in the top bar: the layer switch, then the reader / narrator filter.
+/// The content of the Qiraat menu in the footer bar: the layer switch, then the reader / narrator filter.
 struct QiraatHubContent: View {
     @Bindable var qiraat: QiraatPreferences
     let catalog: QiraatCatalog?
+    let menu: BarMenuActions
     let openRoute: (QiraatHubRoute) -> Void
 
     var body: some View {
-        Toggle("إظهار علامات القراءات", isOn: $qiraat.enabled)
-            .accessibilityIdentifier("qiraat-hub-toggle")
+        BarMenuRow("إظهار علامات القراءات", isOn: qiraat.enabled) {
+            menu.perform { qiraat.enabled.toggle() }
+        }
+        .accessibilityIdentifier("qiraat-hub-toggle")
         if let catalog {
-            Button { openRoute(.filter) } label: {
-                Label(catalog.filterName(qiraat.filter), systemImage: "line.3.horizontal.decrease.circle")
+            BarMenuRow(catalog.filterName(qiraat.filter), systemImage: "line.3.horizontal.decrease.circle") {
+                menu.perform { openRoute(.filter) }
             }
             .accessibilityIdentifier("qiraat-filter")
             .disabled(!qiraat.enabled)
         }
-        Button { openRoute(.legend) } label: {
-            Label("مفتاح الألوان", systemImage: "paintpalette")
+        BarMenuRow("مفتاح الألوان", systemImage: "paintpalette") {
+            menu.perform { openRoute(.legend) }
         }
         .accessibilityIdentifier("qiraat-hub-legend")
         if catalog != nil {
-            Button { openRoute(.pageSummary) } label: {
-                Label("خلافات الصفحة", systemImage: "list.bullet.rectangle")
+            BarMenuRow("خلافات الصفحة", systemImage: "list.bullet.rectangle") {
+                menu.perform { openRoute(.pageSummary) }
             }
             .accessibilityIdentifier("qiraat-hub-page-summary")
-            Button { openRoute(.search) } label: {
-                Label("البحث في القراءات", systemImage: "magnifyingglass")
+            BarMenuRow("البحث في القراءات", systemImage: "magnifyingglass") {
+                menu.perform { openRoute(.search) }
             }
             .accessibilityIdentifier("qiraat-hub-search")
             if !qiraat.hidesUsul {
-                Button { openRoute(.usulIndex) } label: {
-                    Label("أصول القراءات", systemImage: "books.vertical")
+                BarMenuRow("أصول القراءات", systemImage: "books.vertical") {
+                    menu.perform { openRoute(.usulIndex) }
                 }
                 .accessibilityIdentifier("qiraat-hub-usul-index")
             }

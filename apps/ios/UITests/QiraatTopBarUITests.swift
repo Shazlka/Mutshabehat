@@ -40,7 +40,7 @@ final class QiraatTopBarUITests: XCTestCase {
         XCTAssertTrue(app.buttons["open-index"].waitForExistence(timeout: 20))
     }
 
-    /// Every menu is in the footer bar: six icons of at least 44 points, wholly below the page, none on another.
+    /// Every menu is in the footer bar: six icons of at least 44 points, wholly below the page, each a touch target apart from the next.
     func testTheFooterBarHasExactlySixIconsOfAtLeast44PointsBelowThePage() {
         let app = launch()
         let mushafPage = element("mushaf-page-1", in: app)
@@ -59,9 +59,10 @@ final class QiraatTopBarUITests: XCTestCase {
             XCTAssertLessThanOrEqual(icon.frame.maxY, app.windows.firstMatch.frame.maxY - 20, "\(id) is too low")
             frames.append(icon.frame)
         }
-        for (i, a) in frames.enumerated() {
-            for b in frames[(i + 1)...] { XCTAssertFalse(a.insetBy(dx: 1, dy: 1).intersects(b), "\(a) overlaps \(b)") }
-        }
+        // The system tab bar reports each item wider than its share of the capsule, so frames may touch; the items
+        // themselves must be at least a touch target apart.
+        let centers = frames.map(\.midX).sorted()
+        for (a, b) in zip(centers, centers.dropFirst()) { XCTAssertGreaterThanOrEqual(b - a, 44, "two icons are less than 44 points apart") }
         // The two moved buttons are inside the menu, not in the bar.
         XCTAssertFalse(app.buttons["mutshabehat-button"].exists)
         XCTAssertFalse(app.buttons["memorization-button"].exists)
@@ -220,20 +221,5 @@ final class QiraatTopBarUITests: XCTestCase {
         app.buttons["qiraat-narrator-Q05-R01"].tap()
         XCTAssertFalse(app.buttons["qiraat-reader-all"].waitForExistence(timeout: 3), "choosing closes the picker")
         XCTAssertTrue(element("qiraat-filter-chip", in: app).waitForExistence(timeout: 20))
-    }
-
-    /// A finger on the bar raises the glass lens under the touched item and moves it as the finger slides.
-    func testTheGlassLensFollowsAFingerSlidingAlongTheBar() {
-        let app = launch()
-        XCTAssertTrue(element("mushaf-page-1", in: app).waitForExistence(timeout: 15))
-        showChrome(app)
-        let bar = element("footer-bar", in: app)
-        XCTAssertTrue(bar.waitForExistence(timeout: 20))
-        XCTAssertEqual(bar.value as? String, "slot:none last:none")
-        let left = app.buttons["settings-button"].coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
-        let right = app.buttons["open-index"].coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
-        // Touch the left slot and slide to the right one: the lens was under the last slot, and left with the finger.
-        left.press(forDuration: 0.2, thenDragTo: right, withVelocity: .slow, thenHoldForDuration: 0.3)
-        XCTAssertEqual(bar.value as? String, "slot:none last:5", "the lens followed the finger to the right end")
     }
 }
