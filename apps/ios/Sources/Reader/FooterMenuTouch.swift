@@ -20,8 +20,14 @@ final class FooterMenuModel {
     /// The footer bar and the open menu, in window space; the menu's is `.zero` while none is open.
     @ObservationIgnored var barFrame: CGRect = .zero
     @ObservationIgnored var panelFrame: CGRect = .zero
+    /// How far the menu is moved from where layout put it. The panel's frame is that of the view that carries the
+    /// offset, which leaves the offset out; the rows' frames are inside it and have the offset in.
+    @ObservationIgnored var translation: CGSize = .zero
     @ObservationIgnored private let selection = UISelectionFeedbackGenerator()
     @ObservationIgnored private let impact = UIImpactFeedbackGenerator(style: .medium)
+
+    /// The menu as the finger sees it, offset included.
+    var visiblePanelFrame: CGRect { panelFrame.offsetBy(dx: translation.width, dy: translation.height) }
 
     func register(_ id: UUID, frame: CGRect, isEnabled: Bool, action: @escaping () -> Void) {
         rows[id] = Row(frame: frame, isEnabled: isEnabled, action: action)
@@ -56,7 +62,8 @@ final class FooterMenuModel {
     }
 
     private func row(at point: CGPoint) -> UUID? {
-        guard panelFrame.minX...panelFrame.maxX ~= point.x else { return nil }
+        let panel = visiblePanelFrame
+        guard panel.minX...panel.maxX ~= point.x else { return nil }
         return rows.first { $0.value.isEnabled && $0.value.frame.minY...$0.value.frame.maxY ~= point.y }?.key
     }
 
@@ -122,7 +129,7 @@ struct FooterTouchTracker: UIViewRepresentable {
         override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
             guard isActive, let window, let model else { return false }
             let point = gestureRecognizer.location(in: window)
-            return model.barFrame.contains(point) || model.panelFrame.contains(point)
+            return model.barFrame.contains(point) || model.visiblePanelFrame.contains(point)
         }
 
         func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,

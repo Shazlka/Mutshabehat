@@ -72,6 +72,7 @@ struct AyahSheet: View {
                     Toggle(copy("قيد الحفظ", "Currently memorizing"), isOn: Binding(
                         get: { current?.isCurrentlyLearning ?? false },
                         set: { setLearning($0) }))
+                        .tint(.switchOn)
                         .accessibilityIdentifier("memo-ayah-learning")
                 }
 

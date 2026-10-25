@@ -10,6 +10,7 @@ struct SettingsView: View {
     @Binding var theme: String
     @Binding var language: String
     @Binding var keepScreenAwake: Bool
+    @Binding var autoHidesFooter: Bool
     @Bindable var qiraat: QiraatPreferences
     let library: MushafLibrary
     let onSelectPage: (Int) -> Void
@@ -55,7 +56,15 @@ struct SettingsView: View {
                         appLanguage == .english ? "Keep Screen Awake" : "إبقاء الشاشة مضاءة أثناء القراءة",
                         isOn: $keepScreenAwake
                     )
+                    .tint(.switchOn)
                     .accessibilityIdentifier("keep-screen-awake-toggle")
+
+                    Toggle(
+                        appLanguage == .english ? "Hide the footer after 10 seconds" : "إخفاء الشريط السفلي تلقائيًا بعد ١٠ ثوانٍ",
+                        isOn: $autoHidesFooter
+                    )
+                    .tint(.switchOn)
+                    .accessibilityIdentifier("auto-hide-footer-toggle")
                 }
 
                 if library.qiraat?.catalog != nil {
@@ -75,6 +84,7 @@ struct SettingsView: View {
                             appLanguage == .english ? "Farsh only (hide Usul)" : "فرش الحروف فقط (إخفاء الأصول)",
                             isOn: $qiraat.hidesUsul
                         )
+                        .tint(.switchOn)
                         .disabled(!qiraat.enabled)
                         .accessibilityIdentifier("qiraat-hide-usul-toggle")
                     }
@@ -146,9 +156,11 @@ struct SettingsView: View {
                     Section(appLanguage == .english ? "Memorization" : "حفظ القرآن") {
                         Toggle(appLanguage == .english ? "Show page status in the top banner" : "إظهار حالة الحفظ في الشريط العلوي",
                                isOn: Binding(get: { memorization.showsBannerMark }, set: { memorization.showsBannerMark = $0 }))
+                            .tint(.switchOn)
                             .accessibilityIdentifier("memo-setting-banner-mark")
                         Toggle(appLanguage == .english ? "Show memorization marks on the Mushaf" : "إظهار حالة الحفظ على المصحف",
                                isOn: Binding(get: { memorization.showsAyahMarker }, set: { memorization.showsAyahMarker = $0 }))
+                            .tint(.switchOn)
                             .accessibilityIdentifier("memo-setting-ayah-marker")
                     }
                 }

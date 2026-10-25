@@ -135,6 +135,7 @@
       }
     },
     "%@، %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -521,6 +522,9 @@
     "Farsh only (hide Usul)" : {
 
     },
+    "Hide the footer after 10 seconds" : {
+
+    },
     "History" : {
 
     },
@@ -567,6 +571,9 @@
 
     },
     "OK" : {
+
+    },
+    "Opens reading statistics" : {
 
     },
     "Pages" : {
@@ -1139,6 +1146,9 @@
           }
         }
       }
+    },
+    "إخفاء الشريط السفلي تلقائيًا بعد ١٠ ثوانٍ" : {
+
     },
     "إخفاء تفاصيل المجموعة" : {
       "extractionState" : "stale",
@@ -3013,6 +3023,7 @@
       }
     },
     "روايتاه معًا" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4068,6 +4079,9 @@
           }
         }
       }
+    },
+    "يفتح إحصائيات القراءة" : {
+
     },
     "يقارن آيتين كلمةً كلمة ويعيّن أنواع الفروقات (مشترك، اختلاف، زيادة، فريد) تلقائياً." : {
 

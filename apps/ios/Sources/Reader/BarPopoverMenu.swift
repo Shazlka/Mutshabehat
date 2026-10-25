@@ -122,8 +122,11 @@ struct BarGlassMenu<Content: View>: View {
             .frame(maxHeight: 520)
             .fixedSize(horizontal: false, vertical: true)
             .background { BarMenuSurface(lens: lensFrame) }
+            .overlay(alignment: .top) {
+                if #available(iOS 26, *) { BarMenuLens(frame: lensFrame) }
+            }
             .offset(x: originShift, y: -(barSize.height + gap))
-            .onGeometryChange(for: CGRect.self) { $0.frame(in: .global) } action: { model?.panelFrame = $0 }
+            .onGeometryChange(for: CGRect.self) { $0.frame(in: .global) } action: { model?.panelFrame = $0; model?.translation = translation }
             .onDisappear { model?.panelFrame = .zero }
             .transition(.scale(scale: 0.88, anchor: UnitPoint(x: anchorUnit, y: 1)).combined(with: .opacity))
             .accessibilityAddTraits(.isModal)
@@ -134,12 +137,17 @@ struct BarGlassMenu<Content: View>: View {
     /// The row under the finger, in the menu's own space.
     private var lensFrame: CGRect? {
         guard let model else { return nil }
-        return model.hoveredFrame.map { $0.offsetBy(dx: -model.panelFrame.minX, dy: -model.panelFrame.minY) }
+        return model.hoveredFrame.map { $0.offsetBy(dx: -model.visiblePanelFrame.minX, dy: -model.visiblePanelFrame.minY) }
     }
 
     /// The menu is centred on its item, kept 8 pt inside the screen's sides.
     private var leading: CGFloat {
         min(max(anchorX - BarMenuMetrics.width / 2, 8), barSize.width - BarMenuMetrics.width - 8)
+    }
+
+    /// How far the menu is moved on the screen, from the corner layout puts it in (a right-to-left layout mirrors the offset).
+    private var translation: CGSize {
+        CGSize(width: direction == .rightToLeft ? -originShift : originShift, height: -(barSize.height + gap))
     }
 
     /// `leading` is measured from the screen's left. The stack's leading edge is its right in a right-to-left layout,
@@ -151,30 +159,17 @@ struct BarGlassMenu<Content: View>: View {
     private var anchorUnit: CGFloat { min(max((anchorX - leading) / BarMenuMetrics.width, 0), 1) }
 }
 
-/// The menu's surface, behind its rows: Liquid Glass on iOS 26 and later, with a second, tinted piece of glass that is
-/// the lens under the row the finger is over, in one container so the two blend as the lens moves. Before iOS 26 the
-/// surface is the system's regular material and the lens a soft fill.
+/// The menu's surface, behind its rows: Liquid Glass on iOS 26 and later (the lens is `BarMenuLens`, over the rows).
+/// Before iOS 26 it is the system's regular material with the lens as a soft fill.
 private struct BarMenuSurface: View {
-    /// The lens's frame in the menu's space; nil while no row is under the finger.
+    /// The lens's frame in the menu's space; nil while no row is under the finger. Used before iOS 26 only.
     let lens: CGRect?
     private let shape = RoundedRectangle(cornerRadius: 30, style: .continuous)
     private let lensShape = RoundedRectangle(cornerRadius: 22, style: .continuous)
 
     var body: some View {
         if #available(iOS 26, *) {
-            GlassEffectContainer {
-                ZStack(alignment: .top) {
-                    Color.clear.glassEffect(.regular, in: shape)
-                    if let lens {
-                        Color.clear
-                            .frame(width: BarMenuMetrics.width - 16, height: lens.height)
-                            .glassEffect(.regular.tint(.primary.opacity(0.14)), in: lensShape)
-                            .offset(y: lens.minY)
-                            .transition(.scale(scale: 0.9).combined(with: .opacity))
-                    }
-                }
-            }
-            .animation(.spring(response: 0.3, dampingFraction: 0.74), value: lens)
+            Color.clear.glassEffect(.regular, in: shape)
         } else {
             ZStack(alignment: .top) {
                 shape.fill(.regularMaterial)
@@ -189,5 +184,28 @@ private struct BarMenuSurface: View {
             }
             .animation(.spring(response: 0.3, dampingFraction: 0.74), value: lens)
         }
+    }
+}
+
+/// The lens under the row the finger is over, as in the system tab bar: untinted Liquid Glass drawn over the rows, so it
+/// refracts the row it sits on instead of painting it, and glides to the next row with the finger.
+@available(iOS 26, *)
+private struct BarMenuLens: View {
+    /// The row's frame in the menu's space; nil while no row is under the finger.
+    let frame: CGRect?
+
+    var body: some View {
+        ZStack(alignment: .top) {
+            if let frame {
+                Color.clear
+                    .frame(width: BarMenuMetrics.width - 12, height: frame.height)
+                    .glassEffect(.clear, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+                    .offset(y: frame.minY)
+                    .transition(.scale(scale: 0.9).combined(with: .opacity))
+            }
+        }
+        .animation(.spring(response: 0.32, dampingFraction: 0.72), value: frame)
+        .allowsHitTesting(false)
+        .accessibilityHidden(true)
     }
 }

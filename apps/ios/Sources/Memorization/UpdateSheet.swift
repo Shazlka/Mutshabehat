@@ -98,8 +98,10 @@ struct UpdateSheet: View {
                         statusButton(candidate)
                     }
                     Toggle(copy("قيد الحفظ", "Currently memorizing"), isOn: $learning)
+                        .tint(.switchOn)
                         .accessibilityIdentifier("memo-update-learning")
                     Toggle(copy("اجعله موضع الحفظ الحالي", "Make this my current position"), isOn: $setCurrent)
+                        .tint(.switchOn)
                         .accessibilityIdentifier("memo-update-set-current")
                 }
             }

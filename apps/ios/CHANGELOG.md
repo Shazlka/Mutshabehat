@@ -3,6 +3,13 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-25 — Footer auto-hide option; page number at the surah name's size; one colour for every switch
+- **Request:** an option in Settings to hide the footer by itself after 10 seconds; the page number as small as the surah name; the القراءات switch in Settings did not match the other switches' green, so all switches get the same colour.
+- **Auto-hide (`ReaderBottomBar`, `SettingsView`, `ReaderView`):** a new switch «إخفاء الشريط السفلي تلقائيًا بعد ١٠ ثوانٍ» (off by default, stored as `mushaf:autoHidesFooter`). With it on, the footer hides 10 s after it appears, with the same fade as a tap on the header; a touch on the footer, an open footer menu or a page change starts the 10 s again, and a menu that is open is never hidden under the finger. A tap on the header brings it back.
+- **Page number (`ReaderTopBar`):** Geeza Pro Bold 19 pt (was 27), the size of the surah name beside it.
+- **Switches (`Color.switchOn`):** the system green, set on every switch in the app (Settings, the Qiraat switch that was the darker `progressFill` green, the memorization sheets and chart, the reading session form), so none differs from another.
+- **Files:** `Sources/Reader/{ReaderBottomBar,ReaderSettingsView,ReaderView,ReaderTopBar}.swift`, `Sources/Design/AppColors.swift`, `Sources/Qiraat/QiraatControls.swift`, `Sources/Memorization/{UpdateSheet,AyahSheet,ProgressSection}.swift`, `Sources/Reading/AddReadingSessionView.swift`.
+
 ## [Unreleased] — 2026-10-25 — Footer is the system tab bar, so its Liquid Glass is the same as in Ledger
 - **Request:** the footer's Liquid Glass did not work like the one in the Ledger app (a plain `TabView`, whose bar the system draws); make Qiraat's the same.
 - **Cause:** the footer drew its own capsule with `glassEffect` and its own touch-tracking lens. Over the page's cream paper it read as a flat pale pill, and the lens was a grey blob, never the system's glass.

@@ -48,6 +48,7 @@ struct ReaderView: View {
     @AppStorage("mushaf1441:theme:v1") private var theme = MushafAppearance.system.rawValue
     @AppStorage("app:language:v1") private var language = AppLanguage.arabic.rawValue
     @AppStorage("mushaf:keepScreenAwake") private var keepScreenAwake = true
+    @AppStorage("mushaf:autoHidesFooter") private var autoHidesFooter = false
 
     var body: some View {
         GeometryReader { geometry in
@@ -96,6 +97,9 @@ struct ReaderView: View {
             GeometryReader { _ in
                 ReaderBottomBar(
                     chromeVisible: chromeVisible,
+                    autoHides: autoHidesFooter,
+                    autoHideToken: page,
+                    onAutoHide: { withAnimation(.easeInOut(duration: 0.2)) { chromeVisible = false } },
                     appearance: appearance,
                     traits: interfaceTraits,
                     safeBottom: safeBottom,
@@ -218,6 +222,7 @@ struct ReaderView: View {
                 theme: $theme,
                 language: $language,
                 keepScreenAwake: $keepScreenAwake,
+                autoHidesFooter: $autoHidesFooter,
                 qiraat: qiraat,
                 library: library,
                 onSelectPage: { selectedPage in

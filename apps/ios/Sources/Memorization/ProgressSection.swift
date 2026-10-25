@@ -99,6 +99,7 @@ struct ProgressSection: View {
             .accessibilityLabel(chartSummary(points))
 
             Toggle(copy("إظهار تقدم الحفظ", "Show learning progress"), isOn: $showsLearning)
+                .tint(.switchOn)
                 .font(.footnote)
                 .accessibilityIdentifier("memo-chart-learning")
         }

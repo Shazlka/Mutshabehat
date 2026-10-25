@@ -49,7 +49,7 @@ struct ReaderTopBar: View {
         return HStack(alignment: .center, spacing: 10) {
             if !pageNumbers.isEmpty {
                 Text(verbatim: pageNumbers.map { ArabicDigits.string($0) }.joined(separator: " – "))
-                    .font(.custom("GeezaPro-Bold", size: 27))
+                    .font(.custom("GeezaPro-Bold", size: 19))
                     .foregroundStyle(ink)
                     .lineLimit(1)
                     .fixedSize()

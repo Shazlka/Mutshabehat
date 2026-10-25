@@ -297,7 +297,7 @@ struct AddReadingSessionView: View {
                             }
                         }
                     }
-                    .tint(.progressFill)
+                    .tint(.switchOn)
                 } header: {
                     Text("طريقة التلاوة")
                 }

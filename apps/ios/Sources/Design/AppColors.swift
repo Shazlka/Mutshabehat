@@ -65,6 +65,8 @@ extension UIColor {
 extension ShapeStyle where Self == Color {
     /// Reading progress and completion: text, icons, rings.
     static var progress: Color { AppPalette.progress }
+    /// The "on" colour of every switch in the app, so no two switches differ.
+    static var switchOn: Color { Color(uiColor: .systemGreen) }
     /// A filled progress shape that carries white content (a check, a selected chip's label).
     static var progressFill: Color { AppPalette.progressFill }
     /// Something to look at but not an error: a disconnected sync, a remaining count, undo.

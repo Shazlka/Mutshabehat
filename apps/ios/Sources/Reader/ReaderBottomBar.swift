@@ -11,6 +11,11 @@ import SwiftUI
 /// lens under it and a tick for each row it crosses, and lift to choose it (`FooterMenuModel`).
 struct ReaderBottomBar: View {
     let chromeVisible: Bool
+    /// Hides the bar by itself after `autoHideDelay` seconds with nothing touched (the Settings option). `autoHideToken`
+    /// is anything that counts as using the reader, such as the page; a change of it starts the wait again.
+    var autoHides = false
+    var autoHideToken = 0
+    var onAutoHide: () -> Void = {}
     let appearance: MushafAppearance
     let traits: UITraitCollection
     /// The home-indicator inset of the screen; the bar floats above it.
@@ -34,6 +39,19 @@ struct ReaderBottomBar: View {
     }
 
     private enum TouchOrigin { case bar, menu }
+
+    private static let autoHideDelay: Duration = .seconds(10)
+
+    private struct AutoHideKey: Hashable {
+        var visible: Bool
+        var enabled: Bool
+        var menu: Int?
+        var token: Int
+        var activity: Int
+    }
+
+    /// Counts the touches on the bar, so that using it starts the wait for hiding again.
+    @State private var activity = 0
 
     /// The item whose menu is open, if any.
     @State private var openMenu: Slot?
@@ -74,6 +92,12 @@ struct ReaderBottomBar: View {
                 }
             }
             .animation(.easeInOut(duration: 0.2), value: chromeVisible)
+            .task(id: AutoHideKey(visible: chromeVisible, enabled: autoHides, menu: openMenu?.rawValue,
+                                  token: autoHideToken, activity: activity)) {
+                guard autoHides, chromeVisible, openMenu == nil else { return }
+                try? await Task.sleep(for: Self.autoHideDelay)
+                if !Task.isCancelled { onAutoHide() }
+            }
             .animation(.spring(response: 0.35, dampingFraction: 0.82), value: openMenu)
             .onChange(of: chromeVisible) { _, visible in if !visible { openMenu = nil } }
             // Items are fixed targets; the large content viewer shows them beyond that.
@@ -116,6 +140,7 @@ struct ReaderBottomBar: View {
 
     private func touch(_ phase: FooterTouchTracker.Phase, at point: CGPoint) {
         touchPoint = point
+        if phase == .began { activity += 1 }
         switch phase {
         case .began:
             menuModel.prepareHaptics()
