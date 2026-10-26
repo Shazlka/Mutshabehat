@@ -9,6 +9,8 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
     private var appearance: MushafAppearance
     private let surahLabel = UILabel()
     private let sectionLabel = UILabel()
+    /// With the side rails the page's printed number stands centred under the paper.
+    private let pageNumberLabel = UILabel()
     private let isSpreadHalf: Bool
     /// iPad landscape with the side rails: no header or footer to clear, so the page takes the full height.
     private let fillsHeight: Bool
@@ -76,7 +78,7 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
         let spine: PageLayoutConstants.SpineSide = !isSpreadHalf ? .none : page.isRightHandPage ? .left : .right
         pageView.spineSide = spine
         view.backgroundColor = appearance.desk(for: traitCollection)
-        for label in [surahLabel, sectionLabel] {
+        for label in [surahLabel, sectionLabel, pageNumberLabel] {
             label.textColor = appearance.ink(for: traitCollection)
         }
         pageView.qiraat = qiraat
@@ -110,6 +112,7 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
         view.backgroundColor = appearance.desk(for: traitCollection)
         configureMetadataLabels()
         view.addSubview(pageView)
+        configurePageNumberLabel()
         tap.addTarget(self, action: #selector(tapped(_:)))
         view.addGestureRecognizer(tap)
         wordTap.addTarget(self, action: #selector(tappedWord(_:)))
@@ -176,7 +179,9 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
             // Reserve top room for top bar / header and bottom page number; with the side rails only the status bar
             // and the home indicator, and a 12 pt margin.
             let topInset: CGFloat = fillsHeight ? max(0, windowSafeTop - viewOriginInWindow.y) + 12 : max(topY + 6, 60)
-            let bottomInset: CGFloat = fillsHeight ? windowSafeBottom + 12 : max(view.bounds.height - bottomY, 44)
+            let bottomInset: CGFloat = fillsHeight
+                ? windowSafeBottom + 12 + pageNumberLabel.font.lineHeight + Self.pageNumberGap
+                : max(view.bounds.height - bottomY, 44)
             let area = CGRect(
                 x: view.bounds.minX,
                 y: view.bounds.minY + topInset,
@@ -195,6 +200,32 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
         pageView.spineSide = spine
         updateBookStyling()
         layoutMetadataLabels(around: pageView.frame)
+        layoutPageNumber(under: pageView.frame)
+    }
+
+    private static let pageNumberGap: CGFloat = 6
+
+    private func configurePageNumberLabel() {
+        guard fillsHeight else { return }
+        let base = UIFont(name: "GeezaPro-Bold", size: 17) ?? .systemFont(ofSize: 17, weight: .bold)
+        pageNumberLabel.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: base, maximumPointSize: 24)
+        pageNumberLabel.adjustsFontForContentSizeCategory = true
+        pageNumberLabel.textAlignment = .center
+        pageNumberLabel.textColor = appearance.ink(for: traitCollection)
+        pageNumberLabel.text = ArabicDigits.string(page.number)
+        pageNumberLabel.isUserInteractionEnabled = false
+        pageNumberLabel.isAccessibilityElement = true
+        pageNumberLabel.accessibilityLabel = appLocalized("صفحة") + " " + ArabicDigits.string(page.number)
+        pageNumberLabel.accessibilityTraits = .staticText
+        pageNumberLabel.accessibilityIdentifier = "page-number-\(page.number)"
+        view.addSubview(pageNumberLabel)
+    }
+
+    private func layoutPageNumber(under paperFrame: CGRect) {
+        guard fillsHeight else { return }
+        let height = ceil(pageNumberLabel.font.lineHeight)
+        pageNumberLabel.frame = CGRect(x: paperFrame.minX, y: paperFrame.maxY + Self.pageNumberGap,
+                                       width: paperFrame.width, height: height)
     }
 
     private func updateBookStyling() {

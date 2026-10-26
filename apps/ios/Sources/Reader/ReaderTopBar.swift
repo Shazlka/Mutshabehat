@@ -6,7 +6,8 @@ import SwiftUI
 /// stand in a column, the left side rail (`axis: .vertical`), and the page takes the full height.
 struct ReaderTopBar: View {
     let surahTitle: String
-    /// The printed number of the page, or of both pages of a spread; shown in the header, never under the paper.
+    /// The printed number of the page, or of both pages of a spread; shown in the header. The side rail leaves it out:
+    /// there each page carries its number under the paper (`PageController`).
     var pageNumbers: [Int] = []
     /// Juz and hizb for the reading header; nil hides them.
     let section: ReaderSection?
@@ -31,15 +32,16 @@ struct ReaderTopBar: View {
         if axis == .vertical { column } else { bar }
     }
 
-    /// The side rail: page number, surah, juz and hizb, then the memorization marks, the reader chip and the khatma,
-    /// one column centred in the rail.
+    /// The side rail, top to bottom: the surah, the juz, the hizb and its quarter disc each on a row of its own and
+    /// aligned to the reading side, the memorization marks and the reader chip, then the khatma as a bar that fills
+    /// from the bottom up and takes the rail's lower part. The page numbers stand under the pages.
     private var column: some View {
         let ink = Color(uiColor: appearance.ink(for: traits))
-        return VStack(spacing: 16) {
-            if !pageNumbers.isEmpty { pageNumberText(ink: ink).minimumScaleFactor(0.7) }
+        return VStack(alignment: .leading, spacing: 14) {
             SurahTitle(text: surahTitle, ink: ink, tight: false, wraps: true)
-            if let section { sectionLabel(section, ink: ink, stacked: true) }
-            Capsule().fill(ink.opacity(0.15)).frame(width: 28, height: 1).accessibilityHidden(true)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            if let section { railSection(section, ink: ink) }
+            Capsule().fill(ink.opacity(0.15)).frame(height: 1).accessibilityHidden(true)
             if !memorizationMarks.isEmpty {
                 VStack(spacing: 8) {
                     ForEach(memorizationMarks, id: \.page) { mark in
@@ -51,15 +53,66 @@ struct ReaderTopBar: View {
                         .buttonStyle(.plain)
                     }
                 }
+                .frame(maxWidth: .infinity)
             }
             qiraatFilterChip(vertical: true)
-            khatmaChip(showsPercent: true, vertical: true)
+            // The space left is shared by this gap and the bar, so the bar takes the rail's lower part.
+            Spacer(minLength: 16)
+            khatmaBar
         }
-        .padding(.vertical, 20)
-        .padding(.horizontal, 6)
-        // Centred in the rail's height, as the action rail across the page is.
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.top, 20)
+        .padding(.bottom, 16)
+        .padding(.horizontal, 10)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .dynamicTypeSize(...DynamicTypeSize.xxLarge)
+    }
+
+    /// The juz, the hizb and the quarter disc, one per row, at the reading side of the rail.
+    private func railSection(_ section: ReaderSection, ink: Color) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(section.juzText)
+            Text(section.hizbText)
+            RubDisc(quarter: section.rubInHizb, diameter: 18)
+        }
+        .font(.subheadline.weight(.semibold))
+        .foregroundStyle(ink.opacity(0.75))
+        .lineLimit(1)
+        .minimumScaleFactor(0.8)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(section.accessibilityText)
+        .accessibilityAddTraits(.isStaticText)
+        .accessibilityIdentifier("reading-section-text")
+    }
+
+    /// The khatma in the rail: a tall bar filled from the bottom up in the progress colour, the percent under it;
+    /// opens the reading statistics.
+    private var khatmaBar: some View {
+        let fraction = min(max(khatmaPercent, 0), 100) / 100
+        let percent = Int(fraction * 100)
+        let tint = ProgressTint.color(fraction)
+        return Button(action: openStatistics) {
+            VStack(spacing: 8) {
+                KhatmaBar(fraction: fraction, tint: tint)
+                    .frame(width: 12)
+                    .frame(minHeight: 96, maxHeight: .infinity)
+                Text(verbatim: "\(ArabicDigits.string(percent))٪")
+                    .font(.system(.subheadline, design: .rounded).weight(.bold))
+                    .monospacedDigit()
+                    .foregroundStyle(Color(uiColor: ProgressTint.text(fraction, appearance: appearance, traits: traits)))
+                    .lineLimit(1)
+            }
+            .padding(.vertical, 10)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .fill(Color(uiColor: ProgressTint.chipFill(fraction, appearance: appearance, traits: traits))))
+            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).strokeBorder(tint.opacity(0.55), lineWidth: 1))
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(Text(verbatim: memorizationLanguage == .english ? "Khatma \(percent)%" : "ختمة \(ArabicDigits.string(percent))٪"))
+        .accessibilityHint(memorizationLanguage == .english ? "Opens reading statistics" : "يفتح إحصائيات القراءة")
+        .accessibilityIdentifier("khatma-progress")
     }
 
     private var bar: some View {
@@ -151,28 +204,11 @@ struct ReaderTopBar: View {
 
     /// The khatma progress: a ring and the percent in one tinted capsule, red while it has just begun, through
     /// yellow, to green as it completes; opens the reading statistics.
-    private func khatmaChip(showsPercent: Bool, vertical: Bool = false) -> some View {
+    private func khatmaChip(showsPercent: Bool) -> some View {
         let fraction = min(max(khatmaPercent, 0), 100) / 100
         let percent = Int(fraction * 100)
         let tint = ProgressTint.color(fraction)
         return Button(action: openStatistics) {
-            if vertical {
-                VStack(spacing: 4) {
-                    KhatmaRing(fraction: fraction, tint: tint)
-                        .frame(width: 32, height: 32)
-                    Text(verbatim: "\(ArabicDigits.string(percent))٪")
-                        .font(.system(.subheadline, design: .rounded).weight(.bold))
-                        .monospacedDigit()
-                        .foregroundStyle(Color(uiColor: ProgressTint.text(fraction, appearance: appearance, traits: traits)))
-                        .lineLimit(1)
-                }
-                .padding(.vertical, 8)
-                .frame(maxWidth: .infinity)
-                .background(RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .fill(Color(uiColor: ProgressTint.chipFill(fraction, appearance: appearance, traits: traits))))
-                .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).strokeBorder(tint.opacity(0.55), lineWidth: 1))
-                .contentShape(Rectangle())
-            } else {
             HStack(spacing: 6) {
                 KhatmaRing(fraction: fraction, tint: tint)
                     .frame(width: 28, height: 28)
@@ -191,10 +227,9 @@ struct ReaderTopBar: View {
             // The capsule stays 40 pt; the button around it is 44 pt tall.
             .frame(height: 44)
             .contentShape(Rectangle())
-            }
         }
         .buttonStyle(.plain)
-        .fixedSize(horizontal: !vertical, vertical: true)
+        .fixedSize()
         .accessibilityLabel(Text(verbatim: memorizationLanguage == .english ? "Khatma \(percent)%" : "ختمة \(ArabicDigits.string(percent))٪"))
         .accessibilityHint(memorizationLanguage == .english ? "Opens reading statistics" : "يفتح إحصائيات القراءة")
         .accessibilityIdentifier("khatma-progress")
@@ -255,7 +290,7 @@ private struct SurahTitle: View {
     let ink: Color
     /// In the header's last row the name may shrink (to 75%) instead of pushing the other items off the screen.
     let tight: Bool
-    /// In the side rail the name wraps onto as many lines as it needs, centred.
+    /// In the side rail the name wraps onto as many lines as it needs, at the reading side.
     var wraps = false
     @ScaledMetric(relativeTo: .headline) private var size: CGFloat = 19
 
@@ -264,7 +299,7 @@ private struct SurahTitle: View {
             Text(text)
                 .font(Font(MushafLibrary.mushafFont(size: size)))
                 .foregroundStyle(ink)
-                .multilineTextAlignment(.center)
+                .multilineTextAlignment(.leading)
                 .fixedSize(horizontal: false, vertical: true)
                 .accessibilityIdentifier("reading-surah-title")
         } else {
@@ -332,6 +367,23 @@ struct KhatmaRing: View {
             Circle().trim(from: 0, to: max(fraction, 0.015))
                 .stroke(tint, style: StrokeStyle(lineWidth: 4, lineCap: .round))
                 .rotationEffect(.degrees(-90))
+        }
+        .accessibilityHidden(true)
+    }
+}
+
+/// The khatma as a vertical bar filled from the bottom up.
+struct KhatmaBar: View {
+    let fraction: Double
+    var tint: Color = .primary
+
+    var body: some View {
+        GeometryReader { proxy in
+            ZStack(alignment: .bottom) {
+                Capsule().fill(tint.opacity(0.22))
+                Capsule().fill(tint)
+                    .frame(height: max(proxy.size.width, proxy.size.height * min(max(fraction, 0), 1)))
+            }
         }
         .accessibilityHidden(true)
     }
