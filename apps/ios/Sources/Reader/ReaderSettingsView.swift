@@ -16,6 +16,7 @@ struct SettingsView: View {
     let onSelectPage: (Int) -> Void
     let onSelectBookmark: (QuranBookmark) -> Void
     @State private var showingQiraatPicker = false
+    @AppStorage(LandscapeView.storageKey) private var landscapeView = LandscapeView.reading.rawValue
 #if DEBUG
     @State private var showingReviewEditor = false
 #endif
@@ -121,6 +122,22 @@ struct SettingsView: View {
                         Label(appLanguage == .english ? "Language" : "اللغة", systemImage: "globe")
                     }
                     .accessibilityIdentifier("open-language-settings")
+                }
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    Section {
+                        Picker(selection: $landscapeView) {
+                            Text(appLanguage == .english ? "Reading" : "قراءة").tag(LandscapeView.reading.rawValue)
+                            Text(appLanguage == .english ? "Learning" : "تعلّم").tag(LandscapeView.learning.rawValue)
+                        } label: {
+                            Label(appLanguage == .english ? "Landscape view" : "العرض الأفقي",
+                                  systemImage: "rectangle.split.2x1")
+                        }
+                        .accessibilityIdentifier("landscape-view-picker")
+                    } footer: {
+                        Text(appLanguage == .english
+                             ? "Reading shows two facing pages. Learning shows one page, with the Qira'at of the word you tap in a side bar."
+                             : "القراءة: صفحتان متقابلتان. التعلّم: صفحة واحدة، وقراءات الكلمة التي تضغطها في شريط جانبي.")
+                    }
                 }
 #if DEBUG
                 Section(language == AppLanguage.english.rawValue ? "Developer" : "المطور") {

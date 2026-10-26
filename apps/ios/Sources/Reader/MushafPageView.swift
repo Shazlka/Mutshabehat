@@ -482,110 +482,48 @@ final class MushafPageView: UIView {
         context.restoreGState()
     }
 
+    /// Where the two pages of a spread meet: one eased shade that deepens toward the spine (no flat band, no edge
+    /// anywhere on the paper), a hairline crease at the spine, and a faint rim on the page's outer edge.
     private func drawBookSpineAndPageEdges(in context: CGContext) {
         guard isSpreadHalf && spineSide != .none else { return }
         context.saveGState()
+        defer { context.restoreGState() }
 
         let width = bounds.width
         let height = bounds.height
-        let isLeftSpine = (spineSide == .left)   // Right page of spread (spine on its left edge)
-
-        // 1. Center Spine Gutter Shadow (Deep curvature fold where pages meet)
-        let spineWidth: CGFloat = min(46, width * 0.085)
-        let spineRect: CGRect
-        let startPoint: CGPoint
-        let endPoint: CGPoint
-
-        if isLeftSpine {
-            // Spine is on the left edge (x: 0 ..< spineWidth)
-            spineRect = CGRect(x: 0, y: 0, width: spineWidth, height: height)
-            startPoint = CGPoint(x: 0, y: 0)
-            endPoint = CGPoint(x: spineWidth, y: 0)
-        } else {
-            // Spine is on the right edge (x: width - spineWidth ..< width)
-            spineRect = CGRect(x: width - spineWidth, y: 0, width: spineWidth, height: height)
-            startPoint = CGPoint(x: width, y: 0)
-            endPoint = CGPoint(x: width - spineWidth, y: 0)
-        }
-
+        let isLeftSpine = (spineSide == .left)   // Right page of a spread: its spine is its left edge.
         let isDark = traitCollection.userInterfaceStyle == .dark
-        let foldColor = isDark ? UIColor(white: 0, alpha: 0.55) : UIColor(white: 0, alpha: 0.22)
-        let midColor = isDark ? UIColor(white: 0, alpha: 0.20) : UIColor(white: 0, alpha: 0.08)
-        let clearColor = UIColor(white: 0, alpha: 0.0)
-
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let spineColors = [foldColor.cgColor, midColor.cgColor, clearColor.cgColor] as CFArray
-        let spineLocations: [CGFloat] = [0.0, 0.32, 1.0]
 
-        if let gradient = CGGradient(colorsSpace: colorSpace, colors: spineColors, locations: spineLocations) {
-            context.saveGState()
-            context.clip(to: spineRect)
-            context.drawLinearGradient(gradient, start: startPoint, end: endPoint, options: [])
-            context.restoreGState()
+        // The fold: black at the spine, easing out to nothing over 40 pt. The stops follow an ease-out curve, so the
+        // shade has no visible start and no step between two pixels.
+        let spineWidth: CGFloat = min(40, width * 0.07)
+        let fold: CGFloat = isDark ? 0.40 : 0.16
+        let stops: [(location: CGFloat, alpha: CGFloat)] = [
+            (0, 1), (0.08, 0.78), (0.2, 0.52), (0.4, 0.28), (0.65, 0.1), (0.85, 0.025), (1, 0),
+        ]
+        let colors = stops.map { UIColor(white: 0, alpha: fold * $0.alpha).cgColor } as CFArray
+        let spineX: CGFloat = isLeftSpine ? 0 : width
+        let fadeX: CGFloat = isLeftSpine ? spineWidth : width - spineWidth
+        if let gradient = CGGradient(colorsSpace: colorSpace, colors: colors, locations: stops.map(\.location)) {
+            context.drawLinearGradient(gradient, start: CGPoint(x: spineX, y: 0), end: CGPoint(x: fadeX, y: 0), options: [])
         }
 
-        // 2. Subtle specular highlight / sheen simulating the cylinder curve of the page turning up from the spine
-        let sheenOffset: CGFloat = 10
-        let sheenWidth: CGFloat = 12
-        let sheenRect = isLeftSpine
-            ? CGRect(x: sheenOffset, y: 0, width: sheenWidth, height: height)
-            : CGRect(x: width - sheenOffset - sheenWidth, y: 0, width: sheenWidth, height: height)
-        let sheenColor = isDark ? UIColor(white: 1, alpha: 0.04) : UIColor(white: 1, alpha: 0.16)
-        let sheenColors = [clearColor.cgColor, sheenColor.cgColor, clearColor.cgColor] as CFArray
-        let sheenLocations: [CGFloat] = [0.0, 0.5, 1.0]
-
-        if let sheenGrad = CGGradient(colorsSpace: colorSpace, colors: sheenColors, locations: sheenLocations) {
-            context.saveGState()
-            context.clip(to: sheenRect)
-            let sStart = CGPoint(x: sheenRect.minX, y: 0)
-            let sEnd = CGPoint(x: sheenRect.maxX, y: 0)
-            context.drawLinearGradient(sheenGrad, start: sStart, end: sEnd, options: [])
-            context.restoreGState()
-        }
-
-        // 3. Fine book fold crease line right at the spine edge
-        context.setStrokeColor(foldColor.cgColor)
-        context.setLineWidth(1.0)
-        let creaseX: CGFloat = isLeftSpine ? 0.5 : width - 0.5
+        // The crease, a hairline right at the spine.
+        context.setStrokeColor(UIColor(white: 0, alpha: isDark ? 0.35 : 0.12).cgColor)
+        context.setLineWidth(1 / max(contentScaleFactor, 1))
+        let creaseX: CGFloat = isLeftSpine ? 0.25 : width - 0.25
         context.strokeLineSegments(between: [CGPoint(x: creaseX, y: 0), CGPoint(x: creaseX, y: height)])
 
-        // 4. Subtle top and bottom book curl curvature (soft vignette at top & bottom near spine)
-        let cornerGradHeight: CGFloat = min(40, height * 0.06)
-        let topCornerRect = isLeftSpine
-            ? CGRect(x: 0, y: 0, width: spineWidth * 1.6, height: cornerGradHeight)
-            : CGRect(x: width - spineWidth * 1.6, y: 0, width: spineWidth * 1.6, height: cornerGradHeight)
-
-        let vShadowColor = isDark ? UIColor(white: 0, alpha: 0.16) : UIColor(white: 0, alpha: 0.06)
-        let vColors = [vShadowColor.cgColor, clearColor.cgColor] as CFArray
-        if let vGrad = CGGradient(colorsSpace: colorSpace, colors: vColors, locations: [0.0, 1.0]) {
-            context.saveGState()
-            context.clip(to: topCornerRect)
-            context.drawLinearGradient(vGrad, start: CGPoint(x: topCornerRect.midX, y: 0), end: CGPoint(x: topCornerRect.midX, y: cornerGradHeight), options: [])
-            context.restoreGState()
-
-            let bottomCornerRect = CGRect(x: topCornerRect.minX, y: height - cornerGradHeight, width: topCornerRect.width, height: cornerGradHeight)
-            context.saveGState()
-            context.clip(to: bottomCornerRect)
-            context.drawLinearGradient(vGrad, start: CGPoint(x: bottomCornerRect.midX, y: height), end: CGPoint(x: bottomCornerRect.midX, y: height - cornerGradHeight), options: [])
-            context.restoreGState()
+        // The paper's depth on the side away from the spine.
+        let rimWidth: CGFloat = 4
+        let rimColor = UIColor(white: 0, alpha: isDark ? 0.22 : 0.07).cgColor
+        let clear = UIColor(white: 0, alpha: 0).cgColor
+        if let rim = CGGradient(colorsSpace: colorSpace, colors: [rimColor, clear] as CFArray, locations: [0, 1]) {
+            let edgeX: CGFloat = isLeftSpine ? width : 0
+            let innerX: CGFloat = isLeftSpine ? width - rimWidth : rimWidth
+            context.drawLinearGradient(rim, start: CGPoint(x: edgeX, y: 0), end: CGPoint(x: innerX, y: 0), options: [])
         }
-
-        // 5. Outer edge page rim (paper edge depth on the side away from the spine)
-        let outerEdgeRect = isLeftSpine
-            ? CGRect(x: width - 4, y: 0, width: 4, height: height)
-            : CGRect(x: 0, y: 0, width: 4, height: height)
-        let outerEdgeColor = isDark ? UIColor(white: 0, alpha: 0.22) : UIColor(white: 0, alpha: 0.08)
-        let outerColors = isLeftSpine
-            ? [clearColor.cgColor, outerEdgeColor.cgColor] as CFArray
-            : [outerEdgeColor.cgColor, clearColor.cgColor] as CFArray
-        if let outerGrad = CGGradient(colorsSpace: colorSpace, colors: outerColors, locations: [0.0, 1.0]) {
-            context.saveGState()
-            context.clip(to: outerEdgeRect)
-            context.drawLinearGradient(outerGrad, start: CGPoint(x: outerEdgeRect.minX, y: 0), end: CGPoint(x: outerEdgeRect.maxX, y: 0), options: [])
-            context.restoreGState()
-        }
-
-        context.restoreGState()
     }
 
     private struct BannerParts {

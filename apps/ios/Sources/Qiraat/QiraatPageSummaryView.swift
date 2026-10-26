@@ -10,6 +10,8 @@ struct QiraatPageSummaryView: View {
     let store: QiraatStore?
     let filter: QiraatFilter
     let onSelect: (QiraatPageSummaryItem) -> Void
+    /// False in the learning view's side bar, which stays open beside the page.
+    var showsClose = true
 
     @ScaledMetric(relativeTo: .title2) private var wordSize: CGFloat = 30
     @Environment(\.dismiss) private var dismiss
@@ -69,9 +71,11 @@ struct QiraatPageSummaryView: View {
         .environment(\.layoutDirection, .rightToLeft)
         .navigationTitle("خلافات الصفحة")
         .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button("إغلاق") { dismiss() }
-                    .accessibilityIdentifier("qiraat-page-summary-close")
+            if showsClose {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("إغلاق") { dismiss() }
+                        .accessibilityIdentifier("qiraat-page-summary-close")
+                }
             }
         }
         .accessibilityIdentifier("qiraat-page-summary")

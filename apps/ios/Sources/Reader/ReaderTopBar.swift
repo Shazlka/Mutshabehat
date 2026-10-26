@@ -2,7 +2,8 @@ import MushafCore
 import SwiftUI
 
 /// The reading header: where the page sits and how the reading and memorization are going. Information only, always
-/// visible; every menu is in `ReaderBottomBar`. A tap on it shows or hides that bar.
+/// visible; every menu is in `ReaderBottomBar`. A tap on it shows or hides that bar. In iPad landscape the same items
+/// stand in a column, the left side rail (`axis: .vertical`), and the page takes the full height.
 struct ReaderTopBar: View {
     let surahTitle: String
     /// The printed number of the page, or of both pages of a spread; shown in the header, never under the paper.
@@ -23,8 +24,45 @@ struct ReaderTopBar: View {
     var khatmaPercent: Double = 0
     var openStatistics: () -> Void = {}
     let onTapHeader: () -> Void
+    /// `.vertical`: the left side rail of iPad landscape.
+    var axis: Axis = .horizontal
 
     var body: some View {
+        if axis == .vertical { column } else { bar }
+    }
+
+    /// The side rail: page number, surah, juz and hizb, then the memorization marks, the reader chip and the khatma,
+    /// one column centred in the rail.
+    private var column: some View {
+        let ink = Color(uiColor: appearance.ink(for: traits))
+        return VStack(spacing: 16) {
+            if !pageNumbers.isEmpty { pageNumberText(ink: ink).minimumScaleFactor(0.7) }
+            SurahTitle(text: surahTitle, ink: ink, tight: false, wraps: true)
+            if let section { sectionLabel(section, ink: ink, stacked: true) }
+            Capsule().fill(ink.opacity(0.15)).frame(width: 28, height: 1).accessibilityHidden(true)
+            if !memorizationMarks.isEmpty {
+                VStack(spacing: 8) {
+                    ForEach(memorizationMarks, id: \.page) { mark in
+                        Button { openMemorizationPage(mark.page) } label: {
+                            PageStatusMark(page: mark.page, progress: mark.progress,
+                                           showsPageNumber: memorizationMarks.count > 1, form: .labeled,
+                                           language: memorizationLanguage, wrapsWord: true)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+            }
+            qiraatFilterChip(vertical: true)
+            khatmaChip(showsPercent: true, vertical: true)
+        }
+        .padding(.vertical, 20)
+        .padding(.horizontal, 6)
+        // Centred in the rail's height, as the action rail across the page is.
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .dynamicTypeSize(...DynamicTypeSize.xxLarge)
+    }
+
+    private var bar: some View {
         // The row is tried at full size first. When it does not fit it gives up, in order: the memorization mark's
         // ayah-mix bar (keeping its word), the one-line juz and hizb, the percent beside the khatma ring, the mark's
         // word, then a smaller text size. The last row always fits: its gaps are narrower and its surah name may
@@ -52,23 +90,14 @@ struct ReaderTopBar: View {
     private func row(showsPercent: Bool, mark: PageStatusMark.Form, stackedSection: Bool, tight: Bool = false) -> some View {
         let ink = Color(uiColor: appearance.ink(for: traits))
         return HStack(alignment: .center, spacing: tight ? 6 : 10) {
-            if !pageNumbers.isEmpty {
-                Text(verbatim: pageNumbers.map { ArabicDigits.string($0) }.joined(separator: " – "))
-                    .font(.custom("GeezaPro-Bold", size: 19, relativeTo: .headline))
-                    .foregroundStyle(ink)
-                    .lineLimit(1)
-                    .fixedSize()
-                    .accessibilityLabel(Text(verbatim: (memorizationLanguage == .english ? "Page " : "صفحة ")
-                        + pageNumbers.map { ArabicDigits.string($0) }.joined(separator: memorizationLanguage == .english ? " and " : " و")))
-                    .accessibilityIdentifier("reading-page-number")
-            }
+            if !pageNumbers.isEmpty { pageNumberText(ink: ink).fixedSize() }
 
             SurahTitle(text: surahTitle, ink: ink, tight: tight)
 
             Spacer(minLength: tight ? 4 : 8)
             HStack(spacing: tight ? 5 : 8) {
                 memorizationMarkRow(form: mark)
-                qiraatFilterChip
+                qiraatFilterChip(vertical: false)
                 khatmaChip(showsPercent: showsPercent)
             }
             Spacer(minLength: tight ? 4 : 8)
@@ -77,6 +106,16 @@ struct ReaderTopBar: View {
                 sectionLabel(section, ink: ink, stacked: stackedSection)
             }
         }
+    }
+
+    private func pageNumberText(ink: Color) -> some View {
+        Text(verbatim: pageNumbers.map { ArabicDigits.string($0) }.joined(separator: " – "))
+            .font(.custom("GeezaPro-Bold", size: 19, relativeTo: .headline))
+            .foregroundStyle(ink)
+            .lineLimit(1)
+            .accessibilityLabel(Text(verbatim: (memorizationLanguage == .english ? "Page " : "صفحة ")
+                + pageNumbers.map { ArabicDigits.string($0) }.joined(separator: memorizationLanguage == .english ? " and " : " و")))
+            .accessibilityIdentifier("reading-page-number")
     }
 
     /// The juz and hizb with the quarter disc between them: on one line, or the juz over the hizb when the row is tight.
@@ -112,11 +151,28 @@ struct ReaderTopBar: View {
 
     /// The khatma progress: a ring and the percent in one tinted capsule, red while it has just begun, through
     /// yellow, to green as it completes; opens the reading statistics.
-    private func khatmaChip(showsPercent: Bool) -> some View {
+    private func khatmaChip(showsPercent: Bool, vertical: Bool = false) -> some View {
         let fraction = min(max(khatmaPercent, 0), 100) / 100
         let percent = Int(fraction * 100)
         let tint = ProgressTint.color(fraction)
         return Button(action: openStatistics) {
+            if vertical {
+                VStack(spacing: 4) {
+                    KhatmaRing(fraction: fraction, tint: tint)
+                        .frame(width: 32, height: 32)
+                    Text(verbatim: "\(ArabicDigits.string(percent))٪")
+                        .font(.system(.subheadline, design: .rounded).weight(.bold))
+                        .monospacedDigit()
+                        .foregroundStyle(Color(uiColor: ProgressTint.text(fraction, appearance: appearance, traits: traits)))
+                        .lineLimit(1)
+                }
+                .padding(.vertical, 8)
+                .frame(maxWidth: .infinity)
+                .background(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .fill(Color(uiColor: ProgressTint.chipFill(fraction, appearance: appearance, traits: traits))))
+                .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).strokeBorder(tint.opacity(0.55), lineWidth: 1))
+                .contentShape(Rectangle())
+            } else {
             HStack(spacing: 6) {
                 KhatmaRing(fraction: fraction, tint: tint)
                     .frame(width: 28, height: 28)
@@ -135,9 +191,10 @@ struct ReaderTopBar: View {
             // The capsule stays 40 pt; the button around it is 44 pt tall.
             .frame(height: 44)
             .contentShape(Rectangle())
+            }
         }
         .buttonStyle(.plain)
-        .fixedSize()
+        .fixedSize(horizontal: !vertical, vertical: true)
         .accessibilityLabel(Text(verbatim: memorizationLanguage == .english ? "Khatma \(percent)%" : "ختمة \(ArabicDigits.string(percent))٪"))
         .accessibilityHint(memorizationLanguage == .english ? "Opens reading statistics" : "يفتح إحصائيات القراءة")
         .accessibilityIdentifier("khatma-progress")
@@ -154,14 +211,17 @@ struct ReaderTopBar: View {
 
     /// The current reader or narrator while the Qiraat layer is narrowed to one; a tap opens the picker.
     @ViewBuilder
-    private var qiraatFilterChip: some View {
+    private func qiraatFilterChip(vertical: Bool) -> some View {
         if qiraat.enabled, let name = qiraatCatalog?.filterShortName(qiraat.filter),
            let full = qiraatCatalog?.filterName(qiraat.filter) {
             FilterChip(isSelected: true, selectedFill: filterColor, action: openQiraatFilter) {
-                Text(name).lineLimit(1).minimumScaleFactor(0.8)
+                Text(name)
+                    .lineLimit(vertical ? 2 : 1)
+                    .multilineTextAlignment(.center)
+                    .minimumScaleFactor(0.8)
             }
-            .frame(maxWidth: 130)
-            .fixedSize()
+            .frame(maxWidth: vertical ? .infinity : 130)
+            .fixedSize(horizontal: !vertical, vertical: true)
             .accessibilityLabel(Text("القراءات العشر") + Text(verbatim: ": ") + Text(full))
             .accessibilityHint("لتغيير القارئ أو الراوي")
             .accessibilityIdentifier("qiraat-filter-chip")
@@ -195,17 +255,28 @@ private struct SurahTitle: View {
     let ink: Color
     /// In the header's last row the name may shrink (to 75%) instead of pushing the other items off the screen.
     let tight: Bool
+    /// In the side rail the name wraps onto as many lines as it needs, centred.
+    var wraps = false
     @ScaledMetric(relativeTo: .headline) private var size: CGFloat = 19
 
     var body: some View {
-        Text(text)
-            .font(Font(MushafLibrary.mushafFont(size: size)))
-            .foregroundStyle(ink)
-            .lineLimit(1)
-            .minimumScaleFactor(tight ? 0.75 : 0.7)
-            .fixedSize(horizontal: !tight, vertical: false)
-            .layoutPriority(tight ? -1 : 0)
-            .accessibilityIdentifier("reading-surah-title")
+        if wraps {
+            Text(text)
+                .font(Font(MushafLibrary.mushafFont(size: size)))
+                .foregroundStyle(ink)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+                .accessibilityIdentifier("reading-surah-title")
+        } else {
+            Text(text)
+                .font(Font(MushafLibrary.mushafFont(size: size)))
+                .foregroundStyle(ink)
+                .lineLimit(1)
+                .minimumScaleFactor(tight ? 0.75 : 0.7)
+                .fixedSize(horizontal: !tight, vertical: false)
+                .layoutPriority(tight ? -1 : 0)
+                .accessibilityIdentifier("reading-surah-title")
+        }
     }
 }
 

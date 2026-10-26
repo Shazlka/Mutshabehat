@@ -19,6 +19,107 @@ final class QiraatUITests: XCTestCase {
         app.descendants(matching: .any)[id]
     }
 
+    /// iPad landscape with «تعلّم»: one page, and the side bar at its right shows the page's differences, then the
+    /// card of a tapped word in place of the sheet; closing the card brings the page's differences back.
+    func testIPadLearningViewShowsOnePageAndTheTappedWordInTheSideBar() throws {
+        guard UIDevice.current.userInterfaceIdiom == .pad else { throw XCTSkip("iPad only") }
+        XCUIDevice.shared.orientation = .landscapeLeft
+        addTeardownBlock { XCUIDevice.shared.orientation = .portrait }
+        let app = XCUIApplication.isolated()
+        app.launchArguments = ["-mushaf1441:last-page:v1", "1", "-mushaf1441:qiraat-filter:v1", "all",
+                               "-mushaf1441:reader-layer:v1", "qiraat", "-reading-fresh", "-app:language:v1", "ar",
+                               "-mushaf:landscapeView:v1", "learning"]
+        app.launch()
+
+        let mushafPage = element("mushaf-page-1", in: app)
+        XCTAssertTrue(mushafPage.waitForExistence(timeout: 30))
+        XCTAssertFalse(element("mushaf-page-2", in: app).exists, "one page, not a spread")
+        let sideBar = element("qiraat-side-bar", in: app)
+        XCTAssertTrue(sideBar.waitForExistence(timeout: 20))
+        XCTAssertGreaterThanOrEqual(sideBar.frame.minX, mushafPage.frame.maxX - 1, "the side bar is right of the page")
+        XCTAssertTrue(element("qiraat-page-summary", in: app).waitForExistence(timeout: 20), "the page's differences")
+
+        let word = element("qiraat-word-1:4:1", in: app)
+        XCTAssertTrue(word.waitForExistence(timeout: 30))
+        word.tap()
+        let close = app.buttons["qiraat-sheet-close"]
+        XCTAssertTrue(close.waitForExistence(timeout: 10))
+        XCTAssertTrue(sideBar.frame.contains(close.frame), "the card is in the side bar, not a sheet")
+        XCTAssertTrue(app.staticTexts["الإمام نافع"].exists)
+        XCTAssertTrue(mushafPage.isHittable, "the page stays usable beside the card")
+
+        close.tap()
+        XCTAssertTrue(element("qiraat-page-summary", in: app).waitForExistence(timeout: 10))
+        XCTAssertFalse(close.exists)
+    }
+
+    /// iPad landscape: the header's information stands in a rail left of the spread, the footer's actions in a rail
+    /// right of it, the pages take nearly the full height, and the rail's القراءات and المزيد menus open and work.
+    func testIPadLandscapeRailsHoldTheHeaderAndTheFooter() throws {
+        guard UIDevice.current.userInterfaceIdiom == .pad else { throw XCTSkip("iPad only") }
+        XCUIDevice.shared.orientation = .landscapeLeft
+        addTeardownBlock { XCUIDevice.shared.orientation = .portrait }
+        let app = XCUIApplication.isolated()
+        app.launchArguments = ["-mushaf1441:last-page:v1", "50", "-mushaf1441:qiraat-filter:v1", "all",
+                               "-mushaf1441:reader-layer:v1", "qiraat", "-reading-fresh", "-app:language:v1", "ar",
+                               "-show-chrome"]
+        app.launch()
+
+        let left = element("mushaf-page-50", in: app), right = element("mushaf-page-49", in: app)
+        XCTAssertTrue(left.waitForExistence(timeout: 30))
+        XCTAssertTrue(right.exists)
+        // No header across the top and no footer bar: the spread starts near the top of the screen (on a 13-inch
+        // iPad it is then as wide as the space between the rails allows).
+        XCTAssertFalse(app.tabBars.firstMatch.exists, "no footer bar")
+        XCTAssertLessThan(left.frame.minY, app.windows.firstMatch.frame.height * 0.1, "no header above the pages")
+        for id in ["reading-page-number", "reading-surah-title", "khatma-progress"] {
+            let item = element(id, in: app)
+            XCTAssertTrue(item.waitForExistence(timeout: 10), id)
+            XCTAssertLessThanOrEqual(item.frame.maxX, left.frame.minX + 1, "\(id) is in the left rail")
+        }
+        for id in ["open-index", "search-button", "bookmarks-button", "qiraat-button", "more-button", "settings-button"] {
+            let button = app.buttons[id]
+            XCTAssertTrue(button.waitForExistence(timeout: 10), id)
+            XCTAssertGreaterThanOrEqual(button.frame.minX, right.frame.maxX - 1, "\(id) is in the right rail")
+            XCTAssertGreaterThanOrEqual(button.frame.height, 44, id)
+        }
+
+        // A swipe that starts on the left rail turns the spread, as one from the page's edge does.
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.02, dy: 0.8))
+            .press(forDuration: 0.05, thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.6, dy: 0.8)))
+        XCTAssertTrue(element("mushaf-page-51", in: app).waitForExistence(timeout: 20), "the next spread")
+
+        app.buttons["more-button"].tap()
+        XCTAssertTrue(element("mutshabehat-button", in: app).waitForExistence(timeout: 10), "the more menu opened")
+        app.otherElements["PopoverDismissRegion"].firstMatch.tap()   // a tap outside the popover closes it
+        XCTAssertTrue(element("mutshabehat-button", in: app).waitForNonExistence(timeout: 10))
+
+        app.buttons["qiraat-button"].tap()
+        let filterRow = element("qiraat-filter", in: app)
+        XCTAssertTrue(filterRow.waitForExistence(timeout: 10), "the Qiraat menu opened")
+        filterRow.tap()
+        XCTAssertTrue(app.buttons["qiraat-reader-all"].waitForExistence(timeout: 20), "a row of the menu works")
+    }
+
+    /// Settings offers «العرض الأفقي» (قراءة / تعلّم) on an iPad only.
+    func testSettingsOffersTheLandscapeViewOnIPad() {
+        let app = launch(atPage: 1)
+        XCTAssertTrue(element("mushaf-page-1", in: app).waitForExistence(timeout: 30))
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()
+        let settings = app.buttons["settings-button"]
+        XCTAssertTrue(settings.waitForExistence(timeout: 20))
+        settings.tap()
+        XCTAssertTrue(app.buttons["تم"].waitForExistence(timeout: 20))
+        let picker = element("landscape-view-picker", in: app)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            var swipes = 0
+            while !picker.exists && swipes < 4 { app.swipeUp(); swipes += 1 }
+            XCTAssertTrue(picker.exists)
+        } else {
+            XCTAssertFalse(picker.exists)
+        }
+    }
+
     func testColdLaunchWordTapsSurviveBackgroundAndSettingsWithoutAPageTurn() {
         let app = launch(atPage: 1)
         let wordID = "qiraat-word-1:4:1"

@@ -23,6 +23,8 @@ struct MushafPager: UIViewControllerRepresentable {
     /// Changes whenever memorization changes, so the pager redraws the visible pages.
     var memorizationVersion = 0
     let chromeVisible: Bool
+    /// The page takes the full height (iPad landscape with the side rails).
+    var fillsHeight = false
     let onTapCentre: () -> Void
     let onTapWord: (MushafPage, MushafWord) -> Void
     let onLongPressAyah: (MushafPage, AyahKey) -> Void
@@ -95,6 +97,7 @@ struct MushafPager: UIViewControllerRepresentable {
                                   isPageBookmarked: parent.isPageBookmarked(number),
                                   memorizationStatuses: parent.memorizationStatuses(number),
                                   chromeVisible: parent.chromeVisible,
+                                  fillsHeight: parent.fillsHeight,
                                   onTapCentre: { [weak self] in self?.parent.onTapCentre() },
                                   onTapWord: { [weak self] page, word in self?.parent.onTapWord(page, word) },
                                   onLongPressAyah: { [weak self] page, ayah in self?.parent.onLongPressAyah(page, ayah) })

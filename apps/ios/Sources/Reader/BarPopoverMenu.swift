@@ -64,6 +64,8 @@ struct BarMenuRow: View {
         .onGeometryChange(for: CGRect.self) { $0.frame(in: .global) } action: { register(frame: $0) }
         .onChange(of: isEnabled) { register(frame: model?.rows[id]?.frame ?? .zero) }
         .onDisappear { model?.unregister(id) }
+        // Outside the footer (the side rail's popovers) there is no touch tracker: the row takes the tap itself.
+        .onTapGesture { if model == nil, isEnabled { action() } }
         .accessibilityElement(children: .combine)
         .accessibilityAddTraits(.isButton)
         .accessibilityAddTraits(isOn == true ? .isSelected : [])

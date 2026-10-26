@@ -10,6 +10,8 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
     private let surahLabel = UILabel()
     private let sectionLabel = UILabel()
     private let isSpreadHalf: Bool
+    /// iPad landscape with the side rails: no header or footer to clear, so the page takes the full height.
+    private let fillsHeight: Bool
     private let onTapCentre: () -> Void
     private let onTapWord: (MushafPage, MushafWord) -> Void
     private let onLongPressAyah: ((MushafPage, AyahKey) -> Void)?
@@ -31,6 +33,7 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
          isPageBookmarked: Bool = false,
          memorizationStatuses: [AyahKey: MemorizationStatus] = [:],
          chromeVisible: Bool = false,
+         fillsHeight: Bool = false,
          onTapCentre: @escaping () -> Void,
          onTapWord: @escaping (MushafPage, MushafWord) -> Void,
          onLongPressAyah: ((MushafPage, AyahKey) -> Void)? = nil) {
@@ -38,6 +41,7 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
         self.pageView = MushafPageView(page: page, library: library, appearance: appearance)
         self.appearance = appearance
         self.isSpreadHalf = isSpreadHalf
+        self.fillsHeight = fillsHeight
         let spine: PageLayoutConstants.SpineSide = !isSpreadHalf ? .none : page.isRightHandPage ? .left : .right
         pageView.isSpreadHalf = isSpreadHalf
         pageView.spineSide = spine
@@ -169,9 +173,10 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
         let pageHeight = bottomY - topY
 
         if isPad {
-            // Reserve top room for top bar / header and bottom page number
-            let topInset: CGFloat = max(topY + 6, 60)
-            let bottomInset: CGFloat = max(view.bounds.height - bottomY, 44)
+            // Reserve top room for top bar / header and bottom page number; with the side rails only the status bar
+            // and the home indicator, and a 12 pt margin.
+            let topInset: CGFloat = fillsHeight ? max(0, windowSafeTop - viewOriginInWindow.y) + 12 : max(topY + 6, 60)
+            let bottomInset: CGFloat = fillsHeight ? windowSafeBottom + 12 : max(view.bounds.height - bottomY, 44)
             let area = CGRect(
                 x: view.bounds.minX,
                 y: view.bounds.minY + topInset,

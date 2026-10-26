@@ -12,6 +12,8 @@ struct PageStatusMark: View {
     enum Form { case full, labeled, minimal }
     var form: Form = .full
     let language: AppLanguage
+    /// In the side rail the short word may take two lines.
+    var wrapsWord = false
 
     var body: some View {
         let status = progress.state
@@ -30,8 +32,9 @@ struct PageStatusMark: View {
                     }
                     Text(verbatim: MemorizationTheme.shortLabel(status, language: language))
                         .font(.caption2.weight(.semibold))
-                        .lineLimit(1)
-                        .fixedSize()
+                        .lineLimit(wrapsWord ? 2 : 1)
+                        .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: !wrapsWord, vertical: true)
                 }
             case .minimal:
                 VStack(spacing: 2) {
