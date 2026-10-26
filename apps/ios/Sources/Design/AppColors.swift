@@ -50,7 +50,13 @@ extension UIColor {
         }
     }
 
-    private func mixed(with other: UIColor, amount: CGFloat) -> UIColor {
+    /// The label for text on a filled shape: white while it reads at 4.5:1 or more, black otherwise. Black, not a
+    /// tinted ink: on fills of middle lightness (about 0.18 luminance) only pure black or white still reaches 4.5:1.
+    static func chipLabel(on fill: UIColor) -> UIColor {
+        UIColor.white.contrast(with: fill) >= 4.5 ? .white : .black
+    }
+
+    func mixed(with other: UIColor, amount: CGFloat) -> UIColor {
         var r1: CGFloat = 0, g1: CGFloat = 0, b1: CGFloat = 0, a1: CGFloat = 0
         var r2: CGFloat = 0, g2: CGFloat = 0, b2: CGFloat = 0, a2: CGFloat = 0
         getRed(&r1, green: &g1, blue: &b1, alpha: &a1)

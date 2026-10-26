@@ -17,11 +17,17 @@ struct FilterChip<Label: View>: View {
                 .padding(.horizontal, 14)
                 .padding(.vertical, 7)
                 .background(isSelected ? selectedFill : unselectedFill, in: Capsule())
-                .foregroundStyle(isSelected ? Color.white : Color.primary)
+                .foregroundStyle(isSelected ? selectedLabel : Color.primary)
                 .frame(minHeight: 44)
                 .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
         .accessibilityAddTraits(isSelected ? .isSelected : [])
+    }
+
+    /// White on the app's own fills; black on a light reader colour, where white would not read.
+    private var selectedLabel: Color {
+        let fill = UIColor(selectedFill)
+        return Color(uiColor: UIColor { UIColor.chipLabel(on: fill.resolvedColor(with: $0)) })
     }
 }

@@ -3,6 +3,14 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-26 — Header chip and khatma percent readable at 4.5:1 (WCAG AA)
+- **Source:** the `/impeccable audit` of the iOS app found the two failures below; both are fixed here.
+- **Reader/narrator chip (`FilterChip`, `UIColor.chipLabel(on:)`):** the label was always white on the reader's own colour, which reads at 4.5:1 or more on only 16 of the 30 reader and narrator colours (Ibn Wardan 1.53:1, al-Duri from Abu Amr 1.45:1, al-Bazzi 1.74:1). It is now white while white reads at 4.5:1 and black otherwise. The fill stays the reader's colour from the web. Pure black, because on fills of middle lightness a tinted ink falls below 4.5:1. The app's green chips keep their white label.
+- **Khatma percent (`ProgressTint.text`, `ProgressTint.chipFill`):** the percent was drawn in the ring's red-to-green tint over a 14% wash of the same tint: 1.6–1.9:1 in light mode from 40% to 100% (the yellow-green middle of a khatma), 2.8–3.1:1 in dark mode at the start. It is now the same hue moved toward the page's ink just far enough to read at 4.5:1 on its chip, in every theme. The ring keeps the bright tint; the chip's fill is unchanged (the same wash, now computed over the page colour).
+- **Tests:** new `ReaderHeaderContrastTests` (all 30 colours from the bundled catalog; the green chip stays white in light and dark; every percent 0–100 in all five themes in light and dark; the percent keeps the ring's hue). All 347 unit tests pass. Checked in the simulator with Ibn Wardan selected (black on yellow) and Warsh (white on blue).
+- **Not changed (from the same audit):** the ring itself is still under 3:1 against light paper in the middle of a khatma (WCAG 1.4.11 for graphics), and a long chip name such as «ابن وردان» on an iPhone 18 Pro clips the page number to «٥» and drops the hizb number.
+- **Files:** `Sources/Design/{AppColors,FilterChip}.swift`, `Sources/Reader/ReaderTopBar.swift`, `Tests/ReaderHeaderContrastTests.swift`.
+
 ## [Unreleased] — 2026-10-25 — Footer auto-hide option; page number at the surah name's size; one colour for every switch
 - **Request:** an option in Settings to hide the footer by itself after 10 seconds; the page number as small as the surah name; the القراءات switch in Settings did not match the other switches' green, so all switches get the same colour.
 - **Auto-hide (`ReaderBottomBar`, `SettingsView`, `ReaderView`):** a new switch «إخفاء الشريط السفلي تلقائيًا بعد ١٠ ثوانٍ» (off by default, stored as `mushaf:autoHidesFooter`). With it on, the footer hides 10 s after it appears, with the same fade as a tap on the header; a touch on the footer, an open footer menu or a page change starts the 10 s again, and a menu that is open is never hidden under the finger. A tap on the header brings it back.

@@ -125,13 +125,13 @@ struct ReaderTopBar: View {
                     Text(verbatim: "\(ArabicDigits.string(percent))٪")
                         .font(.system(size: 17, weight: .bold, design: .rounded))
                         .monospacedDigit()
-                        .foregroundStyle(tint)
+                        .foregroundStyle(Color(uiColor: ProgressTint.text(fraction, appearance: appearance, traits: traits)))
                         .lineLimit(1)
                 }
             }
             .padding(.horizontal, showsPercent ? 10 : 6)
             .frame(height: 40)
-            .background(Capsule().fill(tint.opacity(0.14)))
+            .background(Capsule().fill(Color(uiColor: ProgressTint.chipFill(fraction, appearance: appearance, traits: traits))))
             .overlay(Capsule().strokeBorder(tint.opacity(0.55), lineWidth: 1))
             .contentShape(Capsule())
         }
@@ -246,8 +246,29 @@ struct KhatmaRing: View {
 
 /// Progress as a colour: red at the start, through yellow, to green at the end (hue 0° → 130°).
 enum ProgressTint {
-    static func color(_ fraction: Double) -> Color {
+    static func color(_ fraction: Double) -> Color { Color(uiColor: uiColor(fraction)) }
+
+    static func uiColor(_ fraction: Double) -> UIColor {
         let f = min(max(fraction, 0), 1)
-        return Color(hue: 0.36 * f, saturation: 0.88, brightness: 0.80)
+        return UIColor(hue: 0.36 * f, saturation: 0.88, brightness: 0.80, alpha: 1)
+    }
+
+    /// The khatma chip's fill: a 14% wash of the tint over the page.
+    static func chipFill(_ fraction: Double, appearance: MushafAppearance, traits: UITraitCollection) -> UIColor {
+        appearance.paper(for: traits).mixed(with: uiColor(fraction), amount: 0.14)
+    }
+
+    /// The percent: the tint, moved toward the page's ink only as far as it takes to read at 4.5:1 on its chip
+    /// (the bright yellow-green of the middle of a khatma measures 1.6:1 on light paper). The ring keeps the tint.
+    static func text(_ fraction: Double, appearance: MushafAppearance, traits: UITraitCollection) -> UIColor {
+        let fill = chipFill(fraction, appearance: appearance, traits: traits)
+        let ink = appearance.ink(for: traits)
+        var color = uiColor(fraction)
+        var step = 0
+        while color.contrast(with: fill) < 4.5, step < 20 {
+            color = color.mixed(with: ink, amount: 0.08)
+            step += 1
+        }
+        return color
     }
 }
