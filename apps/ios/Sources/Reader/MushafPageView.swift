@@ -879,7 +879,9 @@ final class MushafPageView: UIView {
             context.restoreGState()
         }
         let line = QCFFontStore.line(box.word.glyph, font: font,
-                                     color: mark.map { UIColor(qiraatHex: $0.textColor).cgColor }
+                                     color: mark.map { UIColor.qiraatGlyph(UIColor(qiraatHex: $0.textColor),
+                                                                           appearance: appearance,
+                                                                           traits: traitCollection).cgColor }
                                          ?? appearance.ink(for: traitCollection).cgColor)
         let natural = CGFloat(CTLineGetTypographicBounds(line, nil, nil, nil))
         context.saveGState()

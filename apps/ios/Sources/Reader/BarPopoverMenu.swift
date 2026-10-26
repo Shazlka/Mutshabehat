@@ -7,12 +7,13 @@ struct BarMenuActions {
     let perform: (@escaping () -> Void) -> Void
 }
 
-/// The size of a footer menu: wider and taller than the system menu, whose width and rows cannot be changed.
+/// The size of a footer menu: wider and taller than the system menu, whose width and rows cannot be changed. Row
+/// height and symbol size are the sizes at the default text size; they grow with the user's (the names are `.title3`).
 enum BarMenuMetrics {
     static let width: CGFloat = 330
     static let rowHeight: CGFloat = 58
-    static let textSize: CGFloat = 20
     static let iconSize: CGFloat = 23
+    static let iconWidth: CGFloat = 34
 }
 
 /// One row of a footer menu: the name, and at the other end its symbol, or a check while it is switched on.
@@ -33,11 +34,13 @@ struct BarMenuRow: View {
     @Environment(FooterMenuModel.self) private var model: FooterMenuModel?
     @Environment(\.isEnabled) private var isEnabled
     @State private var id = UUID()
+    @ScaledMetric(relativeTo: .title3) private var rowHeight = BarMenuMetrics.rowHeight
+    @ScaledMetric(relativeTo: .title3) private var iconWidth = BarMenuMetrics.iconWidth
 
     var body: some View {
         HStack(spacing: 14) {
             Text(title)
-                .font(.system(size: BarMenuMetrics.textSize, weight: .medium))
+                .font(.title3.weight(.medium))
                 .multilineTextAlignment(.leading)
                 .lineLimit(2)
                 .minimumScaleFactor(0.85)
@@ -49,11 +52,11 @@ struct BarMenuRow: View {
                     Image(systemName: systemImage)
                 }
             }
-            .font(.system(size: BarMenuMetrics.iconSize, weight: .regular))
-            .frame(width: 34)
+            .scaledFont(size: BarMenuMetrics.iconSize, relativeTo: .title3)
+            .frame(width: iconWidth)
         }
         .padding(.horizontal, 22)
-        .frame(minHeight: BarMenuMetrics.rowHeight)
+        .frame(minHeight: rowHeight)
         .foregroundStyle(isEnabled ? Color.primary : Color.secondary.opacity(0.6))
         .contentShape(Rectangle())
         // The footer's touch tracker finds the row by its frame and runs it when the finger lifts over it, whether the
@@ -102,6 +105,7 @@ struct BarGlassMenu<Content: View>: View {
     let close: () -> Void
     @ViewBuilder let content: () -> Content
     @Environment(\.layoutDirection) private var direction
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(FooterMenuModel.self) private var model: FooterMenuModel?
 
     var body: some View {
@@ -128,8 +132,12 @@ struct BarGlassMenu<Content: View>: View {
             .offset(x: originShift, y: -(barSize.height + gap))
             .onGeometryChange(for: CGRect.self) { $0.frame(in: .global) } action: { model?.panelFrame = $0; model?.translation = translation }
             .onDisappear { model?.panelFrame = .zero }
-            .transition(.scale(scale: 0.88, anchor: UnitPoint(x: anchorUnit, y: 1)).combined(with: .opacity))
+            .transition(reduceMotion ? .opacity
+                        : .scale(scale: 0.88, anchor: UnitPoint(x: anchorUnit, y: 1)).combined(with: .opacity))
             .accessibilityAddTraits(.isModal)
+            // The panel is modal to VoiceOver, which then cannot reach the bar item that would close it: the escape
+            // gesture (a two-finger Z) closes it, as it closes a system menu.
+            .accessibilityAction(.escape, close)
         }
         .frame(width: barSize.width, height: barSize.height, alignment: .bottomLeading)
     }
@@ -166,6 +174,7 @@ private struct BarMenuSurface: View {
     let lens: CGRect?
     private let shape = RoundedRectangle(cornerRadius: 30, style: .continuous)
     private let lensShape = RoundedRectangle(cornerRadius: 22, style: .continuous)
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         if #available(iOS 26, *) {
@@ -182,7 +191,8 @@ private struct BarMenuSurface: View {
                         .transition(.opacity)
                 }
             }
-            .animation(.spring(response: 0.3, dampingFraction: 0.74), value: lens)
+            // The lens glides to the next row without overshooting it; with Reduce Motion it moves at once.
+            .animation(reduceMotion ? nil : .stateChange, value: lens)
         }
     }
 }
@@ -193,6 +203,7 @@ private struct BarMenuSurface: View {
 private struct BarMenuLens: View {
     /// The row's frame in the menu's space; nil while no row is under the finger.
     let frame: CGRect?
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -201,10 +212,10 @@ private struct BarMenuLens: View {
                     .frame(width: BarMenuMetrics.width - 12, height: frame.height)
                     .glassEffect(.clear, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
                     .offset(y: frame.minY)
-                    .transition(.scale(scale: 0.9).combined(with: .opacity))
+                    .transition(reduceMotion ? .opacity : .scale(scale: 0.9).combined(with: .opacity))
             }
         }
-        .animation(.spring(response: 0.32, dampingFraction: 0.72), value: frame)
+        .animation(reduceMotion ? nil : .stateChange, value: frame)
         .allowsHitTesting(false)
         .accessibilityHidden(true)
     }

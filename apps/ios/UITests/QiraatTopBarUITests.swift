@@ -89,6 +89,47 @@ final class QiraatTopBarUITests: XCTestCase {
         XCTAssertEqual(mushafPage.frame, before, "the page moved when the footer bar showed")
     }
 
+    /// A long chip name on a page with a long surah name: every item of the header stays wholly on screen and apart
+    /// from the others, and the two progress buttons are at least 44 points tall.
+    func testTheHeaderFitsALongChipNameWithEveryItemWhole() {
+        assertHeaderFits(launch(page: 51, filter: "reading:Q08-R01"))
+    }
+
+    /// The same at the largest text size the header allows (xxxLarge).
+    func testTheHeaderFitsAtTheLargestTextSize() {
+        let app = XCUIApplication.isolated()
+        app.launchArguments = ["-mushaf1441:last-page:v1", "51", "-mushaf1441:qiraat-filter:v1", "reading:Q08-R01",
+                               "-mushaf1441:reader-layer:v1", "qiraat", "-app:language:v1", "ar",
+                               "-reading-fresh", "-memorization-seed", "empty", "-backup-folder", "none",
+                               "-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryXXXL"]
+        app.launch()
+        assertHeaderFits(app)
+    }
+
+    private func assertHeaderFits(_ app: XCUIApplication, file: StaticString = #filePath, line: UInt = #line) {
+        XCTAssertTrue(element("mushaf-page-51", in: app).waitForExistence(timeout: 15), file: file, line: line)
+        let width = app.windows.firstMatch.frame.width
+        let ids = ["reading-page-number", "reading-surah-title", "memo-banner-mark-51", "qiraat-filter-chip",
+                   "khatma-progress", "reading-section-text"]
+        var frames: [String: CGRect] = [:]
+        for id in ids {
+            let item = element(id, in: app)
+            XCTAssertTrue(item.waitForExistence(timeout: 20), id, file: file, line: line)
+            frames[id] = item.frame
+            XCTAssertGreaterThanOrEqual(item.frame.minX, 0, "\(id) runs off the left edge", file: file, line: line)
+            XCTAssertLessThanOrEqual(item.frame.maxX, width, "\(id) runs off the right edge", file: file, line: line)
+        }
+        for (index, a) in ids.enumerated() {
+            for b in ids[(index + 1)...] {
+                XCTAssertFalse(frames[a]!.insetBy(dx: 1, dy: 1).intersects(frames[b]!), "\(a) overlaps \(b)",
+                               file: file, line: line)
+            }
+        }
+        for id in ["khatma-progress", "memo-banner-mark-51"] {
+            XCTAssertGreaterThanOrEqual(frames[id]!.height, 43.5, "\(id) is under 44 pt", file: file, line: line)
+        }
+    }
+
     /// Page number and surah at the right, the khatma progress in the middle, the juz and hizb at the left.
     func testTheHeaderPutsTheJuzOnTheLeftAndTheProgressInTheMiddle() {
         let app = launch()

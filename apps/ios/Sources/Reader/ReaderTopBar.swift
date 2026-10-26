@@ -25,14 +25,19 @@ struct ReaderTopBar: View {
     let onTapHeader: () -> Void
 
     var body: some View {
-        // The row is tried at full size first; when a long surah name leaves no room it uses the compact memorization
-        // mark, then stacks the juz over the hizb, and only then drops the percent next to the khatma ring. They are never cut.
+        // The row is tried at full size first. When it does not fit it gives up, in order: the memorization mark's
+        // ayah-mix bar (keeping its word), the one-line juz and hizb, the percent beside the khatma ring, the mark's
+        // word, then a smaller text size. The last row always fits: its gaps are narrower and its surah name may
+        // shrink (to 75%), so nothing is pushed off the screen and the surah name is never cut to an ellipsis.
         ViewThatFits(in: .horizontal) {
-            row(showsPercent: true, compactMark: false, stackedSection: false)
-            row(showsPercent: true, compactMark: true, stackedSection: false)
-            row(showsPercent: true, compactMark: true, stackedSection: true)
-            row(showsPercent: false, compactMark: true, stackedSection: true)
-            row(showsPercent: false, compactMark: true, stackedSection: true).dynamicTypeSize(...DynamicTypeSize.large)
+            row(showsPercent: true, mark: .full, stackedSection: false)
+            row(showsPercent: true, mark: .labeled, stackedSection: false)
+            row(showsPercent: true, mark: .labeled, stackedSection: true)
+            row(showsPercent: false, mark: .labeled, stackedSection: true)
+            row(showsPercent: false, mark: .minimal, stackedSection: true)
+            row(showsPercent: false, mark: .minimal, stackedSection: true).dynamicTypeSize(...DynamicTypeSize.large)
+            row(showsPercent: false, mark: .minimal, stackedSection: true, tight: true)
+                .dynamicTypeSize(...DynamicTypeSize.large)
         }
         .padding(.horizontal, 16)
         .frame(height: 52)
@@ -44,12 +49,12 @@ struct ReaderTopBar: View {
 
     /// Page number at the far right with the surah name beside it; the progress (memorization mark, filter chip,
     /// khatma) in the middle; the juz and hizb at the far left. Each in a place of its own so no text runs under it.
-    private func row(showsPercent: Bool, compactMark: Bool, stackedSection: Bool) -> some View {
+    private func row(showsPercent: Bool, mark: PageStatusMark.Form, stackedSection: Bool, tight: Bool = false) -> some View {
         let ink = Color(uiColor: appearance.ink(for: traits))
-        return HStack(alignment: .center, spacing: 10) {
+        return HStack(alignment: .center, spacing: tight ? 6 : 10) {
             if !pageNumbers.isEmpty {
                 Text(verbatim: pageNumbers.map { ArabicDigits.string($0) }.joined(separator: " – "))
-                    .font(.custom("GeezaPro-Bold", size: 19))
+                    .font(.custom("GeezaPro-Bold", size: 19, relativeTo: .headline))
                     .foregroundStyle(ink)
                     .lineLimit(1)
                     .fixedSize()
@@ -58,21 +63,15 @@ struct ReaderTopBar: View {
                     .accessibilityIdentifier("reading-page-number")
             }
 
-            Text(surahTitle)
-                .font(Font(MushafLibrary.mushafFont(size: 19)))
-                .foregroundStyle(ink)
-                .lineLimit(1)
-                .minimumScaleFactor(0.7)
-                .fixedSize(horizontal: true, vertical: false)
-                .accessibilityIdentifier("reading-surah-title")
+            SurahTitle(text: surahTitle, ink: ink, tight: tight)
 
-            Spacer(minLength: 8)
-            HStack(spacing: 8) {
-                memorizationMarkRow(compact: compactMark)
+            Spacer(minLength: tight ? 4 : 8)
+            HStack(spacing: tight ? 5 : 8) {
+                memorizationMarkRow(form: mark)
                 qiraatFilterChip
                 khatmaChip(showsPercent: showsPercent)
             }
-            Spacer(minLength: 8)
+            Spacer(minLength: tight ? 4 : 8)
 
             if let section {
                 sectionLabel(section, ink: ink, stacked: stackedSection)
@@ -101,7 +100,7 @@ struct ReaderTopBar: View {
             }
         }
         content
-            .font(.system(size: 13, weight: .semibold))
+            .font(.footnote.weight(.semibold))
             .foregroundStyle(ink.opacity(0.75))
             .lineLimit(1)
             .fixedSize()
@@ -123,7 +122,7 @@ struct ReaderTopBar: View {
                     .frame(width: 28, height: 28)
                 if showsPercent {
                     Text(verbatim: "\(ArabicDigits.string(percent))٪")
-                        .font(.system(size: 17, weight: .bold, design: .rounded))
+                        .font(.system(.headline, design: .rounded).weight(.bold))
                         .monospacedDigit()
                         .foregroundStyle(Color(uiColor: ProgressTint.text(fraction, appearance: appearance, traits: traits)))
                         .lineLimit(1)
@@ -133,7 +132,9 @@ struct ReaderTopBar: View {
             .frame(height: 40)
             .background(Capsule().fill(Color(uiColor: ProgressTint.chipFill(fraction, appearance: appearance, traits: traits))))
             .overlay(Capsule().strokeBorder(tint.opacity(0.55), lineWidth: 1))
-            .contentShape(Capsule())
+            // The capsule stays 40 pt; the button around it is 44 pt tall.
+            .frame(height: 44)
+            .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
         .fixedSize()
@@ -169,13 +170,13 @@ struct ReaderTopBar: View {
 
     /// Page-status marks (one page, or both pages of a spread), left to right; nothing when they are hidden.
     @ViewBuilder
-    private func memorizationMarkRow(compact: Bool) -> some View {
+    private func memorizationMarkRow(form: PageStatusMark.Form) -> some View {
         if !memorizationMarks.isEmpty {
             HStack(spacing: 6) {
                 ForEach(memorizationMarks, id: \.page) { mark in
                     Button { openMemorizationPage(mark.page) } label: {
                         PageStatusMark(page: mark.page, progress: mark.progress,
-                                       showsPageNumber: memorizationMarks.count > 1, compact: compact,
+                                       showsPageNumber: memorizationMarks.count > 1, form: form,
                                        language: memorizationLanguage)
                     }
                     .buttonStyle(.plain)
@@ -184,6 +185,27 @@ struct ReaderTopBar: View {
             .fixedSize()
             .environment(\.layoutDirection, .leftToRight)
         }
+    }
+}
+
+/// The surah name in the reading header. A view of its own so its size follows the text size of the row it is in
+/// (the header's last rows are capped at `.large`), not that of the whole header.
+private struct SurahTitle: View {
+    let text: String
+    let ink: Color
+    /// In the header's last row the name may shrink (to 75%) instead of pushing the other items off the screen.
+    let tight: Bool
+    @ScaledMetric(relativeTo: .headline) private var size: CGFloat = 19
+
+    var body: some View {
+        Text(text)
+            .font(Font(MushafLibrary.mushafFont(size: size)))
+            .foregroundStyle(ink)
+            .lineLimit(1)
+            .minimumScaleFactor(tight ? 0.75 : 0.7)
+            .fixedSize(horizontal: !tight, vertical: false)
+            .layoutPriority(tight ? -1 : 0)
+            .accessibilityIdentifier("reading-surah-title")
     }
 }
 

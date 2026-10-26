@@ -66,6 +66,7 @@ struct ReaderBottomBar: View {
     /// True once the fade-in has finished, so assistive technology and UI tests never meet a half-visible bar.
     @State private var isSettled = false
     @Environment(\.layoutDirection) private var direction
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         FooterTabBar(items: items,
@@ -98,7 +99,8 @@ struct ReaderBottomBar: View {
                 try? await Task.sleep(for: Self.autoHideDelay)
                 if !Task.isCancelled { onAutoHide() }
             }
-            .animation(.spring(response: 0.35, dampingFraction: 0.82), value: openMenu)
+            // A menu opens and closes without overshoot; with Reduce Motion it only fades.
+            .animation(reduceMotion ? .easeOut(duration: 0.15) : .stateChange, value: openMenu)
             .onChange(of: chromeVisible) { _, visible in if !visible { openMenu = nil } }
             // Items are fixed targets; the large content viewer shows them beyond that.
             .dynamicTypeSize(...DynamicTypeSize.xxxLarge)

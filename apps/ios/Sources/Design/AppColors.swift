@@ -125,6 +125,20 @@ enum QiraatPalette {
 
 extension UIColor {
     /// The ink for text drawn on `fill` (a colour that does not change with the mode).
+    /// The colour a Qiraat-marked word is drawn in: the data's colour as the web gives it while it reads at 3:1 on the
+    /// page (WCAG large text; the glyphs are well over 18 pt), otherwise moved toward the page's ink only that far
+    /// (the web's gold #CA8A04 is 2.9:1 on the cream page, its violet #7C3AED 3.0:1 on the dark one).
+    static func qiraatGlyph(_ color: UIColor, appearance: MushafAppearance, traits: UITraitCollection) -> UIColor {
+        let paper = appearance.paper(for: traits), ink = appearance.ink(for: traits)
+        var glyph = color
+        var step = 0
+        while glyph.contrast(with: paper) < 3, step < 20 {
+            glyph = glyph.mixed(with: ink, amount: 0.06)
+            step += 1
+        }
+        return glyph
+    }
+
     static func qiraatInk(onFill fill: UIColor) -> UIColor {
         let light = QiraatPalette.onFillLight, dark = QiraatPalette.onFillDark
         return light.contrast(with: fill) >= dark.contrast(with: fill) ? light : dark

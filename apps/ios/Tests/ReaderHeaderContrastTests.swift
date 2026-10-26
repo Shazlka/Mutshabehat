@@ -50,6 +50,37 @@ final class ReaderHeaderContrastTests: XCTestCase {
         }
     }
 
+    /// Every colour the Qiraat data paints a word with reads at 3:1 (WCAG large text: the page's glyphs are well over
+    /// 18 pt) on the paper of every theme; a colour that already does is drawn exactly as the web gives it.
+    func testQiraatWordColoursReadOnThePaperOfEveryTheme() throws {
+        let folder = try XCTUnwrap(Bundle.main.url(forResource: "Qiraat", withExtension: nil))
+        let regex = try NSRegularExpression(pattern: "\"(?:color|textColor)\"\\s*:\\s*\"(#[0-9a-fA-F]{6})\"")
+        var hexes = Set<String>()
+        for file in try FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil)
+        where file.pathExtension == "json" {
+            let text = try String(contentsOf: file, encoding: .utf8) as NSString
+            for match in regex.matches(in: text as String, range: NSRange(location: 0, length: text.length)) {
+                hexes.insert(text.substring(with: match.range(at: 1)))
+            }
+        }
+        XCTAssertFalse(hexes.isEmpty)
+        for appearance in MushafAppearance.allCases {
+            for (label, style) in styles {
+                let traits = UITraitCollection(userInterfaceStyle: style)
+                let paper = appearance.paper(for: traits)
+                for hex in hexes {
+                    let given = UIColor(qiraatHex: hex)
+                    let drawn = UIColor.qiraatGlyph(given, appearance: appearance, traits: traits)
+                    let ratio = drawn.contrast(with: paper)
+                    XCTAssertGreaterThanOrEqual(ratio, 3, "\(hex) \(appearance) \(label): \(ratio)")
+                    if given.contrast(with: paper) >= 3 {
+                        XCTAssertEqual(drawn, given, "\(hex) \(appearance) \(label) was changed though it reads")
+                    }
+                }
+            }
+        }
+    }
+
     /// The percent keeps the hue of the ring: it is shaded, never swapped for another colour.
     func testKhatmaPercentKeepsTheRingHue() {
         let traits = UITraitCollection(userInterfaceStyle: .light)
