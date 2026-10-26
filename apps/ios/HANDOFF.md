@@ -29,6 +29,13 @@ The repository-root `HANDOFF.md` describes the web application and production ba
 
 ---
 
+## Scholarly references per variant (2026-10-26)
+A Qiraat card can show where الشاطبية، الدرة and طيبة النشر document a variant. Code: `MushafCore/QiraatReferences.swift`,
+`Sources/Qiraat/QiraatReferencesRow.swift`. Data: your own `references.json` (never committed), copied by
+`make references REFERENCES_SRC=<folder>`; format in `docs/qiraat-references-format.md`; plan in `docs/plans/2026-10-26-scholarly-references.md`.
+Tested (core, app unit, UI test, release guard); see the CHANGELOG entry for counts. Committed on ios/main, not pushed.
+The real file (extracted from the Shamela books) is a separate phase; until it exists the row is hidden.
+
 ## Qiraat UX round (branch ios/qiraat-ux, 2026-10-10/11)
 
 Everything is on the branch `ios/qiraat-ux` (based on `ios/memorization`). It is not merged into `ios/main`, `ios/memorization` or web `main`. Details: the top entry of `CHANGELOG.md`, the per-workstream entries in `CHANGELOG-archive.md`, results in `docs/qiraat-ux-acceptance.md`.

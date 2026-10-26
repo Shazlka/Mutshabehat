@@ -50,6 +50,7 @@ struct VariantCard: View {
                 }
             }
             readers
+            QiraatReferencesRow(variant: variant, catalog: catalog)
             if variant.verificationStatus == "NEEDS_MANUAL_REVIEW" { QiraatNeedsReviewBadge() }
         }
         .padding(10)

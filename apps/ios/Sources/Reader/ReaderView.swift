@@ -9,6 +9,14 @@ struct ReaderView: View {
     let library: MushafLibrary
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.scenePhase) private var scenePhase
+
+    /// The references the Qiraat card reads: the bundled file, or (UI tests) a synthetic set.
+    private var qiraatReferencesForReader: QiraatReferenceStore {
+#if DEBUG
+        if ProcessInfo.processInfo.arguments.contains("-qiraat-references-fixture") { return library.qiraatReferencesFixture }
+#endif
+        return library.qiraatReferences
+    }
     @StateObject private var tracker = ReadingTracker.shared
     @State private var page: Int = {
         if let idx = CommandLine.arguments.firstIndex(of: "-page"),
@@ -548,6 +556,7 @@ struct ReaderView: View {
                 onSelect: openQiraatSheetWord,
                 onClose: onClose
             )
+            .environment(\.qiraatReferences, qiraatReferencesForReader)
             .environment(\.qiraatWordText, QiraatWordLookup { [library, page = item.word.page] surah, ayah, token in
                 library.wordText(surah: surah, ayah: ayah, token: token, near: page)
             })

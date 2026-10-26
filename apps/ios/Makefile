@@ -12,7 +12,7 @@ IPAD     ?= iPad Pro 13-inch (M5)
 APP      := $(DERIVED)/Build/Products/Debug-iphonesimulator/Mutshabehat.app
 XCB       = xcodebuild -project Mutshabehat.xcodeproj -scheme Mutshabehat -derivedDataPath $(DERIVED)
 
-.PHONY: all data fonts qiraat qiraat-refresh qiraat-offline review-data review-golden project data-test core-test perf build test test-ipad run open device clean check-isolation release-guard
+.PHONY: all data fonts qiraat references qiraat-refresh qiraat-offline review-data review-golden project data-test core-test perf build test test-ipad run open device clean check-isolation release-guard
 
 all: data fonts qiraat review-data project
 
@@ -34,6 +34,14 @@ fonts:
 # already present; qiraat-refresh re-downloads every page; qiraat-offline uses the repo fixtures.
 qiraat:
 	python3 scripts/fetch_qiraat.py $(REPO) $(GEN)/Qiraat
+
+# Scholarly references (الشاطبية، الدرة، طيبة النشر per variant): your own references.json, copied unchanged
+# into Generated/QiraatReferences (never committed). Format: docs/qiraat-references-format.md.
+#   make references REFERENCES_SRC=/path/to/folder-with-references.json
+references:
+	@test -n "$(REFERENCES_SRC)" -a -s "$(REFERENCES_SRC)/references.json" || { echo "error: set REFERENCES_SRC to a folder holding references.json"; exit 1; }
+	mkdir -p $(GEN)/QiraatReferences
+	cp "$(REFERENCES_SRC)/references.json" $(GEN)/QiraatReferences/references.json
 
 qiraat-refresh:
 	python3 scripts/fetch_qiraat.py $(REPO) $(GEN)/Qiraat --refresh

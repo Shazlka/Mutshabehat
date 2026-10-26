@@ -4190,6 +4190,206 @@
           }
         }
       }
+    },
+    "المصادر" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sources"
+          }
+        }
+      }
+    },
+    "المصادر: لم يُوثَّق بعد" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sources: not documented yet"
+          }
+        }
+      }
+    },
+    "مفتوح" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expanded"
+          }
+        }
+      }
+    },
+    "مغلق" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collapsed"
+          }
+        }
+      }
+    },
+    "الشاطبية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shatibiyyah"
+          }
+        }
+      }
+    },
+    "الدرة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durrah"
+          }
+        }
+      }
+    },
+    "طيبة النشر" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tayyibat al-Nashr"
+          }
+        }
+      }
+    },
+    "من متن الشاطبية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From the Shatibiyyah"
+          }
+        }
+      }
+    },
+    "من متن الدرة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From the Durrah"
+          }
+        }
+      }
+    },
+    "من متن طيبة النشر" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From the Tayyibat al-Nashr"
+          }
+        }
+      }
+    },
+    "البيت %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verse %lld"
+          }
+        }
+      }
+    },
+    "ص %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "p. %@"
+          }
+        }
+      }
+    },
+    "الرمز: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Symbol: %@"
+          }
+        }
+      }
+    },
+    "القرّاء المذكورون (بهذه القراءة)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Readers named (for this reading)"
+          }
+        }
+      }
+    },
+    "القرّاء المذكورون (بالقراءة الأخرى)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Readers named (for the other reading)"
+          }
+        }
+      }
+    },
+    "لا يطابق قراءات هذه الكلمة، يحتاج مراجعة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Does not match this word's readings; needs review"
+          }
+        }
+      }
+    },
+    "مستخرج" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Extracted"
+          }
+        }
+      }
+    },
+    "مراجَع" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reviewed"
+          }
+        }
+      }
+    },
+    "موثّق" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verified"
+          }
+        }
+      }
+    },
+    "افتح في الشاملة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open in Shamela"
+          }
+        }
+      }
     }
   },
   "version" : "1.3"

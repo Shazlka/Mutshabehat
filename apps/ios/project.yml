@@ -48,6 +48,18 @@ targets:
           pages=$(find "$GEN/Qiraat" -name 'page-*.json' -size +0 2>/dev/null | wc -l | tr -d ' ')
           test "$pages" = "604" -a -s "$GEN/Qiraat/catalog.json" || { echo "error: Qiraat snapshot incomplete ($pages/604 pages) — run: make -C apps/ios qiraat"; exit 1; }
           test -s "$GEN/Fonts/KFGQPC Uthmanic Script HAFS Regular.otf" || { echo "error: KFGQPC Uthmanic Script HAFS Regular.otf missing from $GEN/Fonts"; exit 1; }
+      - name: Copy Qiraat references (optional)
+        basedOnDependencyAnalysis: false
+        script: |
+          # The scholarly references file (make references) is the person's own data and is optional:
+          # copied when present, removed from the bundle when absent so a stale copy never lingers.
+          SRC="$SRCROOT/Generated/QiraatReferences/references.json"
+          DEST="$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/QiraatReferences"
+          if [ -s "$SRC" ]; then
+            mkdir -p "$DEST" && cp "$SRC" "$DEST/references.json"
+          else
+            rm -rf "$DEST"
+          fi
       - name: Copy review reference (Debug only)
         basedOnDependencyAnalysis: false
         script: |

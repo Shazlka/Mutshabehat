@@ -22,6 +22,24 @@ final class MushafLibrary {
     let surahNames: [Int: String]
     /// The bundled snapshot of the web app's Qiraat data; nil only if the build shipped without it.
     private(set) var qiraat: QiraatStore?
+    /// The scholarly references (الشاطبية، الدرة، طيبة النشر) per variant, from the optional `QiraatReferences` bundle
+    /// folder. Empty when the build ships without it; the card then shows no references row.
+    private(set) var qiraatReferences = QiraatReferenceStore.empty
+#if DEBUG
+    /// UI tests only (`-qiraat-references-fixture`): one synthetic reference per work for every variant on page 1.
+    /// The text is a placeholder, never real matn text.
+    private(set) lazy var qiraatReferencesFixture: QiraatReferenceStore = {
+        let variants = qiraat?.page(1)?.variants ?? []
+        return QiraatReferenceStore(entries: variants.flatMap { variant in
+            QiraatMatn.allCases.enumerated().map { index, work in
+                QiraatReference(variantId: variant.id, variantKey: QiraatReferenceStore.key(for: variant), work: work,
+                                verse: index + 1, lines: ["نص تجريبي"], symbolText: "رمز", side: .variant,
+                                readingIds: variant.readingIds, printedPage: "\(index + 1)",
+                                status: [.extracted, .reviewed, .verified][index])
+            }
+        })
+    }()
+#endif
 
     /// The ayah → page/juz index memorization is computed from, built once on first use.
     private(set) lazy var quranIndex: QuranIndex? = try? QuranIndex.load(from: database)
@@ -49,6 +67,9 @@ final class MushafLibrary {
         juzStartPages = try database.juzStartPages()
         surahAyahCounts = Dictionary(uniqueKeysWithValues: surahs.map { ($0.number, $0.ayahCount) })
         surahNames = Dictionary(uniqueKeysWithValues: surahs.map { ($0.number, $0.name) })
+        if let referencesURL = bundle.url(forResource: "QiraatReferences", withExtension: nil) {
+            qiraatReferences = QiraatReferenceStore(directory: referencesURL)
+        }
 #if DEBUG
         if ProcessInfo.processInfo.environment["QIRAAT_TEST_ISOLATION"] == "1" {
             qiraat = qiraatStore ?? bundle.url(forResource: "Qiraat", withExtension: nil)
