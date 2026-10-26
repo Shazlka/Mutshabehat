@@ -17,6 +17,13 @@ final class MushafPageView: UIView {
             setNeedsDisplay()
         }
     }
+    /// How the surah banner looks (Settings → «شكل ترويسة السورة»).
+    var bannerStyle: SurahBannerStyle = .current {
+        didSet {
+            guard bannerStyle != oldValue else { return }
+            setNeedsDisplay()
+        }
+    }
     private(set) var layout: PageLayout?
     /// The Qiraat layer as the reader set it; marks are recomputed only when this or the layout changes.
     var qiraat: QiraatDisplay = .off {
@@ -598,6 +605,16 @@ final class MushafPageView: UIView {
         let titleColor = appearance.ink(for: traitCollection)
         let subtitleColor = isDarkTheme ? appearance.gold(for: traitCollection) : appearance.brown(for: traitCollection)
         let fillColor = appearance.paper(for: traitCollection)
+
+        if let art = bannerStyle.art {
+            let surahName = Self.canonicalSurahTitles[number] ?? library.surahNames[number] ?? "\(number)"
+            let prefix = "سُورَةُ "
+            if art.draw(in: frame, title: prefix + surahName, prefixLength: (prefix as NSString).length,
+                        surahNumber: number, ayahCount: library.surahAyahCounts[number] ?? 0,
+                        titleFont: { MushafLibrary.mushafFont(size: $0) }, context: context) {
+                return
+            }
+        }
 
         context.saveGState()
         context.setFillColor(fillColor.cgColor)

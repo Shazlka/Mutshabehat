@@ -135,6 +135,32 @@ final class QiraatUITests: XCTestCase {
         }
     }
 
+    /// Settings → «شكل ترويسة السورة» lists the six banners, each drawn; a tap chooses one.
+    func testSettingsChoosesTheSurahBanner() {
+        let app = launch(atPage: 1)
+        XCTAssertTrue(element("mushaf-page-1", in: app).waitForExistence(timeout: 30))
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()
+        let settings = app.buttons["settings-button"]
+        XCTAssertTrue(settings.waitForExistence(timeout: 20))
+        settings.tap()
+        let open = element("open-surah-banner-settings", in: app)
+        var swipes = 0
+        while !open.waitForExistence(timeout: 2) && swipes < 4 { app.swipeUp(); swipes += 1 }
+        open.tap()
+        for style in ["royal", "emerald", "minimal", "night", "marble", "classic"] {
+            XCTAssertTrue(element("surah-banner-\(style)", in: app).waitForExistence(timeout: 10), style)
+        }
+        // The choice is kept between runs, so start from royal (the default, `SurahBannerTests`) and end there.
+        let royal = element("surah-banner-royal", in: app), emerald = element("surah-banner-emerald", in: app)
+        royal.tap()
+        XCTAssertTrue(royal.isSelected)
+        emerald.tap()
+        XCTAssertTrue(emerald.isSelected)
+        XCTAssertFalse(royal.isSelected)
+        royal.tap()
+        XCTAssertTrue(royal.isSelected)
+    }
+
     func testColdLaunchWordTapsSurviveBackgroundAndSettingsWithoutAPageTurn() {
         let app = launch(atPage: 1)
         let wordID = "qiraat-word-1:4:1"

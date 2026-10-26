@@ -50,6 +50,7 @@ struct ReaderView: View {
     @AppStorage("mushaf:keepScreenAwake") private var keepScreenAwake = true
     @AppStorage("mushaf:autoHidesFooter") private var autoHidesFooter = false
     @AppStorage(LandscapeView.storageKey) private var landscapeView = LandscapeView.reading.rawValue
+    @AppStorage(SurahBannerStyle.storageKey) private var bannerStyle = SurahBannerStyle.royal.rawValue
     /// iPad landscape with «تعلّم»: one page, and the Qiraat side bar instead of the word sheet.
     @State private var isLearning = false
     /// The word the side bar shows; nil shows the page's differences.
@@ -626,6 +627,7 @@ struct ReaderView: View {
     private func mushafPager(spread: Bool, fillsHeight: Bool = false) -> some View {
         MushafPager(library: library, page: $page, spread: spread,
                     appearance: appearance,
+                    bannerStyle: SurahBannerStyle(stored: bannerStyle),
                     qiraat: library.qiraat == nil ? .off : qiraat.display,
                     highlightedWordIDs: highlightedWordIDs,
                     bookmarkedAyahs: { tracker.bookmarkedAyahs(on: $0) },

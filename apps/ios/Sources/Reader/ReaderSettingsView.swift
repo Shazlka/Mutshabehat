@@ -17,6 +17,7 @@ struct SettingsView: View {
     let onSelectBookmark: (QuranBookmark) -> Void
     @State private var showingQiraatPicker = false
     @AppStorage(LandscapeView.storageKey) private var landscapeView = LandscapeView.reading.rawValue
+    @AppStorage(SurahBannerStyle.storageKey) private var bannerStyle = SurahBannerStyle.royal.rawValue
 #if DEBUG
     @State private var showingReviewEditor = false
 #endif
@@ -115,6 +116,14 @@ struct SettingsView: View {
                         Label(appLanguage == .english ? "Appearance" : "المظهر", systemImage: "circle.lefthalf.filled")
                     }
                     .accessibilityIdentifier("open-theme-settings")
+
+                    NavigationLink {
+                        SurahBannerSettingsView(style: $bannerStyle, language: appLanguage)
+                    } label: {
+                        Label(appLanguage == .english ? "Surah banner" : "شكل ترويسة السورة",
+                              systemImage: "rectangle.inset.filled")
+                    }
+                    .accessibilityIdentifier("open-surah-banner-settings")
 
                     NavigationLink {
                         LanguageSettingsView(language: $language)

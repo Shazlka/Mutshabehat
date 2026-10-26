@@ -14,6 +14,8 @@ struct MushafPager: UIViewControllerRepresentable {
     @Binding var page: Int
     let spread: Bool
     let appearance: MushafAppearance
+    /// How the surah banners look.
+    var bannerStyle: SurahBannerStyle = .current
     let qiraat: QiraatDisplay
     let highlightedWordIDs: Set<String>
     let bookmarkedAyahs: (Int) -> Set<AyahKey>
@@ -58,6 +60,7 @@ struct MushafPager: UIViewControllerRepresentable {
                          isPageBookmarked: isPageBookmarked(p),
                          memorizationStatuses: memorizationStatuses(p),
                          appearance: appearance,
+                         bannerStyle: bannerStyle,
                          chromeVisible: chromeVisible)
             }
         }
@@ -98,6 +101,7 @@ struct MushafPager: UIViewControllerRepresentable {
                                   memorizationStatuses: parent.memorizationStatuses(number),
                                   chromeVisible: parent.chromeVisible,
                                   fillsHeight: parent.fillsHeight,
+                                  bannerStyle: parent.bannerStyle,
                                   onTapCentre: { [weak self] in self?.parent.onTapCentre() },
                                   onTapWord: { [weak self] page, word in self?.parent.onTapWord(page, word) },
                                   onLongPressAyah: { [weak self] page, ayah in self?.parent.onLongPressAyah(page, ayah) })

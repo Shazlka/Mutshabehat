@@ -36,6 +36,7 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
          memorizationStatuses: [AyahKey: MemorizationStatus] = [:],
          chromeVisible: Bool = false,
          fillsHeight: Bool = false,
+         bannerStyle: SurahBannerStyle = .current,
          onTapCentre: @escaping () -> Void,
          onTapWord: @escaping (MushafPage, MushafWord) -> Void,
          onLongPressAyah: ((MushafPage, AyahKey) -> Void)? = nil) {
@@ -47,6 +48,7 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
         let spine: PageLayoutConstants.SpineSide = !isSpreadHalf ? .none : page.isRightHandPage ? .left : .right
         pageView.isSpreadHalf = isSpreadHalf
         pageView.spineSide = spine
+        pageView.bannerStyle = bannerStyle
         self.chromeVisible = chromeVisible
         self.onTapCentre = onTapCentre
         self.onTapWord = onTapWord
@@ -71,9 +73,11 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
                isPageBookmarked: Bool,
                memorizationStatuses: [AyahKey: MemorizationStatus] = [:],
                appearance: MushafAppearance,
+               bannerStyle: SurahBannerStyle = .current,
                chromeVisible: Bool = false) {
         self.appearance = appearance
         pageView.appearance = appearance
+        pageView.bannerStyle = bannerStyle
         pageView.isSpreadHalf = isSpreadHalf
         let spine: PageLayoutConstants.SpineSide = !isSpreadHalf ? .none : page.isRightHandPage ? .left : .right
         pageView.spineSide = spine
