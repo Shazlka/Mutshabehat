@@ -3,6 +3,15 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-27 — The symbol marks checked against a second copy of the متون (local data)
+- **Request:** verify against another copy (`متون_الشاطبية_والدرة_وطيبة_النشر.html`, a page with its own symbol marks).
+- **Text:** the same 2,428 verses and chapter titles, word for word; the copy was built from the same Shamela text, so it does not check the text independently.
+- **Marks:** الشاطبية: the copy marks 1,119 of the same places as ours, with the same readers at every one of them (after the fixes below). It found errors on our side, now fixed in `Generated/QiraatMutoon/sharh_symbols.py`: a word symbol with tanween read as a letter («صِحَاباً» in ١٠٤٠ is صحاب, not ص)، the name «فَتَى الْعَلَا» (أبو عمرو) read as ف (١١٣)، descriptions with a pronoun or ب read as symbols («بِيَائِهِ» ٣٢٣، «حَذْفُهاَ» ٩٠٧)، the Quran word «هَيْهَاتَ» beside the symbol «هَادِيِه» (٣٧٩)، and the qualifier «بِخُلْفِهِمِاَ». Its own errors stay out: ~200 marks inside words, ~210 on readers' names («المكي»، «حَفْصٌ»، «نَافِعٌ» in the introduction), the letter lists of الأصول («ذيْلاً ضَفَا ظَلَّ زَرْنَبٌ»), and Quran words («رَمَى»).
+- **Added from the copy (`Generated/QiraatMutoon/second_copy.py`):** its marks that pass our checks: on a word's first letter in a فرش verse (or a short symbol word in a طيبة النشر أصول verse after the introduction), a word that can be that symbol and names the same readers, not discussed by the شرح as Quran, ending where symbols end, and with all its readers named in the شرح of the verse. 269 in الشاطبية and 31 in طيبة النشر, e.g. «وَهَارٍ رَوَى» ٣٢٣، «طَيْفٌ رِضىً حَقُّهُ» ٧١٢، «يُوْقِدُونَ … صِحَابٌ» ٧٩٥ in الشاطبية; «وَبَابُ أَصْدَقُ شَفَا وَالْخُلْفُ غَرْ … ضَرْ» ١١٤ in الطيبة (a sample of 22 read right on about 20, the other two uncertain). Its الدرة marks are not taken: الدرة has no شرح to check them against.
+- **Now:** 3,693 marks in 1,358 verses (الشاطبية 1,482 in 594، طيبة النشر 2,092 in 679، الدرة 119 in 85); all pass the app's checks. Order to rebuild: `sharh_symbols.py`, then `second_copy.py`, then `make matn-symbols`; `second-copy-report.txt` keeps the comparison.
+- **App:** a word symbol's key also drops an accusative alef, so «صِحَاباً» and «حِرْمِيَّا» match صحاب and حرمي (`MatnSymbols.wordKey`; tests).
+- **Files:** `MushafCore/Sources/MushafCore/MatnSymbols.swift`, `MushafCore/Tests/MushafCoreTests/MatnSymbolsTests.swift`, `docs/qiraat-references-format.md`, `HANDOFF.md`.
+
 ## [Unreleased] — 2026-10-27 — Reader and narrator symbols marked through all three متون (local data), each checked against a شرح
 - **Request:** continue the red symbols from the sample to all the verses.
 - **Result (local data, not committed):** 3,382 marks in 1,275 verses: الشاطبية 1,206 in 518 verses, طيبة النشر 2,057 in 672, الدرة 119 in 85 (the 77 hand-checked marks included). Every one passes the app's own checks (3,382 of 3,382). Verses whose symbols the شرح does not confirm stay plain; nothing is coloured on a guess.

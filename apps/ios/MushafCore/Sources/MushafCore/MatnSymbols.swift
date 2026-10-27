@@ -131,12 +131,16 @@ public enum MatnSymbols {
         return definitions(work).first { $0.key.count > 1 && wordKey($0.symbol) == wordKey(symbol) }
     }
 
-    /// A word symbol's letters with its last letter's two spellings made one: the متون write «رضى» and «رضا»، «صفا»
-    /// and «صفي».
+    /// A word symbol's letters with its last letter's spellings made one: the متون write «رضى» and «رضا»، «صفا» and
+    /// «صفي», and «صحاب»، «حرمي» with an accusative alef as «صِحَاباً»، «حِرْمِيَّا». An accusative alef is dropped,
+    /// a final ي is read as ا, and a final ا is dropped.
     public static func wordKey(_ text: String) -> String {
-        let letters = key(text)
-        guard letters.count > 1, letters.hasSuffix("ي") else { return letters }
-        return String(letters.dropLast()) + "ا"
+        var letters = key(text)
+        func dropAlef() { if letters.count > 2, letters.hasSuffix("ا") { letters = String(letters.dropLast()) } }
+        dropAlef()
+        if letters.count > 1, letters.hasSuffix("ي") { letters = String(letters.dropLast()) + "ا" }
+        dropAlef()
+        return letters
     }
 
     /// Letters only, the way a symbol is looked up: marks and tatweel dropped, ا for أ إ آ ٱ, ي for ى, ه for ة and هـ.

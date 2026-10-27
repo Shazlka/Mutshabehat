@@ -132,6 +132,12 @@ private func offset(of word: String, in line: String) -> Int {
                                         kind: .group, readingIds: ["Q10", "Q05-R01"], note: "", source: "", status: .verified)
         #expect(safi.problem(in: lines) == nil)
         #expect(MatnSymbols.definition(.tayyibah, symbol: "رضا")?.readingIds == ["Q06", "Q07"])
+        // «صِحَاباً»: صحاب with tanween.
+        #expect(MatnSymbols.definition(.shatibiyyah, symbol: "صِحَاباً")?.readingIds == ["Q06", "Q07", "Q05-R02"])
+        #expect(MatnSymbols.wordKey("صِحَاباً") == MatnSymbols.wordKey("صحاب"))
+        #expect(MatnSymbols.wordKey("حِرْمِيَّا") == MatnSymbols.wordKey("حرمي"))
+        #expect(MatnSymbols.wordKey("رِضًى") == MatnSymbols.wordKey("رضا"))
+        #expect(MatnSymbols.wordKey("حَقٌّ") == "حق" && MatnSymbols.wordKey("عَمَّ") == "عم")
         // A letter is still only its letter: the word «رضا» is no symbol in الشاطبية, which has no such word.
         #expect(MatnSymbols.definition(.shatibiyyah, symbol: "رضا") == nil)
     }

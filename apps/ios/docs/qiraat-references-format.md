@@ -106,11 +106,13 @@ hemistich stops the build. The pre-build step bundles the file next to `mutoon.j
 `match` (matched to it by script). The card says «محقَّق من الشرح» or «مطابق لقول الشارح (آليًّا)». A word symbol matches
 either spelling of its last letter («رضى/رضا»).
 
-The current file holds 3,382 marks in 1,275 verses (الشاطبية 1,206 in 518، طيبة النشر 2,057 in 672، الدرة 119 in 85).
+The current file holds 3,693 marks in 1,358 verses (الشاطبية 1,482 in 594، طيبة النشر 2,092 in 679، الدرة 119 in 85).
 77 were checked by hand against الوافي في شرح الشاطبية and الهادي شرح طيبة النشر (`symbols-sample.json`); the rest were
 matched to the same شرحين by `Generated/QiraatMutoon/sharh_symbols.py` (`symbols-all.json`, which also carries the
 hand-checked ones). The match accepts a run of neighbouring symbol words only when the readers it stands for are exactly
 the readers the شرح names together for that verse, or a word the شرح cites by name as a symbol («بالحاء من «حلا»»); see
 the script for the words that are never symbols. الدرة, which has no شرح in the library, is read against الهادي's
 explanation of the طيبة verses on the same Quran word, narrowed to its three readers. Verses the شرح does not confirm
-stay plain. `Generated/QiraatMutoon/review-symbols.html` lists every mark for review.
+stay plain. A second copy of the متون with its own marks was compared (`second_copy.py`): where both mark a place the
+readers agree, and its marks that pass the same checks were added (300). `Generated/QiraatMutoon/review-symbols.html`
+lists every mark for review.
