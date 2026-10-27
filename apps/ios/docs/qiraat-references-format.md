@@ -68,3 +68,42 @@ pre-build step bundles it when present (`make clean` leaves `Generated/` alone).
 A missing, unreadable or `schemaVersion` ≠ 1 file gives an empty page with a note; a book with an unknown `work` is
 skipped. Search ignores marks and alef forms; a number finds that verse in each book.
 
+## The symbol layer (`mutoon-symbols.json`)
+
+On the «المتون» page a letter or word that stands for a reader or narrator is red, and a tap opens a card: the symbol,
+whom it names (a narrator with his reader), what it marks in that verse, the verse of the متن's introduction that
+defines it, the شرح it was checked against, and its status. A switch on the page («تمييز الرموز», kept per device as
+`mutoon:symbols:v1`) turns the colour off; a key line explains it.
+
+**Dictionaries (committed, `MushafCore/MatnSymbols.swift`).** One per متن, each from its own introduction, because the
+same letter names different people: الشاطبية ٤٥–٥٥ (أبجد on the seven, ثخذ ظغش, and the eight word symbols), الدرة ٥–٨
+(أبج، حطي، فضق for أبو جعفر، يعقوب، خلف العاشر), طيبة النشر ٣٦–٤٨ (أبجد … ظغش on the ten, no letter for خلف العاشر, and
+the word symbols كفى، شفا، صحب، صحبة، صفا، فتى، رضى، روى، ثوى، مدا، حما، سما، حق، حرم، عم، حبر، كنز).
+
+**Marks (your data, never committed).** The verse text is never changed: the marks are a layer beside it.
+
+```json
+{ "schemaVersion": 1,
+  "annotations": [ { "work": "shatibiyyah", "verse": 108, "line": 0, "start": 16, "end": 17, "text": "رَ",
+                     "symbol": "ر", "kind": "reader", "readingIds": ["Q07"], "note": "«مالك» بالألف",
+                     "source": "الوافي في شرح الشاطبية (عبد الفتاح القاضي)، ص ٥٠", "status": "verified" } ] }
+```
+
+`line` is the hemistich (0 or 1). `start..<end` counts characters as Swift does: a letter and its marks are one
+character, so a letter is coloured with its marks and the words keep their joining. `kind` is `reader`, `narrator` or
+`group`. Only `verified` marks are shown; `extracted` ones stay plain until checked.
+
+The app shows a mark only when it sits on exactly its `text`, begins with its symbol's letter (a letter symbol) or
+spells the whole symbol (a word symbol), and names the same readers as its متن's dictionary; anything else is dropped.
+A letter is never coloured because of what it is, only because a checked mark puts it there.
+
+`make matn-symbols` builds the file from a hand-checked list (`MATN_SYMBOLS_SRC`, default
+`Generated/QiraatMutoon/symbols-sample.json`) with `scripts/build_matn_symbols.py`: each entry names the verse, the
+hemistich and the word, and whether its first letter or the whole word is the symbol; a word that is not in the
+hemistich stops the build. The pre-build step bundles the file next to `mutoon.json`.
+
+The current file is a sample: 77 marks in 33 verses (الشاطبية 42 in 19، الدرة 11 in 6، طيبة النشر 24 in 8), each checked
+against الوافي في شرح الشاطبية, or الهادي شرح طيبة النشر (for الدرة: the letter from الدرة ٥–٨, the reading from
+الهادي). It includes single letters, group letters (ذ، ش، ظ) and word symbols (صحبة، حق، سما، روى، كنز، ثوى، حما), and leaves
+letters the شرح says are not symbols plain («جَلَا» in ١١١، «تَلَا» in ٤٥٤).
+

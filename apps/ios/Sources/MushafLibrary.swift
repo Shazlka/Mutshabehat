@@ -39,8 +39,15 @@ final class MushafLibrary {
     private lazy var mutoonFromBundle: MatnLibrary = mutoonURL.map { MatnLibrary(directory: $0) } ?? .empty
     private let mutoonURL: URL?
 #if DEBUG
-    /// UI tests only (`-mutoon-fixture`): two chapters per book with placeholder text, never real matn text.
-    static let mutoonFixture = MatnLibrary(works: QiraatMatn.allCases.map { work in
+    /// UI tests only (`-mutoon-fixture`): two chapters per book with placeholder text, never real matn text. The ب of
+    /// «بيت» in verse 3 is marked as a symbol (قالون in الشاطبية and طيبة النشر, ابن وردان in الدرة); the ت of «تجربة»
+    /// right under it is not.
+    static let mutoonFixture = MatnLibrary(works: mutoonFixtureWorks, symbols: QiraatMatn.allCases.map { work in
+        MatnSymbolAnnotation(work: work, verse: 3, line: 0, start: 0, end: 1, text: "ب", symbol: "ب", kind: .narrator,
+                             readingIds: [work == .durrah ? "Q08-R01" : "Q01-R01"], note: "دلالة تجريبية",
+                             source: "مرجع تجريبي", status: .verified)
+    })
+    private static let mutoonFixtureWorks = QiraatMatn.allCases.map { work in
         MatnWork(work: work, title: "كتاب تجريبي \(work.labelAr)", author: "مؤلف تجريبي", chapters: [
             MatnChapter(title: "باب تجريبي", farsh: false, verses: [
                 MatnVerse(number: 1, lines: ["شطر تجريبي أول", "شطر تجريبي ثان"], printedPage: "1", pageId: 1),
@@ -50,7 +57,7 @@ final class MushafLibrary {
                 MatnVerse(number: 3, lines: ["بيت من الفرش", "تجربة"], printedPage: "2", pageId: 2),
             ]),
         ])
-    })
+    }
 #endif
 #if DEBUG
     /// UI tests only (`-qiraat-references-fixture`): one synthetic reference per work for every variant on page 1.

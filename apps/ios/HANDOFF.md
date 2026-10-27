@@ -37,6 +37,9 @@ Tested (core, app unit, UI test, release guard); see the CHANGELOG entry for cou
 Real data (local only, git-ignored): `Generated/QiraatReferences-pilot/` (pages 1–5, hand-decoded) and `Generated/QiraatReferences-full/`
 (whole Mushaf: `parse_books.py`, `match.py`, `make_review.py`; 2,236 of 3,624 usable variants have a verse). Load one with `make references REFERENCES_SRC=…`.
 The «المتون» page (المزيد) reads `Generated/QiraatMutoon/mutoon.json`, built by `make mutoon` from the same parsed verses.
+Its red reader/narrator symbols come from `Generated/QiraatMutoon/mutoon-symbols.json` (`make matn-symbols`): so far a
+verified sample of 77 marks in 33 verses; extending it means adding checked entries to `symbols-sample.json`
+(format in `docs/qiraat-references-format.md`).
 
 ## Qiraat UX round (branch ios/qiraat-ux, 2026-10-10/11)
 

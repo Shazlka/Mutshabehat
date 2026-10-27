@@ -1751,7 +1751,14 @@
 
     },
     "الحالة" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status"
+          }
+        }
+      }
     },
     "الحالة والفرز" : {
 
@@ -4467,6 +4474,126 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Verses %@–%@"
+          }
+        }
+      }
+    },
+    "الأحمر: رمز قارئ أو راوٍ — اضغط لمعرفة المقصود" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Red: a reader or narrator symbol — tap to see who"
+          }
+        }
+      }
+    },
+    "تمييز الرموز" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Highlight symbols"
+          }
+        }
+      }
+    },
+    "رمز قارئ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reader symbol"
+          }
+        }
+      }
+    },
+    "رمز راوٍ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Narrator symbol"
+          }
+        }
+      }
+    },
+    "رمز جماعي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Group symbol"
+          }
+        }
+      }
+    },
+    "القارئ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reader"
+          }
+        }
+      }
+    },
+    "الدلالة هنا" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Here"
+          }
+        }
+      }
+    },
+    "القاعدة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rule"
+          }
+        }
+      }
+    },
+    "من البيت %@ في %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Defined in verse %@ of %@"
+          }
+        }
+      }
+    },
+    "المصدر" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source"
+          }
+        }
+      }
+    },
+    "محقَّق من الشرح" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Checked against a commentary"
+          }
+        }
+      }
+    },
+    "البيت %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verse %@"
           }
         }
       }

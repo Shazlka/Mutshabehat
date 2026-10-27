@@ -60,13 +60,16 @@ public struct MatnLibrary: Sendable {
 
     /// In the order الشاطبية، الدرة، طيبة النشر.
     public let works: [MatnWork]
+    /// The reader and narrator symbols marked in the verses (`mutoon-symbols.json`); empty without the file.
+    public let symbols: MatnSymbolLayer
     public var isEmpty: Bool { works.isEmpty }
     /// The search text of every verse, built once: (work index, chapter index, verse index, key).
     private let index: [(Int, Int, Int, String)]
 
-    public init(works: [MatnWork]) {
+    public init(works: [MatnWork], symbols: [MatnSymbolAnnotation] = []) {
         let order = Dictionary(uniqueKeysWithValues: QiraatMatn.allCases.enumerated().map { ($1, $0) })
         self.works = works.sorted { order[$0.work, default: 0] < order[$1.work, default: 0] }
+        self.symbols = MatnSymbolLayer(annotations: symbols, works: works)
         var index: [(Int, Int, Int, String)] = []
         for (w, work) in self.works.enumerated() {
             for (c, chapter) in work.chapters.enumerated() {
@@ -94,7 +97,18 @@ public struct MatnLibrary: Sendable {
             self = .empty
             return
         }
-        self.init(works: file.works.compactMap(\.value))
+        self.init(works: file.works.compactMap(\.value), symbols: Self.symbols(in: directory))
+    }
+
+    /// The marks of `mutoon-symbols.json` in `directory`, or none.
+    private static func symbols(in directory: URL) -> [MatnSymbolAnnotation] {
+        guard let data = try? Data(contentsOf: directory.appendingPathComponent(MatnSymbolLayer.fileName)) else { return [] }
+        guard let file = try? JSONDecoder().decode(MatnSymbolLayer.File.self, from: data),
+              file.schemaVersion == MatnSymbolLayer.supportedSchemaVersion else {
+            log("mutoon symbols file is not readable or has another schema version")
+            return []
+        }
+        return file.annotations.compactMap(\.value)
     }
 
     public func work(_ work: QiraatMatn) -> MatnWork? { works.first { $0.work == work } }

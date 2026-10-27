@@ -63,11 +63,14 @@ targets:
       - name: Copy Qiraat mutoon (optional)
         basedOnDependencyAnalysis: false
         script: |
-          # The three متون for the «المتون» page (make mutoon): the person's own data, copied when present.
+          # The three متون for the «المتون» page (make mutoon) and their marked symbols (make matn-symbols): the
+          # person's own data, copied when present.
           SRC="$SRCROOT/Generated/QiraatMutoon/mutoon.json"
+          SYMBOLS="$SRCROOT/Generated/QiraatMutoon/mutoon-symbols.json"
           DEST="$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/QiraatMutoon"
           if [ -s "$SRC" ]; then
             mkdir -p "$DEST" && cp "$SRC" "$DEST/mutoon.json"
+            if [ -s "$SYMBOLS" ]; then cp "$SYMBOLS" "$DEST/mutoon-symbols.json"; else rm -f "$DEST/mutoon-symbols.json"; fi
           else
             rm -rf "$DEST"
           fi

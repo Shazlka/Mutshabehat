@@ -36,9 +36,44 @@ final class MutoonUITests: XCTestCase {
         let chapter = element("mutoon-chapter-1", in: app)
         XCTAssertTrue(chapter.waitForExistence(timeout: 10))
         chapter.tap()
-        let verse = element("mutoon-verse-3", in: app)
-        XCTAssertTrue(verse.waitForExistence(timeout: 10))
-        XCTAssertTrue(verse.label.contains("بيت من الفرش"), verse.label)
+        XCTAssertTrue(element("mutoon-verse-3", in: app).waitForExistence(timeout: 10))
+        let line = element("mutoon-line-3-0", in: app)
+        XCTAssertTrue(line.exists)
+        XCTAssertTrue((line.value as? String ?? line.label).contains("بيت من الفرش"), line.debugDescription)
+    }
+
+    /// The fixture marks the ب of «بيت» in verse 3: ابن وردان in الدرة. The ت of «تجربة» right under it is plain.
+    func testARedSymbolNamesItsNarratorAndTheSwitchTurnsItOff() {
+        let app = launch()
+        openMutoon(app)
+        // The switch is kept on the device (an isolated launch keeps UserDefaults): start from "on".
+        let rootToggle = element("mutoon-symbols-toggle", in: app).firstMatch
+        XCTAssertTrue(rootToggle.waitForExistence(timeout: 20))
+        if (rootToggle.value as? String) == "0" { rootToggle.tap() }
+        XCTAssertTrue(element("mutoon-symbols-key", in: app).waitForExistence(timeout: 10), "the key is shown")
+        element("mutoon-work-durrah", in: app).tap()
+        element("mutoon-chapter-1", in: app).tap()
+        XCTAssertTrue(element("mutoon-line-3-1", in: app).waitForExistence(timeout: 10))
+        // A red symbol is a link inside its hemistich: the ب of «بيت», and nothing in «تجربة» under it.
+        let symbols = element("mutoon-line-3-0", in: app).links
+        XCTAssertTrue(symbols.firstMatch.waitForExistence(timeout: 10), "the ب is a tappable symbol")
+        XCTAssertEqual(symbols.count, 1)
+        XCTAssertEqual(symbols.firstMatch.label, "ب")
+        XCTAssertEqual(element("mutoon-line-3-1", in: app).links.count, 0, "the ت under it is not a symbol")
+        symbols.firstMatch.tap()
+
+        let names = element("mutoon-symbol-names", in: app)
+        XCTAssertTrue(names.waitForExistence(timeout: 10))
+        XCTAssertTrue(names.label.contains("ابن وردان"), names.label)
+        XCTAssertTrue(element("mutoon-symbol-reader", in: app).label.contains("أبو جعفر"))
+        app.buttons["mutoon-symbol-done"].tap()
+
+        let toggle = element("mutoon-symbols-toggle", in: app).firstMatch
+        XCTAssertTrue(toggle.waitForExistence(timeout: 10))
+        toggle.tap()
+        XCTAssertFalse(symbols.firstMatch.waitForExistence(timeout: 2), "off: no red symbol")
+        toggle.tap()   // leave the device setting as it was
+        XCTAssertTrue(symbols.firstMatch.waitForExistence(timeout: 5))
     }
 
     func testSearchFindsAWordInEveryBookAndCloses() {
