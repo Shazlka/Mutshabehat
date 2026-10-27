@@ -30,6 +30,8 @@ The repository-root `HANDOFF.md` describes the web application and production ba
 ---
 
 ## Scholarly references per variant (2026-10-26)
+**Latest handoff for this work (references, «المتون», reader/narrator symbols): `docs/handoff-2026-10-27-mutoon-and-symbols.md`.**
+
 A Qiraat card can show where الشاطبية، الدرة and طيبة النشر document a variant. Code: `MushafCore/QiraatReferences.swift`,
 `Sources/Qiraat/QiraatReferencesRow.swift`. Data: your own `references.json` (never committed), copied by
 `make references REFERENCES_SRC=<folder>`; format in `docs/qiraat-references-format.md`; plan in `docs/plans/2026-10-26-scholarly-references.md`.
