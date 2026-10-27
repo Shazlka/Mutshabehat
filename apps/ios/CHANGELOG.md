@@ -3,6 +3,12 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-27 — «المتون» laid out right to left; search keeps the keyboard
+- **Request:** make the «المتون» page RTL.
+- **Change (`Sources/Qiraat/MutoonView.swift`):** the page is right to left whatever the app language (every title, chapter and verse is Arabic): «إغلاق» and the back button on the right, verse numbers on the right of their lines, text right-aligned. A full-screen cover does not inherit the reader's direction, so the page sets it itself.
+- **Fixed on the way:** the search field dropped the keyboard after the first letter once the page was RTL, because it sat in a safe-area inset of the list that is swapped for the results; it now sits above the list. Verse and chapter numbers showed Latin digits in the Arabic app (the `ar` locale's NumberFormatter uses Latin digits on current iOS); they are now Arabic-Indic like the page numbers.
+- **Tests:** `MutoonUITests` types the search letter by letter and checks the whole word arrived; both pass. Checked in the simulator on the real books (books list, chapters, verses, search). `QiraatReferencesUITests` asks for no references with `-qiraat-references-empty` (DEBUG), since builds on this Mac bundle the full file.
+
 ## [Unreleased] — 2026-10-27 — «المتون» page under المزيد; a switch for «المراجعة والتحرير» on word cards
 - **Request:** a Settings → المطور switch for the word card's «المراجعة والتحرير» section, and a new «المزيد» entry holding الشاطبية، الدرة وطيبة النشر in the app.
 - **Switch (DEBUG builds, `DeveloperSettings.cardReviewKey`):** «المراجعة والتحرير في بطاقة الكلمة» under المطور, on by default; off, the reader gives the card no review store, so the section is not drawn (`ReaderView`, `ReaderSettingsView`).

@@ -48,7 +48,9 @@ final class MutoonUITests: XCTestCase {
         let field = app.textFields["mutoon-search-field"]
         XCTAssertTrue(field.waitForExistence(timeout: 10))
         field.tap()
-        field.typeText("مالك")
+        // Letter by letter: the results replacing the books list must not take the keyboard away mid-word.
+        for letter in "مالك" { field.typeText(String(letter)) }
+        XCTAssertEqual(field.value as? String, "مالك")
         let results = app.descendants(matching: .any).matching(identifier: "mutoon-search-result")
         XCTAssertTrue(results.firstMatch.waitForExistence(timeout: 10))
         XCTAssertEqual(results.count, 3, "one verse in each book")

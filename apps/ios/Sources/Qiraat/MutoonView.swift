@@ -2,7 +2,8 @@ import MushafCore
 import SwiftUI
 
 /// «المتون» (المزيد): الشاطبية، الدرة وطيبة النشر in full, by book and chapter, with a search over all three. The
-/// verses are quotations from the books, so they are set in a plain Arabic face, never the Mushaf fonts.
+/// verses are quotations from the books, so they are set in a plain Arabic face, never the Mushaf fonts. Laid out
+/// right to left.
 struct MutoonView: View {
     let library: MatnLibrary
     @Environment(\.dismiss) private var dismiss
@@ -10,19 +11,26 @@ struct MutoonView: View {
 
     var body: some View {
         NavigationStack {
-            Group {
-                if library.isEmpty {
-                    ContentUnavailableView {
-                        Label("المتون غير مضمّنة في هذه النسخة", systemImage: "books.vertical")
-                    } description: {
-                        Text("تُضاف المتون عند بناء التطبيق من نسختك من الكتب.")
+            // The field sits above the list, not in a safe-area inset of it: swapping the books list for the results
+            // must not rebuild the field, or it drops the keyboard after the first letter. It is a field of its own,
+            // not the system search bar, which hides «إغلاق» while it is active.
+            VStack(spacing: 0) {
+                if !library.isEmpty { searchField }
+                Group {
+                    if library.isEmpty {
+                        ContentUnavailableView {
+                            Label("المتون غير مضمّنة في هذه النسخة", systemImage: "books.vertical")
+                        } description: {
+                            Text("تُضاف المتون عند بناء التطبيق من نسختك من الكتب.")
+                        }
+                        .accessibilityIdentifier("mutoon-empty")
+                    } else if query.trimmingCharacters(in: .whitespaces).isEmpty {
+                        works
+                    } else {
+                        results
                     }
-                    .accessibilityIdentifier("mutoon-empty")
-                } else if query.trimmingCharacters(in: .whitespaces).isEmpty {
-                    works
-                } else {
-                    results
                 }
+                .frame(maxHeight: .infinity)
             }
             .navigationTitle(Text("المتون"))
             .navigationBarTitleDisplayMode(.inline)
@@ -32,12 +40,13 @@ struct MutoonView: View {
                         .accessibilityIdentifier("mutoon-close")
                 }
             }
-            // A field of its own, not the system search bar: that one hides «إغلاق» while it is active.
-            .safeAreaInset(edge: .top) { if !library.isEmpty { searchField } }
             .navigationDestination(for: QiraatMatn.self) { work in
                 if let work = library.work(work) { MatnChaptersView(work: work) }
             }
         }
+        // Right to left whatever the app language: every title, chapter and verse here is Arabic. A full-screen
+        // cover does not inherit the reader's direction, so it is set on the page itself.
+        .environment(\.layoutDirection, .rightToLeft)
     }
 
     private var searchField: some View {
@@ -174,12 +183,10 @@ struct MatnVerseRow: View {
     }
 }
 
-/// A number in the app's language: Arabic-Indic digits in the Arabic app, no thousands separator («١١٧٣»).
+/// A number in the app's language: Arabic-Indic digits in the Arabic app («١١٧٣»). Not a NumberFormatter: the
+/// `ar` locale's default numbering system is Latin on current iOS.
 func mutoonNumber(_ number: Int) -> String {
-    let formatter = NumberFormatter()
-    formatter.locale = Locale(identifier: appLanguageCode)
-    formatter.usesGroupingSeparator = false
-    return formatter.string(from: NSNumber(value: number)) ?? String(number)
+    mutoonDigits(String(number))
 }
 
 /// A printed page label («9», «xii») with its digits in the app's language.
