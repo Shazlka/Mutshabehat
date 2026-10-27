@@ -23,8 +23,11 @@ final class MushafLibrary {
     /// The bundled snapshot of the web app's Qiraat data; nil only if the build shipped without it.
     private(set) var qiraat: QiraatStore?
     /// The scholarly references (الشاطبية، الدرة، طيبة النشر) per variant, from the optional `QiraatReferences` bundle
-    /// folder. Empty when the build ships without it; the card then shows no references row.
-    private(set) var qiraatReferences = QiraatReferenceStore.empty
+    /// folder. Empty when the build ships without it; the card then shows no references row. Read on first use (the
+    /// first Qiraat card), not at launch: the full file is a few MB.
+    private(set) lazy var qiraatReferences: QiraatReferenceStore =
+        qiraatReferencesURL.map { QiraatReferenceStore(directory: $0) } ?? .empty
+    private let qiraatReferencesURL: URL?
 #if DEBUG
     /// UI tests only (`-qiraat-references-fixture`): one synthetic reference per work for every variant on page 1.
     /// The text is a placeholder, never real matn text.
@@ -67,9 +70,7 @@ final class MushafLibrary {
         juzStartPages = try database.juzStartPages()
         surahAyahCounts = Dictionary(uniqueKeysWithValues: surahs.map { ($0.number, $0.ayahCount) })
         surahNames = Dictionary(uniqueKeysWithValues: surahs.map { ($0.number, $0.name) })
-        if let referencesURL = bundle.url(forResource: "QiraatReferences", withExtension: nil) {
-            qiraatReferences = QiraatReferenceStore(directory: referencesURL)
-        }
+        qiraatReferencesURL = bundle.url(forResource: "QiraatReferences", withExtension: nil)
 #if DEBUG
         if ProcessInfo.processInfo.environment["QIRAAT_TEST_ISOLATION"] == "1" {
             qiraat = qiraatStore ?? bundle.url(forResource: "Qiraat", withExtension: nil)
