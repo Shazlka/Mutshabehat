@@ -35,10 +35,11 @@ final class QiraatReferencesUITests: XCTestCase {
         XCTAssertFalse(lines.waitForExistence(timeout: 1), "tapping again closes it")
     }
 
+    /// `-qiraat-references-empty`: a build made on a Mac with the references file bundles it, so the test asks for none.
     func testWithoutReferencesTheCardShowsNoReferencesRow() {
         let app = XCUIApplication.isolated()
         app.launchArguments = ["-mushaf1441:last-page:v1", "1", "-mushaf1441:qiraat-filter:v1", "all",
-                               "-mushaf1441:reader-layer:v1", "qiraat"]
+                               "-mushaf1441:reader-layer:v1", "qiraat", "-qiraat-references-empty"]
         app.launch()
         let word = app.descendants(matching: .any)["qiraat-word-1:4:1"]
         XCTAssertTrue(word.waitForExistence(timeout: 20))

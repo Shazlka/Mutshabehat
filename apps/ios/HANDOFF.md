@@ -35,7 +35,8 @@ A Qiraat card can show where الشاطبية، الدرة and طيبة النش
 `make references REFERENCES_SRC=<folder>`; format in `docs/qiraat-references-format.md`; plan in `docs/plans/2026-10-26-scholarly-references.md`.
 Tested (core, app unit, UI test, release guard); see the CHANGELOG entry for counts. Committed on ios/main, not pushed.
 Real data (local only, git-ignored): `Generated/QiraatReferences-pilot/` (pages 1–5, hand-decoded) and `Generated/QiraatReferences-full/`
-(whole Mushaf: `parse_books.py`, `match.py`, `make_review.py`; 1,888 of 3,836 variants have a verse). Load one with `make references REFERENCES_SRC=…`.
+(whole Mushaf: `parse_books.py`, `match.py`, `make_review.py`; 2,236 of 3,624 usable variants have a verse). Load one with `make references REFERENCES_SRC=…`.
+The «المتون» page (المزيد) reads `Generated/QiraatMutoon/mutoon.json`, built by `make mutoon` from the same parsed verses.
 
 ## Qiraat UX round (branch ios/qiraat-ux, 2026-10-10/11)
 

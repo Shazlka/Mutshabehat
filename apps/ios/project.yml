@@ -60,6 +60,17 @@ targets:
           else
             rm -rf "$DEST"
           fi
+      - name: Copy Qiraat mutoon (optional)
+        basedOnDependencyAnalysis: false
+        script: |
+          # The three متون for the «المتون» page (make mutoon): the person's own data, copied when present.
+          SRC="$SRCROOT/Generated/QiraatMutoon/mutoon.json"
+          DEST="$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/QiraatMutoon"
+          if [ -s "$SRC" ]; then
+            mkdir -p "$DEST" && cp "$SRC" "$DEST/mutoon.json"
+          else
+            rm -rf "$DEST"
+          fi
       - name: Copy review reference (Debug only)
         basedOnDependencyAnalysis: false
         script: |

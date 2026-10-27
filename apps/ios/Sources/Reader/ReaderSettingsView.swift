@@ -20,6 +20,9 @@ struct SettingsView: View {
     @AppStorage(SurahBannerStyle.storageKey) private var bannerStyle = SurahBannerStyle.royal.rawValue
 #if DEBUG
     @State private var showingReviewEditor = false
+#if DEBUG
+    @AppStorage(DeveloperSettings.cardReviewKey) private var showsCardReview = true
+#endif
 #endif
 
     private var appLanguage: AppLanguage {
@@ -175,6 +178,15 @@ struct SettingsView: View {
                     }
                     .foregroundStyle(.primary)
                     .accessibilityIdentifier("open-review-editor")
+
+                    Toggle(isOn: $showsCardReview) {
+                        Label(
+                            language == AppLanguage.english.rawValue ? "Review on word cards" : "المراجعة والتحرير في بطاقة الكلمة",
+                            systemImage: "checkmark.seal"
+                        )
+                    }
+                    .tint(.switchOn)
+                    .accessibilityIdentifier("developer-card-review-toggle")
                 }
 #endif
 

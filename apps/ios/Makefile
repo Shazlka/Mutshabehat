@@ -12,7 +12,7 @@ IPAD     ?= iPad Pro 13-inch (M5)
 APP      := $(DERIVED)/Build/Products/Debug-iphonesimulator/Mutshabehat.app
 XCB       = xcodebuild -project Mutshabehat.xcodeproj -scheme Mutshabehat -derivedDataPath $(DERIVED)
 
-.PHONY: all data fonts qiraat references qiraat-refresh qiraat-offline review-data review-golden project data-test core-test perf build test test-ipad run open device clean check-isolation release-guard
+.PHONY: all data fonts qiraat references mutoon qiraat-refresh qiraat-offline review-data review-golden project data-test core-test perf build test test-ipad run open device clean check-isolation release-guard
 
 all: data fonts qiraat review-data project
 
@@ -42,6 +42,13 @@ references:
 	@test -n "$(REFERENCES_SRC)" -a -s "$(REFERENCES_SRC)/references.json" || { echo "error: set REFERENCES_SRC to a folder holding references.json"; exit 1; }
 	mkdir -p $(GEN)/QiraatReferences
 	cp "$(REFERENCES_SRC)/references.json" $(GEN)/QiraatReferences/references.json
+
+# The three متون (الشاطبية، الدرة، طيبة النشر) for the «المتون» page: built from the locally parsed Shamela verses
+# into Generated/QiraatMutoon (never committed). Bundled by the build when present.
+#   make mutoon MUTOON_SRC=/path/to/verses.json
+MUTOON_SRC ?= $(GEN)/QiraatReferences-full/verses.json
+mutoon:
+	python3 scripts/build_mutoon.py "$(MUTOON_SRC)" $(GEN)/QiraatMutoon/mutoon.json
 
 qiraat-refresh:
 	python3 scripts/fetch_qiraat.py $(REPO) $(GEN)/Qiraat --refresh
@@ -73,6 +80,7 @@ data-test:
 	python3 scripts/test_build_mushaf_db.py -v
 	python3 scripts/test_fetch_qcf_fonts.py -v
 	python3 scripts/test_fetch_qiraat.py -v
+	python3 scripts/test_build_mutoon.py -v
 	python3 scripts/test_build_review_reference.py -v
 	cd scripts && python3 test_release_guard.py -v
 	python3 scripts/test_device.py -v

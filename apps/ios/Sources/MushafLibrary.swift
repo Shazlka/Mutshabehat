@@ -28,6 +28,30 @@ final class MushafLibrary {
     private(set) lazy var qiraatReferences: QiraatReferenceStore =
         qiraatReferencesURL.map { QiraatReferenceStore(directory: $0) } ?? .empty
     private let qiraatReferencesURL: URL?
+    /// The three متون (الشاطبية، الدرة، طيبة النشر) for the «المتون» page, from the optional `QiraatMutoon` bundle
+    /// folder (`make mutoon`). Empty when the build ships without it. Read the first time the page opens.
+    var mutoon: MatnLibrary {
+#if DEBUG
+        if ProcessInfo.processInfo.arguments.contains("-mutoon-fixture") { return Self.mutoonFixture }
+#endif
+        return mutoonFromBundle
+    }
+    private lazy var mutoonFromBundle: MatnLibrary = mutoonURL.map { MatnLibrary(directory: $0) } ?? .empty
+    private let mutoonURL: URL?
+#if DEBUG
+    /// UI tests only (`-mutoon-fixture`): two chapters per book with placeholder text, never real matn text.
+    static let mutoonFixture = MatnLibrary(works: QiraatMatn.allCases.map { work in
+        MatnWork(work: work, title: "كتاب تجريبي \(work.labelAr)", author: "مؤلف تجريبي", chapters: [
+            MatnChapter(title: "باب تجريبي", farsh: false, verses: [
+                MatnVerse(number: 1, lines: ["شطر تجريبي أول", "شطر تجريبي ثان"], printedPage: "1", pageId: 1),
+                MatnVerse(number: 2, lines: ["بيت تجريبي آخر", "وفيه كلمة مالك"], printedPage: "1", pageId: 1),
+            ]),
+            MatnChapter(title: "سورة البقرة", farsh: true, verses: [
+                MatnVerse(number: 3, lines: ["بيت من الفرش", "تجربة"], printedPage: "2", pageId: 2),
+            ]),
+        ])
+    })
+#endif
 #if DEBUG
     /// UI tests only (`-qiraat-references-fixture`): one synthetic reference per work for every variant on page 1.
     /// The text is a placeholder, never real matn text.
@@ -71,6 +95,7 @@ final class MushafLibrary {
         surahAyahCounts = Dictionary(uniqueKeysWithValues: surahs.map { ($0.number, $0.ayahCount) })
         surahNames = Dictionary(uniqueKeysWithValues: surahs.map { ($0.number, $0.name) })
         qiraatReferencesURL = bundle.url(forResource: "QiraatReferences", withExtension: nil)
+        mutoonURL = bundle.url(forResource: "QiraatMutoon", withExtension: nil)
 #if DEBUG
         if ProcessInfo.processInfo.environment["QIRAAT_TEST_ISOLATION"] == "1" {
             qiraat = qiraatStore ?? bundle.url(forResource: "Qiraat", withExtension: nil)

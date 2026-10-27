@@ -4390,6 +4390,86 @@
           }
         }
       }
+    },
+    "المتون" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mutun"
+          }
+        }
+      }
+    },
+    "المتون غير مضمّنة في هذه النسخة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The mutun are not included in this build"
+          }
+        }
+      }
+    },
+    "تُضاف المتون عند بناء التطبيق من نسختك من الكتب." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "They are added when the app is built from your copy of the books."
+          }
+        }
+      }
+    },
+    "ابحث في المتون أو اكتب رقم البيت" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search the mutun or type a verse number"
+          }
+        }
+      }
+    },
+    "لا نتائج" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No results"
+          }
+        }
+      }
+    },
+    "مسح البحث" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear search"
+          }
+        }
+      }
+    },
+    "%@ بيتًا" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ verses"
+          }
+        }
+      }
+    },
+    "الأبيات %@–%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verses %@–%@"
+          }
+        }
+      }
     }
   },
   "version" : "1.3"

@@ -25,6 +25,7 @@ struct ReaderBottomBar: View {
     let openBookmarks: () -> Void
     let openMutshabehat: () -> Void
     let openMemorization: () -> Void
+    var openMutoon: () -> Void = {}
     let openSettings: () -> Void
     /// The Qiraat layer's state and catalog.
     var qiraat: QiraatPreferences
@@ -212,6 +213,8 @@ struct ReaderBottomBar: View {
                     .accessibilityIdentifier("mutshabehat-button")
                 BarMenuRow("الحفظ", systemImage: "book.closed.fill") { actions.perform(openMemorization) }
                     .accessibilityIdentifier("memorization-button")
+                BarMenuRow("المتون", systemImage: "books.vertical.fill") { actions.perform(openMutoon) }
+                    .accessibilityIdentifier("mutoon-button")
             }
         default:
             EmptyView()

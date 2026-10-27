@@ -50,3 +50,21 @@ skipped; the others load.
 **Bundling:** a pre-build step copies `Generated/QiraatReferences/references.json` into the app when it is present and
 removes the bundled copy when it is not. A debug build launched with `-qiraat-references-fixture` uses a synthetic set
 («نص تجريبي») for every variant on page 1 instead; UI tests use it.
+
+## The متون file (`mutoon.json`)
+
+The «المتون» page (المزيد) shows الشاطبية، الدرة and طيبة النشر in full. Like the references, the text is your own
+data and is never committed: `make mutoon` builds `Generated/QiraatMutoon/mutoon.json` from the locally parsed Shamela
+verses (`MUTOON_SRC`, default `Generated/QiraatReferences-full/verses.json`) with `scripts/build_mutoon.py`, and a
+pre-build step bundles it when present (`make clean` leaves `Generated/` alone).
+
+```json
+{ "schemaVersion": 1,
+  "works": [ { "work": "shatibiyyah", "title": "…", "author": "…", "bookId": 7754,
+               "chapters": [ { "title": "…", "farsh": false,
+                               "verses": [ { "number": 108, "lines": ["…", "…"], "printedPage": "9", "pageId": 15 } ] } ] } ] }
+```
+
+A missing, unreadable or `schemaVersion` ≠ 1 file gives an empty page with a note; a book with an unknown `work` is
+skipped. Search ignores marks and alef forms; a number finds that verse in each book.
+

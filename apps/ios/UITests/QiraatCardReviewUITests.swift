@@ -10,10 +10,10 @@ final class QiraatCardReviewUITests: XCTestCase {
     private let wordID = "qiraat-word-2:1:1"
     private let faceID = "r-2-1"
 
-    private func launch() -> XCUIApplication {
+    private func launch(extra: [String] = []) -> XCUIApplication {
         let app = XCUIApplication.isolated()
         app.launchArguments = ["-review-stub", "-mushaf1441:last-page:v1", "2", "-mushaf1441:reader-layer:v1", "qiraat",
-                               "-mushaf1441:qiraat-filter:v1", "all", "-reading-fresh", "-app:language:v1", "ar"]
+                               "-mushaf1441:qiraat-filter:v1", "all", "-reading-fresh", "-app:language:v1", "ar"] + extra
         app.launch()
         return app
     }
@@ -32,6 +32,31 @@ final class QiraatCardReviewUITests: XCTestCase {
         let status = element(id, in: app)
         let predicate = NSPredicate(format: "label CONTAINS %@", text)
         return XCTWaiter().wait(for: [expectation(for: predicate, evaluatedWith: status)], timeout: timeout) == .completed
+    }
+
+    /// Settings → المطور → «المراجعة والتحرير في بطاقة الكلمة» off: the card opens without its review section. The
+    /// switch is set by a launch argument, which lasts for this launch only, so no later test inherits it.
+    func testWithTheSwitchOffTheCardHasNoReviewSection() {
+        let app = launch(extra: ["-developer:card-review:v1", "NO"])
+        let word = element(wordID, in: app)
+        XCTAssertTrue(word.waitForExistence(timeout: 30))
+        word.tap()
+        XCTAssertTrue(app.buttons["qiraat-sheet-close"].waitForExistence(timeout: 20), "the card opened")
+        XCTAssertFalse(element("qiraat-card-review", in: app).waitForExistence(timeout: 15), "the review section stays hidden")
+    }
+
+    /// The switch is in Settings → المطور and is on until someone turns it off.
+    func testTheSwitchIsInTheDeveloperSettingsAndOnByDefault() {
+        let app = launch()
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()   // margin tap shows the chrome
+        let settings = app.buttons["settings-button"]
+        XCTAssertTrue(settings.waitForExistence(timeout: 20))
+        settings.tap()
+        let toggle = app.switches["developer-card-review-toggle"].firstMatch
+        var swipes = 0
+        while !toggle.isHittable && swipes < 8 { app.swipeUp(); swipes += 1 }
+        XCTAssertTrue(toggle.waitForExistence(timeout: 10))
+        XCTAssertEqual(toggle.value as? String, "1")
     }
 
     func testTheCardShowsTheFaceWaitingForReviewAndApprovesIt() {

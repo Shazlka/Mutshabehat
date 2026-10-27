@@ -12,6 +12,7 @@ struct ReaderActionRail: View {
     let openBookmarks: () -> Void
     let openMutshabehat: () -> Void
     let openMemorization: () -> Void
+    var openMutoon: () -> Void = {}
     let openSettings: () -> Void
     var qiraat: QiraatPreferences
     var qiraatCatalog: QiraatCatalog?
@@ -42,6 +43,8 @@ struct ReaderActionRail: View {
                             .accessibilityIdentifier("mutshabehat-button")
                         BarMenuRow("الحفظ", systemImage: "book.closed.fill") { actions.perform(openMemorization) }
                             .accessibilityIdentifier("memorization-button")
+                        BarMenuRow("المتون", systemImage: "books.vertical.fill") { actions.perform(openMutoon) }
+                            .accessibilityIdentifier("mutoon-button")
                     }
                 }
             item("الإعدادات", "gearshape.fill", id: "settings-button", action: openSettings)

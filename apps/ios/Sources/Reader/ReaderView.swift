@@ -10,10 +10,12 @@ struct ReaderView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.scenePhase) private var scenePhase
 
-    /// The references the Qiraat card reads: the bundled file, or (UI tests) a synthetic set.
+    /// The references the Qiraat card reads: the bundled file, or (UI tests) a synthetic set or none at all.
     private var qiraatReferencesForReader: QiraatReferenceStore {
 #if DEBUG
-        if ProcessInfo.processInfo.arguments.contains("-qiraat-references-fixture") { return library.qiraatReferencesFixture }
+        let arguments = ProcessInfo.processInfo.arguments
+        if arguments.contains("-qiraat-references-fixture") { return library.qiraatReferencesFixture }
+        if arguments.contains("-qiraat-references-empty") { return .empty }
 #endif
         return library.qiraatReferences
     }
@@ -34,6 +36,7 @@ struct ReaderView: View {
     @State private var showingStatistics = CommandLine.arguments.contains("-open-statistics")
     @State private var showingMutshabehat = CommandLine.arguments.contains("-open-mutshabehat")
     @State private var showingMemorization = CommandLine.arguments.contains("-open-memorization")
+    @State private var showingMutoon = false
     @State private var pageSheetRequest: PageSheetRequest?
     @State private var ayahSheetTarget: AyahSheetTarget?
     @State private var rangeStart: AyahKey?
@@ -45,6 +48,8 @@ struct ReaderView: View {
     @State private var qiraatSelection: QiraatWordSelection?
 #if DEBUG
     @State private var cardReview = QiraatCardReviewHost()
+    /// Settings → المطور: whether the word card shows «المراجعة والتحرير».
+    @AppStorage(DeveloperSettings.cardReviewKey) private var showsCardReview = true
 #endif
     @State private var qiraatRoute: QiraatHubRoute?
     @State private var pendingQiraatWord: (page: MushafPage, word: MushafWord)?
@@ -129,6 +134,7 @@ struct ReaderView: View {
                     openBookmarks: { showingBookmarks = true },
                     openMutshabehat: { showingMutshabehat = true },
                     openMemorization: { showingMemorization = true },
+                    openMutoon: { showingMutoon = true },
                     openSettings: { showingSettings = true },
                     qiraat: qiraat,
                     qiraatCatalog: library.qiraat?.catalog,
@@ -327,6 +333,9 @@ struct ReaderView: View {
         }
         .fullScreenCover(isPresented: $showingMutshabehat) {
             MutshabehatView(library: library)
+        }
+        .fullScreenCover(isPresented: $showingMutoon) {
+            MutoonView(library: library.mutoon)
         }
         .fullScreenCover(isPresented: $showingMemorization) {
             if let store = library.memorizationStore {
@@ -561,7 +570,7 @@ struct ReaderView: View {
                 library.wordText(surah: surah, ayah: ayah, token: token, near: page)
             })
 #if DEBUG
-            .environment(\.qiraatCardReviewStore, cardReview.store(host: .make(library: library)))
+            .environment(\.qiraatCardReviewStore, showsCardReview ? cardReview.store(host: .make(library: library)) : nil)
 #endif
         }
     }
@@ -616,6 +625,7 @@ struct ReaderView: View {
             openBookmarks: { showingBookmarks = true },
             openMutshabehat: { showingMutshabehat = true },
             openMemorization: { showingMemorization = true },
+            openMutoon: { showingMutoon = true },
             openSettings: { showingSettings = true },
             qiraat: qiraat,
             qiraatCatalog: library.qiraat?.catalog,
