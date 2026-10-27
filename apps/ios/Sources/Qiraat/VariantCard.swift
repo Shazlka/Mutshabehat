@@ -56,6 +56,7 @@ struct VariantCard: View {
         .padding(10)
         .background(RoundedRectangle(cornerRadius: 10).fill(.qiraatCardFill))
         .overlay(RoundedRectangle(cornerRadius: 10).stroke(.qiraatCardStroke))
+        .environment(\.layoutDirection, .rightToLeft)
     }
 
     /// Who reads it, and how: one group per action with its reader pills and that group's details (الأداء،

@@ -572,6 +572,7 @@ struct ReaderView: View {
 #if DEBUG
             .environment(\.qiraatCardReviewStore, showsCardReview ? cardReview.store(host: .make(library: library)) : nil)
 #endif
+            .environment(\.layoutDirection, .rightToLeft)
         }
     }
 

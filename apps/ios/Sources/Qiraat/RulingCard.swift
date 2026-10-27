@@ -73,6 +73,7 @@ struct RulingCard: View {
             RoundedRectangle(cornerRadius: 10).fill(color.opacity(0.06))
         }
         .overlay(RoundedRectangle(cornerRadius: 10).stroke(color))
+        .environment(\.layoutDirection, .rightToLeft)
     }
 
     /// How each narrator group reads the word (nil when its action leaves the writing as it is).

@@ -126,6 +126,10 @@ struct QiraatSheet: View {
                 }
             }
         }
+        // Right to left whatever the app language: the differing words, reading attributions and
+        // scholarly references are Arabic Quranic content. A modal sheet does not inherit the
+        // reader's direction, so it is set on the page itself.
+        .environment(\.layoutDirection, .rightToLeft)
         .tint(Color(uiColor: .mushafBrown))
         .presentationDetents([.medium, .large], selection: $detent)
         .simultaneousGesture(

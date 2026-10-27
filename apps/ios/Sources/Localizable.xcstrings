@@ -104,6 +104,16 @@
         }
       }
     },
+    "%@ بيتًا" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ verses"
+          }
+        }
+      }
+    },
     "%@ من %@" : {
       "localizations" : {
         "en" : {
@@ -1385,6 +1395,16 @@
     "ابحث في القرآن الكريم..." : {
 
     },
+    "ابحث في المتون أو اكتب رقم البيت" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search the mutun or type a verse number"
+          }
+        }
+      }
+    },
     "ابحث في كلمات الخلاف" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1535,6 +1555,16 @@
         }
       }
     },
+    "افتح في الشاملة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open in Shamela"
+          }
+        }
+      }
+    },
     "اكتب كلمة للبحث في مواضع الخلاف" : {
       "localizations" : {
         "en" : {
@@ -1581,6 +1611,16 @@
     "الآية الثانية (المقارنة)" : {
 
     },
+    "الأبيات %@–%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verses %@–%@"
+          }
+        }
+      }
+    },
     "الأجزاء" : {
       "localizations" : {
         "en" : {
@@ -1598,6 +1638,16 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Rulings: "
+          }
+        }
+      }
+    },
+    "الأحمر: رمز قارئ أو راوٍ — اضغط لمعرفة المقصود" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Red: a reader or narrator symbol — tap to see who"
           }
         }
       }
@@ -1723,6 +1773,56 @@
         }
       }
     },
+    "البيت %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verse %@"
+          }
+        }
+      }
+    },
+    "البيت %@ من %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verse %@ of %@"
+          }
+        }
+      }
+    },
+    "البيت %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verse %lld"
+          }
+        }
+      }
+    },
+    "البيت التالي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next verse"
+          }
+        }
+      }
+    },
+    "البيت السابق" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previous verse"
+          }
+        }
+      }
+    },
     "التالي" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1788,6 +1888,37 @@
         }
       }
     },
+    "الدرة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durrah"
+          }
+        }
+      }
+    },
+    "الدرة المضية" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al-Durrah al-Madiyyah"
+          }
+        }
+      }
+    },
+    "الدلالة هنا" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Here"
+          }
+        }
+      }
+    },
     "الراوي " : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1805,6 +1936,26 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Narrator %@"
+          }
+        }
+      }
+    },
+    "الرمز: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Symbol: %@"
+          }
+        }
+      }
+    },
+    "الرموز والدلالات في هذا البيت" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Symbols and indications in this verse"
           }
         }
       }
@@ -1840,12 +1991,43 @@
         }
       }
     },
+    "الشاطبية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shatibiyyah"
+          }
+        }
+      }
+    },
     "الشخصية" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "machine_translated",
             "value" : "Personal"
+          }
+        }
+      }
+    },
+    "الشرح" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commentary"
+          }
+        }
+      }
+    },
+    "الشرح متاح" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commentary available"
           }
         }
       }
@@ -1913,12 +2095,32 @@
     "الفواصل والعلامات" : {
 
     },
+    "القارئ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reader"
+          }
+        }
+      }
+    },
     "القارئ غير معروف بعد في بيانات الكلمة، فلا يُنسب الخط إلى أحد." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "The reader is not yet identified in this word’s data, so the line is not attributed to anyone."
+          }
+        }
+      }
+    },
+    "القارئ: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reader: %@"
           }
         }
       }
@@ -1940,6 +2142,46 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Readers: %@"
+          }
+        }
+      }
+    },
+    "القاعدة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rule"
+          }
+        }
+      }
+    },
+    "القرّاء المذكورون (بالقراءة الأخرى)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Readers named (for the other reading)"
+          }
+        }
+      }
+    },
+    "القرّاء المذكورون (بهذه القراءة)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Readers named (for this reading)"
+          }
+        }
+      }
+    },
+    "القراء والرواة:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Readers and narrators:"
           }
         }
       }
@@ -2058,6 +2300,26 @@
         }
       }
     },
+    "المتون" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mutun"
+          }
+        }
+      }
+    },
+    "المتون غير مضمّنة في هذه النسخة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The mutun are not included in this build"
+          }
+        }
+      }
+    },
     "المجموع: %lld آية" : {
 
     },
@@ -2097,6 +2359,36 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Tap a coloured word to see its readings"
+          }
+        }
+      }
+    },
+    "المصادر" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sources"
+          }
+        }
+      }
+    },
+    "المصادر: لم يُوثَّق بعد" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sources: not documented yet"
+          }
+        }
+      }
+    },
+    "المصدر" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source"
           }
         }
       }
@@ -2471,6 +2763,16 @@
     "تصفية حسب الاسم أو الرقم..." : {
 
     },
+    "تُضاف المتون عند بناء التطبيق من نسختك من الكتب." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "They are added when the app is built from your copy of the books."
+          }
+        }
+      }
+    },
     "تطبيق" : {
 
     },
@@ -2677,6 +2979,16 @@
     },
     "تَمَّتْ خَتْمَةُ الْقُرْآنِ الْكَرِيمِ بِحَمْدِ اللَّهِ وَتَوْفِيقِهِ" : {
 
+    },
+    "تمييز الرموز" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Highlight symbols"
+          }
+        }
+      }
     },
     "تنبيه" : {
 
@@ -3049,6 +3361,36 @@
     "رقم الآية" : {
 
     },
+    "رمز جماعي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Group symbol"
+          }
+        }
+      }
+    },
+    "رمز راوٍ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Narrator symbol"
+          }
+        }
+      }
+    },
+    "رمز قارئ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reader symbol"
+          }
+        }
+      }
+    },
     "روايتا الإمام %@" : {
       "localizations" : {
         "en" : {
@@ -3217,6 +3559,16 @@
     "شكل ترويسة السورة" : {
 
     },
+    "ص %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "p. %@"
+          }
+        }
+      }
+    },
     "ص %lld" : {
 
     },
@@ -3272,11 +3624,31 @@
     "طريقة التلاوة" : {
 
     },
+    "طيبة النشر" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tayyibat al-Nashr"
+          }
+        }
+      }
+    },
     "عادي" : {
 
     },
     "عرض الإحصائيات" : {
 
+    },
+    "عرض البيت والشرح" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View verse and commentary"
+          }
+        }
+      }
     },
     "عرض كامل التفاصيل" : {
 
@@ -3621,6 +3993,36 @@
         }
       }
     },
+    "لا نتائج" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No results"
+          }
+        }
+      }
+    },
+    "لا يتوفر شرح لهذا البيت في المرجع المضمّن" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No commentary is available for this verse in the bundled reference"
+          }
+        }
+      }
+    },
+    "لا يطابق قراءات هذه الكلمة، يحتاج مراجعة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Does not match this word's readings; needs review"
+          }
+        }
+      }
+    },
     "لتغيير القارئ أو الراوي" : {
 
     },
@@ -3716,6 +4118,16 @@
     "مثال: الرجفة / الصيحة" : {
 
     },
+    "مجموع ما تدل عليه الرموز في هذا الموضع هو القرّاء الذين سمّاهم الشارح للبيت نفسه." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Together, the symbols here name exactly the readers the commentary names for this verse."
+          }
+        }
+      }
+    },
     "مجموعة جديدة" : {
 
     },
@@ -3739,6 +4151,16 @@
         }
       }
     },
+    "محقَّق من الشرح" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Checked against a commentary"
+          }
+        }
+      }
+    },
     "مخصص" : {
 
     },
@@ -3748,11 +4170,41 @@
     "مَدَنِيَّة" : {
 
     },
+    "مراجَع" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reviewed"
+          }
+        }
+      }
+    },
     "مزامنة iCloud (مصحف وقراءات)" : {
 
     },
     "مزامنة السحابة" : {
 
+    },
+    "مستخرج" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Extracted"
+          }
+        }
+      }
+    },
+    "مسح البحث" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear search"
+          }
+        }
+      }
     },
     "مسودة" : {
 
@@ -3767,8 +4219,28 @@
         }
       }
     },
+    "مطابق لقول الشارح (آليًّا)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Matches the commentary (by script)"
+          }
+        }
+      }
+    },
     "معاينة الآية %lld" : {
 
+    },
+    "مغلق" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collapsed"
+          }
+        }
+      }
     },
     "مغلقة" : {
       "extractionState" : "stale",
@@ -3787,6 +4259,16 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Colour Key"
+          }
+        }
+      }
+    },
+    "مفتوح" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expanded"
           }
         }
       }
@@ -3925,11 +4407,51 @@
         }
       }
     },
+    "من البيت %@ في %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Defined in verse %@ of %@"
+          }
+        }
+      }
+    },
     "من القرآن" : {
 
     },
     "من صفحة" : {
 
+    },
+    "من متن الدرة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From the Durrah"
+          }
+        }
+      }
+    },
+    "من متن الشاطبية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From the Shatibiyyah"
+          }
+        }
+      }
+    },
+    "من متن طيبة النشر" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From the Tayyibat al-Nashr"
+          }
+        }
+      }
     },
     "منسوخة إلى الشخصية" : {
       "extractionState" : "stale",
@@ -3944,6 +4466,26 @@
     },
     "منشورة" : {
 
+    },
+    "منظومة الدرة تعتمد أصولها على الشاطبية وفرشها على ما خالف أصله، ولم يُضمَّن لها شرح مستقل في التطبيق حالياً." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The rules of al-Durrah build upon al-Shatibiyyah and its farsh covers what differs from its source, and no standalone commentary is bundled for it currently."
+          }
+        }
+      }
+    },
+    "موثّق" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verified"
+          }
+        }
+      }
     },
     "موسع" : {
       "localizations" : {
@@ -4194,546 +4736,6 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "two days"
-          }
-        }
-      }
-    },
-    "المصادر" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sources"
-          }
-        }
-      }
-    },
-    "المصادر: لم يُوثَّق بعد" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sources: not documented yet"
-          }
-        }
-      }
-    },
-    "مفتوح" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Expanded"
-          }
-        }
-      }
-    },
-    "مغلق" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Collapsed"
-          }
-        }
-      }
-    },
-    "الشاطبية" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Shatibiyyah"
-          }
-        }
-      }
-    },
-    "الدرة" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Durrah"
-          }
-        }
-      }
-    },
-    "طيبة النشر" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tayyibat al-Nashr"
-          }
-        }
-      }
-    },
-    "من متن الشاطبية" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "From the Shatibiyyah"
-          }
-        }
-      }
-    },
-    "من متن الدرة" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "From the Durrah"
-          }
-        }
-      }
-    },
-    "من متن طيبة النشر" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "From the Tayyibat al-Nashr"
-          }
-        }
-      }
-    },
-    "البيت %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Verse %lld"
-          }
-        }
-      }
-    },
-    "ص %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "p. %@"
-          }
-        }
-      }
-    },
-    "الرمز: %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Symbol: %@"
-          }
-        }
-      }
-    },
-    "القرّاء المذكورون (بهذه القراءة)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Readers named (for this reading)"
-          }
-        }
-      }
-    },
-    "القرّاء المذكورون (بالقراءة الأخرى)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Readers named (for the other reading)"
-          }
-        }
-      }
-    },
-    "لا يطابق قراءات هذه الكلمة، يحتاج مراجعة" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Does not match this word's readings; needs review"
-          }
-        }
-      }
-    },
-    "مستخرج" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Extracted"
-          }
-        }
-      }
-    },
-    "مراجَع" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reviewed"
-          }
-        }
-      }
-    },
-    "موثّق" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Verified"
-          }
-        }
-      }
-    },
-    "افتح في الشاملة" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Open in Shamela"
-          }
-        }
-      }
-    },
-    "المتون" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mutun"
-          }
-        }
-      }
-    },
-    "المتون غير مضمّنة في هذه النسخة" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The mutun are not included in this build"
-          }
-        }
-      }
-    },
-    "تُضاف المتون عند بناء التطبيق من نسختك من الكتب." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "They are added when the app is built from your copy of the books."
-          }
-        }
-      }
-    },
-    "ابحث في المتون أو اكتب رقم البيت" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Search the mutun or type a verse number"
-          }
-        }
-      }
-    },
-    "لا نتائج" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No results"
-          }
-        }
-      }
-    },
-    "مسح البحث" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Clear search"
-          }
-        }
-      }
-    },
-    "%@ بيتًا" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ verses"
-          }
-        }
-      }
-    },
-    "الأبيات %@–%@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Verses %@–%@"
-          }
-        }
-      }
-    },
-    "الأحمر: رمز قارئ أو راوٍ — اضغط لمعرفة المقصود" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Red: a reader or narrator symbol — tap to see who"
-          }
-        }
-      }
-    },
-    "تمييز الرموز" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Highlight symbols"
-          }
-        }
-      }
-    },
-    "رمز قارئ" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reader symbol"
-          }
-        }
-      }
-    },
-    "رمز راوٍ" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Narrator symbol"
-          }
-        }
-      }
-    },
-    "رمز جماعي" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Group symbol"
-          }
-        }
-      }
-    },
-    "القارئ" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reader"
-          }
-        }
-      }
-    },
-    "الدلالة هنا" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Here"
-          }
-        }
-      }
-    },
-    "القاعدة" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rule"
-          }
-        }
-      }
-    },
-    "من البيت %@ في %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Defined in verse %@ of %@"
-          }
-        }
-      }
-    },
-    "المصدر" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Source"
-          }
-        }
-      }
-    },
-    "محقَّق من الشرح" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Checked against a commentary"
-          }
-        }
-      }
-    },
-    "البيت %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Verse %@"
-          }
-        }
-      }
-    },
-    "مطابق لقول الشارح (آليًّا)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Matches the commentary (by script)"
-          }
-        }
-      }
-    },
-    "مجموع ما تدل عليه الرموز في هذا الموضع هو القرّاء الذين سمّاهم الشارح للبيت نفسه." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Together, the symbols here name exactly the readers the commentary names for this verse."
-          }
-        }
-      }
-    },
-    "القراء والرواة:" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Readers and narrators:"
-          }
-        }
-      }
-    },
-    "الشرح متاح" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Commentary available"
-          }
-        }
-      }
-    },
-    "عرض البيت والشرح" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "View verse and commentary"
-          }
-        }
-      }
-    },
-    "البيت السابق" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Previous verse"
-          }
-        }
-      }
-    },
-    "البيت %@ من %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Verse %@ of %@"
-          }
-        }
-      }
-    },
-    "البيت التالي" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Next verse"
-          }
-        }
-      }
-    },
-    "الدرة المضية" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Al-Durrah al-Madiyyah"
-          }
-        }
-      }
-    },
-    "الشرح" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Commentary"
-          }
-        }
-      }
-    },
-    "لا يتوفر شرح لهذا البيت في المرجع المضمّن" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No commentary is available for this verse in the bundled reference"
-          }
-        }
-      }
-    },
-    "منظومة الدرة تعتمد أصولها على الشاطبية وفرشها على ما خالف أصله، ولم يُضمَّن لها شرح مستقل في التطبيق حالياً." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The rules of al-Durrah build upon al-Shatibiyyah and its farsh covers what differs from its source, and no standalone commentary is bundled for it currently."
-          }
-        }
-      }
-    },
-    "الرموز والدلالات في هذا البيت" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Symbols and indications in this verse"
-          }
-        }
-      }
-    },
-    "القارئ: %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reader: %@"
           }
         }
       }

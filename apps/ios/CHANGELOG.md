@@ -3,6 +3,15 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-27 — Word variant cards and sheet presented right-to-left (RTL)
+- **Request:** make the word variant cards when open RTL.
+- **Change (`Sources/Qiraat/QiraatSheet.swift`, `VariantCard.swift`, `RulingCard.swift`, `ReaderView.swift`):**
+  - Set `.environment(\.layoutDirection, .rightToLeft)` on `QiraatSheet`, `VariantCard`, `RulingCard`, and the reader's `qiraatCard` presentation.
+  - The sheet contents (Quran word glyph, ayah key, classification chips, variant reading, reader groups, pills, notes, references, and navigation) align and flow right-to-left regardless of device or app language.
+  - The sheet toolbar cancellation button («إغلاق») sits on the right side of the navigation bar per standard RTL layout.
+- **Tests:** `QiraatUITests` (9 passed, 2 skipped), `QiraatLocalizationUITests` (2 passed), `release-guard`, and `check-isolation` verified.
+- **Files:** `Sources/Qiraat/{QiraatSheet,VariantCard,RulingCard}.swift`, `Sources/Reader/ReaderView.swift`, `CHANGELOG.md`.
+
 ## [Unreleased] — 2026-10-27 — Clickable matn verse cards with classical commentary and authority pills
 - **Request:** in the «المتون» menu: make each verse (بيت شعر) clickable, show it in a card with its classical commentary (شرح), highlight the readers and narrators on each verse, and style the clickable verse card to match the variant cards (`VariantCard`).
 - **Verse Cards (`MatnVerseCard`):** styled identically to variant cards (`RoundedRectangle(cornerRadius: 10).fill(.qiraatCardFill).overlay(stroke: .qiraatCardStroke)`), header with book title, chapter title, verse number, and printed page, verse lines with red symbol highlights, reader and narrator authority pills (`QiraatPills`), and a footer action row with a commentary hint and chevron button.
