@@ -59,6 +59,12 @@ MATN_SYMBOLS_SRC ?= $(firstword $(wildcard $(GEN)/QiraatMutoon/symbols-all.json)
 matn-symbols:
 	python3 scripts/build_matn_symbols.py "$(MATN_SYMBOLS_SRC)" $(GEN)/QiraatMutoon/mutoon.json $(GEN)/QiraatMutoon/mutoon-symbols.json
 
+# Verse-by-verse commentary (الوافي for الشاطبية; الهادي for طيبة النشر): built into Generated/QiraatMutoon/mutoon-sharh.json.
+#   make matn-sharh
+SHARH_HTML_SRC ?= $(GEN)/Shamela/sharh-html
+matn-sharh:
+	python3 scripts/build_matn_sharh.py "$(SHARH_HTML_SRC)" $(GEN)/QiraatMutoon/mutoon.json $(GEN)/QiraatMutoon/mutoon-sharh.json
+
 qiraat-refresh:
 	python3 scripts/fetch_qiraat.py $(REPO) $(GEN)/Qiraat --refresh
 
@@ -91,6 +97,7 @@ data-test:
 	python3 scripts/test_fetch_qiraat.py -v
 	python3 scripts/test_build_mutoon.py -v
 	python3 scripts/test_build_matn_symbols.py -v
+	python3 scripts/test_build_matn_sharh.py -v
 	python3 scripts/test_build_review_reference.py -v
 	cd scripts && python3 test_release_guard.py -v
 	python3 scripts/test_device.py -v

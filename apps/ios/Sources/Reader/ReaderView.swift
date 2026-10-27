@@ -335,7 +335,7 @@ struct ReaderView: View {
             MutshabehatView(library: library)
         }
         .fullScreenCover(isPresented: $showingMutoon) {
-            MutoonView(library: library.mutoon)
+            MutoonView(library: library.mutoon, catalog: library.qiraat?.catalog)
         }
         .fullScreenCover(isPresented: $showingMemorization) {
             if let store = library.memorizationStore {

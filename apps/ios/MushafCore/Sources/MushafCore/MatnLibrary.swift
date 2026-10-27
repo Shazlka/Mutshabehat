@@ -4,7 +4,8 @@ import os
 #endif
 
 /// One verse of a متن as the book prints it: its number, its hemistichs, and where it stands in the book.
-public struct MatnVerse: Codable, Sendable, Hashable {
+public struct MatnVerse: Codable, Sendable, Hashable, Identifiable {
+    public var id: Int { number }
     public let number: Int
     /// The hemistichs, verbatim. A quotation from the book, not Quran text.
     public let lines: [String]
@@ -45,7 +46,8 @@ public struct MatnWork: Codable, Sendable, Hashable {
 }
 
 /// A verse found by a search, with its book and chapter.
-public struct MatnSearchHit: Sendable, Hashable {
+public struct MatnSearchHit: Sendable, Hashable, Identifiable {
+    public var id: String { "\(work.rawValue)-\(verse.number)" }
     public let work: QiraatMatn
     public let chapter: String
     public let verse: MatnVerse
@@ -62,14 +64,17 @@ public struct MatnLibrary: Sendable {
     public let works: [MatnWork]
     /// The reader and narrator symbols marked in the verses (`mutoon-symbols.json`); empty without the file.
     public let symbols: MatnSymbolLayer
+    /// Verse-by-verse commentary from classical works (`mutoon-sharh.json`); empty without the file.
+    public let sharh: MatnSharhStore
     public var isEmpty: Bool { works.isEmpty }
     /// The search text of every verse, built once: (work index, chapter index, verse index, key).
     private let index: [(Int, Int, Int, String)]
 
-    public init(works: [MatnWork], symbols: [MatnSymbolAnnotation] = []) {
+    public init(works: [MatnWork], symbols: [MatnSymbolAnnotation] = [], sharh: MatnSharhStore = .empty) {
         let order = Dictionary(uniqueKeysWithValues: QiraatMatn.allCases.enumerated().map { ($1, $0) })
         self.works = works.sorted { order[$0.work, default: 0] < order[$1.work, default: 0] }
         self.symbols = MatnSymbolLayer(annotations: symbols, works: works)
+        self.sharh = sharh
         var index: [(Int, Int, Int, String)] = []
         for (w, work) in self.works.enumerated() {
             for (c, chapter) in work.chapters.enumerated() {
@@ -97,7 +102,9 @@ public struct MatnLibrary: Sendable {
             self = .empty
             return
         }
-        self.init(works: file.works.compactMap(\.value), symbols: Self.symbols(in: directory))
+        self.init(works: file.works.compactMap(\.value),
+                  symbols: Self.symbols(in: directory),
+                  sharh: MatnSharhStore(directory: directory))
     }
 
     /// The marks of `mutoon-symbols.json` in `directory`, or none.

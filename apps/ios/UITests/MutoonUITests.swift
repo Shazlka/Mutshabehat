@@ -96,4 +96,59 @@ final class MutoonUITests: XCTestCase {
         close.tap()
         XCTAssertFalse(element("mutoon-work-shatibiyyah", in: app).waitForExistence(timeout: 3))
     }
+
+    func testTappingVerseOpensCommentaryCardAndNavigates() {
+        let app = launch()
+        openMutoon(app)
+        for work in ["shatibiyyah", "durrah", "tayyibah"] {
+            XCTAssertTrue(element("mutoon-work-\(work)", in: app).waitForExistence(timeout: 20), work)
+        }
+        let durrah = element("mutoon-work-durrah", in: app)
+        XCTAssertTrue(durrah.isHittable)
+        durrah.tap()
+
+        let chapter = element("mutoon-chapter-0", in: app)
+        XCTAssertTrue(chapter.waitForExistence(timeout: 10))
+        chapter.tap()
+
+        // Chapter 0 has verses 1 and 2. Verse 1 is shown.
+        let verse1 = element("mutoon-verse-1", in: app)
+        XCTAssertTrue(verse1.waitForExistence(timeout: 10))
+
+        // Tap the verse action button
+        let action1 = element("mutoon-verse-action-1", in: app)
+        XCTAssertTrue(action1.waitForExistence(timeout: 5))
+        action1.tap()
+
+        // Verify the sheet opened
+        let sheet = element("mutoon-verse-sheet", in: app)
+        XCTAssertTrue(sheet.waitForExistence(timeout: 10))
+
+        // Verify sharh commentary text is present
+        let sharhText = element("mutoon-verse-sheet-sharh-text", in: app)
+        XCTAssertTrue(sharhText.waitForExistence(timeout: 10))
+        XCTAssertTrue(sharhText.label.contains("شرح تجريبي للبيت الأول"), sharhText.label)
+
+        // Navigate to next verse (verse 2)
+        let nextBtn = element("mutoon-verse-sheet-next", in: app)
+        XCTAssertTrue(nextBtn.waitForExistence(timeout: 5))
+        nextBtn.tap()
+
+        // Verify verse 2 sharh is now displayed
+        XCTAssertTrue(sharhText.waitForExistence(timeout: 5))
+        XCTAssertTrue(sharhText.label.contains("شرح تجريبي للبيت الثاني"), sharhText.label)
+
+        // Navigate back to verse 1
+        let prevBtn = element("mutoon-verse-sheet-prev", in: app)
+        XCTAssertTrue(prevBtn.waitForExistence(timeout: 5))
+        prevBtn.tap()
+        XCTAssertTrue(sharhText.waitForExistence(timeout: 5))
+        XCTAssertTrue(sharhText.label.contains("شرح تجريبي للبيت الأول"), sharhText.label)
+
+        // Close the sheet
+        let closeBtn = element("mutoon-verse-sheet-close", in: app)
+        XCTAssertTrue(closeBtn.waitForExistence(timeout: 5))
+        closeBtn.tap()
+        XCTAssertFalse(sheet.waitForExistence(timeout: 3))
+    }
 }

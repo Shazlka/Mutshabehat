@@ -146,8 +146,17 @@ All passed at `b0e2012f`. To check the real marks against the app's own rules, a
   word attaches to the space before it (as in Swift).
 - `Localizable.xcstrings`: add keys with a writer that round-trips Xcode's layout exactly, or the whole file re-sorts.
 - Python 3.9 raises `socket.timeout` (an `OSError`), not `TimeoutError`, on a read timeout.
+- Container accessibility: placing `.onTapGesture` directly on a SwiftUI outer container collapses all child accessibility elements into a single element in XCUITest; keep the container open, attach tap handlers to background fills or dedicated action buttons, and preserve `.accessibilityElement(children: .combine)` on list rows that are count-asserted.
+- Localization test: `QiraatLocalizationTests` scans every string literal in `Sources/Qiraat/*.swift` containing Arabic characters and requires a corresponding English entry in `Sources/Localizable.xcstrings`.
 
-## 8. Open items, in priority order
+## 8. Clickable verses and commentary update (2026-10-27)
+
+- **Verse cards:** `MatnVerseCard` in `MutoonView.swift` styled visually identical to `VariantCard` (`.qiraatCardFill`, `.qiraatCardStroke`), with authority pills (`QiraatPills`) highlighting the readers and narrators present in each verse.
+- **Commentary detail sheet:** `MatnVerseSheet` presents the verse card, commentary card («الشرح» from الوافي for الشاطبية or الهادي for طيبة النشر, with author and book page citations), and a full symbol breakdown with RTL next/previous verse navigation.
+- **Pipeline:** `scripts/build_matn_sharh.py` parses Shamela books 38075 (الوافي, 1,173/1,173 verses) and 8650 (الهادي, 995/1,015 verses) into `Generated/QiraatMutoon/mutoon-sharh.json` (5.7 MB). Bundled via `project.yml` and `Makefile` target `make matn-sharh`.
+- **Model:** `MatnSharhStore` in `MushafCore/Sources/MushafCore/MatnSharh.swift`, tested via `MatnSharhTests` and `MutoonUITests.testTappingVerseOpensCommentaryCardAndNavigates`.
+
+## 9. Open items, in priority order
 
 1. **Owner review.** Ask the owner to look through `review-symbols.html`; marks they confirm can move to
    `symbols-sample.json` with `method: hand`; marks they reject need a rule or an exclusion in `sharh_symbols.py`.

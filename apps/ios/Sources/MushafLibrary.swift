@@ -46,7 +46,13 @@ final class MushafLibrary {
         MatnSymbolAnnotation(work: work, verse: 3, line: 0, start: 0, end: 1, text: "ب", symbol: "ب", kind: .narrator,
                              readingIds: [work == .durrah ? "Q08-R01" : "Q01-R01"], note: "دلالة تجريبية",
                              source: "مرجع تجريبي", status: .verified)
-    })
+    }, sharh: MatnSharhStore(commentaries: Dictionary(uniqueKeysWithValues: QiraatMatn.allCases.map { work in
+        (work, MatnWorkSharh(title: "شرح تجريبي \(work.labelAr)", author: "شارح تجريبي", verses: [
+            1: MatnSharhEntry(text: "شرح تجريبي للبيت الأول وفيه تفصيل المعنى.", pages: ["1"]),
+            2: MatnSharhEntry(text: "شرح تجريبي للبيت الثاني وفيه بيان الحكم.", pages: ["1"]),
+            3: MatnSharhEntry(text: "شرح تجريبي للبيت الثالث وفيه بيان الرمز.", pages: ["2"]),
+        ]))
+    })))
     private static let mutoonFixtureWorks = QiraatMatn.allCases.map { work in
         MatnWork(work: work, title: "كتاب تجريبي \(work.labelAr)", author: "مؤلف تجريبي", chapters: [
             MatnChapter(title: "باب تجريبي", farsh: false, verses: [

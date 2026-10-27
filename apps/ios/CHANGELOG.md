@@ -3,6 +3,16 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-27 — Clickable matn verse cards with classical commentary and authority pills
+- **Request:** in the «المتون» menu: make each verse (بيت شعر) clickable, show it in a card with its classical commentary (شرح), highlight the readers and narrators on each verse, and style the clickable verse card to match the variant cards (`VariantCard`).
+- **Verse Cards (`MatnVerseCard`):** styled identically to variant cards (`RoundedRectangle(cornerRadius: 10).fill(.qiraatCardFill).overlay(stroke: .qiraatCardStroke)`), header with book title, chapter title, verse number, and printed page, verse lines with red symbol highlights, reader and narrator authority pills (`QiraatPills`), and a footer action row with a commentary hint and chevron button.
+- **Verse Detail Sheet (`MatnVerseSheet`):** interactive sheet presented upon tapping any verse card or action row. Features RTL verse navigator (previous and next buttons + horizontal swipe gestures), full verse card styling, the classical commentary card («الشرح» from الوافي for الشاطبية or الهادي for طيبة النشر, with author and book page references), and a detailed breakdown list of each reader/narrator symbol present in the verse.
+- **Commentary Pipeline (`mutoon-sharh.json`):** built via `scripts/build_matn_sharh.py` (`make matn-sharh`) from Shamela HTML texts: الوافي في شرح الشاطبية (38075) covering 1,173/1,173 verses (100%), and الهادي في شرح طيبة النشر (8650) covering 995/1,015 verses (~98%). Bundled into `QiraatMutoon/mutoon-sharh.json` (5.7 MB) when present via Xcode project build rules.
+- **Data models & Store:** `MatnSharhEntry`, `MatnWorkSharh`, and `MatnSharhStore` added to `MushafCore`. Loaded on-demand beside `mutoon.json` and `mutoon-symbols.json`. Added `MatnSymbols.authorityPills` for standard colored reader/narrator pills.
+- **Localization:** Added full English and Arabic localizations for all new UI strings in `Sources/Localizable.xcstrings`.
+- **Tests:** `test_build_matn_sharh.py` (3 unit tests), `MatnSharhTests` (3 Swift testing tests), `MutoonUITests` (4 UI tests including `testTappingVerseOpensCommentaryCardAndNavigates`), `QiraatLocalizationTests` (3 tests), and full test suites passing.
+- **Files:** `MushafCore/Sources/MushafCore/{MatnSharh,MatnLibrary,MatnSymbols}.swift`, `MushafCore/Tests/MushafCoreTests/MatnSharhTests.swift`, `Sources/Qiraat/MutoonView.swift`, `Sources/Reader/ReaderView.swift`, `Sources/MushafLibrary.swift`, `Sources/Localizable.xcstrings`, `UITests/MutoonUITests.swift`, `scripts/{build_matn_sharh,test_build_matn_sharh}.py`, `Makefile`, `project.yml`, `CHANGELOG.md`.
+
 ## [Unreleased] — 2026-10-27 — The symbol marks checked against a second copy of the متون (local data)
 - **Request:** verify against another copy (`متون_الشاطبية_والدرة_وطيبة_النشر.html`, a page with its own symbol marks).
 - **Text:** the same 2,428 verses and chapter titles, word for word; the copy was built from the same Shamela text, so it does not check the text independently.

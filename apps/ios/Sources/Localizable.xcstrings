@@ -4617,6 +4617,126 @@
           }
         }
       }
+    },
+    "القراء والرواة:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Readers and narrators:"
+          }
+        }
+      }
+    },
+    "الشرح متاح" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commentary available"
+          }
+        }
+      }
+    },
+    "عرض البيت والشرح" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View verse and commentary"
+          }
+        }
+      }
+    },
+    "البيت السابق" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previous verse"
+          }
+        }
+      }
+    },
+    "البيت %@ من %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verse %@ of %@"
+          }
+        }
+      }
+    },
+    "البيت التالي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next verse"
+          }
+        }
+      }
+    },
+    "الدرة المضية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al-Durrah al-Madiyyah"
+          }
+        }
+      }
+    },
+    "الشرح" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commentary"
+          }
+        }
+      }
+    },
+    "لا يتوفر شرح لهذا البيت في المرجع المضمّن" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No commentary is available for this verse in the bundled reference"
+          }
+        }
+      }
+    },
+    "منظومة الدرة تعتمد أصولها على الشاطبية وفرشها على ما خالف أصله، ولم يُضمَّن لها شرح مستقل في التطبيق حالياً." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The rules of al-Durrah build upon al-Shatibiyyah and its farsh covers what differs from its source, and no standalone commentary is bundled for it currently."
+          }
+        }
+      }
+    },
+    "الرموز والدلالات في هذا البيت" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Symbols and indications in this verse"
+          }
+        }
+      }
+    },
+    "القارئ: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reader: %@"
+          }
+        }
+      }
     }
   },
   "version" : "1.3"

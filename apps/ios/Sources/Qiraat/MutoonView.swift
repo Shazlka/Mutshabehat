@@ -1,14 +1,18 @@
 import MushafCore
 import SwiftUI
+import UIKit
 
 /// «المتون» (المزيد): الشاطبية، الدرة وطيبة النشر in full, by book and chapter, with a search over all three. The
 /// verses are quotations from the books, so they are set in a plain Arabic face, never the Mushaf fonts. Laid out
-/// right to left. The reader and narrator symbols checked against a شرح are red; a tap names whom they stand for.
+/// right to left. Each verse is a clickable card styled like the variant cards, showing highlighted reader and narrator
+/// symbols, authority pills, and opening a card with the full scholarly commentary (شرح) and verse navigation.
 struct MutoonView: View {
     let library: MatnLibrary
+    var catalog: QiraatCatalog? = nil
     @Environment(\.dismiss) private var dismiss
     @State private var query = ""
     @AppStorage(MatnSymbolSettings.key) private var showsSymbols = true
+    @State private var selectedHit: MatnSearchHit?
 
     var body: some View {
         NavigationStack {
@@ -46,8 +50,21 @@ struct MutoonView: View {
                 }
             }
             .navigationDestination(for: QiraatMatn.self) { work in
-                if let work = library.work(work) { MatnChaptersView(work: work, symbols: library.symbols) }
+                if let work = library.work(work) {
+                    MatnChaptersView(work: work, symbols: library.symbols, sharh: library.sharh, catalog: catalog)
+                }
             }
+        }
+        .sheet(item: $selectedHit) { hit in
+            MatnVerseSheet(
+                work: hit.work,
+                chapterTitle: hit.chapter,
+                allVerses: [hit.verse],
+                initialVerse: hit.verse,
+                symbols: library.symbols,
+                sharh: library.sharh,
+                catalog: catalog
+            )
         }
         // Right to left whatever the app language: every title, chapter and verse here is Arabic. A full-screen
         // cover does not inherit the reader's direction, so it is set on the page itself.
@@ -97,29 +114,26 @@ struct MutoonView: View {
         return List {
             if hits.isEmpty {
                 Text("لا نتائج").foregroundStyle(.secondary)
+                    .listRowBackground(Color.clear)
             }
-            ForEach(Array(hits.enumerated()), id: \.offset) { _, hit in
-                VStack(alignment: .leading, spacing: 4) {
-                    HStack(spacing: 6) {
-                        workName(hit.work).font(.caption.bold())
-                        Text(verbatim: "·").font(.caption).foregroundStyle(.secondary).accessibilityHidden(true)
-                        Text(verbatim: hit.chapter).font(.caption).foregroundStyle(.secondary).lineLimit(1)
-                    }
-                    .foregroundStyle(Color(uiColor: .mushafBrown))
-                    MatnVerseRow(verse: hit.verse, marks: library.symbols.marks(hit.work, verse: hit.verse.number))
-                }
+            ForEach(hits) { hit in
+                MatnVerseCard(
+                    work: hit.work,
+                    chapterTitle: hit.chapter,
+                    verse: hit.verse,
+                    marks: library.symbols.marks(hit.work, verse: hit.verse.number),
+                    sharh: library.sharh.sharh(for: hit.work, verse: hit.verse.number),
+                    catalog: catalog,
+                    onTapVerse: { selectedHit = hit }
+                )
+                .listRowSeparator(.hidden)
+                .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
+                .listRowBackground(Color.clear)
                 .accessibilityElement(children: .combine)
                 .accessibilityIdentifier("mutoon-search-result")
             }
         }
-    }
-
-    private func workName(_ work: QiraatMatn) -> Text {
-        switch work {
-        case .shatibiyyah: Text("الشاطبية")
-        case .durrah: Text("الدرة")
-        case .tayyibah: Text("طيبة النشر")
-        }
+        .listStyle(.plain)
     }
 }
 
@@ -127,11 +141,13 @@ struct MutoonView: View {
 private struct MatnChaptersView: View {
     let work: MatnWork
     let symbols: MatnSymbolLayer
+    let sharh: MatnSharhStore
+    let catalog: QiraatCatalog?
 
     var body: some View {
         List(Array(work.chapters.enumerated()), id: \.offset) { index, chapter in
             NavigationLink {
-                MatnChapterView(work: work.work, chapter: chapter, symbols: symbols)
+                MatnChapterView(work: work.work, chapter: chapter, symbols: symbols, sharh: sharh, catalog: catalog)
             } label: {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(verbatim: chapter.title).font(.body)
@@ -148,59 +164,502 @@ private struct MatnChaptersView: View {
     }
 }
 
-/// One chapter's verses in the book's order.
+/// One chapter's verses in the book's order, each shown as a clickable card like a variant card.
 private struct MatnChapterView: View {
     let work: QiraatMatn
     let chapter: MatnChapter
     let symbols: MatnSymbolLayer
+    let sharh: MatnSharhStore
+    let catalog: QiraatCatalog?
+
     @AppStorage(MatnSymbolSettings.key) private var showsSymbols = true
+    @State private var selectedVerse: MatnVerse?
 
     var body: some View {
         List {
             if showsSymbols, chapter.verses.contains(where: { !symbols.marks(work, verse: $0.number).isEmpty }) {
                 MatnSymbolKey()
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
+                    .listRowBackground(Color.clear)
             }
-            ForEach(Array(chapter.verses.enumerated()), id: \.offset) { _, verse in
-                MatnVerseRow(verse: verse, marks: symbols.marks(work, verse: verse.number))
+            ForEach(chapter.verses) { verse in
+                MatnVerseCard(
+                    work: work,
+                    chapterTitle: nil,
+                    verse: verse,
+                    marks: symbols.marks(work, verse: verse.number),
+                    sharh: sharh.sharh(for: work, verse: verse.number),
+                    catalog: catalog,
+                    onTapVerse: { selectedVerse = verse }
+                )
+                .listRowSeparator(.hidden)
+                .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
+                .listRowBackground(Color.clear)
             }
         }
+        .listStyle(.plain)
         .navigationTitle(Text(verbatim: chapter.title))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar { if !symbols.isEmpty { ToolbarItem(placement: .primaryAction) { MatnSymbolToggle() } } }
+        .sheet(item: $selectedVerse) { verse in
+            MatnVerseSheet(
+                work: work,
+                chapterTitle: chapter.title,
+                allVerses: chapter.verses,
+                initialVerse: verse,
+                symbols: symbols,
+                sharh: sharh,
+                catalog: catalog
+            )
+        }
     }
 }
 
-/// A verse: its number, its hemistichs one under the other, and its page in the book. Selectable for copying. Its
-/// checked symbols are red (while the switch is on) and open a card naming whom they stand for.
-struct MatnVerseRow: View {
+/// One verse card styled like a variant card: book / chapter / verse classification line, prominent Arabic text with
+/// highlighted reader/narrator symbols, authority pills for who is named, and a tap action opening the verse's شرح.
+struct MatnVerseCard: View {
+    let work: QiraatMatn
+    var chapterTitle: String? = nil
     let verse: MatnVerse
     var marks: [MatnSymbolAnnotation] = []
+    var sharh: (title: String, author: String, entry: MatnSharhEntry)? = nil
+    var catalog: QiraatCatalog? = nil
+    let onTapVerse: () -> Void
+
     @AppStorage(MatnSymbolSettings.key) private var showsSymbols = true
-    @State private var shown: MatnSymbolAnnotation?
+    @State private var shownSymbol: MatnSymbolAnnotation?
 
     var body: some View {
-        HStack(alignment: .firstTextBaseline, spacing: 10) {
-            Text(verbatim: mutoonNumber(verse.number))
-                .font(.caption.bold().monospacedDigit())
-                .foregroundStyle(Color(uiColor: .mushafBrown))
-                .frame(minWidth: 28, alignment: .leading)
-                .accessibilityLabel(Text("البيت \(mutoonNumber(verse.number))"))
-                .accessibilityIdentifier("mutoon-verse-\(verse.number)")
-            VStack(alignment: .leading, spacing: 2) {
-                ForEach(Array(verse.lines.enumerated()), id: \.offset) { index, line in
-                    MatnLineText(line: line, marks: visibleMarks.filter { $0.line == index }) { shown = $0 }
-                        .accessibilityIdentifier("mutoon-line-\(verse.number)-\(index)")
+        VStack(alignment: .leading, spacing: 8) {
+            // 1. Classification line
+            HStack(spacing: 6) {
+                Text(verbatim: work.labelAr)
+                    .font(.caption.bold())
+                    .foregroundStyle(Color(uiColor: .mushafBrown))
+                if let chapterTitle {
+                    Text(verbatim: "·")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    Text(verbatim: chapterTitle)
+                        .font(.caption)
+                        .foregroundStyle(Color(uiColor: .mushafBrown))
+                        .lineLimit(1)
                 }
+                Text(verbatim: "·")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                Text("البيت \(mutoonNumber(verse.number))")
+                    .font(.caption.bold().monospacedDigit())
+                    .foregroundStyle(Color(uiColor: .mushafBrown))
+                    .accessibilityIdentifier("mutoon-verse-\(verse.number)")
+
+                Spacer()
+
                 if let page = verse.printedPage, !page.isEmpty {
-                    Text("ص \(mutoonDigits(page))").font(.caption2).foregroundStyle(.secondary)
+                    Text("ص \(mutoonDigits(page))")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
                 }
             }
+
+            // 2. Verse lines (with red symbols)
+            VStack(alignment: .leading, spacing: 4) {
+                ForEach(Array(verse.lines.enumerated()), id: \.offset) { index, line in
+                    MatnLineText(
+                        line: line,
+                        marks: visibleMarks.filter { $0.line == index },
+                        onTapSymbol: { shownSymbol = $0 },
+                        onTapLine: onTapVerse
+                    )
+                    .accessibilityIdentifier("mutoon-line-\(verse.number)-\(index)")
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+
+            // 3. Highlighted readers and narrators pills on each بيت
+            let readingIds = Array(Set(visibleMarks.flatMap(\.readingIds))).sorted()
+            let pills = MatnSymbols.authorityPills(for: readingIds, catalog: catalog)
+            if !pills.isEmpty {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("القراء والرواة:")
+                        .font(.caption2.bold())
+                        .foregroundStyle(Color(uiColor: .mushafBrown))
+                    QiraatPills(pills: pills)
+                }
+                .padding(.top, 2)
+                .accessibilityIdentifier("mutoon-verse-readers-\(verse.number)")
+            }
+
+            // 4. Sharh hint / action row
+            Button(action: onTapVerse) {
+                HStack(spacing: 6) {
+                    if sharh != nil {
+                        Label {
+                            Text("الشرح متاح")
+                        } icon: {
+                            Image(systemName: "book.pages")
+                        }
+                        .font(.caption2)
+                        .foregroundStyle(Color(uiColor: .mushafBrown))
+                    }
+                    Spacer()
+                    HStack(spacing: 3) {
+                        Text("عرض البيت والشرح")
+                            .font(.caption2.bold())
+                        Image(systemName: "chevron.left")
+                            .font(.caption2.bold())
+                    }
+                    .foregroundStyle(Color(uiColor: .mushafBrown))
+                }
+            }
+            .buttonStyle(.plain)
+            .padding(.top, 2)
+            .accessibilityIdentifier("mutoon-verse-action-\(verse.number)")
         }
-        .padding(.vertical, 2)
-        .sheet(item: $shown) { mark in MatnSymbolCard(mark: mark) }
+        .padding(10)
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .fill(.qiraatCardFill)
+                .onTapGesture { onTapVerse() }
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(.qiraatCardStroke)
+                .allowsHitTesting(false)
+        )
+        .sheet(item: $shownSymbol) { mark in
+            MatnSymbolCard(mark: mark)
+        }
     }
 
     private var visibleMarks: [MatnSymbolAnnotation] { showsSymbols ? marks : [] }
+}
+
+/// The detail sheet shown when tapping a verse card: navigation between verses, the verse card in full styling,
+/// its classical commentary (الوافي or الهادي), and a breakdown of its reader and narrator symbols.
+struct MatnVerseSheet: View {
+    let work: QiraatMatn
+    var chapterTitle: String? = nil
+    let allVerses: [MatnVerse]
+    @State var currentVerse: MatnVerse
+    let symbols: MatnSymbolLayer
+    let sharh: MatnSharhStore
+    let catalog: QiraatCatalog?
+
+    @Environment(\.dismiss) private var dismiss
+    @AppStorage(MatnSymbolSettings.key) private var showsSymbols = true
+    @State private var shownSymbol: MatnSymbolAnnotation?
+
+    init(work: QiraatMatn, chapterTitle: String? = nil, allVerses: [MatnVerse], initialVerse: MatnVerse,
+         symbols: MatnSymbolLayer, sharh: MatnSharhStore, catalog: QiraatCatalog? = nil) {
+        self.work = work
+        self.chapterTitle = chapterTitle
+        self.allVerses = allVerses
+        self._currentVerse = State(initialValue: initialVerse)
+        self.symbols = symbols
+        self.sharh = sharh
+        self.catalog = catalog
+    }
+
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 14) {
+                    if allVerses.count > 1 {
+                        navigator
+                    }
+
+                    // 1. The Verse Card
+                    verseCard
+
+                    // 2. The Sharh (Commentary) Card
+                    sharhCard
+
+                    // 3. The Symbols breakdown
+                    if !currentMarks.isEmpty {
+                        symbolsBreakdown
+                    }
+                }
+                .padding()
+            }
+            .background(Color(uiColor: .mushafPaper))
+            .navigationTitle(Text(verbatim: work.labelAr))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button { dismiss() } label: { Text("إغلاق") }
+                        .accessibilityIdentifier("mutoon-verse-sheet-close")
+                }
+            }
+        }
+        .environment(\.layoutDirection, .rightToLeft)
+        .presentationDetents([.medium, .large])
+        .sheet(item: $shownSymbol) { mark in
+            MatnSymbolCard(mark: mark)
+        }
+        .simultaneousGesture(
+            DragGesture(minimumDistance: 30)
+                .onEnded { value in
+                    let h = value.translation.width
+                    let v = value.translation.height
+                    guard abs(h) > abs(v) * 1.5 else { return }
+                    if h < -30 {
+                        // In RTL, dragging left advances to next verse
+                        navigateToNext()
+                    } else if h > 30 {
+                        // Dragging right goes to previous verse
+                        navigateToPrevious()
+                    }
+                }
+        )
+        .accessibilityIdentifier("mutoon-verse-sheet")
+    }
+
+    private var currentIndex: Int {
+        allVerses.firstIndex(where: { $0.number == currentVerse.number }) ?? 0
+    }
+
+    private var canNavigatePrevious: Bool { currentIndex > 0 }
+    private var canNavigateNext: Bool { currentIndex < allVerses.count - 1 }
+
+    private func navigateToPrevious() {
+        guard canNavigatePrevious else { return }
+        currentVerse = allVerses[currentIndex - 1]
+    }
+
+    private func navigateToNext() {
+        guard canNavigateNext else { return }
+        currentVerse = allVerses[currentIndex + 1]
+    }
+
+    private var currentMarks: [MatnSymbolAnnotation] {
+        showsSymbols ? symbols.marks(work, verse: currentVerse.number) : []
+    }
+
+    private var navigator: some View {
+        HStack {
+            Button(action: navigateToPrevious) {
+                HStack(spacing: 4) {
+                    Image(systemName: "chevron.right")
+                    Text("البيت السابق")
+                }
+                .font(.caption.bold())
+                .padding(.horizontal, 10)
+                .padding(.vertical, 6)
+                .background(Capsule().fill(Color(uiColor: .secondarySystemBackground)))
+            }
+            .disabled(!canNavigatePrevious)
+            .opacity(canNavigatePrevious ? 1 : 0.35)
+            .accessibilityIdentifier("mutoon-verse-sheet-prev")
+
+            Spacer()
+
+            Text("البيت \(mutoonNumber(currentVerse.number)) من \(mutoonNumber(allVerses.count))")
+                .font(.caption.bold().monospacedDigit())
+                .foregroundStyle(Color(uiColor: .mushafBrown))
+
+            Spacer()
+
+            Button(action: navigateToNext) {
+                HStack(spacing: 4) {
+                    Text("البيت التالي")
+                    Image(systemName: "chevron.left")
+                }
+                .font(.caption.bold())
+                .padding(.horizontal, 10)
+                .padding(.vertical, 6)
+                .background(Capsule().fill(Color(uiColor: .secondarySystemBackground)))
+            }
+            .disabled(!canNavigateNext)
+            .opacity(canNavigateNext ? 1 : 0.35)
+            .accessibilityIdentifier("mutoon-verse-sheet-next")
+        }
+        .padding(.horizontal, 2)
+    }
+
+    private var verseCard: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 6) {
+                Text(verbatim: work.labelAr)
+                    .font(.caption.bold())
+                    .foregroundStyle(Color(uiColor: .mushafBrown))
+                if let chapterTitle {
+                    Text(verbatim: "·")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    Text(verbatim: chapterTitle)
+                        .font(.caption)
+                        .foregroundStyle(Color(uiColor: .mushafBrown))
+                }
+                Text(verbatim: "·")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                Text("البيت \(mutoonNumber(currentVerse.number))")
+                    .font(.caption.bold().monospacedDigit())
+                    .foregroundStyle(Color(uiColor: .mushafBrown))
+
+                Spacer()
+
+                if let page = currentVerse.printedPage, !page.isEmpty {
+                    Text("ص \(mutoonDigits(page))")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
+            }
+
+            VStack(alignment: .leading, spacing: 6) {
+                ForEach(Array(currentVerse.lines.enumerated()), id: \.offset) { index, line in
+                    MatnLineText(
+                        line: line,
+                        marks: currentMarks.filter { $0.line == index },
+                        onTapSymbol: { shownSymbol = $0 }
+                    )
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+
+            let readingIds = Array(Set(currentMarks.flatMap(\.readingIds))).sorted()
+            let pills = MatnSymbols.authorityPills(for: readingIds, catalog: catalog)
+            if !pills.isEmpty {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("القراء والرواة:")
+                        .font(.caption2.bold())
+                        .foregroundStyle(Color(uiColor: .mushafBrown))
+                    QiraatPills(pills: pills)
+                }
+                .padding(.top, 4)
+            }
+        }
+        .padding(12)
+        .background(RoundedRectangle(cornerRadius: 10).fill(.qiraatCardFill))
+        .overlay(RoundedRectangle(cornerRadius: 10).stroke(.qiraatCardStroke))
+    }
+
+    private var sharhCard: some View {
+        let entry = sharh.sharh(for: work, verse: currentVerse.number)
+        return VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 6) {
+                Image(systemName: "book.closed.fill")
+                    .foregroundStyle(Color(uiColor: .mushafBrown))
+                Text(verbatim: entry?.title ?? (work == .durrah ? "الدرة المضية" : "الشرح"))
+                    .font(.subheadline.bold())
+                    .foregroundStyle(Color(uiColor: .mushafBrown))
+                if let author = entry?.author, !author.isEmpty {
+                    Text(verbatim: "· \(author)")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                }
+                Spacer()
+                if let pages = entry?.entry.pages, !pages.isEmpty {
+                    Text("ص \(mutoonDigits(pages.joined(separator: "، ")))")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
+            }
+
+            Divider()
+
+            if let text = entry?.entry.text, !text.isEmpty {
+                Text(verbatim: text)
+                    .font(.body)
+                    .lineSpacing(6)
+                    .foregroundStyle(.primary)
+                    .textSelection(.enabled)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .accessibilityIdentifier("mutoon-verse-sheet-sharh-text")
+            } else {
+                VStack(alignment: .leading, spacing: 6) {
+                    Label {
+                        Text("لا يتوفر شرح لهذا البيت في المرجع المضمّن")
+                    } icon: {
+                        Image(systemName: "info.circle")
+                    }
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+
+                    if work == .durrah {
+                        Text("منظومة الدرة تعتمد أصولها على الشاطبية وفرشها على ما خالف أصله، ولم يُضمَّن لها شرح مستقل في التطبيق حالياً.")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                .padding(.vertical, 4)
+                .accessibilityIdentifier("mutoon-verse-sheet-sharh-empty")
+            }
+        }
+        .padding(12)
+        .background(RoundedRectangle(cornerRadius: 10).fill(.qiraatCardFill))
+        .overlay(RoundedRectangle(cornerRadius: 10).stroke(.qiraatCardStroke))
+    }
+
+    private var symbolsBreakdown: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("الرموز والدلالات في هذا البيت")
+                .font(.caption.bold())
+                .foregroundStyle(Color(uiColor: .mushafBrown))
+
+            ForEach(currentMarks) { mark in
+                Button {
+                    shownSymbol = mark
+                } label: {
+                    HStack(spacing: 10) {
+                        Text(verbatim: mark.text)
+                            .font(.system(.title3, design: .serif).bold())
+                            .foregroundStyle(MatnSymbolSettings.red)
+                            .frame(minWidth: 28)
+
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(verbatim: mark.definition?.namesAr ?? mark.text)
+                                .font(.subheadline.bold())
+                                .foregroundStyle(Color(uiColor: .mushafInk))
+                            if let reader = mark.definition?.readerAr {
+                                Text("القارئ: \(reader)")
+                                    .font(.caption2)
+                                    .foregroundStyle(.secondary)
+                            }
+                            if !mark.note.isEmpty {
+                                Text(verbatim: mark.note)
+                                    .font(.caption2)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+
+                        Spacer()
+
+                        Image(systemName: "chevron.left")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                    }
+                    .padding(8)
+                    .background(RoundedRectangle(cornerRadius: 8).fill(Color(uiColor: .secondarySystemBackground).opacity(0.5)))
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(12)
+        .background(RoundedRectangle(cornerRadius: 10).fill(.qiraatCardFill))
+        .overlay(RoundedRectangle(cornerRadius: 10).stroke(.qiraatCardStroke))
+    }
+}
+
+/// Backwards-compatible row adapter wrapping `MatnVerseCard`.
+struct MatnVerseRow: View {
+    let verse: MatnVerse
+    var marks: [MatnSymbolAnnotation] = []
+
+    var body: some View {
+        MatnVerseCard(
+            work: marks.first?.work ?? .shatibiyyah,
+            chapterTitle: nil,
+            verse: verse,
+            marks: marks,
+            sharh: nil,
+            catalog: nil,
+            onTapVerse: {}
+        )
+    }
 }
 
 /// One hemistich, selectable for copying, with its marks red and tappable. A text view, not a SwiftUI `Text`: its links
@@ -209,7 +668,8 @@ struct MatnVerseRow: View {
 private struct MatnLineText: UIViewRepresentable {
     let line: String
     let marks: [MatnSymbolAnnotation]
-    let onTap: (MatnSymbolAnnotation) -> Void
+    let onTapSymbol: (MatnSymbolAnnotation) -> Void
+    var onTapLine: (() -> Void)? = nil
 
     func makeUIView(context: Context) -> UITextView {
         let view = UITextView()
@@ -224,11 +684,18 @@ private struct MatnLineText: UIViewRepresentable {
         view.linkTextAttributes = [.foregroundColor: UIColor.systemRed]
         view.delegate = context.coordinator
         view.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+
+        let tapRecognizer = UITapGestureRecognizer(target: context.coordinator, action: #selector(context.coordinator.handleTap(_:)))
+        tapRecognizer.delegate = context.coordinator
+        view.addGestureRecognizer(tapRecognizer)
+        context.coordinator.textView = view
+
         return view
     }
 
     func updateUIView(_ view: UITextView, context: Context) {
         context.coordinator.parent = self
+        context.coordinator.textView = view
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .natural
         paragraph.baseWritingDirection = .rightToLeft
@@ -256,15 +723,35 @@ private struct MatnLineText: UIViewRepresentable {
 
     func makeCoordinator() -> Coordinator { Coordinator(parent: self) }
 
-    final class Coordinator: NSObject, UITextViewDelegate {
+    final class Coordinator: NSObject, UITextViewDelegate, UIGestureRecognizerDelegate {
         var parent: MatnLineText
+        weak var textView: UITextView?
+
         init(parent: MatnLineText) { self.parent = parent }
+
+        @objc func handleTap(_ gesture: UITapGestureRecognizer) {
+            guard let tv = textView else {
+                parent.onTapLine?()
+                return
+            }
+            let location = gesture.location(in: tv)
+            let charIndex = tv.layoutManager.characterIndex(for: location, in: tv.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+            if charIndex < tv.textStorage.length {
+                let link = tv.textStorage.attribute(.link, at: charIndex, effectiveRange: nil)
+                if link != nil { return }
+            }
+            parent.onTapLine?()
+        }
+
+        func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+            true
+        }
 
         func textView(_ textView: UITextView, primaryActionFor textItem: UITextItem, defaultAction: UIAction) -> UIAction? {
             guard case let .link(url) = textItem.content, url.scheme == MatnSymbolSettings.scheme,
                   let index = Int(url.host() ?? ""), parent.marks.indices.contains(index) else { return nil }
             let mark = parent.marks[index]
-            return UIAction { [weak self] _ in self?.parent.onTap(mark) }
+            return UIAction { [weak self] _ in self?.parent.onTapSymbol(mark) }
         }
 
         /// A long press on a symbol offers no "open link" menu: the symbol is not a web address.

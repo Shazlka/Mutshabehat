@@ -51,6 +51,46 @@ public enum MatnSymbols {
         ("Q10", "خلف العاشر", "إسحاق", "إدريس"),
     ]
 
+    /// Canonical fallback colors for the ten readers when no catalog is available.
+    public static let fallbackColors: [String: String] = [
+        "Q01": "#2563EB", "Q02": "#7C3AED", "Q03": "#059669", "Q04": "#D97706", "Q05": "#DC2626",
+        "Q06": "#4F46E5", "Q07": "#0D9488", "Q08": "#9333EA", "Q09": "#0284C7", "Q10": "#E11D48",
+    ]
+
+    /// Authority pills for a list of reading or reader IDs. Uses `catalog` when present, else builds them
+    /// from the canonical readers of the متون.
+    public static func authorityPills(for authorityIds: [String], catalog: QiraatCatalog? = nil) -> [AuthorityPill] {
+        if let catalog {
+            return rollupAuthorityPills(authorityIds, catalog: catalog)
+        }
+        var narratorsByReader: [String: Set<String>] = [:]
+        var explicitReaders: Set<String> = []
+        for id in authorityIds where !id.isEmpty {
+            if id.contains("-") {
+                let parts = id.split(separator: "-")
+                narratorsByReader[String(parts[0]), default: []].insert(id)
+            } else {
+                explicitReaders.insert(id)
+            }
+        }
+        var pills: [AuthorityPill] = []
+        for r in readers {
+            let present = narratorsByReader[r.id] ?? []
+            let color = fallbackColors[r.id] ?? "#7C3AED"
+            if explicitReaders.contains(r.id) || present.count >= 2 {
+                pills.append(AuthorityPill(key: r.id, name: "الإمام \(r.name)", color: color, kind: .reader))
+            } else {
+                if present.contains(r.id + "-R01") {
+                    pills.append(AuthorityPill(key: r.id + "-R01", name: "الراوي \(r.first)", color: color, kind: .narrator))
+                }
+                if present.contains(r.id + "-R02") {
+                    pills.append(AuthorityPill(key: r.id + "-R02", name: "الراوي \(r.second)", color: color, kind: .narrator))
+                }
+            }
+        }
+        return pills
+    }
+
     /// Three letters (reader, first narrator, second narrator) for each reader index, in a متن's own order.
     private static func letters(_ work: QiraatMatn, _ triples: [(reader: Int, letters: String)], definedIn: String) -> [MatnSymbolDefinition] {
         triples.flatMap { reader, letters -> [MatnSymbolDefinition] in
