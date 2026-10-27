@@ -215,6 +215,7 @@ function buildTempRow(tempId: string, draft: CreateEntryInput, page: ReviewPage)
     deleted: false,
     appliesWasl: draft.appliesWasl ?? true,
     appliesWaqf: draft.appliesWaqf ?? true,
+    hiddenFromMushaf: false,
     hamzahDetail: draft.hamzahDetail ?? null,
     narrators: toReviewNarrators(draft.narrators, page.narrators),
     flags: [],
@@ -786,6 +787,31 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
     [deviceId]
   )
 
+  // Show / hide one وجه on the Mushaf. The entry stays in the database and in this editor.
+  const handleToggleHidden = useCallback(
+    async (row: ReviewRow, hidden: boolean) => {
+      if (!deviceId) return
+      if (isPendingRow(row)) {
+        setErrorMessage('هذا الوجه ما زال قيد الحفظ — انتظر لحظة')
+        return
+      }
+      setIsSaving(true)
+      setErrorMessage(null)
+      setSaveMessage(null)
+
+      const result = await reviewApi.setHidden(row, hidden, deviceId)
+      setIsSaving(false)
+      if (result.ok) {
+        applyRowUpdate(result.data)
+        setSaveMessage(hidden ? 'أُخفي الوجه من المصحف وبقي في قاعدة البيانات' : 'أُظهر الوجه في المصحف')
+        setTimeout(() => setSaveMessage(null), 3000)
+      } else {
+        setErrorMessage(result.error.messageAr ?? result.error.message)
+      }
+    },
+    [deviceId]
+  )
+
   // Save Row Edits (fields + narrators). Optimistic: the row updates at once and the two requests
   // (fields, then narrators) run in the background; progress and failures show in the status bar.
   const handleSaveRowEdits = useCallback(
@@ -1162,6 +1188,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
                   onCancelNewEntry={handleCancelNewEntry}
                   onConfirmRow={handleConfirmRow}
                   onFlagRow={handleFlagRow}
+                  onToggleHidden={handleToggleHidden}
                   onSaveRowEdits={handleSaveRowEdits}
                   onDraftDirtyChange={handleDraftDirtyChange}
                   onDeleteRow={handleDeleteRow}
@@ -1224,6 +1251,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
                 onCancelNewEntry={handleCancelNewEntry}
                 onConfirmRow={handleConfirmRow}
                 onFlagRow={handleFlagRow}
+                onToggleHidden={handleToggleHidden}
                 onSaveRowEdits={handleSaveRowEdits}
                 onDeleteRow={handleDeleteRow}
                 onBulkDelete={handleBulkDelete}

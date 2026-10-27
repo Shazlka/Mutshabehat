@@ -68,6 +68,28 @@ test('validatePatchBody validates common action, entryId, and version rules', ()
   }
 })
 
+test('validatePatchBody accepts the hidden action only with a boolean', () => {
+  for (const hidden of [true, false]) {
+    assert.deepEqual(
+      validatePatchBody({ action: 'hidden', entryId: 'entry-1', version: 'v', deviceId: 'device-1', hidden }),
+      { ok: true, value: { action: 'hidden', entryId: 'entry-1', version: 'v', deviceId: 'device-1', hidden } },
+    )
+  }
+  for (const hidden of ['true', 1, null, undefined]) {
+    assert.equal(validatePatchBody({ action: 'hidden', entryId: 'entry-1', version: 'v', hidden }).ok, false)
+  }
+})
+
+test('the hide-from-mushaf migration filters the export and guards the toggle RPC', async () => {
+  const { readFileSync } = await import('node:fs')
+  const sql = readFileSync('supabase/migrations/20261027100000_qiraat_hide_from_mushaf.sql', 'utf8')
+  assert.match(sql, /ADD COLUMN IF NOT EXISTS hidden_from_mushaf boolean NOT NULL DEFAULT false/)
+  assert.match(sql, /AND NOT e\.hidden_from_mushaf/)
+  assert.match(sql, /'hiddenFromMushaf', e\.hidden_from_mushaf/)
+  assert.match(sql, /qiraat_review_begin\(p_entry_id, p_expected, p_device_id\)/)
+  assert.match(sql, /GRANT EXECUTE ON FUNCTION qiraat_review_set_hidden\(text, boolean, timestamptz, text\) TO authenticated/)
+})
+
 test('validatePatchBody accepts status and validates status and optional note/deviceId', () => {
   const valid = validatePatchBody({
     action: 'status',

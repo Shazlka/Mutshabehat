@@ -86,6 +86,8 @@ export type ReviewRow = {
   appliesWasl: boolean
   appliesWaqf: boolean
   hamzahDetail: HamzahDetail | null
+  /** Kept in the database and the editor, but left out of the Mushaf the reader sees. */
+  hiddenFromMushaf: boolean
   narrators: ReviewNarrator[]
   flags: ReviewFlag[]
 }

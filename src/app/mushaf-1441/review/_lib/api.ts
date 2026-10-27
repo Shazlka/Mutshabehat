@@ -150,6 +150,14 @@ export function setStatus(
   return patch('status', row, deviceId, { status, note })
 }
 
+export function setHidden(
+  row: ReviewRow,
+  hidden: boolean,
+  deviceId: string,
+): Promise<ReviewResult<ReviewRow>> {
+  return patch('hidden', row, deviceId, { hidden })
+}
+
 export function updateEntry(
   row: ReviewRow,
   fields: EntryFields,

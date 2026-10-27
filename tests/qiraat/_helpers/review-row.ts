@@ -38,6 +38,7 @@ export function row(overrides: Partial<Omit<ReviewRow, 'narrators'>> & { narrato
     deleted: false,
     appliesWasl: true,
     appliesWaqf: true,
+    hiddenFromMushaf: false,
     hamzahDetail: null,
     flags: [],
     narrators: narratorIds.map((n) => ({ id: n.id, code: null, nameAr: n.id, action: null, wajhOrder: 1, wajhNote: null })),

@@ -37,6 +37,13 @@ export type ValidatedPatch =
       note?: string | null
     }
   | {
+      action: 'hidden'
+      entryId: string
+      version: string
+      deviceId?: string | null
+      hidden: boolean
+    }
+  | {
       action: 'update'
       entryId: string
       version: string
@@ -144,7 +151,7 @@ export type ValidatedPost =
       deviceId?: string | null
     }
 
-const PATCH_ACTIONS = ['status', 'update', 'narrators', 'delete', 'restore'] as const
+const PATCH_ACTIONS = ['status', 'hidden', 'update', 'narrators', 'delete', 'restore'] as const
 const STATUSES = ['unreviewed', 'reviewed', 'flagged'] as const
 const ENTRY_FIELD_KEYS = [
   'kind',
@@ -501,6 +508,11 @@ export function validatePatchBody(input: unknown): ValidationResult<ValidatedPat
         note,
       },
     }
+  }
+
+  if (action === 'hidden') {
+    if (typeof input.hidden !== 'boolean') return failure('hidden must be a boolean')
+    return { ok: true, value: { action, entryId, version, deviceId, hidden: input.hidden } }
   }
 
   if (action === 'update') {

@@ -36,6 +36,8 @@ type Props = {
   onCancelNewEntry(): void
   onConfirmRow(row: ReviewRow): Promise<void>
   onFlagRow(row: ReviewRow): Promise<void>
+  /** Show or hide one وجه on the Mushaf; the entry stays in the database either way. */
+  onToggleHidden(row: ReviewRow, hidden: boolean): Promise<void>
   onSaveRowEdits(row: ReviewRow, fields: EntryFields, narrators: NarratorInput[], options?: SaveRowOptions): Promise<void>
   onDeleteRow(row: ReviewRow): Promise<void>
   onBulkDelete(rows: ReviewRow[], note: string | null): Promise<void>
@@ -69,6 +71,7 @@ export default function MobileReviewEditorView({
   onCancelNewEntry,
   onConfirmRow,
   onFlagRow,
+  onToggleHidden,
   onSaveRowEdits,
   onDeleteRow,
   onBulkDelete,
@@ -452,6 +455,27 @@ export default function MobileReviewEditorView({
                     </div>
 
                     <div className="flex shrink-0 items-center gap-1.5">
+                      {!multiSelectMode ? (
+                        <button
+                          type="button"
+                          onClick={(event) => {
+                            event.stopPropagation()
+                            void onToggleHidden(row, !row.hiddenFromMushaf)
+                          }}
+                          disabled={isSaving}
+                          aria-pressed={row.hiddenFromMushaf}
+                          aria-label={row.hiddenFromMushaf ? `إظهار الوجه ${idx + 1} في المصحف` : `إخفاء الوجه ${idx + 1} من المصحف`}
+                          className={cn(
+                            'inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] font-bold disabled:opacity-50',
+                            row.hiddenFromMushaf
+                              ? 'border-amber-300 bg-amber-50 text-amber-800'
+                              : 'border-[var(--color-border)] text-[var(--color-ink-muted)]'
+                          )}
+                        >
+                          <span aria-hidden="true">{row.hiddenFromMushaf ? '🚫' : '👁'}</span>
+                          <span>{row.hiddenFromMushaf ? 'مخفي' : 'ظاهر'}</span>
+                        </button>
+                      ) : null}
                       {approvalKind(row) === 'auto' ? (
                         <span
                           className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-slate-100 px-2 py-0.2 text-[11px] font-bold text-slate-700"

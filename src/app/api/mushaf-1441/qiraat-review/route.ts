@@ -117,6 +117,17 @@ export async function PATCH(request: NextRequest) {
       return json(result.data ?? {})
     }
 
+    if (value.action === 'hidden') {
+      const result = await supabase.rpc('qiraat_review_set_hidden', {
+        p_entry_id: value.entryId,
+        p_hidden: value.hidden,
+        p_expected: value.version,
+        p_device_id: value.deviceId,
+      })
+      if (result.error) return databaseError(result.error.message)
+      return json(result.data ?? {})
+    }
+
     if (value.action === 'update') {
       const result = await supabase.rpc('qiraat_review_update_entry', {
         p: {

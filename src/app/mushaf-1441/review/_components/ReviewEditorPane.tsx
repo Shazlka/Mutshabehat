@@ -54,6 +54,8 @@ type Props = {
   onCancelNewEntry(): void
   onConfirmRow(row: ReviewRow): Promise<void>
   onFlagRow(row: ReviewRow): Promise<void>
+  /** Show or hide one وجه on the Mushaf; the entry stays in the database either way. */
+  onToggleHidden(row: ReviewRow, hidden: boolean): Promise<void>
   onSaveRowEdits(row: ReviewRow, fields: EntryFields, narrators: NarratorInput[], options?: SaveRowOptions): Promise<void>
   /** Tells the page whether the open draft has edits that are not saved yet. */
   onDraftDirtyChange?(dirty: boolean): void
@@ -84,6 +86,7 @@ export default function ReviewEditorPane({
   onCancelNewEntry,
   onConfirmRow,
   onFlagRow,
+  onToggleHidden,
   onSaveRowEdits,
   onDraftDirtyChange,
   onDeleteRow,
@@ -549,7 +552,8 @@ export default function ReviewEditorPane({
                       'inline-flex flex-wrap items-center gap-1 rounded px-1.5 py-0.2 text-[11px] font-bold transition-all',
                       isSelected && !multiSelectMode
                         ? 'border border-[var(--color-primary)] bg-[var(--color-primary)] text-white shadow-xs'
-                        : 'border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-soft)] hover:bg-[var(--color-surface-2)]'
+                        : 'border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-soft)] hover:bg-[var(--color-surface-2)]',
+                      row.hiddenFromMushaf && 'border-dashed opacity-60'
                     )}
                     title={
                       approvalKind(row) === 'auto'
@@ -575,6 +579,29 @@ export default function ReviewEditorPane({
                       </span>
                     ) : null}
                   </button>
+                  {!multiSelectMode ? (
+                    <button
+                      type="button"
+                      onClick={() => void onToggleHidden(row, !row.hiddenFromMushaf)}
+                      disabled={isSaving}
+                      aria-pressed={row.hiddenFromMushaf}
+                      aria-label={row.hiddenFromMushaf ? `إظهار الوجه ${idx + 1} في المصحف` : `إخفاء الوجه ${idx + 1} من المصحف`}
+                      title={
+                        row.hiddenFromMushaf
+                          ? 'مخفي من المصحف (محفوظ في قاعدة البيانات) — اضغط للإظهار'
+                          : 'ظاهر في المصحف — اضغط للإخفاء مع الإبقاء عليه في قاعدة البيانات'
+                      }
+                      className={cn(
+                        'inline-flex items-center gap-0.5 rounded border px-1 py-0.2 text-[11px] font-bold disabled:opacity-50',
+                        row.hiddenFromMushaf
+                          ? 'border-amber-300 bg-amber-50 text-amber-800'
+                          : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-muted)] hover:bg-[var(--color-surface-2)]'
+                      )}
+                    >
+                      <span aria-hidden="true">{row.hiddenFromMushaf ? '🚫' : '👁'}</span>
+                      <span>{row.hiddenFromMushaf ? 'مخفي' : 'ظاهر'}</span>
+                    </button>
+                  ) : null}
                 </span>
               )
             })}
