@@ -4597,6 +4597,26 @@
           }
         }
       }
+    },
+    "مطابق لقول الشارح (آليًّا)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Matches the commentary (by script)"
+          }
+        }
+      }
+    },
+    "مجموع ما تدل عليه الرموز في هذا الموضع هو القرّاء الذين سمّاهم الشارح للبيت نفسه." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Together, the symbols here name exactly the readers the commentary names for this verse."
+          }
+        }
+      }
     }
   },
   "version" : "1.3"

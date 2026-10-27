@@ -50,10 +50,12 @@ MUTOON_SRC ?= $(GEN)/QiraatReferences-full/verses.json
 mutoon:
 	python3 scripts/build_mutoon.py "$(MUTOON_SRC)" $(GEN)/QiraatMutoon/mutoon.json
 
-# Where the reader and narrator symbols sit in the متون (red letters on the «المتون» page): built from a hand-checked
-# list of marks (each verified against a شرح) into Generated/QiraatMutoon/mutoon-symbols.json. Run after `make mutoon`.
+# Where the reader and narrator symbols sit in the متون (red letters on the «المتون» page): built from a list of marks,
+# each checked against a شرح (by hand, or matched to it by Generated/QiraatMutoon/sharh_symbols.py), into
+# Generated/QiraatMutoon/mutoon-symbols.json. Run after `make mutoon`. Uses symbols-all.json when present, else the
+# hand-checked sample.
 #   make matn-symbols MATN_SYMBOLS_SRC=/path/to/marks.json
-MATN_SYMBOLS_SRC ?= $(GEN)/QiraatMutoon/symbols-sample.json
+MATN_SYMBOLS_SRC ?= $(firstword $(wildcard $(GEN)/QiraatMutoon/symbols-all.json) $(GEN)/QiraatMutoon/symbols-sample.json)
 matn-symbols:
 	python3 scripts/build_matn_symbols.py "$(MATN_SYMBOLS_SRC)" $(GEN)/QiraatMutoon/mutoon.json $(GEN)/QiraatMutoon/mutoon-symbols.json
 

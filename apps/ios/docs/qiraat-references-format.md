@@ -102,8 +102,15 @@ A letter is never coloured because of what it is, only because a checked mark pu
 hemistich and the word, and whether its first letter or the whole word is the symbol; a word that is not in the
 hemistich stops the build. The pre-build step bundles the file next to `mutoon.json`.
 
-The current file is a sample: 77 marks in 33 verses (الشاطبية 42 in 19، الدرة 11 in 6، طيبة النشر 24 in 8), each checked
-against الوافي في شرح الشاطبية, or الهادي شرح طيبة النشر (for الدرة: the letter from الدرة ٥–٨, the reading from
-الهادي). It includes single letters, group letters (ذ، ش، ظ) and word symbols (صحبة، حق، سما، روى، كنز، ثوى، حما), and leaves
-letters the شرح says are not symbols plain («جَلَا» in ١١١، «تَلَا» in ٤٥٤).
+`method` says how a verified mark was checked: `hand` (read against the شرح; the default when the field is missing) or
+`match` (matched to it by script). The card says «محقَّق من الشرح» or «مطابق لقول الشارح (آليًّا)». A word symbol matches
+either spelling of its last letter («رضى/رضا»).
 
+The current file holds 3,382 marks in 1,275 verses (الشاطبية 1,206 in 518، طيبة النشر 2,057 in 672، الدرة 119 in 85).
+77 were checked by hand against الوافي في شرح الشاطبية and الهادي شرح طيبة النشر (`symbols-sample.json`); the rest were
+matched to the same شرحين by `Generated/QiraatMutoon/sharh_symbols.py` (`symbols-all.json`, which also carries the
+hand-checked ones). The match accepts a run of neighbouring symbol words only when the readers it stands for are exactly
+the readers the شرح names together for that verse, or a word the شرح cites by name as a symbol («بالحاء من «حلا»»); see
+the script for the words that are never symbols. الدرة, which has no شرح in the library, is read against الهادي's
+explanation of the طيبة verses on the same Quran word, narrowed to its three readers. Verses the شرح does not confirm
+stay plain. `Generated/QiraatMutoon/review-symbols.html` lists every mark for review.

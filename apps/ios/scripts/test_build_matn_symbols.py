@@ -41,6 +41,12 @@ class BuildMatnSymbolsTests(unittest.TestCase):
         doc = build_matn_symbols.build([mark("رَاوِيهِ")], MUTOON)
         self.assertEqual(len(doc["annotations"]), 1)
 
+    def test_a_stray_mark_before_a_word_stays_with_the_space(self):
+        mutoon = {"works": [{"work": "shatibiyyah", "chapters": [{"verses": [{"number": 1, "lines": ["قَالَ \u0650إلَى هُنَا", ""]}]}]}]}
+        m = build_matn_symbols.build([mark("\u0650إلَى", symbol="أ", readingIds=["Q01"])], mutoon)["annotations"][0]
+        self.assertEqual(m["text"], "إ")
+        self.assertEqual(build_matn_symbols.characters("قَالَ \u0650إلَى")[3], " \u0650")
+
     def test_letters_alone_find_a_word_spelled_with_other_marks(self):
         m = build_matn_symbols.build([mark("راويه")], MUTOON)["annotations"][0]
         self.assertEqual(m["text"], "رَ")
@@ -52,6 +58,12 @@ class BuildMatnSymbolsTests(unittest.TestCase):
             build_matn_symbols.build([mark("رَاوِيهِ"), mark("رَاوِيهِ")], MUTOON)
         with self.assertRaises(ValueError):
             build_matn_symbols.build([mark("رَاوِيهِ", status="guessed")], MUTOON)
+        with self.assertRaises(ValueError):
+            build_matn_symbols.build([mark("رَاوِيهِ", method="guessed")], MUTOON)
+
+    def test_the_method_is_kept_and_defaults_to_by_hand(self):
+        doc = build_matn_symbols.build([mark("رَاوِيهِ"), mark("نَاصِرٌ", method="match")], MUTOON)
+        self.assertEqual([m["method"] for m in doc["annotations"]], ["hand", "match"])
 
     def test_main_writes_the_file(self):
         with tempfile.TemporaryDirectory() as folder:

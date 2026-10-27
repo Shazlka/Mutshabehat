@@ -109,7 +109,30 @@ private func offset(of word: String, in line: String) -> Int {
         let marks = #"{"schemaVersion":1,"annotations":[{"work":"shatibiyyah","verse":1,"line":0,"start":\#(r),"end":\#(r + 1),"text":"رَ","symbol":"ر","kind":"reader","readingIds":["Q07"],"note":"","source":"","status":"verified"},{"work":"elsewhere"}]}"#
         try Data(marks.utf8).write(to: url.appendingPathComponent(MatnSymbolLayer.fileName))
         #expect(MatnLibrary(directory: url).symbols.count == 1)
+        #expect(MatnLibrary(directory: url).symbols.marks(.shatibiyyah, verse: 1).first?.method == .hand, "no field: by hand")
         try FileManager.default.removeItem(at: url.appendingPathComponent(MatnSymbolLayer.fileName))
         #expect(MatnLibrary(directory: url).symbols.isEmpty)
+    }
+
+    @Test func aMarkSaysWhetherItWasCheckedByHandOrMatchedByScript() throws {
+        let json = #"{"work":"tayyibah","verse":1,"line":0,"start":0,"end":1,"text":"ر","symbol":"ر","kind":"reader","readingIds":["Q07"],"status":"verified","method":"match"}"#
+        let mark = try JSONDecoder().decode(MatnSymbolAnnotation.self, from: Data(json.utf8))
+        #expect(mark.method == .match && mark.note.isEmpty && mark.source.isEmpty)
+        let bad = json.replacingOccurrences(of: #""match""#, with: #""guess""#)
+        #expect(throws: (any Error).self) { try JSONDecoder().decode(MatnSymbolAnnotation.self, from: Data(bad.utf8)) }
+    }
+
+    @Test func aWordSymbolMatchesEitherSpellingOfItsLastLetter() {
+        let lines = ["قَالَ رِضَا هُنَا", "صَفِي"]
+        let rida = MatnSymbolAnnotation(work: .tayyibah, verse: 1, line: 0, start: 4, end: 7, text: "رِضَا", symbol: "رضي",
+                                        kind: .group, readingIds: ["Q06", "Q07"], note: "", source: "", status: .verified)
+        #expect(Array(lines[0])[4..<7].map(String.init).joined() == "رِضَا")
+        #expect(rida.problem(in: lines) == nil)
+        let safi = MatnSymbolAnnotation(work: .tayyibah, verse: 1, line: 1, start: 0, end: 3, text: "صَفِي", symbol: "صفا",
+                                        kind: .group, readingIds: ["Q10", "Q05-R01"], note: "", source: "", status: .verified)
+        #expect(safi.problem(in: lines) == nil)
+        #expect(MatnSymbols.definition(.tayyibah, symbol: "رضا")?.readingIds == ["Q06", "Q07"])
+        // A letter is still only its letter: the word «رضا» is no symbol in الشاطبية, which has no such word.
+        #expect(MatnSymbols.definition(.shatibiyyah, symbol: "رضا") == nil)
     }
 }

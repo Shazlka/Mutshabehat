@@ -343,8 +343,7 @@ private struct MatnSymbolCard: View {
                         row(Text("القاعدة"), Text("من البيت \(definition.definedIn) في \(mark.work.labelAr)"))
                     }
                     if !mark.source.isEmpty { row(Text("المصدر"), Text(verbatim: mark.source)) }
-                    row(Text("الحالة"), Label { Text("محقَّق من الشرح") } icon: { Image(systemName: "checkmark.seal.fill") }
-                        .foregroundStyle(.green))
+                    row(Text("الحالة"), status)
                 }
             }
             .navigationTitle(Text(verbatim: mark.work.labelAr))
@@ -358,6 +357,21 @@ private struct MatnSymbolCard: View {
         .environment(\.layoutDirection, .rightToLeft)
         .presentationDetents([.medium, .large])
         .accessibilityIdentifier("mutoon-symbol-card")
+    }
+
+    /// Checked by hand, or matched to the شرح by script (its readers are exactly the ones the شرح names there).
+    @ViewBuilder private var status: some View {
+        switch mark.method {
+        case .hand:
+            Label { Text("محقَّق من الشرح") } icon: { Image(systemName: "checkmark.seal.fill") }.foregroundStyle(.green)
+        case .match:
+            VStack(alignment: .leading, spacing: 2) {
+                Label { Text("مطابق لقول الشارح (آليًّا)") } icon: { Image(systemName: "checkmark.circle") }
+                    .foregroundStyle(.green)
+                Text("مجموع ما تدل عليه الرموز في هذا الموضع هو القرّاء الذين سمّاهم الشارح للبيت نفسه.")
+                    .font(.caption).foregroundStyle(.secondary)
+            }
+        }
     }
 
     private var kindLabel: Text {

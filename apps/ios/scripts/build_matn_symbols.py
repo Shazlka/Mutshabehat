@@ -7,6 +7,7 @@ a شرح (the list carries the book text it quotes, so it lives in the git-ignor
                 "mode": "letter", "symbol": "ر", "kind": "reader", "readingIds": ["Q07"],
                 "note": "...", "source": "...", "status": "verified"}]}
 
+`method` says how a mark was checked: "hand" (read against the شرح; the default) or "match" (matched to it by script).
 `mode` "letter" marks the word's first letter with its marks (the symbol letter of a word, as every متن defines it);
 "word" marks the whole word (a word symbol such as صحبة، سما، كفى). The word is found by its exact spelling in the
 hemistich, else by its letters alone; `occurrence` picks the n-th match. Positions are counted in characters as Swift
@@ -23,6 +24,7 @@ import unicodedata
 SCHEMA_VERSION = 1
 KINDS = {"reader", "narrator", "group"}
 STATUSES = {"verified", "extracted"}
+METHODS = {"hand", "match"}
 
 
 def characters(text):
@@ -48,7 +50,7 @@ def words(chars):
     """(start, end) character spans of the words of a hemistich, punctuation trimmed from the end."""
     spans, start = [], None
     for i, c in enumerate(chars + [" "]):
-        if c.isspace():
+        if c[0].isspace():  # a stray mark written before a word attaches to the space, as in Swift
             if start is not None:
                 end = i
                 while end > start and not any(unicodedata.category(x).startswith("L") for x in chars[end - 1]):
@@ -86,8 +88,8 @@ def build(marks, mutoon):
     verses = {(w["work"], v["number"]): v["lines"] for w in mutoon["works"] for c in w["chapters"] for v in c["verses"]}
     out, seen = [], set()
     for mark in marks:
-        if mark.get("kind") not in KINDS or mark.get("status") not in STATUSES:
-            raise ValueError(f'{mark.get("work")} {mark.get("verse")}: kind or status missing')
+        if mark.get("kind") not in KINDS or mark.get("status") not in STATUSES or mark.get("method", "hand") not in METHODS:
+            raise ValueError(f'{mark.get("work")} {mark.get("verse")}: kind, status or method missing')
         start, end, text = locate(mark, verses)
         slot = (mark["work"], mark["verse"], mark["line"], start)
         if slot in seen:
@@ -95,7 +97,8 @@ def build(marks, mutoon):
         seen.add(slot)
         out.append({"work": mark["work"], "verse": mark["verse"], "line": mark["line"], "start": start, "end": end,
                     "text": text, "symbol": mark["symbol"], "kind": mark["kind"], "readingIds": mark["readingIds"],
-                    "note": mark.get("note", ""), "source": mark.get("source", ""), "status": mark["status"]})
+                    "note": mark.get("note", ""), "source": mark.get("source", ""), "status": mark["status"],
+                    "method": mark.get("method", "hand")})
     out.sort(key=lambda m: (m["work"], m["verse"], m["line"], m["start"]))
     return {"schemaVersion": SCHEMA_VERSION, "annotations": out}
 

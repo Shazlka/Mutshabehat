@@ -127,7 +127,16 @@ public enum MatnSymbols {
 
     /// The symbol of `work` spelled `symbol` (marks and alef forms ignored), or nil.
     public static func definition(_ work: QiraatMatn, symbol: String) -> MatnSymbolDefinition? {
-        byKey[work]?[key(symbol)]
+        if let found = byKey[work]?[key(symbol)] { return found }
+        return definitions(work).first { $0.key.count > 1 && wordKey($0.symbol) == wordKey(symbol) }
+    }
+
+    /// A word symbol's letters with its last letter's two spellings made one: the متون write «رضى» and «رضا»، «صفا»
+    /// and «صفي».
+    public static func wordKey(_ text: String) -> String {
+        let letters = key(text)
+        guard letters.count > 1, letters.hasSuffix("ي") else { return letters }
+        return String(letters.dropLast()) + "ا"
     }
 
     /// Letters only, the way a symbol is looked up: marks and tatweel dropped, ا for أ إ آ ٱ, ي for ى, ه for ة and هـ.
@@ -155,6 +164,15 @@ public enum MatnSymbolStatus: String, Codable, Sendable {
     case extracted
 }
 
+/// How a verified mark was checked.
+public enum MatnSymbolMethod: String, Codable, Sendable {
+    /// Read against the شرح by hand.
+    case hand
+    /// Matched to the شرح by script: the readers its run of symbols stands for are exactly the readers the شرح names
+    /// together for that verse.
+    case match
+}
+
 /// A symbol marked in one hemistich of a verse: where it is, whom it names and on what authority. A layer over the
 /// متن (`mutoon-symbols.json`); the verse text itself is never changed.
 public struct MatnSymbolAnnotation: Codable, Sendable, Hashable, Identifiable {
@@ -176,14 +194,38 @@ public struct MatnSymbolAnnotation: Codable, Sendable, Hashable, Identifiable {
     /// The شرح it was checked against.
     public let source: String
     public let status: MatnSymbolStatus
+    /// How it was checked; a file without the field means by hand.
+    public let method: MatnSymbolMethod
 
     public var id: String { "\(work.rawValue)-\(verse)-\(line)-\(start)" }
 
     public init(work: QiraatMatn, verse: Int, line: Int, start: Int, end: Int, text: String, symbol: String,
-                kind: MatnSymbolKind, readingIds: [String], note: String, source: String, status: MatnSymbolStatus) {
+                kind: MatnSymbolKind, readingIds: [String], note: String, source: String, status: MatnSymbolStatus,
+                method: MatnSymbolMethod = .hand) {
         self.work = work; self.verse = verse; self.line = line; self.start = start; self.end = end; self.text = text
         self.symbol = symbol; self.kind = kind; self.readingIds = readingIds; self.note = note; self.source = source
-        self.status = status
+        self.status = status; self.method = method
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case work, verse, line, start, end, text, symbol, kind, readingIds, note, source, status, method
+    }
+
+    public init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        work = try c.decode(QiraatMatn.self, forKey: .work)
+        verse = try c.decode(Int.self, forKey: .verse)
+        line = try c.decode(Int.self, forKey: .line)
+        start = try c.decode(Int.self, forKey: .start)
+        end = try c.decode(Int.self, forKey: .end)
+        text = try c.decode(String.self, forKey: .text)
+        symbol = try c.decode(String.self, forKey: .symbol)
+        kind = try c.decode(MatnSymbolKind.self, forKey: .kind)
+        readingIds = try c.decode([String].self, forKey: .readingIds)
+        note = try c.decodeIfPresent(String.self, forKey: .note) ?? ""
+        source = try c.decodeIfPresent(String.self, forKey: .source) ?? ""
+        status = try c.decode(MatnSymbolStatus.self, forKey: .status)
+        method = try c.decodeIfPresent(MatnSymbolMethod.self, forKey: .method) ?? .hand
     }
 
     /// The symbol's entry in its own متن's dictionary.
@@ -209,7 +251,8 @@ public struct MatnSymbolAnnotation: Codable, Sendable, Hashable, Identifiable {
             guard end - start == 1, marked == definition.key else { return "«\(text)» is not the letter «\(symbol)»" }
         case .group:
             let isLetter = definition.key.count == 1
-            guard isLetter ? (end - start == 1 && marked == definition.key) : marked == definition.key else {
+            guard isLetter ? (end - start == 1 && marked == definition.key)
+                           : MatnSymbols.wordKey(text) == MatnSymbols.wordKey(definition.symbol) else {
                 return "«\(text)» is not «\(symbol)»"
             }
         }
