@@ -155,7 +155,10 @@ public struct QiraatReferenceStore: Sendable {
         guard !named.isEmpty else { return .unknown }
         let variantSet = Set(variant.readingIds).intersection(scope)
         let expected = reference.side == .variant ? variantSet : scope.subtracting(variantSet)
-        return named == expected ? .consistent : .mismatch(expected: expected, named: named)
+        // The Durrah names only the readers who leave their أصل («فإن خالفوا أذكر وإلا فأهملا»), so a reader it
+        // does not name is not a mismatch; the Shatibiyyah and the Tayyibah name the whole side.
+        let matches = reference.work == .durrah ? named.isSubset(of: expected) : named == expected
+        return matches ? .consistent : .mismatch(expected: expected, named: named)
     }
 
     // MARK: - File format

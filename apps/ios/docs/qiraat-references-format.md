@@ -40,7 +40,8 @@ it is never committed. `make references REFERENCES_SRC=<folder holding reference
 | `readingIds` | Narrator ids (`Q01-R01`) or reader ids (`Q01`, standing for both narrators) the verse names. |
 | `status` | `extracted` (machine), `reviewed`, `verified` (a person checked it against the book). |
 
-**Scope per work:** shatibiyyah = Q01–Q07; durrah = Q08–Q10; tayyibah = Q01–Q10. The app compares the readers a reference
+**Scope per work:** shatibiyyah = Q01–Q07; durrah = Q08–Q10; tayyibah = Q01–Q10. The Durrah names only the readers who leave their أصل («فإن خالفوا أذكر وإلا فأهملا»), so a Durrah entry may
+name part of a side: it matches when every reader it names is on the right side. The app compares the readers a reference
 names with the variant's own readers inside that scope; a difference shows a visible warning, never hidden.
 
 **Loading:** a missing, unreadable or `schemaVersion` ≠ 1 file gives an empty store (nothing shown). One broken entry is

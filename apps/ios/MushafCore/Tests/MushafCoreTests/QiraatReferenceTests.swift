@@ -79,6 +79,23 @@ private func storeFile(_ text: String) throws -> QiraatReferenceStore {
         #expect(QiraatReferenceStore.empty.consistency(all, variant: word, catalog: testCatalog) == .consistent)
     }
 
+    @Test func theDurrahNamesOnlyThoseWhoLeaveTheirAsl() {
+        // «فإن خالفوا أذكر وإلا فأهملا»: a Durrah verse can name some of its three readers and say nothing of the
+        // rest. Naming Q08 alone on the Hafs side, while the word's data also has Q09 and Q10 there, is not a mismatch.
+        let partial = reference(.durrah, side: .complement, readings: ["Q09"])
+        #expect(QiraatReferenceStore.empty.consistency(partial, variant: word, catalog: testCatalog) == .consistent)
+        // A reader the Durrah puts on the wrong side still is.
+        let wrong = reference(.durrah, side: .complement, readings: ["Q08"])
+        guard case .mismatch = QiraatReferenceStore.empty.consistency(wrong, variant: word, catalog: testCatalog) else {
+            Issue.record("a Durrah reader on the wrong side must be a mismatch"); return
+        }
+        // The Shatibiyyah and the Tayyibah still have to name the whole side.
+        let shatibiyyahPartial = reference(readings: ["Q05"])
+        guard case .mismatch = QiraatReferenceStore.empty.consistency(shatibiyyahPartial, variant: word, catalog: testCatalog) else {
+            Issue.record("a Shatibiyyah verse naming part of a side is a mismatch"); return
+        }
+    }
+
     @Test func noNamedReaderMeansUnknown() {
         let none = reference(readings: [])
         #expect(QiraatReferenceStore.empty.consistency(none, variant: word, catalog: testCatalog) == .unknown)

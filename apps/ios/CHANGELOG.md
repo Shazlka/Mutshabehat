@@ -3,6 +3,11 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-27 — Durrah references: a verse may name only those who leave their أصل; pilot references for pages 1–5
+- **Fix (`QiraatReferenceStore.consistency`):** the Durrah names only the readers who differ from their أصل (its verse 8: «فَإِنْ خَالَفُوا أَذْكُرْ وَإِلاَّ فَأُهْمِلَا»), so a Durrah entry now matches when every reader it names is on the right side; before, a correct verse such as «أَلاَ يَخْدَعُونَ اعْلَمْ حِجىً» (أبو جعفر ويعقوب, خلف unmentioned) showed the mismatch warning. The Shatibiyyah and the Tayyibah still have to name the whole side. Test: `theDurrahNamesOnlyThoseWhoLeaveTheirAsl`.
+- **Pilot data (not committed, `Generated/QiraatReferences-pilot/`):** 41 references for 15 of the 20 variants on Mushaf pages 1–5 (الفاتحة، البقرة ١–٢٩), all `extracted`. 21 distinct verses from the Shamela books 7754 / 7749 / 7795, each checked word for word against its page; reader symbols decoded from the books' own symbol verses (the Tayyibah's verses 36–48, the Durrah's 5–8) and the existing `packages/qiraat-core/symbols.ts`. All 41 agree with the variants' readers. Five variants are left without references, with reasons in `review.html` (two «عَلَيْهِمِ ٱلذِّلَّةُ» rows in الفاتحة and «تُخادعون» at 2:9 look like data errors; «ٱلسُّفَهَآءُ» for هشام and «شَىْءٍ» for خلف/خلاد do not say which rule they are).
+- **Verification:** core 495/495; pilot loaded through `QiraatReferenceStore` with 0 mismatches; checked in the simulator on «مَلِكِ» (1:4).
+
 ## [Unreleased] — 2026-10-26 — Scholarly references (الشاطبية، الدرة، طيبة النشر) per Qiraat variant
 - **Request:** show, for each word variant, where the Shatibiyyah, the Durrah and the Tayyibah document it.
 - **Core (`MushafCore/QiraatReferences.swift`):** `QiraatMatn`, `QiraatReference`, `QiraatReferenceStore` (reads `references.json`; lookup by variant id, then by key except for performance-only variants, so two faces at one word never share references; a missing, unreadable or newer-format file gives an empty store; a broken entry is skipped) and a check of the readers a work names against the variant's own readers inside that work's scope (الشاطبية: the seven, الدرة: the three, الطيبة: the ten).
