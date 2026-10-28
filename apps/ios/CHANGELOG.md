@@ -3,6 +3,13 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-28 — Hand assignments from the web editor now show in the المتون page, and live sync sends only what changed
+- **Bug fixed:** a reader/narrator assigned to a word in the web editor (`origin: "assignment"`) was dropped by `MatnSymbolAnnotation.problem(in:)` because its text is not a dictionary symbol, so nothing assigned on the web ever reached the phone. A mark now has an `origin` (`symbol` by default, `assignment`); an assignment is shown when it is verified, its text is where it says and it names at least one reader. It is drawn in its reader's colour (the shared green for several) and underlined, its card says «عُيّن يدويًا من محرر المتون» and names the readers from its own ids, never from a dictionary entry that happens to spell the same letter.
+- **Live sync is incremental:** `MatnOverlay` (`MushafCore`) stores the web change-log sequence beside the live copy. First use takes one snapshot; afterwards `GET /api/mushaf-1441/mutoon?since=N` returns only the changed verses with their marks and the app swaps just those (a renumbered or unknown verse, or `full: true`, takes a new snapshot). While the page is open it checks every 10 s; unchanged answers are a few bytes. The 4.4 MB re-download on every refresh is gone.
+- **Needs the web side first:** the web migration `20261028150000_qiraat_mutoon_rows.sql` must be applied and deployed (see the web changelog); until then the app keeps its bundled or last live copy.
+- **Verification:** `swift test --package-path MushafCore` 519/519 (7 new `MatnOverlayTests`), `xcodebuild build` for iPhone 17, the 4 existing `MutoonUITests` pass. Not run against the production web app (not migrated yet); not run on a device.
+- **Files:** `MushafCore/Sources/MushafCore/{MatnOverlay,MatnSymbols}.swift`, `MushafCore/Tests/MushafCoreTests/MatnOverlayTests.swift`, `Sources/Qiraat/{QiraatLiveSync,MutoonView}.swift`.
+
 ## [Unreleased] — 2026-10-28 — Live Mutoon Sync with Web App Database
 - **Live Database Sync for المتون:** Added `QiraatLiveSync.syncMutoon()` which contacts `https://mutshabehat-v2.vercel.app/api/mushaf-1441/mutoon`, pulls the latest live poem revisions and pre-compiled reader/narrator annotations, and saves them to the application overlay directory (`QiraatLive/QiraatMutoon/`).
 - **Reactive Mutoon View:** `MutoonView` now triggers background live sync on appear (`.task`) and supports pull-to-refresh (`.refreshable`), smoothly updating poem lines, words, and assigned reader/narrator pills in real-time as they are edited in the web workstation.

@@ -76,11 +76,13 @@ struct MutoonView: View {
         // Right to left whatever the app language: every title, chapter and verse here is Arabic. A full-screen
         // cover does not inherit the reader's direction, so it is set on the page itself.
         .environment(\.layoutDirection, .rightToLeft)
+        // Live: ask the web database what changed now, then every few seconds while this page is open.
         .task {
-            if let synced = await liveSync.syncMutoon() {
-                withAnimation(.easeInOut(duration: 0.2)) {
-                    liveLibrary = synced
+            while !Task.isCancelled {
+                if let synced = await liveSync.syncMutoon() {
+                    withAnimation(.easeInOut(duration: 0.2)) { liveLibrary = synced }
                 }
+                try? await Task.sleep(for: .seconds(10))
             }
         }
         .refreshable {
@@ -640,14 +642,14 @@ struct MatnVerseSheet: View {
                     HStack(spacing: 10) {
                         Text(verbatim: mark.text)
                             .font(.system(.title3, design: .serif).bold())
-                            .foregroundStyle(MatnSymbolSettings.red)
+                            .foregroundStyle(Color(uiColor: mark.uiColor))
                             .frame(minWidth: 28)
 
                         VStack(alignment: .leading, spacing: 2) {
-                            Text(verbatim: mark.definition?.namesAr ?? mark.text)
+                            Text(verbatim: mark.namesAr(catalog: catalog))
                                 .font(.subheadline.bold())
                                 .foregroundStyle(Color(uiColor: .mushafInk))
-                            if let reader = mark.definition?.readerAr {
+                            if let reader = mark.symbolDefinition?.readerAr {
                                 Text("القارئ: \(reader)")
                                     .font(.caption2)
                                     .foregroundStyle(.secondary)
@@ -714,7 +716,8 @@ private struct MatnLineText: UIViewRepresentable {
         view.textContainer.lineFragmentPadding = 0
         view.adjustsFontForContentSizeCategory = true
         view.semanticContentAttribute = .forceRightToLeft
-        view.linkTextAttributes = [.foregroundColor: UIColor.systemRed]
+        // Each mark carries its own colour (red for a poem symbol, the reader's colour for a hand assignment).
+        view.linkTextAttributes = [:]
         view.delegate = context.coordinator
         view.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
@@ -742,7 +745,11 @@ private struct MatnLineText: UIViewRepresentable {
             let start = line.index(line.startIndex, offsetBy: mark.start)
             let end = line.index(line.startIndex, offsetBy: mark.end)
             if let url = URL(string: "\(MatnSymbolSettings.scheme)://\(number)") {
-                text.addAttribute(.link, value: url, range: NSRange(start..<end, in: line))
+                let range = NSRange(start..<end, in: line)
+                text.addAttribute(.link, value: url, range: range)
+                text.addAttribute(.foregroundColor, value: mark.uiColor, range: range)
+                // Colour is never the only signal: an assignment is also underlined.
+                if mark.isAssignment { text.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range) }
             }
         }
         if view.attributedText != text { view.attributedText = text }
@@ -797,6 +804,13 @@ private struct MatnLineText: UIViewRepresentable {
     }
 }
 
+extension MatnSymbolAnnotation {
+    /// Red for a poem symbol; for a hand assignment the reader's colour (the shared green for several).
+    var uiColor: UIColor {
+        isAssignment ? UIColor(Color(hex: assignmentColorHex)) : .systemRed
+    }
+}
+
 /// The switch for the red symbols and the colour they share.
 enum MatnSymbolSettings {
     static let key = "mutoon:symbols:v1"
@@ -843,23 +857,23 @@ private struct MatnSymbolCard: View {
                     HStack(spacing: 12) {
                         Text(verbatim: mark.text)
                             .font(.system(.largeTitle, design: .serif))
-                            .foregroundStyle(MatnSymbolSettings.red)
+                            .foregroundStyle(Color(uiColor: mark.uiColor))
                             .accessibilityIdentifier("mutoon-symbol-text")
                         VStack(alignment: .leading, spacing: 2) {
                             kindLabel.font(.caption).foregroundStyle(.secondary)
-                            Text(verbatim: mark.definition?.namesAr ?? "")
+                            Text(verbatim: mark.namesAr())
                                 .font(.headline)
                                 .accessibilityIdentifier("mutoon-symbol-names")
                         }
                     }
                     .accessibilityElement(children: .combine)
-                    if let reader = mark.definition?.readerAr {
+                    if let reader = mark.symbolDefinition?.readerAr {
                         row(Text("القارئ"), Text(verbatim: reader)).accessibilityIdentifier("mutoon-symbol-reader")
                     }
                 }
                 Section {
                     if !mark.note.isEmpty { row(Text("الدلالة هنا"), Text(verbatim: mark.note)) }
-                    if let definition = mark.definition {
+                    if let definition = mark.symbolDefinition {
                         row(Text("القاعدة"), Text("من البيت \(definition.definedIn) في \(mark.work.labelAr)"))
                     }
                     if !mark.source.isEmpty { row(Text("المصدر"), Text(verbatim: mark.source)) }
@@ -881,6 +895,9 @@ private struct MatnSymbolCard: View {
 
     /// Checked by hand, or matched to the شرح by script (its readers are exactly the ones the شرح names there).
     @ViewBuilder private var status: some View {
+        if mark.isAssignment {
+            Label { Text("عُيّن يدويًا من محرر المتون") } icon: { Image(systemName: "pencil.and.list.clipboard") }.foregroundStyle(.green)
+        } else {
         switch mark.method {
         case .hand:
             Label { Text("محقَّق من الشرح") } icon: { Image(systemName: "checkmark.seal.fill") }.foregroundStyle(.green)
@@ -892,13 +909,15 @@ private struct MatnSymbolCard: View {
                     .font(.caption).foregroundStyle(.secondary)
             }
         }
+        }
     }
 
     private var kindLabel: Text {
+        if mark.isAssignment { return Text("تعيين على الكلمة") }
         switch mark.kind {
-        case .reader: Text("رمز قارئ")
-        case .narrator: Text("رمز راوٍ")
-        case .group: Text("رمز جماعي")
+        case .reader: return Text("رمز قارئ")
+        case .narrator: return Text("رمز راوٍ")
+        case .group: return Text("رمز جماعي")
         }
     }
 

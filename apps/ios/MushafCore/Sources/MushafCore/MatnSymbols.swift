@@ -51,6 +51,9 @@ public enum MatnSymbols {
         ("Q10", "خلف العاشر", "إسحاق", "إدريس"),
     ]
 
+    /// The colour of a word several readers share (web: QIRAAT_MULTI_READER_COLOR).
+    public static let sharedColorHex = "#3F6212"
+
     /// Canonical fallback colors for the ten readers when no catalog is available.
     public static let fallbackColors: [String: String] = [
         "Q01": "#2563EB", "Q02": "#7C3AED", "Q03": "#059669", "Q04": "#D97706", "Q05": "#DC2626",
@@ -217,6 +220,14 @@ public enum MatnSymbolMethod: String, Codable, Sendable {
     case match
 }
 
+/// Where a mark comes from.
+public enum MatnSymbolOrigin: String, Codable, Sendable {
+    /// One of the متن's own symbols, checked against its dictionary.
+    case symbol
+    /// A reader or narrator assigned to a word by hand in the web editor: no dictionary, only the text and the readers.
+    case assignment
+}
+
 /// A symbol marked in one hemistich of a verse: where it is, whom it names and on what authority. A layer over the
 /// متن (`mutoon-symbols.json`); the verse text itself is never changed.
 public struct MatnSymbolAnnotation: Codable, Sendable, Hashable, Identifiable {
@@ -240,19 +251,21 @@ public struct MatnSymbolAnnotation: Codable, Sendable, Hashable, Identifiable {
     public let status: MatnSymbolStatus
     /// How it was checked; a file without the field means by hand.
     public let method: MatnSymbolMethod
+    /// A file without the field is a symbol.
+    public let origin: MatnSymbolOrigin
 
     public var id: String { "\(work.rawValue)-\(verse)-\(line)-\(start)" }
 
     public init(work: QiraatMatn, verse: Int, line: Int, start: Int, end: Int, text: String, symbol: String,
                 kind: MatnSymbolKind, readingIds: [String], note: String, source: String, status: MatnSymbolStatus,
-                method: MatnSymbolMethod = .hand) {
+                method: MatnSymbolMethod = .hand, origin: MatnSymbolOrigin = .symbol) {
         self.work = work; self.verse = verse; self.line = line; self.start = start; self.end = end; self.text = text
         self.symbol = symbol; self.kind = kind; self.readingIds = readingIds; self.note = note; self.source = source
-        self.status = status; self.method = method
+        self.status = status; self.method = method; self.origin = origin
     }
 
     private enum CodingKeys: String, CodingKey {
-        case work, verse, line, start, end, text, symbol, kind, readingIds, note, source, status, method
+        case work, verse, line, start, end, text, symbol, kind, readingIds, note, source, status, method, origin
     }
 
     public init(from decoder: Decoder) throws {
@@ -270,6 +283,25 @@ public struct MatnSymbolAnnotation: Codable, Sendable, Hashable, Identifiable {
         source = try c.decodeIfPresent(String.self, forKey: .source) ?? ""
         status = try c.decode(MatnSymbolStatus.self, forKey: .status)
         method = try c.decodeIfPresent(MatnSymbolMethod.self, forKey: .method) ?? .hand
+        origin = (try? c.decodeIfPresent(MatnSymbolOrigin.self, forKey: .origin)) ?? .symbol
+    }
+
+    public var isAssignment: Bool { origin == .assignment }
+
+    /// The dictionary entry a poem symbol stands for; none for a hand assignment.
+    public var symbolDefinition: MatnSymbolDefinition? { isAssignment ? nil : definition }
+
+    /// Whom the mark names: the dictionary's wording for a symbol, the readers' own names for an assignment.
+    public func namesAr(catalog: QiraatCatalog? = nil) -> String {
+        // An assignment's text can spell a dictionary symbol by chance (the letter أ): it still names only its own readers.
+        if !isAssignment, let definition { return definition.namesAr }
+        return MatnSymbols.authorityPills(for: readingIds, catalog: catalog).map(\.name).joined(separator: "، ")
+    }
+
+    /// The colour an assignment is drawn in: its reader's colour, or the shared one for several.
+    public var assignmentColorHex: String {
+        let pills = MatnSymbols.authorityPills(for: readingIds)
+        return pills.count == 1 ? pills[0].color : MatnSymbols.sharedColorHex
     }
 
     /// The symbol's entry in its own متن's dictionary.
@@ -284,6 +316,10 @@ public struct MatnSymbolAnnotation: Codable, Sendable, Hashable, Identifiable {
         let characters = Array(lines[line])
         guard start >= 0, start < end, end <= characters.count, String(characters[start..<end]) == text else {
             return "text not at \(start)..<\(end)"
+        }
+        if origin == .assignment {
+            // Chosen by hand in the editor: whom it names is whatever the editor saved; there is no dictionary entry.
+            return readingIds.isEmpty ? "names no reader" : nil
         }
         guard let definition else { return "«\(symbol)» is not a symbol of \(work.rawValue)" }
         guard definition.kind == kind, Set(definition.readingIds) == Set(readingIds) else {

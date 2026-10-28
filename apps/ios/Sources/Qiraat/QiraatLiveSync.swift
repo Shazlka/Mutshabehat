@@ -119,8 +119,10 @@ final class QiraatLiveSync: ObservableObject {
         return outcome
     }
 
-    /// Fetches the latest Mutoon document and symbols from the web app into the overlay directory,
-    /// returning the reloaded MatnLibrary if updated.
+    /// Brings the live copy of the متون up to date with the web database and returns the reloaded library when something
+    /// changed. The first call (or a stale copy) takes one snapshot; later calls ask only for the verses that changed
+    /// since the stored sequence, so an edit in the web editor arrives in a few kilobytes. Returns nil when nothing
+    /// changed or the web app cannot be reached; the copy on disk is then left as it was.
     @discardableResult
     func syncMutoon() async -> MatnLibrary? {
 #if DEBUG
@@ -129,30 +131,44 @@ final class QiraatLiveSync: ObservableObject {
             return nil
         }
 #endif
-        guard let url = URL(string: "api/mushaf-1441/mutoon", relativeTo: Self.baseURL) else { return nil }
+        let liveDir = Self.overlayDirectory.appendingPathComponent("QiraatMutoon", isDirectory: true)
+        let bundleMutoonURL = Bundle.main.url(forResource: "QiraatMutoon", withExtension: nil)
+        let fetch = self.fetch
         do {
-            let data = try await fetch(url)
-            guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
-                  let doc = json["document"] as? [String: Any],
-                  let mutoon = doc["mutoon"] else {
-                return nil
+            var changed = false
+            if let seq = MatnOverlay.seq(in: liveDir) {
+                var components = URLComponents(url: Self.baseURL.appendingPathComponent("api/mushaf-1441/mutoon"), resolvingAgainstBaseURL: false)!
+                components.queryItems = [URLQueryItem(name: "since", value: String(seq))]
+                let data = try await fetch(components.url!)
+                let result = try await Task.detached(priority: .utility) { () -> MatnOverlay.DeltaResult in
+                    guard let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] else { return .needsSnapshot }
+                    return try MatnOverlay.applyDelta(json, to: liveDir)
+                }.value
+                switch result {
+                case .unchanged: return nil
+                case .applied: changed = true
+                case .needsSnapshot: changed = try await takeSnapshot(into: liveDir, fetch: fetch)
+                }
+            } else {
+                changed = try await takeSnapshot(into: liveDir, fetch: fetch)
             }
-            let liveDir = Self.overlayDirectory.appendingPathComponent("QiraatMutoon", isDirectory: true)
-            try FileManager.default.createDirectory(at: liveDir, withIntermediateDirectories: true)
-            let mutoonData = try JSONSerialization.data(withJSONObject: mutoon, options: [.prettyPrinted])
-            try mutoonData.write(to: liveDir.appendingPathComponent(MatnLibrary.fileName), options: .atomic)
-
-            if let symbols = json["symbols"] ?? doc["symbols"] {
-                let symbolsData = try JSONSerialization.data(withJSONObject: symbols, options: [.prettyPrinted])
-                try symbolsData.write(to: liveDir.appendingPathComponent(MatnSymbolLayer.fileName), options: .atomic)
-            }
-            let bundleMutoonURL = Bundle.main.url(forResource: "QiraatMutoon", withExtension: nil)
-            let loaded = MatnLibrary(directory: liveDir, sharhDirectory: bundleMutoonURL)
+            guard changed else { return nil }
+            let loaded = await Task.detached(priority: .utility) { MatnLibrary(directory: liveDir, sharhDirectory: bundleMutoonURL) }.value
             self.liveMutoonLibrary = loaded
             NotificationCenter.default.post(name: .mutoonDidChange, object: nil)
             return loaded
         } catch {
             return nil
         }
+    }
+
+    private func takeSnapshot(into directory: URL, fetch: @escaping (URL) async throws -> Data) async throws -> Bool {
+        let url = Self.baseURL.appendingPathComponent("api/mushaf-1441/mutoon")
+        let data = try await fetch(url)
+        return try await Task.detached(priority: .utility) { () -> Bool in
+            guard let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] else { return false }
+            try MatnOverlay.writeSnapshot(json, to: directory)
+            return true
+        }.value
     }
 }
