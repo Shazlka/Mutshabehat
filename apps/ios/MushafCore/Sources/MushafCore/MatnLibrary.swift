@@ -87,7 +87,7 @@ public struct MatnLibrary: Sendable {
     }
 
     /// Reads `mutoon.json` from `directory`; never throws.
-    public init(directory: URL) {
+    public init(directory: URL, sharhDirectory: URL? = nil) {
         guard let data = try? Data(contentsOf: directory.appendingPathComponent(Self.fileName)) else {
             self = .empty
             return
@@ -102,9 +102,16 @@ public struct MatnLibrary: Sendable {
             self = .empty
             return
         }
+        let directSharh = MatnSharhStore(directory: directory)
+        let resolvedSharh: MatnSharhStore
+        if !directSharh.isEmpty || sharhDirectory == nil {
+            resolvedSharh = directSharh
+        } else {
+            resolvedSharh = MatnSharhStore(directory: sharhDirectory!)
+        }
         self.init(works: file.works.compactMap(\.value),
                   symbols: Self.symbols(in: directory),
-                  sharh: MatnSharhStore(directory: directory))
+                  sharh: resolvedSharh)
     }
 
     /// The marks of `mutoon-symbols.json` in `directory`, or none.

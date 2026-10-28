@@ -5,6 +5,8 @@ import MushafCore
 extension Notification.Name {
     /// A page's Qiraat data changed after a live fetch; `userInfo["page"]` is the page number.
     static let qiraatPageDidChange = Notification.Name("qiraatPageDidChange")
+    /// Mutoon verses or symbols changed after a live fetch.
+    static let mutoonDidChange = Notification.Name("mutoonDidChange")
 }
 
 /// Keeps the Qiraat layer in step with the web app's database, which is the only source of truth: a page
@@ -33,6 +35,7 @@ final class QiraatLiveSync: ObservableObject {
     private var lastChecked: [Int: Date] = [:]
     private var inFlight: Set<Int> = []
     @Published private(set) var pageStates: [Int: PageState] = [:]
+    @Published private(set) var liveMutoonLibrary: MatnLibrary?
 
     init(fetch: @escaping (URL) async throws -> Data = QiraatLiveSync.fetchFromWeb, minInterval: TimeInterval = 5) {
         self.fetch = fetch
@@ -143,7 +146,11 @@ final class QiraatLiveSync: ObservableObject {
                 let symbolsData = try JSONSerialization.data(withJSONObject: symbols, options: [.prettyPrinted])
                 try symbolsData.write(to: liveDir.appendingPathComponent(MatnSymbolLayer.fileName), options: .atomic)
             }
-            return MatnLibrary(directory: liveDir)
+            let bundleMutoonURL = Bundle.main.url(forResource: "QiraatMutoon", withExtension: nil)
+            let loaded = MatnLibrary(directory: liveDir, sharhDirectory: bundleMutoonURL)
+            self.liveMutoonLibrary = loaded
+            NotificationCenter.default.post(name: .mutoonDidChange, object: nil)
+            return loaded
         } catch {
             return nil
         }

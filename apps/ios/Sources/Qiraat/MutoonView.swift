@@ -13,9 +13,10 @@ struct MutoonView: View {
     @State private var query = ""
     @AppStorage(MatnSymbolSettings.key) private var showsSymbols = true
     @State private var selectedHit: MatnSearchHit?
+    @ObservedObject private var liveSync = QiraatLiveSync.shared
     @State private var liveLibrary: MatnLibrary?
 
-    var library: MatnLibrary { liveLibrary ?? initialLibrary }
+    var library: MatnLibrary { liveLibrary ?? liveSync.liveMutoonLibrary ?? initialLibrary }
 
     init(library: MatnLibrary, catalog: QiraatCatalog? = nil) {
         self.initialLibrary = library
@@ -58,9 +59,7 @@ struct MutoonView: View {
                 }
             }
             .navigationDestination(for: QiraatMatn.self) { work in
-                if let work = library.work(work) {
-                    MatnChaptersView(work: work, symbols: library.symbols, sharh: library.sharh, catalog: catalog)
-                }
+                MatnChaptersView(workKey: work, library: library, catalog: catalog)
             }
         }
         .sheet(item: $selectedHit) { hit in
@@ -78,14 +77,14 @@ struct MutoonView: View {
         // cover does not inherit the reader's direction, so it is set on the page itself.
         .environment(\.layoutDirection, .rightToLeft)
         .task {
-            if let synced = await QiraatLiveSync.shared.syncMutoon() {
+            if let synced = await liveSync.syncMutoon() {
                 withAnimation(.easeInOut(duration: 0.2)) {
                     liveLibrary = synced
                 }
             }
         }
         .refreshable {
-            if let synced = await QiraatLiveSync.shared.syncMutoon() {
+            if let synced = await liveSync.syncMutoon() {
                 liveLibrary = synced
             }
         }
@@ -159,79 +158,93 @@ struct MutoonView: View {
 
 /// A book's chapters, each opening its verses.
 private struct MatnChaptersView: View {
-    let work: MatnWork
-    let symbols: MatnSymbolLayer
-    let sharh: MatnSharhStore
+    let workKey: QiraatMatn
+    let library: MatnLibrary
     let catalog: QiraatCatalog?
 
+    var work: MatnWork? { library.work(workKey) }
+
     var body: some View {
-        List(Array(work.chapters.enumerated()), id: \.offset) { index, chapter in
-            NavigationLink {
-                MatnChapterView(work: work.work, chapter: chapter, symbols: symbols, sharh: sharh, catalog: catalog)
-            } label: {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(verbatim: chapter.title).font(.body)
-                    if let first = chapter.verses.first, let last = chapter.verses.last {
-                        Text("الأبيات \(mutoonNumber(first.number))–\(mutoonNumber(last.number))").font(.caption).foregroundStyle(.secondary)
+        Group {
+            if let work {
+                List(Array(work.chapters.enumerated()), id: \.offset) { index, chapter in
+                    NavigationLink {
+                        MatnChapterView(workKey: workKey, chapterIndex: index, library: library, catalog: catalog)
+                    } label: {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(verbatim: chapter.title).font(.body)
+                            if let first = chapter.verses.first, let last = chapter.verses.last {
+                                Text("الأبيات \(mutoonNumber(first.number))–\(mutoonNumber(last.number))").font(.caption).foregroundStyle(.secondary)
+                            }
+                        }
                     }
+                    .accessibilityIdentifier("mutoon-chapter-\(index)")
                 }
+                .navigationTitle(Text(verbatim: work.title))
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar { if !library.symbols.isEmpty { ToolbarItem(placement: .primaryAction) { MatnSymbolToggle() } } }
             }
-            .accessibilityIdentifier("mutoon-chapter-\(index)")
         }
-        .navigationTitle(Text(verbatim: work.title))
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar { if !symbols.isEmpty { ToolbarItem(placement: .primaryAction) { MatnSymbolToggle() } } }
     }
 }
 
 /// One chapter's verses in the book's order, each shown as a clickable card like a variant card.
 private struct MatnChapterView: View {
-    let work: QiraatMatn
-    let chapter: MatnChapter
-    let symbols: MatnSymbolLayer
-    let sharh: MatnSharhStore
+    let workKey: QiraatMatn
+    let chapterIndex: Int
+    let library: MatnLibrary
     let catalog: QiraatCatalog?
 
     @AppStorage(MatnSymbolSettings.key) private var showsSymbols = true
     @State private var selectedVerse: MatnVerse?
 
+    var work: MatnWork? { library.work(workKey) }
+    var chapter: MatnChapter? {
+        guard let work, chapterIndex < work.chapters.count else { return nil }
+        return work.chapters[chapterIndex]
+    }
+
     var body: some View {
-        List {
-            if showsSymbols, chapter.verses.contains(where: { !symbols.marks(work, verse: $0.number).isEmpty }) {
-                MatnSymbolKey()
-                    .listRowSeparator(.hidden)
-                    .listRowInsets(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
-                    .listRowBackground(Color.clear)
+        Group {
+            if let chapter {
+                List {
+                    if showsSymbols, chapter.verses.contains(where: { !library.symbols.marks(workKey, verse: $0.number).isEmpty }) {
+                        MatnSymbolKey()
+                            .listRowSeparator(.hidden)
+                            .listRowInsets(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
+                            .listRowBackground(Color.clear)
+                    }
+                    ForEach(chapter.verses) { verse in
+                        MatnVerseCard(
+                            work: workKey,
+                            chapterTitle: nil,
+                            verse: verse,
+                            marks: library.symbols.marks(workKey, verse: verse.number),
+                            sharh: library.sharh.sharh(for: workKey, verse: verse.number),
+                            catalog: catalog,
+                            onTapVerse: { selectedVerse = verse }
+                        )
+                        .listRowSeparator(.hidden)
+                        .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
+                        .listRowBackground(Color.clear)
+                    }
+                }
+                .listStyle(.plain)
+                .navigationTitle(Text(verbatim: chapter.title))
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar { if !library.symbols.isEmpty { ToolbarItem(placement: .primaryAction) { MatnSymbolToggle() } } }
+                .sheet(item: $selectedVerse) { verse in
+                    MatnVerseSheet(
+                        work: workKey,
+                        chapterTitle: chapter.title,
+                        allVerses: chapter.verses,
+                        initialVerse: verse,
+                        symbols: library.symbols,
+                        sharh: library.sharh,
+                        catalog: catalog
+                    )
+                }
             }
-            ForEach(chapter.verses) { verse in
-                MatnVerseCard(
-                    work: work,
-                    chapterTitle: nil,
-                    verse: verse,
-                    marks: symbols.marks(work, verse: verse.number),
-                    sharh: sharh.sharh(for: work, verse: verse.number),
-                    catalog: catalog,
-                    onTapVerse: { selectedVerse = verse }
-                )
-                .listRowSeparator(.hidden)
-                .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
-                .listRowBackground(Color.clear)
-            }
-        }
-        .listStyle(.plain)
-        .navigationTitle(Text(verbatim: chapter.title))
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar { if !symbols.isEmpty { ToolbarItem(placement: .primaryAction) { MatnSymbolToggle() } } }
-        .sheet(item: $selectedVerse) { verse in
-            MatnVerseSheet(
-                work: work,
-                chapterTitle: chapter.title,
-                allVerses: chapter.verses,
-                initialVerse: verse,
-                symbols: symbols,
-                sharh: sharh,
-                catalog: catalog
-            )
         }
     }
 }
