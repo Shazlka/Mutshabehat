@@ -4,6 +4,7 @@
 // (from the overview), and a page progress indicator.
 
 import { useState, type FormEvent } from 'react'
+import Link from 'next/link'
 import type { ReviewOverview, ReviewPage } from '../_lib/types'
 import type { StatusFilter } from './statusMeta'
 import { cn } from '@/lib/cn'
@@ -65,6 +66,7 @@ export default function ReviewNav({
       className="flex flex-wrap items-center gap-3 border-b border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-2.5"
     >
       <h1 className="text-sm font-bold text-[var(--color-ink)]">مراجعة القراءات</h1>
+      <Link href="/mushaf-1441/mutoon-editor" className="rounded-md border border-[var(--color-border)] px-3 py-2 text-xs font-bold">تحرير المتون</Link>
 
       <div className="flex items-center gap-1.5">
         <button
