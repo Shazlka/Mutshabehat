@@ -36,7 +36,7 @@ export function SymbolIndex({ work, onOpenVerse }: { work: WorkId; onOpenVerse: 
   const pick = (w: WorkId, symbol: string) => { setShown(w); setQuery(symbol); setKind('all'); setTab('symbol') }
 
   return (
-    <div className="mx-auto flex h-full min-h-0 w-full max-w-5xl flex-col gap-4 overflow-y-auto p-3 pb-24 md:p-6">
+    <div className="mx-auto flex h-full min-h-0 w-full max-w-5xl flex-col gap-4 overflow-y-auto [&>*]:shrink-0 p-3 pb-24 md:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h2 className="text-base font-bold">فهرس رموز القراء</h2>
