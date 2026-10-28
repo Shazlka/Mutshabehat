@@ -115,4 +115,37 @@ final class QiraatLiveSync: ObservableObject {
         pageStates[page] = PageState(latestOutcome: outcome, lastConfirmation: lastConfirmation)
         return outcome
     }
+
+    /// Fetches the latest Mutoon document and symbols from the web app into the overlay directory,
+    /// returning the reloaded MatnLibrary if updated.
+    @discardableResult
+    func syncMutoon() async -> MatnLibrary? {
+#if DEBUG
+        if ProcessInfo.processInfo.environment["QIRAAT_TEST_ISOLATION"] == "1" ||
+           ProcessInfo.processInfo.arguments.contains("-mutoon-fixture") {
+            return nil
+        }
+#endif
+        guard let url = URL(string: "api/mushaf-1441/mutoon", relativeTo: Self.baseURL) else { return nil }
+        do {
+            let data = try await fetch(url)
+            guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+                  let doc = json["document"] as? [String: Any],
+                  let mutoon = doc["mutoon"] else {
+                return nil
+            }
+            let liveDir = Self.overlayDirectory.appendingPathComponent("QiraatMutoon", isDirectory: true)
+            try FileManager.default.createDirectory(at: liveDir, withIntermediateDirectories: true)
+            let mutoonData = try JSONSerialization.data(withJSONObject: mutoon, options: [.prettyPrinted])
+            try mutoonData.write(to: liveDir.appendingPathComponent(MatnLibrary.fileName), options: .atomic)
+
+            if let symbols = json["symbols"] ?? doc["symbols"] {
+                let symbolsData = try JSONSerialization.data(withJSONObject: symbols, options: [.prettyPrinted])
+                try symbolsData.write(to: liveDir.appendingPathComponent(MatnSymbolLayer.fileName), options: .atomic)
+            }
+            return MatnLibrary(directory: liveDir)
+        } catch {
+            return nil
+        }
+    }
 }

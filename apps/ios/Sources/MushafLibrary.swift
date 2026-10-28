@@ -34,6 +34,14 @@ final class MushafLibrary {
 #if DEBUG
         if ProcessInfo.processInfo.arguments.contains("-mutoon-fixture") { return Self.mutoonFixture }
 #endif
+        let liveDir = QiraatLiveSync.overlayDirectory.appendingPathComponent("QiraatMutoon", isDirectory: true)
+        if FileManager.default.fileExists(atPath: liveDir.appendingPathComponent(MatnLibrary.fileName).path) {
+            return MatnLibrary(directory: liveDir)
+        }
+        let importedDir = QiraatBackupService.importedDirectory.appendingPathComponent("QiraatMutoon", isDirectory: true)
+        if FileManager.default.fileExists(atPath: importedDir.appendingPathComponent(MatnLibrary.fileName).path) {
+            return MatnLibrary(directory: importedDir)
+        }
         return mutoonFromBundle
     }
     private lazy var mutoonFromBundle: MatnLibrary = mutoonURL.map { MatnLibrary(directory: $0) } ?? .empty

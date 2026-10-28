@@ -3,6 +3,12 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-28 — Live Mutoon Sync with Web App Database
+- **Live Database Sync for المتون:** Added `QiraatLiveSync.syncMutoon()` which contacts `https://mutshabehat-v2.vercel.app/api/mushaf-1441/mutoon`, pulls the latest live poem revisions and pre-compiled reader/narrator annotations, and saves them to the application overlay directory (`QiraatLive/QiraatMutoon/`).
+- **Reactive Mutoon View:** `MutoonView` now triggers background live sync on appear (`.task`) and supports pull-to-refresh (`.refreshable`), smoothly updating poem lines, words, and assigned reader/narrator pills in real-time as they are edited in the web workstation.
+- **Overlay Hierarchy:** `MushafLibrary.mutoon` now prioritizes the live overlay and imported directory before falling back to bundled resources.
+- **Verification:** `make check-isolation`, `make build`, and `make release-guard` all passed.
+
 ## [Unreleased] — 2026-10-28 — Reading & Khatma statistics: progress colors, surah visuals, heat map, freeze fix, and smooth scrolling
 - **Request:** in «إحصائيات القراءة والختمة» (Reading & Khatma Statistics) and «الفهرس» (Index Sheet):
   1. Overall progress colored according to progress.

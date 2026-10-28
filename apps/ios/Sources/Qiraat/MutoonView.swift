@@ -7,12 +7,20 @@ import UIKit
 /// right to left. Each verse is a clickable card styled like the variant cards, showing highlighted reader and narrator
 /// symbols, authority pills, and opening a card with the full scholarly commentary (شرح) and verse navigation.
 struct MutoonView: View {
-    let library: MatnLibrary
+    let initialLibrary: MatnLibrary
     var catalog: QiraatCatalog? = nil
     @Environment(\.dismiss) private var dismiss
     @State private var query = ""
     @AppStorage(MatnSymbolSettings.key) private var showsSymbols = true
     @State private var selectedHit: MatnSearchHit?
+    @State private var liveLibrary: MatnLibrary?
+
+    var library: MatnLibrary { liveLibrary ?? initialLibrary }
+
+    init(library: MatnLibrary, catalog: QiraatCatalog? = nil) {
+        self.initialLibrary = library
+        self.catalog = catalog
+    }
 
     var body: some View {
         NavigationStack {
@@ -69,6 +77,18 @@ struct MutoonView: View {
         // Right to left whatever the app language: every title, chapter and verse here is Arabic. A full-screen
         // cover does not inherit the reader's direction, so it is set on the page itself.
         .environment(\.layoutDirection, .rightToLeft)
+        .task {
+            if let synced = await QiraatLiveSync.shared.syncMutoon() {
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    liveLibrary = synced
+                }
+            }
+        }
+        .refreshable {
+            if let synced = await QiraatLiveSync.shared.syncMutoon() {
+                liveLibrary = synced
+            }
+        }
     }
 
     private var searchField: some View {
