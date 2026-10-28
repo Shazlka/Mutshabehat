@@ -97,6 +97,18 @@ final class ReaderUITests: XCTestCase {
         XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
     }
 
+    func testIndexScrollsDown() {
+        let app = launch(atPage: 1)
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()  // show chrome
+        app.buttons["open-index"].tap()
+        XCTAssertTrue(app.navigationBars["الفهرس"].waitForExistence(timeout: 10))
+        let list = app.collectionViews.firstMatch
+        XCTAssertTrue(list.waitForExistence(timeout: 10))
+        list.swipeUp()
+        list.swipeDown()
+    }
+
     func testSettingsContainsThemeAndQiraatControlsWithoutBurgerMenu() {
         let app = launch(atPage: 50)
         XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))

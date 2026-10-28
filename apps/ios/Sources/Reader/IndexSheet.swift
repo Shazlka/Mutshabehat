@@ -23,10 +23,14 @@ struct IndexSheet: View {
     @State private var tab = Tab.surahs
     @State private var surahFilter = SurahProgressFilter.all
     @State private var surahsProgress: [Int: SurahProgress] = [:]
-    /// True only while a finger drives the list (dragging or coasting); `scrollTo` animations stay silent.
-    @State private var isUserScrolling = false
-    /// Average row height; a tick fires each time the list moves by this much.
-    private static let tickPitch: CGFloat = 52
+
+    init(library: MushafLibrary, currentPage: Int, onSelect: @escaping (Int) -> Void) {
+        self.library = library
+        self.currentPage = currentPage
+        self.onSelect = onSelect
+        let all = ReadingTracker.shared.allSurahProgress(library: library)
+        self._surahsProgress = State(initialValue: Dictionary(uniqueKeysWithValues: all.map { ($0.surahNumber, $0) }))
+    }
 
     private var displayedSurahs: [Surah] {
         switch surahFilter {
@@ -52,27 +56,30 @@ struct IndexSheet: View {
 
     var body: some View {
         NavigationStack {
-            ScrollViewReader { proxy in
-                List {
-                    switch tab {
-                    case .surahs:
-                        Section {
-                            HStack(spacing: 6) {
-                                ForEach(SurahProgressFilter.allCases) { f in
-                                    FilterChip(isSelected: surahFilter == f) {
-                                        surahFilter = f
-                                    } label: {
-                                        Text(f.title)
-                                            .lineLimit(1)
-                                            .minimumScaleFactor(0.8)
-                                    }
-                                    .frame(maxWidth: .infinity)
-                                }
+            VStack(spacing: 0) {
+                if tab == .surahs {
+                    HStack(spacing: 6) {
+                        ForEach(SurahProgressFilter.allCases) { f in
+                            FilterChip(isSelected: surahFilter == f) {
+                                surahFilter = f
+                            } label: {
+                                Text(f.title)
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.8)
                             }
-                            .padding(.vertical, 4)
-                            .listRowInsets(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
-                            .listRowBackground(Color.clear)
+                            .frame(maxWidth: .infinity)
+                        }
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 8)
+                    .background(Color(uiColor: .systemBackground))
+                    Divider()
+                }
 
+                ScrollViewReader { proxy in
+                    List {
+                        switch tab {
+                        case .surahs:
                             if displayedSurahs.isEmpty {
                                 VStack(spacing: 8) {
                                     Image(systemName: "tray")
@@ -91,81 +98,87 @@ struct IndexSheet: View {
                                         .id(surah.number)
                                 }
                             }
-                        }
-                    case .juz:
-                        ForEach(1...30, id: \.self) { juz in
-                            row(title: "الجزء \(juz)", number: juz, page: library.juzStartPages[juz] ?? 1,
-                                isCurrent: juz == currentJuz)
-                                .id(juz)
-                        }
-                    case .bookmarks:
-                        let all = tracker.allBookmarks()
-                        if all.isEmpty {
-                            VStack(spacing: 12) {
-                                Image(systemName: "bookmark")
-                                    .scaledFont(size: 36)
-                                    .foregroundColor(.secondary)
-                                Text("لا توجد فواصل محفوظة")
-                                    .font(.subheadline)
-                                    .foregroundColor(.secondary)
+                        case .juz:
+                            ForEach(1...30, id: \.self) { juz in
+                                row(title: "الجزء \(juz)", number: juz, page: library.juzStartPages[juz] ?? 1,
+                                    isCurrent: juz == currentJuz)
+                                    .id(juz)
                             }
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .padding(.vertical, 32)
-                        } else {
-                            ForEach(all) { bookmark in
-                                Button {
-                                    onSelect(bookmark.page)
-                                } label: {
-                                    HStack {
-                                        VStack(alignment: .leading, spacing: 3) {
-                                            Text(library.surahNames[bookmark.surah] ?? "سورة \(bookmark.surah)")
-                                                .font(.headline)
-                                            HStack(spacing: 6) {
-                                                if bookmark.type == .ayah {
-                                                    Text("آية \(bookmark.ayah)")
-                                                        .font(.caption.bold())
-                                                        .foregroundColor(.accentColor)
-                                                }
-                                                Text("صفحة \(bookmark.page)")
-                                                    .font(.caption)
-                                                    .foregroundColor(.secondary)
-                                            }
-                                        }
-                                        Spacer()
-                                        Text(bookmark.type.title)
-                                            .font(.caption2.bold())
-                                            .padding(.horizontal, 8)
-                                            .padding(.vertical, 3)
-                                            .background(Color.accentColor.opacity(0.12))
-                                            .foregroundColor(.accentColor)
-                                            .clipShape(Capsule())
-                                    }
+                        case .bookmarks:
+                            let all = tracker.allBookmarks()
+                            if all.isEmpty {
+                                VStack(spacing: 12) {
+                                    Image(systemName: "bookmark")
+                                        .scaledFont(size: 36)
+                                        .foregroundColor(.secondary)
+                                    Text("لا توجد فواصل محفوظة")
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
                                 }
-                                .buttonStyle(.plain)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .padding(.vertical, 32)
+                            } else {
+                                ForEach(all) { bookmark in
+                                    Button {
+                                        onSelect(bookmark.page)
+                                    } label: {
+                                        HStack {
+                                            VStack(alignment: .leading, spacing: 3) {
+                                                Text(library.surahNames[bookmark.surah] ?? "سورة \(bookmark.surah)")
+                                                    .font(.headline)
+                                                HStack(spacing: 6) {
+                                                    if bookmark.type == .ayah {
+                                                        Text("آية \(bookmark.ayah)")
+                                                            .font(.caption.bold())
+                                                            .foregroundColor(.accentColor)
+                                                    }
+                                                    Text("صفحة \(bookmark.page)")
+                                                        .font(.caption)
+                                                        .foregroundColor(.secondary)
+                                                }
+                                            }
+                                            Spacer()
+                                            Text(bookmark.type.title)
+                                                .font(.caption2.bold())
+                                                .padding(.horizontal, 8)
+                                                .padding(.vertical, 3)
+                                                .background(Color.accentColor.opacity(0.12))
+                                                .foregroundColor(.accentColor)
+                                                .clipShape(Capsule())
+                                        }
+                                    }
+                                    .buttonStyle(.plain)
+                                }
                             }
                         }
                     }
-                }
-                .listStyle(.plain)
-                .id(tab)
-                .onScrollPhaseChange { _, phase in
-                    isUserScrolling = phase == .interacting || phase == .decelerating
-                    if phase == .interacting { Haptics.prepareScrolling() }
-                }
-                .onScrollGeometryChange(for: Int.self) { geometry in
-                    Int(max(0, geometry.contentOffset.y) / Self.tickPitch)
-                } action: { old, new in
-                    if old != new, isUserScrolling { Haptics.scrollTick() }
-                }
-                .onAppear {
-                    loadSurahProgress()
-                    if let currentRow { proxy.scrollTo(currentRow, anchor: .center) }
-                }
-                .onChange(of: currentPage) { _, _ in
-                    if let currentRow { proxy.scrollTo(currentRow, anchor: .center) }
-                }
-                .onReceive(NotificationCenter.default.publisher(for: .readingDatabaseDidUpdate)) { _ in
-                    loadSurahProgress()
+                    .listStyle(.plain)
+                    .id(tab)
+                    .onAppear {
+                        loadSurahProgress()
+                        if let currentRow {
+                            DispatchQueue.main.async {
+                                proxy.scrollTo(currentRow, anchor: .center)
+                            }
+                        }
+                    }
+                    .onChange(of: tab) { _, _ in
+                        if let currentRow {
+                            DispatchQueue.main.async {
+                                proxy.scrollTo(currentRow, anchor: .center)
+                            }
+                        }
+                    }
+                    .onChange(of: currentPage) { _, _ in
+                        if let currentRow {
+                            DispatchQueue.main.async {
+                                proxy.scrollTo(currentRow, anchor: .center)
+                            }
+                        }
+                    }
+                    .onReceive(NotificationCenter.default.publisher(for: .readingDatabaseDidUpdate)) { _ in
+                        loadSurahProgress()
+                    }
                 }
             }
             .navigationTitle("الفهرس")

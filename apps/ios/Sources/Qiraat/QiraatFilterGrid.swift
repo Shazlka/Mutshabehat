@@ -23,6 +23,7 @@ struct QiraatFilterGrid: View {
                 }
                 .padding(12)
             }
+            .scrollBounceBehavior(.basedOnSize)
             .navigationTitle("اختر القارئ أو الراوي")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -43,7 +44,7 @@ struct QiraatFilterGrid: View {
         return Button { choose(.all) } label: {
             tile(Text("كل القراء والرواة"), color: color, isSelected: selection == .all, weight: .semibold)
         }
-        .buttonStyle(.plain)
+        .buttonStyle(GridTileButtonStyle())
         .accessibilityAddTraits(selection == .all ? .isSelected : [])
         .accessibilityIdentifier("qiraat-reader-all")
     }
@@ -56,7 +57,7 @@ struct QiraatFilterGrid: View {
             Button { choose(readerFilter) } label: {
                 tile(Text("الإمام \(reader.nameArShort)"), color: color, isSelected: selection == readerFilter, weight: .bold)
             }
-            .buttonStyle(.plain)
+            .buttonStyle(GridTileButtonStyle())
             .accessibilityAddTraits(selection == readerFilter ? .isSelected : [])
             .accessibilityIdentifier("qiraat-reader-\(reader.id)")
 
@@ -66,7 +67,7 @@ struct QiraatFilterGrid: View {
                 Button { choose(filter) } label: {
                     tile(Text(verbatim: narrator.nameAr), color: narratorColor, isSelected: selection == filter, weight: .regular)
                 }
-                .buttonStyle(.plain)
+                .buttonStyle(GridTileButtonStyle())
                 .accessibilityAddTraits(selection == filter ? .isSelected : [])
                 .accessibilityIdentifier("qiraat-narrator-\(narrator.id)")
             }
@@ -94,6 +95,15 @@ struct QiraatFilterGrid: View {
         .frame(maxWidth: .infinity, minHeight: 44)
         .background(color.opacity(isSelected ? 0.22 : 0.10), in: RoundedRectangle(cornerRadius: 8))
         .overlay(RoundedRectangle(cornerRadius: 8).stroke(color.opacity(isSelected ? 0.7 : 0.25), lineWidth: isSelected ? 1.5 : 1))
-        .contentShape(Rectangle())
+        .contentShape(RoundedRectangle(cornerRadius: 8))
+    }
+}
+
+private struct GridTileButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .opacity(configuration.isPressed ? 0.72 : 1.0)
+            .scaleEffect(configuration.isPressed ? 0.97 : 1.0)
+            .animation(.easeOut(duration: 0.1), value: configuration.isPressed)
     }
 }
