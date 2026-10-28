@@ -131,33 +131,36 @@ struct ReadingStatisticsView: View {
                     .padding(.horizontal, 16)
 
                     // Filter Chips (All, Remaining, Completed, Started)
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 8) {
-                            ForEach(SurahProgressFilter.allCases) { f in
-                                let count: Int = {
-                                    switch f {
-                                    case .all: return surahsProgress.count
-                                    case .remaining: return surahsProgress.filter { !$0.isCompleted }.count
-                                    case .completed: return surahsProgress.filter(\.isCompleted).count
-                                    case .started: return surahsProgress.filter(\.isStarted).count
-                                    }
-                                }()
+                    HStack(spacing: 6) {
+                        ForEach(SurahProgressFilter.allCases) { f in
+                            let count: Int = {
+                                switch f {
+                                case .all: return surahsProgress.count
+                                case .remaining: return surahsProgress.filter { !$0.isCompleted }.count
+                                case .completed: return surahsProgress.filter(\.isCompleted).count
+                                case .started: return surahsProgress.filter(\.isStarted).count
+                                }
+                            }()
 
-                                FilterChip(isSelected: selectedFilter == f,
-                                           unselectedFill: Color(uiColor: .secondarySystemGroupedBackground)) {
-                                    selectedFilter = f
-                                } label: {
-                                    HStack(spacing: 6) {
-                                        Text(f.title)
-                                        Text("(\(ArabicDigits.string(count)))")
-                                            .font(.caption2)
-                                    }
+                            FilterChip(isSelected: selectedFilter == f,
+                                       unselectedFill: Color(uiColor: .secondarySystemGroupedBackground)) {
+                                selectedFilter = f
+                            } label: {
+                                HStack(spacing: 3) {
+                                    Text(f.title)
+                                        .lineLimit(1)
+                                        .minimumScaleFactor(0.75)
+                                    Text("(\(ArabicDigits.string(count)))")
+                                        .font(.caption2)
+                                        .lineLimit(1)
+                                        .minimumScaleFactor(0.75)
                                 }
                             }
+                            .frame(maxWidth: .infinity)
                         }
-                        .padding(.horizontal, 16)
-                        .animation(.easeInOut(duration: 0.2), value: selectedFilter)
                     }
+                    .padding(.horizontal, 16)
+                    .animation(.easeInOut(duration: 0.2), value: selectedFilter)
 
                     // Swipe Instruction Capsule
                     HStack(spacing: 6) {

@@ -57,24 +57,39 @@ struct IndexSheet: View {
                     switch tab {
                     case .surahs:
                         Section {
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(spacing: 8) {
-                                    ForEach(SurahProgressFilter.allCases) { f in
-                                        FilterChip(isSelected: surahFilter == f) {
-                                            surahFilter = f
-                                        } label: {
-                                            Text(f.title)
-                                        }
+                            HStack(spacing: 6) {
+                                ForEach(SurahProgressFilter.allCases) { f in
+                                    FilterChip(isSelected: surahFilter == f) {
+                                        surahFilter = f
+                                    } label: {
+                                        Text(f.title)
+                                            .lineLimit(1)
+                                            .minimumScaleFactor(0.8)
                                     }
+                                    .frame(maxWidth: .infinity)
                                 }
-                                .padding(.vertical, 4)
                             }
+                            .padding(.vertical, 4)
                             .listRowInsets(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
                             .listRowBackground(Color.clear)
 
-                            ForEach(displayedSurahs) { surah in
-                                surahRow(surah: surah, isCurrent: containsCurrentPage(surah))
-                                    .id(surah.number)
+                            if displayedSurahs.isEmpty {
+                                VStack(spacing: 8) {
+                                    Image(systemName: "tray")
+                                        .font(.title2)
+                                        .foregroundStyle(.secondary)
+                                    Text("لا توجد سور مطابقة للتصفية")
+                                        .font(.subheadline)
+                                        .foregroundStyle(.secondary)
+                                }
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 32)
+                                .listRowBackground(Color.clear)
+                            } else {
+                                ForEach(displayedSurahs) { surah in
+                                    surahRow(surah: surah, isCurrent: containsCurrentPage(surah))
+                                        .id(surah.number)
+                                }
                             }
                         }
                     case .juz:

@@ -14,20 +14,35 @@ struct FilterChip<Label: View>: View {
         Button(action: action) {
             label
                 .font(.caption.bold())
-                .padding(.horizontal, 14)
+                .padding(.horizontal, 12)
                 .padding(.vertical, 7)
                 .background(isSelected ? selectedFill : unselectedFill, in: Capsule())
                 .foregroundStyle(isSelected ? selectedLabel : Color.primary)
                 .frame(minHeight: 44)
                 .contentShape(Rectangle())
         }
-        .buttonStyle(.plain)
+        .buttonStyle(FilterChipButtonStyle())
         .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 
     /// White on the app's own fills; black on a light reader colour, where white would not read.
     private var selectedLabel: Color {
-        let fill = UIColor(selectedFill)
-        return Color(uiColor: UIColor { UIColor.chipLabel(on: fill.resolvedColor(with: $0)) })
+        Self.resolvedSelectedLabel(for: selectedFill)
+    }
+
+    private nonisolated static func resolvedSelectedLabel(for fill: Color) -> Color {
+        let uiFill = UIColor(fill)
+        return Color(uiColor: UIColor { traitCollection in
+            UIColor.chipLabel(on: uiFill.resolvedColor(with: traitCollection))
+        })
+    }
+}
+
+private struct FilterChipButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .opacity(configuration.isPressed ? 0.72 : 1.0)
+            .scaleEffect(configuration.isPressed ? 0.96 : 1.0)
+            .animation(.easeOut(duration: 0.1), value: configuration.isPressed)
     }
 }
