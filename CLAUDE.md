@@ -32,7 +32,12 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
   -v ON_ERROR_STOP=1 --single-transaction < file.sql` from `/Volumes/External Mini/Projects/apps/mutshabehat-selfhost`,
   then `NOTIFY pgrst, 'reload schema'` (PROJECT_MASTER.md §8). The `supabase` CLI and host `psql` are not installed.
 - **📋 CHANGELOG IS MANDATORY:** every bug fix, feature, or performance improvement **MUST** be
-  recorded — dated, newest-first — in **both** the `# Changelog` section below **and** the root
+  recorded — dated, newest-first — in **both** the `# Changelog` ## 2026-10-28 — Word reader/narrator assignments and three-column متون editor
+- Added a clickable word picker for both hemistichs and independent manual assignments of any of the ten readers or twenty narrators to each word occurrence. Assignments carry optional source and note, are validated server-side, and are saved with the same optimistic revision as the poem and traditional symbols. The old symbol dictionary and its meaning are unchanged.
+- The desktop editor now presents search, poem/symbol editing, and word assignments in three independently scrolling columns. The responsive mobile layout stacks them. Added `mutoon-authorities.json` export and optional import; existing saved documents without assignments load as an empty set.
+- The iOS app does not yet consume the manual assignment export; only the traditional symbols currently appear there.
+
+section below **and** the root
   `CHANGELOG.md` (keep the two in sync), before the work is considered done. This is the running
   history/log of all changes for future reference.
 

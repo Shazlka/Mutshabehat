@@ -1,3 +1,8 @@
+## 2026-10-28 — Word reader/narrator assignments and three-column متون editor
+- Added a clickable word picker for both hemistichs and independent manual assignments of any of the ten readers or twenty narrators to each word occurrence. Assignments carry optional source and note, are validated server-side, and are saved with the same optimistic revision as the poem and traditional symbols. The old symbol dictionary and its meaning are unchanged.
+- The desktop editor now presents search, poem/symbol editing, and word assignments in three independently scrolling columns. The responsive mobile layout stacks them. Added `mutoon-authorities.json` export and optional import; existing saved documents without assignments load as an empty set.
+- The iOS app does not yet consume the manual assignment export; only the traditional symbols currently appear there.
+
 ## 2026-10-28 — Web متون editor for the Qiraat iOS app
 - **Owner request:** edit the poems in المزيد ← المتون, correct marks, add reader/narrator symbols to a verse, and save changes across devices through the web editor. The owner explicitly chose no additional password and approved public read/edit access for visitors despite the site's automatic owner sign-in.
 - **Editor:** `/mushaf-1441/mutoon-editor` imports the local `mutoon.json` and `symbols-all.json` once, searches all three poems, edits hemistichs, and adds or revises source-backed marks. A symbol's reader/narrator IDs come from the poem-specific dictionary; all existing 3,693 marks pass validation. It exports the same two JSON formats for the iOS build; no poem text is committed. The review navigation links to it.

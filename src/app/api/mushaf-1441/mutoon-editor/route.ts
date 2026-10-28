@@ -33,8 +33,8 @@ async function readBody(request: NextRequest): Promise<unknown> {
 }
 function checkedDocument(value: unknown): EditorData {
   if (!value || typeof value !== 'object') throw new Error('ملفا المتون والرموز مطلوبان')
-  const { mutoon, marks } = value as Partial<EditorData>
-  const doc = validateDocuments(mutoon, marks)
+  const { mutoon, marks, assignments } = value as Partial<EditorData>
+  const doc = validateDocuments(mutoon, marks, assignments)
   const slots = new Set<string>()
   for (const mark of doc.marks.marks) {
     const verse = verseFor(doc.mutoon, mark.work, mark.verse)
@@ -44,6 +44,12 @@ function checkedDocument(value: unknown): EditorData {
     const slot = `${mark.work}:${mark.verse}:${mark.line}:${mark.word}:${mark.occurrence}`
     if (slots.has(slot)) throw new Error(`${mark.work} ${mark.verse}: رمز مكرر`)
     slots.add(slot)
+  }
+  const assignmentSlots = new Set<string>()
+  for (const assignment of doc.assignments.assignments) {
+    const slot = `${assignment.work}:${assignment.verse}:${assignment.line}:${assignment.word}:${assignment.occurrence}`
+    if (assignmentSlots.has(slot)) throw new Error(`${assignment.work} ${assignment.verse}: تعيين مكرر للكلمة`)
+    assignmentSlots.add(slot)
   }
   return doc
 }

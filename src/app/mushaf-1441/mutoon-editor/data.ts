@@ -5,7 +5,9 @@ export type Work = { work: WorkId; title: string; author: string; bookId: number
 export type Mutoon = { schemaVersion: 1; works: Work[] }
 export type Mark = { work: WorkId; verse: number; line: number; word: string; occurrence: number; mode: 'letter' | 'word'; symbol: string; kind: 'reader' | 'narrator' | 'group'; readingIds: string[]; note: string; source: string; status: 'verified' | 'extracted'; method?: 'hand' | 'match' }
 export type Marks = { marks: Mark[] }
-export type EditorData = { mutoon: Mutoon; marks: Marks }
+export type WordAssignment = { work: WorkId; verse: number; line: number; word: string; occurrence: number; readingIds: string[]; note: string; source: string }
+export type Assignments = { schemaVersion: 1; assignments: WordAssignment[] }
+export type EditorData = { mutoon: Mutoon; marks: Marks; assignments: Assignments }
 export const WORK_IDS: WorkId[] = ['shatibiyyah', 'durrah', 'tayyibah']
 export const READER_NAMES = [
   ['نافع', 'قالون', 'ورش'], ['ابن كثير', 'البزي', 'قنبل'], ['أبو عمرو', 'الدوري عن أبي عمرو', 'السوسي'],
@@ -83,7 +85,14 @@ export function validateMark(mark: Mark, verse: Verse): string | null {
   if (mark.status === 'verified' && !mark.source.trim()) return 'أضف مصدر التحقق قبل اعتماد الرمز'
   return null
 }
-export function validateDocuments(mutoon: unknown, marks: unknown): EditorData {
+export function validateAssignment(assignment: WordAssignment, verse: Verse): string | null {
+  if (!Number.isInteger(assignment.line) || !verse.lines[assignment.line]) return 'الشطر غير موجود'
+  if (typeof assignment.word !== 'string' || !Number.isInteger(assignment.occurrence) || assignment.occurrence < 1 || !findWord(verse.lines[assignment.line], assignment.word, assignment.occurrence)) return 'الكلمة غير موجودة في الشطر'
+  if (!Array.isArray(assignment.readingIds) || assignment.readingIds.length === 0 || new Set(assignment.readingIds).size !== assignment.readingIds.length || assignment.readingIds.some(id => typeof id !== 'string' || !AUTHORITIES.some(a => a.id === id))) return 'اختر قارئًا أو راويًا معروفًا دون تكرار'
+  if (typeof assignment.note !== 'string' || typeof assignment.source !== 'string') return 'الملاحظة أو المصدر غير صالح'
+  return null
+}
+export function validateDocuments(mutoon: unknown, marks: unknown, assignments: unknown = { schemaVersion: 1, assignments: [] }): EditorData {
   if (!mutoon || typeof mutoon !== 'object' || (mutoon as Mutoon).schemaVersion !== 1 || !Array.isArray((mutoon as Mutoon).works)) throw new Error('ملف المتون غير صالح')
   if (!marks || typeof marks !== 'object' || !Array.isArray((marks as Marks).marks)) throw new Error('ملف الرموز غير صالح')
   const doc = mutoon as Mutoon
@@ -95,7 +104,15 @@ export function validateDocuments(mutoon: unknown, marks: unknown): EditorData {
   for (const mark of (marks as Marks).marks) {
     if (!WORK_IDS.includes(mark.work) || !Number.isInteger(mark.verse) || !Number.isInteger(mark.line) || typeof mark.word !== 'string' || typeof mark.symbol !== 'string' || !Array.isArray(mark.readingIds) || !['letter','word'].includes(mark.mode) || !['verified','extracted'].includes(mark.status)) throw new Error('ملف الرموز يحتوي علامة غير صالحة')
   }
-  return { mutoon: doc, marks: marks as Marks }
+  if (!assignments || typeof assignments !== 'object' || (assignments as Assignments).schemaVersion !== 1 || !Array.isArray((assignments as Assignments).assignments)) throw new Error('ملف تعيينات الكلمات غير صالح')
+  for (const assignment of (assignments as Assignments).assignments) {
+    if (!WORK_IDS.includes(assignment.work) || !Number.isInteger(assignment.verse)) throw new Error('تعيين قارئ أو راوٍ غير صالح')
+    const verse = verseFor(doc, assignment.work, assignment.verse)
+    if (!verse) throw new Error(`بيت غير موجود: ${assignment.work} ${assignment.verse}`)
+    const problem = validateAssignment(assignment, verse)
+    if (problem) throw new Error(`${assignment.work} ${assignment.verse}: ${problem}`)
+  }
+  return { mutoon: doc, marks: marks as Marks, assignments: assignments as Assignments }
 }
 export function verseFor(doc: Mutoon, work: WorkId, number: number): Verse | undefined {
   return doc.works.find(w => w.work === work)?.chapters.flatMap(c => c.verses).find(v => v.number === number)
