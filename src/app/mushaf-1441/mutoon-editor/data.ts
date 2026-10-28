@@ -5,7 +5,7 @@ export type Work = { work: WorkId; title: string; author: string; bookId: number
 export type Mutoon = { schemaVersion: 1; works: Work[] }
 export type Mark = { work: WorkId; verse: number; line: number; word: string; occurrence: number; mode: 'letter' | 'word'; symbol: string; kind: 'reader' | 'narrator' | 'group'; readingIds: string[]; note: string; source: string; status: 'verified' | 'extracted'; method?: 'hand' | 'match' }
 export type Marks = { marks: Mark[] }
-export type WordAssignment = { work: WorkId; verse: number; line: number; word: string; occurrence: number; readingIds: string[]; note: string; source: string }
+export type WordAssignment = { work: WorkId; verse: number; line: number; word: string; occurrence: number; mode?: 'letter' | 'word'; letterIndex?: number; readingIds: string[]; note: string; source: string }
 export type Assignments = { schemaVersion: 1; assignments: WordAssignment[] }
 export type EditorData = { mutoon: Mutoon; marks: Marks; assignments: Assignments }
 export const WORK_IDS: WorkId[] = ['shatibiyyah', 'durrah', 'tayyibah']
@@ -85,9 +85,15 @@ export function validateMark(mark: Mark, verse: Verse): string | null {
   if (mark.status === 'verified' && !mark.source.trim()) return 'أضف مصدر التحقق قبل اعتماد الرمز'
   return null
 }
+export function wordLetters(word: string): string[] {
+  return Array.from(new Intl.Segmenter('ar', { granularity: 'grapheme' }).segment(word), part => part.segment).filter(part => /\p{L}/u.test(part))
+}
 export function validateAssignment(assignment: WordAssignment, verse: Verse): string | null {
   if (!Number.isInteger(assignment.line) || !verse.lines[assignment.line]) return 'الشطر غير موجود'
   if (typeof assignment.word !== 'string' || !Number.isInteger(assignment.occurrence) || assignment.occurrence < 1 || !findWord(verse.lines[assignment.line], assignment.word, assignment.occurrence)) return 'الكلمة غير موجودة في الشطر'
+  const mode = assignment.mode ?? 'word'
+  if (mode !== 'word' && mode !== 'letter') return 'اختر الحرف أو الكلمة كاملة'
+  if (mode === 'letter' && (!Number.isInteger(assignment.letterIndex) || assignment.letterIndex! < 0 || assignment.letterIndex! >= wordLetters(findWord(verse.lines[assignment.line], assignment.word, assignment.occurrence)!).length)) return 'الحرف المحدد غير موجود في الكلمة'
   if (!Array.isArray(assignment.readingIds) || assignment.readingIds.length === 0 || new Set(assignment.readingIds).size !== assignment.readingIds.length || assignment.readingIds.some(id => typeof id !== 'string' || !AUTHORITIES.some(a => a.id === id))) return 'اختر قارئًا أو راويًا معروفًا دون تكرار'
   if (typeof assignment.note !== 'string' || typeof assignment.source !== 'string') return 'الملاحظة أو المصدر غير صالح'
   return null

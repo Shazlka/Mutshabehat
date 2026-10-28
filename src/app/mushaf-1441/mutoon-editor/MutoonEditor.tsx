@@ -1,7 +1,9 @@
 'use client'
 
 import { useEffect, useMemo, useState } from 'react'
-import { AUTHORITIES, definitionFor, definitions, key, wordKey, validateDocuments, validateMark, validateAssignment, verseFor, WORK_IDS, type EditorData, type Mark, type WordAssignment, type WorkId } from './data'
+import { QIRAAT_MULTI_READER_COLOR, readerColor, narratorColor } from '../../../../packages/qiraat-core/colors'
+import type { ReaderId, NarratorId } from '../../../../packages/qiraat-core/types'
+import { AUTHORITIES, definitionFor, definitions, key, wordKey, validateDocuments, validateMark, validateAssignment, verseFor, wordLetters, WORK_IDS, type EditorData, type Mark, type WordAssignment, type WorkId } from './data'
 
 const API = '/api/mushaf-1441/mutoon-editor'
 const LABELS: Record<WorkId,string> = { shatibiyyah:'الشاطبية', durrah:'الدرة', tayyibah:'طيبة النشر' }
@@ -41,6 +43,40 @@ function candidates(line: string): Array<{text:string; occurrence:number}> {
   }).filter(c => c.text)
 }
 function describe(ids: string[]) { return ids.map(id => AUTHORITIES.find(a => a.id === id)?.name ?? id).join('، ') }
+function authorityColor(id: string) { return id.includes('-') ? narratorColor(id as NarratorId) : readerColor(id as ReaderId) }
+function previewColor(ids: string[]) { return ids.length === 1 ? authorityColor(ids[0]) : QIRAAT_MULTI_READER_COLOR }
+
+function VersePreview({ lines, assignments, marks, work, verse }: { lines: string[]; assignments: WordAssignment[]; marks: Mark[]; work: WorkId; verse: number }) {
+  return <section aria-label="معاينة البيت المباشرة" className="sticky top-0 z-10 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 shadow-sm">
+    <div className="flex items-center justify-between gap-2"><h2 className="font-bold">معاينة البيت المباشرة</h2><span className="text-xs text-[var(--color-ink-soft)]">بيت {verse} · المسودة الحالية</span></div>
+    <div className="mt-2 rounded-lg border bg-[var(--color-paper)] px-3 py-2 text-right text-xl leading-[2.25]" dir="rtl">
+      {lines.map((line, lineIndex) => {
+        const counts = new Map<string, number>()
+        return <p key={lineIndex} className="min-h-10 whitespace-pre-wrap">{line.split(/(\s+)/).map((token, tokenIndex) => {
+          if (!token.trim()) return <span key={tokenIndex}>{token}</span>
+          const plain = token.replace(/[^\p{L}\p{M}\u0640]/gu, '')
+          if (!plain) return <span key={tokenIndex}>{token}</span>
+          const occurrence = (counts.get(plain) ?? 0) + 1
+          counts.set(plain, occurrence)
+          const slot = assignmentSlot({ work, verse, line: lineIndex, word: plain, occurrence })
+          const assignment = assignments.find(a => assignmentSlot(a) === slot)
+          const mark = marks.find(m => m.line === lineIndex && m.word === plain && m.occurrence === occurrence && m.status === 'verified')
+          const start = token.indexOf(plain)
+          const before = start < 0 ? '' : token.slice(0, start)
+          const after = start < 0 ? '' : token.slice(start + plain.length)
+          const letters = wordLetters(plain)
+          const color = assignment ? previewColor(assignment.readingIds) : '#DC2626'
+          const letterIndex = assignment?.mode === 'letter' ? assignment.letterIndex ?? 0 : mark?.mode === 'letter' && !assignment ? 0 : -1
+          const decoration = mark && assignment ? { textDecoration: 'underline' as const, textDecorationColor: '#DC2626', textDecorationThickness: '2px' } : undefined
+          return <span key={tokenIndex}>{before}{assignment || mark ? letterIndex >= 0 ? letters.map((letter, i) => <span key={i} style={i === letterIndex ? { color, fontWeight: 700, ...decoration } : undefined}>{letter}</span>) : <span style={{ color, fontWeight: 700, ...decoration }}>{plain}</span> : plain}{after}</span>
+        })}</p>
+      })}
+    </div>
+    {assignments.length > 0 && <div className="mt-2 flex flex-wrap gap-1">{assignments.flatMap(a => a.readingIds.map(id => <span key={`${assignmentSlot(a)}:${id}`} className="rounded-full border px-2 py-0.5 text-xs" style={{ borderColor: authorityColor(id), color: authorityColor(id), backgroundColor: `${authorityColor(id)}16` }}>{AUTHORITIES.find(x => x.id === id)?.name ?? id} · {a.word}</span>))}</div>}
+    {marks.some(m => m.status === 'verified') && <p className="mt-1 text-xs text-[var(--color-ink-soft)]"><span className="font-bold text-red-700">الأحمر</span> للرموز الموثقة في المتن؛ الخط الأحمر تحت التعيين يعني وجود رمز في موضعه.</p>}
+  </section>
+}
+
 
 export default function MutoonEditor() {
   const [data,setData] = useState<EditorData|null>(null)
@@ -61,6 +97,8 @@ export default function MutoonEditor() {
   const [note,setNote] = useState('')
   const [verified,setVerified] = useState(false)
   const [authorityQuery,setAuthorityQuery] = useState('')
+  const [pendingMode,setPendingMode] = useState<'letter'|'word'>('word')
+  const [pendingLetterIndex,setPendingLetterIndex] = useState(0)
   const dirty = !!data && data !== saved
   useEffect(() => {
     remote().then(value => { setUnlocked(true);const doc=normalize(value.document);setData(doc);setSaved(doc);setRevision(value.revision);setUpdatedAt(value.updatedAt ?? null) })
@@ -84,6 +122,8 @@ export default function MutoonEditor() {
   const selectedWord = words[newWord]
   const selectedSlot = selectedWord ? assignmentSlot({work:selection.work,verse:selection.verse,line:newLine,word:selectedWord.text,occurrence:selectedWord.occurrence}) : null
   const assignment = data?.assignments.assignments.find(a => assignmentSlot(a) === selectedSlot)
+  const currentMode = assignment ? assignment.mode ?? 'word' : pendingMode
+  const currentLetterIndex = assignment?.letterIndex ?? pendingLetterIndex
   const verseAssignments = data?.assignments.assignments.filter(a => a.work===selection.work && a.verse===selection.verse) ?? []
   const authorityGroups = Array.from({length:10},(_,i)=>AUTHORITIES.slice(i*3,i*3+3)).filter(group => !authorityQuery || group.some(a => key(a.name).includes(key(authorityQuery)) || a.id.toLowerCase().includes(authorityQuery.toLowerCase())))
   const possibleDefinitions = selectedWord ? definitions(selection.work).filter(d => {
@@ -138,12 +178,29 @@ export default function MutoonEditor() {
     if (idx>=0) next.marks.marks.splice(idx,1)
     setData(next); setProblems([])
   }
+  function setAssignmentMode(mode: 'letter'|'word') {
+    setPendingMode(mode)
+    if (!data || !assignment) return
+    const next=clone(data), item=next.assignments.assignments.find(a=>assignmentSlot(a)===selectedSlot)
+    if (!item) return
+    item.mode=mode
+    if (mode==='letter') item.letterIndex=Math.min(item.letterIndex ?? 0, Math.max(0,wordLetters(item.word).length-1))
+    else delete item.letterIndex
+    setData(next)
+  }
+  function setAssignmentLetter(index: number) {
+    setPendingLetterIndex(index)
+    if (!data || !assignment) return
+    const next=clone(data), item=next.assignments.assignments.find(a=>assignmentSlot(a)===selectedSlot)
+    if (!item) return
+    item.mode='letter';item.letterIndex=index;setData(next)
+  }
   function toggleAuthority(id: string) {
     if (!data || !selectedWord || !AUTHORITIES.some(a => a.id===id)) return
     const next=clone(data)
     const slot=assignmentSlot({work:selection.work,verse:selection.verse,line:newLine,word:selectedWord.text,occurrence:selectedWord.occurrence})
     const index=next.assignments.assignments.findIndex(a=>assignmentSlot(a)===slot)
-    if (index<0) next.assignments.assignments.push({work:selection.work,verse:selection.verse,line:newLine,word:selectedWord.text,occurrence:selectedWord.occurrence,readingIds:[id],note:'',source:''})
+    if (index<0) next.assignments.assignments.push({work:selection.work,verse:selection.verse,line:newLine,word:selectedWord.text,occurrence:selectedWord.occurrence,mode:pendingMode,letterIndex:pendingMode==='letter'?pendingLetterIndex:undefined,readingIds:[id],note:'',source:''})
     else {
       const item=next.assignments.assignments[index]
       item.readingIds=item.readingIds.includes(id) ? item.readingIds.filter(value=>value!==id) : [...item.readingIds,id]
@@ -185,7 +242,7 @@ export default function MutoonEditor() {
   if (busy) return <p className="p-8">جارٍ فتح محرر المتون…</p>
   if (!unlocked) return <section className="mx-auto max-w-md p-6"><h2 className="mb-3 text-lg font-bold">تعذر تحميل المتون</h2><p role="alert" className="text-sm text-red-700">{message || 'تعذر الوصول إلى قاعدة البيانات. أعد المحاولة.'}</p><button type="button" onClick={()=>window.location.reload()} className="mt-3 rounded-lg border p-2 text-sm">إعادة المحاولة</button>{data&&<div className="mt-4 flex gap-2"><button type="button" onClick={()=>download('mutoon.json',data.mutoon)} className="rounded border p-2 text-xs">تنزيل مسودة المتون</button><button type="button" onClick={()=>download('symbols-all.json',data.marks)} className="rounded border p-2 text-xs">تنزيل مسودة الرموز</button><button type="button" onClick={()=>download('mutoon-authorities.json',data.assignments)} className="rounded border p-2 text-xs">تنزيل تعيينات القراء</button></div>}</section>
   if (!data) return <section className="mx-auto max-w-xl p-6"><h2 className="mb-3 text-lg font-bold">استيراد بيانات المتون</h2><p className="mb-5 text-sm leading-7">اختر الملفين المحليين <b>mutoon.json</b> و <b>symbols-all.json</b> من مجلد <b>apps/ios/Generated/QiraatMutoon</b>. اضغط حفظ بعد الاستيراد لرفعها إلى قاعدة البيانات الخاصة.</p><input aria-label="ملفا المتون والرموز" type="file" accept=".json,application/json" multiple onChange={e=>void importFiles(e.target.files)} /><p role="status" className="mt-4 text-sm">{message}</p></section>
-  return <div className="mx-auto grid max-w-[1800px] gap-3 p-3 lg:h-[calc(100dvh-5.5rem)] lg:grid-cols-[16rem_minmax(0,1fr)_23rem] lg:overflow-hidden">
+  return <div className="mx-auto grid max-w-[1800px] gap-3 p-3 lg:h-[calc(100dvh-5.5rem)] lg:grid-cols-[15rem_minmax(19rem,1fr)_minmax(30rem,1.3fr)] lg:overflow-hidden">
     <aside className="min-h-0 overflow-auto rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3">
       <label className="block text-sm font-bold" htmlFor="work">المتن</label>
       <select id="work" className="mt-2 w-full rounded-lg border p-2" value={selection.work} onChange={e=>{const work=e.target.value as WorkId;choose({work,verse:data.mutoon.works.find(w=>w.work===work)?.chapters[0]?.verses[0]?.number??1});setQuery('')}}>{WORK_IDS.map(id=><option key={id} value={id}>{LABELS[id]}</option>)}</select>
@@ -204,14 +261,17 @@ export default function MutoonEditor() {
       <p role="status" aria-live="polite" className="text-sm">{message}</p>
     </section>
     <aside className="min-h-0 overflow-auto rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3" aria-label="تعيين القراء والرواة للكلمات">
-      <h2 className="font-bold">تعيين القراء والرواة</h2>
+      {verse&&<VersePreview lines={verse.lines} assignments={verseAssignments} marks={marks} work={selection.work} verse={selection.verse} />}
+      <h2 className="mt-3 font-bold">تعيين القراء والرواة</h2>
       <p className="mt-1 text-xs text-[var(--color-ink-soft)]">اختر كلمة من البيت، ثم عيّن لها أي قارئ أو راوٍ. هذه تعيينات مستقلة عن مدلول رموز المتن.</p>
       {verse ? <>
-        {verse.lines.map((line,lineIndex)=><div key={lineIndex} className="mt-3"><b className="text-xs">الشطر {lineIndex+1}</b><div dir="rtl" className="mt-1 flex flex-wrap gap-1 rounded-lg border p-2">{candidates(line).map((word,index)=>{const slot=assignmentSlot({work:selection.work,verse:selection.verse,line:lineIndex,word:word.text,occurrence:word.occurrence});const assigned=data.assignments.assignments.find(a=>assignmentSlot(a)===slot);return <button key={`${index}-${word.text}`} type="button" onClick={()=>{setNewLine(lineIndex);setNewWord(index);setNewSymbol('')}} aria-pressed={lineIndex===newLine&&index===newWord} className={`rounded px-2 py-1 text-base leading-7 ${lineIndex===newLine&&index===newWord?'bg-[var(--color-primary)] text-white':assigned?'border border-[var(--color-primary)] text-[var(--color-primary)]':'hover:bg-[var(--color-paper)]'}`}>{word.text}{assigned&&<span className="ms-1 text-xs">{assigned.readingIds.length}</span>}</button>})}</div></div>)}
+        {verse.lines.map((line,lineIndex)=><div key={lineIndex} className="mt-3"><b className="text-xs">الشطر {lineIndex+1}</b><div dir="rtl" className="mt-1 flex flex-wrap gap-1 rounded-lg border p-2">{candidates(line).map((word,index)=>{const slot=assignmentSlot({work:selection.work,verse:selection.verse,line:lineIndex,word:word.text,occurrence:word.occurrence});const assigned=data.assignments.assignments.find(a=>assignmentSlot(a)===slot);return <button key={`${index}-${word.text}`} type="button" onClick={()=>{setNewLine(lineIndex);setNewWord(index);setNewSymbol('');setPendingMode('word');setPendingLetterIndex(0)}} aria-pressed={lineIndex===newLine&&index===newWord} className={`rounded px-2 py-1 text-base leading-7 ${lineIndex===newLine&&index===newWord?'bg-[var(--color-primary)] text-white':assigned?'border border-[var(--color-primary)] text-[var(--color-primary)]':'hover:bg-[var(--color-paper)]'}`}>{word.text}{assigned&&<span className="ms-1 text-xs">{assigned.readingIds.length}</span>}</button>})}</div></div>)}
         <p className="mt-3 text-sm font-bold">{selectedWord ? `الكلمة: ${selectedWord.text}${selectedWord.occurrence>1?` (${selectedWord.occurrence})`:''}` : 'اختر كلمة'}</p>
         <p className="text-xs text-[var(--color-ink-soft)]">{assignment ? describe(assignment.readingIds) : 'لا يوجد تعيين لهذه الكلمة'} · {verseAssignments.length} كلمات معيّنة في البيت</p>
+        <div className="mt-3" role="group" aria-label="نوع علامة الكلمة"><p className="text-xs font-bold">لوّن الحرف أو الكلمة كاملة</p><div className="mt-1 flex gap-2">{(['letter','word'] as const).map(mode=><button key={mode} type="button" aria-pressed={currentMode===mode} onClick={()=>setAssignmentMode(mode)} disabled={!selectedWord} className={`rounded-lg border px-3 py-1.5 text-sm ${currentMode===mode?'border-[var(--color-primary)] bg-[var(--color-primary)] text-white':'hover:bg-[var(--color-paper)]'}`}>{mode==='letter'?'حرف من الكلمة':'الكلمة كاملة'}</button>)}</div></div>
+        {selectedWord&&currentMode==='letter'&&<div className="mt-2" role="group" aria-label="اختر الحرف"><p className="text-xs">اختر الحرف الملوّن</p><div dir="rtl" className="mt-1 flex flex-wrap gap-1">{wordLetters(selectedWord.text).map((letter,index)=><button key={index} type="button" aria-pressed={currentLetterIndex===index} onClick={()=>setAssignmentLetter(index)} className={`min-w-9 rounded border p-1 text-lg ${currentLetterIndex===index?'border-[var(--color-primary)] bg-[var(--color-primary)] text-white':'hover:bg-[var(--color-paper)]'}`}>{letter}</button>)}</div></div>}
         <label className="mt-3 block text-xs">ابحث عن قارئ أو راوٍ<input value={authorityQuery} onChange={e=>setAuthorityQuery(e.target.value)} className="mt-1 w-full rounded border p-2" placeholder="الاسم أو Q01" /></label>
-        <div className="mt-2 space-y-2">{authorityGroups.map(group=><div key={group[0].id} className="rounded-lg border p-2">{group.map((a,i)=><label key={a.id} className="flex items-center gap-2 py-1 text-sm"><input type="checkbox" checked={!!assignment?.readingIds.includes(a.id)} onChange={()=>toggleAuthority(a.id)} disabled={!selectedWord} /><span>{a.name}</span><span className="ms-auto text-xs text-[var(--color-ink-soft)]">{i===0?'قارئ':'راوٍ'}</span></label>)}</div>)}</div>
+        <div className="mt-2 space-y-2">{authorityGroups.map(group=><div key={group[0].id} className="grid grid-cols-3 gap-1 rounded-lg border p-2">{group.map((a,i)=>{const chosen=!!assignment?.readingIds.includes(a.id);const color=authorityColor(a.id);return <button key={a.id} type="button" aria-pressed={chosen} onClick={()=>toggleAuthority(a.id)} disabled={!selectedWord} className="min-w-0 rounded-lg border px-2 py-2 text-right text-sm disabled:opacity-50" style={{borderColor:color,color,backgroundColor:chosen?`${color}26`:undefined}}><span className="block font-bold">{chosen?'−':'+'} {a.name}</span><span className="block text-xs">{i===0?'قارئ':'راوٍ'} · {chosen?'إزالة':'إضافة'}</span></button>})}</div>)}</div>
         {assignment&&<div className="mt-3 space-y-2"><label className="block text-xs">المصدر<input value={assignment.source} onChange={e=>updateAssignment({source:e.target.value})} className="mt-1 w-full rounded border p-2" /></label><label className="block text-xs">ملاحظة<input value={assignment.note} onChange={e=>updateAssignment({note:e.target.value})} className="mt-1 w-full rounded border p-2" /></label></div>}
       </> : <p className="mt-3 text-sm">البيت غير موجود</p>}
     </aside>

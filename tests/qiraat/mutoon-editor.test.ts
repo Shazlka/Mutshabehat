@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { definitionFor, findWord, validateAssignment, validateMark, type Mark, type Verse, type WordAssignment } from '../../src/app/mushaf-1441/mutoon-editor/data'
+import { definitionFor, findWord, validateAssignment, validateMark, wordLetters, type Mark, type Verse, type WordAssignment } from '../../src/app/mushaf-1441/mutoon-editor/data'
 
 const verse: Verse = { number: 108, lines: ['رَاوِيهِ رَاوِيهِ', 'صُحْبَةٌ حَقٌّ'], printedPage: '9', pageId: 15 }
 const mark: Mark = { work: 'shatibiyyah', verse: 108, line: 0, word: 'رَاوِيهِ', occurrence: 2, mode: 'letter', symbol: 'ر', kind: 'reader', readingIds: ['Q07'], note: 'وجه القراءة', source: 'الوافي ص ٥٠', status: 'verified', method: 'hand' }
@@ -34,4 +34,13 @@ test('a word can name any reader or narrator independently of poem symbols', () 
   assert.equal(validateAssignment({ ...assignment, readingIds: ['Q01','Q01'] }, verse), 'اختر قارئًا أو راويًا معروفًا دون تكرار')
   assert.equal(validateAssignment({ ...assignment, occurrence: 3 }, verse), 'الكلمة غير موجودة في الشطر')
   assert.equal(validateAssignment(assignment, { ...verse, lines: ['تَغَيَّرَ النَّصُّ', verse.lines[1]] }), 'الكلمة غير موجودة في الشطر')
+})
+
+test('letter signs follow Arabic grapheme clusters and reject an out-of-range letter', () => {
+  assert.deepEqual(wordLetters('رَاوِيهِ'), ['رَ','ا','وِ','ي','هِ'])
+  const assignment: WordAssignment = { work: 'shatibiyyah', verse: 108, line: 0, word: 'رَاوِيهِ', occurrence: 2, mode: 'letter', letterIndex: 4, readingIds: ['Q03-R01'], note: '', source: '' }
+  assert.equal(validateAssignment(assignment, verse), null)
+  assert.equal(validateAssignment({ ...assignment, letterIndex: 5 }, verse), 'الحرف المحدد غير موجود في الكلمة')
+  assert.equal(validateAssignment({ ...assignment, letterIndex: -1 }, verse), 'الحرف المحدد غير موجود في الكلمة')
+  assert.equal(validateAssignment({ ...assignment, mode: 'word' }, verse), null)
 })

@@ -1,3 +1,8 @@
+## 2026-10-28 — Live متون preview, colored signs and wider authority editor
+- Added a sticky, live verse preview that reacts to text, symbol and manual reader/narrator edits in the unsaved draft. It uses the canonical Qiraat reader and narrator colors; multiple authorities on one sign use the shared-reader color with individually colored labels. Verified traditional symbols remain red.
+- Manual word assignments now choose a full word or a specific Arabic letter with its diacritics. Existing assignments default to full word. The authority selectors are colored add/remove buttons, and the desktop grid gives their column more width.
+- Focused validation covers letter indices and grapheme clusters; UI and deployment verification are recorded separately.
+
 ## 2026-10-28 — Word reader/narrator assignments and three-column متون editor
 - Added a clickable word picker for both hemistichs and independent manual assignments of any of the ten readers or twenty narrators to each word occurrence. Assignments carry optional source and note, are validated server-side, and are saved with the same optimistic revision as the poem and traditional symbols. The old symbol dictionary and its meaning are unchanged.
 - The desktop editor now presents search, poem/symbol editing, and word assignments in three independently scrolling columns. The responsive mobile layout stacks them. Added `mutoon-authorities.json` export and optional import; existing saved documents without assignments load as an empty set.
