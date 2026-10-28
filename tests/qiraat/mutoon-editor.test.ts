@@ -2,6 +2,8 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import {
   definitionFor,
+  definedIn,
+  symbolsFor,
   findWord,
   validateAssignment,
   validateMark,
@@ -126,4 +128,21 @@ test('compileAnnotations builds proper MatnSymbolAnnotation array for iOS', () =
   assert.ok(assignmentAnnotation)
   assert.equal((assignmentAnnotation as unknown as Record<string, unknown>)?.word, undefined) // standard annotation fields
   assert.deepEqual(assignmentAnnotation?.readingIds, ['Q06', 'Q07'])
+})
+
+test('the index knows where each symbol is defined and which symbols name a reader or narrator', () => {
+  assert.equal(definedIn('shatibiyyah', 'أ'), '٤٥–٤٦')
+  assert.equal(definedIn('shatibiyyah', 'صحبة'), '٥٢')
+  assert.equal(definedIn('durrah', 'ض'), '٥–٨')
+  assert.equal(definedIn('tayyibah', 'كنز'), '٤٨')
+
+  const warsh = symbolsFor('shatibiyyah', 'Q01-R02')
+  assert.deepEqual(warsh.own.map(d => d.symbol), ['ج'])
+  // ورش is inside نافع's own letter (it names both his narrators) and in his groups (عم، سما، حرمي، حصن), not in the others
+  assert.deepEqual(warsh.within.map(d => d.symbol).sort(), ['أ', 'حرمي', 'حصن', 'سما', 'عم'].sort())
+  // a reader's own symbol is the letter naming him, and he is inside the groups naming him
+  assert.deepEqual(symbolsFor('durrah', 'Q08').own.map(d => d.symbol), ['أ'])
+  assert.deepEqual(symbolsFor('durrah', 'Q08').within, [])
+  // الدرة has no symbol for the other readers
+  assert.deepEqual(symbolsFor('durrah', 'Q01'), { own: [], within: [] })
 })

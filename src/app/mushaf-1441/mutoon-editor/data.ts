@@ -80,6 +80,28 @@ export function definitions(work: WorkId): Definition[] {
   })
   return [...letters, ...groups[work].map(([symbol, readingIds]) => ({ symbol, kind: 'group' as const, readingIds }))]
 }
+/** Where each poem defines its symbols (verse numbers of its introduction), as the iOS app shows them. */
+const LETTERS_DEFINED_IN: Record<WorkId, string> = { shatibiyyah: '٤٥–٤٦', durrah: '٥–٨', tayyibah: '٣٦–٣٨' }
+const SYMBOL_DEFINED_IN: Record<WorkId, Record<string, string>> = {
+  shatibiyyah: { 'ث': '٤٩', 'خ': '٤٩–٥٠', 'ذ': '٥٠', 'ظ': '٥١', 'غ': '٥١', 'ش': '٥٢', 'صحبة': '٥٢', 'صحاب': '٥٣', 'عم': '٥٣', 'سما': '٥٣–٥٤', 'حق': '٥٤', 'نفر': '٥٤', 'حرمي': '٥٥', 'حصن': '٥٥' },
+  durrah: {},
+  tayyibah: { 'ث': '٣٦–٣٨', 'خ': '٣٦–٣٨', 'ذ': '٣٦–٣٨', 'ظ': '٣٦–٣٨', 'غ': '٣٦–٣٨', 'ش': '٣٦–٣٨', 'كفى': '٤٢', 'شفا': '٤٢', 'صحب': '٤٣', 'صحبة': '٤٣', 'صفا': '٤٣–٤٤', 'فتى': '٤٤', 'رضى': '٤٤', 'روى': '٤٥', 'ثوى': '٤٥', 'مدا': '٤٦', 'حما': '٤٦', 'سما': '٤٦', 'حق': '٤٧', 'حرم': '٤٧', 'عم': '٤٧', 'حبر': '٤٨', 'كنز': '٤٨' },
+}
+/** The verses (as printed digits) in which the poem defines a symbol. */
+export function definedIn(work: WorkId, symbol: string): string {
+  return SYMBOL_DEFINED_IN[work][symbol] ?? LETTERS_DEFINED_IN[work]
+}
+
+/** Symbols of a poem that name an authority: those spelling exactly it, and those naming a group it belongs to
+ *  (a reader's symbol covers both his narrators; a group of readers covers their narrators). */
+export function symbolsFor(work: WorkId, authorityId: string): { own: Definition[]; within: Definition[] } {
+  const reader = authorityId.split('-')[0]
+  const all = definitions(work)
+  const own = all.filter(d => d.readingIds.length === 1 && d.readingIds[0] === authorityId)
+  const within = all.filter(d => !own.includes(d) && d.readingIds.some(id => id === authorityId || id === reader))
+  return { own, within }
+}
+
 export function key(text: string): string {
   return text.normalize('NFC').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/[\u0640\u064b-\u065f\u0670\u06d6-\u06ed\s]/g,'')
 }

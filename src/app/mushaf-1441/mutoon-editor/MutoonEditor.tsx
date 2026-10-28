@@ -8,6 +8,7 @@ import { useMutoonStore } from './useMutoonStore'
 import { VerseBrowser } from './VerseBrowser'
 import { VerseStage } from './VerseStage'
 import { Inspector } from './Inspector'
+import { SymbolIndex } from './SymbolIndex'
 import { Btn, FOCUS, Icon, IconBtn, Segmented, Skeleton } from './ui'
 
 const LABELS: Record<WorkId, string> = { shatibiyyah: 'الشاطبية', durrah: 'الدرة', tayyibah: 'الطيبة' }
@@ -35,6 +36,7 @@ export default function MutoonEditor() {
   const [ready, setReady] = useState(false)
   const [selected, setSelected] = useState<{ line: number; index: number } | null>(null)
   const [tab, setTab] = useState<'verses' | 'editor'>('verses')
+  const [view, setView] = useState<'edit' | 'index'>('edit')
   const inspectorRef = useRef<HTMLElement | null>(null)
 
   // Restore the per-device position once, after hydration (localStorage does not exist on the server).
@@ -109,6 +111,8 @@ export default function MutoonEditor() {
         <Segmented label="المتن" value={work} onChange={w => { setWork(w); setSelected(null); const p = loadPosition(); setVerseNo(p.work === w ? p.verse : 1) }}
           options={WORK_IDS.map(w => ({ value: w, label: LABELS[w] }))} />
 
+        <Segmented label="العرض" value={view} onChange={setView} options={[{ value: 'edit', label: 'التحرير' }, { value: 'index', label: 'فهرس الرموز' }]} />
+
         <div className="ms-auto flex items-center gap-1.5">
           <SaveBadge phase={status.phase} pending={status.pending} message={status.message} savedAt={savedAt} online={online} onRetry={retry} />
           <IconBtn icon="undo" label="تراجع (Ctrl+Z)" onClick={undo} disabled={!canUndo} />
@@ -127,7 +131,12 @@ export default function MutoonEditor() {
       )}
 
       {/* desktop: three columns. phone: the verse list, or the editor (verse + panel stacked). */}
-      <div className="grid min-h-0 flex-1 grid-cols-1 lg:grid-cols-[300px_minmax(0,1fr)_400px]">
+      {view === 'index' && (
+        <div className="min-h-0 flex-1">
+          <SymbolIndex work={work} onOpenVerse={(w, n) => { setWork(w); setVerseNo(n); setSelected(null); setView('edit'); setTab('editor') }} />
+        </div>
+      )}
+      <div className={`grid min-h-0 flex-1 grid-cols-1 lg:grid-cols-[300px_minmax(0,1fr)_400px] ${view === 'index' ? 'hidden' : ''}`}>
         <aside className={`min-h-0 border-e border-[var(--color-border)] ${tab === 'verses' ? 'block' : 'hidden'} lg:block`}>
           <VerseBrowser data={data} loading={!!loading[work]} selected={verseNo} subtitle={SUBTITLES[work]} onSelect={goTo} />
         </aside>
@@ -159,7 +168,7 @@ export default function MutoonEditor() {
       </div>
 
       {/* phone tabs */}
-      <nav aria-label="الأقسام" className="fixed inset-x-0 bottom-0 z-20 grid grid-cols-2 border-t border-[var(--color-border)] bg-[var(--color-surface)] pb-[env(safe-area-inset-bottom)] lg:hidden">
+      <nav aria-label="الأقسام" className={`fixed inset-x-0 bottom-0 z-20 ${view === 'index' ? 'hidden' : 'grid'} grid-cols-2 border-t border-[var(--color-border)] bg-[var(--color-surface)] pb-[env(safe-area-inset-bottom)] lg:hidden`}>
         {([['verses', 'الأبيات', 'list'], ['editor', 'المحرر', 'edit']] as const).map(([id, label, icon]) => (
           <button key={id} type="button" aria-current={tab === id} onClick={() => setTab(id)}
             className={`flex min-h-14 cursor-pointer flex-col items-center justify-center gap-0.5 text-[11px] font-bold ${FOCUS} ${tab === id ? 'text-[var(--color-primary)]' : 'text-[var(--color-ink-soft)]'}`}>

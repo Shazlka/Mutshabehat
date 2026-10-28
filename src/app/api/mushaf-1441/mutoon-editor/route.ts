@@ -21,6 +21,7 @@ function sameOrigin(request: NextRequest): boolean {
  * GET ?work=W            a poem's chapters and verses with per-verse counts (no marks or assignments)
  * GET ?work=W&verse=N    one verse with its marks and assignments
  * GET ?since=S           the verses that changed after sequence S, each with its rows
+ * GET ?symbols=W         how often each symbol of a poem is marked, and where (the index of رموز القراء)
  * GET                    the current sequence number
  */
 export async function GET(request: NextRequest) {
@@ -28,6 +29,13 @@ export async function GET(request: NextRequest) {
   const params = request.nextUrl.searchParams
   const work = params.get('work')
   if (work !== null && !WORK_IDS.includes(work as WorkId)) return json({ error: 'متن غير معروف' }, 400)
+
+  if (params.has('symbols')) {
+    const w = params.get('symbols')
+    if (!WORK_IDS.includes(w as WorkId)) return json({ error: 'متن غير معروف' }, 400)
+    const result = await mutoonRpc('qiraat_mutoon_symbol_index', { p_work: w })
+    return result.error ? json({ error: result.error.message }, result.error.status) : json({ work: w, symbols: result.data })
+  }
 
   if (params.has('since')) {
     const since = Number(params.get('since'))

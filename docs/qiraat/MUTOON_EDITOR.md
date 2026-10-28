@@ -4,6 +4,10 @@ Open `/mushaf-1441/mutoon-editor`. Choose الشاطبية, الدرة or طيب
 
 No poem text is committed to the public Git repository.
 
+## Index of reader and narrator symbols
+
+«فهرس الرموز» (header, next to «التحرير»): by symbol (meaning, where defined, how many times marked, the verses, each opening in the editor) and by reader/narrator (which symbols name him in each poem, including the group symbols he belongs to). Usage counts come from `GET ...?symbols=W` (`qiraat_mutoon_symbol_index`).
+
 ## Data model (migration `20261028150000_qiraat_mutoon_rows.sql`)
 
 | Table | Row |
@@ -36,6 +40,8 @@ Writes go through `qiraat_mutoon_apply(ops, client)`: up to 200 operations (`ass
 By the owner's decision the site signs every visitor in as the owner, so there is no separate editor login. Writes are refused from other origins and every operation is validated and version-checked.
 
 ## Deploying
+
+The symbol index adds migration `20261029100000_qiraat_mutoon_symbol_index.sql` (a read-only function).
 
 The شرح adds migration `20261028180000_qiraat_mutoon_sharh.sql`, then the import: `python3 scripts/qiraat/import_mutoon_sharh.py apps/ios/Generated/QiraatMutoon/mutoon-sharh.json | docker exec -i mutshabehat-db psql -U postgres -d postgres -v ON_ERROR_STOP=1`.
 
