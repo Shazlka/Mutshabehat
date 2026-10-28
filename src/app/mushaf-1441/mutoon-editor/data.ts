@@ -201,6 +201,9 @@ export type MatnSymbolAnnotation = {
   source: string
   status: 'verified' | 'extracted'
   method: 'hand' | 'match'
+  /** 'symbol' = a poem's own reader/narrator symbol (checked against its dictionary); 'assignment' = a reader or narrator
+   *  assigned to a word by hand in the editor (no dictionary: the iOS app checks only that the text is where it says). */
+  origin: 'symbol' | 'assignment'
 }
 
 export function lineGraphemes(line: string): string[] {
@@ -234,25 +237,14 @@ export function locateWordGraphemes(line: string, targetWord: string, occurrence
   return matched[occurrence - 1] ?? null
 }
 
-export function compileAnnotations(doc: EditorData): MatnSymbolAnnotation[] {
+export function compileVerse(work: WorkId, verseNumber: number, lines: string[], marks: Mark[], assignments: WordAssignment[]): MatnSymbolAnnotation[] {
   const annotations: MatnSymbolAnnotation[] = []
   const seenSlots = new Set<string>()
 
-  // Build O(1) verse lookup map
-  const verseMap = new Map<string, Verse>()
-  for (const w of doc.mutoon.works) {
-    for (const c of w.chapters) {
-      for (const v of c.verses) {
-        verseMap.set(`${w.work}:${v.number}`, v)
-      }
-    }
-  }
-
-  // 1. Compile direct word assignments first
-  for (const a of doc.assignments.assignments) {
-    const verse = verseMap.get(`${a.work}:${a.verse}`)
-    if (!verse || !verse.lines[a.line]) continue
-    const line = verse.lines[a.line]
+  // 1. Hand assignments first: they take precedence over a poem symbol on the same letter.
+  for (const a of assignments) {
+    const line = lines[a.line]
+    if (line === undefined) continue
     const span = locateWordGraphemes(line, a.word, a.occurrence)
     if (!span) continue
 
@@ -272,70 +264,76 @@ export function compileAnnotations(doc: EditorData): MatnSymbolAnnotation[] {
     const isSingleNarrator = a.readingIds.length === 1 && a.readingIds[0].includes('-')
     const kind: 'reader' | 'narrator' | 'group' = isSingleReader ? 'reader' : isSingleNarrator ? 'narrator' : 'group'
 
-    const slotKey = `${a.work}:${a.verse}:${a.line}:${start}`
-    seenSlots.add(slotKey)
+    seenSlots.add(`${work}:${verseNumber}:${a.line}:${start}`)
 
     annotations.push({
-      work: a.work,
-      verse: a.verse,
-      line: a.line,
-      start,
-      end,
-      text,
-      symbol: text,
-      kind,
-      readingIds: a.readingIds,
-      note: a.note || '',
-      source: a.source || '',
-      status: 'verified',
-      method: 'hand',
+      work, verse: verseNumber, line: a.line, start, end, text, symbol: text, kind,
+      readingIds: a.readingIds, note: a.note || '', source: a.source || '',
+      status: 'verified', method: 'hand', origin: 'assignment',
     })
   }
 
-  // 2. Compile poetic marks
-  for (const m of doc.marks.marks) {
-    const verse = verseMap.get(`${m.work}:${m.verse}`)
-    if (!verse || !verse.lines[m.line]) continue
-    const line = verse.lines[m.line]
+  // 2. Poem symbols.
+  for (const m of marks) {
+    const line = lines[m.line]
+    if (line === undefined) continue
     const span = locateWordGraphemes(line, m.word, m.occurrence)
     if (!span) continue
 
     const chars = lineGraphemes(line)
-    let start = span.start
-    let end = span.end
+    const start = span.start
+    const end = m.mode === 'letter' ? start + 1 : span.end
 
-    if (m.mode === 'letter') {
-      end = start + 1
-    }
-
-    const slotKey = `${m.work}:${m.verse}:${m.line}:${start}`
-    if (seenSlots.has(slotKey)) continue // Word assignment takes precedence
+    const slotKey = `${work}:${verseNumber}:${m.line}:${start}`
+    if (seenSlots.has(slotKey)) continue // an assignment on the same spot wins
     seenSlots.add(slotKey)
 
-    const text = chars.slice(start, end).join('')
-
     annotations.push({
-      work: m.work,
-      verse: m.verse,
-      line: m.line,
-      start,
-      end,
-      text,
-      symbol: m.symbol,
-      kind: m.kind,
-      readingIds: m.readingIds,
-      note: m.note || '',
-      source: m.source || '',
-      status: m.status,
-      method: m.method ?? 'hand',
+      work, verse: verseNumber, line: m.line, start, end, text: chars.slice(start, end).join(''), symbol: m.symbol,
+      kind: m.kind, readingIds: m.readingIds, note: m.note || '', source: m.source || '',
+      status: m.status, method: m.method ?? 'hand', origin: 'symbol',
     })
   }
 
-  // Sort by work, verse, line, start
-  return annotations.sort((a, b) => {
-    if (a.work !== b.work) return a.work.localeCompare(b.work)
-    if (a.verse !== b.verse) return a.verse - b.verse
-    if (a.line !== b.line) return a.line - b.line
-    return a.start - b.start
-  })
+  return annotations.sort((a, b) => a.line - b.line || a.start - b.start)
+}
+
+export function compileAnnotations(doc: EditorData): MatnSymbolAnnotation[] {
+  const marksByVerse = new Map<string, Mark[]>()
+  for (const m of doc.marks.marks) {
+    const k = `${m.work}:${m.verse}`
+    marksByVerse.set(k, [...(marksByVerse.get(k) ?? []), m])
+  }
+  const assignmentsByVerse = new Map<string, WordAssignment[]>()
+  for (const a of doc.assignments.assignments) {
+    const k = `${a.work}:${a.verse}`
+    assignmentsByVerse.set(k, [...(assignmentsByVerse.get(k) ?? []), a])
+  }
+  const all: MatnSymbolAnnotation[] = []
+  for (const w of doc.mutoon.works) {
+    for (const c of w.chapters) {
+      for (const v of c.verses) {
+        const k = `${w.work}:${v.number}`
+        if (!marksByVerse.has(k) && !assignmentsByVerse.has(k)) continue
+        all.push(...compileVerse(w.work, v.number, v.lines, marksByVerse.get(k) ?? [], assignmentsByVerse.get(k) ?? []))
+      }
+    }
+  }
+  return all.sort((a, b) => a.work.localeCompare(b.work) || a.verse - b.verse || a.line - b.line || a.start - b.start)
+}
+
+/** The words of a hemistich as the editor offers them: letters only, with how many times the same word came before. */
+export function candidates(line: string): Array<{ text: string; occurrence: number; indexInLine: number }> {
+  const counts = new Map<string, number>()
+  return line.split(/\s+/).filter(Boolean).map((text, indexInLine) => {
+    const plain = text.replace(/[^\p{L}\p{M}\u0640]/gu, '')
+    const occurrence = (counts.get(plain) ?? 0) + 1
+    counts.set(plain, occurrence)
+    return { text: plain, occurrence, indexInLine }
+  }).filter(c => c.text)
+}
+
+/** Whether a stored mark or assignment is about this word of this hemistich. */
+export function rowIsAboutWord(row: { line: number; word: string; occurrence: number }, lineText: string, ref: { line: number; word: string; occurrence: number }): boolean {
+  return row.line === ref.line && row.occurrence === ref.occurrence && findWord(lineText, row.word, row.occurrence) === ref.word
 }
