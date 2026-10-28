@@ -1,6 +1,19 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { definitionFor, findWord, validateAssignment, validateMark, wordLetters, type Mark, type Verse, type WordAssignment } from '../../src/app/mushaf-1441/mutoon-editor/data'
+import {
+  definitionFor,
+  findWord,
+  validateAssignment,
+  validateMark,
+  wordLetters,
+  replaceWordInLine,
+  insertWordInLine,
+  compileAnnotations,
+  type Mark,
+  type Verse,
+  type WordAssignment,
+  type EditorData,
+} from '../../src/app/mushaf-1441/mutoon-editor/data'
 
 const verse: Verse = { number: 108, lines: ['رَاوِيهِ رَاوِيهِ', 'صُحْبَةٌ حَقٌّ'], printedPage: '9', pageId: 15 }
 const mark: Mark = { work: 'shatibiyyah', verse: 108, line: 0, word: 'رَاوِيهِ', occurrence: 2, mode: 'letter', symbol: 'ر', kind: 'reader', readingIds: ['Q07'], note: 'وجه القراءة', source: 'الوافي ص ٥٠', status: 'verified', method: 'hand' }
@@ -43,4 +56,74 @@ test('letter signs follow Arabic grapheme clusters and reject an out-of-range le
   assert.equal(validateAssignment({ ...assignment, letterIndex: 5 }, verse), 'الحرف المحدد غير موجود في الكلمة')
   assert.equal(validateAssignment({ ...assignment, letterIndex: -1 }, verse), 'الحرف المحدد غير موجود في الكلمة')
   assert.equal(validateAssignment({ ...assignment, mode: 'word' }, verse), null)
+})
+
+test('word editing and insertion helpers update line text cleanly', () => {
+  const line = 'رَاوِيهِ نَاصِرٌ حَلَا'
+  const updated = replaceWordInLine(line, 'نَاصِرٌ', 1, 'غَيْثٌ')
+  assert.equal(updated, 'رَاوِيهِ غَيْثٌ حَلَا')
+
+  const inserted = insertWordInLine(line, 0, 'وَقَالَ', 'before')
+  assert.equal(inserted, 'وَقَالَ رَاوِيهِ نَاصِرٌ حَلَا')
+})
+
+test('compileAnnotations builds proper MatnSymbolAnnotation array for iOS', () => {
+  const doc: EditorData = {
+    mutoon: {
+      schemaVersion: 1,
+      works: [
+        {
+          work: 'shatibiyyah',
+          title: 'الشاطبية',
+          author: 'الشاطبي',
+          bookId: 1,
+          chapters: [{ title: 'الفاتحة', farsh: true, verses: [verse] }],
+        },
+        {
+          work: 'durrah',
+          title: 'الدرة',
+          author: 'ابن الجزري',
+          bookId: 2,
+          chapters: [],
+        },
+        {
+          work: 'tayyibah',
+          title: 'طيبة النشر',
+          author: 'ابن الجزري',
+          bookId: 3,
+          chapters: [],
+        },
+      ],
+    },
+    marks: { marks: [mark] },
+    assignments: {
+      schemaVersion: 1,
+      assignments: [
+        {
+          work: 'shatibiyyah',
+          verse: 108,
+          line: 1,
+          word: 'صُحْبَةٌ',
+          occurrence: 1,
+          mode: 'word',
+          readingIds: ['Q06', 'Q07'],
+          note: 'حمزة والكسائي',
+          source: 'الوافي',
+        },
+      ],
+    },
+  }
+
+  const annotations = compileAnnotations(doc)
+  assert.equal(annotations.length, 2)
+  const markAnnotation = annotations.find(a => a.line === 0)
+  assert.ok(markAnnotation)
+  assert.equal(markAnnotation?.work, 'shatibiyyah')
+  assert.equal(markAnnotation?.verse, 108)
+  assert.equal(markAnnotation?.status, 'verified')
+
+  const assignmentAnnotation = annotations.find(a => a.line === 1)
+  assert.ok(assignmentAnnotation)
+  assert.equal(assignmentAnnotation?.word, undefined) // standard annotation fields
+  assert.deepEqual(assignmentAnnotation?.readingIds, ['Q06', 'Q07'])
 })

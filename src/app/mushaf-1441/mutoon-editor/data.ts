@@ -19,6 +19,33 @@ export const AUTHORITIES = READER_NAMES.flatMap(([reader, first, second], index)
   const id = `Q${String(index + 1).padStart(2, '0')}`
   return [{ id, name: reader }, { id: `${id}-R01`, name: first }, { id: `${id}-R02`, name: second }]
 })
+
+export type ClassicalGroup = {
+  id: string
+  name: string
+  readingIds: string[]
+  works?: WorkId[]
+  description: string
+}
+
+export const CLASSICAL_GROUPS: ClassicalGroup[] = [
+  { id: 'all10', name: 'العشرة', readingIds: ['Q01','Q02','Q03','Q04','Q05','Q06','Q07','Q08','Q09','Q10'], description: 'جميع القراء العشرة' },
+  { id: 'all7', name: 'السبعة', readingIds: ['Q01','Q02','Q03','Q04','Q05','Q06','Q07'], description: 'أئمة الشاطبية' },
+  { id: 'all3', name: 'الثلاثة', readingIds: ['Q08','Q09','Q10'], description: 'أئمة الدرة (أبو جعفر، يعقوب، خلف العاشر)' },
+  { id: 'sama', name: 'سما', readingIds: ['Q01','Q02','Q03'], description: 'نافع، ابن كثير، أبو عمرو' },
+  { id: 'suhbah', name: 'صحبة', readingIds: ['Q06','Q07','Q05-R01'], description: 'حمزة، الكسائي، شعبة' },
+  { id: 'sihab', name: 'صحاب', readingIds: ['Q06','Q07','Q05-R02'], description: 'حمزة، الكسائي، حفص' },
+  { id: 'am', name: 'عم', readingIds: ['Q01','Q04'], description: 'نافع، ابن عامر' },
+  { id: 'harami', name: 'حرمي', readingIds: ['Q01','Q02'], description: 'نافع، ابن كثير' },
+  { id: 'haqq', name: 'حق', readingIds: ['Q02','Q03'], description: 'ابن كثير، أبو عمرو' },
+  { id: 'nafar', name: 'نفر', readingIds: ['Q02','Q03','Q04'], description: 'ابن كثير، أبو عمرو، ابن عامر' },
+  { id: 'hisn', name: 'حصن', readingIds: ['Q01','Q05','Q06','Q07'], description: 'نافع، عاصم، حمزة، الكسائي' },
+  { id: 'kufa', name: 'الكوفيون', readingIds: ['Q05','Q06','Q07'], description: 'عاصم، حمزة، الكسائي' },
+  { id: 'basra', name: 'البصريان', readingIds: ['Q03','Q09'], description: 'أبو عمرو، يعقوب' },
+  { id: 'kafa', name: 'كفى', readingIds: ['Q05','Q06','Q07','Q10'], description: 'عاصم، حمزة، الكسائي، خلف العاشر' },
+  { id: 'shafa', name: 'شفا', readingIds: ['Q06','Q07','Q10'], description: 'حمزة، الكسائي، خلف العاشر' },
+  { id: 'kanz', name: 'كنز', readingIds: ['Q05','Q06','Q07','Q10','Q04'], description: 'ابن عامر، عاصم، حمزة، الكسائي، خلف العاشر' },
+]
 export type Definition = { symbol: string; kind: Mark['kind']; readingIds: string[] }
 const triples: Record<WorkId, Array<[number, string]>> = {
   shatibiyyah: [[1,'أبج'],[2,'دهز'],[3,'حطي'],[4,'كلم'],[5,'نصع'],[6,'فضق'],[7,'رست']],
@@ -122,4 +149,183 @@ export function validateDocuments(mutoon: unknown, marks: unknown, assignments: 
 }
 export function verseFor(doc: Mutoon, work: WorkId, number: number): Verse | undefined {
   return doc.works.find(w => w.work === work)?.chapters.flatMap(c => c.verses).find(v => v.number === number)
+}
+
+export function replaceWordInLine(line: string, oldWord: string, occurrence: number, newWord: string): string {
+  const parts = line.split(/(\s+)/)
+  let count = 0
+  for (let i = 0; i < parts.length; i++) {
+    const token = parts[i]
+    if (!token.trim()) continue
+    const plain = token.replace(/[^\p{L}\p{M}\u0640]/gu, '')
+    if (plain === oldWord || key(plain) === key(oldWord)) {
+      count++
+      if (count === occurrence) {
+        parts[i] = token.replace(plain, newWord)
+        return parts.join('')
+      }
+    }
+  }
+  return line
+}
+
+export function insertWordInLine(line: string, wordIndex: number, newWord: string, position: 'before' | 'after' = 'after'): string {
+  const tokens = line.split(/\s+/).filter(Boolean)
+  if (wordIndex < 0 || wordIndex > tokens.length) {
+    return `${line} ${newWord}`.trim()
+  }
+  const insertAt = position === 'before' ? wordIndex : wordIndex + 1
+  tokens.splice(insertAt, 0, newWord)
+  return tokens.join(' ')
+}
+
+export function deleteWordInLine(line: string, wordIndex: number): string {
+  const tokens = line.split(/\s+/).filter(Boolean)
+  if (wordIndex >= 0 && wordIndex < tokens.length) {
+    tokens.splice(wordIndex, 1)
+  }
+  return tokens.join(' ')
+}
+
+export type MatnSymbolAnnotation = {
+  work: WorkId
+  verse: number
+  line: number
+  start: number
+  end: number
+  text: string
+  symbol: string
+  kind: 'reader' | 'narrator' | 'group'
+  readingIds: string[]
+  note: string
+  source: string
+  status: 'verified' | 'extracted'
+  method: 'hand' | 'match'
+}
+
+export function lineGraphemes(line: string): string[] {
+  const segmenter = new Intl.Segmenter('ar', { granularity: 'grapheme' })
+  return Array.from(segmenter.segment(line), s => s.segment)
+}
+
+export function locateWordGraphemes(line: string, targetWord: string, occurrence = 1): { start: number; end: number } | null {
+  const chars = lineGraphemes(line)
+  const spans: Array<{ start: number; end: number }> = []
+  let start: number | null = null
+
+  for (let i = 0; i <= chars.length; i++) {
+    const c = chars[i] ?? ' '
+    if (/\s/.test(c)) {
+      if (start !== null) {
+        let end = i
+        while (end > start && !/\p{L}/u.test(chars[end - 1])) {
+          end--
+        }
+        spans.push({ start, end })
+        start = null
+      }
+    } else if (start === null) {
+      start = i
+    }
+  }
+
+  const exact = spans.filter(s => chars.slice(s.start, s.end).join('') === targetWord)
+  const matched = exact.length > 0 ? exact : spans.filter(s => key(chars.slice(s.start, s.end).join('')) === key(targetWord))
+  return matched[occurrence - 1] ?? null
+}
+
+export function compileAnnotations(doc: EditorData): MatnSymbolAnnotation[] {
+  const annotations: MatnSymbolAnnotation[] = []
+  const seenSlots = new Set<string>()
+
+  // 1. Compile direct word assignments first
+  for (const a of doc.assignments.assignments) {
+    const verse = verseFor(doc.mutoon, a.work, a.verse)
+    if (!verse || !verse.lines[a.line]) continue
+    const line = verse.lines[a.line]
+    const span = locateWordGraphemes(line, a.word, a.occurrence)
+    if (!span) continue
+
+    const chars = lineGraphemes(line)
+    let start = span.start
+    let end = span.end
+
+    if (a.mode === 'letter') {
+      const wordChars = chars.slice(span.start, span.end)
+      const letterIdx = Math.min(a.letterIndex ?? 0, Math.max(0, wordChars.length - 1))
+      start = span.start + letterIdx
+      end = start + 1
+    }
+
+    const text = chars.slice(start, end).join('')
+    const isSingleReader = a.readingIds.length === 1 && !a.readingIds[0].includes('-')
+    const isSingleNarrator = a.readingIds.length === 1 && a.readingIds[0].includes('-')
+    const kind: 'reader' | 'narrator' | 'group' = isSingleReader ? 'reader' : isSingleNarrator ? 'narrator' : 'group'
+
+    const slotKey = `${a.work}:${a.verse}:${a.line}:${start}`
+    seenSlots.add(slotKey)
+
+    annotations.push({
+      work: a.work,
+      verse: a.verse,
+      line: a.line,
+      start,
+      end,
+      text,
+      symbol: text,
+      kind,
+      readingIds: a.readingIds,
+      note: a.note || '',
+      source: a.source || '',
+      status: 'verified',
+      method: 'hand',
+    })
+  }
+
+  // 2. Compile poetic marks
+  for (const m of doc.marks.marks) {
+    const verse = verseFor(doc.mutoon, m.work, m.verse)
+    if (!verse || !verse.lines[m.line]) continue
+    const line = verse.lines[m.line]
+    const span = locateWordGraphemes(line, m.word, m.occurrence)
+    if (!span) continue
+
+    const chars = lineGraphemes(line)
+    let start = span.start
+    let end = span.end
+
+    if (m.mode === 'letter') {
+      end = start + 1
+    }
+
+    const slotKey = `${m.work}:${m.verse}:${m.line}:${start}`
+    if (seenSlots.has(slotKey)) continue // Word assignment takes precedence
+    seenSlots.add(slotKey)
+
+    const text = chars.slice(start, end).join('')
+
+    annotations.push({
+      work: m.work,
+      verse: m.verse,
+      line: m.line,
+      start,
+      end,
+      text,
+      symbol: m.symbol,
+      kind: m.kind,
+      readingIds: m.readingIds,
+      note: m.note || '',
+      source: m.source || '',
+      status: m.status,
+      method: m.method ?? 'hand',
+    })
+  }
+
+  // Sort by work, verse, line, start
+  return annotations.sort((a, b) => {
+    if (a.work !== b.work) return a.work.localeCompare(b.work)
+    if (a.verse !== b.verse) return a.verse - b.verse
+    if (a.line !== b.line) return a.line - b.line
+    return a.start - b.start
+  })
 }
