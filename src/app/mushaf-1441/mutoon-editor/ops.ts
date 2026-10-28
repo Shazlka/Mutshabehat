@@ -20,7 +20,9 @@ import {
 export type VerseRow = { number: number; lines: string[]; printedPage: string | null; pageId: number | null; version: number }
 export type AssignmentRow = WordAssignment & { id: string; version: number }
 export type MarkRow = Mark & { id: string; version: number }
-export type VerseState = { work: WorkId; chapter?: string; verse: VerseRow; marks: MarkRow[]; assignments: AssignmentRow[] }
+/** The شرح of a verse: book text kept in the database, editable here. `version` 0 = none yet. */
+export type SharhRow = { text: string; title: string; author: string; pages: string[]; version: number }
+export type VerseState = { work: WorkId; chapter?: string; verse: VerseRow; marks: MarkRow[]; assignments: AssignmentRow[]; sharh?: SharhRow | null }
 
 export type WordRef = { line: number; word: string; occurrence: number }
 export type Scope = { mode: 'word' | 'letter'; letterIndex?: number }
@@ -31,6 +33,8 @@ export type Op =
   | { t: 'mark_set'; id?: string; version?: number; vv: number; work: WorkId; verse: number; line: number; word: string; occurrence: number; mode: 'word' | 'letter'; symbol: string; kind: Mark['kind']; readingIds: string[]; note: string; source: string; status: Mark['status']; method: 'hand' | 'match' }
   | { t: 'mark_del'; id: string; version: number }
   | { t: 'verse_set'; work: WorkId; verse: number; version: number; lines: string[] }
+  | { t: 'sharh_set'; work: WorkId; verse: number; version?: number; text: string; title?: string; author?: string; pages?: string[] }
+  | { t: 'sharh_del'; work: WorkId; verse: number; version: number }
 
 export type Intent =
   | { k: 'authority'; ref: WordRef; scope: Scope; id: string }
@@ -41,14 +45,16 @@ export type Intent =
   | { k: 'mark'; ref: WordRef; symbol: string; note: string; source: string; verified: boolean }
   | { k: 'unmark'; ref: WordRef }
   | { k: 'lines'; lines: string[]; rename?: { ref: WordRef; to: string }; drop?: WordRef; dropOrphans?: boolean }
+  | { k: 'sharh'; text: string; title?: string; author?: string }
   | { k: 'restore'; target: Snapshot }
 
 /** What a verse looked like (for undo and redo): its text and every row without database identity. */
-export type Snapshot = { lines: string[]; assignments: WordAssignment[]; marks: Mark[] }
+export type Snapshot = { lines: string[]; assignments: WordAssignment[]; marks: Mark[]; sharh: string | null }
 
 export type Planned = { ops: Op[]; next: VerseState; error?: string; orphans?: number }
 
 export const MAX_LINE_LENGTH = 400
+export const MAX_SHARH_LENGTH = 40000
 const isTmp = (id: string | undefined) => !id || id.startsWith('tmp:')
 const slot = (r: { line: number; word: string; occurrence: number }) => `${r.line}:${r.word}:${r.occurrence}`
 
@@ -62,6 +68,7 @@ export function snapshotOf(state: VerseState): Snapshot {
     lines: [...state.verse.lines],
     assignments: state.assignments.map(a => strip(a) as WordAssignment),
     marks: state.marks.map(m => strip(m) as Mark),
+    sharh: state.sharh?.text ?? null,
   }
 }
 
@@ -192,12 +199,30 @@ export function applyIntent(state: VerseState, intent: Intent): Planned {
       return { ops, next: { ...state, marks: state.marks.filter(m => m !== existing) } }
     }
 
+    case 'sharh':
+      return planSharh(state, intent.text, intent.title, intent.author)
+
     case 'lines':
       return planLines(state, intent)
 
     case 'restore':
       return planRestore(state, intent.target)
   }
+}
+
+/** Sets, replaces or (for empty text) removes the شرح of the verse. */
+function planSharh(state: VerseState, raw: string, title?: string, author?: string): Planned {
+  const text = raw.replace(/\r\n/g, '\n').trim()
+  if (text.length > MAX_SHARH_LENGTH) return { ops: [], next: state, error: `الشرح أطول من ${MAX_SHARH_LENGTH} حرف` }
+  const current = state.sharh && state.sharh.version > 0 ? state.sharh : null
+  if (!text) {
+    if (!current) return { ops: [], next: { ...state, sharh: null } }
+    return { ops: [{ t: 'sharh_del', work: state.work, verse: state.verse.number, version: current.version }], next: { ...state, sharh: null } }
+  }
+  if (current && current.text === text && title === undefined && author === undefined) return { ops: [], next: state }
+  const row: SharhRow = { text, title: title ?? current?.title ?? '', author: author ?? current?.author ?? '', pages: current?.pages ?? [], version: current?.version ?? 0 }
+  const op: Op = { t: 'sharh_set', work: state.work, verse: state.verse.number, ...(current ? { version: current.version } : {}), text, title: row.title, author: row.author }
+  return { ops: [op], next: { ...state, sharh: row } }
 }
 
 export function validLines(lines: string[]): string | null {
@@ -271,6 +296,8 @@ function planRestore(state: VerseState, target: Snapshot): Planned {
   const verse = linesChanged ? { ...state.verse, lines: target.lines, version: state.verse.version + 1 } : state.verse
   if (linesChanged) ops.push({ t: 'verse_set', work: state.work, verse: state.verse.number, version: state.verse.version, lines: target.lines })
   const working: VerseState = { ...state, verse }
+  const sharhPlan = (target.sharh ?? null) === (state.sharh?.text ?? null) ? null : planSharh(state, target.sharh ?? '')
+  if (sharhPlan) ops.push(...sharhPlan.ops)
 
   const currentA = new Map(state.assignments.map(a => [slot(a), a]))
   const nextA: AssignmentRow[] = []
@@ -299,7 +326,7 @@ function planRestore(state: VerseState, target: Snapshot): Planned {
 
   // Deletions first so a restored row never collides with the one it replaces.
   ops.sort((a, b) => Number(a.t.endsWith('_del') ? 0 : a.t === 'verse_set' ? -1 : 1) - Number(b.t.endsWith('_del') ? 0 : b.t === 'verse_set' ? -1 : 1))
-  return { ops, next: { ...working, assignments: nextA, marks: nextM } }
+  return { ops, next: { ...working, assignments: nextA, marks: nextM, ...(sharhPlan ? { sharh: sharhPlan.next.sharh } : {}) } }
 }
 
 /** Folds the database's answer to `ops` into the confirmed state the ops were planned from. */
@@ -309,11 +336,14 @@ export type OpResult =
   | { entity: 'mark'; action: 'set'; row: MarkRow }
   | { entity: 'mark'; action: 'delete'; id: string }
   | { entity: 'verse'; action: 'set'; row: VerseRow }
+  | { entity: 'sharh'; action: 'set'; row: SharhRow }
+  | { entity: 'sharh'; action: 'delete' }
 
 export function mergeResults(state: VerseState, results: OpResult[]): VerseState {
   let next = state
   for (const r of results) {
     if (r.entity === 'verse') next = { ...next, verse: { ...next.verse, ...r.row } }
+    else if (r.entity === 'sharh') next = { ...next, sharh: r.action === 'set' ? r.row : null }
     else if (r.entity === 'assignment' && r.action === 'set') {
       next = { ...next, assignments: [...next.assignments.filter(a => a.id !== r.row.id && slot(a) !== slot(r.row)), r.row] }
     } else if (r.entity === 'assignment') next = { ...next, assignments: next.assignments.filter(a => a.id !== r.id) }
@@ -341,6 +371,16 @@ export function validateOps(ops: unknown, lines: Record<string, unknown>): strin
       continue
     }
     if (!WORKS.includes(op.work as WorkId) || !isInt(op.verse)) return 'المتن أو رقم البيت غير صالح'
+    if (op.t === 'sharh_del') {
+      if (!isInt(op.version)) return 'نسخة الشرح غير صالحة'
+      continue
+    }
+    if (op.t === 'sharh_set') {
+      if (op.version !== undefined && !isInt(op.version)) return 'نسخة الشرح غير صالحة'
+      if (typeof op.text !== 'string' || !op.text.trim() || op.text.length > MAX_SHARH_LENGTH) return 'نص الشرح غير صالح'
+      for (const f of [op.title, op.author]) if (f !== undefined && (typeof f !== 'string' || f.length > 200)) return 'عنوان الشرح أو مؤلفه غير صالح'
+      continue
+    }
     if (op.t === 'verse_set') {
       if (!isInt(op.version)) return 'نسخة البيت غير صالحة'
       const bad = validLines(op.lines as string[])

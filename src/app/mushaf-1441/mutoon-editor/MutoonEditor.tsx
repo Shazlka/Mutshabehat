@@ -146,7 +146,8 @@ export default function MutoonEditor() {
                   }} onPrev={() => step(-1)} onNext={() => step(1)} onJump={goTo}
                   onEditLines={(lines, dropOrphans) => { const r = onIntent({ k: 'lines', lines, dropOrphans }); if (r.ok) setSelected(null); return r }}
                   onUnassign={ref => onIntent({ k: 'unassign', ref })} onUnmark={ref => onIntent({ k: 'unmark', ref })}
-                  onCopied={() => notify('نُسخ نص البيت')} />
+                  onCopied={() => notify('نُسخ نص البيت')}
+                  onSaveSharh={(text, title, author) => onIntent({ k: 'sharh', text, title, author })} onRemoveSharh={() => onIntent({ k: 'sharh', text: '' })} />
               : <div className="mx-auto max-w-4xl space-y-4" aria-busy="true"><Skeleton className="h-10 w-2/3" /><Skeleton className="h-64" /><Skeleton className="h-24" /></div>}
           </main>
           <aside ref={inspectorRef} aria-label="تعيين القراء والرواة" className="min-h-0 border-t border-[var(--color-border)] bg-[var(--color-surface)] pb-20 lg:overflow-y-auto lg:border-s lg:border-t-0 lg:pb-0">

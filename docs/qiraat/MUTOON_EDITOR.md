@@ -12,6 +12,7 @@ No poem text is committed to the public Git repository.
 | `qiraat_mutoon_verses` | a verse: `(work, verse)`, hemistichs, chapter, order, `version` |
 | `qiraat_mutoon_marks` | a poem's own symbol on a word (checked against the poem's dictionary), `version` |
 | `qiraat_mutoon_assignments` | readers/narrators assigned by hand to a word or a letter, `version` |
+| `qiraat_mutoon_sharh` | the شرح (commentary) of a verse: text, book, author, pages, `version`. Book text: loaded from the owner's private file by `scripts/qiraat/import_mutoon_sharh.py`, never committed |
 | `qiraat_mutoon_log` | every change in commit order (`seq`, before/after, client): the feed behind "what changed since N" |
 
 `qiraat_mutoon_documents` (the first, whole-document storage) is kept only as a backup of the import. All tables are closed to `anon`/`authenticated`; the API uses the service role.
@@ -35,5 +36,7 @@ Writes go through `qiraat_mutoon_apply(ops, client)`: up to 200 operations (`ass
 By the owner's decision the site signs every visitor in as the owner, so there is no separate editor login. Writes are refused from other origins and every operation is validated and version-checked.
 
 ## Deploying
+
+The شرح adds migration `20261028180000_qiraat_mutoon_sharh.sql`, then the import: `python3 scripts/qiraat/import_mutoon_sharh.py apps/ios/Generated/QiraatMutoon/mutoon-sharh.json | docker exec -i mutshabehat-db psql -U postgres -d postgres -v ON_ERROR_STOP=1`.
 
 1. Back up the database. 2. Apply `supabase/migrations/20261028150000_qiraat_mutoon_rows.sql` in one transaction (`--single-transaction -v ON_ERROR_STOP=1`) and `NOTIFY pgrst, 'reload schema'`. 3. Deploy the web code. Until the migration is applied the API answers 503. Rollback: `supabase/rollbacks/20261028150000_qiraat_mutoon_rows.down.sql` (export `qiraat_mutoon_snapshot_json()` first if later edits matter).

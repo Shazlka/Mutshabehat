@@ -161,5 +161,36 @@ test('compileVerse marks assignments as such so the app can show them without a 
   assert.equal(annotations[1].kind, 'group')
 })
 
+test('a شرح is created, edited with its version, and removed by saving empty text', () => {
+  const none = applyIntent(base(), { k: 'sharh', text: '  المعنى: كذا\nاللغة: كذا  ', title: 'كتاب', author: 'مؤلف' })
+  assert.equal(none.error, undefined)
+  assert.deepEqual(none.ops, [{ t: 'sharh_set', work: 'shatibiyyah', verse: 108, text: 'المعنى: كذا\nاللغة: كذا', title: 'كتاب', author: 'مؤلف' }])
+
+  const stored: VerseState = { ...base(), sharh: { text: 'قديم', title: 'كتاب', author: 'مؤلف', pages: ['10'], version: 4 } }
+  const edit = applyIntent(stored, { k: 'sharh', text: 'جديد' })
+  assert.deepEqual(edit.ops, [{ t: 'sharh_set', work: 'shatibiyyah', verse: 108, version: 4, text: 'جديد', title: 'كتاب', author: 'مؤلف' }])
+  assert.deepEqual(edit.next.sharh?.pages, ['10'], 'the pages of the source are kept')
+
+  assert.deepEqual(applyIntent(stored, { k: 'sharh', text: 'قديم' }).ops, [], 'unchanged text sends nothing')
+  const removed = applyIntent(stored, { k: 'sharh', text: '   ' })
+  assert.deepEqual(removed.ops, [{ t: 'sharh_del', work: 'shatibiyyah', verse: 108, version: 4 }])
+  assert.equal(removed.next.sharh, null)
+  assert.ok(applyIntent(base(), { k: 'sharh', text: 'x'.repeat(40001) }).error)
+})
+
+test('undo restores a شرح and the server validates its operations', () => {
+  const stored: VerseState = { ...base(), sharh: { text: 'قديم', title: '', author: '', pages: [], version: 2 } }
+  const edited = applyIntent(stored, { k: 'sharh', text: 'جديد' })
+  const confirmed = mergeResults(edited.next, [{ entity: 'sharh', action: 'set', row: { text: 'جديد', title: '', author: '', pages: [], version: 3 } }])
+  const undo = applyIntent(confirmed, { k: 'restore', target: snapshotOf(stored) })
+  assert.equal((undo.ops[0] as Extract<Op, { t: 'sharh_set' }>).text, 'قديم')
+  assert.equal((undo.ops[0] as Extract<Op, { t: 'sharh_set' }>).version, 3)
+
+  assert.equal(validateOps(edited.ops, {}), null)
+  assert.ok(validateOps([{ t: 'sharh_set', work: 'shatibiyyah', verse: 1, text: '' }], {}))
+  assert.ok(validateOps([{ t: 'sharh_del', work: 'shatibiyyah', verse: 1 }], {}))
+  assert.ok(validateOps([{ t: 'sharh_set', work: 'nope', verse: 1, text: 'x' }], {}))
+})
+
 const _unused: Intent | undefined = undefined
 void _unused

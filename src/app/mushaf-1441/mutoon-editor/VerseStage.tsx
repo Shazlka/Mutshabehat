@@ -6,11 +6,12 @@ import type { AssignmentRow, DispatchLike, MarkRow, VerseState, WordRef } from '
 import { AuthorityPill, previewColor } from './authority'
 import { Btn, ConfirmBtn, FOCUS, Icon, IconBtn, INPUT, SectionTitle } from './ui'
 import { findOrphans } from './ops'
+import { SharhPanel } from './SharhPanel'
 
 const ar = (n: number) => n.toLocaleString('ar-EG', { useGrouping: false })
 const HEMISTICH = ['الصدر', 'العجز']
 
-export function VerseStage({ state, chapter, position, total, selected, onSelect, onPrev, onNext, onJump, onEditLines, onUnassign, onUnmark, onCopied }: {
+export function VerseStage({ state, chapter, position, total, selected, onSelect, onPrev, onNext, onJump, onEditLines, onUnassign, onUnmark, onCopied, onSaveSharh, onRemoveSharh }: {
   state: VerseState
   chapter: string
   position: number
@@ -24,6 +25,8 @@ export function VerseStage({ state, chapter, position, total, selected, onSelect
   onUnassign: (ref: WordRef) => void
   onUnmark: (ref: WordRef) => void
   onCopied: () => void
+  onSaveSharh: (text: string, title?: string, author?: string) => DispatchLike
+  onRemoveSharh: () => void
 }) {
   const [editing, setEditing] = useState(false)
   const [draft, setDraft] = useState<string[]>(state.verse.lines)
@@ -123,6 +126,8 @@ export function VerseStage({ state, chapter, position, total, selected, onSelect
           </div>
         )}
       </section>
+
+      <SharhPanel state={state} onSave={onSaveSharh} onRemove={onRemoveSharh} />
 
       {/* what is attached to this verse */}
       <section aria-label="تعيينات البيت">

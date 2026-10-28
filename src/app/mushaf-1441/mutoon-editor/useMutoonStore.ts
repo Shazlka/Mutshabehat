@@ -8,7 +8,7 @@ const API = '/api/mushaf-1441/mutoon-editor'
 const POLL_MS = 8000
 const REQUEST_TIMEOUT_MS = 25000
 
-export type VerseListItem = VerseRow & { marks: number; assignments: number }
+export type VerseListItem = VerseRow & { marks: number; assignments: number; sharh?: boolean }
 export type ChapterData = { index: number; title: string; farsh: boolean; verses: VerseListItem[] }
 export type WorkData = { work: { work: WorkId; title: string; author: string }; chapters: ChapterData[] }
 export type Phase = 'idle' | 'saving' | 'error'
@@ -37,11 +37,11 @@ async function api<T>(url: string, init?: RequestInit): Promise<T> {
   }
 }
 
-type VerseBundle = { work: WorkId; chapter?: string; verse: VerseRow; marks: VerseState['marks']; assignments: VerseState['assignments'] }
+type VerseBundle = { work: WorkId; chapter?: string; verse: VerseRow; marks: VerseState['marks']; assignments: VerseState['assignments']; sharh?: VerseState['sharh'] }
 type HistoryStep = { key: string; before: Snapshot; after: Snapshot }
 const keyOf = (work: WorkId, verse: number) => `${work}:${verse}`
-const toState = (b: VerseBundle): VerseState => ({ work: b.work, chapter: b.chapter, verse: b.verse, marks: b.marks, assignments: b.assignments })
-const sameState = (a: VerseState, b: VerseState) => JSON.stringify([a.verse, a.marks, a.assignments]) === JSON.stringify([b.verse, b.marks, b.assignments])
+const toState = (b: VerseBundle): VerseState => ({ work: b.work, chapter: b.chapter, verse: b.verse, marks: b.marks, assignments: b.assignments, sharh: b.sharh ?? null })
+const sameState = (a: VerseState, b: VerseState) => JSON.stringify([a.verse, a.marks, a.assignments, a.sharh ?? null]) === JSON.stringify([b.verse, b.marks, b.assignments, b.sharh ?? null])
 
 function newClientId(): string {
   try {
@@ -107,7 +107,7 @@ export class MutoonEngine {
           ...ch,
           verses: ch.verses.map(v => {
             const state = this.displayOf(keyOf(work, v.number))
-            return state ? { ...v, lines: state.verse.lines, version: state.verse.version, marks: state.marks.length, assignments: state.assignments.length } : v
+            return state ? { ...v, lines: state.verse.lines, version: state.verse.version, marks: state.marks.length, assignments: state.assignments.length, sharh: !!state.sharh } : v
           }),
         })),
       }
@@ -312,7 +312,7 @@ export class MutoonEngine {
             ...wd,
             chapters: wd.chapters.map(ch => ({
               ...ch,
-              verses: ch.verses.map(v => v.number === bundle.verse.number ? { ...v, ...bundle.verse, marks: bundle.marks.length, assignments: bundle.assignments.length } : v),
+              verses: ch.verses.map(v => v.number === bundle.verse.number ? { ...v, ...bundle.verse, marks: bundle.marks.length, assignments: bundle.assignments.length, sharh: !!bundle.sharh } : v),
             })),
           }
         }
