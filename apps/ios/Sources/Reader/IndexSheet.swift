@@ -22,6 +22,7 @@ struct IndexSheet: View {
     @StateObject private var tracker = ReadingTracker.shared
     @State private var tab = Tab.surahs
     @State private var surahFilter = SurahProgressFilter.all
+    @State private var surahsProgress: [Int: SurahProgress] = [:]
     /// True only while a finger drives the list (dragging or coasting); `scrollTo` animations stay silent.
     @State private var isUserScrolling = false
     /// Average row height; a tick fires each time the list moves by this much.
@@ -33,17 +34,17 @@ struct IndexSheet: View {
             return library.surahs
         case .remaining:
             return library.surahs.filter { surah in
-                let p = tracker.surahProgress(surahNumber: surah.number, totalAyahs: surah.ayahCount)
+                guard let p = surahsProgress[surah.number] else { return true }
                 return !p.isCompleted
             }
         case .completed:
             return library.surahs.filter { surah in
-                let p = tracker.surahProgress(surahNumber: surah.number, totalAyahs: surah.ayahCount)
+                guard let p = surahsProgress[surah.number] else { return false }
                 return p.isCompleted
             }
         case .started:
             return library.surahs.filter { surah in
-                let p = tracker.surahProgress(surahNumber: surah.number, totalAyahs: surah.ayahCount)
+                guard let p = surahsProgress[surah.number] else { return false }
                 return p.isStarted
             }
         }
@@ -60,9 +61,7 @@ struct IndexSheet: View {
                                 HStack(spacing: 8) {
                                     ForEach(SurahProgressFilter.allCases) { f in
                                         FilterChip(isSelected: surahFilter == f) {
-                                            withAnimation(.easeInOut(duration: 0.15)) {
-                                                surahFilter = f
-                                            }
+                                            surahFilter = f
                                         } label: {
                                             Text(f.title)
                                         }
@@ -144,10 +143,14 @@ struct IndexSheet: View {
                     if old != new, isUserScrolling { Haptics.scrollTick() }
                 }
                 .onAppear {
+                    loadSurahProgress()
                     if let currentRow { proxy.scrollTo(currentRow, anchor: .center) }
                 }
                 .onChange(of: currentPage) { _, _ in
                     if let currentRow { proxy.scrollTo(currentRow, anchor: .center) }
+                }
+                .onReceive(NotificationCenter.default.publisher(for: .readingDatabaseDidUpdate)) { _ in
+                    loadSurahProgress()
                 }
             }
             .navigationTitle("الفهرس")
@@ -162,6 +165,11 @@ struct IndexSheet: View {
                 }
             }
         }
+    }
+
+    private func loadSurahProgress() {
+        let all = tracker.allSurahProgress(library: library)
+        surahsProgress = Dictionary(uniqueKeysWithValues: all.map { ($0.surahNumber, $0) })
     }
 
     private func containsCurrentPage(_ surah: Surah) -> Bool {
@@ -181,12 +189,20 @@ struct IndexSheet: View {
     }
 
     private func surahRow(surah: Surah, isCurrent: Bool) -> some View {
-        let progress = tracker.surahProgress(surahNumber: surah.number, totalAyahs: surah.ayahCount)
+        let progress = surahsProgress[surah.number] ?? SurahProgress(
+            surahNumber: surah.number,
+            surahName: surah.name,
+            readAyahsCount: 0,
+            totalAyahsCount: surah.ayahCount,
+            firstPage: surah.firstPage
+        )
         let readCount = progress.readAyahsCount
         let pct = progress.percentage
 
-        let targetPage = tracker.nextUnreadPage(for: surah, library: library)
-        return Button { onSelect(targetPage) } label: {
+        return Button {
+            let targetPage = tracker.nextUnreadPage(for: surah, library: library)
+            onSelect(targetPage)
+        } label: {
             VStack(alignment: .leading, spacing: 4) {
                 HStack {
                     Text(verbatim: String(surah.number)).monospacedDigit().foregroundStyle(.secondary).frame(minWidth: 32, alignment: .leading)
@@ -205,21 +221,9 @@ struct IndexSheet: View {
 
                 if readCount > 0 {
                     HStack(spacing: 8) {
-                        GeometryReader { geo in
-                            let w = geo.size.width
-                            let safeW = (w.isFinite && w > 0) ? max(0, min(w, w * CGFloat(pct / 100.0))) : 0
-                            ZStack(alignment: .leading) {
-                                Capsule()
-                                    .fill(Color(uiColor: .tertiarySystemFill))
-                                    .frame(height: 4)
-                                if safeW > 0 {
-                                    Capsule()
-                                        .fill(pct >= 100 ? Color.progress : Color.accentColor)
-                                        .frame(width: safeW, height: 4)
-                                }
-                            }
-                        }
-                        .frame(height: 4)
+                        ProgressView(value: min(1.0, max(0.0, pct / 100.0)))
+                            .tint(pct >= 100 ? Color.progress : Color.accentColor)
+                            .frame(maxWidth: .infinity)
 
                         if progress.isCompleted {
                             Text("مكتملة • \(Int(pct))%")

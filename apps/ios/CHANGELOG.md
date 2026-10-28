@@ -3,32 +3,33 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
-## [Unreleased] — 2026-10-28 — Reading & Khatma statistics: progress colors, surah visuals, heat map, crash fix, and smooth scrolling
-- **Request:** in «إحصائيات القراءة والختمة» (Reading & Khatma Statistics):
+## [Unreleased] — 2026-10-28 — Reading & Khatma statistics: progress colors, surah visuals, heat map, freeze fix, and smooth scrolling
+- **Request:** in «إحصائيات القراءة والختمة» (Reading & Khatma Statistics) and «الفهرس» (Index Sheet):
   1. Overall progress colored according to progress.
   2. Each surah progress visualized according to colors (red, yellow, green) with all shadows.
-  3. Fix the crash when pressing the «المتبقي» (Remaining) filter chip.
-  4. Fix scrolling sometimes hanging or getting stuck.
+  3. Fix the freeze and crash when tapping «المتبقي», «المكتمل», or «قيد القراءة» filter chips.
+  4. Fix scrolling in these screens sometimes hanging or getting stuck.
   5. Replace the uniform green checkmarks in the weekly streak with an achievement heat map based on daily reading duration.
+- **Root Cause Analysis (Freeze & Unresponsiveness):**
+  - **IndexSheet Database Lockup:** In `IndexSheet.swift`, `displayedSurahs` filter was querying SQLite synchronously on the main thread for all 114 surahs (`tracker.surahProgress`) on every state change, while `surahRow` repeatedly executed SQLite queries (`nextUnreadPage`) during row layout. When switching filters inside `withAnimation`, SwiftUI's diffing engine stalled under ~340 synchronous database queries, freezing the main thread.
+  - **ReadingStatisticsView GeometryReader Infinite Loop:** In `ReadingStatisticsCards.swift`, `SurahProgressItemRow` computed progress bar width using an unconstrained `GeometryReader` inside a `LazyVStack` inside a `ScrollView`. When changing filters (e.g. to `.completed` or `.remaining`), SwiftUI diffed structural container changes while the outer `ScrollView` had `.animation` applied. View height collapses forced `GeometryReader` re-evaluations during scroll-offset clamping, triggering an infinite layout loop that pinned the main thread at 100% CPU.
+  - **Gesture Contention:** In `SwipeableSurahProgressRow`, `simultaneousGesture(DragGesture)` lacked scroll-direction locking. When dragging vertically or lifting fingers, `withMotion` scheduled spurious animations on `dragOffset = 0` across all touched rows, causing scrolling hitches and perceived unresponsiveness.
+- **Fixes Applied:**
+  - **Batch Progress Cache in IndexSheet:** Added `@State private var surahsProgress: [Int: SurahProgress] = [:]` loaded once in `.onAppear` and on `.readingDatabaseDidUpdate` notifications via `tracker.allSurahProgress(library: library)` (a single batch SQLite query). `displayedSurahs` filtering is now purely in-memory. Removed `withAnimation` from filter chips and deferred `nextUnreadPage` computation to button tap actions.
+  - **Native Hardware-Accelerated ProgressView:** Replaced `GeometryReader` in `SurahProgressItemRow` (and `IndexSheet`) with native `ProgressView(value: fraction).tint(tier.color).shadow(...)`. Intrinsic height and standard layout eliminate layout recursion loops.
+  - **Isolated Container Diffing:** Added `.id(selectedFilter)` to `LazyVStack` in `ReadingStatisticsView` to allow clean, instant container recreation on filter changes without row morphing diff loops. Scoped filter chip `.animation` strictly to the chip `HStack`.
+  - **Scroll Lock & Zero-Animation Gestures:** Added `@State private var isVerticalScroll = false` in `SwipeableSurahProgressRow`. Vertical movement immediately locks out horizontal swipe for the remainder of the gesture, allowing `ScrollView` unimpeded control. Suppressed `withMotion` when drag offset was already zero.
 - **Overall Progress & Colors (`ReadingProgressTier`):**
   - Added `ReadingProgressTier` classification: Low (0%–33%, `.danger` red), Medium (34%–74%, `.caution` amber/yellow), High (75%–100%, `.progress` green).
   - `KhatmaSummaryCard`: Khatma percentage and progress bar dynamically tinted with the tier color and accompanied by glowing colored shadows.
 - **Surah Progress Visuals (`SurahProgressItemRow`):**
   - Colored surah progress bars and percentage text according to tier.
-  - Enhanced progress capsules with ambient drop shadows (`.shadow(color: tier.shadowColor, radius: 3)`), status dots, surah number badge tints, and subtle outer card borders and shadows.
-  - Guarded progress bar layout against `NaN` and negative widths during animated container transitions.
-- **Crash Fix («المتبقي» Filter):**
-  - Removed `withAnimation` on `selectedFilter` assignment in `ReadingStatisticsView` to eliminate AttributeGraph layout cycle crashes during structural item insertions/removals in `LazyVStack`.
-  - Added isolated pill selection animation (`.animation(.easeInOut(duration: 0.2), value: selectedFilter)`) on the filter chips row.
-- **Scrolling Freeze Fix (`SwipeableSurahProgressRow`):**
-  - Added vertical vs horizontal gesture direction locking in `SwipeableSurahProgressRow`.
-  - Vertical pan motions (`v > 8 && v >= h`) immediately yield to the outer `ScrollView`, preventing the swipe recognizer from capturing vertical scroll gestures or locking `dragOffset`.
-  - Cached `DateFormatter` instances statically in `DailyReadingHistoryCard` to eliminate formatting allocation hitches during fast scrolling.
+  - Enhanced progress capsules with ambient drop shadows (`.shadow(color: tier.shadowColor, radius: 2.5)`), status dots, surah number badge tints, and subtle outer card borders and shadows.
 - **Weekly Streak Heat Map (`DailyHeatLevel`, `WeeklyStreakTrackerCard`):**
   - Replaced uniform green checkmarks with graded heat map circles based on daily reading time: Level 0 (no reading, outline), Level 1 (1–10m, light tint), Level 2 (10–30m, medium tint), Level 3 (30–60m, solid green), Level 4 (> 60m, deep emerald with radiant glow).
   - Displays day numbers cleanly inside the circles with high-contrast text and duration metrics underneath.
-- **Tests:** `ReadingTests` (+2 unit test suites verifying tier classification and heat level progression), `ReaderUITests` (`testReadingStatisticsSwipeToCompleteAndUnmark` expanded to verify «المتبقي» and «الكل» filtering and vertical scrolling), `check-isolation`, and `release-guard` all passing cleanly.
-- **Files:** `Sources/Reading/{ReadingStatisticsCards,ReadingStatisticsView}.swift`, `Sources/Reader/IndexSheet.swift`, `Tests/ReadingTests.swift`, `UITests/ReaderUITests.swift`, `CHANGELOG.md`.
+- **Tests:** `ReadingTests` (33 unit tests passed), `ReaderUITests` (`testReadingStatisticsSwipeToCompleteAndUnmark` passed), `core-test` (passed), `data-test` (passed), `check-isolation`, and `release-guard` all passing cleanly.
+- **Files:** `Sources/Reading/{ReadingStatisticsCards,ReadingStatisticsView}.swift`, `Sources/Reader/IndexSheet.swift`, `Sources/Localizable.xcstrings`, `Tests/ReadingTests.swift`, `UITests/ReaderUITests.swift`, `CHANGELOG.md`.
 
 ## [Unreleased] — 2026-10-27 — Word variant cards and sheet presented right-to-left (RTL)
 - **Request:** make the word variant cards when open RTL.

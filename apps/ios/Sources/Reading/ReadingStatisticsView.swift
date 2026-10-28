@@ -156,8 +156,8 @@ struct ReadingStatisticsView: View {
                             }
                         }
                         .padding(.horizontal, 16)
+                        .animation(.easeInOut(duration: 0.2), value: selectedFilter)
                     }
-                    .animation(.easeInOut(duration: 0.2), value: selectedFilter)
 
                     // Swipe Instruction Capsule
                     HStack(spacing: 6) {
@@ -200,6 +200,7 @@ struct ReadingStatisticsView: View {
                             }
                         }
                     }
+                    .id(selectedFilter)
                     .padding(.horizontal, 16)
                 }
                 .padding(.top, 4)
@@ -230,7 +231,9 @@ struct ReadingStatisticsView: View {
             if ICloudDatabaseSyncService.shared.autoSyncEnabled {
                 Task {
                     await ICloudDatabaseSyncService.shared.automaticSync(library: library)
-                    loadData()
+                    await MainActor.run {
+                        loadData()
+                    }
                 }
             }
         }
@@ -254,7 +257,7 @@ struct ReadingStatisticsView: View {
             surahsProgress[idx] = updated
         }
 
-        Task {
+        Task { @MainActor in
             tracker.markSurahCompleted(surahNumber, completed: willComplete, library: library)
             overview = tracker.statsOverview(library: library)
             weeklyDays = tracker.currentWeekReadingDays()

@@ -347,6 +347,7 @@ struct SwipeableSurahProgressRow: View {
     @State private var dragOffset: CGFloat = 0
     @State private var hasPassedThreshold: Bool = false
     @State private var isHorizontalSwipe: Bool = false
+    @State private var isVerticalScroll: Bool = false
 
     private let actionThreshold: CGFloat = 75
 
@@ -390,13 +391,16 @@ struct SwipeableSurahProgressRow: View {
                 .simultaneousGesture(
                     DragGesture(minimumDistance: 15)
                         .onChanged { value in
+                            if isVerticalScroll { return }
+
                             let h = abs(value.translation.width)
                             let v = abs(value.translation.height)
 
                             // Lock in direction once moved enough: let vertical scroll freely
                             if !isHorizontalSwipe {
                                 if v > 8 && v >= h {
-                                    // Definite vertical scroll -> stay out of the way of ScrollView
+                                    // Definite vertical scroll -> lock out horizontal swipe for this gesture
+                                    isVerticalScroll = true
                                     return
                                 }
                                 if h > 15 && h > v * 1.5 {
@@ -423,8 +427,15 @@ struct SwipeableSurahProgressRow: View {
                         }
                         .onEnded { value in
                             let triggered = isHorizontalSwipe && abs(dragOffset) >= actionThreshold
+                            let wasHorizontal = isHorizontalSwipe || dragOffset != 0
                             isHorizontalSwipe = false
-                            withMotion {
+                            isVerticalScroll = false
+                            if wasHorizontal {
+                                withMotion {
+                                    dragOffset = 0
+                                    hasPassedThreshold = false
+                                }
+                            } else {
                                 dragOffset = 0
                                 hasPassedThreshold = false
                             }
@@ -515,22 +526,10 @@ struct SurahProgressItemRow: View {
                 }
 
                 // Progress Bar with Red, Yellow, Green and glowing shadow
-                GeometryReader { geo in
-                    let w = geo.size.width
-                    let safeWidth = (w.isFinite && w > 0) ? max(0, min(w, w * CGFloat(fraction))) : 0
-                    ZStack(alignment: .leading) {
-                        Capsule()
-                            .fill(Color(uiColor: .tertiarySystemFill))
-                            .frame(height: 6)
-                        if safeWidth > 0 {
-                            Capsule()
-                                .fill(tier.color)
-                                .frame(width: safeWidth, height: 6)
-                                .shadow(color: tier.shadowColor, radius: 3, x: 0, y: 1)
-                        }
-                    }
-                }
-                .frame(height: 6)
+                ProgressView(value: fraction)
+                    .tint(tier.color)
+                    .shadow(color: tier.shadowColor, radius: 2.5, x: 0, y: 1)
+                    .accessibilityHidden(true)
 
                 // Subtitle: Remaining Ayahs
                 HStack(spacing: 5) {
