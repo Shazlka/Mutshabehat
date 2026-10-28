@@ -3,6 +3,33 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-10-28 — Reading & Khatma statistics: progress colors, surah visuals, heat map, crash fix, and smooth scrolling
+- **Request:** in «إحصائيات القراءة والختمة» (Reading & Khatma Statistics):
+  1. Overall progress colored according to progress.
+  2. Each surah progress visualized according to colors (red, yellow, green) with all shadows.
+  3. Fix the crash when pressing the «المتبقي» (Remaining) filter chip.
+  4. Fix scrolling sometimes hanging or getting stuck.
+  5. Replace the uniform green checkmarks in the weekly streak with an achievement heat map based on daily reading duration.
+- **Overall Progress & Colors (`ReadingProgressTier`):**
+  - Added `ReadingProgressTier` classification: Low (0%–33%, `.danger` red), Medium (34%–74%, `.caution` amber/yellow), High (75%–100%, `.progress` green).
+  - `KhatmaSummaryCard`: Khatma percentage and progress bar dynamically tinted with the tier color and accompanied by glowing colored shadows.
+- **Surah Progress Visuals (`SurahProgressItemRow`):**
+  - Colored surah progress bars and percentage text according to tier.
+  - Enhanced progress capsules with ambient drop shadows (`.shadow(color: tier.shadowColor, radius: 3)`), status dots, surah number badge tints, and subtle outer card borders and shadows.
+  - Guarded progress bar layout against `NaN` and negative widths during animated container transitions.
+- **Crash Fix («المتبقي» Filter):**
+  - Removed `withAnimation` on `selectedFilter` assignment in `ReadingStatisticsView` to eliminate AttributeGraph layout cycle crashes during structural item insertions/removals in `LazyVStack`.
+  - Added isolated pill selection animation (`.animation(.easeInOut(duration: 0.2), value: selectedFilter)`) on the filter chips row.
+- **Scrolling Freeze Fix (`SwipeableSurahProgressRow`):**
+  - Added vertical vs horizontal gesture direction locking in `SwipeableSurahProgressRow`.
+  - Vertical pan motions (`v > 8 && v >= h`) immediately yield to the outer `ScrollView`, preventing the swipe recognizer from capturing vertical scroll gestures or locking `dragOffset`.
+  - Cached `DateFormatter` instances statically in `DailyReadingHistoryCard` to eliminate formatting allocation hitches during fast scrolling.
+- **Weekly Streak Heat Map (`DailyHeatLevel`, `WeeklyStreakTrackerCard`):**
+  - Replaced uniform green checkmarks with graded heat map circles based on daily reading time: Level 0 (no reading, outline), Level 1 (1–10m, light tint), Level 2 (10–30m, medium tint), Level 3 (30–60m, solid green), Level 4 (> 60m, deep emerald with radiant glow).
+  - Displays day numbers cleanly inside the circles with high-contrast text and duration metrics underneath.
+- **Tests:** `ReadingTests` (+2 unit test suites verifying tier classification and heat level progression), `ReaderUITests` (`testReadingStatisticsSwipeToCompleteAndUnmark` expanded to verify «المتبقي» and «الكل» filtering and vertical scrolling), `check-isolation`, and `release-guard` all passing cleanly.
+- **Files:** `Sources/Reading/{ReadingStatisticsCards,ReadingStatisticsView}.swift`, `Sources/Reader/IndexSheet.swift`, `Tests/ReadingTests.swift`, `UITests/ReaderUITests.swift`, `CHANGELOG.md`.
+
 ## [Unreleased] — 2026-10-27 — Word variant cards and sheet presented right-to-left (RTL)
 - **Request:** make the word variant cards when open RTL.
 - **Change (`Sources/Qiraat/QiraatSheet.swift`, `VariantCard.swift`, `RulingCard.swift`, `ReaderView.swift`):**

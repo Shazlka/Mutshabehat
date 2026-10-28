@@ -1,6 +1,116 @@
 import MushafCore
 import SwiftUI
 
+// MARK: - Reading Progress Tier & Colors
+
+enum ReadingProgressTier: Equatable {
+    case low       // 0% - 33%
+    case medium    // 34% - 74%
+    case high      // 75% - 100%
+
+    init(percentage: Double) {
+        if percentage >= 75.0 {
+            self = .high
+        } else if percentage >= 34.0 {
+            self = .medium
+        } else {
+            self = .low
+        }
+    }
+
+    var color: Color {
+        switch self {
+        case .low:
+            return .danger
+        case .medium:
+            return .caution
+        case .high:
+            return .progress
+        }
+    }
+
+    var shadowColor: Color {
+        color.opacity(0.38)
+    }
+}
+
+// MARK: - Daily Reading Heat Level
+
+enum DailyHeatLevel: Equatable {
+    case none
+    case light     // 1 - 10 mins (1 - 600s)
+    case medium    // 10 - 30 mins (601 - 1800s)
+    case high      // 30 - 60 mins (1801 - 3600s)
+    case deep      // > 60 mins (> 3600s)
+
+    init(seconds: Int, isRead: Bool) {
+        guard isRead else {
+            self = .none
+            return
+        }
+        if seconds <= 600 {
+            self = .light
+        } else if seconds <= 1800 {
+            self = .medium
+        } else if seconds <= 3600 {
+            self = .high
+        } else {
+            self = .deep
+        }
+    }
+
+    var fillColor: Color {
+        switch self {
+        case .none:
+            return .clear
+        case .light:
+            return Color.progress.opacity(0.32)
+        case .medium:
+            return Color.progress.opacity(0.65)
+        case .high:
+            return Color.progress
+        case .deep:
+            return Color.progressFill
+        }
+    }
+
+    var textColor: Color {
+        switch self {
+        case .none:
+            return .secondary
+        case .light:
+            return Color.primary
+        case .medium, .high, .deep:
+            return .white
+        }
+    }
+
+    var shadowColor: Color {
+        switch self {
+        case .none:
+            return .clear
+        case .light:
+            return Color.progress.opacity(0.18)
+        case .medium:
+            return Color.progress.opacity(0.32)
+        case .high:
+            return Color.progress.opacity(0.45)
+        case .deep:
+            return Color.progress.opacity(0.60)
+        }
+    }
+
+    var shadowRadius: CGFloat {
+        switch self {
+        case .none: return 0
+        case .light: return 1.5
+        case .medium: return 3
+        case .high: return 4
+        case .deep: return 5
+        }
+    }
+}
+
 // MARK: - Khatma Summary
 
 /// The current khatma as one figure and a bar, then the lifetime figures as a short list. Replaces a
@@ -9,6 +119,7 @@ struct KhatmaSummaryCard: View {
     let stats: ReadingStatsOverview
 
     private var fraction: Double { max(0, min(1, stats.progressPercentage / 100)) }
+    private var tier: ReadingProgressTier { ReadingProgressTier(percentage: stats.progressPercentage) }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -21,13 +132,15 @@ struct KhatmaSummaryCard: View {
                     Text(fraction.formatted(.percent.precision(.fractionLength(0...1)).locale(Locale(identifier: "ar"))))
                         .font(.largeTitle.weight(.semibold))
                         .monospacedDigit()
+                        .foregroundColor(tier.color)
                     Text("من القرآن")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }
 
                 ProgressView(value: fraction)
-                    .tint(.progress)
+                    .tint(tier.color)
+                    .shadow(color: tier.shadowColor, radius: 4, x: 0, y: 1.5)
                     .accessibilityHidden(true)
 
                 Text("\(ArabicDigits.string(stats.totalPagesReadInCurrentKhatma)) من ٦٠٤ صفحة، بقي \(ArabicDigits.string(stats.remainingPages)) · \(ArabicDigits.string(stats.totalAyahsReadInCurrentKhatma)) من \(ArabicDigits.string(stats.totalQuranAyahs)) آية")
@@ -164,9 +277,10 @@ struct WeeklyStreakTrackerCard: View {
                 }
             }
 
-            // 7 Days of the Week
+            // 7 Days Heat Map
             HStack(spacing: 0) {
                 ForEach(days) { day in
+                    let heat = DailyHeatLevel(seconds: day.readingSeconds, isRead: day.isRead)
                     VStack(spacing: 6) {
                         Text(day.dayNameAr.prefix(3))
                             .font(.caption2.weight(.medium))
@@ -175,11 +289,13 @@ struct WeeklyStreakTrackerCard: View {
                         ZStack {
                             if day.isRead {
                                 Circle()
-                                    .fill(Color.progressFill)
+                                    .fill(heat.fillColor)
                                     .frame(width: 32, height: 32)
-                                Image(systemName: "checkmark")
-                                    .font(.footnote.weight(.bold))
-                                    .foregroundColor(.white)
+                                    .shadow(color: heat.shadowColor, radius: heat.shadowRadius, x: 0, y: 1.5)
+
+                                Text(day.dayNumber)
+                                    .font(.caption.weight(.bold))
+                                    .foregroundColor(heat.textColor)
                             } else {
                                 Circle()
                                     .stroke(day.isToday ? Color.progress : Color(uiColor: .tertiarySystemFill), lineWidth: 1.5)
@@ -208,6 +324,8 @@ struct WeeklyStreakTrackerCard: View {
                             .minimumScaleFactor(0.75)
                     }
                     .frame(maxWidth: .infinity)
+                    .accessibilityElement(children: .combine)
+                    .accessibilityLabel("\(day.dayNameAr)، \(day.isRead ? day.formattedDuration : "لم يُقرأ")")
                 }
             }
             .padding(.top, 4)
@@ -228,6 +346,7 @@ struct SwipeableSurahProgressRow: View {
 
     @State private var dragOffset: CGFloat = 0
     @State private var hasPassedThreshold: Bool = false
+    @State private var isHorizontalSwipe: Bool = false
 
     private let actionThreshold: CGFloat = 75
 
@@ -269,26 +388,42 @@ struct SwipeableSurahProgressRow: View {
                 .offset(x: dragOffset)
                 .contentShape(Rectangle())
                 .simultaneousGesture(
-                    DragGesture(minimumDistance: 20)
+                    DragGesture(minimumDistance: 15)
                         .onChanged { value in
-                            let isHorizontal = abs(value.translation.width) > abs(value.translation.height) * 1.5
-                            if isHorizontal || dragOffset != 0 {
-                                if value.translation.width > 0 {
-                                    dragOffset = min(130, value.translation.width)
-                                } else {
-                                    dragOffset = max(-130, value.translation.width)
-                                }
+                            let h = abs(value.translation.width)
+                            let v = abs(value.translation.height)
 
-                                if abs(dragOffset) >= actionThreshold && !hasPassedThreshold {
-                                    hasPassedThreshold = true
-                                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                                } else if abs(dragOffset) < actionThreshold && hasPassedThreshold {
-                                    hasPassedThreshold = false
+                            // Lock in direction once moved enough: let vertical scroll freely
+                            if !isHorizontalSwipe {
+                                if v > 8 && v >= h {
+                                    // Definite vertical scroll -> stay out of the way of ScrollView
+                                    return
                                 }
+                                if h > 15 && h > v * 1.5 {
+                                    isHorizontalSwipe = true
+                                } else {
+                                    return
+                                }
+                            }
+
+                            guard isHorizontalSwipe else { return }
+
+                            if value.translation.width > 0 {
+                                dragOffset = min(130, value.translation.width)
+                            } else {
+                                dragOffset = max(-130, value.translation.width)
+                            }
+
+                            if abs(dragOffset) >= actionThreshold && !hasPassedThreshold {
+                                hasPassedThreshold = true
+                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                            } else if abs(dragOffset) < actionThreshold && hasPassedThreshold {
+                                hasPassedThreshold = false
                             }
                         }
                         .onEnded { value in
-                            let triggered = abs(dragOffset) >= actionThreshold
+                            let triggered = isHorizontalSwipe && abs(dragOffset) >= actionThreshold
+                            isHorizontalSwipe = false
                             withMotion {
                                 dragOffset = 0
                                 hasPassedThreshold = false
@@ -305,6 +440,7 @@ struct SwipeableSurahProgressRow: View {
                     } else {
                         withMotion {
                             dragOffset = 0
+                            isHorizontalSwipe = false
                         }
                     }
                 }
@@ -341,13 +477,25 @@ struct SwipeableSurahProgressRow: View {
 struct SurahProgressItemRow: View {
     let progress: SurahProgress
 
+    private var tier: ReadingProgressTier {
+        ReadingProgressTier(percentage: progress.percentage)
+    }
+
+    private var fraction: Double {
+        max(0.0, min(1.0, progress.percentage / 100.0))
+    }
+
     var body: some View {
         HStack(spacing: 12) {
             // Surah Number
-            Text("\(progress.surahNumber)")
-                .font(.caption.monospacedDigit())
-                .foregroundColor(.secondary)
-                .frame(width: 26, alignment: .leading)
+            ZStack {
+                Circle()
+                    .fill(progress.isCompleted ? tier.color.opacity(0.18) : Color(uiColor: .tertiarySystemFill))
+                    .frame(width: 28, height: 28)
+                Text("\(progress.surahNumber)")
+                    .font(.caption.weight(progress.isCompleted ? .bold : .medium).monospacedDigit())
+                    .foregroundColor(progress.isCompleted ? tier.color : .secondary)
+            }
 
             VStack(alignment: .leading, spacing: 6) {
                 HStack {
@@ -363,27 +511,29 @@ struct SurahProgressItemRow: View {
 
                     Text("\(Int(progress.percentage))%")
                         .font(.caption.bold())
-                        .foregroundColor(progress.isCompleted ? .progress : .primary)
+                        .foregroundColor(progress.readAyahsCount > 0 ? tier.color : .secondary)
                 }
 
-                // Progress Bar
+                // Progress Bar with Red, Yellow, Green and glowing shadow
                 GeometryReader { geo in
+                    let w = geo.size.width
+                    let safeWidth = (w.isFinite && w > 0) ? max(0, min(w, w * CGFloat(fraction))) : 0
                     ZStack(alignment: .leading) {
                         Capsule()
                             .fill(Color(uiColor: .tertiarySystemFill))
-                            .frame(height: 5)
-                        Capsule()
-                            .fill(progress.isCompleted ? Color.progress : Color.progress.opacity(0.55))
-                            .frame(
-                                width: max(0, min(geo.size.width, geo.size.width * CGFloat(progress.percentage / 100.0))),
-                                height: 5
-                            )
+                            .frame(height: 6)
+                        if safeWidth > 0 {
+                            Capsule()
+                                .fill(tier.color)
+                                .frame(width: safeWidth, height: 6)
+                                .shadow(color: tier.shadowColor, radius: 3, x: 0, y: 1)
+                        }
                     }
                 }
-                .frame(height: 5)
+                .frame(height: 6)
 
                 // Subtitle: Remaining Ayahs
-                HStack {
+                HStack(spacing: 5) {
                     if progress.isCompleted {
                         Image(systemName: "checkmark.circle.fill")
                             .font(.caption2)
@@ -391,6 +541,14 @@ struct SurahProgressItemRow: View {
                         Text("مكتملة • لم يبقَ شيء")
                             .font(.caption2.weight(.medium))
                             .foregroundColor(.progress)
+                    } else if progress.isStarted {
+                        Circle()
+                            .fill(tier.color)
+                            .frame(width: 6, height: 6)
+                            .shadow(color: tier.shadowColor, radius: 2)
+                        Text("المتبقي: \(progress.remainingAyahsCount) آية")
+                            .font(.caption2)
+                            .foregroundColor(.secondary)
                     } else {
                         Text("المتبقي: \(progress.remainingAyahsCount) آية")
                             .font(.caption2)
@@ -407,6 +565,16 @@ struct SurahProgressItemRow: View {
         .padding(12)
         .background(Color(uiColor: .secondarySystemGroupedBackground))
         .cornerRadius(14)
+        .overlay(
+            RoundedRectangle(cornerRadius: 14)
+                .stroke(progress.isCompleted ? tier.color.opacity(0.32) : (progress.isStarted ? tier.color.opacity(0.14) : Color.clear), lineWidth: 1)
+        )
+        .shadow(
+            color: progress.readAyahsCount > 0 ? tier.shadowColor.opacity(progress.isCompleted ? 0.35 : 0.18) : Color.clear,
+            radius: progress.isCompleted ? 4 : 2,
+            x: 0,
+            y: 1.5
+        )
     }
 }
 
@@ -414,6 +582,19 @@ struct SurahProgressItemRow: View {
 
 struct DailyReadingHistoryCard: View {
     let days: [ReadingDayRecord]
+
+    private static let inFormatter: DateFormatter = {
+        let f = DateFormatter()
+        f.dateFormat = "yyyy-MM-dd"
+        return f
+    }()
+
+    private static let outFormatter: DateFormatter = {
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "ar")
+        f.dateFormat = "EEEE d MMMM"
+        return f
+    }()
 
     var body: some View {
         if !days.isEmpty {
@@ -468,13 +649,8 @@ struct DailyReadingHistoryCard: View {
     }
 
     private func formatDate(_ dateStr: String) -> String {
-        let inFormatter = DateFormatter()
-        inFormatter.dateFormat = "yyyy-MM-dd"
-        guard let d = inFormatter.date(from: dateStr) else { return dateStr }
-        let outFormatter = DateFormatter()
-        outFormatter.locale = Locale(identifier: "ar")
-        outFormatter.dateFormat = "EEEE d MMMM"
-        return outFormatter.string(from: d)
+        guard let d = Self.inFormatter.date(from: dateStr) else { return dateStr }
+        return Self.outFormatter.string(from: d)
     }
 
     private func formatDuration(_ seconds: Int) -> String {

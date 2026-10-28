@@ -766,6 +766,62 @@ final class ReadingTests: XCTestCase {
         XCTAssertNil(reopenedCounts[1])
         XCTAssertEqual(reopenedCounts[114], 6)
     }
+
+    func testReadingProgressTierClassification() {
+        // Low tier: 0% up to < 34%
+        let tier0 = ReadingProgressTier(percentage: 0.0)
+        XCTAssertEqual(tier0, .low)
+        XCTAssertEqual(tier0.color, .danger)
+
+        let tier20 = ReadingProgressTier(percentage: 20.0)
+        XCTAssertEqual(tier20, .low)
+        XCTAssertEqual(tier20.color, .danger)
+
+        // Medium tier: 34% up to < 75%
+        let tier34 = ReadingProgressTier(percentage: 34.0)
+        XCTAssertEqual(tier34, .medium)
+        XCTAssertEqual(tier34.color, .caution)
+
+        let tier60 = ReadingProgressTier(percentage: 60.0)
+        XCTAssertEqual(tier60, .medium)
+        XCTAssertEqual(tier60.color, .caution)
+
+        // High tier: >= 75%
+        let tier75 = ReadingProgressTier(percentage: 75.0)
+        XCTAssertEqual(tier75, .high)
+        XCTAssertEqual(tier75.color, .progress)
+
+        let tier100 = ReadingProgressTier(percentage: 100.0)
+        XCTAssertEqual(tier100, .high)
+        XCTAssertEqual(tier100.color, .progress)
+    }
+
+    func testDailyHeatLevelProgression() {
+        // Not read
+        let heatNone = DailyHeatLevel(seconds: 0, isRead: false)
+        XCTAssertEqual(heatNone, .none)
+        XCTAssertEqual(heatNone.fillColor, .clear)
+
+        // Light: 1 - 10m (<= 600s)
+        let heatLight = DailyHeatLevel(seconds: 300, isRead: true)
+        XCTAssertEqual(heatLight, .light)
+        XCTAssertEqual(heatLight.textColor, .primary)
+
+        // Medium: 10 - 30m (601 - 1800s)
+        let heatMedium = DailyHeatLevel(seconds: 1200, isRead: true)
+        XCTAssertEqual(heatMedium, .medium)
+        XCTAssertEqual(heatMedium.textColor, .white)
+
+        // High: 30 - 60m (1801 - 3600s)
+        let heatHigh = DailyHeatLevel(seconds: 2400, isRead: true)
+        XCTAssertEqual(heatHigh, .high)
+        XCTAssertEqual(heatHigh.textColor, .white)
+
+        // Deep: > 60m (> 3600s)
+        let heatDeep = DailyHeatLevel(seconds: 4000, isRead: true)
+        XCTAssertEqual(heatDeep, .deep)
+        XCTAssertEqual(heatDeep.textColor, .white)
+    }
 }
 
 

@@ -377,6 +377,28 @@ final class ReaderUITests: XCTestCase {
 
         Thread.sleep(forTimeInterval: 0.5)
         saveScreenshot(named: "reading-statistics-after-swipe")
+
+        // Test filter chip: tapping «المتبقي» must not crash and correctly filters
+        let remainingChip = app.buttons.containing(NSPredicate(format: "label CONTAINS[c] 'المتبقي'")).firstMatch
+        if remainingChip.waitForExistence(timeout: 4) {
+            remainingChip.tap()
+            Thread.sleep(forTimeInterval: 0.3)
+            saveScreenshot(named: "reading-statistics-remaining-filter")
+            // Surah 1 was completed above, so it should not be listed in remaining
+            XCTAssertFalse(app.descendants(matching: .any)["surah-progress-row-1"].exists)
+        }
+
+        // Test switching back to «الكل»
+        let allChip = app.buttons.containing(NSPredicate(format: "label CONTAINS[c] 'الكل'")).firstMatch
+        if allChip.waitForExistence(timeout: 4) {
+            allChip.tap()
+            Thread.sleep(forTimeInterval: 0.3)
+            XCTAssertTrue(app.descendants(matching: .any)["surah-progress-row-1"].waitForExistence(timeout: 4))
+        }
+
+        // Test smooth vertical scrolling down and up
+        app.swipeUp()
+        app.swipeDown()
     }
 
     func testICloudSyncSettingsViewShowsKhatmaStatus() {

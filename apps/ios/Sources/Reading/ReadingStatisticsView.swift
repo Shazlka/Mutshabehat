@@ -145,9 +145,7 @@ struct ReadingStatisticsView: View {
 
                                 FilterChip(isSelected: selectedFilter == f,
                                            unselectedFill: Color(uiColor: .secondarySystemGroupedBackground)) {
-                                    withAnimation(.easeInOut(duration: 0.2)) {
-                                        selectedFilter = f
-                                    }
+                                    selectedFilter = f
                                 } label: {
                                     HStack(spacing: 6) {
                                         Text(f.title)
@@ -159,6 +157,7 @@ struct ReadingStatisticsView: View {
                         }
                         .padding(.horizontal, 16)
                     }
+                    .animation(.easeInOut(duration: 0.2), value: selectedFilter)
 
                     // Swipe Instruction Capsule
                     HStack(spacing: 6) {

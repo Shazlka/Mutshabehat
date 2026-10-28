@@ -206,13 +206,17 @@ struct IndexSheet: View {
                 if readCount > 0 {
                     HStack(spacing: 8) {
                         GeometryReader { geo in
+                            let w = geo.size.width
+                            let safeW = (w.isFinite && w > 0) ? max(0, min(w, w * CGFloat(pct / 100.0))) : 0
                             ZStack(alignment: .leading) {
                                 Capsule()
                                     .fill(Color(uiColor: .tertiarySystemFill))
                                     .frame(height: 4)
-                                Capsule()
-                                    .fill(pct >= 100 ? Color.progress : Color.accentColor)
-                                    .frame(width: max(0, min(geo.size.width, geo.size.width * CGFloat(pct / 100.0))), height: 4)
+                                if safeW > 0 {
+                                    Capsule()
+                                        .fill(pct >= 100 ? Color.progress : Color.accentColor)
+                                        .frame(width: safeW, height: 4)
+                                }
                             }
                         }
                         .frame(height: 4)
