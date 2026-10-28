@@ -54,8 +54,8 @@ export async function proxy(request: NextRequest) {
         // The current Server Component request was created before the session
         // cookies existed. Re-run safe page requests once so their data queries
         // see the authenticated session immediately instead of rendering an
-        // empty first page.
-        if (request.method === 'GET' || request.method === 'HEAD') {
+        // empty first page. Never redirect API requests.
+        if ((request.method === 'GET' || request.method === 'HEAD') && !pathname.startsWith('/api')) {
           const redirectResponse = NextResponse.redirect(request.nextUrl)
           supabaseResponse.cookies.getAll().forEach((cookie) =>
             redirectResponse.cookies.set(cookie)

@@ -124,6 +124,6 @@ test('compileAnnotations builds proper MatnSymbolAnnotation array for iOS', () =
 
   const assignmentAnnotation = annotations.find(a => a.line === 1)
   assert.ok(assignmentAnnotation)
-  assert.equal(assignmentAnnotation?.word, undefined) // standard annotation fields
+  assert.equal((assignmentAnnotation as unknown as Record<string, unknown>)?.word, undefined) // standard annotation fields
   assert.deepEqual(assignmentAnnotation?.readingIds, ['Q06', 'Q07'])
 })

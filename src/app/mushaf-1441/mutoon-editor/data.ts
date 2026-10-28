@@ -238,9 +238,19 @@ export function compileAnnotations(doc: EditorData): MatnSymbolAnnotation[] {
   const annotations: MatnSymbolAnnotation[] = []
   const seenSlots = new Set<string>()
 
+  // Build O(1) verse lookup map
+  const verseMap = new Map<string, Verse>()
+  for (const w of doc.mutoon.works) {
+    for (const c of w.chapters) {
+      for (const v of c.verses) {
+        verseMap.set(`${w.work}:${v.number}`, v)
+      }
+    }
+  }
+
   // 1. Compile direct word assignments first
   for (const a of doc.assignments.assignments) {
-    const verse = verseFor(doc.mutoon, a.work, a.verse)
+    const verse = verseMap.get(`${a.work}:${a.verse}`)
     if (!verse || !verse.lines[a.line]) continue
     const line = verse.lines[a.line]
     const span = locateWordGraphemes(line, a.word, a.occurrence)
@@ -284,7 +294,7 @@ export function compileAnnotations(doc: EditorData): MatnSymbolAnnotation[] {
 
   // 2. Compile poetic marks
   for (const m of doc.marks.marks) {
-    const verse = verseFor(doc.mutoon, m.work, m.verse)
+    const verse = verseMap.get(`${m.work}:${m.verse}`)
     if (!verse || !verse.lines[m.line]) continue
     const line = verse.lines[m.line]
     const span = locateWordGraphemes(line, m.word, m.occurrence)
