@@ -154,6 +154,55 @@ import Testing
         #expect(store.page(7)?.rulings.map(\.id) == ["r1"])
     }
 
+    // MARK: Hiding single أصول categories
+
+    private let twoCategoryPage7 = ##"{"pageNumber":7,"variants":[{"id":"v1","surah":2,"ayah":51,"startToken":11,"hafsText":"a","variantText":"b","verificationStatus":"REVIEWED","readingIds":["Q06-R01"]}],"rulings":[{"id":"r1","category":"USUL_SAKT","categoryAr":"السكت","color":"#111111","wordAnchored":true,"surah":2,"ayah":51,"startToken":3,"baseText":"x"},{"id":"r2","category":"USUL_HA_SAKT","categoryAr":"هاء السكت","color":"#7C3AED","wordAnchored":true,"surah":2,"ayah":51,"startToken":5,"baseText":"y"}],"rules":[]}"##
+
+    @Test func hidingOneCategoryKeepsTheOthersAndComesBack() throws {
+        let dir = try temporaryStoreDirectory(pages: [7: twoCategoryPage7])
+        defer { try? FileManager.default.removeItem(at: dir) }
+        let store = try QiraatStore(directory: dir)
+        #expect(store.page(7)?.rulings.map(\.id) == ["r1", "r2"])
+
+        store.hiddenUsulCategories = ["USUL_HA_SAKT"]
+        #expect(store.page(7)?.rulings.map(\.id) == ["r1"])
+        #expect(store.page(7)?.variants.map(\.id) == ["v1"], "فرش is never touched")
+
+        store.hiddenUsulCategories = []
+        #expect(store.page(7)?.rulings.map(\.id) == ["r1", "r2"])
+    }
+
+    @Test func farshOnlyStillWinsOverTheCategoryChoices() throws {
+        let dir = try temporaryStoreDirectory(pages: [7: twoCategoryPage7])
+        defer { try? FileManager.default.removeItem(at: dir) }
+        let store = try QiraatStore(directory: dir)
+        store.hiddenUsulCategories = ["USUL_SAKT"]
+        store.hidesUsul = true
+        #expect(store.page(7)?.rulings.isEmpty == true)
+        store.hidesUsul = false
+        #expect(store.page(7)?.rulings.map(\.id) == ["r2"])
+    }
+
+    @Test func theCategoryListIgnoresWhatTheReaderHid() throws {
+        let dir = try temporaryStoreDirectory(pages: [7: twoCategoryPage7])
+        defer { try? FileManager.default.removeItem(at: dir) }
+        let store = try QiraatStore(directory: dir)
+        store.hiddenUsulCategories = ["USUL_SAKT", "USUL_HA_SAKT"]
+        #expect(store.usulCategories().map(\.code) == ["USUL_SAKT", "USUL_HA_SAKT"])
+        #expect(store.usulCategories().map(\.nameAr) == ["السكت", "هاء السكت"])
+    }
+
+    @Test func theVisibilityKeyChangesWithEveryChoice() throws {
+        let dir = try temporaryStoreDirectory(pages: [7: twoCategoryPage7])
+        defer { try? FileManager.default.removeItem(at: dir) }
+        let store = try QiraatStore(directory: dir)
+        let plain = store.usulVisibilityKey
+        store.hiddenUsulCategories = ["USUL_SAKT"]
+        let oneHidden = store.usulVisibilityKey
+        store.hidesUsul = true
+        #expect(Set([plain, oneHidden, store.usulVisibilityKey]).count == 3)
+    }
+
     @Test func aMissingCatalogIsAnError() throws {
         let dir = try temporaryStoreDirectory(pages: [:], catalog: false)
         defer { try? FileManager.default.removeItem(at: dir) }

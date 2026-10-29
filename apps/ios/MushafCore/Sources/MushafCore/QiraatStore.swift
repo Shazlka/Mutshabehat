@@ -1,5 +1,17 @@
 import Foundation
 
+/// An أصول باب as the data names it, for the reader's list of what to show.
+public struct QiraatUsulCategory: Sendable, Hashable, Identifiable {
+    public let code: String
+    public let nameAr: String
+    public let color: String
+    public var id: String { code }
+
+    public init(code: String, nameAr: String, color: String) {
+        self.code = code; self.nameAr = nameAr; self.color = color
+    }
+}
+
 /// Reads the bundled snapshot of the web app's Qiraat data (Generated/Qiraat: catalog.json and
 /// page-001.json … page-604.json, written by scripts/fetch_qiraat.py) and keeps recent pages decoded.
 /// A page that is missing or does not decode is nil: that page shows no Qiraat marks, nothing more.
@@ -30,6 +42,8 @@ public final class QiraatStore: @unchecked Sendable {
     /// Least recently used first.
     private var order: [Int] = []
     private var usulHidden = false
+    private var hiddenCategories: Set<String> = []
+    private var installedCategories: [QiraatUsulCategory]?
 
     /// The reader's «فرش فقط» choice: while on, every page is served without its أصول rulings, so the marks, the
     /// word sheet, the page summary, the search and the key all show فرش alone. The rulings stay in the cache and on
@@ -43,6 +57,41 @@ public final class QiraatStore: @unchecked Sendable {
             }
             if changed { WordContextIndex.shared.invalidate() }
         }
+    }
+
+    /// The أصول categories (by `QiraatRuling.category` code) the reader switched off: their rulings are left out of every
+    /// page, exactly as «فرش فقط» leaves out all of them, and come back the moment the code is removed.
+    public var hiddenUsulCategories: Set<String> {
+        get { lock.withLock { hiddenCategories } }
+        set {
+            let changed = lock.withLock { () -> Bool in
+                defer { hiddenCategories = newValue }
+                return hiddenCategories != newValue
+            }
+            if changed { WordContextIndex.shared.invalidate() }
+        }
+    }
+
+    /// The categories that make the cached أصول index differ: «فرش فقط» or any switched-off باب.
+    public var usulVisibilityKey: String {
+        lock.withLock { (usulHidden ? "all" : "") + "|" + hiddenCategories.sorted().joined(separator: ",") }
+    }
+
+    /// Every word-anchored أصول category of the installed pages (the live overlay wins), whatever the reader hid,
+    /// in first-seen order. Reads all 604 pages the first time, so call it off the main thread; the answer is kept
+    /// until a live page or a backup import changes the data.
+    public func usulCategories() -> [QiraatUsulCategory] {
+        if let held = lock.withLock({ installedCategories }) { return held }
+        var seen: Set<String> = []
+        var found: [QiraatUsulCategory] = []
+        for number in 1...mushafPageCount {
+            guard let page = storedPage(number) else { continue }
+            for ruling in page.rulings where ruling.wordAnchored && seen.insert(ruling.category).inserted {
+                found.append(QiraatUsulCategory(code: ruling.category, nameAr: ruling.categoryAr, color: ruling.color))
+            }
+        }
+        lock.withLock { installedCategories = found }
+        return found
     }
 
     public init(directory: URL, overlayDirectory: URL? = nil, capacity: Int = 16) throws {
@@ -65,8 +114,13 @@ public final class QiraatStore: @unchecked Sendable {
 
     public func page(_ number: Int) -> QiraatPageData? {
         guard let held = storedPage(number) else { return nil }
-        guard hidesUsul, !held.rulings.isEmpty else { return held }
-        return QiraatPageData(pageNumber: held.pageNumber, variants: held.variants, rulings: [], rules: held.rules)
+        guard !held.rulings.isEmpty else { return held }
+        let (all, hidden) = lock.withLock { (usulHidden, hiddenCategories) }
+        if all { return QiraatPageData(pageNumber: held.pageNumber, variants: held.variants, rulings: [], rules: held.rules) }
+        guard !hidden.isEmpty else { return held }
+        let shown = held.rulings.filter { !hidden.contains($0.category) }
+        guard shown.count != held.rulings.count else { return held }
+        return QiraatPageData(pageNumber: held.pageNumber, variants: held.variants, rulings: shown, rules: held.rules)
     }
 
     /// The page as installed, whatever the reader chose to hide.
@@ -120,6 +174,7 @@ public final class QiraatStore: @unchecked Sendable {
         try data.write(to: overlayDirectory.appendingPathComponent(String(format: "page-%03d.json", number)), options: .atomic)
         lock.withLock {
             pages[number] = .some(incoming)
+            installedCategories = nil
             touch(number)
         }
         WordContextIndex.shared.invalidate(page: number)
@@ -132,6 +187,7 @@ public final class QiraatStore: @unchecked Sendable {
         lock.withLock {
             pages.removeAll()
             order.removeAll()
+            installedCategories = nil
         }
         WordContextIndex.shared.invalidate()
     }

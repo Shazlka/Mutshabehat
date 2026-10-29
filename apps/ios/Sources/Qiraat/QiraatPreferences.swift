@@ -8,6 +8,8 @@ struct QiraatDisplay: Equatable {
     var filter: QiraatFilter
     /// «فرش فقط»: the أصول rulings are left out of everything the reader shows.
     var hidesUsul: Bool = false
+    /// The أصول categories (`QiraatRuling.category` codes) the reader switched off one by one.
+    var hiddenUsulCategories: Set<String> = []
 
     static let off = QiraatDisplay(enabled: false, filter: .all)
 }
@@ -21,6 +23,7 @@ final class QiraatPreferences {
     static let layerKey = "mushaf1441:reader-layer:v1"
     static let filterKey = "mushaf1441:qiraat-filter:v1"
     static let hidesUsulKey = "mushaf1441:qiraat-hide-usul:v1"
+    static let hiddenUsulCategoriesKey = "mushaf1441:qiraat-hidden-usul-categories:v1"
 
     @ObservationIgnored private let defaults: UserDefaults
 
@@ -37,14 +40,25 @@ final class QiraatPreferences {
         didSet { defaults.set(hidesUsul, forKey: Self.hidesUsulKey) }
     }
 
+    /// The باب codes switched off in the settings list. A new install shows every باب.
+    var hiddenUsulCategories: Set<String> {
+        didSet { defaults.set(hiddenUsulCategories.sorted(), forKey: Self.hiddenUsulCategoriesKey) }
+    }
+
+    func setUsul(_ code: String, shown: Bool) {
+        if shown { hiddenUsulCategories.remove(code) } else { hiddenUsulCategories.insert(code) }
+    }
+
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
         enabled = (defaults.string(forKey: Self.layerKey) ?? "qiraat") == "qiraat"
         filter = defaults.string(forKey: Self.filterKey).flatMap(QiraatFilter.init(storageValue:)) ?? .all
         hidesUsul = defaults.bool(forKey: Self.hidesUsulKey)
+        hiddenUsulCategories = Set(defaults.stringArray(forKey: Self.hiddenUsulCategoriesKey) ?? [])
     }
 
-    var display: QiraatDisplay { QiraatDisplay(enabled: enabled, filter: filter, hidesUsul: hidesUsul) }
+    var display: QiraatDisplay { QiraatDisplay(enabled: enabled, filter: filter, hidesUsul: hidesUsul,
+                      hiddenUsulCategories: hiddenUsulCategories) }
 }
 
 extension UIColor {

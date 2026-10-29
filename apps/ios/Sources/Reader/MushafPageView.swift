@@ -222,6 +222,7 @@ final class MushafPageView: UIView {
         }
 
         store.hidesUsul = qiraat.hidesUsul
+        store.hiddenUsulCategories = qiraat.hiddenUsulCategories
         let words = page.lines.flatMap(\.words)
         let resolved = WordContextIndex.shared.resolveSync(
             page: page.number,

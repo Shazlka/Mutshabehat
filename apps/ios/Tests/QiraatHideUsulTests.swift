@@ -28,4 +28,23 @@ final class QiraatHideUsulTests: XCTestCase {
         QiraatPreferences(defaults: defaults).hidesUsul = false
         XCTAssertFalse(QiraatPreferences(defaults: defaults).hidesUsul)
     }
+
+    func testEveryCategoryIsShownUntilTheReaderSwitchesItOff() {
+        let prefs = QiraatPreferences(defaults: freshDefaults())
+        XCTAssertTrue(prefs.hiddenUsulCategories.isEmpty)
+
+        prefs.setUsul("USUL_SAKT", shown: false)
+        XCTAssertEqual(prefs.display.hiddenUsulCategories, ["USUL_SAKT"], "the page views redraw because the display value changes")
+
+        prefs.setUsul("USUL_SAKT", shown: true)
+        XCTAssertTrue(prefs.display.hiddenUsulCategories.isEmpty)
+    }
+
+    func testTheCategoryChoicesAreKeptOnTheDevice() {
+        let defaults = freshDefaults()
+        let prefs = QiraatPreferences(defaults: defaults)
+        prefs.setUsul("USUL_HA_SAKT", shown: false)
+        prefs.setUsul("IMALAH_TAQLIL", shown: false)
+        XCTAssertEqual(QiraatPreferences(defaults: defaults).hiddenUsulCategories, ["USUL_HA_SAKT", "IMALAH_TAQLIL"])
+    }
 }

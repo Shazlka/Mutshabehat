@@ -16,6 +16,7 @@ struct SettingsView: View {
     let onSelectPage: (Int) -> Void
     let onSelectBookmark: (QuranBookmark) -> Void
     @State private var showingQiraatPicker = false
+    @State private var usulCategories: [QiraatUsulCategory]?
     @AppStorage(LandscapeView.storageKey) private var landscapeView = LandscapeView.reading.rawValue
     @AppStorage(SurahBannerStyle.storageKey) private var bannerStyle = SurahBannerStyle.royal.rawValue
 #if DEBUG
@@ -27,6 +28,51 @@ struct SettingsView: View {
 
     private var appLanguage: AppLanguage {
         AppLanguage(rawValue: language) ?? .arabic
+    }
+
+    /// One switch per أصول باب: off hides that باب's marks, cards, search results, key row and index entries.
+    @ViewBuilder private var usulCategoriesSection: some View {
+        let isEnglish = appLanguage == .english
+        Section {
+            if let categories = usulCategories {
+                if categories.isEmpty {
+                    Text(isEnglish ? "No Usul categories in the installed data." : "لا توجد أبواب أصول في البيانات المثبّتة.")
+                        .foregroundStyle(.secondary)
+                } else {
+                    ForEach(categories) { category in
+                        Toggle(isOn: Binding(
+                            get: { !qiraat.hiddenUsulCategories.contains(category.code) },
+                            set: { qiraat.setUsul(category.code, shown: $0) }
+                        )) {
+                            HStack(spacing: 8) {
+                                Circle().fill(Color(qiraatHex: category.color)).frame(width: 10, height: 10)
+                                Text(category.nameAr)
+                            }
+                        }
+                        .tint(.switchOn)
+                        .accessibilityIdentifier("qiraat-usul-toggle-\(category.code)")
+                    }
+                }
+            } else {
+                HStack(spacing: 8) {
+                    ProgressView()
+                    Text(isEnglish ? "Loading categories…" : "جارٍ تحميل الأبواب…").foregroundStyle(.secondary)
+                }
+            }
+        } header: {
+            Text(isEnglish ? "Usul categories" : "أبواب الأصول")
+        } footer: {
+            Text(isEnglish
+                 ? "Turn a category off to hide its marks, cards and search results. \"Farsh only\" above hides all of them."
+                 : "أغلق البابَ لإخفاء علاماته وبطاقاته ونتائج البحث عنه. خيار «فرش فقط» أعلاه يخفي الأبواب كلها.")
+        }
+        .disabled(!qiraat.enabled || qiraat.hidesUsul)
+        .task {
+            guard usulCategories == nil, let store = library.qiraat else { return }
+            let found = await Task.detached(priority: .utility) { store.usulCategories() }.value
+            // First-seen order shifts whenever a live page arrives; a fixed alphabetical order keeps the list still.
+            usulCategories = found.sorted { $0.nameAr.localizedStandardCompare($1.nameAr) == .orderedAscending }
+        }
     }
 
     var body: some View {
@@ -93,6 +139,7 @@ struct SettingsView: View {
                         .disabled(!qiraat.enabled)
                         .accessibilityIdentifier("qiraat-hide-usul-toggle")
                     }
+                    usulCategoriesSection
                 }
                 Section(appLanguage == .english ? "Cloud Synchronization" : "مزامنة السحابة") {
                     NavigationLink {

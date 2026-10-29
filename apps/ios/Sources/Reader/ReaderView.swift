@@ -175,6 +175,9 @@ struct ReaderView: View {
         }
         .task(id: qiraat.enabled) { startQiraatBulkSync() }
         .onChange(of: qiraat.hidesUsul, initial: true) { _, hidden in library.qiraat?.hidesUsul = hidden }
+        .onChange(of: qiraat.hiddenUsulCategories, initial: true) { _, hidden in
+            library.qiraat?.hiddenUsulCategories = hidden
+        }
         .onAppear {
             tracker.configureScreenAwake(enabled: keepScreenAwake, scenePhase: scenePhase)
             tracker.pageDidChange(to: page, library: library)
