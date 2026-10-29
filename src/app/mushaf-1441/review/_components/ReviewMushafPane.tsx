@@ -6,6 +6,7 @@ import {
   approvalKind,
   filterReviewRows,
   worstStatus,
+  type KindFilter,
   type StatusFilter,
 } from './statusMeta'
 import {
@@ -34,6 +35,8 @@ type Props = {
   selectedRow: ReviewRow | null
   hoveredRowId: string | null
   statusFilter?: StatusFilter
+  kindFilter?: KindFilter
+  categoryFilter?: string | null
   // `extend` is true on a Ctrl/Cmd-click (desktop) -- or, on mobile, when `extendNextSelection`
   // ("ربط بالكلمة التالية") is armed -- meaning "extend the current selection into a span
   // ending at this word" rather than "select this word instead".
@@ -79,6 +82,8 @@ export default function ReviewMushafPane({
   selectedRow,
   hoveredRowId,
   statusFilter = 'all',
+  kindFilter = 'all',
+  categoryFilter = null,
   onSelectWord,
   onHoverWord,
   isMobile = false,
@@ -176,16 +181,14 @@ export default function ReviewMushafPane({
   // Build covering rows map for fast word lookup: key -> ReviewRow[]
   const wordRowsMap = useMemo(() => {
     const map = new Map<string, ReviewRow[]>()
-    const rows = statusFilter
-      ? filterReviewRows(page.rows, statusFilter, 'all')
-      : page.rows.filter((row) => !row.deleted)
+    const rows = filterReviewRows(page.rows, statusFilter, kindFilter, categoryFilter)
     // Check all words present in page
     for (const word of page.words) {
       const covering = rows.filter((row) => row.startKey <= word.key && word.key <= row.endKey)
       if (covering.length) map.set(word.key, covering)
     }
     return map
-  }, [page.rows, page.words, statusFilter])
+  }, [page.rows, page.words, statusFilter, kindFilter, categoryFilter])
 
   // Fallback lines from page.words if mushafPage not yet loaded
   const fallbackLines = useMemo(() => {

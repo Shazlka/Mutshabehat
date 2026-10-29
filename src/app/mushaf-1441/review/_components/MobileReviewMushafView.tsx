@@ -5,7 +5,7 @@ import type { ReviewOverview, ReviewPage, ReviewRow } from '../_lib/types'
 import { getMushaf1441PageMetadata } from '../../../../../packages/quran-data/mushaf1441/pageMetadata'
 import ReviewMushafPane, { type WordMeta } from './ReviewMushafPane'
 import ReviewStatsBar from './ReviewStatsBar'
-import type { StatusFilter } from './statusMeta'
+import type { KindFilter, StatusFilter } from './statusMeta'
 import { cn } from '@/lib/cn'
 
 const MIN_PAGE = 1
@@ -19,6 +19,8 @@ type Props = {
   selectedRow: ReviewRow | null
   hoveredRowId: string | null
   statusFilter?: StatusFilter
+  kindFilter?: KindFilter
+  categoryFilter?: string | null
   onSelectWord(key: string, wordMeta: WordMeta, extend?: boolean): void
   onHoverWord(rowIds: string[] | null): void
   onGoToPage(page: number): void
@@ -55,6 +57,8 @@ export default function MobileReviewMushafView({
   selectedRow,
   hoveredRowId,
   statusFilter,
+  kindFilter,
+  categoryFilter,
   onSelectWord,
   onHoverWord,
   onGoToPage,
@@ -205,6 +209,8 @@ export default function MobileReviewMushafView({
           selectedRow={selectedRow}
           hoveredRowId={hoveredRowId}
           statusFilter={statusFilter}
+          kindFilter={kindFilter}
+          categoryFilter={categoryFilter}
           onSelectWord={onSelectWord}
           onHoverWord={onHoverWord}
           isMobile={true}

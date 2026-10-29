@@ -28,7 +28,7 @@ import ReviewStatsBar from './ReviewStatsBar'
 import ReviewEditorPane, { type WordMeta } from './ReviewEditorPane'
 import type { SaveRowOptions } from './useReviewEditorDraft'
 import ReviewNav from './ReviewNav'
-import { filterReviewRows, type StatusFilter } from './statusMeta'
+import { filterReviewRows, type KindFilter, type StatusFilter } from './statusMeta'
 import MobileReviewMushafView from './MobileReviewMushafView'
 import MobileReviewEditorView from './MobileReviewEditorView'
 import ReviewSaveStatusBar, { type SaveFailure } from './ReviewSaveStatusBar'
@@ -252,6 +252,13 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
 
   const [overview, setOverview] = useState<ReviewOverview | null>(null)
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all')
+  const [kindFilter, setKindFilterState] = useState<KindFilter>('all')
+  // An أصول category code; only applies while kindFilter is 'usul'.
+  const [categoryFilter, setCategoryFilter] = useState<string | null>(null)
+  const setKindFilter = useCallback((kind: KindFilter) => {
+    setKindFilterState(kind)
+    setCategoryFilter(null)
+  }, [])
 
   // Latest page/pageNumber for background save jobs, which outlive the render that started them.
   const pageRef = useRef<ReviewPage | null>(null)
@@ -532,20 +539,20 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
     const covering = page.rows.filter(
       (row) => !row.deleted && row.startKey <= selectedWordKey && selectedWordKey <= row.endKey
     )
-    return filterReviewRows(covering, statusFilter, 'all')
-  }, [page, selectedWordKey, statusFilter])
+    return filterReviewRows(covering, statusFilter, kindFilter, categoryFilter)
+  }, [page, selectedWordKey, statusFilter, kindFilter, categoryFilter])
 
   // Currently selected row
   const selectedRow = useMemo(() => {
     if (!page) return null
     if (selectedRowId) {
       const match = page.rows.find((row) => row.entryId === selectedRowId && !row.deleted)
-      if (match && (statusFilter === 'all' || filterReviewRows([match], statusFilter, 'all').length > 0)) {
+      if (match && filterReviewRows([match], statusFilter, kindFilter, categoryFilter).length > 0) {
         return match
       }
     }
     return activeRowsForWord[0] ?? null
-  }, [page, selectedRowId, activeRowsForWord, statusFilter])
+  }, [page, selectedRowId, activeRowsForWord, statusFilter, kindFilter, categoryFilter])
 
   // Handle word selection on the authentic Mushaf
   const handleSelectWord = useCallback(
@@ -1152,6 +1159,10 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
               historyOpen={historyOpen}
               statusFilter={statusFilter}
               onStatusFilterChange={setStatusFilter}
+              kindFilter={kindFilter}
+              onKindFilterChange={setKindFilter}
+              categoryFilter={categoryFilter}
+              onCategoryFilterChange={setCategoryFilter}
               onGoToPage={goToPage}
               onToggleHistory={() => setHistoryOpen((open) => !open)}
             />
@@ -1165,6 +1176,8 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
                   selectedRow={selectedRow}
                   hoveredRowId={hoveredRowId}
                   statusFilter={statusFilter}
+                  kindFilter={kindFilter}
+                  categoryFilter={categoryFilter}
                   onSelectWord={handleSelectWord}
                   onHoverWord={(rowIds) => setHoveredRowId(rowIds?.[0] ?? null)}
                   spanEndKey={spanEndKey}
@@ -1225,6 +1238,8 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
                 selectedRow={selectedRow}
                 hoveredRowId={hoveredRowId}
                 statusFilter={statusFilter}
+                kindFilter={kindFilter}
+                categoryFilter={categoryFilter}
                 onSelectWord={handleSelectWord}
                 onHoverWord={(rowIds) => setHoveredRowId(rowIds?.[0] ?? null)}
                 onGoToPage={goToPage}

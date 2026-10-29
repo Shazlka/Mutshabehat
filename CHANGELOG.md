@@ -1,3 +1,10 @@
+## 2026-10-29 — Review editor: filter by فرش / أصول, and by أصول category
+- **Request:** in the review editor, choose فرش or أصول with buttons, and when أصول is chosen, filter by each أصول category.
+- **Change:** a «الكل / فرش / أصول» button group beside the status filter in the top bar. Choosing أصول opens a second row of category chips for the categories present on the current page, each with its live count («كل الأصول» clears it; clicking the active chip clears it too). The filter works like the existing status filter: Mushaf words of other rows are no longer highlighted, and the editor's «الأوجه» list and selected row follow it. Changing the kind resets the category; a category chosen on one page stays when you turn the page (listed with count 0 if absent there, so it can still be cleared).
+- **Code:** `filterReviewRows` takes an optional category; new `usulCategoriesOnPage` in `statusMeta.ts`; state in `ReviewApp.tsx`, controls in `ReviewNav.tsx`, passed to `ReviewMushafPane` and `MobileReviewMushafView`. Desktop only has the controls (the mobile view has no filter bar, as before).
+- **Verification:** typecheck, `test:qiraat:review` workstation tests 23/23 (1 new), eslint unchanged on touched files (6 problems before and after). The nav markup was rendered with sample rows (kind group; category row only for أصول, with counts and the pressed state). **Not exercised in a browser against the real review page and database** (this checkout has no `.env.local`).
+- **Files:** `src/app/mushaf-1441/review/_components/{statusMeta.ts,ReviewNav.tsx,ReviewApp.tsx,ReviewMushafPane.tsx,MobileReviewMushafView.tsx}`, `tests/qiraat/review-workstation.test.ts`. **DB migration:** none.
+
 ## 2026-10-29 — متون editor: the symbol index now scrolls
 - **Report:** scrolling in the فهرس الرموز view did not work.
 - **Cause:** the index container is a flex column with a fixed height, and its sections (`overflow-hidden`) were allowed to shrink, so the whole list was squeezed into the window and clipped (scroll height 743 px = window height, real content about 3,869 px).

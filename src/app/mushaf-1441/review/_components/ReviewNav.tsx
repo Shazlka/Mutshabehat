@@ -6,7 +6,7 @@
 import { useState, type FormEvent } from 'react'
 import Link from 'next/link'
 import type { ReviewOverview, ReviewPage } from '../_lib/types'
-import type { StatusFilter } from './statusMeta'
+import { usulCategoriesOnPage, type KindFilter, type StatusFilter } from './statusMeta'
 import { cn } from '@/lib/cn'
 
 const MIN_PAGE = 1
@@ -19,6 +19,12 @@ const FILTER_OPTIONS: { id: StatusFilter; label: string }[] = [
   { id: 'needs-review', label: 'يحتاج مراجعة' },
 ]
 
+const KIND_OPTIONS: { id: KindFilter; label: string }[] = [
+  { id: 'all', label: 'الكل' },
+  { id: 'farsh', label: 'فرش' },
+  { id: 'usul', label: 'أصول' },
+]
+
 type Props = {
   pageNumber: number
   page: ReviewPage | null
@@ -26,6 +32,10 @@ type Props = {
   historyOpen: boolean
   statusFilter?: StatusFilter
   onStatusFilterChange?(filter: StatusFilter): void
+  kindFilter?: KindFilter
+  onKindFilterChange?(kind: KindFilter): void
+  categoryFilter?: string | null
+  onCategoryFilterChange?(code: string | null): void
   onGoToPage(page: number): void
   onToggleHistory(): void
 }
@@ -46,6 +56,10 @@ export default function ReviewNav({
   historyOpen,
   statusFilter = 'all',
   onStatusFilterChange,
+  kindFilter = 'all',
+  onKindFilterChange,
+  categoryFilter = null,
+  onCategoryFilterChange,
   onGoToPage,
   onToggleHistory,
 }: Props) {
@@ -56,6 +70,8 @@ export default function ReviewNav({
     const parsed = Number.parseInt(jumpValue, 10)
     if (Number.isFinite(parsed)) onGoToPage(parsed)
   }
+
+  const usulCategories = page && kindFilter === 'usul' ? usulCategoriesOnPage(page.rows, statusFilter, categoryFilter) : []
 
   const nextFlagged = findNextPageWith(overview, pageNumber, 'flagged')
   const nextUnreviewed = findNextPageWith(overview, pageNumber, 'unreviewed')
@@ -151,6 +167,34 @@ export default function ReviewNav({
         </div>
       ) : null}
 
+      {onKindFilterChange ? (
+        <div
+          role="group"
+          aria-label="تصفية النوع"
+          className="flex items-center rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-2)]/60 p-0.5 text-xs font-bold"
+        >
+          {KIND_OPTIONS.map((opt) => {
+            const active = kindFilter === opt.id
+            return (
+              <button
+                key={opt.id}
+                type="button"
+                aria-pressed={active}
+                onClick={() => onKindFilterChange(opt.id)}
+                className={cn(
+                  'min-h-7 rounded-md px-2.5 py-1 text-xs font-bold transition-all cursor-pointer',
+                  active
+                    ? 'bg-[var(--color-surface)] text-[var(--color-ink)] shadow-2xs border border-[var(--color-border)]/50'
+                    : 'text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]'
+                )}
+              >
+                {opt.label}
+              </button>
+            )
+          })}
+        </div>
+      ) : null}
+
       {page ? (
         <p className="text-xs text-[var(--color-ink-muted)]" aria-live="polite">
           {page.stats.total} سطر · غير مراجَع {page.stats.unreviewed} · معلَّم {page.stats.flagged} · مُراجَع{' '}
@@ -173,6 +217,50 @@ export default function ReviewNav({
           سجل التعديلات
         </button>
       </div>
+      {onCategoryFilterChange && kindFilter === 'usul' ? (
+        <div
+          role="group"
+          aria-label="تصفية أبواب الأصول"
+          className="flex w-full flex-wrap items-center gap-1.5 border-t border-[var(--color-border)] pt-2"
+        >
+          <button
+            type="button"
+            aria-pressed={categoryFilter === null}
+            onClick={() => onCategoryFilterChange(null)}
+            className={cn(
+              'min-h-7 rounded-full border px-3 text-xs font-bold transition-colors cursor-pointer',
+              categoryFilter === null
+                ? 'border-[var(--color-primary)] bg-[var(--color-primary)]/10 text-[var(--color-primary)]'
+                : 'border-[var(--color-border)] text-[var(--color-ink-soft)] hover:border-[var(--color-primary)]'
+            )}
+          >
+            كل الأصول
+          </button>
+          {usulCategories.map((cat) => {
+            const active = categoryFilter === cat.code
+            return (
+              <button
+                key={cat.code}
+                type="button"
+                aria-pressed={active}
+                onClick={() => onCategoryFilterChange(active ? null : cat.code)}
+                className={cn(
+                  'min-h-7 rounded-full border px-3 text-xs font-bold transition-colors cursor-pointer',
+                  active
+                    ? 'border-[var(--color-primary)] bg-[var(--color-primary)]/10 text-[var(--color-primary)]'
+                    : 'border-[var(--color-border)] text-[var(--color-ink-soft)] hover:border-[var(--color-primary)]',
+                  cat.count === 0 && !active && 'opacity-50'
+                )}
+              >
+                {cat.nameAr} <span className="font-normal text-[var(--color-ink-muted)]">({cat.count})</span>
+              </button>
+            )
+          })}
+          {usulCategories.length === 0 ? (
+            <span className="text-xs text-[var(--color-ink-muted)]">لا توجد أصول في هذه الصفحة</span>
+          ) : null}
+        </div>
+      ) : null}
     </header>
   )
 }

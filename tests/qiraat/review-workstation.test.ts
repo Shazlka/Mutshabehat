@@ -16,6 +16,7 @@ import {
   approvalKind,
   worstStatus,
   filterReviewRows,
+  usulCategoriesOnPage,
 } from '../../src/app/mushaf-1441/review/_components/statusMeta'
 import {
   isImalahCategory,
@@ -598,4 +599,19 @@ test('validateEntryDraft refuses a farsh entry without a chosen difference type 
   assert.deepEqual(validateEntryDraft('farsh', 'مَلِكِ', null, 1, 'word_change'), { valid: true })
   assert.deepEqual(validateEntryDraft('farsh', 'مَلِكِ', null, 1), { valid: true }) // omitted: not checked
   assert.deepEqual(validateEntryDraft('usul', '', 'TAGHYIR_HAMZ', 1, ''), { valid: true }) // usul has no farsh type
+})
+
+test('filterReviewRows narrows أصول to one category and ignores it for other kinds', () => {
+  const mk = (kind: 'farsh' | 'usul', categoryCode: string | null, extra: Partial<ReviewRow> = {}) =>
+    ({ kind, categoryCode, categoryNameAr: categoryCode, deleted: false, reviewStatus: 'unreviewed', reviewSource: null, ...extra }) as ReviewRow
+  const rows = [mk('farsh', null), mk('usul', 'MADD'), mk('usul', 'MADD'), mk('usul', 'IMALAH'), mk('usul', 'MADD', { deleted: true })]
+  assert.equal(filterReviewRows(rows, 'all', 'usul', 'MADD').length, 2)
+  assert.equal(filterReviewRows(rows, 'all', 'usul', null).length, 3)
+  assert.equal(filterReviewRows(rows, 'all', 'farsh', 'MADD').length, 1)
+  assert.equal(filterReviewRows(rows, 'all', 'all', 'MADD').length, 4)
+
+  const options = usulCategoriesOnPage(rows, 'all')
+  assert.deepEqual(options.map((o) => [o.code, o.count]), [['MADD', 2], ['IMALAH', 1]])
+  // A category chosen on another page stays listed (count 0) so it can be cleared.
+  assert.deepEqual(usulCategoriesOnPage(rows, 'all', 'SAKT').at(-1), { code: 'SAKT', nameAr: 'SAKT', count: 0 })
 })
