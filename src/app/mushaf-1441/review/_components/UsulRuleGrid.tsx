@@ -40,6 +40,7 @@ export const FALLBACK_USUL_CATEGORIES: readonly CategoryOption[] = [
   { code: 'USUL_MADD', nameAr: 'أصول المد' },
   { code: 'USUL_MIM_JAM', nameAr: 'ميم الجمع' },
   { code: 'USUL_SAKT', nameAr: 'السكت' },
+  { code: 'USUL_HA_SAKT', nameAr: 'هاء السكت' },
 ]
 
 type Props = {

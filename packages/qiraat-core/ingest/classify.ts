@@ -25,6 +25,7 @@ export const DB_CATEGORY_CODES = new Set([
   'USUL_MIM_JAM',
   'USUL_NAQL',
   'USUL_SAKT',
+  'USUL_HA_SAKT',
   'USUL_TAHQIQ',
   'USUL_IBDAL',
   'USUL_TASHIL',

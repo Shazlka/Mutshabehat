@@ -1,3 +1,11 @@
+## 2026-10-29 — Review editor: new أصول باب «هاء السكت»
+- **Request:** add هاء السكت as its own باب among the أصول categories.
+- **Change:** `USUL_HA_SAKT` («هاء السكت») is added to the باب list in the editor (after «السكت»), coloured like السكت on the Mushaf, and recognised by the importer's category list. It is word-anchored and does not change the rasm, like تحقيق / النقل / الإبدال / التسهيل. It also appears in the new أصول category filter once an entry uses it.
+- **Not changed:** entries that already mention هاء السكت under «السكت» or «النقل» (sub-category «هاء السكت وقفاً») stay where they are; moving them is a separate decision.
+- **Verification:** typecheck, `test:qiraat:review` workstation + explanations tests 36/36. Not exercised in the browser.
+- **Files:** `supabase/migrations/20261029120000_add_usul_ha_sakt_category.sql` (+ rollback), `src/app/mushaf-1441/review/_components/UsulRuleGrid.tsx`, `src/app/api/mushaf-1441/qiraat/route.ts`, `packages/qiraat-core/ingest/classify.ts`.
+- **DB migration:** `20261029120000_add_usul_ha_sakt_category.sql` — one idempotent INSERT into `qiraat_categories`; **until it is applied to the live database the باب will not appear in the editor** (the list comes from the database).
+
 ## 2026-10-29 — Review editor: filter by فرش / أصول, and by أصول category
 - **Request:** in the review editor, choose فرش or أصول with buttons, and when أصول is chosen, filter by each أصول category.
 - **Change:** a «الكل / فرش / أصول» button group beside the status filter in the top bar. Choosing أصول opens a second row of category chips for the categories present on the current page, each with its live count («كل الأصول» clears it; clicking the active chip clears it too). The filter works like the existing status filter: Mushaf words of other rows are no longer highlighted, and the editor's «الأوجه» list and selected row follow it. Changing the kind resets the category; a category chosen on one page stays when you turn the page (listed with count 0 if absent there, so it can still be cleared).

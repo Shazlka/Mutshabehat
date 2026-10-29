@@ -40,6 +40,7 @@ const CATEGORY_COLORS: Record<string, string> = {
   USUL_MIM_JAM: '#DB2777',
   USUL_MADD: '#2563EB',
   USUL_SAKT: '#7C3AED',
+  USUL_HA_SAKT: '#7C3AED',
   USUL_NAQL: '#DC2626',
   USUL_TAHQIQ: '#DC2626',
   USUL_IBDAL: '#DC2626',
