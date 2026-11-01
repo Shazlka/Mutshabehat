@@ -1,5 +1,5 @@
 // Which word «اعتماد» (and mobile «حفظ والتالي») moves to next. Pure so it can be tested.
-import type { ReviewPage } from './types'
+import type { ReviewPage, ReviewRow } from './types'
 import type { WordMeta } from '../_components/ReviewEditorPane'
 import { filterReviewRows, type KindFilter, type StatusFilter } from '../_components/statusMeta'
 
@@ -91,4 +91,30 @@ export function findNextReviewWord(
   }
 
   return null
+}
+
+// The next وجه of the SAME word that still needs review (unreviewed or flagged), among the faces
+// the filter shows: the ones after the approved face first, then any before it. null when every
+// other face of the word is done, which is the cue to move on to the next word. Faces still being
+// saved (placeholder ids) are not offered.
+export function findNextReviewFace(
+  page: ReviewPage | null,
+  wordKey: string | null,
+  approvedEntryId: string,
+  filters?: ReviewFilters,
+  isPending: (row: ReviewRow) => boolean = () => false
+): ReviewRow | null {
+  if (!page || !wordKey) return null
+  const covering = page.rows.filter((r) => !r.deleted && r.startKey <= wordKey && wordKey <= r.endKey)
+  const faces = filters ? filterReviewRows(covering, filters.status, filters.kind, filters.category) : covering
+  const at = faces.findIndex((r) => r.entryId === approvedEntryId)
+  const ordered = at >= 0 ? [...faces.slice(at + 1), ...faces.slice(0, at)] : faces
+  return (
+    ordered.find(
+      (r) =>
+        r.entryId !== approvedEntryId &&
+        !isPending(r) &&
+        (r.reviewStatus === 'unreviewed' || r.reviewStatus === 'flagged')
+    ) ?? null
+  )
 }

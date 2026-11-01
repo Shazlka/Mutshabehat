@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 
-import { findNextReviewWord } from '../../src/app/mushaf-1441/review/_lib/nextReviewWord'
+import { findNextReviewFace, findNextReviewWord } from '../../src/app/mushaf-1441/review/_lib/nextReviewWord'
 import type { ReviewPage, ReviewRow } from '../../src/app/mushaf-1441/review/_lib/types'
 import { row } from './_helpers/review-row'
 
@@ -84,4 +84,49 @@ test('with a filter on, no matching word means no move (no arbitrary next word)'
 test('deleted rows never count', () => {
   const page = pageWith([at(2), at(4, { deleted: true })])
   assert.equal(findNextReviewWord(page, key(2), { ...ALL, kind: 'farsh' }), null)
+})
+
+// ── Next وجه of the same word ───────────────────────────────────────────────────────────────────
+
+function face(id: string, word: number, overrides: Partial<ReviewRow> = {}): ReviewRow {
+  return at(word, { entryId: id, ...overrides })
+}
+
+test('after approving a face, the next unreviewed face of the same word comes first', () => {
+  const page = pageWith([face('a', 3), face('b', 3), face('c', 3, { reviewStatus: 'reviewed' }), face('d', 3)])
+  assert.equal(findNextReviewFace(page, key(3), 'a', ALL)?.entryId, 'b')
+  assert.equal(findNextReviewFace(page, key(3), 'b', ALL)?.entryId, 'd')
+})
+
+test('faces before the approved one are offered once the later ones are done', () => {
+  const page = pageWith([face('a', 3), face('b', 3, { reviewStatus: 'reviewed' }), face('c', 3)])
+  assert.equal(findNextReviewFace(page, key(3), 'c', ALL)?.entryId, 'a')
+})
+
+test('flagged faces count as still to review', () => {
+  const page = pageWith([face('a', 3), face('b', 3, { reviewStatus: 'flagged' })])
+  assert.equal(findNextReviewFace(page, key(3), 'a', ALL)?.entryId, 'b')
+})
+
+test('no other face left means null, so the caller moves to the next word', () => {
+  const page = pageWith([face('a', 3), face('b', 3, { reviewStatus: 'reviewed' }), at(5)])
+  assert.equal(findNextReviewFace(page, key(3), 'a', ALL), null)
+  assert.equal(findNextReviewWord(page, key(3), ALL)?.key, key(5))
+})
+
+test('only faces the filter shows are offered: فرش skips the أصول face of the same word', () => {
+  const page = pageWith([
+    face('a', 3),
+    face('u', 3, { kind: 'usul', categoryCode: 'MADD_BADAL' }),
+    face('f2', 3),
+  ])
+  assert.equal(findNextReviewFace(page, key(3), 'a', { ...ALL, kind: 'farsh' })?.entryId, 'f2')
+  assert.equal(findNextReviewFace(page, key(3), 'a', { ...ALL, kind: 'usul' })?.entryId, 'u')
+  const onlyUsulLeft = pageWith([face('a', 3), face('u', 3, { kind: 'usul', categoryCode: 'MADD_BADAL' })])
+  assert.equal(findNextReviewFace(onlyUsulLeft, key(3), 'a', { ...ALL, kind: 'farsh' }), null)
+})
+
+test('deleted faces and faces still being saved are never offered; other words do not count', () => {
+  const page = pageWith([face('a', 3), face('d', 3, { deleted: true }), face('tmp-1', 3), face('x', 4)])
+  assert.equal(findNextReviewFace(page, key(3), 'a', ALL, (r) => r.entryId.startsWith('tmp-')), null)
 })

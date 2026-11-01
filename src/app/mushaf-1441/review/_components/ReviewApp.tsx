@@ -33,7 +33,7 @@ import MobileReviewMushafView from './MobileReviewMushafView'
 import MobileReviewEditorView from './MobileReviewEditorView'
 import ReviewSaveStatusBar, { type SaveFailure } from './ReviewSaveStatusBar'
 import * as reviewApi from '../_lib/api'
-import { findNextReviewWord } from '../_lib/nextReviewWord'
+import { findNextReviewFace, findNextReviewWord } from '../_lib/nextReviewWord'
 
 const MIN_PAGE = 1
 const MAX_PAGE = 604
@@ -599,21 +599,29 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
     }
   }, [page, selectedWordKey, handleSelectWord, statusFilter, kindFilter, categoryFilter])
 
-  // After «اعتماد»: move on to the next word that still needs review (same rule as mobile
-  // «حفظ والتالي»). Only when the reviewer is still on the word they approved — a slow save must
-  // never pull them off a word they have since moved to. The approved edits are already in the
-  // save queue, so the unsaved-edits guard is cleared first instead of asking to discard them.
+  // After «اعتماد»: first the next وجه of the same word that still needs review; once every face
+  // of the word is done, the next word under the active filter (same rule as mobile «حفظ والتالي»).
+  // Only when the reviewer is still on the word they approved — a slow save must never pull them
+  // off a word they have since moved to. The approved edits are already in the save queue, so the
+  // unsaved-edits guard is cleared first instead of asking to discard them.
   const advanceAfterApprove = useCallback(
-    (approvedWordKey: string | null) => {
+    (approvedWordKey: string | null, approvedEntryId: string) => {
       if (!approvedWordKey || selectedWordKeyRef.current !== approvedWordKey) return
       const current = pageRef.current
       if (!current) return
-      const next = findNextReviewWord(current, approvedWordKey, {
-        status: statusFilter,
-        kind: kindFilter,
-        category: categoryFilter,
-      })
+      const filters = { status: statusFilter, kind: kindFilter, category: categoryFilter }
       draftDirtyRef.current = false
+
+      const nextFace = findNextReviewFace(current, approvedWordKey, approvedEntryId, filters, isPendingRow)
+      if (nextFace) {
+        setSelectedRowId(nextFace.entryId)
+        setNewEntryDraft(null)
+        setSaveMessage('تم الاعتماد، والانتقال للوجه التالي ✓')
+        setTimeout(() => setSaveMessage(null), 3000)
+        return
+      }
+
+      const next = findNextReviewWord(current, approvedWordKey, filters)
       if (next && next.key !== approvedWordKey) {
         handleSelectWord(next.key, next.meta, false, true)
         setSaveMessage('تم الاعتماد، والانتقال للكلمة التالية ✓')
@@ -718,7 +726,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
       setIsSaving(false)
       if (result.ok) {
         applyRowUpdate(result.data)
-        advanceAfterApprove(approvedWordKey)
+        advanceAfterApprove(approvedWordKey, row.entryId)
       } else {
         setErrorMessage(result.error.messageAr ?? result.error.message)
       }
@@ -830,7 +838,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
       })
 
       // «حفظ واعتماد»: the save and approval run in the queue; go on to the next word now.
-      if (options?.approve) advanceAfterApprove(selectedWordKeyRef.current)
+      if (options?.approve) advanceAfterApprove(selectedWordKeyRef.current, row.entryId)
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [deviceId, submitSave, reloadSilent, advanceAfterApprove]
