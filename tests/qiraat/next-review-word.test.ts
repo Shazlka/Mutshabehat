@@ -130,3 +130,26 @@ test('deleted faces and faces still being saved are never offered; other words d
   const page = pageWith([face('a', 3), face('d', 3, { deleted: true }), face('tmp-1', 3), face('x', 4)])
   assert.equal(findNextReviewFace(page, key(3), 'a', ALL, (r) => r.entryId.startsWith('tmp-')), null)
 })
+
+// ── «معتمد آليًا» still has to be approved by hand ──────────────────────────────────────────────
+
+const AUTO = { reviewStatus: 'reviewed', reviewSource: 'auto-nquran' } as const
+
+test('an auto-approved face of the same word is offered next, a manually approved one is not', () => {
+  const page = pageWith([face('a', 3), face('auto', 3, AUTO), face('manual', 3, { reviewStatus: 'reviewed' })])
+  assert.equal(findNextReviewFace(page, key(3), 'a', ALL)?.entryId, 'auto')
+  const done = pageWith([face('a', 3), face('manual', 3, { reviewStatus: 'reviewed' })])
+  assert.equal(findNextReviewFace(done, key(3), 'a', ALL), null)
+})
+
+test('an auto-approved word is not skipped when moving to the next word, under a filter too', () => {
+  const page = pageWith([
+    at(2),
+    at(4, { ...AUTO }),
+    at(5, { kind: 'usul', categoryCode: 'MADD_BADAL', ...AUTO }),
+    at(6, { reviewStatus: 'reviewed' }),
+  ])
+  assert.equal(findNextReviewWord(page, key(2), ALL)?.key, key(4))
+  assert.equal(findNextReviewWord(page, key(2), { ...ALL, kind: 'usul' })?.key, key(5))
+  assert.equal(findNextReviewWord(page, key(4), { ...ALL, kind: 'farsh' })?.key, key(2))
+})

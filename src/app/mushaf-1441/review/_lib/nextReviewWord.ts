@@ -1,7 +1,11 @@
 // Which word «اعتماد» (and mobile «حفظ والتالي») moves to next. Pure so it can be tested.
 import type { ReviewPage, ReviewRow } from './types'
 import type { WordMeta } from '../_components/ReviewEditorPane'
-import { filterReviewRows, type KindFilter, type StatusFilter } from '../_components/statusMeta'
+import { approvalKind, filterReviewRows, type KindFilter, type StatusFilter } from '../_components/statusMeta'
+
+// A face is done only once a person approved it. «معتمد آليًا» (auto-approved by the import) still
+// has to be approved by hand, so it counts as still to review, like unreviewed and flagged ones.
+export const needsManualApproval = (r: ReviewRow) => !r.deleted && approvalKind(r) !== 'manual'
 
 export type ReviewFilters = { status: StatusFilter; kind: KindFilter; category: string | null }
 
@@ -20,9 +24,7 @@ export function findNextReviewWord(
     : page.rows.filter((r) => !r.deleted)
 
   // 1. Build a set of keys for rows needing review (unreviewed or flagged)
-  const rowsNeedingReview = visibleRows.filter(
-    (r) => !r.deleted && (r.reviewStatus === 'unreviewed' || r.reviewStatus === 'flagged')
-  )
+  const rowsNeedingReview = visibleRows.filter(needsManualApproval)
 
   const wordsNeedingReview = page.words.filter((w) =>
     rowsNeedingReview.some((r) => r.startKey <= w.key && w.key <= r.endKey)
@@ -93,7 +95,8 @@ export function findNextReviewWord(
   return null
 }
 
-// The next وجه of the SAME word that still needs review (unreviewed or flagged), among the faces
+// The next وجه of the SAME word that still needs a manual approval (unreviewed, flagged or
+// auto-approved), among the faces
 // the filter shows: the ones after the approved face first, then any before it. null when every
 // other face of the word is done, which is the cue to move on to the next word. Faces still being
 // saved (placeholder ids) are not offered.
@@ -114,7 +117,7 @@ export function findNextReviewFace(
       (r) =>
         r.entryId !== approvedEntryId &&
         !isPending(r) &&
-        (r.reviewStatus === 'unreviewed' || r.reviewStatus === 'flagged')
+        needsManualApproval(r)
     ) ?? null
   )
 }

@@ -805,7 +805,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
       const optimistic = () => {
         const base = pageRef.current?.rows.find((r) => r.entryId === row.entryId) ?? row
         const next = applyFieldsToRow(base, fields, narrators, pageRef.current ?? current)
-        upsertRow(options?.approve ? { ...next, reviewStatus: 'reviewed' } : next)
+        upsertRow(options?.approve ? { ...next, reviewStatus: 'reviewed', reviewSource: null, reviewNote: null } : next)
       }
       optimistic()
 
