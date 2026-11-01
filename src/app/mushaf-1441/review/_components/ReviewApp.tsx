@@ -33,6 +33,7 @@ import MobileReviewMushafView from './MobileReviewMushafView'
 import MobileReviewEditorView from './MobileReviewEditorView'
 import ReviewSaveStatusBar, { type SaveFailure } from './ReviewSaveStatusBar'
 import * as reviewApi from '../_lib/api'
+import { findNextReviewWord } from '../_lib/nextReviewWord'
 
 const MIN_PAGE = 1
 const MAX_PAGE = 604
@@ -45,85 +46,6 @@ function isEditableTarget(target: EventTarget | null): boolean {
   if (!(target instanceof HTMLElement)) return false
   const tag = target.tagName
   return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || target.isContentEditable
-}
-
-function findNextReviewWord(
-  page: ReviewPage | null,
-  currentWordKey: string | null
-): { key: string; meta: WordMeta } | null {
-  if (!page || page.words.length === 0) return null
-
-  // 1. Build a set of keys for rows needing review (unreviewed or flagged)
-  const rowsNeedingReview = page.rows.filter(
-    (r) => !r.deleted && (r.reviewStatus === 'unreviewed' || r.reviewStatus === 'flagged')
-  )
-
-  const wordsNeedingReview = page.words.filter((w) =>
-    rowsNeedingReview.some((r) => r.startKey <= w.key && w.key <= r.endKey)
-  )
-
-  if (wordsNeedingReview.length > 0) {
-    if (currentWordKey) {
-      const after = wordsNeedingReview.find((w) => w.key > currentWordKey)
-      if (after) {
-        return {
-          key: after.key,
-          meta: { surah: after.surah, ayah: after.ayah, word: after.word, text: after.text, page: page.page },
-        }
-      }
-      const first = wordsNeedingReview[0]
-      if (first.key !== currentWordKey) {
-        return {
-          key: first.key,
-          meta: { surah: first.surah, ayah: first.ayah, word: first.word, text: first.text, page: page.page },
-        }
-      }
-    } else {
-      const first = wordsNeedingReview[0]
-      return {
-        key: first.key,
-        meta: { surah: first.surah, ayah: first.ayah, word: first.word, text: first.text, page: page.page },
-      }
-    }
-  }
-
-  // 2. Fallback: find any word with existing variants
-  const activeRows = page.rows.filter((r) => !r.deleted)
-  const wordsWithVariants = page.words.filter((w) =>
-    activeRows.some((r) => r.startKey <= w.key && w.key <= r.endKey)
-  )
-  if (wordsWithVariants.length > 0) {
-    if (currentWordKey) {
-      const after = wordsWithVariants.find((w) => w.key > currentWordKey)
-      if (after) {
-        return {
-          key: after.key,
-          meta: { surah: after.surah, ayah: after.ayah, word: after.word, text: after.text, page: page.page },
-        }
-      }
-    }
-    const first = wordsWithVariants[0]
-    if (first.key !== currentWordKey) {
-      return {
-        key: first.key,
-        meta: { surah: first.surah, ayah: first.ayah, word: first.word, text: first.text, page: page.page },
-      }
-    }
-  }
-
-  // 3. Fallback: next word in sequence
-  if (currentWordKey) {
-    const currentIndex = page.words.findIndex((w) => w.key === currentWordKey)
-    if (currentIndex >= 0 && currentIndex < page.words.length - 1) {
-      const nextWord = page.words[currentIndex + 1]
-      return {
-        key: nextWord.key,
-        meta: { surah: nextWord.surah, ayah: nextWord.ayah, word: nextWord.word, text: nextWord.text, page: page.page },
-      }
-    }
-  }
-
-  return null
 }
 
 // ── Optimistic saves ────────────────────────────────────────────────────────────────────────────
@@ -662,7 +584,11 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
 
   const handleMobileSaveAndNext = useCallback(async () => {
     if (!page) return
-    const next = findNextReviewWord(page, selectedWordKey)
+    const next = findNextReviewWord(page, selectedWordKey, {
+      status: statusFilter,
+      kind: kindFilter,
+      category: categoryFilter,
+    })
     if (next) {
       handleSelectWord(next.key, next.meta, false, true)
       setSaveMessage('تم الحفظ، والانتقال للموضع التالي ✓')
@@ -671,7 +597,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
       setSaveMessage('تم الحفظ بنجاح — لا توجد مواضع أخرى بحاجة للمراجعة في هذه الصفحة ✓')
       setTimeout(() => setSaveMessage(null), 4000)
     }
-  }, [page, selectedWordKey, handleSelectWord])
+  }, [page, selectedWordKey, handleSelectWord, statusFilter, kindFilter, categoryFilter])
 
   // After «اعتماد»: move on to the next word that still needs review (same rule as mobile
   // «حفظ والتالي»). Only when the reviewer is still on the word they approved — a slow save must
@@ -682,17 +608,26 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
       if (!approvedWordKey || selectedWordKeyRef.current !== approvedWordKey) return
       const current = pageRef.current
       if (!current) return
-      const next = findNextReviewWord(current, approvedWordKey)
+      const next = findNextReviewWord(current, approvedWordKey, {
+        status: statusFilter,
+        kind: kindFilter,
+        category: categoryFilter,
+      })
       draftDirtyRef.current = false
       if (next && next.key !== approvedWordKey) {
         handleSelectWord(next.key, next.meta, false, true)
         setSaveMessage('تم الاعتماد، والانتقال للكلمة التالية ✓')
       } else {
-        setSaveMessage('تم الاعتماد — لا توجد كلمات أخرى بحاجة للمراجعة في هذه الصفحة ✓')
+        const filterOn = statusFilter !== 'all' || kindFilter !== 'all'
+        setSaveMessage(
+          filterOn
+            ? 'تم الاعتماد — لا توجد كلمات أخرى مطابقة للتصفية في هذه الصفحة ✓'
+            : 'تم الاعتماد — لا توجد كلمات أخرى بحاجة للمراجعة في هذه الصفحة ✓'
+        )
       }
       setTimeout(() => setSaveMessage(null), 3000)
     },
-    [handleSelectWord]
+    [handleSelectWord, statusFilter, kindFilter, categoryFilter]
   )
 
   // Browser history popstate handler (for mobile Back button)
