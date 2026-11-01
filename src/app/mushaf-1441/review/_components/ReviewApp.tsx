@@ -673,6 +673,28 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
     }
   }, [page, selectedWordKey, handleSelectWord])
 
+  // After «اعتماد»: move on to the next word that still needs review (same rule as mobile
+  // «حفظ والتالي»). Only when the reviewer is still on the word they approved — a slow save must
+  // never pull them off a word they have since moved to. The approved edits are already in the
+  // save queue, so the unsaved-edits guard is cleared first instead of asking to discard them.
+  const advanceAfterApprove = useCallback(
+    (approvedWordKey: string | null) => {
+      if (!approvedWordKey || selectedWordKeyRef.current !== approvedWordKey) return
+      const current = pageRef.current
+      if (!current) return
+      const next = findNextReviewWord(current, approvedWordKey)
+      draftDirtyRef.current = false
+      if (next && next.key !== approvedWordKey) {
+        handleSelectWord(next.key, next.meta, false, true)
+        setSaveMessage('تم الاعتماد، والانتقال للكلمة التالية ✓')
+      } else {
+        setSaveMessage('تم الاعتماد — لا توجد كلمات أخرى بحاجة للمراجعة في هذه الصفحة ✓')
+      }
+      setTimeout(() => setSaveMessage(null), 3000)
+    },
+    [handleSelectWord]
+  )
+
   // Browser history popstate handler (for mobile Back button)
   useEffect(() => {
     function onPopState(e: PopStateEvent) {
@@ -755,18 +777,18 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
       setIsSaving(true)
       setErrorMessage(null)
       setSaveMessage(null)
+      const approvedWordKey = selectedWordKeyRef.current
 
       const result = await reviewApi.setStatus(row, 'reviewed', null, deviceId)
       setIsSaving(false)
       if (result.ok) {
         applyRowUpdate(result.data)
-        setSaveMessage('تم اعتماد الموضع بنجاح ✓')
-        setTimeout(() => setSaveMessage(null), 3000)
+        advanceAfterApprove(approvedWordKey)
       } else {
         setErrorMessage(result.error.messageAr ?? result.error.message)
       }
     },
-    [deviceId]
+    [deviceId, advanceAfterApprove]
   )
 
   // Flag Row
@@ -871,9 +893,12 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
         onFail: () => void reloadSilent(),
         redo: optimistic,
       })
+
+      // «حفظ واعتماد»: the save and approval run in the queue; go on to the next word now.
+      if (options?.approve) advanceAfterApprove(selectedWordKeyRef.current)
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [deviceId, submitSave, reloadSilent]
+    [deviceId, submitSave, reloadSilent, advanceAfterApprove]
   )
 
   // Create New Entry (State C). Returns whether the save actually succeeded, so callers that
