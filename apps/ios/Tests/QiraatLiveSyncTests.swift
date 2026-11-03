@@ -39,11 +39,30 @@ final class QiraatLiveSyncTests: XCTestCase {
 
     func testTheLiveURLIsTheWebAppsQiraatEndpointForThatPage() {
         XCTAssertEqual(QiraatLiveSync.liveURL(page: 8).absoluteString,
-                       "https://mutshabehat-v2.vercel.app/api/mushaf-1441/qiraat?page=8")
+                       "https://mutshabehat-v2.vercel.app/api/public/v1/qiraat?page=8")
+        XCTAssertEqual(AppEndpoints.publicQiraatVersions.absoluteString,
+                       "https://mutshabehat-v2.vercel.app/api/public/v1/qiraat/versions")
+        XCTAssertEqual(AppEndpoints.publicMutoon(since: 41).absoluteString,
+                       "https://mutshabehat-v2.vercel.app/api/public/v1/mutoon?since=41")
+    }
+
+    func testLiveSyncSessionCannotStoreOrAcceptCookies() {
+        let configuration = PublicLiveSyncSession.configuration()
+        XCTAssertNil(configuration.httpCookieStorage)
+        XCTAssertFalse(configuration.httpShouldSetCookies)
+        XCTAssertEqual(configuration.httpCookieAcceptPolicy, .never)
+        XCTAssertEqual(configuration.identifier, nil, "an ephemeral configuration is not a persistent background session")
+    }
+
+    func testVersionsDecoderAcceptsObjectAndArrayShapes() throws {
+        XCTAssertEqual(try QiraatLiveSync.decodeVersions(Data(#"{"1":"etag-a","2":22}"#.utf8)),
+                       [1: "etag-a", 2: "22"])
+        XCTAssertEqual(try QiraatLiveSync.decodeVersions(Data(#"[{"page":1,"version":"etag-a"},{"page":2,"version":22}]"#.utf8)),
+                       [1: "etag-a", 2: "22"])
     }
 
     func testAChangedLivePageIsInstalledAndAnnouncedOnce() async {
-        let sync = QiraatLiveSync(fetch: { _ in Data(self.pageWithVariant.utf8) }, minInterval: 0)
+        let sync = QiraatLiveSync(fetch: { _ in .init(data: Data(self.pageWithVariant.utf8)) }, minInterval: 0)
         let announcements = AnnouncementLog()
         let token = NotificationCenter.default.addObserver(forName: .qiraatPageDidChange, object: nil, queue: nil) { note in
             announcements.append(note.userInfo?["page"] as? Int ?? -1)
@@ -73,7 +92,7 @@ final class QiraatLiveSyncTests: XCTestCase {
         _ = try? store.applyLivePage(Data(big.utf8), number: 8)
         XCTAssertEqual(store.page(8)?.variants.count, 12)
 
-        let sync = QiraatLiveSync(fetch: { _ in Data(self.pageEight(variants: 2).utf8) }, minInterval: 0)
+        let sync = QiraatLiveSync(fetch: { _ in .init(data: Data(self.pageEight(variants: 2).utf8)) }, minInterval: 0)
         let outcome = await sync.refresh(page: 8, store: store)
 
         XCTAssertEqual(outcome, .updated)
@@ -89,7 +108,9 @@ final class QiraatLiveSyncTests: XCTestCase {
     }
 
     func testAnotherPagesResponseIsRejected() async {
-        let sync = QiraatLiveSync(fetch: { _ in Data(self.pageWithVariant.replacingOccurrences(of: "\"pageNumber\":8", with: "\"pageNumber\":9").utf8) }, minInterval: 0)
+        let sync = QiraatLiveSync(fetch: { _ in
+            .init(data: Data(self.pageWithVariant.replacingOccurrences(of: "\"pageNumber\":8", with: "\"pageNumber\":9").utf8))
+        }, minInterval: 0)
         let outcome = await sync.refresh(page: 8, store: store)
         XCTAssertEqual(outcome, .failed)
         XCTAssertEqual(store.page(8)?.variants.count, 0)
@@ -97,12 +118,43 @@ final class QiraatLiveSyncTests: XCTestCase {
 
     func testAPageJustCheckedIsNotFetchedAgainUnlessForced() async {
         var calls = 0
-        let sync = QiraatLiveSync(fetch: { _ in calls += 1; return Data(self.emptyPage.utf8) }, minInterval: 60)
+        let sync = QiraatLiveSync(fetch: { _ in calls += 1; return .init(data: Data(self.emptyPage.utf8)) }, minInterval: 60)
         _ = await sync.refresh(page: 8, store: store)
         let again = await sync.refresh(page: 8, store: store)
         XCTAssertEqual(again, .skipped)
         _ = await sync.refresh(page: 8, store: store, force: true)
         XCTAssertEqual(calls, 2)
+    }
+
+    func testA304IsUnchangedAndSendsTheStoredETag() async {
+        var seenETag: String?
+        let sync = QiraatLiveSync(fetch: { request in
+            seenETag = request.value(forHTTPHeaderField: "If-None-Match")
+            return .init(data: Data(), statusCode: 304, etag: #""v8""#)
+        }, minInterval: 0)
+
+        let result = await sync.refreshPage(page: 8, store: store, force: true, ifNoneMatch: #""old-v8""#)
+
+        XCTAssertEqual(result, .init(outcome: .unchanged, etag: #""v8""#))
+        XCTAssertEqual(seenETag, #""old-v8""#)
+        XCTAssertEqual(store.page(8)?.variants.count, 0)
+    }
+
+    func testInjectedFetchesUseOnlyPublicQiraatURLs() async throws {
+        var paths: [String] = []
+        let sync = QiraatLiveSync(fetch: { request in
+            paths.append(request.url!.path)
+            if request.url?.path.hasSuffix("/versions") == true {
+                return .init(data: Data(#"{"1":"v1"}"#.utf8))
+            }
+            return .init(data: Data(#"{"pageNumber":1,"variants":[],"rulings":[],"rules":[]}"#.utf8))
+        }, minInterval: 0)
+
+        _ = try await sync.fetchVersions(total: 1)
+        _ = await sync.refresh(page: 1, store: store, force: true)
+
+        XCTAssertEqual(paths, ["/api/public/v1/qiraat/versions", "/api/public/v1/qiraat"])
+        XCTAssertTrue(paths.allSatisfy { $0.hasPrefix("/api/public/v1/") })
     }
 
     func testAQuietPageIsCheckedLessOftenUntilSomethingChanges() {

@@ -118,6 +118,7 @@ struct ICloudSyncSettingsView: View {
                 }
                 .disabled(syncService.isSyncing)
 
+#if DEBUG
                 Button {
                     Task {
                         await triggerDirectWebSync()
@@ -129,6 +130,7 @@ struct ICloudSyncSettingsView: View {
                     }
                 }
                 .disabled(syncService.isSyncing)
+#endif
 
                 Button {
                     isShowingFolderPicker = true
@@ -186,6 +188,7 @@ struct ICloudSyncSettingsView: View {
         }
     }
 
+#if DEBUG
     private func triggerDirectWebSync() async {
         do {
             let summary = try await syncService.syncDirectlyFromWeb(library: library)
@@ -196,6 +199,7 @@ struct ICloudSyncSettingsView: View {
             isShowingAlert = true
         }
     }
+#endif
 
     private func handleCustomFolder(_ result: Result<URL, Error>) {
         do {

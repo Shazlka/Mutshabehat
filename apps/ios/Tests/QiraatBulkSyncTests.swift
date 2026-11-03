@@ -38,6 +38,18 @@ final class QiraatBulkSyncTests: XCTestCase {
         Data(#"{"pageNumber":\#(page),"variants":[],"rulings":[],"rules":[]}"#.utf8)
     }
 
+    private static func versions(total: Int = mushafPageCount, changedPage: Int? = nil) -> Data {
+        let pairs = (1...total).map { page in
+            #""\#(page)":"\#(page == changedPage ? "v2" : "v1")""#
+        }
+        return Data("{\(pairs.joined(separator: ","))}".utf8)
+    }
+
+    private func bulk(defaults: UserDefaults? = nil) -> QiraatBulkSync {
+        QiraatBulkSync(defaults: defaults ?? freshDefaults(),
+                       versionsURL: root.appendingPathComponent("live/qiraat-versions.json"))
+    }
+
     private func freshDefaults() -> UserDefaults {
         let suite = "QiraatBulkSyncTests-\(UUID().uuidString)"
         let defaults = UserDefaults(suiteName: suite)!
@@ -57,12 +69,15 @@ final class QiraatBulkSyncTests: XCTestCase {
 
     func testAFullPassInstallsEveryPageStartingWithTheOneBeingRead() async {
         let log = RequestLog()
-        let sync = QiraatLiveSync(fetch: { url in
-            let page = Self.pageNumber(in: url)
+        let sync = QiraatLiveSync(fetch: { request in
+            if request.url?.path.hasSuffix("/versions") == true {
+                return .init(data: Self.versions())
+            }
+            let page = Self.pageNumber(in: request.url!)
             log.append(page)
-            return Self.body(for: page)
+            return .init(data: Self.body(for: page), etag: #""page-etag""#)
         }, minInterval: 0)
-        let summary = await QiraatBulkSync(defaults: freshDefaults()).run(around: 300, store: store, sync: sync, concurrency: 1)
+        let summary = await bulk().run(around: 300, store: store, sync: sync, concurrency: 1)
 
         XCTAssertEqual(summary, QiraatBulkSync.Summary(updated: mushafPageCount, unchanged: 0, failed: 0, gaveUp: false))
         XCTAssertEqual(Array(log.pages.prefix(5)), [300, 301, 299, 302, 298])
@@ -72,7 +87,9 @@ final class QiraatBulkSyncTests: XCTestCase {
     }
 
     func testTheBackgroundPassLeavesTheWordCardsSyncStatusAlone() async {
-        let sync = QiraatLiveSync(fetch: { url in Self.body(for: Self.pageNumber(in: url)) }, minInterval: 0)
+        let sync = QiraatLiveSync(fetch: { request in
+            .init(data: Self.body(for: Self.pageNumber(in: request.url!)))
+        }, minInterval: 0)
         _ = await sync.refresh(page: 12, store: store, force: true, announceProgress: false)
         XCTAssertNil(sync.pageState(for: 12).latestOutcome, "an unrelated page must not re-render the open card")
         XCTAssertNotNil(store.page(12), "but the data is installed")
@@ -81,9 +98,10 @@ final class QiraatBulkSyncTests: XCTestCase {
     func testAnOfflinePassGivesUpInsteadOfWaitingOutEveryPage() async {
         struct Offline: Error {}
         let log = RequestLog()
-        let sync = QiraatLiveSync(fetch: { url in log.append(Self.pageNumber(in: url)); throw Offline() }, minInterval: 0)
-        let summary = await QiraatBulkSync(defaults: freshDefaults()).run(around: 1, store: store, sync: sync, concurrency: 2)
+        let sync = QiraatLiveSync(fetch: { request in log.append(Self.pageNumber(in: request.url!)); throw Offline() }, minInterval: 0)
+        let summary = await bulk().run(around: 1, store: store, sync: sync, concurrency: 2)
         XCTAssertTrue(summary.gaveUp)
+        XCTAssertTrue(summary.usedFallback)
         XCTAssertLessThan(log.pages.count, 20)
         XCTAssertGreaterThan(summary.failed, 0)
     }
@@ -91,12 +109,13 @@ final class QiraatBulkSyncTests: XCTestCase {
     func testAPageThatFailedOnceIsRetriedAtTheEnd() async {
         final class Flaky: @unchecked Sendable { var failedOnce = false }
         let flaky = Flaky()
-        let sync = QiraatLiveSync(fetch: { url in
-            let page = Self.pageNumber(in: url)
+        let sync = QiraatLiveSync(fetch: { request in
+            if request.url?.path.hasSuffix("/versions") == true { return .init(data: Self.versions()) }
+            let page = Self.pageNumber(in: request.url!)
             if page == 10, !flaky.failedOnce { flaky.failedOnce = true; throw URLError(.timedOut) }
-            return Self.body(for: page)
+            return .init(data: Self.body(for: page))
         }, minInterval: 0)
-        let summary = await QiraatBulkSync(defaults: freshDefaults()).run(around: 1, store: store, sync: sync, concurrency: 1)
+        let summary = await bulk().run(around: 1, store: store, sync: sync, concurrency: 1)
         XCTAssertEqual(summary.failed, 0)
         XCTAssertEqual(summary.updated, mushafPageCount)
         XCTAssertNotNil(store.page(10))
@@ -107,11 +126,12 @@ final class QiraatBulkSyncTests: XCTestCase {
     /// started another ~600-request pass.
     func testAPassWithOneStubbornlyFailingPageIsNotRepeatedOnTheNextOpen() async {
         let defaults = freshDefaults()
-        let bulk = QiraatBulkSync(defaults: defaults)
-        let sync = QiraatLiveSync(fetch: { url in
-            let page = Self.pageNumber(in: url)
+        let bulk = bulk(defaults: defaults)
+        let sync = QiraatLiveSync(fetch: { request in
+            if request.url?.path.hasSuffix("/versions") == true { return .init(data: Self.versions()) }
+            let page = Self.pageNumber(in: request.url!)
             if page == 7 { throw URLError(.cannotConnectToHost) }
-            return Self.body(for: page)
+            return .init(data: Self.body(for: page))
         }, minInterval: 0)
 
         bulk.start(around: 1, store: store, sync: sync)
@@ -125,8 +145,82 @@ final class QiraatBulkSyncTests: XCTestCase {
     func testARecentFullPassIsNotRepeatedOnTheNextOpen() {
         let defaults = freshDefaults()
         defaults.set(Date(), forKey: QiraatBulkSync.lastCompletedKey)
-        let bulk = QiraatBulkSync(defaults: defaults)
+        let bulk = bulk(defaults: defaults)
         bulk.start(around: 1, store: store)
+        XCTAssertFalse(bulk.isRunning)
+    }
+
+    func testOnlyPagesWhoseVersionChangedAreFetchedWithTheirPreviousETag() async {
+        final class State: @unchecked Sendable {
+            var changedPage: Int?
+            var requestedPages: [Int] = []
+            var etags: [Int: String?] = [:]
+        }
+        let state = State()
+        let sync = QiraatLiveSync(fetch: { request in
+            if request.url?.path.hasSuffix("/versions") == true {
+                return .init(data: Self.versions(total: 3, changedPage: state.changedPage))
+            }
+            let page = Self.pageNumber(in: request.url!)
+            state.requestedPages.append(page)
+            state.etags[page] = request.value(forHTTPHeaderField: "If-None-Match")
+            return .init(data: Self.body(for: page), etag: #""etag-\#(page)""#)
+        }, minInterval: 0)
+        let bulk = bulk()
+
+        _ = await bulk.run(around: 1, store: store, sync: sync, concurrency: 1, total: 3)
+        state.requestedPages.removeAll()
+        state.etags.removeAll()
+        state.changedPage = 2
+        let summary = await bulk.run(around: 1, store: store, sync: sync, concurrency: 1, total: 3)
+
+        XCTAssertEqual(state.requestedPages, [2])
+        XCTAssertEqual(state.etags[2]!, #""etag-2""#)
+        XCTAssertEqual(summary.updated + summary.unchanged, 1)
+        XCTAssertFalse(summary.usedFallback)
+    }
+
+    func testVersionsFailureFallsBackToEveryPage() async {
+        let log = RequestLog()
+        let sync = QiraatLiveSync(fetch: { request in
+            if request.url?.path.hasSuffix("/versions") == true {
+                return .init(data: Data(), statusCode: 404)
+            }
+            let page = Self.pageNumber(in: request.url!)
+            log.append(page)
+            return .init(data: Self.body(for: page))
+        }, minInterval: 0)
+
+        let summary = await bulk().run(around: 2, store: store, sync: sync, concurrency: 1, total: 3)
+
+        XCTAssertTrue(summary.usedFallback)
+        XCTAssertEqual(log.pages, [2, 3, 1])
+        XCTAssertFalse(summary.gaveUp)
+    }
+
+    func testFallbackPassUsesTheLongerRepeatInterval() {
+        let defaults = freshDefaults()
+        defaults.set(Date(timeIntervalSinceNow: -(QiraatBulkSync.repeatAfter + 1)),
+                     forKey: QiraatBulkSync.lastCompletedKey)
+        defaults.set(true, forKey: QiraatBulkSync.lastUsedFallbackKey)
+        let bulk = bulk(defaults: defaults)
+
+        bulk.start(around: 1, store: store)
+
+        XCTAssertFalse(bulk.isRunning)
+    }
+
+    func testOfflineFallbackAttemptIsAlsoThrottled() async {
+        let defaults = freshDefaults()
+        let bulk = bulk(defaults: defaults)
+        let sync = QiraatLiveSync(fetch: { _ in throw URLError(.notConnectedToInternet) }, minInterval: 0)
+
+        bulk.start(around: 1, store: store, sync: sync)
+        while bulk.isRunning { try? await Task.sleep(for: .milliseconds(20)) }
+
+        XCTAssertNotNil(defaults.object(forKey: QiraatBulkSync.lastCompletedKey))
+        XCTAssertTrue(defaults.bool(forKey: QiraatBulkSync.lastUsedFallbackKey))
+        bulk.start(around: 1, store: store, sync: sync)
         XCTAssertFalse(bulk.isRunning)
     }
 }

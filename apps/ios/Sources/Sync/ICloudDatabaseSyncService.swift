@@ -448,6 +448,7 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
 
     // MARK: - Direct Web Fallback
 
+#if DEBUG
     @MainActor
     func syncDirectlyFromWeb(library: MushafLibrary? = nil) async throws -> SyncSummary {
         guard !isSyncing else {
@@ -511,6 +512,7 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
             message: message
         )
     }
+#endif
 
     // MARK: - Helpers & SQLite Validation
 
