@@ -48,6 +48,30 @@ section below **and** the root
 
 # Changelog
 
+## 2026-11-03 — Public, cookie-less, read-only API endpoints for Qiraat iOS App (Hardened Design)
+- **Goal:** Public, read-only API endpoints (`GET /api/public/v1/qiraat?page=1..604`, `GET /api/public/v1/qiraat/versions`, and `GET /api/public/v1/mutoon`) that return the same JSON shape as `/api/mushaf-1441/*` without establishing an owner session or setting session cookies on client devices (e.g. Qiraat iOS app). Not deployed.
+- **Proxy bypass:** `src/proxy.ts` immediately bypasses `/api/public/` paths before creating any Supabase client or inspecting session cookies. The route matcher in `src/proxy.ts` also excludes `api/public`.
+- **Public endpoints:**
+  - `src/app/api/public/v1/qiraat/route.ts`: strict `page` parameter validation (integer 1..604, else 400 JSON error); no `debug` parameter or caller-controlled visibility switches; GET and HEAD methods allowed; other methods return 405 Method Not Allowed; calls dedicated `qiraat_public_export_page` RPC, falling back gracefully to repository static fixtures; computes strong ETag (SHA-256) over response body and responds with 304 Not Modified when `If-None-Match` matches; responses carry `Cache-Control: public, s-maxage=300, stale-while-revalidate=86400` and zero cookies.
+  - `src/app/api/public/v1/qiraat/versions/route.ts`: returns 604-page manifest mapping each Mushaf page 1..604 to its version token via `qiraat_public_page_versions` RPC (or deterministic fast stat fallback); strong ETag (SHA-256); answers `If-None-Match` with 304; GET and HEAD allowed; other methods return 405; Cache-Control public 300s / s-maxage 300 / stale-while-revalidate 86400.
+  - `src/app/api/public/v1/mutoon/route.ts`: supports full compiled snapshot and `?since=S` incremental feed; validates `since` (integer >= 0); calls dedicated wrappers `qiraat_public_mutoon_snapshot` and `qiraat_public_mutoon_changes` (with pagination limit pinned to 300 in SQL, not caller-controlled); returns 503 if database is unconfigured or unreachable; GET and HEAD allowed; other methods return 405; Cache-Control public 300s / s-maxage 300 / stale-while-revalidate 86400.
+- **DB migrations (proposed only, never applied):**
+  - `supabase/migrations/PROPOSED_public_readonly_export.sql.txt`:
+    - Does NOT redefine or grant anon permissions on internal functions (`qiraat_export_page`, `qiraat_mutoon_snapshot_json`, `qiraat_mutoon_changes_json`), preserving authenticated web app security.
+    - Creates 4 new `SECURITY DEFINER` wrappers with `SET search_path = public`:
+      - `qiraat_public_export_page(p_mushaf_page smallint)`: validates 1..604, calls `qiraat_export_page(p_mushaf_page, true)` (matching the shipping iOS dataset) with no caller-controlled visibility flags.
+      - `qiraat_public_mutoon_snapshot()`: returns `qiraat_mutoon_snapshot_json()`.
+      - `qiraat_public_mutoon_changes(p_since bigint)`: calls `qiraat_mutoon_changes_json(p_since, 300)` with limit fixed at 300.
+      - `qiraat_public_page_versions()`: returns 604 rows (`page`, `version`), computing deterministic MD5 tokens over visible entry counts and timestamps.
+    - `REVOKE ALL ... FROM PUBLIC; GRANT EXECUTE ... TO anon, authenticated` on the 4 wrappers only.
+    - Documented audit in comments explaining why zero write paths and no hidden/rejected/deleted/synthetic rows are exposed.
+  - `supabase/migrations/PROPOSED_relock_editor_access.sql.txt`:
+    - Reverts `20260925170000_qiraat_unrestrict_editor_access.sql` by restoring real editor checks in `qiraat_is_editor()` and `qiraat_require_editor()` via the `qiraat_editors` allowlist.
+    - Preserves owner editing capabilities (`ec34e9cc-7c98-4180-86ce-2b80ac34646e` in `qiraat_editors`).
+    - Complete audit and documentation of all 16 write RPCs and internal review functions and how each is gated.
+- **Verification:** `npx tsc --noEmit --incremental false -p .`, `npm run test:proxy`, `npm run test:public-api`, ESLint clean on touched files, and `next build` all passing. Not deployed.
+- **Files:** `src/proxy.ts`, `src/app/api/public/v1/qiraat/route.ts`, `src/app/api/public/v1/qiraat/versions/route.ts`, `src/app/api/public/v1/mutoon/route.ts`, `supabase/migrations/PROPOSED_public_readonly_export.sql.txt`, `supabase/migrations/PROPOSED_relock_editor_access.sql.txt`, `tests/proxy-autologin.test.mjs`, `tests/public-api.test.ts`, `package.json`, `CHANGELOG.md`, `CLAUDE.md`.
+
 ## 2026-10-29 — Review editor: new أصول باب «هاء السكت»
 - **Request:** add هاء السكت as its own باب among the أصول categories.
 - **Change:** `USUL_HA_SAKT` («هاء السكت») is added to the باب list in the editor (after «السكت»), coloured like السكت on the Mushaf, and recognised by the importer's category list. It is word-anchored and does not change the rasm, like تحقيق / النقل / الإبدال / التسهيل. It also appears in the new أصول category filter once an entry uses it.

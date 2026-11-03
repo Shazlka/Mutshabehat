@@ -8,6 +8,13 @@ import { resilientFetch } from '@/lib/resilient-fetch'
 // AUTOLOGIN_EMAIL / AUTOLOGIN_PASSWORD) so every request is authenticated and
 // RLS (`auth.uid()`) keeps working unchanged.
 export async function proxy(request: NextRequest) {
+  const { pathname } = request.nextUrl
+
+  // Public API endpoints must never establish an owner session or set cookies
+  if (pathname.startsWith('/api/public/')) {
+    return NextResponse.next()
+  }
+
   let supabaseResponse = NextResponse.next({ request })
 
   const supabase = createServerClient(
@@ -27,8 +34,6 @@ export async function proxy(request: NextRequest) {
       },
     }
   )
-
-  const { pathname } = request.nextUrl
 
   // The old auth pages are gone — bounce any stale links back to the app.
   if (
@@ -70,5 +75,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|manifest\\.json|sw\\.js|icons|.*\\.svg).*)'],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico|manifest\\.json|sw\\.js|icons|api/public|.*\\.svg).*)'],
 }

@@ -1,0 +1,426 @@
+import crypto from 'node:crypto'
+import { NextRequest, NextResponse } from 'next/server'
+import { createClient } from '@supabase/supabase-js'
+import { defaultQiraatRepository } from '../../../../../../packages/qiraat-core/repository'
+import { isValidMushaf1441PageNumber } from '../../../../../../packages/quran-data/mushaf1441/pageLoader'
+import { consistentUthmaniText } from '@/app/api/mushaf-1441/qiraat/variant-text'
+import { resilientFetch } from '@/lib/resilient-fetch'
+import type {
+  DifferenceType,
+  QiraatRulingAttribution,
+  QiraatRulingReading,
+  QiraatRuling,
+  QiraatVariant,
+  ReadingId,
+  VariantOperation,
+  VerificationStatus,
+} from '../../../../../../packages/qiraat-core/types'
+
+export const runtime = 'nodejs'
+
+const CORS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, HEAD, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization, If-None-Match',
+}
+
+const PUBLIC_CACHE_HEADERS = {
+  ...CORS,
+  'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=86400',
+}
+
+const CATEGORY_COLORS: Record<string, string> = {
+  AYAH_COUNT: '#64748B',
+  SILAT_HA: '#0D9488',
+  MEEM_JAM: '#DB2777',
+  TARQIQ_RA: '#B45309',
+  TAGHLIZ_LAM: '#B45309',
+  MADD_BADAL: '#2563EB',
+  MADD_LIN: '#2563EB',
+  MADD_QABL_IDGHAM: '#2563EB',
+  IMALAH_TAQLIL: '#C026D3',
+  IDGHAM_SAGHIR: '#15803D',
+  IDGHAM_KABIR: '#15803D',
+  TAGHYIR_HAMZ: '#DC2626',
+  HAMZATAN_KALIMA: '#DC2626',
+  HAMZATAN_KALIMATAYN: '#DC2626',
+  TARK_GHUNNA: '#0891B2',
+  IKHFA: '#0891B2',
+  SAKT: '#7C3AED',
+  WAQF_HAMZA: '#EA580C',
+  WAQF_RASM: '#EA580C',
+  YAAT_IDAFA: '#CA8A04',
+  YAAT_ZAWAID: '#CA8A04',
+  BAYN_SURATAYN: '#64748B',
+  USUL_MIM_JAM: '#DB2777',
+  USUL_MADD: '#2563EB',
+  USUL_SAKT: '#7C3AED',
+  USUL_HA_SAKT: '#7C3AED',
+  USUL_NAQL: '#DC2626',
+  USUL_TAHQIQ: '#DC2626',
+  USUL_IBDAL: '#DC2626',
+  USUL_TASHIL: '#DC2626',
+}
+
+function mapDifferenceType(variantType?: string | null): DifferenceType {
+  if (!variantType) return 'OTHER'
+  const upper = variantType.toUpperCase()
+  switch (upper) {
+    case 'HARAKAH':
+    case 'VOWEL': return 'HARAKAH'
+    case 'LETTER':
+    case 'CONSONANT': return 'LETTER'
+    case 'ADDITION': return 'ADDITION'
+    case 'OMISSION': return 'OMISSION'
+    case 'WORD_FORM': return 'WORD_FORM'
+    case 'WORD_CHANGE': return 'WORD_CHANGE'
+    case 'SAKT': return 'SAKT'
+    case 'MADD': return 'MADD'
+    case 'HAMZ':
+    case 'HAMZA': return 'HAMZ'
+    case 'IMALAH': return 'IMALAH'
+    case 'IDGHAM': return 'IDGHAM'
+    case 'WAQF': return 'WAQF'
+    case 'NAQL': return 'NAQL'
+    case 'SILAH': return 'SILAH'
+    case 'ORTHOGRAPHY': return 'ORTHOGRAPHY'
+    default: return 'OTHER'
+  }
+}
+
+interface ExportLocus {
+  id: string
+  surah: number
+  startAyah: number
+  startWord: number
+  endAyah: number
+  endWord: number
+  baseText: string
+  occurrence?: string
+  mapping?: string
+}
+
+interface ExportVariantDetail {
+  readingText?: string
+  uthmaniText?: string
+  description?: string
+  variantType?: string
+  isBaseline?: boolean
+  performanceNote?: string
+}
+
+interface ExportRulingDetail {
+  category: string
+  categoryAr: string
+  ruleId?: string
+  text?: string
+  subCategory?: string
+  options?: string[]
+  wordAnchored?: boolean
+}
+
+interface ExportAttribution {
+  authorityId: string
+  action?: string
+  condition?: string
+  isException?: boolean
+  isDefault?: boolean
+  wajhOrder?: number
+  wajhNote?: string
+}
+
+interface ExportEntry {
+  id: string
+  kind: 'variant' | 'ruling'
+  order: number
+  status: VerificationStatus
+  notes?: string
+  locus: ExportLocus
+  variant?: ExportVariantDetail
+  ruling?: ExportRulingDetail
+  attribution?: ExportAttribution[]
+  readingIds?: string[]
+  alternates?: string[]
+  countSchools?: string[]
+}
+
+interface ExportPagePayload {
+  mushafPage: number
+  sourcePage?: number
+  surah?: number
+  ayahFrom?: number
+  ayahTo?: number
+  entries?: ExportEntry[]
+  pageNotes?: Array<{ type: string; text: string }>
+}
+
+function mapExportAttribution(entry: ExportEntry, fallbackAction: string): QiraatRulingAttribution[] {
+  return (entry.attribution ?? []).map((a) => ({
+    authorityId: a.authorityId,
+    action: a.action ?? fallbackAction,
+    condition: a.condition ?? undefined,
+    wajhOrder: a.wajhOrder ?? undefined,
+    wajhNote: a.wajhNote?.trim() || undefined,
+  }))
+}
+
+function mapExportVariant(entry: ExportEntry): QiraatVariant {
+  const isMulti =
+    entry.locus.endWord > entry.locus.startWord ||
+    entry.locus.endAyah > entry.locus.startAyah
+  const isPerf =
+    Boolean(entry.variant?.performanceNote) &&
+    (!entry.variant?.readingText ||
+      entry.variant?.readingText === entry.locus.baseText)
+
+  const diffType = mapDifferenceType(entry.variant?.variantType)
+  const op: VariantOperation =
+    entry.variant?.readingText &&
+    entry.variant.readingText !== entry.locus.baseText
+      ? 'REPLACE'
+      : 'KEEP'
+
+  return {
+    id: entry.id,
+    surah: entry.locus.surah,
+    ayah: entry.locus.startAyah,
+    startToken: entry.locus.startWord,
+    endToken: entry.locus.endWord ?? entry.locus.startWord,
+    operation: op,
+    hafsText: entry.locus.baseText,
+    variantText: entry.variant?.readingText ?? entry.locus.baseText,
+    description: entry.variant?.description ?? undefined,
+    uthmaniText: consistentUthmaniText(entry.locus.baseText, entry.variant?.readingText, entry.variant?.uthmaniText),
+    performanceNote: entry.variant?.performanceNote ?? undefined,
+    differenceType: diffType,
+    notes: entry.notes ?? undefined,
+    verificationStatus: entry.status,
+    createdAt: '2026-09-17T12:00:00.000Z',
+    updatedAt: '2026-09-17T12:00:00.000Z',
+    readingIds: (entry.readingIds ?? []) as ReadingId[],
+    attribution: mapExportAttribution(entry, ''),
+    locusId: entry.locus.id,
+    locusType: isPerf
+      ? 'performance_variant'
+      : isMulti
+        ? 'multi_word_variant'
+        : 'word_variant',
+  }
+}
+
+function mapExportRuling(entry: ExportEntry, pageNumber: number): QiraatRuling {
+  const category = entry.ruling?.category ?? 'OTHER'
+  const categoryAr = entry.ruling?.categoryAr ?? category
+  const color = CATEGORY_COLORS[category] ?? '#64748B'
+  const wordAnchored = entry.ruling?.wordAnchored ?? true
+
+  const attribution = mapExportAttribution(entry, categoryAr)
+
+  const alternatesSet = new Set(entry.alternates ?? [])
+  const readings: QiraatRulingReading[] = (entry.readingIds ?? []).map(
+    (rId) => ({
+      readingId: rId as ReadingId,
+      action:
+        entry.attribution?.find((a) => a.authorityId === rId)?.action ??
+        categoryAr,
+      isDefault: !alternatesSet.has(rId),
+    })
+  )
+
+  return {
+    id: entry.id,
+    pageNumber,
+    category,
+    categoryAr,
+    color,
+    wordAnchored,
+    surah: entry.locus.surah,
+    ayah: entry.locus.startAyah,
+    startToken: entry.locus.startWord,
+    endToken: entry.locus.endWord ?? entry.locus.startWord,
+    endAyah: entry.locus.endAyah ?? entry.locus.startAyah,
+    baseText: entry.locus.baseText,
+    verificationStatus: entry.status,
+    attribution,
+    readings,
+    hasAlternate: (entry.alternates ?? []).length > 0,
+    text: entry.ruling?.text ?? undefined,
+    subCategory: entry.ruling?.subCategory ?? undefined,
+    condition: entry.attribution?.[0]?.condition ?? undefined,
+    countSchools: entry.countSchools ?? undefined,
+    notes: entry.notes ?? undefined,
+    createdAt: '2026-09-17T12:00:00.000Z',
+    updatedAt: '2026-09-17T12:00:00.000Z',
+  }
+}
+
+function getAnonClient() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  if (!supabaseUrl || !supabaseAnonKey) {
+    return null
+  }
+  return createClient(supabaseUrl, supabaseAnonKey, {
+    auth: {
+      persistSession: false,
+      autoRefreshToken: false,
+    },
+    global: {
+      fetch: resilientFetch,
+    },
+  })
+}
+
+function methodNotAllowed() {
+  return NextResponse.json(
+    { error: 'Method Not Allowed' },
+    {
+      status: 405,
+      headers: {
+        ...CORS,
+        Allow: 'GET, HEAD, OPTIONS',
+        'Cache-Control': 'no-store',
+      },
+    }
+  )
+}
+
+function buildEtag(content: string): string {
+  return `"${crypto.createHash('sha256').update(content).digest('hex')}"`
+}
+
+function matchesIfNoneMatch(ifNoneMatchHeader: string | null, etag: string): boolean {
+  if (!ifNoneMatchHeader) return false
+  return ifNoneMatchHeader
+    .split(',')
+    .map((tag) => tag.trim())
+    .some((tag) => tag === etag || tag === '*' || tag === `W/${etag}`)
+}
+
+// GET /api/public/v1/qiraat?page=N
+export async function GET(request: NextRequest) {
+  const pageRaw = request.nextUrl.searchParams.get('page')
+  if (!pageRaw || !/^\d+$/.test(pageRaw)) {
+    return NextResponse.json(
+      { error: 'Invalid Mushaf 1441 page. Expected integer 1-604.' },
+      { status: 400, headers: PUBLIC_CACHE_HEADERS }
+    )
+  }
+
+  const page = parseInt(pageRaw, 10)
+  if (!isValidMushaf1441PageNumber(page) || String(page) !== pageRaw) {
+    return NextResponse.json(
+      { error: 'Invalid Mushaf 1441 page. Expected integer 1-604.' },
+      { status: 400, headers: PUBLIC_CACHE_HEADERS }
+    )
+  }
+
+  let payloadData: {
+    pageNumber: number
+    variants: QiraatVariant[]
+    rules: unknown
+    rulings: QiraatRuling[]
+  } | null = null
+
+  try {
+    const supabase = getAnonClient()
+    if (supabase) {
+      const { data, error } = await supabase.rpc('qiraat_public_export_page', {
+        p_mushaf_page: page,
+      })
+
+      if (
+        !error &&
+        data &&
+        Array.isArray((data as ExportPagePayload).entries) &&
+        (data as ExportPagePayload).entries!.length > 0
+      ) {
+        const payload = data as ExportPagePayload
+        const variants = payload
+          .entries!.filter((e) => e.kind === 'variant')
+          .map(mapExportVariant)
+        const rulings = payload
+          .entries!.filter((e) => e.kind === 'ruling')
+          .map((e) => mapExportRuling(e, page))
+        const rules = await defaultQiraatRepository.getRulesForPage(page, {
+          includeUnpublished: true,
+        })
+
+        payloadData = { pageNumber: page, variants, rules, rulings }
+      }
+    }
+  } catch (err) {
+    console.error(
+      `[public-qiraat-api] live db query failed for page ${page}, falling back to static fixtures:`,
+      err
+    )
+  }
+
+  // Graceful fallback to static fixtures if live DB was not used
+  if (!payloadData) {
+    const [variants, rules, rulings] = await Promise.all([
+      defaultQiraatRepository.getVariantsForPage(page, { includeUnpublished: true }),
+      defaultQiraatRepository.getRulesForPage(page, { includeUnpublished: true }),
+      defaultQiraatRepository.getRulingsForPage(page, { includeUnpublished: true }),
+    ])
+
+    payloadData = { pageNumber: page, variants: variants as QiraatVariant[], rules, rulings: rulings as QiraatRuling[] }
+  }
+
+  const bodyText = JSON.stringify(payloadData)
+  const etag = buildEtag(bodyText)
+
+  const ifNoneMatch = request.headers.get('if-none-match')
+  if (matchesIfNoneMatch(ifNoneMatch, etag)) {
+    return new NextResponse(null, {
+      status: 304,
+      headers: {
+        ...PUBLIC_CACHE_HEADERS,
+        ETag: etag,
+      },
+    })
+  }
+
+  return new NextResponse(bodyText, {
+    status: 200,
+    headers: {
+      ...PUBLIC_CACHE_HEADERS,
+      'Content-Type': 'application/json; charset=utf-8',
+      ETag: etag,
+    },
+  })
+}
+
+export async function HEAD(request: NextRequest) {
+  const res = await GET(request)
+  return new NextResponse(null, {
+    status: res.status,
+    headers: res.headers,
+  })
+}
+
+export async function POST() {
+  return methodNotAllowed()
+}
+
+export async function PUT() {
+  return methodNotAllowed()
+}
+
+export async function DELETE() {
+  return methodNotAllowed()
+}
+
+export async function PATCH() {
+  return methodNotAllowed()
+}
+
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 204,
+    headers: {
+      ...CORS,
+      Allow: 'GET, HEAD, OPTIONS',
+    },
+  })
+}
