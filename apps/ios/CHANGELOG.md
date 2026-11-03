@@ -3,6 +3,13 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-11-03 — Development builds read the uncached review routes until the review is finished
+- **Owner decision:** keep the old routes working while the Qiraat review goes on; an edit in the web review tab must reach the iPhone at once. Switch to the public API only as the last step before publishing.
+- **Change:** new `LiveSyncRoute` (`Sources/Sync/AppEndpoints.swift`). DEBUG (`make device`) reads `/api/mushaf-1441/qiraat` and `/api/mushaf-1441/mutoon` (never cached by the CDN) through the shared session with the site's sign-in cookie, as before today; Release reads only `/api/public/v1/*` through the cookie-less session. The page-versions index stays public (its CDN cache is now 15 s on the web side). DEBUG polls the open page every 5 s, backing off to at most 15 s (Release: 10 s up to 300 s).
+- **Before publishing:** set `LiveSyncRoute.current` to `.publicAPI` in DEBUG too, and update `testDevelopmentBuildsReadTheUncachedReviewRoutesUntilPublishing`.
+- **Verification:** unit tests 396/396 (3 new); Release build contains no `api/mushaf-1441` string and does contain `api/public/v1`.
+- **Files:** `Sources/Sync/AppEndpoints.swift`, `Sources/Qiraat/QiraatLiveSync.swift`, `Tests/QiraatLiveSyncTests.swift`.
+
 ## [Unreleased] — 2026-11-03 — Live sync reads the deployed versions index
 - **Bug:** the deployed `/api/public/v1/qiraat/versions` answers `{"pages": [{"page", "version"}, …]}`; `QiraatLiveSync.decodeVersions` only knew a bare object or array, threw `invalidShape`, and bulk sync silently fell back to slow per-page polling.
 - **Fix:** the decoder unwraps `pages` first. Test `testVersionsDecoderAcceptsTheServersPagesWrapper` (failed before the fix, passes after).

@@ -54,6 +54,7 @@ final class QiraatLiveSync: ObservableObject {
 
     private let fetch: (URLRequest) async throws -> FetchResponse
     private let minInterval: TimeInterval
+    private let route: LiveSyncRoute
     private var lastChecked: [Int: Date] = [:]
     private var pageETags: [Int: String] = [:]
     private var inFlight: Set<Int> = []
@@ -61,23 +62,30 @@ final class QiraatLiveSync: ObservableObject {
     @Published private(set) var liveMutoonLibrary: MatnLibrary?
 
     init(fetch: @escaping (URLRequest) async throws -> FetchResponse = QiraatLiveSync.fetchFromWeb,
-         minInterval: TimeInterval = 5) {
+         minInterval: TimeInterval = 5, route: LiveSyncRoute = .current) {
         self.fetch = fetch
         self.minInterval = minInterval
+        self.route = route
     }
 
     /// How soon a page on screen checks again: soon after it appears, then less often while nothing
     /// changes (doubling up to five minutes), and soon again once a change arrives. A page that sat
     /// still used to be fetched every 10 s: 360 requests an hour, 720 on an iPad spread.
+#if DEBUG
+    /// Development builds poll the open page every few seconds while the owner is reviewing on the web.
+    nonisolated static let firstPollInterval: TimeInterval = 5
+    nonisolated static let maxPollInterval: TimeInterval = 15
+#else
     nonisolated static let firstPollInterval: TimeInterval = 10
     nonisolated static let maxPollInterval: TimeInterval = 300
+#endif
 
     nonisolated static func nextPollInterval(after outcome: Outcome, current: TimeInterval) -> TimeInterval {
         outcome == .updated ? firstPollInterval : min(maxPollInterval, current * 2)
     }
 
-    nonisolated static func liveURL(page: Int) -> URL {
-        AppEndpoints.publicQiraatPage(page)
+    nonisolated static func liveURL(page: Int, route: LiveSyncRoute = .current) -> URL {
+        AppEndpoints.liveQiraatPage(page, route: route)
     }
 
     func pageState(for page: Int) -> PageState {
@@ -100,7 +108,14 @@ final class QiraatLiveSync: ObservableObject {
             throw URLError(.notConnectedToInternet)
         }
 #endif
-        let (data, response) = try await PublicLiveSyncSession.shared.data(for: request)
+#if DEBUG
+        // The review routes need the site's own sign-in cookie, as the developer review editor does; the public API
+        // must never see one.
+        let session = request.url?.path.hasPrefix("/api/public/") == true ? PublicLiveSyncSession.shared : URLSession.shared
+#else
+        let session = PublicLiveSyncSession.shared
+#endif
+        let (data, response) = try await session.data(for: request)
         guard let response = response as? HTTPURLResponse else { throw URLError(.badServerResponse) }
         return FetchResponse(data: data, statusCode: response.statusCode,
                              etag: response.value(forHTTPHeaderField: "ETag"))
@@ -127,7 +142,7 @@ final class QiraatLiveSync: ObservableObject {
         lastChecked[page] = Date()
         do {
             let conditionalETag = etag ?? pageETags[page]
-            let response = try await fetch(Self.request(url: Self.liveURL(page: page), etag: conditionalETag))
+            let response = try await fetch(Self.request(url: Self.liveURL(page: page, route: route), etag: conditionalETag))
             if response.statusCode == 304 {
                 let confirmedETag = response.etag ?? conditionalETag
                 pageETags[page] = confirmedETag
@@ -223,7 +238,7 @@ final class QiraatLiveSync: ObservableObject {
         do {
             var changed = false
             if let seq = MatnOverlay.seq(in: liveDir) {
-                let response = try await fetch(Self.request(url: AppEndpoints.publicMutoon(since: seq)))
+                let response = try await fetch(Self.request(url: AppEndpoints.liveMutoon(since: seq, route: route)))
                 guard response.statusCode == 200 else { throw URLError(.badServerResponse) }
                 let result = try await Task.detached(priority: .utility) { () -> MatnOverlay.DeltaResult in
                     guard let json = try JSONSerialization.jsonObject(with: response.data) as? [String: Any] else { return .needsSnapshot }
@@ -256,7 +271,7 @@ final class QiraatLiveSync: ObservableObject {
 
     private func takeSnapshot(into directory: URL,
                               fetch: @escaping (URLRequest) async throws -> FetchResponse) async throws -> Bool {
-        let response = try await fetch(Self.request(url: AppEndpoints.publicMutoon()))
+        let response = try await fetch(Self.request(url: AppEndpoints.liveMutoon(route: route)))
         guard response.statusCode == 200 else { throw URLError(.badServerResponse) }
         return try await Task.detached(priority: .utility) { () -> Bool in
             guard let json = try JSONSerialization.jsonObject(with: response.data) as? [String: Any] else { return false }

@@ -38,7 +38,7 @@ final class QiraatLiveSyncTests: XCTestCase {
     }
 
     func testTheLiveURLIsTheWebAppsQiraatEndpointForThatPage() {
-        XCTAssertEqual(QiraatLiveSync.liveURL(page: 8).absoluteString,
+        XCTAssertEqual(QiraatLiveSync.liveURL(page: 8, route: .publicAPI).absoluteString,
                        "https://mutshabehat-v2.vercel.app/api/public/v1/qiraat?page=8")
         XCTAssertEqual(AppEndpoints.publicQiraatVersions.absoluteString,
                        "https://mutshabehat-v2.vercel.app/api/public/v1/qiraat/versions")
@@ -154,13 +154,31 @@ final class QiraatLiveSyncTests: XCTestCase {
                 return .init(data: Data(#"{"1":"v1"}"#.utf8))
             }
             return .init(data: Data(#"{"pageNumber":1,"variants":[],"rulings":[],"rules":[]}"#.utf8))
-        }, minInterval: 0)
+        }, minInterval: 0, route: .publicAPI)
 
         _ = try await sync.fetchVersions(total: 1)
         _ = await sync.refresh(page: 1, store: store, force: true)
 
         XCTAssertEqual(paths, ["/api/public/v1/qiraat/versions", "/api/public/v1/qiraat"])
         XCTAssertTrue(paths.allSatisfy { $0.hasPrefix("/api/public/v1/") })
+    }
+
+    /// Owner decision 2026-11-03: until the Qiraat review is finished, development builds (`make device`) read the
+    /// review routes, which the CDN never caches, so an edit in the web review tab reaches the iPhone at once.
+    /// The App Store build reads the public API. Flip `LiveSyncRoute.current` as the last step before publishing.
+    func testDevelopmentBuildsReadTheUncachedReviewRoutesUntilPublishing() {
+        XCTAssertEqual(LiveSyncRoute.current, .reviewRoutes)
+        XCTAssertEqual(QiraatLiveSync.liveURL(page: 8).absoluteString,
+                       "https://mutshabehat-v2.vercel.app/api/mushaf-1441/qiraat?page=8")
+        XCTAssertEqual(AppEndpoints.liveMutoon(since: 41, route: .current).absoluteString,
+                       "https://mutshabehat-v2.vercel.app/api/mushaf-1441/mutoon?since=41")
+        XCTAssertEqual(AppEndpoints.liveMutoon(route: .publicAPI).absoluteString,
+                       "https://mutshabehat-v2.vercel.app/api/public/v1/mutoon")
+    }
+
+    func testDevelopmentBuildsCheckTheOpenPageEveryFewSeconds() {
+        XCTAssertLessThanOrEqual(QiraatLiveSync.firstPollInterval, 5)
+        XCTAssertLessThanOrEqual(QiraatLiveSync.maxPollInterval, 15)
     }
 
     func testAQuietPageIsCheckedLessOftenUntilSomethingChanges() {
