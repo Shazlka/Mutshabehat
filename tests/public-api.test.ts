@@ -69,7 +69,7 @@ test('qiraat endpoint succeeds on valid boundaries (page 1 and 604) and returns 
     assert.equal(res.status, 200, `Expected 200 for page ${validPage}`)
     assert.equal(
       res.headers.get('cache-control'),
-      'public, s-maxage=300, stale-while-revalidate=86400'
+      'public, s-maxage=15, stale-while-revalidate=15'
     )
     assert.equal(res.headers.get('set-cookie'), null)
 
@@ -112,7 +112,7 @@ test('qiraat endpoint answers If-None-Match with 304 and empty body', async () =
   const res304 = await getQiraat(reqMatch)
   assert.equal(res304.status, 304)
   assert.equal(res304.headers.get('etag'), etag)
-  assert.equal(res304.headers.get('cache-control'), 'public, s-maxage=300, stale-while-revalidate=86400')
+  assert.equal(res304.headers.get('cache-control'), 'public, s-maxage=15, stale-while-revalidate=15')
   assert.equal(res304.headers.get('set-cookie'), null)
   const body304 = await res304.text()
   assert.equal(body304, '', '304 must return empty body')
@@ -137,7 +137,7 @@ test('qiraat endpoint answers If-None-Match with 304 and empty body', async () =
 test('qiraat versions route returns 604-page manifest with strong ETag and handles 304', async () => {
   const res = await getVersions(new NextRequest('https://example.test/api/public/v1/qiraat/versions'))
   assert.equal(res.status, 200)
-  assert.equal(res.headers.get('cache-control'), 'public, s-maxage=300, stale-while-revalidate=86400')
+  assert.equal(res.headers.get('cache-control'), 'public, s-maxage=15, stale-while-revalidate=15')
   assert.equal(res.headers.get('set-cookie'), null)
 
   const etag = res.headers.get('etag')

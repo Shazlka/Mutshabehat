@@ -48,6 +48,13 @@ section below **and** the root
 
 # Changelog
 
+## 2026-11-03 — Public API: CDN cache cut from 5 minutes to 15 seconds
+- **Request:** the owner reviews word by word; an edit in the review tab must reach the iPhone at once, not after the CDN's 5-minute cache (measured live: `x-vercel-cache: HIT`, then one `STALE` answer while it refreshed).
+- **Change:** `/api/public/v1/qiraat`, `/qiraat/versions` and `/mutoon` now send `Cache-Control: public, s-maxage=15, stale-while-revalidate=15` (was `s-maxage=300, stale-while-revalidate=86400`). The strong ETag/304 is unchanged, so an unchanged page still costs no body.
+- **Cost:** more requests reach the Mac Mini database (at most one per page per 15 s per CDN region).
+- **Verification:** typecheck, `npm run test:proxy` (header assertions updated), build. **DB migration:** none.
+- **Files:** `src/app/api/public/v1/{qiraat,qiraat/versions,mutoon}/route.ts`, `tests/public-api.test.ts`.
+
 ## 2026-11-03 — Public Privacy Policy and Support pages for Qiraat iOS app
 - **Request:** Add public Privacy Policy and Support pages (Arabic and English) for the Qiraat iOS app to the Next.js web app, reachable without the site's auto-login, to serve as App Store Connect "Privacy Policy URL" and "Support URL".
 - **Change:**

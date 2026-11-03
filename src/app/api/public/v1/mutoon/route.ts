@@ -127,7 +127,7 @@ export async function GET(request: NextRequest) {
           })),
         },
         200,
-        'public, s-maxage=300, stale-while-revalidate=86400'
+        'public, s-maxage=15, stale-while-revalidate=15'
       )
     } catch (e) {
       console.error('[public-mutoon] changes threw', e)
@@ -169,7 +169,7 @@ export async function GET(request: NextRequest) {
         symbols: { schemaVersion: 1, annotations },
       },
       200,
-      'public, s-maxage=300, stale-while-revalidate=86400'
+      'public, s-maxage=15, stale-while-revalidate=15'
     )
   } catch (e) {
     console.error('[public-mutoon] snapshot threw', e)

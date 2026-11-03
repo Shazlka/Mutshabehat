@@ -15,7 +15,7 @@ const CORS = {
 
 const PUBLIC_CACHE_HEADERS = {
   ...CORS,
-  'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=86400',
+  'Cache-Control': 'public, s-maxage=15, stale-while-revalidate=15',
 }
 
 interface PageVersionEntry {
