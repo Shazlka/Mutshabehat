@@ -5107,6 +5107,176 @@
           }
         }
       }
+    },
+    "اختلاف" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "difference"
+          }
+        }
+      }
+    },
+    "اختلاف ٢" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "difference 2"
+          }
+        }
+      }
+    },
+    "اختلاف ٣" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "difference 3"
+          }
+        }
+      }
+    },
+    "إغلاق البحث" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close search"
+          }
+        }
+      }
+    },
+    "المفضلة فقط" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorites only"
+          }
+        }
+      }
+    },
+    "حذف الآية %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete ayah %lld"
+          }
+        }
+      }
+    },
+    "حذف الجزء %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove part %lld"
+          }
+        }
+      }
+    },
+    "خيارات التلوين" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coloring options"
+          }
+        }
+      }
+    },
+    "زيادة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "addition"
+          }
+        }
+      }
+    },
+    "فريد" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "unique"
+          }
+        }
+      }
+    },
+    "مسح التصفية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear filter"
+          }
+        }
+      }
+    },
+    "مشاركة الآية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share ayah"
+          }
+        }
+      }
+    },
+    "منسوخة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copied"
+          }
+        }
+      }
+    },
+    "نقل الآية %lld للأسفل" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move ayah %lld down"
+          }
+        }
+      }
+    },
+    "نقل الآية %lld للأعلى" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move ayah %lld up"
+          }
+        }
+      }
+    },
+    "نقل الجزء %lld للأسفل" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move part %lld down"
+          }
+        }
+      }
+    },
+    "نقل الجزء %lld للأعلى" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move part %lld up"
+          }
+        }
+      }
     }
   },
   "version" : "1.3"

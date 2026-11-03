@@ -4,6 +4,11 @@ import UIKit
 public struct ArabicDiffView: View {
     public let parts: [PersonalPart]
 
+    /// The Mushaf text size, 23 pt at the default text size, following Dynamic Type. Capped so a card preview with
+    /// a line limit still shows whole words at the largest accessibility sizes.
+    @ScaledMetric(relativeTo: .title3) private var fontSize: CGFloat = 23
+    private static let maximumFontSize: CGFloat = 40
+
     public init(parts: [PersonalPart]) {
         self.parts = parts
     }
@@ -14,6 +19,8 @@ public struct ArabicDiffView: View {
             .multilineTextAlignment(.leading)
             .lineSpacing(10)
             .font(mushafFont)
+            // Read the parts with their kind, so a VoiceOver user hears which words differ, not one flat ayah.
+            .accessibilityLabel(Text(verbatim: ArabicDiffAccessibility.label(for: parts)))
     }
 
     private var attributedText: AttributedString {
@@ -25,6 +32,10 @@ public struct ArabicDiffView: View {
             if let style = MutshabehatPartStyle(rawType: part.type) {
                 str.foregroundColor = Color(uiColor: style.foreground)
                 str.backgroundColor = Color(uiColor: style.background)
+                // A cue that does not depend on colour (WCAG 1.4.1), always on, in the part's own colour.
+                if let pattern = style.nonColorUnderline {
+                    str.underlineStyle = Text.LineStyle(pattern: pattern, color: Color(uiColor: style.foreground))
+                }
             } else {
                 str.foregroundColor = Color(uiColor: .label)
             }
@@ -48,10 +59,25 @@ public struct ArabicDiffView: View {
     }
 
     private var mushafFont: Font {
-        let font = UIFont(name: "KFGQPCUthmanicScriptHAFS", size: 23)
-            ?? UIFont(name: "Damascus", size: 23)
-            ?? UIFont.systemFont(ofSize: 23)
+        let size = min(fontSize, Self.maximumFontSize)
+        let font = UIFont(name: "KFGQPCUthmanicScriptHAFS", size: size)
+            ?? UIFont(name: "Damascus", size: size)
+            ?? UIFont.systemFont(ofSize: size)
         return Font(font)
+    }
+}
+
+/// The spoken form of a diff: each coloured part is followed by its kind ("…، اختلاف"), shared and blank parts are
+/// read as plain text. Pure, so it is unit-tested; the kind names follow the app language.
+enum ArabicDiffAccessibility {
+    static func label(for parts: [PersonalPart]) -> String {
+        parts.compactMap { part -> String? in
+            let text = part.text.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !text.isEmpty else { return nil }
+            guard let style = MutshabehatPartStyle(rawType: part.type), let kind = style.spokenKind else { return text }
+            return appLocalized("\(text)، \(kind)")
+        }
+        .joined(separator: " ")
     }
 }
 
@@ -96,6 +122,31 @@ public enum MutshabehatPartStyle: String, CaseIterable, Sendable {
         case .addition: "زيادة"
         case .unique: "فريد"
         case .blank: "فراغ"
+        }
+    }
+
+    /// The kind as VoiceOver says it after the part, in the app language; nil for the parts read as plain text
+    /// (shared words carry no difference, a blank is a gap).
+    public var spokenKind: String? {
+        switch self {
+        case .shared, .blank: nil
+        case .difference: appLocalized("اختلاف")
+        case .difference2: appLocalized("اختلاف ٢")
+        case .difference3: appLocalized("اختلاف ٣")
+        case .addition: appLocalized("زيادة")
+        case .unique: appLocalized("فريد")
+        }
+    }
+
+    /// The underline that marks a part without relying on colour: solid for the differences, dashed for an
+    /// addition, dotted for a unique part. Underlines, not bold: the Uthmani Mushaf font has no bold face, and a
+    /// line under the word stays clear of the harakat above it. The colour legend (`MutshabehatView`) shows the same lines.
+    public var nonColorUnderline: Text.LineStyle.Pattern? {
+        switch self {
+        case .shared, .blank: nil
+        case .difference, .difference2, .difference3: .solid
+        case .addition: .dash
+        case .unique: .dot
         }
     }
 

@@ -165,6 +165,7 @@ private struct MagazineCard<Accessory: View, Menu: View>: View {
                     Image(systemName: "chevron.left")
                         .font(.caption2.weight(.semibold))
                         .foregroundStyle(color.opacity(0.8))
+                        .accessibilityHidden(true)
                 }
                 .padding(.top, 2)
             }
@@ -210,8 +211,11 @@ struct PersonalMagazineFeed: View {
                         Image(systemName: group.favorite ? "star.fill" : "star")
                             .font(.footnote)
                             .foregroundColor(group.favorite ? .favorite : .secondary)
+                            .minimumHitTarget(overhang: 13)
                     }
                     .buttonStyle(.plain)
+                    .accessibilityLabel(group.favorite ? Text("إزالة من المفضلة") : Text("إضافة إلى المفضلة"))
+                    .accessibilityAddTraits(group.favorite ? .isSelected : [])
                 },
                 menu: {
                     Button { onEdit(group) } label: { Label("تعديل المجموعة", systemImage: "pencil") }
@@ -219,6 +223,11 @@ struct PersonalMagazineFeed: View {
                         Label(group.favorite ? "إزالة من المفضلة" : "إضافة إلى المفضلة", systemImage: group.favorite ? "star.slash" : "star")
                     }
                 })
+            // The star sits inside the card's own button, where VoiceOver may not reach it as a separate element:
+            // offer the same toggle as an action on the card.
+            .accessibilityAction(named: group.favorite ? Text("إزالة من المفضلة") : Text("إضافة إلى المفضلة")) {
+                onToggleFavorite(group)
+            }
         }
     }
 }
@@ -243,6 +252,7 @@ struct AutomatedMagazineFeed: View {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(.progress)
                             .font(.footnote)
+                            .accessibilityLabel(Text("منسوخة"))
                     }
                 },
                 menu: {

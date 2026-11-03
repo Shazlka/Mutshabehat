@@ -114,6 +114,7 @@ struct ReadingStatisticsView: View {
                     HStack {
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(.secondary)
+                            .accessibilityHidden(true)
                         TextField("تصفية حسب الاسم أو الرقم...", text: $searchText)
                             .textFieldStyle(.plain)
                         if !searchText.isEmpty {
@@ -122,7 +123,9 @@ struct ReadingStatisticsView: View {
                             } label: {
                                 Image(systemName: "xmark.circle.fill")
                                     .foregroundColor(.secondary)
+                                    .minimumHitTarget(overhang: 11)
                             }
+                            .accessibilityLabel(Text("مسح التصفية"))
                         }
                     }
                     .padding(10)
@@ -166,6 +169,7 @@ struct ReadingStatisticsView: View {
                     HStack(spacing: 6) {
                         Image(systemName: "hand.draw")
                             .font(.caption)
+                            .accessibilityHidden(true)
                         Text("اسحب أي سورة لليمين لإكمالها أو إلغائها في الختمة")
                             .font(.caption2)
                     }
@@ -179,6 +183,7 @@ struct ReadingStatisticsView: View {
                                 Image(systemName: "tray")
                                     .scaledFont(size: 32)
                                     .foregroundColor(.secondary)
+                                    .accessibilityHidden(true)
                                 Text("لا توجد سور مطابقة للتصفية")
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
