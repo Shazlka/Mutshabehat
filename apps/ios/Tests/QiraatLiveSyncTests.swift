@@ -61,6 +61,12 @@ final class QiraatLiveSyncTests: XCTestCase {
                        [1: "etag-a", 2: "22"])
     }
 
+    /// The shape the deployed `/api/public/v1/qiraat/versions` returns: the array wrapped in `pages`.
+    func testVersionsDecoderAcceptsTheServersPagesWrapper() throws {
+        XCTAssertEqual(try QiraatLiveSync.decodeVersions(Data(#"{"pages":[{"page":1,"version":"f766"},{"page":2,"version":"99f9"}]}"#.utf8)),
+                       [1: "f766", 2: "99f9"])
+    }
+
     func testAChangedLivePageIsInstalledAndAnnouncedOnce() async {
         let sync = QiraatLiveSync(fetch: { _ in .init(data: Data(self.pageWithVariant.utf8)) }, minInterval: 0)
         let announcements = AnnouncementLog()

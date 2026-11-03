@@ -162,7 +162,9 @@ final class QiraatLiveSync: ObservableObject {
     }
 
     nonisolated static func decodeVersions(_ data: Data) throws -> [Int: String] {
-        let json = try JSONSerialization.jsonObject(with: data)
+        var json = try JSONSerialization.jsonObject(with: data)
+        // The deployed endpoint wraps the array: {"pages": [{"page": 1, "version": "…"}, …]}.
+        if let wrapped = (json as? [String: Any])?["pages"] { json = wrapped }
         var result: [Int: String] = [:]
         func token(_ value: Any) -> String? {
             if let value = value as? String { return value }

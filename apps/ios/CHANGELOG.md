@@ -3,6 +3,13 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-11-03 — Live sync reads the deployed versions index
+- **Bug:** the deployed `/api/public/v1/qiraat/versions` answers `{"pages": [{"page", "version"}, …]}`; `QiraatLiveSync.decodeVersions` only knew a bare object or array, threw `invalidShape`, and bulk sync silently fell back to slow per-page polling.
+- **Fix:** the decoder unwraps `pages` first. Test `testVersionsDecoderAcceptsTheServersPagesWrapper` (failed before the fix, passes after).
+- **Context:** the public API went live today (web `main` 4a21eb0f) with its database functions applied, and the privacy and support pages are live (`/privacy`, `/support`, `/en` variants).
+- **Verification:** `QiraatLiveSyncTests` + `QiraatBulkSyncTests` 23/23.
+- **Files:** `Sources/Qiraat/QiraatLiveSync.swift`, `Tests/QiraatLiveSyncTests.swift`.
+
 ## [Unreleased] — 2026-11-03 — iCloud sync disabled in Release v1; export compliance metadata
 - **Release feature gate:** `AppFeatures.iCloudSyncEnabled` is true only in Debug. The Settings cloud section is absent when it is false; automatic launch/resume sync and reading pushes stop at their entry points; direct `AppEndpoints.groupsExport` fetching and its Settings action are compiled only under `#if DEBUG`. `ICloudDatabaseSyncService` has an injected availability seam, and `ICloudSyncInjectionTests.testAutomaticSyncIsNoOpWhenFeatureIsDisabled` proves disabled automatic sync does not resolve or touch a folder.
 - **Backups remain available without an iCloud entitlement:** the folder picker and security-scoped bookmark stay in place, while Release-facing backup/dashboard/restore copy now says “folder chosen in Files” and does not promise iCloud synchronization. Debug sync can still use the same folder.
