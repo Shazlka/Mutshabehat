@@ -1,3 +1,15 @@
+## 2026-11-03 — Public Privacy Policy and Support pages for Qiraat iOS app
+- **Request:** Add public Privacy Policy and Support pages (Arabic and English) for the Qiraat iOS app to the Next.js web app, reachable without the site's auto-login, to serve as App Store Connect "Privacy Policy URL" and "Support URL".
+- **Change:**
+  - Added public static routes `/privacy` (default Arabic, RTL) and `/privacy/en` (English, LTR) documenting privacy practices strictly from provided facts (no accounts, no login, no ads, no analytics/tracking, on-device storage only, read-only HTTPS endpoint for Qiraat pages and mutoon text, clear data deletion and manual backups, and placeholders `SUPPORT_EMAIL_TBD` / `OPERATOR_NAME_TBD`).
+  - Added public static routes `/support` (default Arabic, RTL) and `/support/en` (English, LTR) detailing what the app is, contact methods, FAQ covering offline usage, manual backups, and iOS language switching, with direct links to the privacy policy.
+  - Implemented a clean, zero-JS accessible language switcher and navigation bar outside the authenticated `(app)` shell layout using existing design tokens (`src/app/(legal)/layout.tsx`).
+  - Updated `src/proxy.ts` to immediately return `NextResponse.next()` for `/privacy*` and `/support*` paths before initializing Supabase, ensuring no session cookies are set, no redirects occur, and no database round-trips happen.
+  - Added automated checks in `tests/proxy-autologin.test.mjs` verifying that `/privacy`, `/privacy/en`, `/support`, and `/support/en` bypass auto-login without redirects or cookies.
+- **Verification:** Typecheck (`npx tsc --noEmit --incremental false -p .`) passed with 0 errors; `npm run test:proxy` passed (6 passed, 1 skipped integration test when auth env is unset); `npx eslint` clean on touched files; `next build` succeeded with `/privacy`, `/privacy/en`, `/support`, and `/support/en` pre-rendered as static (`○`).
+- **Files:** `src/proxy.ts`, `tests/proxy-autologin.test.mjs`, `next.config.ts`, `src/app/(legal)/layout.tsx`, `src/app/(legal)/_components/LegalHeader.tsx`, `src/app/(legal)/_components/LegalFooter.tsx`, `src/app/(legal)/privacy/page.tsx`, `src/app/(legal)/privacy/en/page.tsx`, `src/app/(legal)/support/page.tsx`, `src/app/(legal)/support/en/page.tsx`.
+- **Status:** Not deployed.
+
 ## 2026-10-29 — Review editor: new أصول باب «هاء السكت»
 - **Request:** add هاء السكت as its own باب among the أصول categories.
 - **Change:** `USUL_HA_SAKT` («هاء السكت») is added to the باب list in the editor (after «السكت»), coloured like السكت on the Mushaf, and recognised by the importer's category list. It is word-anchored and does not change the rasm, like تحقيق / النقل / الإبدال / التسهيل. It also appears in the new أصول category filter once an entry uses it.
