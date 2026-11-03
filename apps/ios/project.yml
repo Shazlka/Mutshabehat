@@ -91,6 +91,7 @@ targets:
       properties:
         CFBundleDisplayName: Qiraat
         CFBundleDevelopmentRegion: ar
+        ITSAppUsesNonExemptEncryption: false
         UIAppFonts:
           - Fonts/KFGQPC Uthmanic Script HAFS Regular.otf
         UILaunchScreen: {}

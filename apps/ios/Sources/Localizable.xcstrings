@@ -4859,6 +4859,66 @@
         }
       }
     },
+    "اختيار مجلد من الملفات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Choose folder in Files"
+          }
+        }
+      }
+    },
+    "الملف %@ غير متاح على الجهاز بعد. نزّله من تطبيق الملفات ثم أعد المحاولة." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "The file %@ is not available on this device yet. Download it in Files, then try again."
+          }
+        }
+      }
+    },
+    "تشمل النسخة الحفظ والقراءة والمتشابهات وبيانات القراءات في المجلد الذي تختاره من تطبيق الملفات." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Backups cover memorization, reading, mutashabihat and Qiraat data in the folder you choose in Files."
+          }
+        }
+      }
+    },
+    "لا يوجد مجلد للنسخ الاحتياطي. اختر مجلدًا من تطبيق الملفات في إعدادات النسخ الاحتياطي." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "No backup folder is set. Choose a folder in Files from Backup settings."
+          }
+        }
+      }
+    },
+    "لم يُحدَّد مجلد للنسخ الاحتياطي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "No backup folder is set"
+          }
+        }
+      }
+    },
+    "مزامنة iCloud معطلة في هذا الإصدار" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "iCloud sync is disabled in this build"
+          }
+        }
+      }
+    },
     "يفتح إحصائيات القراءة" : {
 
     },
