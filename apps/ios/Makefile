@@ -12,7 +12,7 @@ IPAD     ?= iPad Pro 13-inch (M5)
 APP      := $(DERIVED)/Build/Products/Debug-iphonesimulator/Mutshabehat.app
 XCB       = xcodebuild -project Mutshabehat.xcodeproj -scheme Mutshabehat -derivedDataPath $(DERIVED)
 
-.PHONY: all data fonts qiraat references mutoon matn-symbols qiraat-refresh qiraat-offline review-data review-golden project data-test core-test perf build test test-ipad run open device clean check-isolation release-guard
+.PHONY: all data fonts qiraat references mutoon matn-symbols qiraat-refresh qiraat-offline review-data review-golden project data-test core-test perf build test test-ipad screenshots run open device clean check-isolation release-guard
 
 all: data fonts qiraat review-data project
 
@@ -122,6 +122,9 @@ release-guard: all
 
 test-ipad: all
 	$(XCB) -destination 'platform=iOS Simulator,name=$(IPAD)' -collect-test-diagnostics never test
+
+screenshots: all
+	scripts/app_store_screenshots.sh
 
 run: build
 	xcrun simctl boot "$(SIM)" 2>/dev/null || true
