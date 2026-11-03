@@ -157,6 +157,29 @@ final class ICloudSyncInjectionTests: XCTestCase {
         XCTAssertNil(service.lastError, "the next good sync clears it")
     }
 
+    func testAutomaticSyncIsNoOpWhenFeatureIsDisabled() async throws {
+        let suite = "icloud-disabled-\(UUID().uuidString)"
+        let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        var folderLookupCount = 0
+        let service = ICloudDatabaseSyncService(
+            defaults: defaults,
+            folderProvider: {
+                folderLookupCount += 1
+                return self.base
+            },
+            iCloudSyncEnabled: false
+        )
+
+        XCTAssertFalse(service.autoSyncEnabled)
+        await service.automaticSync(library: nil)
+
+        XCTAssertEqual(folderLookupCount, 0, "disabled automatic sync must not resolve or touch a sync folder")
+        XCTAssertFalse(service.isSyncing)
+        XCTAssertNil(service.lastError)
+        XCTAssertNil(service.lastSyncDate)
+    }
+
     // MARK: - The live Qiraat pages survive an automatic sync
 
     func testAdoptingAnArchiveKeepsLivePagesUnlessAskedToDropThem() throws {

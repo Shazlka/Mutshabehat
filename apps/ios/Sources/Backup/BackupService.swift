@@ -18,7 +18,8 @@ enum BackupError: LocalizedError, Equatable {
 
     var errorDescription: String? {
         switch self {
-        case .folderUnavailable: "لا يوجد مجلد iCloud للنسخ الاحتياطي. اختر المجلد من إعدادات النسخ الاحتياطي."
+        case .folderUnavailable:
+            appLocalized("لا يوجد مجلد للنسخ الاحتياطي. اختر مجلدًا من تطبيق الملفات في إعدادات النسخ الاحتياطي.")
         case let .verificationFailed(name): "فشل التحقق من النسخة الاحتياطية (\(name)). لم يتغير شيء في النسخة السابقة."
         case let .writeFailed(detail): "تعذر كتابة النسخة الاحتياطية: \(detail)"
         }
@@ -34,7 +35,7 @@ struct SnapshotInfo: Identifiable, Equatable {
 }
 
 /// Backs up everything the app stores for the person: memorization (as a portable JSON document and a SQLite
-/// snapshot), reading and Mutshabehat (SQLite snapshots) and the Qiraat archive, into the iCloud Drive folder.
+/// snapshot), reading and Mutshabehat (SQLite snapshots) and the Qiraat archive, into a chosen Files folder.
 /// A set is built in a staging folder, verified, and only then moved into place; the previous `latest` is
 /// replaced only after the new set is complete. The work runs off the main actor.
 @MainActor

@@ -23,7 +23,8 @@ enum RestoreError: LocalizedError, Equatable {
         switch self {
         case let .fileMissing(name): "ملف النسخة الاحتياطية ناقص: \(name)"
         case let .hashMismatch(name): "الملف \(name) تالف أو غير مكتمل، لم يتم تغيير أي بيانات."
-        case let .notDownloaded(name): "الملف \(name) لم يُنزَّل من iCloud بعد. انتظر قليلاً ثم أعد المحاولة."
+        case let .notDownloaded(name):
+            String(format: appLocalized("الملف %@ غير متاح على الجهاز بعد. نزّله من تطبيق الملفات ثم أعد المحاولة."), name)
         case let .newerFormat(version): "هذه النسخة من إصدار أحدث من التطبيق (\(version)). حدّث التطبيق ثم أعد المحاولة."
         case let .storeUnavailable(name): "تعذر الاستعادة: \(name)"
         }
@@ -129,7 +130,7 @@ final class RestoreService {
         }
     }
 
-    /// An iCloud file that is not on the device yet shows up as ".name.icloud": ask for it and refuse for now.
+    /// A cloud-backed Files item that is not on the device yet shows up as ".name.icloud": ask for it and refuse.
     private func requirePresent(_ file: URL, name: String) throws {
         let fileManager = FileManager.default
         if fileManager.fileExists(atPath: file.path) { return }

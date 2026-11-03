@@ -73,6 +73,14 @@ struct SyncSummary: Sendable {
     let message: String
 }
 
+enum AppFeatures {
+#if DEBUG
+    static let iCloudSyncEnabled = true
+#else
+    static let iCloudSyncEnabled = false
+#endif
+}
+
 // MARK: - Sync Service
 
 @Observable
@@ -93,6 +101,8 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
     private let stores: UserStores
     /// Replaces the folder lookup (tests); nil means the normal resolution below.
     private let folderProvider: (() -> URL?)?
+    /// Test seam for the compile-time v1 availability switch.
+    private let iCloudSyncEnabled: Bool
     private let lock = NSLock()
 
     private let lastSyncKey = "icloud:sync:last_date"
@@ -101,18 +111,22 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
 
     var autoSyncEnabled: Bool {
         get {
+            guard iCloudSyncEnabled else { return false }
             if defaults.object(forKey: autoSyncKey) == nil { return true }
             return defaults.bool(forKey: autoSyncKey)
         }
         set {
+            guard iCloudSyncEnabled else { return }
             defaults.set(newValue, forKey: autoSyncKey)
         }
     }
 
-    init(defaults: UserDefaults = .standard, stores: UserStores = .live, folderProvider: (() -> URL?)? = nil) {
+    init(defaults: UserDefaults = .standard, stores: UserStores = .live, folderProvider: (() -> URL?)? = nil,
+         iCloudSyncEnabled: Bool = AppFeatures.iCloudSyncEnabled) {
         self.defaults = defaults
         self.stores = stores
         self.folderProvider = folderProvider
+        self.iCloudSyncEnabled = iCloudSyncEnabled
         if let ts = defaults.object(forKey: lastSyncKey) as? Date {
             self.lastSyncDate = ts
         }
@@ -122,7 +136,7 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
     // MARK: - Folder Resolution
 
     func resolveSyncFolder() -> URL? {
-        if let folderProvider { return folderProvider() }
+        if let folderProvider { return iCloudSyncEnabled ? folderProvider() : nil }
 #if DEBUG
         // A UI test on a throw-away reading database must never merge with, or push to, the real folder:
         // in the simulator that folder is the Mac's own iCloud Drive.
@@ -142,6 +156,10 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
                 }
             }
         }
+
+        // Release v1 may still use a folder explicitly chosen in Files for manual backups, but it must not
+        // discover or operate an iCloud synchronization folder without the feature being enabled.
+        guard iCloudSyncEnabled else { return nil }
 
         // 2. Check Ubiquity Documents container
         if let ubiquityURL = FileManager.default.url(forUbiquityContainerIdentifier: "iCloud.com.shazlka.qiraat")?.appendingPathComponent("Documents") {
@@ -255,6 +273,7 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
     /// sync settings instead of being dropped.
     @MainActor
     func automaticSync(library: MushafLibrary?) async {
+        guard iCloudSyncEnabled else { return }
         do {
             _ = try await syncFromICloud(library: library)
         } catch {
@@ -266,6 +285,10 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
 
     @MainActor
     func syncFromICloud(library: MushafLibrary? = nil, force: Bool = false) async throws -> SyncSummary {
+        guard iCloudSyncEnabled else {
+            throw NSError(domain: "ICloudSync", code: 13,
+                          userInfo: [NSLocalizedDescriptionKey: appLocalized("مزامنة iCloud معطلة في هذا الإصدار")])
+        }
         guard !isSyncing else {
             throw NSError(domain: "ICloudSync", code: 2, userInfo: [NSLocalizedDescriptionKey: appLocalized("المزامنة جارية بالفعل")])
         }
@@ -422,6 +445,7 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
 
     @MainActor
     func scheduleDebouncedReadingPush() {
+        guard iCloudSyncEnabled else { return }
         debouncedPushTask?.cancel()
         debouncedPushTask = Task {
             try? await Task.sleep(nanoseconds: 3_000_000_000)
@@ -432,6 +456,7 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
 
     @MainActor
     func pushReadingToICloud() {
+        guard iCloudSyncEnabled else { return }
         guard let folder = resolveSyncFolder() else { return }
 
         Task { @MainActor in
@@ -448,6 +473,7 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
 
     // MARK: - Direct Web Fallback
 
+#if DEBUG
     @MainActor
     func syncDirectlyFromWeb(library: MushafLibrary? = nil) async throws -> SyncSummary {
         guard !isSyncing else {
@@ -511,6 +537,7 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
             message: message
         )
     }
+#endif
 
     // MARK: - Helpers & SQLite Validation
 

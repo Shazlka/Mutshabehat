@@ -1,7 +1,7 @@
 import Foundation
 
-/// Where backups live: a `Backups` folder inside the iCloud Drive folder the person picked once (the same
-/// folder the existing sync reads). The provider is a closure so tests and UI tests can swap the folder.
+/// Where backups live: a `Backups` folder inside the folder the person picked in Files.
+/// The provider is a closure so tests and UI tests can swap the folder.
 final class BackupFolder: @unchecked Sendable {
     private let provider: @Sendable () -> URL?
 
@@ -9,7 +9,7 @@ final class BackupFolder: @unchecked Sendable {
         self.provider = provider
     }
 
-    /// The default: the folder the app already uses for iCloud sync (a saved bookmark or the iCloud container).
+    /// The default: the folder saved from the Files picker (or the sync folder in Debug builds).
     static var iCloud: BackupFolder {
         BackupFolder(provider: { ICloudDatabaseSyncService.shared.resolveSyncFolder() })
     }

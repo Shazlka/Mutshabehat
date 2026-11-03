@@ -348,7 +348,7 @@ struct DashboardView: View {
                 if controller.needsAttention {
                     Text(verbatim: controller.folderAvailable
                          ? copy("لم تتم نسخة احتياطية منذ أكثر من سبعة أيام", "No backup for over seven days")
-                         : copy("لم يُحدَّد مجلد iCloud للنسخ الاحتياطي", "No iCloud backup folder is set"))
+                         : copy("لم يُحدَّد مجلد للنسخ الاحتياطي", "No backup folder is set"))
                         .font(.footnote).foregroundStyle(.caution)
                         .accessibilityIdentifier("memo-backup-banner")
                 }

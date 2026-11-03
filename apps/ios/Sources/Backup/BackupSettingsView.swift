@@ -98,14 +98,14 @@ struct BackupSettingsView: View {
                 Text(verbatim: error).font(.footnote).foregroundStyle(.danger)
             }
         } footer: {
-            Text(verbatim: copy("تشمل النسخة الحفظ والقراءة والمتشابهات وبيانات القراءات في مجلد iCloud Drive الذي تختاره.",
-                                "Backups cover memorization, reading, mutashabihat and the Qiraat data, in the iCloud Drive folder you pick."))
+            Text(verbatim: copy("تشمل النسخة الحفظ والقراءة والمتشابهات وبيانات القراءات في المجلد الذي تختاره من تطبيق الملفات.",
+                                "Backups cover memorization, reading, mutashabihat and Qiraat data in the folder you choose in Files."))
         }
     }
 
     private var actionsSection: some View {
         Section {
-            Button(copy("اختيار مجلد iCloud", "Choose iCloud folder")) { isPickingFolder = true }
+            Button(copy("اختيار مجلد من الملفات", "Choose folder in Files")) { isPickingFolder = true }
                 .accessibilityIdentifier("memo-backup-choose-folder")
             Button {
                 backupNow()

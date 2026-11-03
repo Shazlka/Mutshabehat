@@ -120,22 +120,24 @@ struct SettingsView: View {
                             .accessibilityIdentifier("qiraat-data-unavailable")
                     }
                 }
-                Section(appLanguage == .english ? "Cloud Synchronization" : "مزامنة السحابة") {
-                    NavigationLink {
-                        ICloudSyncSettingsView(library: library)
-                    } label: {
-                        HStack {
-                            Label(
-                                appLanguage == .english ? "iCloud Sync (Mushaf_Qiraat)" : "مزامنة iCloud (مصحف وقراءات)",
-                                systemImage: "icloud.and.arrow.down.fill"
-                            )
-                            Spacer()
-                            Circle()
-                                .fill(ICloudDatabaseSyncService.shared.isConnected ? Color.progress : Color.caution)
-                                .frame(width: 8, height: 8)
+                if AppFeatures.iCloudSyncEnabled {
+                    Section(appLanguage == .english ? "Cloud Synchronization" : "مزامنة السحابة") {
+                        NavigationLink {
+                            ICloudSyncSettingsView(library: library)
+                        } label: {
+                            HStack {
+                                Label(
+                                    appLanguage == .english ? "iCloud Sync (Mushaf_Qiraat)" : "مزامنة iCloud (مصحف وقراءات)",
+                                    systemImage: "icloud.and.arrow.down.fill"
+                                )
+                                Spacer()
+                                Circle()
+                                    .fill(ICloudDatabaseSyncService.shared.isConnected ? Color.progress : Color.caution)
+                                    .frame(width: 8, height: 8)
+                            }
                         }
+                        .accessibilityIdentifier("open-icloud-sync-settings")
                     }
-                    .accessibilityIdentifier("open-icloud-sync-settings")
                 }
 
                 Section(appLanguage == .english ? "Preferences" : "التفضيلات") {
