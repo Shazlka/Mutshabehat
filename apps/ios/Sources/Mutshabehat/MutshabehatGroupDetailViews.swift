@@ -35,7 +35,10 @@ struct PersonalGroupDetailView: View {
                             Image(systemName: group.favorite ? "star.fill" : "star")
                                 .foregroundColor(group.favorite ? .favorite : .secondary)
                                 .font(.title3)
+                                .minimumHitTarget(overhang: 10)
                         }
+                        .accessibilityLabel(group.favorite ? Text("إزالة من المفضلة") : Text("إضافة إلى المفضلة"))
+                        .accessibilityAddTraits(group.favorite ? .isSelected : [])
                     }
 
                     Text(verbatim: group.title)
@@ -46,6 +49,7 @@ struct PersonalGroupDetailView: View {
                         HStack(alignment: .top, spacing: 8) {
                             Image(systemName: "note.text")
                                 .foregroundColor(.secondary)
+                                .accessibilityHidden(true)
                             Text(note)
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
@@ -88,6 +92,7 @@ struct PersonalGroupDetailView: View {
                 } label: {
                     HStack(spacing: 4) {
                         Image(systemName: "pencil")
+                            .accessibilityHidden(true)
                         Text("تعديل")
                     }
                 }
@@ -123,6 +128,7 @@ struct AutomatedGroupDetailView: View {
                         if group.copied {
                             Image(systemName: "checkmark.circle.fill")
                                 .foregroundColor(.progress)
+                                .accessibilityLabel(Text("منسوخة"))
                         }
                     }
 

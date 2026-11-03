@@ -48,6 +48,7 @@ struct BookmarksView: View {
                     HStack {
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(.secondary)
+                            .accessibilityHidden(true)
                         TextField("بحث في الفواصل...", text: $searchQuery)
                             .environment(\.layoutDirection, .rightToLeft)
                         if !searchQuery.isEmpty {
@@ -56,7 +57,9 @@ struct BookmarksView: View {
                             } label: {
                                 Image(systemName: "xmark.circle.fill")
                                     .foregroundColor(.secondary)
+                                    .minimumHitTarget(overhang: 11)
                             }
+                            .accessibilityLabel(Text("مسح البحث"))
                         }
                     }
                     .padding(8)
@@ -74,6 +77,7 @@ struct BookmarksView: View {
                         Image(systemName: "bookmark")
                             .scaledFont(size: 48)
                             .foregroundColor(.secondary)
+                            .accessibilityHidden(true)
                         Text("لا توجد فواصل محفوظة")
                             .font(.headline)
                             .foregroundColor(.primary)

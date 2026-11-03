@@ -61,6 +61,7 @@ struct MutshabehatView: View {
                     HStack {
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(.secondary)
+                            .accessibilityHidden(true)
                         TextField("بحث في المجموعات أو الآيات...", text: $searchText)
                             .environment(\.layoutDirection, .rightToLeft)
                             .textFieldStyle(.plain)
@@ -68,7 +69,9 @@ struct MutshabehatView: View {
                             Button(action: { searchText = "" }) {
                                 Image(systemName: "xmark.circle.fill")
                                     .foregroundColor(.secondary)
+                                    .minimumHitTarget(overhang: 11)
                             }
+                            .accessibilityLabel(Text("مسح البحث"))
                         }
                     }
                     .padding(8)
@@ -93,6 +96,7 @@ struct MutshabehatView: View {
                                 .font(.footnote.weight(.medium))
                             Image(systemName: "chevron.down")
                                 .font(.caption2)
+                                .accessibilityHidden(true)
                         }
                         .padding(.horizontal, 10)
                         .padding(.vertical, 8)
@@ -110,7 +114,10 @@ struct MutshabehatView: View {
                                 .padding(8)
                                 .background(Color(UIColor.secondarySystemBackground))
                                 .cornerRadius(10)
+                                .minimumHitTarget(overhang: 4)
                         }
+                        .accessibilityLabel(Text("المفضلة فقط"))
+                        .accessibilityAddTraits(showFavoritesOnly ? .isSelected : [])
                     }
                 }
                 .padding(.horizontal)
@@ -142,6 +149,7 @@ struct MutshabehatView: View {
                         } label: {
                             HStack(spacing: 4) {
                                 Image(systemName: "plus")
+                                    .accessibilityHidden(true)
                                 Text("إضافة")
                             }
                             .font(.subheadline.weight(.bold))
@@ -155,6 +163,7 @@ struct MutshabehatView: View {
                         } label: {
                             HStack(spacing: 4) {
                                 Image(systemName: "square.and.arrow.down")
+                                    .accessibilityHidden(true)
                                 Text("استيراد")
                             }
                             .font(.subheadline)
@@ -236,6 +245,7 @@ struct MutshabehatView: View {
                     Image(systemName: "doc.text.magnifyingglass")
                         .scaledFont(size: 40)
                         .foregroundColor(.secondary)
+                        .accessibilityHidden(true)
                     Text("لا توجد مجموعات تطابق البحث")
                         .foregroundColor(.secondary)
                     Spacer()
@@ -289,6 +299,7 @@ struct MutshabehatView: View {
                     Image(systemName: "sparkles")
                         .scaledFont(size: 40)
                         .foregroundColor(.secondary)
+                        .accessibilityHidden(true)
                     Text("لا توجد مجموعات آلية مخزنة")
                         .font(.headline)
                     Text("يمكنك استيراد ملف بيانات الآلية (JSON) بالضغط على زر استيراد في الأعلى.")
@@ -407,6 +418,8 @@ private struct MutshabehatColorLegendView: View {
 
                 ForEach(items, id: \.self) { item in
                     Text(item.title)
+                        // The same non-colour line the diff text draws under this kind (ArabicDiffView).
+                        .underline(item.nonColorUnderline != nil, pattern: item.nonColorUnderline ?? .solid)
                         .font(.caption2.bold())
                         .foregroundStyle(Color(uiColor: item.foreground))
                         .padding(.horizontal, 7)

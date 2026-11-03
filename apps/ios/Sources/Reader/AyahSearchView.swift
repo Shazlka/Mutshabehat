@@ -54,6 +54,7 @@ struct AyahSearchView: View {
                         Image(systemName: "chevron.down.circle.fill")
                             .font(.subheadline)
                             .foregroundColor(Color(uiColor: .tertiaryLabel))
+                            .accessibilityHidden(true)
                     }
 
                     Spacer()
@@ -90,6 +91,7 @@ struct AyahSearchView: View {
                         Image(systemName: "magnifyingglass")
                             .scaledFont(size: 44)
                             .foregroundStyle(.secondary)
+                            .accessibilityHidden(true)
                         Text("لا توجد نتائج")
                             .font(.headline)
                         Text("جرّب البحث الموسع أو راجع كتابة الكلمة")
@@ -172,6 +174,7 @@ struct AyahSearchView: View {
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(.secondary)
                         .font(.callout)
+                        .accessibilityHidden(true)
 
                     TextField(isArabic ? "ابحث في القرآن الكريم..." : "Search the Holy Quran...", text: $query)
                         .textFieldStyle(.plain)
@@ -192,8 +195,10 @@ struct AyahSearchView: View {
                             Image(systemName: "xmark.circle.fill")
                                 .foregroundColor(.secondary)
                                 .font(.callout)
+                                .minimumHitTarget(overhang: 9)
                         }
                         .buttonStyle(.plain)
+                        .accessibilityLabel(Text("مسح البحث"))
                     }
 
                     Button(action: performSearch) {
@@ -213,8 +218,10 @@ struct AyahSearchView: View {
                         Image(systemName: "xmark")
                             .font(.subheadline.weight(.semibold))
                             .foregroundColor(.primary)
+                            .minimumHitTarget(overhang: 9)
                     }
                     .buttonStyle(.plain)
+                    .accessibilityLabel(Text("إغلاق البحث"))
                 }
                 .padding(.horizontal, 14)
                 .padding(.vertical, 9)
@@ -358,7 +365,9 @@ private struct QuranSearchResultCard: View {
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                         .padding(6)
+                        .minimumHitTarget(overhang: 7)
                 }
+                .accessibilityLabel(Text("مشاركة الآية"))
 
                 Spacer()
 
@@ -376,6 +385,7 @@ private struct QuranSearchResultCard: View {
                     Image(systemName: "book.pages")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
+                        .accessibilityHidden(true)
                 }
                 .padding(6)
             }

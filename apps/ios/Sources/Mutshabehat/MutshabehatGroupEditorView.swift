@@ -154,6 +154,7 @@ struct MutshabehatGroupEditorView: View {
                         } label: {
                             HStack(spacing: 4) {
                                 Image(systemName: "magnifyingglass")
+                                    .accessibilityHidden(true)
                                 Text("إضافة من القرآن")
                             }
                             .font(.caption.bold())
@@ -165,6 +166,7 @@ struct MutshabehatGroupEditorView: View {
                         } label: {
                             HStack(spacing: 4) {
                                 Image(systemName: "plus")
+                                    .accessibilityHidden(true)
                                 Text("إضافة آية")
                             }
                             .font(.caption.bold())
@@ -192,7 +194,9 @@ struct MutshabehatGroupEditorView: View {
                                     .padding(8)
                                     .background(Color(uiColor: .tertiarySystemFill))
                                     .clipShape(Circle())
+                                    .minimumHitTarget(overhang: 5)
                             }
+                            .accessibilityLabel(Text("خيارات التلوين"))
                         }
                     }
                     .padding(.vertical, 4)
@@ -206,6 +210,7 @@ struct MutshabehatGroupEditorView: View {
                         ForEach(Array(verses.enumerated()), id: \.element.id) { vIndex, verse in
                             VerseEditorRow(
                                 verse: verse,
+                                position: vIndex + 1,
                                 isExpanded: expandedVerseId == verse.id,
                                 partTypes: partTypes,
                                 onToggleExpand: {
@@ -415,6 +420,8 @@ struct MutshabehatGroupEditorView: View {
 
 private struct VerseEditorRow: View {
     let verse: PersonalVerse
+    /// The verse's 1-based place in the group, named in the move and delete buttons' VoiceOver labels.
+    let position: Int
     let isExpanded: Bool
     let partTypes: [(key: String, label: String, style: MutshabehatPartStyle)]
     let onToggleExpand: () -> Void
@@ -464,8 +471,10 @@ private struct VerseEditorRow: View {
                             Image(systemName: "arrow.up")
                                 .font(.caption2.weight(.bold))
                                 .padding(4)
+                                .minimumHitTarget(overhang: 12)
                         }
                         .buttonStyle(.plain)
+                        .accessibilityLabel(Text("نقل الآية \(position) للأعلى"))
                     }
 
                     if let onMoveDown = onMoveDown {
@@ -473,8 +482,10 @@ private struct VerseEditorRow: View {
                             Image(systemName: "arrow.down")
                                 .font(.caption2.weight(.bold))
                                 .padding(4)
+                                .minimumHitTarget(overhang: 12)
                         }
                         .buttonStyle(.plain)
+                        .accessibilityLabel(Text("نقل الآية \(position) للأسفل"))
                     }
 
                     Button(action: onDelete) {
@@ -482,8 +493,10 @@ private struct VerseEditorRow: View {
                             .font(.caption2)
                             .foregroundColor(.danger)
                             .padding(4)
+                            .minimumHitTarget(overhang: 12)
                     }
                     .buttonStyle(.plain)
+                    .accessibilityLabel(Text("حذف الآية \(position)"))
                 }
             }
 
@@ -548,6 +561,7 @@ private struct VerseEditorRow: View {
                             } label: {
                                 HStack(spacing: 2) {
                                     Image(systemName: "plus")
+                                        .accessibilityHidden(true)
                                     Text("جزء")
                                 }
                                 .font(.caption.bold())
@@ -602,7 +616,9 @@ private struct VerseEditorRow: View {
                                             Image(systemName: "arrow.up")
                                                 .font(.caption2)
                                                 .padding(4)
+                                                .minimumHitTarget(overhang: 12)
                                         }
+                                        .accessibilityLabel(Text("نقل الجزء \(pIndex + 1) للأعلى"))
                                     }
                                     if pIndex < parts.count - 1 {
                                         Button {
@@ -612,7 +628,9 @@ private struct VerseEditorRow: View {
                                             Image(systemName: "arrow.down")
                                                 .font(.caption2)
                                                 .padding(4)
+                                                .minimumHitTarget(overhang: 12)
                                         }
+                                        .accessibilityLabel(Text("نقل الجزء \(pIndex + 1) للأسفل"))
                                     }
                                     Button {
                                         parts.remove(at: pIndex)
@@ -622,7 +640,9 @@ private struct VerseEditorRow: View {
                                             .font(.caption2.weight(.bold))
                                             .foregroundColor(.danger)
                                             .padding(4)
+                                            .minimumHitTarget(overhang: 12)
                                     }
+                                    .accessibilityLabel(Text("حذف الجزء \(pIndex + 1)"))
                                 }
                                 .padding(.top, 4)
                             }

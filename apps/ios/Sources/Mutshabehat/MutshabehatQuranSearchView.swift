@@ -25,6 +25,7 @@ struct MutshabehatQuranSearchView: View {
                     HStack(spacing: 8) {
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(.secondary)
+                            .accessibilityHidden(true)
                         TextField("ابحث عن آية أو كلمة من القرآن...", text: $query)
                             .environment(\.layoutDirection, .rightToLeft)
                             .textFieldStyle(.plain)
@@ -37,7 +38,9 @@ struct MutshabehatQuranSearchView: View {
                             }) {
                                 Image(systemName: "xmark.circle.fill")
                                     .foregroundColor(.secondary)
+                                    .minimumHitTarget(overhang: 11)
                             }
+                            .accessibilityLabel(Text("مسح البحث"))
                         }
                     }
                     .padding(10)
@@ -74,6 +77,7 @@ struct MutshabehatQuranSearchView: View {
                             Image(systemName: "magnifyingglass")
                                 .scaledFont(size: 40)
                                 .foregroundColor(.secondary)
+                                .accessibilityHidden(true)
                             Text("لا توجد نتائج مطابقة")
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
@@ -97,6 +101,8 @@ struct MutshabehatQuranSearchView: View {
                                             .font(.title3)
                                             .foregroundColor(isSelected ? .accentColor : .secondary)
                                             .padding(.top, 4)
+                                            // The selection is the row's `.isSelected` trait, not this icon.
+                                            .accessibilityHidden(true)
 
                                         VStack(alignment: .leading, spacing: 6) {
                                             HStack(spacing: 6) {
@@ -120,6 +126,7 @@ struct MutshabehatQuranSearchView: View {
                                     .padding(.vertical, 4)
                                 }
                                 .buttonStyle(.plain)
+                                .accessibilityAddTraits(isSelected ? .isSelected : [])
                             }
                         } header: {
                             Text("\(results.count) نتيجة بحث")
@@ -142,6 +149,7 @@ struct MutshabehatQuranSearchView: View {
                             } label: {
                                 HStack(spacing: 6) {
                                     Image(systemName: "plus.circle.fill")
+                                        .accessibilityHidden(true)
                                     Text("إضافة للمجموعة")
                                 }
                                 .font(.headline.bold())
