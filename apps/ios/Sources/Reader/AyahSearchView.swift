@@ -6,7 +6,7 @@ struct AyahSearchView: View {
     let selectResult: (AyahSearchResult) -> Void
 
     @Environment(\.dismiss) private var dismiss
-    @AppStorage("app:language:v1") private var language = AppLanguage.arabic.rawValue
+    @AppStorage("app:language:v1") private var language = AppLanguage.defaultCode
     @State private var query = ""
     @State private var mode = QuranSearchMode.smart
     @State private var results: [AyahSearchResult] = []

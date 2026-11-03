@@ -1,8 +1,8 @@
 import Foundation
 
-/// The language chosen in the app (`app:language:v1`), Arabic when nothing is stored.
+/// The language chosen in the app (`app:language:v1`), the device-derived default when nothing is stored.
 var appLanguageCode: String {
-    UserDefaults.standard.string(forKey: "app:language:v1") ?? AppLanguage.arabic.rawValue
+    UserDefaults.standard.string(forKey: "app:language:v1") ?? AppLanguage.defaultCode
 }
 
 /// A catalog string in the app's own language, not the device's.

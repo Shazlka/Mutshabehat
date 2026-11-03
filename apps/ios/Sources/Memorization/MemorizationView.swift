@@ -26,13 +26,13 @@ struct MemorizationView: View {
     let onOpenInMushaf: (Int, AyahKey?) -> Void
 
     @Environment(\.dismiss) private var dismiss
-    @AppStorage("app:language:v1") private var languageRaw = AppLanguage.arabic.rawValue
+    @AppStorage("app:language:v1") private var languageRaw = AppLanguage.defaultCode
     @State private var path: [MemorizationRoute] = []
     @State private var updateRequest: UpdateRequest?
     @State private var reviewRequest: ReviewRequest?
     @State private var toast: ToastState?
 
-    private var language: AppLanguage { AppLanguage(rawValue: languageRaw) ?? .arabic }
+    private var language: AppLanguage { AppLanguage(rawValue: languageRaw) ?? .deviceDefault }
 
     struct UpdateRequest: Identifiable {
         let id = UUID()

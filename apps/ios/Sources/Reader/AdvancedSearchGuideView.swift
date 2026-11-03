@@ -10,7 +10,7 @@ struct AdvancedSearchGuideItem: Identifiable {
 struct AdvancedSearchGuideView: View {
     let onSelectQuery: (String) -> Void
     var bottomPadding: CGFloat
-    @AppStorage("app:language:v1") private var language = AppLanguage.arabic.rawValue
+    @AppStorage("app:language:v1") private var language = AppLanguage.defaultCode
 
     private var isArabic: Bool {
         language == AppLanguage.arabic.rawValue
