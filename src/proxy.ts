@@ -11,10 +11,11 @@ export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
   const normalizedPath = pathname.toLowerCase()
 
-  // Public legal / support pages must NOT go through auto-login or touch Supabase:
-  // return NextResponse.next() immediately before any Supabase client is created,
-  // ensuring no session cookie is set and no redirect occurs.
+  // Public API endpoints, and the public legal / support pages, must NOT go through auto-login or touch
+  // Supabase: return NextResponse.next() immediately before any Supabase client is created, so no session
+  // cookie is ever set and no redirect occurs.
   if (
+    pathname.startsWith('/api/public/') ||
     normalizedPath === '/privacy' ||
     normalizedPath.startsWith('/privacy/') ||
     normalizedPath === '/support' ||
@@ -83,5 +84,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|manifest\\.json|sw\\.js|icons|.*\\.svg).*)'],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico|manifest\\.json|sw\\.js|icons|api/public|.*\\.svg).*)'],
 }
