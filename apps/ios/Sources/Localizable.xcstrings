@@ -54,156 +54,6 @@
         }
       }
     },
-    "عُيّن يدويًا من محرر المتون" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Assigned by hand in the matn editor"
-          }
-        }
-      }
-    },
-    "تعيين على الكلمة" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Assignment on the word"
-          }
-        }
-      }
-    },
-    "تعذّر تحميل خلافات هذه الصفحة" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Could not load this page's differences"
-          }
-        }
-      }
-    },
-    "عليها علامة" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Bookmarked"
-          }
-        }
-      }
-    },
-    "انقر مرتين لإظهار أدوات القراءة أو إخفائها" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Double-tap to show or hide the reading tools"
-          }
-        }
-      }
-    },
-    "الصفحة التالية" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Next page"
-          }
-        }
-      }
-    },
-    "الصفحة السابقة" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Previous page"
-          }
-        }
-      }
-    },
-    "الآية %lld، %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Ayah %lld, %@"
-          }
-        }
-      }
-    },
-    "انقر مرتين لخيارات الآية" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Double-tap for ayah options"
-          }
-        }
-      }
-    },
-    "خيارات الآية" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Ayah options"
-          }
-        }
-      }
-    },
-    "%@، فيها قراءات" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "%@, has qiraat variants"
-          }
-        }
-      }
-    },
-    "نتيجة البحث: %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Search result: %@"
-          }
-        }
-      }
-    },
-    "حالة الحفظ: %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Memorization status: %@"
-          }
-        }
-      }
-    },
-    "تعذّر تحميل بيانات القراءات" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Could not load the Qiraat data"
-          }
-        }
-      }
-    },
-    "%@ عن %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "%@ from %@"
-          }
-        }
-      }
-    },
     "%@ - آية %@" : {
       "localizations" : {
         "ar" : {
@@ -260,6 +110,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ verses"
+          }
+        }
+      }
+    },
+    "%@ عن %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%@ from %@"
           }
         }
       }
@@ -326,6 +186,16 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "%@, %@, page %@"
+          }
+        }
+      }
+    },
+    "%@، فيها قراءات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%@, has qiraat variants"
           }
         }
       }
@@ -654,6 +524,9 @@
 
     },
     "Confirm" : {
+
+    },
+    "Could not load the Qiraat data" : {
 
     },
     "Could not update" : {
@@ -1494,6 +1367,16 @@
         }
       }
     },
+    "إغلاق البحث" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close search"
+          }
+        }
+      }
+    },
     "إغلاق التفاصيل" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1636,12 +1519,53 @@
     "اختر نوع التلوين ثم اضغط على الكلمات لتلوينها:" : {
 
     },
+    "اختلاف" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "difference"
+          }
+        }
+      }
+    },
+    "اختلاف ٢" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "difference 2"
+          }
+        }
+      }
+    },
+    "اختلاف ٣" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "difference 3"
+          }
+        }
+      }
+    },
     "اختيار القارئ أو الراوي" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "machine_translated",
             "value" : "Reader or Narrator Selection"
+          }
+        }
+      }
+    },
+    "اختيار مجلد من الملفات" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Choose folder in Files"
           }
         }
       }
@@ -1772,6 +1696,16 @@
     "الآيات (%lld)" : {
 
     },
+    "الآية %lld، %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ayah %lld, %@"
+          }
+        }
+      }
+    },
     "الآية الأولى" : {
 
     },
@@ -1868,6 +1802,26 @@
           "stringUnit" : {
             "state" : "machine_translated",
             "value" : "Colors:"
+          }
+        }
+      }
+    },
+    "الإصدار" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        }
+      }
+    },
+    "الإصدار %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@"
           }
         }
       }
@@ -2051,6 +2005,16 @@
     "الختمة رقم %lld" : {
 
     },
+    "الخصوصية والدعم" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy & Support"
+          }
+        }
+      }
+    },
     "الخلاف: %@" : {
       "localizations" : {
         "en" : {
@@ -2078,6 +2042,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Al-Durrah al-Madiyyah"
+          }
+        }
+      }
+    },
+    "الدعم" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support"
           }
         }
       }
@@ -2207,6 +2181,26 @@
     },
     "الصفحات" : {
 
+    },
+    "الصفحة التالية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Next page"
+          }
+        }
+      }
+    },
+    "الصفحة السابقة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Previous page"
+          }
+        }
+      }
     },
     "الصفحة: %lld" : {
       "extractionState" : "stale",
@@ -2546,6 +2540,16 @@
         }
       }
     },
+    "المصادر والشكر" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sources and acknowledgements"
+          }
+        }
+      }
+    },
     "المصادر: لم يُوثَّق بعد" : {
       "localizations" : {
         "en" : {
@@ -2576,6 +2580,16 @@
         }
       }
     },
+    "المفضلة فقط" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorites only"
+          }
+        }
+      }
+    },
     "المقارنة غير متاحة" : {
       "localizations" : {
         "en" : {
@@ -2591,6 +2605,16 @@
     },
     "الملاحظات والفوائد" : {
 
+    },
+    "الملف %@ غير متاح على الجهاز بعد. نزّله من تطبيق الملفات ثم أعد المحاولة." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "The file %@ is not available on this device yet. Download it in Files, then try again."
+          }
+        }
+      }
     },
     "المواضع والآيات المتشابهة" : {
 
@@ -2667,11 +2691,31 @@
     "انتهاء عند:" : {
 
     },
+    "انقر مرتين لإظهار أدوات القراءة أو إخفائها" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Double-tap to show or hide the reading tools"
+          }
+        }
+      }
+    },
     "انقر مرتين لإغلاق المحرر" : {
 
     },
     "انقر مرتين لتحرير الأجزاء" : {
 
+    },
+    "انقر مرتين لخيارات الآية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Double-tap for ayah options"
+          }
+        }
+      }
     },
     "باب" : {
       "extractionState" : "stale",
@@ -2826,6 +2870,16 @@
         }
       }
     },
+    "بيانات الكلمات وتخطيط الصفحات وخطوط الصفحات عبر Quran Foundation (Quran.com). Quran data provided by Quran.Foundation." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Word data, page layout and page fonts via Quran Foundation (Quran.com). \"Quran data provided by Quran.Foundation.\""
+          }
+        }
+      }
+    },
     "بيانات المجموعة" : {
 
     },
@@ -2926,6 +2980,17 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Vowel marks"
+          }
+        }
+      }
+    },
+    "تشمل النسخة الحفظ والقراءة والمتشابهات وبيانات القراءات في المجلد الذي تختاره من تطبيق الملفات." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Backups cover memorization, reading, mutashabihat and Qiraat data in the folder you choose in Files."
           }
         }
       }
@@ -3060,6 +3125,26 @@
         }
       }
     },
+    "تعذّر تحميل بيانات القراءات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Could not load the Qiraat data"
+          }
+        }
+      }
+    },
+    "تعذّر تحميل خلافات هذه الصفحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Could not load this page's differences"
+          }
+        }
+      }
+    },
     "تعذّر فتح بيانات المصحف\n%@" : {
       "localizations" : {
         "en" : {
@@ -3085,7 +3170,14 @@
 
     },
     "تعيين على الكلمة" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Assignment on the word"
+          }
+        }
+      }
     },
     "تفعيل القراءات" : {
 
@@ -3244,12 +3336,42 @@
     "جلسة" : {
 
     },
+    "حالة الحفظ: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Memorization status: %@"
+          }
+        }
+      }
+    },
     "حذف" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Delete"
+          }
+        }
+      }
+    },
+    "حذف الآية %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete ayah %lld"
+          }
+        }
+      }
+    },
+    "حذف الجزء %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove part %lld"
           }
         }
       }
@@ -3455,6 +3577,26 @@
         }
       }
     },
+    "خيارات الآية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ayah options"
+          }
+        }
+      }
+    },
+    "خيارات التلوين" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coloring options"
+          }
+        }
+      }
+    },
     "خيارات الفواصل" : {
 
     },
@@ -3587,6 +3729,16 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Both narrations together"
+          }
+        }
+      }
+    },
+    "زيادة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "addition"
           }
         }
       }
@@ -3731,6 +3883,36 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Surah %lld · Ayah %lld · Word %lld · Page %lld"
+          }
+        }
+      }
+    },
+    "سياسة الخصوصية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        }
+      }
+    },
+    "شرحا «الوافي» لعبد الفتاح القاضي و«الهادي» لمحمد سالم محيسن." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The commentaries al-Wafi by Abd al-Fattah al-Qadi and al-Hadi by Muhammad Salim Muhaysin."
+          }
+        }
+      }
+    },
+    "شكر وتراخيص" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acknowledgements & Licences"
           }
         }
       }
@@ -3901,11 +4083,28 @@
         }
       }
     },
+    "عليها علامة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Bookmarked"
+          }
+        }
+      }
+    },
     "عنوان المتشابه" : {
 
     },
     "عُيّن يدويًا من محرر المتون" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Assigned by hand in the matn editor"
+          }
+        }
+      }
     },
     "غير المكتمل" : {
 
@@ -3943,6 +4142,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Farsh only (hide Usul)"
+          }
+        }
+      }
+    },
+    "فريد" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "unique"
           }
         }
       }
@@ -4211,6 +4420,16 @@
         }
       }
     },
+    "لا يوجد مجلد للنسخ الاحتياطي. اختر مجلدًا من تطبيق الملفات في إعدادات النسخ الاحتياطي." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "No backup folder is set. Choose a folder in Files from Backup settings."
+          }
+        }
+      }
+    },
     "لتغيير القارئ أو الراوي" : {
 
     },
@@ -4257,6 +4476,17 @@
         }
       }
     },
+    "لم يُحدَّد مجلد للنسخ الاحتياطي" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "No backup folder is set"
+          }
+        }
+      }
+    },
     "ليست في المفضلة" : {
       "localizations" : {
         "en" : {
@@ -4279,6 +4509,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Agreed upon by the Ten Readers and their narrators"
+          }
+        }
+      }
+    },
+    "متن الشاطبية «حرز الأماني ووجه التهاني» للإمام الشاطبي (ت ٥٩٠هـ)، ومتنا «الدرة المضية» و«طيبة النشر» للإمام ابن الجزري (ت ٨٣٣هـ)، من نسخة المكتبة الشاملة (shamela.ws)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Matn texts of al-Shatibiyyah (al-Shatibi, d. 590 AH), al-Durrah and Tayyibat al-Nashr (Ibn al-Jazari, d. 833 AH), from the Shamela library edition (shamela.ws)."
           }
         }
       }
@@ -4371,6 +4611,16 @@
     "مزامنة iCloud (مصحف وقراءات)" : {
 
     },
+    "مزامنة iCloud معطلة في هذا الإصدار" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "iCloud sync is disabled in this build"
+          }
+        }
+      }
+    },
     "مزامنة السحابة" : {
 
     },
@@ -4394,8 +4644,28 @@
         }
       }
     },
+    "مسح التصفية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear filter"
+          }
+        }
+      }
+    },
     "مسودة" : {
 
+    },
+    "مشاركة الآية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share ayah"
+          }
+        }
+      }
     },
     "مطابق" : {
       "localizations" : {
@@ -4641,6 +4911,16 @@
         }
       }
     },
+    "منسوخة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copied"
+          }
+        }
+      }
+    },
     "منسوخة إلى الشخصية" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -4696,6 +4976,16 @@
         }
       }
     },
+    "نتيجة البحث: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Search result: %@"
+          }
+        }
+      }
+    },
     "نسخ إلى الشخصية" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -4732,6 +5022,16 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Coloured word text without an underline"
+          }
+        }
+      }
+    },
+    "نص المصحف وخطوط صفحاته (QCF V2) وخط «KFGQPC Uthmanic Script HAFS»: مجمع الملك فهد لطباعة المصحف الشريف، المدينة المنورة. حقوق الخطوط محفوظة للمجمع." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mushaf text, QCF V2 page fonts and the KFGQPC Uthmanic Script HAFS font: King Fahd Glorious Quran Printing Complex, Madinah. Font rights belong to the Complex."
           }
         }
       }
@@ -4793,6 +5093,46 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Filled dot above the word on the left"
+          }
+        }
+      }
+    },
+    "نقل الآية %lld للأسفل" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move ayah %lld down"
+          }
+        }
+      }
+    },
+    "نقل الآية %lld للأعلى" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move ayah %lld up"
+          }
+        }
+      }
+    },
+    "نقل الجزء %lld للأسفل" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move part %lld down"
+          }
+        }
+      }
+    },
+    "نقل الجزء %lld للأعلى" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move part %lld up"
           }
         }
       }
@@ -4859,68 +5199,18 @@
         }
       }
     },
-    "اختيار مجلد من الملفات" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Choose folder in Files"
-          }
-        }
-      }
-    },
-    "الملف %@ غير متاح على الجهاز بعد. نزّله من تطبيق الملفات ثم أعد المحاولة." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "The file %@ is not available on this device yet. Download it in Files, then try again."
-          }
-        }
-      }
-    },
-    "تشمل النسخة الحفظ والقراءة والمتشابهات وبيانات القراءات في المجلد الذي تختاره من تطبيق الملفات." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Backups cover memorization, reading, mutashabihat and Qiraat data in the folder you choose in Files."
-          }
-        }
-      }
-    },
-    "لا يوجد مجلد للنسخ الاحتياطي. اختر مجلدًا من تطبيق الملفات في إعدادات النسخ الاحتياطي." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "No backup folder is set. Choose a folder in Files from Backup settings."
-          }
-        }
-      }
-    },
-    "لم يُحدَّد مجلد للنسخ الاحتياطي" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "No backup folder is set"
-          }
-        }
-      }
-    },
-    "مزامنة iCloud معطلة في هذا الإصدار" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "iCloud sync is disabled in this build"
-          }
-        }
-      }
-    },
     "يفتح إحصائيات القراءة" : {
 
+    },
+    "يفتح في Safari" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens in Safari"
+          }
+        }
+      }
     },
     "يقارن آيتين كلمةً كلمة ويعيّن أنواع الفروقات (مشترك، اختلاف، زيادة، فريد) تلقائياً." : {
 
@@ -4984,296 +5274,6 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "two days"
-          }
-        }
-      }
-    },
-    "الخصوصية والدعم" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Privacy & Support"
-          }
-        }
-      }
-    },
-    "سياسة الخصوصية" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Privacy Policy"
-          }
-        }
-      }
-    },
-    "الدعم" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Support"
-          }
-        }
-      }
-    },
-    "يفتح في Safari" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Opens in Safari"
-          }
-        }
-      }
-    },
-    "شكر وتراخيص" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Acknowledgements & Licences"
-          }
-        }
-      }
-    },
-    "الإصدار" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Version"
-          }
-        }
-      }
-    },
-    "الإصدار %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Version %@"
-          }
-        }
-      }
-    },
-    "المصادر والشكر" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sources and acknowledgements"
-          }
-        }
-      }
-    },
-    "نص المصحف وخطوط صفحاته (QCF V2) وخط «KFGQPC Uthmanic Script HAFS»: مجمع الملك فهد لطباعة المصحف الشريف، المدينة المنورة. حقوق الخطوط محفوظة للمجمع." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mushaf text, QCF V2 page fonts and the KFGQPC Uthmanic Script HAFS font: King Fahd Glorious Quran Printing Complex, Madinah. Font rights belong to the Complex."
-          }
-        }
-      }
-    },
-    "بيانات الكلمات وتخطيط الصفحات وخطوط الصفحات عبر Quran Foundation (Quran.com). Quran data provided by Quran.Foundation." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Word data, page layout and page fonts via Quran Foundation (Quran.com). \"Quran data provided by Quran.Foundation.\""
-          }
-        }
-      }
-    },
-    "متن الشاطبية «حرز الأماني ووجه التهاني» للإمام الشاطبي (ت ٥٩٠هـ)، ومتنا «الدرة المضية» و«طيبة النشر» للإمام ابن الجزري (ت ٨٣٣هـ)، من نسخة المكتبة الشاملة (shamela.ws)." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Matn texts of al-Shatibiyyah (al-Shatibi, d. 590 AH), al-Durrah and Tayyibat al-Nashr (Ibn al-Jazari, d. 833 AH), from the Shamela library edition (shamela.ws)."
-          }
-        }
-      }
-    },
-    "شرحا «الوافي» لعبد الفتاح القاضي و«الهادي» لمحمد سالم محيسن." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The commentaries al-Wafi by Abd al-Fattah al-Qadi and al-Hadi by Muhammad Salim Muhaysin."
-          }
-        }
-      }
-    },
-    "اختلاف" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "difference"
-          }
-        }
-      }
-    },
-    "اختلاف ٢" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "difference 2"
-          }
-        }
-      }
-    },
-    "اختلاف ٣" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "difference 3"
-          }
-        }
-      }
-    },
-    "إغلاق البحث" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Close search"
-          }
-        }
-      }
-    },
-    "المفضلة فقط" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Favorites only"
-          }
-        }
-      }
-    },
-    "حذف الآية %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete ayah %lld"
-          }
-        }
-      }
-    },
-    "حذف الجزء %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Remove part %lld"
-          }
-        }
-      }
-    },
-    "خيارات التلوين" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Coloring options"
-          }
-        }
-      }
-    },
-    "زيادة" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "addition"
-          }
-        }
-      }
-    },
-    "فريد" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "unique"
-          }
-        }
-      }
-    },
-    "مسح التصفية" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Clear filter"
-          }
-        }
-      }
-    },
-    "مشاركة الآية" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Share ayah"
-          }
-        }
-      }
-    },
-    "منسوخة" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Copied"
-          }
-        }
-      }
-    },
-    "نقل الآية %lld للأسفل" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Move ayah %lld down"
-          }
-        }
-      }
-    },
-    "نقل الآية %lld للأعلى" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Move ayah %lld up"
-          }
-        }
-      }
-    },
-    "نقل الجزء %lld للأسفل" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Move part %lld down"
-          }
-        }
-      }
-    },
-    "نقل الجزء %lld للأعلى" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Move part %lld up"
           }
         }
       }
