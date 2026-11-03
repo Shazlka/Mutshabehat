@@ -26,7 +26,7 @@ struct SettingsView: View {
 #endif
 
     private var appLanguage: AppLanguage {
-        AppLanguage(rawValue: language) ?? .arabic
+        AppLanguage(rawValue: language) ?? .deviceDefault
     }
 
     var body: some View {
@@ -184,7 +184,7 @@ struct SettingsView: View {
                     NavigationLink {
                         DeveloperDataSettingsView(
                             library: library,
-                            language: AppLanguage(rawValue: language) ?? .arabic
+                            language: AppLanguage(rawValue: language) ?? .deviceDefault
                         )
                     } label: {
                         Label(
@@ -230,6 +230,39 @@ struct SettingsView: View {
                             .accessibilityIdentifier("memo-setting-ayah-marker")
                     }
                 }
+
+                Section("الخصوصية والدعم") {
+                    Link(destination: LegalLinks.privacyPolicy(for: appLanguage)) {
+                        ExternalLinkRow(title: "سياسة الخصوصية", systemImage: "hand.raised.fill")
+                    }
+                    .accessibilityLabel(Text("سياسة الخصوصية"))
+                    .accessibilityHint(Text("يفتح في Safari"))
+                    .accessibilityIdentifier("open-privacy-policy")
+
+                    Link(destination: LegalLinks.support(for: appLanguage)) {
+                        ExternalLinkRow(title: "الدعم", systemImage: "questionmark.circle")
+                    }
+                    .accessibilityLabel(Text("الدعم"))
+                    .accessibilityHint(Text("يفتح في Safari"))
+                    .accessibilityIdentifier("open-support")
+
+                    NavigationLink {
+                        AcknowledgementsView()
+                    } label: {
+                        Label("شكر وتراخيص", systemImage: "text.book.closed")
+                    }
+                    .accessibilityLabel(Text("شكر وتراخيص"))
+                    .accessibilityIdentifier("open-acknowledgements")
+                }
+
+                Section {
+                    LabeledContent("الإصدار") {
+                        Text(verbatim: LegalLinks.appVersion)
+                    }
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel(Text("الإصدار \(LegalLinks.appVersion)"))
+                    .accessibilityIdentifier("app-version")
+                }
             }
 #if DEBUG
             .fullScreenCover(isPresented: $showingReviewEditor) {
@@ -249,6 +282,24 @@ struct SettingsView: View {
                 }
             }
         }
+    }
+}
+
+/// A Settings row that leaves the app: the title, then an arrow saying it opens outside (in Safari).
+private struct ExternalLinkRow: View {
+    let title: LocalizedStringKey
+    let systemImage: String
+
+    var body: some View {
+        HStack {
+            Label(title, systemImage: systemImage)
+            Spacer()
+            Image(systemName: "arrow.up.forward.square")
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(.tertiary)
+                .accessibilityHidden(true)
+        }
+        .foregroundStyle(.primary)
     }
 }
 

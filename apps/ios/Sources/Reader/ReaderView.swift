@@ -59,7 +59,7 @@ struct ReaderView: View {
     @State private var safeBottom: CGFloat = 34
     @State private var bookmarkActionTarget: (page: MushafPage, ayah: AyahKey)? = nil
     @AppStorage("mushaf1441:theme:v1") private var theme = MushafAppearance.system.rawValue
-    @AppStorage("app:language:v1") private var language = AppLanguage.arabic.rawValue
+    @AppStorage("app:language:v1") private var language = AppLanguage.defaultCode
     @AppStorage("mushaf:keepScreenAwake") private var keepScreenAwake = true
     @AppStorage("mushaf:autoHidesFooter") private var autoHidesFooter = false
     @AppStorage(LandscapeView.storageKey) private var landscapeView = LandscapeView.reading.rawValue
@@ -437,7 +437,7 @@ struct ReaderView: View {
     }
 
     private var appLanguage: AppLanguage {
-        AppLanguage(rawValue: language) ?? .arabic
+        AppLanguage(rawValue: language) ?? .deviceDefault
     }
 
     private var interfaceTraits: UITraitCollection {

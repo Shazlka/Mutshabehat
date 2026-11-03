@@ -350,7 +350,7 @@ final class MushafPageView: UIView {
         let word = box.word
         let element = UIAccessibilityElement(accessibilityContainer: self)
         if let status = memorizationMarker(for: box) {
-            element.accessibilityLabel = appLocalized("حالة الحفظ: \(MemorizationTheme.label(status, language: AppLanguage(rawValue: appLanguageCode) ?? .arabic))")
+            element.accessibilityLabel = appLocalized("حالة الحفظ: \(MemorizationTheme.label(status, language: AppLanguage(rawValue: appLanguageCode) ?? .deviceDefault))")
             element.accessibilityIdentifier = "memo-ayah-marker-\(word.ayahKey.surah)-\(word.ayahKey.ayah)"
             element.accessibilityTraits = .staticText
         } else if marks[word.id] != nil {

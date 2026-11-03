@@ -4987,6 +4987,126 @@
           }
         }
       }
+    },
+    "الخصوصية والدعم" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy & Support"
+          }
+        }
+      }
+    },
+    "سياسة الخصوصية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        }
+      }
+    },
+    "الدعم" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support"
+          }
+        }
+      }
+    },
+    "يفتح في Safari" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens in Safari"
+          }
+        }
+      }
+    },
+    "شكر وتراخيص" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acknowledgements & Licences"
+          }
+        }
+      }
+    },
+    "الإصدار" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        }
+      }
+    },
+    "الإصدار %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@"
+          }
+        }
+      }
+    },
+    "المصادر والشكر" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sources and acknowledgements"
+          }
+        }
+      }
+    },
+    "نص المصحف وخطوط صفحاته (QCF V2) وخط «KFGQPC Uthmanic Script HAFS»: مجمع الملك فهد لطباعة المصحف الشريف، المدينة المنورة. حقوق الخطوط محفوظة للمجمع." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mushaf text, QCF V2 page fonts and the KFGQPC Uthmanic Script HAFS font: King Fahd Glorious Quran Printing Complex, Madinah. Font rights belong to the Complex."
+          }
+        }
+      }
+    },
+    "بيانات الكلمات وتخطيط الصفحات وخطوط الصفحات عبر Quran Foundation (Quran.com). Quran data provided by Quran.Foundation." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Word data, page layout and page fonts via Quran Foundation (Quran.com). \"Quran data provided by Quran.Foundation.\""
+          }
+        }
+      }
+    },
+    "متن الشاطبية «حرز الأماني ووجه التهاني» للإمام الشاطبي (ت ٥٩٠هـ)، ومتنا «الدرة المضية» و«طيبة النشر» للإمام ابن الجزري (ت ٨٣٣هـ)، من نسخة المكتبة الشاملة (shamela.ws)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Matn texts of al-Shatibiyyah (al-Shatibi, d. 590 AH), al-Durrah and Tayyibat al-Nashr (Ibn al-Jazari, d. 833 AH), from the Shamela library edition (shamela.ws)."
+          }
+        }
+      }
+    },
+    "شرحا «الوافي» لعبد الفتاح القاضي و«الهادي» لمحمد سالم محيسن." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The commentaries al-Wafi by Abd al-Fattah al-Qadi and al-Hadi by Muhammad Salim Muhaysin."
+          }
+        }
+      }
     }
   },
   "version" : "1.3"

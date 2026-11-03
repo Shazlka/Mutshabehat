@@ -10,7 +10,7 @@ struct ICloudSyncSettingsView: View {
     @State private var alertMessage: String = ""
     @State private var isShowingAlert: Bool = false
 
-    @AppStorage("app:language:v1") private var appLanguage: String = "ar"
+    @AppStorage("app:language:v1") private var appLanguage: String = AppLanguage.defaultCode
     private var isArabic: Bool { appLanguage != "en" }
 
     init(library: MushafLibrary? = nil) {
