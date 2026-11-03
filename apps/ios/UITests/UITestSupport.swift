@@ -17,6 +17,15 @@ extension XCUIApplication {
 }
 
 extension XCUIApplication {
+    /// A point in the reading header that only shows or hides the bars. The surah name opens the index, so the
+    /// tap goes to the header's left margin, clear of the name (which stands at the reading side). In iPad
+    /// landscape the header is a side rail and this point is the page margin, which toggles the bars as well.
+    var chromeMarginCoordinate: XCUICoordinate {
+        let window = windows.firstMatch.frame
+        let landscapePad = UIDevice.current.userInterfaceIdiom == .pad && window.width > window.height
+        return coordinate(withNormalizedOffset: CGVector(dx: landscapePad ? 0.80 : 0.03, dy: 0.09))
+    }
+
     /// Dismisses the number keyboard of the memorization sheets. On iPhone the keyboard has the app's «تم»
     /// accessory button; the iPad's number keyboard is a full keyboard whose Return key submits the field (the
     /// accessory button is not hittable there).

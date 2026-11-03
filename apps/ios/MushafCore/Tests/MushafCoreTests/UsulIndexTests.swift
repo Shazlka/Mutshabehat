@@ -180,6 +180,21 @@ import Testing
         let second = await cache.categories(store: store, databaseURL: databaseURL)
         #expect(second == first)
     }
+
+    /// A database that cannot be opened is a failure, not an empty index. If it is remembered, every أصول list stays
+    /// empty until the app restarts, although the next attempt would have worked.
+    @Test func aFailedBuildIsNotRemembered() async throws {
+        let store = try QiraatStore(directory: generatedDirectory.appendingPathComponent("Qiraat"))
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent("usul-\(UUID().uuidString)")
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let database = directory.appendingPathComponent("mushaf.sqlite")
+        let cache = UsulIndexCache()
+
+        #expect(await cache.categories(store: store, databaseURL: database).isEmpty)   // not there yet
+        try FileManager.default.copyItem(at: generatedDirectory.appendingPathComponent("mushaf.sqlite"), to: database)
+        #expect(await cache.categories(store: store, databaseURL: database).isEmpty == false)
+    }
 }
 
 private func buildBundledIndex() throws -> (

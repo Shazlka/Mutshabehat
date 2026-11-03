@@ -59,6 +59,28 @@ public struct QiraatPageSummaryItem: Identifiable, Hashable, Sendable {
 }
 
 public enum QiraatPageSummary {
+    /// The summary items of `pages`, or nil when the data could not be loaded: no store, no readable database, or a
+    /// Mushaf page that will not read. Nil is not "no differences" (that is an empty list); showing it as such would
+    /// tell the reader a page has none when the app merely failed to look. A page with no Qiraat records is empty.
+    public static func load(store: QiraatStore?, databaseURL: URL, pages: [Int], filter: QiraatFilter,
+                            revision: Int = 0,
+                            cache: QiraatResolvedPageCache = .shared) async -> [QiraatPageSummaryItem]? {
+        guard let store,
+              let index = await cache.index(store: store, databaseURL: databaseURL, revision: revision) else { return nil }
+        let catalog = store.catalog
+        return await Task.detached(priority: .userInitiated) { () -> [QiraatPageSummaryItem]? in
+            guard let database = try? MushafDatabase(url: databaseURL) else { return nil }
+            var items: [QiraatPageSummaryItem] = []
+            for page in pages {
+                guard let mushaf = try? database.page(page) else { return nil }
+                guard let data = index.page(page) else { continue }
+                items += build(page: page, words: mushaf.lines.flatMap(\.words), data: data,
+                               marks: QiraatMarks(catalog: catalog, page: data), catalog: catalog, filter: filter)
+            }
+            return items
+        }.value
+    }
+
     /// Pass data and marks from the same page snapshot. Word visibility is exactly the predicate
     /// MushafPageView uses, including performance-only and unresolved variants.
     public static func build(page: Int, words: [MushafWord], data: QiraatPageData,

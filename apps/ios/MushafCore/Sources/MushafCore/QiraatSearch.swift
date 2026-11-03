@@ -217,23 +217,27 @@ public final class QiraatSearchIndex: Sendable {
 public actor QiraatSearch {
     private let store: QiraatStore
     private let databaseURL: URL
-    private var build: Task<QiraatSearchIndex, Never>?
+    private var build: Task<QiraatSearchIndex?, Never>?
 
     public init(store: QiraatStore, databaseURL: URL) {
         self.store = store
         self.databaseURL = databaseURL
     }
 
+    /// An index whose page table could not be read has no pages for any record, so it comes out empty. That answer is
+    /// handed back for this call only: it is not kept, and the next call builds again.
     public func index() async -> QiraatSearchIndex {
-        if let build { return await build.value }
+        if let build, let index = await build.value { return index }
         let store = self.store
         let databaseURL = self.databaseURL
-        let task = Task.detached(priority: .userInitiated) {
-            let wordPages = (try? MushafDatabase(url: databaseURL).wordPageIndex()) ?? [:]
+        let task = Task.detached(priority: .userInitiated) { () -> QiraatSearchIndex? in
+            guard let wordPages = try? MushafDatabase(url: databaseURL).wordPageIndex() else { return nil }
             return QiraatSearchIndex(store: store, wordPages: wordPages)
         }
         build = task
-        return await task.value
+        if let index = await task.value { return index }
+        build = nil
+        return QiraatSearchIndex(store: store, wordPages: [:])
     }
 
     public func search(_ query: QiraatSearchQuery) async -> [QiraatSearchSurahGroup] {

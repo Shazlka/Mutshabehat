@@ -68,6 +68,29 @@ final class ReadingTests: XCTestCase {
         XCTAssertEqual(testDB.allBookmarks().count, 0)
     }
 
+    /// The reader offers «remove» for a bookmarked page whichever ayah is pressed, so the delete has to match the
+    /// stored row, not the pressed ayah.
+    func testRemovingAPageBookmarkWorksFromAnyAyahOnThePage() {
+        testDB.addBookmark(type: .page, surah: 2, ayah: 30, page: 5)
+        XCTAssertTrue(testDB.isPageBookmarked(page: 5))
+
+        testDB.removeBookmark(type: .page, surah: 2, ayah: 31, page: 5)
+
+        XCTAssertFalse(testDB.isPageBookmarked(page: 5))
+        XCTAssertEqual(testDB.allBookmarks().count, 0)
+    }
+
+    /// An ayah that runs onto the next page is bookmarked from one page and offered for removal on both.
+    func testRemovingAnAyahBookmarkWorksFromTheOtherPageOfASpanningAyah() {
+        testDB.addBookmark(type: .ayah, surah: 2, ayah: 282, page: 48)
+        XCTAssertTrue(testDB.isAyahBookmarked(surah: 2, ayah: 282))
+
+        testDB.removeBookmark(type: .ayah, surah: 2, ayah: 282, page: 49)
+
+        XCTAssertFalse(testDB.isAyahBookmarked(surah: 2, ayah: 282))
+        XCTAssertEqual(testDB.allBookmarks().count, 0)
+    }
+
     func testBookmarkedAyahsOnPage() {
         testDB.addBookmark(type: .ayah, surah: 2, ayah: 1, page: 2)
         testDB.addBookmark(type: .ayah, surah: 2, ayah: 5, page: 2)
@@ -585,6 +608,24 @@ final class ReadingTests: XCTestCase {
         XCTAssertEqual(spy.pushes, 1)
         tracker.markSurahCompleted(1, completed: false, library: library)
         XCTAssertEqual(spy.pushes, 2)
+    }
+
+    /// Control Center, a call or a notification pull-down makes the app inactive, which stops the page timer. Coming
+    /// back is not a page turn, so nothing restarted it and the rest of the session earned no reading credit.
+    @MainActor
+    func testTrackerKeepsTimingThePageAfterTheAppWasInactive() throws {
+        let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent("test_reading_\(UUID().uuidString).sqlite")
+        let tracker = ReadingTracker(database: QuranReadingDatabase(url: tempURL))
+        let library = try MushafLibrary()
+
+        tracker.pageDidChange(to: 10, library: library)
+        XCTAssertTrue(tracker.isTimingPage)
+
+        tracker.flushCurrentPageDwell(library: library)   // the app went inactive
+        XCTAssertFalse(tracker.isTimingPage)
+
+        tracker.resumeCurrentPage(library: library)       // and came back to the same page
+        XCTAssertTrue(tracker.isTimingPage)
     }
 
     @MainActor

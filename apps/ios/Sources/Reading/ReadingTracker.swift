@@ -96,10 +96,25 @@ final class ReadingTracker: ObservableObject {
         self.currentPageAyahs = items
 
         guard !items.isEmpty else { return }
+        startDwellTimers(for: page, library: library, completeAfter: 30.0)
+    }
 
-        // Schedule timer to mark 100% page completion at exactly 30 seconds
+    /// Whether a page is being timed right now (it is not while the app is inactive or the reader is covered).
+    var isTimingPage: Bool { pageStartTime != nil }
+
+    /// Continues timing the current page when the app becomes active again. Not a page turn: the ayahs already
+    /// credited stay credited and the clock picks up where the earned share left off, so nothing is counted twice.
+    func resumeCurrentPage(library: MushafLibrary) {
+        guard let page = currentPage, pageStartTime == nil, !isFullPageCompleted, !currentPageAyahs.isEmpty else { return }
+        let earned = 30.0 * Double(creditedAyahsCount) / Double(currentPageAyahs.count)
+        pageStartTime = Date().addingTimeInterval(-earned)
+        startDwellTimers(for: page, library: library, completeAfter: max(1.0, 30.0 - earned))
+    }
+
+    private func startDwellTimers(for page: Int, library: MushafLibrary, completeAfter: TimeInterval) {
+        // Schedule timer to mark 100% page completion at exactly 30 seconds of dwell
         fullCompletionTimer?.invalidate()
-        fullCompletionTimer = Timer.scheduledTimer(withTimeInterval: 30.0, repeats: false) { [weak self] _ in
+        fullCompletionTimer = Timer.scheduledTimer(withTimeInterval: completeAfter, repeats: false) { [weak self] _ in
             Task { @MainActor [weak self] in
                 guard let self = self, self.currentPage == page else { return }
                 self.completeFullPage(page: page, library: library)

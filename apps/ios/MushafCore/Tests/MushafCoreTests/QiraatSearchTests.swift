@@ -251,6 +251,25 @@ import Testing
         #expect(a === again)
     }
 
+    /// With the database missing every record loses its page and the index comes out empty. That answer must not be
+    /// kept: the next search, once the database is there, has to build a real index.
+    @Test func aFailedBuildIsNotRemembered() async throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent("qsearch-\(UUID().uuidString)")
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let database = directory.appendingPathComponent("mushaf.sqlite")
+        let service = QiraatSearch(
+            store: try QiraatStore(directory: generatedDirectory.appendingPathComponent("Qiraat")),
+            databaseURL: database)
+
+        let early = await service.index()
+        #expect(early.search(.category("IMALAH_TAQLIL")).isEmpty)
+        try FileManager.default.copyItem(at: generatedDirectory.appendingPathComponent("mushaf.sqlite"), to: database)
+        let later = await service.index()
+        #expect(later !== early)
+        #expect(later.search(.category("IMALAH_TAQLIL")).isEmpty == false)
+    }
+
     @Test func indexedQueriesStayUnderTwoHundredMilliseconds() async throws {
         let index = try await Self.snapshot.value
         let clock = ContinuousClock()

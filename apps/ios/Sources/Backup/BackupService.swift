@@ -156,6 +156,13 @@ struct BackupWorker: Sendable {
         var entries: [BackupFileEntry] = []
 
         let export = try sources.memorizationExport()
+        // A reinstall or a second device on the same folder starts empty and runs a launch backup at once. Retention
+        // keeps only the newest set of each day, so an empty set written now would delete the real one. Only a person
+        // asking for a backup (`.manual`) may replace a non-empty one with an empty store.
+        let previousRows = previous?.files.first { $0.name == "memorization.json" }?.rowCount ?? 0
+        if reason != .manual, export.records.isEmpty, export.batches.isEmpty, previousRows > 0 {
+            return BackupResult(createdAt: now, skipped: true, files: previous?.files ?? [])
+        }
         let exportData = try export.encode()
         try exportData.write(to: staging.appendingPathComponent("memorization.json"))
         entries.append(BackupFileEntry(name: "memorization.json", sha256: BackupHash.sha256Hex(exportData),

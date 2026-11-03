@@ -8,7 +8,12 @@ struct QiraatFilterGrid: View {
     @Binding var selection: QiraatFilter
     @Environment(\.dismiss) private var dismiss
 
-    private let columns = Array(repeating: GridItem(.flexible(), spacing: 8, alignment: .top), count: 3)
+    @Environment(\.dynamicTypeSize) private var typeSize
+
+    /// Three columns at normal sizes; one at accessibility sizes, where a name like «الإمام ابن كثير» cannot fit in a third of the width.
+    private var columns: [GridItem] {
+        Array(repeating: GridItem(.flexible(), spacing: 8, alignment: .top), count: typeSize.isAccessibilitySize ? 1 : 3)
+    }
 
     private var readers: [QiraatCatalog.Reader] { catalog.readers.sorted { $0.sortOrder < $1.sortOrder } }
 
@@ -83,8 +88,8 @@ struct QiraatFilterGrid: View {
             title
                 .font(.subheadline.weight(weight))
                 .foregroundStyle(.primary)
-                .lineLimit(2)
-                .minimumScaleFactor(0.8)
+                .lineLimit(typeSize.isAccessibilitySize ? nil : 2)
+                .minimumScaleFactor(typeSize.isAccessibilitySize ? 1 : 0.8)
                 .multilineTextAlignment(.leading)
             Spacer(minLength: 0)
             if isSelected {

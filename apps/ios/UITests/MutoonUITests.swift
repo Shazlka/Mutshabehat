@@ -17,7 +17,7 @@ final class MutoonUITests: XCTestCase {
     private func element(_ id: String, in app: XCUIApplication) -> XCUIElement { app.descendants(matching: .any)[id] }
 
     private func openMutoon(_ app: XCUIApplication) {
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()   // margin tap shows the chrome
+        app.chromeMarginCoordinate.tap()   // margin tap shows the chrome
         let more = app.buttons["more-button"]
         XCTAssertTrue(more.waitForExistence(timeout: 20))
         more.tap()

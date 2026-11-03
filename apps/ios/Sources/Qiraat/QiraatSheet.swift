@@ -203,6 +203,9 @@ struct QiraatSheet: View {
                         .minimumScaleFactor(0.6)
                         .allowsTightening(true)
                         .layoutPriority(1)
+                        // The QCF glyph is a private-use code point VoiceOver cannot pronounce; read the word itself.
+                        .accessibilityLabel(Text(verbatim: currentWord.textUthmani))
+                        .accessibilityAddTraits(.isHeader)
                 } else {
                     Text(verbatim: currentWord.textUthmani).scaledFont(size: 30, weight: .bold)
                 }

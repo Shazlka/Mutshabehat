@@ -48,17 +48,39 @@ extension QuranReadingDatabase {
         return QuranBookmark(id: id, type: type, surah: surah, ayah: ayah, page: page, note: note, createdAt: createdAt)
     }
 
+    /// Removes the bookmark the reader's own state check found. That check ignores the pressed ayah for a page
+    /// bookmark (`isPageBookmarked(page:)`) and the pressed page for an ayah bookmark (`isAyahBookmarked`), so the
+    /// rows are matched the same way, and each goes through `removeBookmark(id:)`, which writes the tombstone for
+    /// the row as it was stored.
     public func removeBookmark(type: BookmarkType, surah: Int, ayah: Int, page: Int) {
+        for id in bookmarkIDs(type: type, surah: surah, ayah: ayah, page: page) {
+            removeBookmark(id: id)
+        }
+    }
+
+    private func bookmarkIDs(type: BookmarkType, surah: Int, ayah: Int, page: Int) -> [String] {
         lock.lock()
         defer { lock.unlock() }
-        guard let db = db else { return }
-        let sql = "DELETE FROM bookmarks WHERE type = ? AND surah = ? AND ayah = ? AND page = ?;"
-        deleteWithTombstone(db, kind: "bookmark:\(type.rawValue)", surah: surah, ayah: ayah, page: page, sql: sql) { stmt in
-            SQLiteBind.text(stmt, 1, type.rawValue)
-            sqlite3_bind_int64(stmt, 2, Int64(surah))
-            sqlite3_bind_int64(stmt, 3, Int64(ayah))
-            sqlite3_bind_int64(stmt, 4, Int64(page))
+        guard let db = db else { return [] }
+        let isPage = type == .page
+        let sql = isPage
+            ? "SELECT id FROM bookmarks WHERE type = 'page' AND page = ?;"
+            : "SELECT id FROM bookmarks WHERE type = 'ayah' AND surah = ? AND ayah = ?;"
+        var stmt: OpaquePointer?
+        var ids: [String] = []
+        if sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK {
+            if isPage {
+                sqlite3_bind_int64(stmt, 1, Int64(page))
+            } else {
+                sqlite3_bind_int64(stmt, 1, Int64(surah))
+                sqlite3_bind_int64(stmt, 2, Int64(ayah))
+            }
+            while sqlite3_step(stmt) == SQLITE_ROW, let text = sqlite3_column_text(stmt, 0) {
+                ids.append(String(cString: text))
+            }
         }
+        sqlite3_finalize(stmt)
+        return ids
     }
 
     public func removeBookmark(id: String) {

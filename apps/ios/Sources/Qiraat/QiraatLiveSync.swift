@@ -1,6 +1,7 @@
 import Combine
 import Foundation
 import MushafCore
+import os
 
 extension Notification.Name {
     /// A page's Qiraat data changed after a live fetch; `userInfo["page"]` is the page number.
@@ -29,6 +30,8 @@ final class QiraatLiveSync: ObservableObject {
         let root = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
         return root.appendingPathComponent("QiraatLive", isDirectory: true)
     }()
+
+    private static let log = Logger(subsystem: "com.shazlka.qiraat", category: "live-sync")
 
     private let fetch: (URL) async throws -> Data
     private let minInterval: TimeInterval
@@ -94,11 +97,20 @@ final class QiraatLiveSync: ObservableObject {
         lastChecked[page] = Date()
         do {
             let data = try await fetch(Self.liveURL(page: page))
-            guard try store.applyLivePage(data, number: page) else { return note(.unchanged) }
+            // The web review page is the only source of truth and is edited all the time: variants are changed, added and
+            // deleted there. A page with fewer records is a deletion, so a shrink is never refused here. The install
+            // reads and writes files, so it runs off the main actor.
+            let changed = try await Task.detached(priority: .utility) {
+                try store.applyLivePage(data, number: page, allowShrink: true)
+            }.value
+            guard changed else { return note(.unchanged) }
             let outcome = note(.updated)
             NotificationCenter.default.post(name: .qiraatPageDidChange, object: nil, userInfo: ["page": page])
             return outcome
         } catch {
+            // Offline, a refused answer (`invalidPage`, `suspiciousShrink`) and a full disk all end as «failed»; the
+            // reason is only in the log, so keep it there.
+            Self.log.error("live page \(page) failed: \(String(describing: error), privacy: .public)")
             return note(.failed)
         }
     }
@@ -153,11 +165,18 @@ final class QiraatLiveSync: ObservableObject {
                 changed = try await takeSnapshot(into: liveDir, fetch: fetch)
             }
             guard changed else { return nil }
-            let loaded = await Task.detached(priority: .utility) { MatnLibrary(directory: liveDir, sharhDirectory: bundleMutoonURL) }.value
+            let loaded = await Task.detached(priority: .utility) {
+                MatnOverlay.loadUsable(directory: liveDir, sharhDirectory: bundleMutoonURL)
+            }.value
+            guard let loaded else {
+                Self.log.error("live mutoon copy loads as nothing; keeping the current library and taking a fresh snapshot next time")
+                return nil
+            }
             self.liveMutoonLibrary = loaded
             NotificationCenter.default.post(name: .mutoonDidChange, object: nil)
             return loaded
         } catch {
+            Self.log.error("mutoon sync failed: \(error.localizedDescription, privacy: .public)")
             return nil
         }
     }

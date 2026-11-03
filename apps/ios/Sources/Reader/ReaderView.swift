@@ -191,8 +191,11 @@ struct ReaderView: View {
             tracker.configureScreenAwake(enabled: keepScreenAwake, scenePhase: newPhase)
             if newPhase != .active {
                 tracker.flushCurrentPageDwell(library: library)
-            } else if ICloudDatabaseSyncService.shared.autoSyncEnabled {
-                Task { await ICloudDatabaseSyncService.shared.automaticSync(library: library) }
+            } else {
+                tracker.resumeCurrentPage(library: library)
+                if ICloudDatabaseSyncService.shared.autoSyncEnabled {
+                    Task { await ICloudDatabaseSyncService.shared.automaticSync(library: library) }
+                }
             }
         }
         .onDisappear {
@@ -598,6 +601,7 @@ struct ReaderView: View {
             onTapHeader: {
                 withAnimation(.easeInOut(duration: 0.2)) { chromeVisible.toggle() }
             },
+            openIndex: { showingIndex = true },
             axis: axis
         )
     }
@@ -727,6 +731,18 @@ struct ReaderView: View {
                         .buttonStyle(.borderedProminent)
                         .tint(Color(uiColor: .mushafBrown))
                         .accessibilityIdentifier("qiraat-side-bar-enable")
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                // No Qiraat store at all (a damaged install or import): an empty side bar looked like a feature that was never there.
+                VStack(spacing: 12) {
+                    Image(systemName: "exclamationmark.triangle")
+                        .font(.largeTitle)
+                        .foregroundStyle(Color(uiColor: .mushafBrown))
+                        .accessibilityHidden(true)
+                    Text("تعذّر تحميل بيانات القراءات")
+                        .font(.headline)
+                        .accessibilityIdentifier("qiraat-side-bar-unavailable")
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }

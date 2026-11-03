@@ -12,12 +12,12 @@ enum MemorizationTheme {
                                                       : UIColor(red: 0.10, green: 0.42, blue: 0.29, alpha: 1) }
         case .memorizedWithErrors:
             UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.88, green: 0.70, blue: 0.35, alpha: 1)
-                                                      : UIColor(red: 0.72, green: 0.47, blue: 0.10, alpha: 1) }
+                                                      : UIColor(red: 0.50, green: 0.31, blue: 0.02, alpha: 1) }
         case .needsMushaf:
             UIColor { $0.userInterfaceStyle == .dark ? UIColor(red: 0.62, green: 0.69, blue: 0.76, alpha: 1)
                                                       : UIColor(red: 0.33, green: 0.41, blue: 0.48, alpha: 1) }
         case .notMemorized:
-            UIColor { $0.userInterfaceStyle == .dark ? UIColor(white: 0.62, alpha: 1) : UIColor(white: 0.50, alpha: 1) }
+            UIColor { $0.userInterfaceStyle == .dark ? UIColor(white: 0.62, alpha: 1) : UIColor(white: 0.36, alpha: 1) }
         }
     }
 

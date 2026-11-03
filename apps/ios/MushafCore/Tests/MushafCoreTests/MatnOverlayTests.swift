@@ -91,6 +91,51 @@ private func snapshot(seq: Int?) -> [String: Any] {
         #expect(MatnOverlay.seq(in: dir) == 7, "a refused delta leaves the copy as it was")
     }
 
+    private func oneVerseDelta() -> [String: Any] {
+        ["seq": 9, "full": false, "verses": [[
+            "work": "shatibiyyah",
+            "verse": ["number": 1, "lines": ["أ ب", "ج د"], "printedPage": "1", "pageId": 5],
+            "annotations": [[String: Any]](),
+        ]]]
+    }
+
+    /// A symbols file that cannot be read used to count as "no marks". The next small edit then wrote it back holding
+    /// only the edited verse's marks, and every other verse lost its reader assignments for good.
+    @Test func anUnreadableSymbolsFileAsksForASnapshotAndIsNotOverwritten() throws {
+        let dir = temporaryDirectory()
+        _ = try MatnOverlay.writeSnapshot(snapshot(seq: 7), to: dir)
+        let symbolsURL = dir.appendingPathComponent(MatnSymbolLayer.fileName)
+        try Data("not json".utf8).write(to: symbolsURL)
+
+        #expect(try MatnOverlay.applyDelta(oneVerseDelta(), to: dir) == .needsSnapshot)
+        #expect(try Data(contentsOf: symbolsURL) == Data("not json".utf8))
+        #expect(MatnOverlay.seq(in: dir) == 7)
+    }
+
+    /// A corrupt متون file made the delta throw. The caller treats a throw as "try again later", so it retried the same
+    /// failing delta every few seconds and never fell back to a fresh snapshot.
+    @Test func anUnreadableMutoonFileAsksForASnapshotInsteadOfThrowing() throws {
+        let dir = temporaryDirectory()
+        _ = try MatnOverlay.writeSnapshot(snapshot(seq: 7), to: dir)
+        try Data("not json".utf8).write(to: dir.appendingPathComponent(MatnLibrary.fileName))
+
+        #expect(try MatnOverlay.applyDelta(oneVerseDelta(), to: dir) == .needsSnapshot)
+    }
+
+    /// A live copy that loads as no works at all (damaged files, a schema this build does not know) used to replace the
+    /// working bundled library with an empty screen, and its sequence stayed, so later syncs only fetched deltas.
+    @Test func aLiveCopyThatLoadsAsNothingIsRefusedAndItsSequenceForgotten() throws {
+        let dir = temporaryDirectory()
+        _ = try MatnOverlay.writeSnapshot(snapshot(seq: 7), to: dir)
+        #expect(MatnOverlay.loadUsable(directory: dir, sharhDirectory: nil) != nil)
+        #expect(MatnOverlay.seq(in: dir) == 7)
+
+        try Data("not json".utf8).write(to: dir.appendingPathComponent(MatnLibrary.fileName))
+
+        #expect(MatnOverlay.loadUsable(directory: dir, sharhDirectory: nil) == nil)
+        #expect(MatnOverlay.seq(in: dir) == nil, "the next sync must take a fresh snapshot, not another delta")
+    }
+
     @Test func anAssignmentIsShownWithoutADictionarySymbolButOnlyWhereItsTextIs() {
         let lines = ["أ ب", "ج د"]
         func mark(_ start: Int, _ end: Int, _ text: String, ids: [String] = ["Q01"], origin: MatnSymbolOrigin = .assignment) -> MatnSymbolAnnotation {

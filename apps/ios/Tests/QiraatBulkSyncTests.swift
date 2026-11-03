@@ -102,6 +102,26 @@ final class QiraatBulkSyncTests: XCTestCase {
         XCTAssertNotNil(store.page(10))
     }
 
+    /// One page the server keeps refusing (a shrink the guard rejects, say) is not a network outage: the pass reached every
+    /// other page. It used to leave the «completed» stamp unset, so every launch and every return to the foreground
+    /// started another ~600-request pass.
+    func testAPassWithOneStubbornlyFailingPageIsNotRepeatedOnTheNextOpen() async {
+        let defaults = freshDefaults()
+        let bulk = QiraatBulkSync(defaults: defaults)
+        let sync = QiraatLiveSync(fetch: { url in
+            let page = Self.pageNumber(in: url)
+            if page == 7 { throw URLError(.cannotConnectToHost) }
+            return Self.body(for: page)
+        }, minInterval: 0)
+
+        bulk.start(around: 1, store: store, sync: sync)
+        while bulk.isRunning { try? await Task.sleep(for: .milliseconds(20)) }
+
+        XCTAssertNotNil(defaults.object(forKey: QiraatBulkSync.lastCompletedKey))
+        bulk.start(around: 1, store: store, sync: sync)
+        XCTAssertFalse(bulk.isRunning, "a pass that reached every other page is not repeated at once")
+    }
+
     func testARecentFullPassIsNotRepeatedOnTheNextOpen() {
         let defaults = freshDefaults()
         defaults.set(Date(), forKey: QiraatBulkSync.lastCompletedKey)

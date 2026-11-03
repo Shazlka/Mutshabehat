@@ -215,26 +215,28 @@ public actor UsulIndexCache {
     }
 
     private var cached: [Key: [UsulCategory]] = [:]
-    private var inFlight: [Key: Task<[UsulCategory], Never>] = [:]
+    private var inFlight: [Key: Task<[UsulCategory]?, Never>] = [:]
 
     public init() {}
 
+    /// A database that cannot be opened answers empty for this call only: a failure is not remembered, so the next
+    /// call tries again instead of showing an empty أصول index until the app restarts.
     public func categories(store: QiraatStore?, databaseURL: URL) async -> [UsulCategory] {
         guard let store else { return [] }
         let key = Key(store: ObjectIdentifier(store), databasePath: databaseURL.standardizedFileURL.path,
                       visibility: store.usulVisibilityKey)
         if let categories = cached[key] { return categories }
-        if let task = inFlight[key] { return await task.value }
+        if let task = inFlight[key] { return await task.value ?? [] }
 
-        let task = Task.detached(priority: .userInitiated) { () -> [UsulCategory] in
+        let task = Task.detached(priority: .userInitiated) { () -> [UsulCategory]? in
             guard let database = try? MushafDatabase(url: databaseURL),
-                  let wordPages = try? database.wordPageIndex() else { return [] }
+                  let wordPages = try? database.wordPageIndex() else { return nil }
             return UsulIndex.build(store: store, wordPages: wordPages)
         }
         inFlight[key] = task
-        let categories = await task.value
+        let built = await task.value
         inFlight[key] = nil
-        cached[key] = categories
-        return categories
+        if let built { cached[key] = built }
+        return built ?? []
     }
 }

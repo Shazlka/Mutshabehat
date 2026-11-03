@@ -97,6 +97,17 @@ final class ReaderUITests: XCTestCase {
         XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
     }
 
+    func testTappingTheSurahNameOpensTheIndex() {
+        let app = launch(atPage: 1)
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
+        let title = app.staticTexts["reading-surah-title"]
+        XCTAssertTrue(title.waitForExistence(timeout: 20))
+        title.tap()
+        XCTAssertTrue(app.navigationBars["الفهرس"].waitForExistence(timeout: 10))
+        app.buttons["index-row-آل عمران"].tap()
+        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
+    }
+
     func testIndexScrollsDown() {
         let app = launch(atPage: 1)
         XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
@@ -112,7 +123,7 @@ final class ReaderUITests: XCTestCase {
     func testSettingsContainsThemeAndQiraatControlsWithoutBurgerMenu() {
         let app = launch(atPage: 50)
         XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()
+        app.chromeMarginCoordinate.tap()
 
         XCTAssertFalse(app.buttons["reader-menu"].exists)
         let settingsButton = app.buttons["settings-button"]
@@ -203,7 +214,7 @@ final class ReaderUITests: XCTestCase {
     func testMutshabehatShowsItsPersonalAndAutomatedTabs() {
         let app = launch(atPage: 50)
         XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()
+        app.chromeMarginCoordinate.tap()
         let more = app.buttons["more-button"]
         XCTAssertTrue(more.waitForExistence(timeout: 20))
         more.tap()
@@ -221,7 +232,7 @@ final class ReaderUITests: XCTestCase {
         let mushafPage = page(50, in: app)
         XCTAssertTrue(mushafPage.waitForExistence(timeout: 20))
         let frameBeforeShowingChrome = mushafPage.frame
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()
+        app.chromeMarginCoordinate.tap()
 
         let index = app.buttons["open-index"]
         XCTAssertTrue(index.waitForExistence(timeout: 20))
@@ -244,7 +255,7 @@ final class ReaderUITests: XCTestCase {
     func testDeveloperDatabaseTransferControlsAreVisibleInDebugBuilds() {
         let app = launch(atPage: 50)
         XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()
+        app.chromeMarginCoordinate.tap()
         app.buttons["settings-button"].tap()
         XCTAssertTrue(app.navigationBars["الإعدادات"].waitForExistence(timeout: 20))
         settingsRow("open-database-settings", in: app).tap()
@@ -257,7 +268,7 @@ final class ReaderUITests: XCTestCase {
     func testLanguageSelectionChangesSettingsMenusToEnglish() {
         let app = launch(atPage: 50, pinLanguage: false)
         XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()
+        app.chromeMarginCoordinate.tap()
         app.buttons["settings-button"].tap()
         XCTAssertTrue(app.navigationBars["الإعدادات"].waitForExistence(timeout: 20))
         settingsRow("open-language-settings", in: app).tap()
@@ -277,7 +288,7 @@ final class ReaderUITests: XCTestCase {
     func testSearchFindsAnAyahAndJumpsToItsPage() {
         let app = launch(atPage: 50)
         XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()
+        app.chromeMarginCoordinate.tap()
         let searchButton = app.buttons["search-button"]
         XCTAssertTrue(searchButton.waitForExistence(timeout: 20))
         searchButton.tap()
@@ -297,7 +308,7 @@ final class ReaderUITests: XCTestCase {
     func testSmartSearchFindsModernSpellingOfUthmaniWord() {
         let app = launch(atPage: 1)
         XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()
+        app.chromeMarginCoordinate.tap()
         app.buttons["search-button"].tap()
 
         let field = app.textFields["search-field"].exists ? app.textFields["search-field"] : app.searchFields["search-field"]
@@ -339,7 +350,7 @@ final class ReaderUITests: XCTestCase {
         XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
 
         // Tapping the outer edge does NOT turn the page
-        let leftEdge = app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09))
+        let leftEdge = app.chromeMarginCoordinate
         leftEdge.tap()
         XCTAssertTrue(app.buttons["open-index"].waitForExistence(timeout: 20))
         XCTAssertTrue(page(50, in: app).exists)

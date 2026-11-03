@@ -139,6 +139,26 @@ extension UIColor {
         return glyph
     }
 
+    /// The colour of a Qiraat mark on the page (the underline, dotted line and dots): the data's colour held to the same
+    /// 3:1 as the word's own glyph, so the cue that says which reader a word belongs to is as visible as the word.
+    static func qiraatMark(hex: String, appearance: MushafAppearance, traits: UITraitCollection) -> UIColor {
+        qiraatGlyph(UIColor(qiraatHex: hex), appearance: appearance, traits: traits)
+    }
+
+    /// A data colour used as large text on a Qiraat card: moved toward the page ink only until it reads 3:1 on the card
+    /// (WCAG large text), so the ruling word keeps its category hue as far as it can.
+    static func qiraatCardText(hex: String, traits: UITraitCollection) -> UIColor {
+        let card = QiraatPalette.cardFill.resolvedColor(with: traits)
+        let ink = UIColor.mushafInk.resolvedColor(with: traits)
+        var color = UIColor(qiraatHex: hex)
+        var step = 0
+        while color.contrast(with: card) < 3, step < 20 {
+            color = color.mixed(with: ink, amount: 0.06)
+            step += 1
+        }
+        return color
+    }
+
     static func qiraatInk(onFill fill: UIColor) -> UIColor {
         let light = QiraatPalette.onFillLight, dark = QiraatPalette.onFillDark
         return light.contrast(with: fill) >= dark.contrast(with: fill) ? light : dark

@@ -8,10 +8,14 @@ struct RulingCard: View {
     let catalog: QiraatCatalog
 
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.colorScheme) private var colorScheme
     @Environment(\.qiraatWordText) private var wordText
 
     var body: some View {
         let color = Color(qiraatHex: ruling.color)
+        // The ruling word is large text: held to 3:1 on the card. The outline and tint keep the category colour as it is.
+        let wordColor = Color(uiColor: .qiraatCardText(
+            hex: ruling.color, traits: UITraitCollection(userInterfaceStyle: colorScheme == .dark ? .dark : .light)))
         let distinct = distinctRulingText(ruling.text, categoryAr: ruling.categoryAr, actions: ruling.attribution.map(\.action))
         VStack(alignment: .leading, spacing: 8) {
             HStack(alignment: .firstTextBaseline) {
@@ -31,7 +35,7 @@ struct RulingCard: View {
                     }
                     Text(verbatim: sharedForm ?? QiraatReadingForm.display(ruling.baseText))
                         .font(rulingWordFont)
-                        .foregroundStyle(color)
+                        .foregroundStyle(wordColor)
                         .multilineTextAlignment(.center)
                         .lineLimit(2)
                         .minimumScaleFactor(0.65)
@@ -52,7 +56,7 @@ struct RulingCard: View {
                     if sharedForm == nil, let changed = form(of: group) {
                         Text(verbatim: changed)
                             .font(smallWordFont)
-                            .foregroundStyle(color)
+                            .foregroundStyle(wordColor)
                             .accessibilityIdentifier("qiraat-ruling-group-word")
                     }
                 }

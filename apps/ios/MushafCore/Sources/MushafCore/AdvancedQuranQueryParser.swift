@@ -24,6 +24,11 @@ public indirect enum AdvancedQueryNode: Equatable, Sendable {
 
 public final class AdvancedQuranQueryParser: Sendable {
 
+    /// `ClosedRange` traps when its bounds are reversed, and a person can type `[10 الى 2]`.
+    static func orderedRange(_ a: Int, _ b: Int) -> ClosedRange<Int> {
+        a <= b ? a...b : b...a
+    }
+
     public static func parse(_ input: String) -> AdvancedQueryNode? {
         let trimmed = input.trimmingCharacters(in: .whitespacesAndNewlines)
             .replacingOccurrences(of: "”", with: "\"")
@@ -364,7 +369,7 @@ public final class AdvancedQuranQueryParser: Sendable {
                 return .plainWord(text)
 
             case let .range(min, max):
-                return .ayahNumber(range: min...max)
+                return .ayahNumber(range: AdvancedQuranQueryParser.orderedRange(min, max))
 
             default:
                 return nil
@@ -381,7 +386,7 @@ public final class AdvancedQuranQueryParser: Sendable {
                     let normalized = inner.replacingOccurrences(of: "إلى", with: "الى")
                     let parts = normalized.split(separator: "الى").map { String($0).trimmingCharacters(in: .whitespaces) }
                     if parts.count == 2, let minVal = Int(parts[0]), let maxVal = Int(parts[1]) {
-                        return minVal...maxVal
+                        return AdvancedQuranQueryParser.orderedRange(minVal, maxVal)
                     }
                 }
                 if let single = Int(str) {

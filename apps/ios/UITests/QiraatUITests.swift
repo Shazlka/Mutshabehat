@@ -120,7 +120,7 @@ final class QiraatUITests: XCTestCase {
     func testSettingsOffersTheLandscapeViewOnIPad() {
         let app = launch(atPage: 1)
         XCTAssertTrue(element("mushaf-page-1", in: app).waitForExistence(timeout: 30))
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()
+        app.chromeMarginCoordinate.tap()
         let settings = app.buttons["settings-button"]
         XCTAssertTrue(settings.waitForExistence(timeout: 20))
         settings.tap()
@@ -139,7 +139,7 @@ final class QiraatUITests: XCTestCase {
     func testSettingsChoosesTheSurahBanner() {
         let app = launch(atPage: 1)
         XCTAssertTrue(element("mushaf-page-1", in: app).waitForExistence(timeout: 30))
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()
+        app.chromeMarginCoordinate.tap()
         let settings = app.buttons["settings-button"]
         XCTAssertTrue(settings.waitForExistence(timeout: 20))
         settings.tap()
@@ -189,7 +189,7 @@ final class QiraatUITests: XCTestCase {
         XCTAssertTrue(element("mushaf-page-1", in: app).waitForExistence(timeout: 20))
         openAndCloseWord()
 
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()
+        app.chromeMarginCoordinate.tap()
         app.buttons["settings-button"].tap()
         let done = app.buttons["تم"]
         XCTAssertTrue(done.waitForExistence(timeout: 20))
@@ -227,7 +227,7 @@ final class QiraatUITests: XCTestCase {
         let app = launch(atPage: 1)
         XCTAssertTrue(element("qiraat-word-1:4:1", in: app).waitForExistence(timeout: 20))
         saveScreenshot(named: "qiraat-page-1", app: app)
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()  // margin tap to toggle chrome safely
+        app.chromeMarginCoordinate.tap()  // margin tap to toggle chrome safely
         let settingsButton = app.buttons["settings-button"]
         XCTAssertTrue(settingsButton.waitForExistence(timeout: 20))
         settingsButton.tap()
@@ -249,7 +249,7 @@ final class QiraatUITests: XCTestCase {
         XCTAssertFalse(element("qiraat-word-1:4:1", in: relaunched).exists)
 
         // Leave the device as a new install would be, so the other tests start from the default.
-        relaunched.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()
+        relaunched.chromeMarginCoordinate.tap()
         XCTAssertTrue(relaunched.buttons["settings-button"].waitForExistence(timeout: 20))
         relaunched.buttons["settings-button"].tap()
         let relaunchedToggle = relaunched.switches["qiraat-toggle"]

@@ -258,9 +258,18 @@ final class MushafPageView: UIView {
     /// its text, each followed by its Qiraat-marked words, search hits and memorization marker.
     private func updateAccessibilityElements() {
         let pageElement = MushafAccessibilityElement(accessibilityContainer: self)
-        pageElement.accessibilityLabel = "صفحة \(page.number)"
-        pageElement.accessibilityValue = isPageBookmarked ? "عليها علامة" : nil
-        pageElement.accessibilityHint = "انقر مرتين لإظهار أدوات القراءة أو إخفائها"
+        pageElement.accessibilityLabel = "\(appLocalized("صفحة")) \(page.number)"
+        pageElement.accessibilityValue = isPageBookmarked ? appLocalized("عليها علامة") : nil
+        pageElement.accessibilityHint = appLocalized("انقر مرتين لإظهار أدوات القراءة أو إخفائها")
+        // Turning a page was only a swipe; Switch Control and Voice Control cannot swipe, so the page names the actions.
+        pageElement.accessibilityCustomActions = [
+            UIAccessibilityCustomAction(name: appLocalized("الصفحة التالية")) { [weak self] _ in
+                self?.onAccessibilityTurn?(true) ?? false
+            },
+            UIAccessibilityCustomAction(name: appLocalized("الصفحة السابقة")) { [weak self] _ in
+                self?.onAccessibilityTurn?(false) ?? false
+            },
+        ]
         pageElement.accessibilityIdentifier = "mushaf-page-\(page.number)"
         pageElement.accessibilityLanguage = "ar"
         pageElement.accessibilityFrameInContainerSpace = bounds
@@ -292,7 +301,7 @@ final class MushafPageView: UIView {
             switch entry {
             case let .header(number, rect):
                 let element = UIAccessibilityElement(accessibilityContainer: self)
-                element.accessibilityLabel = "سورة \(library.surahNames[number] ?? "\(number)")"
+                element.accessibilityLabel = appLocalized("سورة \(library.surahNames[number] ?? "\(number)")")
                 element.accessibilityTraits = .header
                 element.accessibilityLanguage = "ar"
                 element.accessibilityFrameInContainerSpace = rect
@@ -315,9 +324,9 @@ final class MushafPageView: UIView {
     private func ayahElement(_ key: AyahKey, boxes: [WordBox]) -> UIAccessibilityElement {
         let text = boxes.filter { $0.word.charType == .word }.map(\.word.textUthmani).joined(separator: " ")
         let element = MushafAccessibilityElement(accessibilityContainer: self)
-        element.accessibilityLabel = "الآية \(key.ayah)، \(text)"
-        element.accessibilityValue = bookmarkedAyahs.contains(key) ? "عليها علامة" : nil
-        element.accessibilityHint = "انقر مرتين لخيارات الآية"
+        element.accessibilityLabel = appLocalized("الآية \(key.ayah)، \(text)")
+        element.accessibilityValue = bookmarkedAyahs.contains(key) ? appLocalized("عليها علامة") : nil
+        element.accessibilityHint = appLocalized("انقر مرتين لخيارات الآية")
         element.accessibilityIdentifier = "ayah-\(key.surah)-\(key.ayah)"
         element.accessibilityLanguage = "ar"
         element.accessibilityFrameInContainerSpace = boxes.map(\.frame).reduce(CGRect.null) { $0.union($1) }
@@ -327,7 +336,7 @@ final class MushafPageView: UIView {
             return true
         }
         element.accessibilityCustomActions = [
-            UIAccessibilityCustomAction(name: "خيارات الآية") { [weak self] _ in
+            UIAccessibilityCustomAction(name: appLocalized("خيارات الآية")) { [weak self] _ in
                 guard let options = self?.onAyahOptions else { return false }
                 options(key)
                 return true
@@ -341,15 +350,15 @@ final class MushafPageView: UIView {
         let word = box.word
         let element = UIAccessibilityElement(accessibilityContainer: self)
         if let status = memorizationMarker(for: box) {
-            element.accessibilityLabel = "حالة الحفظ: \(MemorizationTheme.label(status, language: .arabic))"
+            element.accessibilityLabel = appLocalized("حالة الحفظ: \(MemorizationTheme.label(status, language: AppLanguage(rawValue: appLanguageCode) ?? .arabic))")
             element.accessibilityIdentifier = "memo-ayah-marker-\(word.ayahKey.surah)-\(word.ayahKey.ayah)"
             element.accessibilityTraits = .staticText
         } else if marks[word.id] != nil {
-            element.accessibilityLabel = "\(word.textUthmani)، فيها قراءات"
+            element.accessibilityLabel = appLocalized("\(word.textUthmani)، فيها قراءات")
             element.accessibilityIdentifier = "qiraat-word-\(word.ayahKey.surah):\(word.ayahKey.ayah):\(word.indexInAyah)"
             element.accessibilityTraits = .button
         } else if highlightedWordIDs.contains(word.id) {
-            element.accessibilityLabel = "نتيجة البحث: \(word.textUthmani)"
+            element.accessibilityLabel = appLocalized("نتيجة البحث: \(word.textUthmani)")
             element.accessibilityIdentifier = "search-highlighted-word"
             element.accessibilityTraits = .staticText
         } else {
@@ -916,15 +925,19 @@ final class MushafPageView: UIView {
     private func drawQiraatMarks(_ mark: WordMarks, around frame: CGRect, fontSize: CGFloat, in context: CGContext) {
         let thickness = max(1.2, fontSize * 0.06)
         let dot = max(3, fontSize * 0.16)
+        // Held to 3:1 on this page, like the word's own colour (the raw data colour fell to 2.3:1 on the dark page).
+        func markColor(_ hex: String) -> UIColor {
+            UIColor.qiraatMark(hex: hex, appearance: appearance, traits: traitCollection)
+        }
         context.saveGState()
         switch mark.underline {
         case .solid(let hex):
-            context.setFillColor(UIColor(qiraatHex: hex).cgColor)
+            context.setFillColor(markColor(hex).cgColor)
             context.fill(CGRect(x: frame.minX, y: frame.maxY, width: frame.width, height: thickness))
         case .segments(let colors):
             let width = frame.width / CGFloat(max(colors.count, 1))
             for (i, hex) in colors.enumerated() {
-                context.setFillColor(UIColor(qiraatHex: hex).cgColor)
+                context.setFillColor(markColor(hex).cgColor)
                 context.fill(CGRect(x: frame.minX + CGFloat(i) * width, y: frame.maxY, width: width, height: thickness))
             }
         case nil:
@@ -932,19 +945,19 @@ final class MushafPageView: UIView {
         }
         if let hex = mark.dottedUnderlineColor {
             let y = frame.maxY + thickness * 2.6
-            context.setStrokeColor(UIColor(qiraatHex: hex).cgColor)
+            context.setStrokeColor(markColor(hex).cgColor)
             context.setLineWidth(thickness * 0.9)
             context.setLineDash(phase: 0, lengths: [thickness, thickness * 1.3])
             context.strokeLineSegments(between: [CGPoint(x: frame.minX, y: y), CGPoint(x: frame.maxX, y: y)])
             context.setLineDash(phase: 0, lengths: [])
         }
         if let hex = mark.familyDotColor {
-            context.setFillColor(UIColor(qiraatHex: hex).cgColor)
+            context.setFillColor(markColor(hex).cgColor)
             context.fillEllipse(in: CGRect(x: frame.minX - dot * 0.7, y: frame.minY, width: dot, height: dot))
         }
         if let imalah = mark.imalahDot {
             let rect = CGRect(x: frame.minX - dot * 0.7, y: frame.maxY + thickness * 3.6, width: dot, height: dot)
-            let color = UIColor(qiraatHex: imalah.color).cgColor
+            let color = markColor(imalah.color).cgColor
             if imalah.filled {
                 context.setFillColor(color)
                 context.fillEllipse(in: rect)

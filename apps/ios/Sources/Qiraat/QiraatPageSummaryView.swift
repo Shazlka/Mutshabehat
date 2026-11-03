@@ -17,6 +17,8 @@ struct QiraatPageSummaryView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var liveRevision = 0
     @State private var groups: [AyahGroup]?
+    /// The data could not be loaded (as opposed to loaded and empty).
+    @State private var unavailable = false
 
     private struct AyahGroup: Identifiable {
         let id: AyahKey
@@ -39,6 +41,13 @@ struct QiraatPageSummaryView: View {
             if groups == nil {
                 ProgressView("جارٍ إعداد خلافات الصفحة")
                     .frame(maxWidth: .infinity, minHeight: 44)
+                    .listRowBackground(Color(uiColor: .mushafPaper))
+            } else if unavailable {
+                // Failing to look is not the same as finding nothing: never say «لا خلاف» for it.
+                Label("تعذّر تحميل خلافات هذه الصفحة", systemImage: "exclamationmark.triangle")
+                    .font(.body)
+                    .frame(maxWidth: .infinity, minHeight: 44)
+                    .accessibilityIdentifier("qiraat-page-summary-unavailable")
                     .listRowBackground(Color(uiColor: .mushafPaper))
             } else if sections.isEmpty {
                 Text("لا خلاف في هذه الصفحة")
@@ -128,39 +137,24 @@ struct QiraatPageSummaryView: View {
     }
 
     @MainActor private func loadGroups() async {
-        guard let store else {
-            groups = []
-            return
-        }
         let requested = loadID
-        let databaseURL = library.database.url
-        guard let index = await QiraatResolvedPageCache.shared.index(
+        // The bulk sync announces many changed pages in a burst, and each announcement starts a full 604-file rescan.
+        // Every new revision cancels this task, so waiting briefly here leaves only the last one to scan.
+        if requested.revision > 0, (try? await Task.sleep(for: .milliseconds(400))) == nil { return }
+        guard let items = await QiraatPageSummary.load(
             store: store,
-            databaseURL: databaseURL,
+            databaseURL: library.database.url,
+            pages: requested.pages,
+            filter: requested.filter,
             revision: requested.revision
         ) else {
             guard !Task.isCancelled else { return }
+            unavailable = true
             groups = []
             return
         }
-        let catalog = store.catalog
-        let items = await Task.detached(priority: .userInitiated) {
-            guard let database = try? MushafDatabase(url: databaseURL) else {
-                return [QiraatPageSummaryItem]()
-            }
-            return requested.pages.flatMap { page -> [QiraatPageSummaryItem] in
-                guard let mushaf = try? database.page(page), let data = index.page(page) else { return [] }
-                return QiraatPageSummary.build(
-                    page: page,
-                    words: mushaf.lines.flatMap(\.words),
-                    data: data,
-                    marks: QiraatMarks(catalog: catalog, page: data),
-                    catalog: catalog,
-                    filter: requested.filter
-                )
-            }
-        }.value
         guard !Task.isCancelled, requested == loadID else { return }
+        unavailable = false
 
         var result: [AyahGroup] = []
         for item in items {

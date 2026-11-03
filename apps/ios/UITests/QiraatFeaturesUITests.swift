@@ -48,7 +48,7 @@ final class QiraatFeaturesUITests: XCTestCase {
 
     /// A tap on the reading header shows or hides the controls; on the page, any spot can be a marked word.
     private func showControls(in app: XCUIApplication) {
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()
+        app.chromeMarginCoordinate.tap()
     }
 
     /// Scrolls the settings collection view to bring a target row into view.

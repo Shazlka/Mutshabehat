@@ -48,7 +48,7 @@ final class QiraatCardReviewUITests: XCTestCase {
     /// The switch is in Settings → المطور and is on until someone turns it off.
     func testTheSwitchIsInTheDeveloperSettingsAndOnByDefault() {
         let app = launch()
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()   // margin tap shows the chrome
+        app.chromeMarginCoordinate.tap()   // margin tap shows the chrome
         let settings = app.buttons["settings-button"]
         XCTAssertTrue(settings.waitForExistence(timeout: 20))
         settings.tap()

@@ -220,7 +220,7 @@ public final class MushafDatabase {
                 SELECT w.word_id,w.surah,w.ayah,w.page,w.word_index,w.uthmani_text,y.ayah_text,'rasm',50
                 FROM quran_word_search w JOIN quran_ayah_search y ON y.surah=w.surah AND y.ayah=w.ayah
                 WHERE w.rasm_key=?\(scope)
-                ORDER BY surah,ayah,word_index LIMIT ?
+                ORDER BY w.surah,w.ayah,w.word_index LIMIT ?
                 """, binds: [token.rasmKey, String(limit)])
             if !rasm.isEmpty { return rasm }
         }
@@ -240,7 +240,7 @@ public final class MushafDatabase {
             SELECT w.word_id,w.surah,w.ayah,w.page,w.word_index,w.uthmani_text,y.ayah_text,'fuzzy',65
             FROM quran_word_search w JOIN quran_ayah_search y ON y.surah=w.surah AND y.ayah=w.ayah
             WHERE w.canonical_text IN (\(placeholders))\(scope)
-            ORDER BY surah,ayah,word_index LIMIT ?
+            ORDER BY w.surah,w.ayah,w.word_index LIMIT ?
             """, binds: values + [String(limit)])
         let scores = Dictionary(uniqueKeysWithValues: candidates.map { ($0.0, Int(($0.1 * 20).rounded()) + 55) })
         matches = matches.map { result in
@@ -250,7 +250,10 @@ public final class MushafDatabase {
                                     uthmaniWord: result.uthmaniWord, matchedText: result.matchedText,
                                     matchType: .fuzzy, score: scores[form] ?? 65)
         }
-        return matches.sorted { $0.score == $1.score ? $0.ayah.description < $1.ayah.description : $0.score > $1.score }
+        return matches.sorted {
+            $0.score != $1.score ? $0.score > $1.score
+                : ($0.ayah.surah, $0.ayah.ayah) < ($1.ayah.surah, $1.ayah.ayah)
+        }
     }
 
     private func searchRows(_ sql: String, binds: [String], idsColumn: Int32? = nil,

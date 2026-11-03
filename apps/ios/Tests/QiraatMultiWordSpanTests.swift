@@ -10,7 +10,10 @@ final class QiraatMultiWordSpanTests: XCTestCase {
 
     override func setUp() async throws {
         try await super.setUp()
-        library = try MushafLibrary()
+        // These tests name exact record ids from the bundled snapshot. The default library lays the simulator's live-sync
+        // overlay over it, and the web review page keeps editing (and deleting) those records, so pin the snapshot.
+        let snapshot = try XCTUnwrap(Bundle.main.url(forResource: "Qiraat", withExtension: nil))
+        library = try MushafLibrary(qiraatStore: try QiraatStore(directory: snapshot))
     }
 
     override func tearDown() async throws {

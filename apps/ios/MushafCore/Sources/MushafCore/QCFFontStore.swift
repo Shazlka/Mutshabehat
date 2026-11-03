@@ -72,7 +72,8 @@ public final class QCFFontStore: @unchecked Sendable {
 
     /// Pages around `page` worth having decoded: one spread back, two spreads forward.
     public static func neighbourhood(of page: Int) -> ClosedRange<Int> {
-        max(1, page - 2)...min(mushafPageCount, page + 4)
+        let page = min(max(page, 1), mushafPageCount)
+        return max(1, page - 2)...min(mushafPageCount, page + 4)
     }
 
     private func descriptor(page: Int) throws -> CTFontDescriptor {

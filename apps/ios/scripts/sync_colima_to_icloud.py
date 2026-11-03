@@ -241,6 +241,25 @@ def build_mutshabehat_sqlite(data: dict, output_path: Path):
     conn.close()
 
 
+def sql_text(value) -> str:
+    """A string as a quoted SQL literal. The iCloud JSON comes from another device, so it is data, never SQL."""
+    text = "" if value is None else str(value)
+    if "\x00" in text:
+        raise ValueError("a text value contains a NUL byte")
+    return "'" + text.replace("'", "''") + "'"
+
+
+def sql_timestamp(value) -> str:
+    """A timestamp as a SQL literal. Only a real ISO-8601 date is accepted and it is written back in one fixed form,
+    so a value like `x'); DROP TABLE groups; --` in the JSON cannot reach the database. Missing means now."""
+    if value is None or value == "":
+        return "now()"
+    parsed = datetime.fromisoformat(str(value).replace("Z", "+00:00"))  # ValueError for anything else
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return f"'{parsed.isoformat()}'::timestamptz"
+
+
 def import_to_colima(json_path: Path):
     print(f"=== Importing from iCloud JSON into Colima PostgreSQL: {json_path} ===")
     if not json_path.exists():
@@ -272,12 +291,12 @@ def import_to_colima(json_path: Path):
         comp = "true" if g.get("completed") else "false"
         note = (g.get("note") or "").replace("'", "''")
         unote = (g.get("unote") or "").replace("'", "''")
-        created_at = g.get("created_at") or "now()"
-        updated_at = g.get("updated_at") or "now()"
+        created_at = sql_timestamp(g.get("created_at"))
+        updated_at = sql_timestamp(g.get("updated_at"))
 
         statements.append(f"""
         INSERT INTO groups (id, user_id, title, color, status, favorite, completed, note, unote, created_at, updated_at)
-        VALUES ('{gid}', '{user_id_query}', '{title}', '{color}', '{status}', {fav}, {comp}, '{note}', '{unote}', '{created_at}', '{updated_at}')
+        VALUES ('{gid}', '{user_id_query}', '{title}', '{color}', '{status}', {fav}, {comp}, '{note}', '{unote}', {created_at}, {updated_at})
         ON CONFLICT (id) DO UPDATE SET
             title = EXCLUDED.title,
             color = EXCLUDED.color,

@@ -58,6 +58,28 @@ final class QiraatLiveSyncTests: XCTestCase {
         XCTAssertEqual(announcements.pages, [8], "only a real change redraws the page")
     }
 
+    private func pageEight(variants count: Int) -> String {
+        let records = (0..<count).map {
+            #"{"id":"v-\#($0)","surah":2,"ayah":51,"startToken":\#($0 + 1),"hafsText":"a","variantText":"b","verificationStatus":"REVIEWED","readingIds":["Q06-R01"]}"#
+        }
+        return #"{"pageNumber":8,"variants":[\#(records.joined(separator: ","))],"rulings":[],"rules":[]}"#
+    }
+
+    /// The web review page is the source of truth and is still being edited: variants are modified, added and deleted
+    /// there. A page that comes back with fewer records is a deletion the reviewer made, and it must reach the app, not be
+    /// refused as a "suspicious shrink" (which left the deleted variants on the phone for good).
+    func testADeletionMadeInTheWebReviewPageReachesTheApp() async {
+        let big = pageEight(variants: 12)
+        _ = try? store.applyLivePage(Data(big.utf8), number: 8)
+        XCTAssertEqual(store.page(8)?.variants.count, 12)
+
+        let sync = QiraatLiveSync(fetch: { _ in Data(self.pageEight(variants: 2).utf8) }, minInterval: 0)
+        let outcome = await sync.refresh(page: 8, store: store)
+
+        XCTAssertEqual(outcome, .updated)
+        XCTAssertEqual(store.page(8)?.variants.count, 2)
+    }
+
     func testAFailedFetchKeepsWhatIsShown() async {
         struct Offline: Error {}
         let sync = QiraatLiveSync(fetch: { _ in throw Offline() }, minInterval: 0)

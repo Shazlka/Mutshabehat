@@ -25,6 +25,8 @@ struct ReaderTopBar: View {
     var khatmaPercent: Double = 0
     var openStatistics: () -> Void = {}
     let onTapHeader: () -> Void
+    /// A tap on the surah name opens the index (the same sheet as the bottom bar's الفهرس).
+    var openIndex: () -> Void = {}
     /// `.vertical`: the left side rail of iPad landscape.
     var axis: Axis = .horizontal
 
@@ -38,7 +40,7 @@ struct ReaderTopBar: View {
     private var column: some View {
         let ink = Color(uiColor: appearance.ink(for: traits))
         return VStack(alignment: .leading, spacing: 14) {
-            SurahTitle(text: surahTitle, ink: ink, tight: false, wraps: true)
+            surahTitleButton(ink: ink, tight: false, wraps: true)
                 .frame(maxWidth: .infinity, alignment: .leading)
             if let section { railSection(section, ink: ink) }
             Capsule().fill(ink.opacity(0.15)).frame(height: 1).accessibilityHidden(true)
@@ -145,7 +147,7 @@ struct ReaderTopBar: View {
         return HStack(alignment: .center, spacing: tight ? 6 : 10) {
             if !pageNumbers.isEmpty { pageNumberText(ink: ink).fixedSize() }
 
-            SurahTitle(text: surahTitle, ink: ink, tight: tight)
+            surahTitleButton(ink: ink, tight: tight, wraps: false)
 
             Spacer(minLength: tight ? 4 : 8)
             HStack(spacing: tight ? 5 : 8) {
@@ -159,6 +161,15 @@ struct ReaderTopBar: View {
                 sectionLabel(section, ink: ink, stacked: stackedSection)
             }
         }
+    }
+
+    /// The surah name; a tap opens the index so the reader need not go to the bottom bar. A tap gesture rather than a
+    /// `Button` keeps it a static text for VoiceOver and the UI tests; the index is offered as an accessibility action.
+    private func surahTitleButton(ink: Color, tight: Bool, wraps: Bool) -> some View {
+        SurahTitle(text: surahTitle, ink: ink, tight: tight, wraps: wraps)
+            .contentShape(Rectangle())
+            .onTapGesture(perform: openIndex)
+            .accessibilityAction(named: Text(memorizationLanguage == .english ? "Open the index" : "فتح الفهرس"), openIndex)
     }
 
     private func pageNumberText(ink: Color) -> some View {

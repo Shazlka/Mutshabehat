@@ -26,6 +26,16 @@ public enum MatnOverlay {
         return seq
     }
 
+    /// The library the live copy in `directory` makes, or nil when it loads as no works at all (damaged files, a schema
+    /// this build does not know). Such a copy must not replace a library that works, so its sequence is forgotten: the
+    /// next sync then takes a fresh snapshot instead of another delta on top of it.
+    public static func loadUsable(directory: URL, sharhDirectory: URL?) -> MatnLibrary? {
+        let library = MatnLibrary(directory: directory, sharhDirectory: sharhDirectory)
+        guard library.isEmpty else { return library }
+        try? FileManager.default.removeItem(at: directory.appendingPathComponent(seqFileName))
+        return nil
+    }
+
     /// Writes a whole snapshot (`{seq, document: {mutoon}, symbols}`) as the live copy. Returns its sequence, or nil when
     /// the server did not send one (an older server: the copy then never patches and is re-taken each time).
     @discardableResult
@@ -56,10 +66,18 @@ public enum MatnOverlay {
 
         let mutoonURL = directory.appendingPathComponent(MatnLibrary.fileName)
         let symbolsURL = directory.appendingPathComponent(MatnSymbolLayer.fileName)
-        guard var mutoon = try JSONSerialization.jsonObject(with: Data(contentsOf: mutoonURL)) as? [String: Any],
+        // A file that is there but cannot be read is damaged: only a fresh snapshot can repair it. Throwing would make
+        // the caller retry the same failing delta forever, and reading a damaged symbols file as "no marks" would write
+        // it back holding only the edited verses' marks.
+        guard let mutoonData = try? Data(contentsOf: mutoonURL),
+              var mutoon = (try? JSONSerialization.jsonObject(with: mutoonData)) as? [String: Any],
               var works = mutoon["works"] as? [[String: Any]] else { return .needsSnapshot }
-        var symbols: [String: Any] = (try? Data(contentsOf: symbolsURL))
-            .flatMap { try? JSONSerialization.jsonObject(with: $0) as? [String: Any] } ?? ["schemaVersion": 1, "annotations": [Any]()]
+        var symbols: [String: Any] = ["schemaVersion": 1, "annotations": [Any]()]
+        if FileManager.default.fileExists(atPath: symbolsURL.path) {
+            guard let data = try? Data(contentsOf: symbolsURL),
+                  let object = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] else { return .needsSnapshot }
+            symbols = object
+        }
         var annotations = symbols["annotations"] as? [[String: Any]] ?? []
 
         var changedKeys = Set<String>()

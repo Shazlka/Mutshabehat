@@ -54,6 +54,156 @@
         }
       }
     },
+    "عُيّن يدويًا من محرر المتون" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Assigned by hand in the matn editor"
+          }
+        }
+      }
+    },
+    "تعيين على الكلمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Assignment on the word"
+          }
+        }
+      }
+    },
+    "تعذّر تحميل خلافات هذه الصفحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Could not load this page's differences"
+          }
+        }
+      }
+    },
+    "عليها علامة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Bookmarked"
+          }
+        }
+      }
+    },
+    "انقر مرتين لإظهار أدوات القراءة أو إخفائها" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Double-tap to show or hide the reading tools"
+          }
+        }
+      }
+    },
+    "الصفحة التالية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Next page"
+          }
+        }
+      }
+    },
+    "الصفحة السابقة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Previous page"
+          }
+        }
+      }
+    },
+    "الآية %lld، %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ayah %lld, %@"
+          }
+        }
+      }
+    },
+    "انقر مرتين لخيارات الآية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Double-tap for ayah options"
+          }
+        }
+      }
+    },
+    "خيارات الآية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ayah options"
+          }
+        }
+      }
+    },
+    "%@، فيها قراءات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%@, has qiraat variants"
+          }
+        }
+      }
+    },
+    "نتيجة البحث: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Search result: %@"
+          }
+        }
+      }
+    },
+    "حالة الحفظ: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Memorization status: %@"
+          }
+        }
+      }
+    },
+    "تعذّر تحميل بيانات القراءات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Could not load the Qiraat data"
+          }
+        }
+      }
+    },
+    "%@ عن %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%@ from %@"
+          }
+        }
+      }
+    },
     "%@ - آية %@" : {
       "localizations" : {
         "ar" : {
@@ -205,6 +355,9 @@
           }
         }
       }
+    },
+    "%lld hidden" : {
+
     },
     "%lld آية" : {
 
@@ -369,6 +522,9 @@
           }
         }
       }
+    },
+    "%lld مخفية" : {
+
     },
     "%lld مواضع" : {
 
@@ -592,6 +748,9 @@
 
     },
     "OK" : {
+
+    },
+    "Open the index" : {
 
     },
     "Opens reading statistics" : {
@@ -1015,7 +1174,7 @@
         }
       }
     },
-    "Turn a category off to hide its marks, cards and search results. \"Farsh only\" above hides all of them." : {
+    "Turn a category off to hide its marks, cards and search results. \"Farsh only\" hides all of them." : {
 
     },
     "Undo" : {
@@ -1099,7 +1258,7 @@
     "أطول مدة مداومة: %lld يوم" : {
 
     },
-    "أغلق البابَ لإخفاء علاماته وبطاقاته ونتائج البحث عنه. خيار «فرش فقط» أعلاه يخفي الأبواب كلها." : {
+    "أغلق البابَ لإخفاء علاماته وبطاقاته ونتائج البحث عنه. خيار «فرش فقط» يخفي الأبواب كلها." : {
 
     },
     "أقل" : {
@@ -3763,6 +3922,9 @@
           }
         }
       }
+    },
+    "فتح الفهرس" : {
+
     },
     "فرش الحروف" : {
       "extractionState" : "stale",

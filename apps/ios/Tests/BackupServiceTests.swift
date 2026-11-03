@@ -68,9 +68,14 @@ final class BackupServiceTests: XCTestCase {
                                   goals: [], meta: [:])
     }
 
-    private func makeService(folderProvider: (@Sendable () -> URL?)? = nil) -> BackupService {
+    private func emptyExport(device: String) -> MemorizationExport {
+        MemorizationExport(exportedAt: clock, deviceID: device, records: [], batches: [], events: [], goals: [], meta: [:])
+    }
+
+    private func makeService(memorization override: MemorizationExport? = nil,
+                             folderProvider: (@Sendable () -> URL?)? = nil) -> BackupService {
         let provider = folderProvider ?? { [root] in root }
-        let snapshot = export()
+        let snapshot = override ?? export()
         let box = qiraat
         let sources = BackupService.Sources(
             memorizationExport: { snapshot },
@@ -138,6 +143,36 @@ final class BackupServiceTests: XCTestCase {
         let second = try await service.runBackup(reason: .debounced)
         XCTAssertFalse(second.skipped)
         XCTAssertEqual(historyFolders().count, 2)
+    }
+
+    /// A reinstalled app or a second device on the same iCloud folder starts with an empty memorization store and no
+    /// «last backup» of its own, so its launch backup runs at once. Retention keeps only the newest set of each day, so
+    /// an empty set written over a real one would delete it. An automatic run must leave the real backup alone.
+    func testAutomaticBackupOfAnEmptyStoreDoesNotReplaceANonEmptyBackup() async throws {
+        _ = try await makeService().runBackup(reason: .manual)
+        try addRow("memorization")                                   // the new device's database differs
+        clock = clock.addingTimeInterval(3_600)                      // the same local day
+        let fresh = makeService(memorization: emptyExport(device: "other"))
+
+        let result = try await fresh.runBackup(reason: .launch)
+
+        XCTAssertTrue(result.skipped)
+        XCTAssertEqual(historyFolders().count, 1)
+        let latest = try manifest(at: backups.appendingPathComponent("latest"))
+        XCTAssertEqual(latest.files.first { $0.name == "memorization.json" }?.rowCount, 1)
+    }
+
+    /// The same empty store is still backed up when the person asks for it.
+    func testManualBackupOfAnEmptyStoreIsStillWritten() async throws {
+        _ = try await makeService().runBackup(reason: .manual)
+        try addRow("memorization")
+        clock = clock.addingTimeInterval(3_600)
+
+        let result = try await makeService(memorization: emptyExport(device: "other")).runBackup(reason: .manual)
+
+        XCTAssertFalse(result.skipped)
+        let latest = try manifest(at: backups.appendingPathComponent("latest"))
+        XCTAssertEqual(latest.files.first { $0.name == "memorization.json" }?.rowCount, 0)
     }
 
     func testQiraatArchiveIsRefreshedOnlyWhenMissingOrOnManualBackup() async throws {

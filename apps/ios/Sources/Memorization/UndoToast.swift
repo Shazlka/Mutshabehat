@@ -51,6 +51,13 @@ struct UndoToast: View {
         .padding(.horizontal, 16)
         .shadow(color: .black.opacity(0.12), radius: 8, y: 2)
         .onTapGesture(perform: dismiss)
+        .onAppear {
+            // The toast is an overlay that comes last in reading order and goes away by itself: say it out loud.
+            let milestones = state.milestones.map {
+                MilestoneText.describe($0, language: language, surahName: surahName)
+            }
+            UIAccessibility.post(notification: .announcement, argument: ([message] + milestones).joined(separator: ". "))
+        }
     }
 
     private var message: String {
@@ -100,7 +107,9 @@ private struct MemorizationToastModifier: ViewModifier {
             .task(id: toast?.id) {
                 guard let current = toast else { return }
                 if !current.milestones.isEmpty { UINotificationFeedbackGenerator().notificationOccurred(.success) }
-                try? await Task.sleep(for: .seconds(8))
+                // Undo is on this toast only; someone navigating by VoiceOver or Switch Control needs longer than 8 s to reach it.
+                let assistive = UIAccessibility.isVoiceOverRunning || UIAccessibility.isSwitchControlRunning
+                try? await Task.sleep(for: .seconds(assistive ? 60 : 8))
                 if toast?.id == current.id { toast = nil }
             }
     }

@@ -36,7 +36,7 @@ final class QiraatTopBarUITests: XCTestCase {
     }
 
     private func showChrome(_ app: XCUIApplication) {
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()
+        app.chromeMarginCoordinate.tap()
         XCTAssertTrue(app.buttons["open-index"].waitForExistence(timeout: 20))
     }
 
@@ -220,7 +220,7 @@ final class QiraatTopBarUITests: XCTestCase {
         app.buttons["qiraat-reader-all"].tap()
         XCTAssertEqual(mushafPage.frame, before, "the page moved when the filter changed from the menu")
 
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()   // back to the reading header
+        app.chromeMarginCoordinate.tap()   // back to the reading header
         XCTAssertFalse(element("qiraat-filter-chip", in: app).waitForExistence(timeout: 2), "the filter is all again")
         XCTAssertEqual(mushafPage.frame, before)
     }
@@ -234,7 +234,7 @@ final class QiraatTopBarUITests: XCTestCase {
         let warsh = app.buttons["qiraat-narrator-Q01-R02"]
         XCTAssertTrue(warsh.waitForExistence(timeout: 20))
         warsh.tap()
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.80, dy: 0.09)).tap()
+        app.chromeMarginCoordinate.tap()
         XCTAssertTrue(element("qiraat-filter-chip", in: app).waitForExistence(timeout: 20))
     }
 

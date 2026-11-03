@@ -1,5 +1,6 @@
 import Foundation
 import MushafCore
+import os
 
 /// Brings every page of the Qiraat layer up to date with the web app's database right after the app opens.
 ///
@@ -25,6 +26,8 @@ final class QiraatBulkSync {
     nonisolated static let repeatAfter: TimeInterval = 10 * 60
     nonisolated static let concurrency = 4
     nonisolated static let giveUpAfterConsecutiveFailures = 6
+
+    private static let log = Logger(subsystem: "com.shazlka.qiraat", category: "live-sync")
 
     private var task: Task<Void, Never>?
     private let defaults: UserDefaults
@@ -54,8 +57,14 @@ final class QiraatBulkSync {
         task = Task { [weak self] in
             let summary = await self?.run(around: page, store: store, sync: sync)
             guard let self else { return }
-            if let summary, !summary.gaveUp, summary.failed == 0 {
+            if let summary, !summary.gaveUp {
+                // A page the server keeps refusing does not make the pass worthless: every other page was reached, and
+                // crawling all ~600 again on each open would not change that one. Failed pages are retried after
+                // `repeatAfter`. Only a pass that gave up (the network looks down) is retried at the next open.
                 defaults.set(Date(), forKey: Self.lastCompletedKey)
+                if summary.failed > 0 {
+                    Self.log.error("bulk sync finished with \(summary.failed) failed page(s)")
+                }
             }
             task = nil
         }

@@ -3,6 +3,20 @@ import Testing
 @testable import MushafCore
 
 @Suite struct QiraatPageSummaryTests {
+    /// Loading and "no differences" used to be the same empty list, so a Qiraat store that was missing or a database that
+    /// would not open told the reader a page had no differences. `nil` now means the data could not be loaded.
+    @Test func loadingThatFailsIsNotAnEmptySummary() async throws {
+        let store = try QiraatStore(directory: generatedDirectory.appendingPathComponent("Qiraat"))
+        let missing = FileManager.default.temporaryDirectory.appendingPathComponent("none-\(UUID().uuidString).sqlite")
+        let real = generatedDirectory.appendingPathComponent("mushaf.sqlite")
+        let cache = QiraatResolvedPageCache()
+
+        #expect(await QiraatPageSummary.load(store: nil, databaseURL: real, pages: [2], filter: .all, cache: cache) == nil)
+        #expect(await QiraatPageSummary.load(store: store, databaseURL: missing, pages: [2], filter: .all, cache: cache) == nil)
+        let loaded = await QiraatPageSummary.load(store: store, databaseURL: real, pages: [2], filter: .all, cache: cache)
+        #expect(loaded != nil)
+    }
+
     @Test(arguments: [2, 20, 41, 62, 83, 104, 125, 146, 167, 188,
                       208, 249, 290, 331, 372, 413, 454, 495, 546, 604])
     func sampledPageCountsAndWordsMatchDrawnMarks(page: Int) throws {

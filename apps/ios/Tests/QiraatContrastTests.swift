@@ -65,6 +65,50 @@ final class QiraatContrastTests: XCTestCase {
         }
     }
 
+    /// The underline, dotted line and dots are the only cue for which reader a word belongs to. The word itself was lifted
+    /// to 3:1 on the page but they were drawn in the raw data colour, which fell to 2.3:1 (Q10 slate on the dark page)
+    /// and 2.9:1 (gold on cream). WCAG 1.4.11 asks 3:1 for such marks, on every page background the reader offers.
+    func testEveryMarkColourStandsOutFromEveryPageBackground() throws {
+        let folder = try XCTUnwrap(Bundle.main.url(forResource: "Qiraat", withExtension: nil))
+        var hexes = Set<String>()
+        for file in try FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil)
+        where file.pathExtension == "json" {
+            hexes.formUnion(try colorHexes(in: String(contentsOf: file, encoding: .utf8)))
+        }
+        XCTAssertFalse(hexes.isEmpty)
+        for appearance in MushafAppearance.allCases {
+            for (label, style) in styles {
+                let traits = UITraitCollection(userInterfaceStyle: style)
+                let paper = appearance.paper(for: traits)
+                for hex in hexes {
+                    let mark = UIColor.qiraatMark(hex: hex, appearance: appearance, traits: traits)
+                    XCTAssertGreaterThanOrEqual(mark.contrast(with: paper), 3,
+                                                "\(hex) on \(appearance.rawValue) (\(label))")
+                }
+            }
+        }
+    }
+
+    /// The ruling word on a card is 28 to 40 pt text, which WCAG 1.4.3 allows at 3:1. In the raw data colour the gold fell
+    /// to 2.9:1 on the light card and the violet to 2.7:1 on the dark one.
+    func testTheRulingWordOnACardReadsAtThreeToOneInBothModes() throws {
+        let folder = try XCTUnwrap(Bundle.main.url(forResource: "Qiraat", withExtension: nil))
+        var hexes = Set<String>()
+        for file in try FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil)
+        where file.pathExtension == "json" {
+            hexes.formUnion(try colorHexes(in: String(contentsOf: file, encoding: .utf8)))
+        }
+        XCTAssertFalse(hexes.isEmpty)
+        for (label, style) in styles {
+            let traits = UITraitCollection(userInterfaceStyle: style)
+            let card = QiraatPalette.cardFill.resolvedColor(with: traits)
+            for hex in hexes {
+                let text = UIColor.qiraatCardText(hex: hex, traits: traits)
+                XCTAssertGreaterThanOrEqual(text.contrast(with: card), 3, "\(hex) on the card in \(label) mode")
+            }
+        }
+    }
+
     func testPillInitialSkipsTheKindLabelAndTheArticle() {
         XCTAssertEqual(AuthorityPill.initial(ofName: "الإمام نافع"), "ن")
         XCTAssertEqual(AuthorityPill.initial(ofName: "الراوي ورش"), "و")

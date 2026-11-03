@@ -87,7 +87,7 @@ struct MushafPager: UIViewControllerRepresentable {
             guard (1...mushafPageCount).contains(target) else { return false }
             parent.page = target
             show(target, in: pager, animated: true)
-            UIAccessibility.post(notification: .pageScrolled, argument: "صفحة \(target)")
+            UIAccessibility.post(notification: .pageScrolled, argument: "\(appLocalized("صفحة")) \(target)")
             return true
         }
 
@@ -129,7 +129,9 @@ struct MushafPager: UIViewControllerRepresentable {
                 controllers = [single]
             }
             let forward = target > (current ?? 0)
-            pager.setViewControllers(controllers, direction: forward ? .reverse : .forward, animated: animated && current != nil)
+            // A jump across hundreds of pages would otherwise play a full 3D curl for someone who asked for less motion.
+            let animate = animated && current != nil && !UIAccessibility.isReduceMotionEnabled
+            pager.setViewControllers(controllers, direction: forward ? .reverse : .forward, animated: animate)
             prewarm(around: target)
         }
 

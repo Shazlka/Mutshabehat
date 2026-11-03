@@ -111,6 +111,14 @@ struct SettingsView: View {
                         .disabled(!qiraat.enabled || qiraat.hidesUsul)
                         .accessibilityIdentifier("open-qiraat-usul-categories")
                     }
+                } else {
+                    // The Qiraat data failed to load (a damaged install or import). Hiding the whole section made that
+                    // look like a build without the feature, so say it.
+                    Section(appLanguage == .english ? "Ten Qira'at" : "القراءات العشر") {
+                        Label(appLanguage == .english ? "Could not load the Qiraat data" : "تعذّر تحميل بيانات القراءات",
+                              systemImage: "exclamationmark.triangle")
+                            .accessibilityIdentifier("qiraat-data-unavailable")
+                    }
                 }
                 Section(appLanguage == .english ? "Cloud Synchronization" : "مزامنة السحابة") {
                     NavigationLink {

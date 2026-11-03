@@ -1,4 +1,5 @@
 import Foundation
+import os
 
 /// An أصول باب as the data names it, for the reader's list of what to show.
 public struct QiraatUsulCategory: Sendable, Hashable, Identifiable {
@@ -148,7 +149,13 @@ public final class QiraatStore: @unchecked Sendable {
 
     private func decodePage(at url: URL?, number: Int) -> QiraatPageData? {
         guard let url, let data = try? Data(contentsOf: url) else { return nil }
-        return Self.decodePage(data, number: number)
+        let page = Self.decodePage(data, number: number)
+        if page == nil {
+            // A page file that is there but will not decode looks exactly like a page with no data. Leave a trace.
+            Logger(subsystem: "com.shazlka.qiraat", category: "qiraat-store")
+                .error("page \(number) at \(url.lastPathComponent, privacy: .public) does not decode; treated as having no data")
+        }
+        return page
     }
 
     private static func decodePage(_ data: Data, number: Int) -> QiraatPageData? {
