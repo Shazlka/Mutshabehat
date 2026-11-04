@@ -1164,6 +1164,15 @@ export default function Mushaf1441Viewer({
   // The loaded Qiraat data by page number, for the sheets that look across pages (colour key, search, index).
   const variantsByPageNumber = useMemo(() => byPageNumber(qiraatVariantsByPage), [qiraatVariantsByPage])
   const rulingsByPageNumber = useMemo(() => byPageNumber(visibleRulingsByPage), [visibleRulingsByPage])
+  const visibleQiraatPages = useMemo(() => (companionPageNumber ? [pageNumber, companionPageNumber].sort((x, y) => x - y) : [pageNumber]), [pageNumber, companionPageNumber])
+  // Words of the visible page(s) in the shape the sheets need (only real words, not end/pause marks).
+  const summaryWords = useMemo(
+    () => visibleQiraatPages
+      .flatMap((no) => (pageCache[no]?.lines ?? []).flatMap((line) => line.words))
+      .filter((w) => w.charTypeName === undefined || w.charTypeName === 'word')
+      .map((w) => Object.assign(toOrderable(w), { text: w.textUthmani })),
+    [visibleQiraatPages, pageCache],
+  )
   function updateUsulPrefs(next: QiraatUsulPrefs) {
     setUsulPrefs(next)
     try { saveUsulPrefs(window.localStorage, next) } catch { /* storage unavailable */ }
@@ -5322,6 +5331,12 @@ export default function Mushaf1441Viewer({
         onFilterChange={setQiraatFilter}
         variantsByPage={variantsByPageNumber}
         rulingsByPage={rulingsByPageNumber}
+        pages={visibleQiraatPages}
+        words={summaryWords}
+        onSelectWord={(wordId) => {
+          const target = visibleQiraatPages.flatMap((no) => (pageCache[no]?.lines ?? []).flatMap((line) => line.words)).find((w) => w.id === wordId)
+          if (target) goToMarkedQiraatWord(target)
+        }}
       />
     </div>
   )

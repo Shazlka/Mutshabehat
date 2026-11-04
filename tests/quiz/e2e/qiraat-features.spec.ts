@@ -152,3 +152,24 @@ test.describe('colour key', () => {
   })
 })
 
+test.describe('page summary', () => {
+  test('the summary lists the marked words and a tap opens that word in the sheet', async ({ page }) => {
+    await openQiraatPage(page, 17)
+    await page.getByTestId('qiraat-hub').first().locator('summary').click()
+    await page.getByTestId('hub-pageSummary').first().click()
+    const summary = page.getByTestId('page-summary')
+    await expect(summary).toBeVisible()
+    const items = summary.getByTestId('summary-item')
+    expect(await items.count()).toBeGreaterThan(2)
+    const second = items.nth(1)
+    const wordText = (await second.locator('span').nth(1).innerText()).trim()
+    await second.click()
+    await expect(summary).toBeHidden()
+    // The pointer is left over a page word, whose hover card takes the sidebar; park it on the page margin.
+    await page.mouse.move(2, 400)
+    await expect(sheet(page)).toBeVisible()
+    expect(wordText.length).toBeGreaterThan(0)
+    await expect(page.locator('aside[data-reader-sidebar="qiraat"]')).toContainText(wordText)
+  })
+})
+

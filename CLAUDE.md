@@ -48,6 +48,11 @@ section below **and** the root
 
 # Changelog
 
+## 2026-11-04 — Web parity step 7: page summary «ملخص الصفحة» (branch web/ios-parity)
+- **Change:** hub «المزيد» → «ملخص الصفحة» lists every marked word of the visible page(s) in the page's reading order with its فرش faces (reading + reader/narrator pills) and its أصول rulings grouped by باب and by action; tapping an item closes the sheet and opens that word in the word sheet. An empty page says «لا توجد قراءات على هذه الصفحة»; the reader filter narrows both the words and the pills. Ported from the iOS `QiraatPageSummary` with its test cases.
+- **Verification:** 8 new unit tests (feature suite 53/53), Playwright 9/9 on page 17 (the tapped word's text appears in the sidebar sheet), `test:qiraat` 51/51, typecheck, `next build`. **Note:** a hover card over a page word still takes the sidebar over the pinned word (existing behaviour), so the pointer must leave the page for the opened word to show. **DB migration:** none.
+- **Files:** `packages/qiraat-core/features/pageSummary.ts`, `src/app/mushaf-1441/_features/{page-summary/PageSummarySheet,host/AuthorityPills,host/QiraatFeaturesHost}.tsx`, `Mushaf1441Viewer.tsx`, `tests/qiraat/features/page-summary.test.ts`, `tests/quiz/e2e/qiraat-features.spec.ts`.
+
 ## 2026-11-04 — Web parity step 6: colour key «مفتاح الألوان» (branch web/ios-parity)
 - **Change:** hub «المزيد» → «مفتاح الألوان»: three tabs. القرّاء lists the ten readers with their narrators in their own colours, each with a real Mushaf word that only that authority reads (and its page) when the loaded pages have one; الأبواب lists the أصول باب of the loaded pages with its colour and a real word; العلامات explains the nine marks the page draws (solid, segmented, performance, grey, dotted ذو وجهين, family dot, إمالة dot, تقليل ring, coloured word) in text. Colour is never the only cue (every row carries its name). Ported from the iOS `QiraatLegendSheet`. Sample words come from the pages the viewer has loaded (current, neighbours), so a rarely-read authority may show no word until its pages are visited.
 - **Verification:** 6 new unit tests (feature suite 45/45), Playwright 8/8 (hub → colour key, three tabs, close), `test:qiraat` 51/51, typecheck, `next build`. **DB migration:** none.
