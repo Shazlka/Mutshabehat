@@ -252,10 +252,8 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
         }
         pageView.layer.borderWidth = 0.5
         pageView.layer.borderColor = appearance.brown(for: traitCollection).withAlphaComponent(0.20).cgColor
-        pageView.layer.shadowColor = UIColor.black.cgColor
         pageView.layer.shadowOpacity = isSpreadHalf ? 0.16 : 0.10
-        pageView.layer.shadowRadius = 8
-        pageView.layer.shadowOffset = CGSize(width: 0, height: 3)
+        pageView.updateShadowPath()
     }
 
     private func configureMetadataLabels() {

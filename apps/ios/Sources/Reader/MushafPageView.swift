@@ -95,10 +95,11 @@ final class MushafPageView: UIView {
         backgroundColor = paper
         contentMode = .redraw
         isAccessibilityElement = false
-        layer.shadowColor = UIColor(red: 0.25, green: 0.19, blue: 0.08, alpha: 1).cgColor
-        layer.shadowOpacity = 0.12
-        layer.shadowRadius = 12
-        layer.shadowOffset = CGSize(width: 0, height: 6)
+        // The page's one shadow (its strength follows spread/single in `PageController`).
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.10
+        layer.shadowRadius = 8
+        layer.shadowOffset = CGSize(width: 0, height: 3)
         registerForTraitChanges([UITraitUserInterfaceStyle.self]) { (view: MushafPageView, _) in
             view.backgroundColor = view.paper
             view.setNeedsDisplay()
@@ -388,6 +389,21 @@ final class MushafPageView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         layoutPage()
+        updateShadowPath()
+    }
+
+    /// An explicit outline for the shadow, so Core Animation does not render the page offscreen to find it on every
+    /// frame of a page curl. Follows the layer's corner radius and its rounded corners.
+    func updateShadowPath() {
+        var corners: UIRectCorner = []
+        let mask = layer.maskedCorners
+        if mask.contains(.layerMinXMinYCorner) { corners.insert(.topLeft) }
+        if mask.contains(.layerMaxXMinYCorner) { corners.insert(.topRight) }
+        if mask.contains(.layerMinXMaxYCorner) { corners.insert(.bottomLeft) }
+        if mask.contains(.layerMaxXMaxYCorner) { corners.insert(.bottomRight) }
+        let radius = layer.cornerRadius
+        layer.shadowPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners,
+                                        cornerRadii: CGSize(width: radius, height: radius)).cgPath
     }
 
     /// The marked word under `point` (page coordinates), with a little slop around its glyph box.

@@ -3,6 +3,12 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-11-04 — One page shadow with an explicit path
+- **Audit finding (P2):** `MushafPageView` set a brown shadow in `init`, then `PageController.updateBookStyling` replaced it with a black one (the first was dead code), and neither set a `shadowPath`, so Core Animation rendered the page offscreen to find its outline on every frame of a page curl.
+- **Change:** the page view defines the shadow once (black, radius 8, offset 0/3) and sets `shadowPath` from its bounds, corner radius and rounded corners (`updateShadowPath()`, on every layout and after the controller sets spread or single corners). The controller only sets the strength (0.16 spread, 0.10 single). The look is unchanged.
+- **Tests:** `PageShadowTests` (path present and page-sized, follows a resize, one definition); `SpineShadingTests` and `MushafPageHitTestTests` still pass. Simulator screenshot of page 3 matches before. `make perf` and the iPad spread were not run.
+- **Files:** `Sources/Reader/{MushafPageView,PageController}.swift`, `Tests/PageShadowTests.swift`.
+
 ## [Unreleased] — 2026-11-04 — Words and marks keep 3:1 on the reader's page wash
 - **Bug (from the audit):** `qiraatGlyph` / `qiraatMark` lifted each Qiraat word and mark to 3:1 against the plain paper, but with a reader chosen the page is the washed paper. In a simulation 10 of 40 reader and theme combinations fell under 3:1 (light Q08 2.73, dark Q04 2.63).
 - **Fix:** both helpers take the wash (`tint:`, default none) and measure on the washed paper; the page view passes `qiraat.pageTint` for words and marks.
