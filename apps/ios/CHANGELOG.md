@@ -3,6 +3,12 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-11-04 — Reader page wash halved to a light touch
+- **Request:** the per-reader page colour should be softer and lighter, just a light touch of the colour.
+- **Change:** `QiraatPageTint.washAmount` 0.10 to 0.05. The wash still tints the page, the desk and the banner fill; contrast margins for ink, words, marks and ribbons only grow (their tests use the same constant and pass).
+- **Verification:** `QiraatPageTintTests`, `MushafAppearanceTests`, `QiraatContrastTests` pass; simulator screenshots of page 3 for عاصم and أبو عمرو show a faint peach and a faint mint. The iPad UI run was stopped before it finished, so it has no result; `make perf` passes (mean 0.76 ms, p99 1.99 ms).
+- **Files:** `MushafCore/Sources/MushafCore/QiraatPageTint.swift`.
+
 ## [Unreleased] — 2026-11-04 — Bookmark ribbons hold 3:1 on every page and wash
 - **Audit finding (P3):** the page and ayah bookmark ribbons used a fixed crimson (no theme variant): exactly 3.00:1 on the dark page, lower once a reader's wash is applied.
 - **Change:** `MushafAppearance.bookmarkRibbon(for:tint:)` moves the crimson toward the page ink only as far as it takes to hold 3:1 on the (washed) page; both ribbons use it, drawn opaque. Light and white pages keep the original crimson.

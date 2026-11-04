@@ -3,9 +3,9 @@ import Foundation
 /// The soft wash the Mushaf page takes from the reader the learner chose: one colour per reader
 /// (a narrator uses its reader's colour), none while «الكل» is chosen.
 public enum QiraatPageTint {
-    /// How much of the reader's colour is mixed into the paper. Low enough that the paper stays light
+    /// How much of the reader's colour is mixed into the paper. Just a light touch of colour: the paper stays light
     /// (dark in the dark themes) and the ink keeps reading at 7:1 for all ten readers.
-    public static let washAmount = 0.10
+    public static let washAmount = 0.05
 
     /// The reader's catalog colour for the chosen filter; nil for «الكل» or an id the catalog does not know.
     public static func readerColor(for filter: QiraatFilter, catalog: QiraatCatalog) -> QiraatColor? {
