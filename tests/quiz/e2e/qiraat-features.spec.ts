@@ -101,3 +101,36 @@ test.describe('أبواب الأصول switches', () => {
   })
 })
 
+test.describe('reader picker and filter chip', () => {
+  test('picking Warsh filters the page and the chip names him', async ({ page }) => {
+    await openQiraatPage(page, 17)
+    const marked = page.locator(MARKED_WORDS)
+    const before = await marked.count()
+    await expect(page.getByTestId('filter-chip').first()).toHaveText('الكل')
+
+    await page.getByTestId('filter-chip').first().click()
+    const picker = page.getByTestId('reader-picker')
+    await expect(picker).toBeVisible()
+    await picker.getByRole('button', { name: /ورش عن نافع/ }).click()
+    await expect(picker).toBeHidden()
+    await expect(page.getByTestId('filter-chip').first()).toContainText('ورش عن نافع')
+    await expect.poll(() => marked.count()).toBeLessThan(before)
+
+    await page.getByTestId('filter-chip').first().click()
+    await page.getByTestId('reader-picker').getByRole('button', { name: /^الكل/ }).click()
+    await expect.poll(() => marked.count()).toBe(before)
+  })
+
+  test('the picker searches and closes with Escape', async ({ page }) => {
+    await openQiraatPage(page, 17)
+    await page.getByTestId('filter-chip').first().click()
+    const picker = page.getByTestId('reader-picker')
+    await picker.getByRole('searchbox').fill('الدوري')
+    await expect(picker.getByRole('button', { name: /الدوري عن أبي عمرو/ })).toBeVisible()
+    await expect(picker.getByRole('button', { name: /الدوري عن الكسائي/ })).toBeVisible()
+    await expect(picker.getByRole('button', { name: /نافع/ })).toHaveCount(0)
+    await page.keyboard.press('Escape')
+    await expect(picker).toBeHidden()
+  })
+})
+

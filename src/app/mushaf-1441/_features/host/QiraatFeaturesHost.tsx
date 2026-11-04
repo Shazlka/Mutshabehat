@@ -2,28 +2,23 @@
 
 // Single mount point for the iOS-parity Qiraat sheets. The viewer owns which sheet is open (it is the
 // component that opens them, so it cannot sit below its own provider); this host renders the active one.
-// Sheets are added here one per feature, so Mushaf1441Viewer.tsx only keeps a state hook and one mount.
-import type { MushafWord } from '../../../../../packages/quran-data/mushaf1441/types'
-import type { QiraatRuling, QiraatVariant } from '../../../../../packages/qiraat-core/types'
+// A sheet is added here per feature, so Mushaf1441Viewer.tsx only keeps a state hook and one mount.
 import type { QiraatComparisonFilter } from '../../_components/qiraat/types'
+import { ReaderPicker } from '../reader-picker/ReaderPicker'
 
 export type FeatureName = 'legend' | 'readerPicker' | 'pageSummary' | 'search' | 'usulIndex' | 'compare' | 'mutoon'
+
+/** Hub «المزيد» entries, in order; a feature appears once its sheet exists (the picker is the filter chip itself). */
+export const HUB_ENTRIES: { name: FeatureName; label: string }[] = []
 
 export interface QiraatFeaturesHostProps {
   active: FeatureName | null
   onClose: () => void
-  page: number
-  pages: number[]
-  words: MushafWord[]
-  variantsByPage: Record<number, readonly QiraatVariant[]>
-  rulingsByPage: Record<number, readonly QiraatRuling[]>
   filter: QiraatComparisonFilter
-  onSelectWord: (word: MushafWord) => void
-  onGoToPage: (page: number) => void
+  onFilterChange: (filter: QiraatComparisonFilter) => void
 }
 
-export function QiraatFeaturesHost(props: QiraatFeaturesHostProps) {
-  if (props.active === null) return null
-  // Features are wired in by later tasks.
+export function QiraatFeaturesHost({ active, onClose, filter, onFilterChange }: QiraatFeaturesHostProps) {
+  if (active === 'readerPicker') return <ReaderPicker filter={filter} onPick={onFilterChange} onClose={onClose} />
   return null
 }

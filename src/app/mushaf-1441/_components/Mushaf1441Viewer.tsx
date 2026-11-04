@@ -51,6 +51,8 @@ import {
 import { markedWords, nextMarked, nearestMarked, previousMarked, toOrderable, variantWajhNumbers } from '../../../../packages/qiraat-core/features/wordOrder'
 import { WordSheetNav } from '../_features/word-sheet/WordSheetNav'
 import { FaceBadge } from '../_features/word-sheet/FaceBadge'
+import { QiraatFeaturesHost, HUB_ENTRIES, type FeatureName } from '../_features/host/QiraatFeaturesHost'
+import { QiraatHubBar } from '../_features/hub/QiraatHubBar'
 import { UsulPrefsPanel } from '../_features/hub/UsulPrefsPanel'
 import { ClassificationChips } from '../_features/word-sheet/ClassificationChips'
 import { ReadingFormLine } from '../_features/word-sheet/ReadingFormLine'
@@ -651,6 +653,8 @@ export default function Mushaf1441Viewer({
   // «فرش فقط» and the per-باب switches (iOS Settings). Applied where rulings enter qiraatView, so every
   // surface (page marks, sheet, hover card, marked-word list) agrees on what is shown.
   const [usulPrefs, setUsulPrefs] = useState<QiraatUsulPrefs>(DEFAULT_USUL_PREFS)
+  // Which iOS-parity sheet is open (picker, colour key, search …); rendered by QiraatFeaturesHost.
+  const [qiraatFeature, setQiraatFeature] = useState<FeatureName | null>(null)
   const wheelStateRef = useRef({ accumulated: 0, lastTurn: 0, lastEvent: 0 })
   const spreadViewport = useSyncExternalStore(subscribeToSpreadQuery, getSpreadSnapshot, getSpreadServerSnapshot)
   const isSpread = spreadViewport
@@ -4106,6 +4110,7 @@ export default function Mushaf1441Viewer({
         {readerLayer === 'qiraat' ? (
         <>
         <div className={`rounded-lg border p-2.5 ${currentThemeTokens.sidebarCardClass}`}>
+          <div className="mb-2"><QiraatHubBar filter={qiraatFilter} entries={HUB_ENTRIES} onOpen={setQiraatFeature} /></div>
           <QiraatToolbar
             mode={qiraatMode}
             onModeChange={applyQiraatMode}
@@ -5130,6 +5135,7 @@ export default function Mushaf1441Viewer({
                   {renderQiraatSelection()}
                 </div>
               ) : null}
+              <div className="mb-2"><QiraatHubBar filter={qiraatFilter} entries={HUB_ENTRIES} onOpen={setQiraatFeature} /></div>
               <QiraatToolbar
                 mode={qiraatMode}
                 onModeChange={applyQiraatMode}
@@ -5296,6 +5302,12 @@ export default function Mushaf1441Viewer({
       ) : null}
 
       {renderSettingsModal()}
+      <QiraatFeaturesHost
+        active={qiraatFeature}
+        onClose={() => setQiraatFeature(null)}
+        filter={qiraatFilter}
+        onFilterChange={setQiraatFilter}
+      />
     </div>
   )
 }

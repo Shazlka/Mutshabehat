@@ -48,6 +48,12 @@ section below **and** the root
 
 # Changelog
 
+## 2026-11-04 — Web parity step 5: Qiraat filter chip, reader/narrator picker and feature host (branch web/ios-parity)
+- **Change:** a filter chip («الكل» or the chosen reader/narrator, with a ✓ when a filter is on) opens a full-screen picker: search ignoring diacritics, readers coloured by their identity colour with their narrators nested, narrators always labelled in full («الدوري عن أبي عمرو» / «الدوري عن الكسائي», «خلف عن حمزة» vs reader «خلف العاشر», never a bare ambiguous name). The same filter state drives the page marks and the older toolbar. The feature host (`QiraatFeaturesHost`, shared `FeatureSheet` frame with Escape/backdrop close) is now mounted once in the viewer; the picker also supports picking two authorities to compare (used by step «compare»). Ported from the iOS `QiraatReaderPicker`.
+- **Ruling:** the older `QiraatToolbar` filter list stays (it shares the same state); not rebuilt on the picker, to keep the change small. The hub «المزيد» menu exists but lists no entries yet; each later feature adds its own.
+- **Verification:** 8 new unit tests (feature suite 39/39), Playwright 7/7 (Warsh filter + chip label + reset; search and Escape), `test:qiraat` 51/51, typecheck, `next build`. **DB migration:** none.
+- **Files:** `packages/qiraat-core/features/readerPicker.ts`, `src/app/mushaf-1441/_features/{host/FeatureSheet,host/QiraatFeaturesHost,hub/QiraatHubBar,reader-picker/ReaderPicker}.tsx`, `Mushaf1441Viewer.tsx`, `tests/qiraat/features/reader-picker.test.ts`, `tests/quiz/e2e/qiraat-features.spec.ts`.
+
 ## 2026-11-04 — Web parity step 4: «فرش فقط» and one switch per أصول باب (branch web/ios-parity)
 - **Change:** the Qiraat sidebar and the mobile Qiraat drawer have a collapsible panel «أبواب الأصول المعروضة» with «فرش الحروف فقط» and one switch per باب (name as text beside its colour dot). Switched-off rulings leave every surface at once (page marks, word sheet, hover card, marked-word list) because they are filtered where rulings enter `qiraatView`. Stored per device under `mushaf1441:qiraat-usul-prefs:v1`; blocked storage falls back to defaults. Ported from the iOS `QiraatPreferences`.
 - **Verification:** 7 new unit tests (feature suite 31/31), Playwright 5/5 (farsh-only reduces the marked words of page 17 and survives a reload; one باب off removes only its words), `test:qiraat` 51/51, typecheck, `next build`. **DB migration:** none.
