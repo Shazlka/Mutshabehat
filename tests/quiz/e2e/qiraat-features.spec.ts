@@ -134,3 +134,21 @@ test.describe('reader picker and filter chip', () => {
   })
 })
 
+test.describe('colour key', () => {
+  test('the hub opens the colour key with readers, أبواب and marks', async ({ page }) => {
+    await openQiraatPage(page, 17)
+    await page.getByTestId('qiraat-hub').first().locator('summary').click()
+    await page.getByTestId('hub-legend').first().click()
+    const sheet = page.getByTestId('legend-sheet')
+    await expect(sheet).toBeVisible()
+    await expect(sheet.getByTestId('legend-row-Q01')).toContainText('نافع المدني')
+    await expect(sheet.getByTestId('legend-row-Q01-R02')).toContainText('ورش عن نافع')
+    await sheet.getByRole('tab', { name: 'الأبواب' }).click()
+    await expect(sheet.getByTestId('legend-row-IMALAH_TAQLIL')).toBeVisible()
+    await sheet.getByRole('tab', { name: 'العلامات' }).click()
+    await expect(sheet.getByTestId('legend-row-mark-dotted')).toContainText('ذو وجهين')
+    await sheet.getByRole('button', { name: 'إغلاق' }).click()
+    await expect(sheet).toBeHidden()
+  })
+})
+

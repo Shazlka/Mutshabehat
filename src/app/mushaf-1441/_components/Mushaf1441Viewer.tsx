@@ -403,6 +403,16 @@ function computeLineDecorations(page: MushafPage): Map<number, LineDecoration> {
   return deco
 }
 
+/** `{ '17:1': [...] }` (page:includeReviewed cache keys, reviewed data included) → `{ 17: [...] }`. */
+function byPageNumber<T>(cache: Record<string, T[]>): Record<number, T[]> {
+  const out: Record<number, T[]> = {}
+  for (const [key, list] of Object.entries(cache)) {
+    const [page, reviewed] = key.split(':')
+    if (reviewed === '1') out[Number(page)] = list
+  }
+  return out
+}
+
 function getQcfV2FontFamily(pageNumber: number) {
   return `QCFV2-P${pageNumber}`
 }
@@ -1151,6 +1161,9 @@ export default function Mushaf1441Viewer({
     [qiraatRulingsByPage, usulPrefs],
   )
   const usulOptions = useMemo(() => usulCategoryOptions(Object.values(qiraatRulingsByPage).flat()), [qiraatRulingsByPage])
+  // The loaded Qiraat data by page number, for the sheets that look across pages (colour key, search, index).
+  const variantsByPageNumber = useMemo(() => byPageNumber(qiraatVariantsByPage), [qiraatVariantsByPage])
+  const rulingsByPageNumber = useMemo(() => byPageNumber(visibleRulingsByPage), [visibleRulingsByPage])
   function updateUsulPrefs(next: QiraatUsulPrefs) {
     setUsulPrefs(next)
     try { saveUsulPrefs(window.localStorage, next) } catch { /* storage unavailable */ }
@@ -5307,6 +5320,8 @@ export default function Mushaf1441Viewer({
         onClose={() => setQiraatFeature(null)}
         filter={qiraatFilter}
         onFilterChange={setQiraatFilter}
+        variantsByPage={variantsByPageNumber}
+        rulingsByPage={rulingsByPageNumber}
       />
     </div>
   )
