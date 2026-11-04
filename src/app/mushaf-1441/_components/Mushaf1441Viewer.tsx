@@ -676,6 +676,11 @@ export default function Mushaf1441Viewer({
   }
   // Which iOS-parity sheet is open (picker, colour key, search …); rendered by QiraatFeaturesHost.
   const [qiraatFeature, setQiraatFeature] = useState<FeatureName | null>(null)
+  // Opening a sheet from the phone menu closes the menu behind it.
+  function openQiraatFeature(name: FeatureName) {
+    setQiraatFeature(name)
+    setIsMenuOpen(false)
+  }
   const wheelStateRef = useRef({ accumulated: 0, lastTurn: 0, lastEvent: 0 })
   const spreadViewport = useSyncExternalStore(subscribeToSpreadQuery, getSpreadSnapshot, getSpreadServerSnapshot)
   const isSpread = spreadViewport
@@ -4214,7 +4219,7 @@ export default function Mushaf1441Viewer({
         {readerLayer === 'qiraat' ? (
         <>
         <div className={`rounded-lg border p-2.5 ${currentThemeTokens.sidebarCardClass}`}>
-          <div className="mb-2"><QiraatHubBar filter={qiraatFilter} entries={HUB_ENTRIES} onOpen={setQiraatFeature} sync={qiraatSync[pageNumber] ?? { outcome: null, lastSuccess: null }} /></div>
+          <div className="mb-2"><QiraatHubBar filter={qiraatFilter} entries={HUB_ENTRIES} onOpen={openQiraatFeature} sync={qiraatSync[pageNumber] ?? { outcome: null, lastSuccess: null }} /></div>
           <QiraatToolbar
             mode={qiraatMode}
             onModeChange={applyQiraatMode}
@@ -5239,7 +5244,7 @@ export default function Mushaf1441Viewer({
                   {renderQiraatSelection()}
                 </div>
               ) : null}
-              <div className="mb-2"><QiraatHubBar filter={qiraatFilter} entries={HUB_ENTRIES} onOpen={setQiraatFeature} sync={qiraatSync[pageNumber] ?? { outcome: null, lastSuccess: null }} /></div>
+              <div className="mb-2"><QiraatHubBar filter={qiraatFilter} entries={HUB_ENTRIES} onOpen={openQiraatFeature} sync={qiraatSync[pageNumber] ?? { outcome: null, lastSuccess: null }} /></div>
               <QiraatToolbar
                 mode={qiraatMode}
                 onModeChange={applyQiraatMode}
@@ -5336,7 +5341,9 @@ export default function Mushaf1441Viewer({
           <div
             className="relative z-10 mx-auto w-full max-w-lg cursor-pointer rounded-2xl border border-[var(--mushaf-rule)] bg-[var(--mushaf-cream-3)]/98 p-3.5 shadow-[0_-12px_45px_rgba(23,23,23,0.22)] backdrop-blur-md"
             style={{ paddingBottom: 'calc(0.875rem + env(safe-area-inset-bottom))' }}
-            onClick={() => {
+            onClick={(event) => {
+              // Controls inside the card (next/previous word, favourite, note, compare, report) must not close it.
+              if ((event.target as HTMLElement).closest('button, a, textarea, input, select, summary')) return
               setQiraatSelection(null)
               updateHoveredQiraatWord(null)
             }}

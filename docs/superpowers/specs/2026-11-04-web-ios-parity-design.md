@@ -134,3 +134,35 @@ starts by confirming each row against the running code.
 - **iOS keeps moving:** features added to `ios/main` after today are not in this scope unless the owner adds them.
 - **Size:** sub-project 1 alone is on the order of 2,500 lines of ported core logic plus about 6,000 lines of views
   in Swift. It is built and reviewed in the six steps above, not in one change.
+
+## 7. Verification result — sub-project 1 (Qiraat UX), 2026-11-04
+
+Run on branch `web/ios-parity` (not pushed): `npm run typecheck`, `test:qiraat` 51/51, `test:qiraat:features` 112/112 (new),
+`test:qiraat:review` 207/207, `test:mutoon` 28/28, `test:proxy` 15/15, `mushaf:validate`, `next build`; Playwright
+`qiraat-features` 18/18 on each of desktop (1440×950), tablet (1024×768 landscape) and iPhone 13, against a local production
+build whose backend is unreachable (so Qiraat data came from the bundled data and the live-data paths were exercised through
+mocked routes). **Not run:** `tests/test_mushaf_page_performance.py` (Python Playwright is not installed here), a real
+Vercel preview, VoiceOver/screen-reader checks, and real-device touch checks. No push, no migration, no `apps/ios` change.
+
+| Feature | Result | Where |
+|---|---|---|
+| Colour key | done | hub «المزيد» → «مفتاح الألوان» |
+| Reader/narrator picker | done (the older toolbar list stays and shares its state) | filter chip |
+| Top-bar menu + filter chip | done as a row in the sidebar (desktop, iPad landscape) and in the burger menu (phones, portrait tablets), not in the top bar | `QiraatHubBar` |
+| Page summary | done | hub |
+| Qiraat search | done | hub |
+| Usul index | done | hub |
+| Compare two readers | done, opened from the word sheet (needs an open word) | word sheet |
+| Word-sheet next/previous, face numbers | done | word sheet |
+| Reading forms, classification | done; per-reader performance details already existed on the web | word sheet |
+| Favourites and notes | done, per device (IndexedDB) with JSON export/import | word sheet, hub |
+| Per-باب switches, «فرش فقط» | done | sidebar / menu panel |
+| «المتون» | partial: books, chapters, verses and search; the red reader symbols and شرح cards are not rendered | hub |
+| Sync status, report link | done; report is a share/copy text, as in iOS | hub row, word sheet |
+| Resolved-page index | not needed on the web | — |
+
+Found and fixed during verification: on phones the bottom word card closed on any tap, so its new controls (next/previous,
+favourite, note, compare, report) could not be used; controls inside the card no longer close it.
+
+Known limits: scholarly references stay out of scope (§5); the English interface is out of scope; the usul index, search
+and colour key read all 604 pages once per visit from the public API (progress shown), which on a cold CDN can take a while.

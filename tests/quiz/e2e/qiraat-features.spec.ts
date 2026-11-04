@@ -11,6 +11,35 @@ async function openQiraatPage(page: Page, pageNumber: number) {
   await expect(page.locator('[data-page-slot-current] [data-qiraat-marked="true"]').first()).toBeVisible()
 }
 
+
+/** On phones and portrait tablets the Qiraat tools live in the burger menu; on desktop and iPad landscape in the sidebar. */
+async function ensureQiraatTools(page: Page) {
+  // On phones an open word card covers the page; close it before reaching for the menu.
+  if (await page.getByTestId('word-sheet-nav').isVisible() && !(await page.getByTestId('qiraat-hub').first().isVisible())) {
+    await page.getByRole('button', { name: 'إغلاق بطاقة القراءات' }).first().click({ position: { x: 5, y: 5 } })
+  }
+  if (!(await page.getByTestId('qiraat-hub').first().isVisible())) {
+    await page.getByRole('button', { name: 'القائمة والإعدادات' }).click()
+    await expect(page.getByTestId('qiraat-hub').first()).toBeVisible()
+  }
+}
+
+/** Close the phone menu again (no-op when it is not open). */
+async function closeQiraatMenu(page: Page) {
+  const close = page.getByRole('button', { name: 'إغلاق القائمة' })
+  if (await close.isVisible()) await close.click({ position: { x: 5, y: 5 } })
+}
+
+async function openHub(page: Page) {
+  await ensureQiraatTools(page)
+  await page.getByTestId('qiraat-hub').first().locator('summary').click()
+}
+
+async function openFilterChip(page: Page) {
+  await ensureQiraatTools(page)
+  await page.getByTestId('filter-chip').first().click()
+}
+
 const MARKED_WORDS = '[data-page-slot-current] [data-qiraat-marked="true"]'
 
 /** Press a marked word, then step back to the first marked word of the visible page(s). */
@@ -74,6 +103,7 @@ test.describe('أبواب الأصول switches', () => {
     const before = await marked.count()
     expect(before).toBeGreaterThan(1)
 
+    await ensureQiraatTools(page)
     await page.getByTestId('usul-prefs').locator('summary').click()
     await page.getByTestId('usul-farsh-only').check()
     await expect.poll(() => marked.count()).toBeLessThan(before)
@@ -84,6 +114,7 @@ test.describe('أبواب الأصول switches', () => {
     await expect(page.locator('[data-page-slot-current] [data-quran-word-id]').first()).toBeVisible()
     await expect.poll(() => page.locator(MARKED_WORDS).count()).toBe(farshOnly)
 
+    await ensureQiraatTools(page)
     await page.getByTestId('usul-prefs').locator('summary').click()
     await page.getByTestId('usul-farsh-only').uncheck()
     await expect.poll(() => page.locator(MARKED_WORDS).count()).toBe(before)
@@ -93,6 +124,7 @@ test.describe('أبواب الأصول switches', () => {
     await openQiraatPage(page, 17)
     const marked = page.locator(MARKED_WORDS)
     const before = await marked.count()
+    await ensureQiraatTools(page)
     await page.getByTestId('usul-prefs').locator('summary').click()
     await page.getByTestId('usul-switch-IMALAH_TAQLIL').uncheck()
     await expect.poll(() => marked.count()).toBeLessThan(before)
@@ -106,24 +138,26 @@ test.describe('reader picker and filter chip', () => {
     await openQiraatPage(page, 17)
     const marked = page.locator(MARKED_WORDS)
     const before = await marked.count()
+    await ensureQiraatTools(page)
     await expect(page.getByTestId('filter-chip').first()).toHaveText('الكل')
 
-    await page.getByTestId('filter-chip').first().click()
+    await openFilterChip(page)
     const picker = page.getByTestId('reader-picker')
     await expect(picker).toBeVisible()
     await picker.getByRole('button', { name: /ورش عن نافع/ }).click()
     await expect(picker).toBeHidden()
+    await ensureQiraatTools(page)
     await expect(page.getByTestId('filter-chip').first()).toContainText('ورش عن نافع')
     await expect.poll(() => marked.count()).toBeLessThan(before)
 
-    await page.getByTestId('filter-chip').first().click()
+    await openFilterChip(page)
     await page.getByTestId('reader-picker').getByRole('button', { name: /^الكل/ }).click()
     await expect.poll(() => marked.count()).toBe(before)
   })
 
   test('the picker searches and closes with Escape', async ({ page }) => {
     await openQiraatPage(page, 17)
-    await page.getByTestId('filter-chip').first().click()
+    await openFilterChip(page)
     const picker = page.getByTestId('reader-picker')
     await picker.getByRole('searchbox').fill('الدوري')
     await expect(picker.getByRole('button', { name: /الدوري عن أبي عمرو/ })).toBeVisible()
@@ -137,7 +171,7 @@ test.describe('reader picker and filter chip', () => {
 test.describe('colour key', () => {
   test('the hub opens the colour key with readers, أبواب and marks', async ({ page }) => {
     await openQiraatPage(page, 17)
-    await page.getByTestId('qiraat-hub').first().locator('summary').click()
+    await openHub(page)
     await page.getByTestId('hub-legend').first().click()
     const sheet = page.getByTestId('legend-sheet')
     await expect(sheet).toBeVisible()
@@ -155,7 +189,7 @@ test.describe('colour key', () => {
 test.describe('page summary', () => {
   test('the summary lists the marked words and a tap opens that word in the sheet', async ({ page }) => {
     await openQiraatPage(page, 17)
-    await page.getByTestId('qiraat-hub').first().locator('summary').click()
+    await openHub(page)
     await page.getByTestId('hub-pageSummary').first().click()
     const summary = page.getByTestId('page-summary')
     await expect(summary).toBeVisible()
@@ -169,14 +203,15 @@ test.describe('page summary', () => {
     await page.mouse.move(2, 400)
     await expect(sheet(page)).toBeVisible()
     expect(wordText.length).toBeGreaterThan(0)
-    await expect(page.locator('aside[data-reader-sidebar="qiraat"]')).toContainText(wordText)
+    // the word's own card (sidebar on desktop, bottom card on phones) names it
+    await expect(sheet(page).locator('xpath=..')).toContainText(wordText)
   })
 })
 
 test.describe('usul index', () => {
   test('the index lists the أبواب and a place opens its page and word', async ({ page }) => {
     await openQiraatPage(page, 17)
-    await page.getByTestId('qiraat-hub').first().locator('summary').click()
+    await openHub(page)
     await page.getByTestId('hub-usulIndex').first().click()
     const index = page.getByTestId('usul-index')
     await expect(index).toBeVisible()
@@ -200,7 +235,7 @@ test.describe('usul index', () => {
 test.describe('Qiraat search', () => {
   test('a word search lists places and a result opens its word', async ({ page }) => {
     await openQiraatPage(page, 17)
-    await page.getByTestId('qiraat-hub').first().locator('summary').click()
+    await openHub(page)
     await page.getByTestId('hub-search').first().click()
     const search = page.getByTestId('qiraat-search')
     await expect(search).toBeVisible()
@@ -218,7 +253,7 @@ test.describe('Qiraat search', () => {
 
   test('a word with no match says so', async ({ page }) => {
     await openQiraatPage(page, 17)
-    await page.getByTestId('qiraat-hub').first().locator('summary').click()
+    await openHub(page)
     await page.getByTestId('hub-search').first().click()
     const search = page.getByTestId('qiraat-search')
     await search.getByRole('searchbox', { name: 'الكلمة' }).fill('زززززز')
@@ -264,7 +299,7 @@ test.describe('favourites and notes', () => {
 
     await page.reload()
     await expect(page.locator('[data-page-slot-current] [data-quran-word-id]').first()).toBeVisible()
-    await page.getByTestId('qiraat-hub').first().locator('summary').click()
+    await openHub(page)
     await page.getByTestId('hub-notes').first().click()
     const panel = page.getByTestId('notes-panel')
     await expect(panel.getByTestId('note-item')).toHaveCount(1)
@@ -279,7 +314,7 @@ test.describe('favourites and notes', () => {
     await page.getByTestId('favourite-toggle').first().click()
     await page.getByTestId('note-text').first().fill('')
     await page.getByTestId('note-text').first().blur()
-    await page.getByTestId('qiraat-hub').first().locator('summary').click()
+    await openHub(page)
     await page.getByTestId('hub-notes').first().click()
     await expect(page.getByTestId('notes-panel')).toContainText('لا مفضلة ولا ملاحظات بعد')
   })
@@ -298,7 +333,7 @@ test.describe('المتون', () => {
 
   async function openMutoon(page: Page) {
     await openQiraatPage(page, 17)
-    await page.getByTestId('qiraat-hub').first().locator('summary').click()
+    await openHub(page)
     await page.getByTestId('hub-mutoon').first().click()
     return page.getByTestId('mutoon-sheet')
   }
@@ -333,11 +368,13 @@ test.describe('sync status and report', () => {
     // Desktop Chrome has a native share sheet; force the clipboard path the other browsers use.
     await page.addInitScript(() => Object.defineProperty(navigator, 'share', { value: undefined }))
     await openQiraatPage(page, 17)
+    await ensureQiraatTools(page)
     const chip = page.getByTestId('sync-status').first()
     await expect(chip).toBeVisible()
     // The test backend is unreachable, so the route answers with the bundled copy: never «محدّث الآن».
     await expect(chip).toHaveAttribute('data-kind', /localCopy|confirmed/)
     await expect(chip).toContainText('نسخة محلية')
+    await closeQiraatMenu(page)
 
     await openFirstMarkedWord(page)
     await page.mouse.move(2, 400)
@@ -352,6 +389,7 @@ test.describe('sync status and report', () => {
       await route.fulfill({ response, headers: { ...response.headers(), 'x-qiraat-source': 'live' } })
     })
     await openQiraatPage(page, 17)
+    await ensureQiraatTools(page)
     await expect(page.getByTestId('sync-status').first()).toContainText('محدّث الآن')
   })
 })
