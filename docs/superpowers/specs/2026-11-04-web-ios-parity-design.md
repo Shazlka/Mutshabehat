@@ -116,8 +116,20 @@ starts by confirming each row against the running code.
 
 ## 6. Risks and open items
 
-- **Preview environment:** unknown whether Vercel preview deployments have the Supabase env vars and the
-  auto-login production uses. To be checked before the first push.
+- **Preview environment (checked 2026-11-04 with `vercel env ls`, names and scopes only):**
+  - `AUTOLOGIN_EMAIL`, `AUTOLOGIN_PASSWORD`, `SUPABASE_SERVICE_ROLE_KEY` exist for **Production only**. A preview
+    deployment therefore does not auto-sign-in (`src/proxy.ts` needs both), so routes that need the session
+    (annotations, review, notes sync) answer 401 on a preview.
+  - `NEXT_PUBLIC_SUPABASE_URL` exists for Preview (secret, same age as Production's, so most likely the same URL).
+  - `NEXT_PUBLIC_SUPABASE_ANON_KEY` for Preview is a `sb_publishable_…` value created 155 days ago, whereas
+    Production's was created 65 days ago. It probably belongs to the retired Supabase Cloud project, so a preview
+    cannot reach the self-hosted database as built.
+  - Owner action before a preview is useful (I will not add these myself): set the Preview scope of
+    `NEXT_PUBLIC_SUPABASE_ANON_KEY` to Production's value, and decide whether to add `AUTOLOGIN_EMAIL` /
+    `AUTOLOGIN_PASSWORD` to Preview (this signs anyone who can open the preview URL in as the owner; Vercel's
+    deployment protection is the only gate). Whether the Qiraat reading pages still work on a preview without a
+    session is not verified: `/api/public/v1/*` needs no session, and the reader falls back to the bundled fixtures,
+    but `/api/mushaf-1441/qiraat` has not been tested on a preview.
 - **Push permission:** each push of `web/ios-parity` needs the owner's explicit yes.
 - **iOS keeps moving:** features added to `ios/main` after today are not in this scope unless the owner adds them.
 - **Size:** sub-project 1 alone is on the order of 2,500 lines of ported core logic plus about 6,000 lines of views
