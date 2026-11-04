@@ -51,10 +51,19 @@ import {
 import { markedWords, nextMarked, nearestMarked, previousMarked, toOrderable, variantWajhNumbers } from '../../../../packages/qiraat-core/features/wordOrder'
 import { WordSheetNav } from '../_features/word-sheet/WordSheetNav'
 import { FaceBadge } from '../_features/word-sheet/FaceBadge'
+import { UsulPrefsPanel } from '../_features/hub/UsulPrefsPanel'
 import { ClassificationChips } from '../_features/word-sheet/ClassificationChips'
 import { ReadingFormLine } from '../_features/word-sheet/ReadingFormLine'
 import { readingForm } from '../../../../packages/qiraat-core/features/readingForm'
 import { classificationSegments } from '../../../../packages/qiraat-core/features/classification'
+import {
+  DEFAULT_USUL_PREFS,
+  filterRulingsByPrefs,
+  loadUsulPrefs,
+  saveUsulPrefs,
+  usulCategoryOptions,
+  type QiraatUsulPrefs,
+} from '../../../../packages/qiraat-core/features/preferences'
 import { QIRAAT_PREFS_STORAGE_KEY, type QiraatComparisonFilter, type QiraatMode, type QiraatPrefs } from './qiraat/types'
 import { impactHaptic } from './haptics'
 import {
@@ -639,6 +648,9 @@ export default function Mushaf1441Viewer({
   // NOT part of any MushafPageSlot prop, so selecting a word never re-renders a page slot and the
   // ~1 ms page-turn invariant holds (same rule as hoveredAyahKey / hoveredQiraatWord).
   const [qiraatSelection, setQiraatSelection] = useState<QiraatSelection | null>(null)
+  // «فرش فقط» and the per-باب switches (iOS Settings). Applied where rulings enter qiraatView, so every
+  // surface (page marks, sheet, hover card, marked-word list) agrees on what is shown.
+  const [usulPrefs, setUsulPrefs] = useState<QiraatUsulPrefs>(DEFAULT_USUL_PREFS)
   const wheelStateRef = useRef({ accumulated: 0, lastTurn: 0, lastEvent: 0 })
   const spreadViewport = useSyncExternalStore(subscribeToSpreadQuery, getSpreadSnapshot, getSpreadServerSnapshot)
   const isSpread = spreadViewport
@@ -1130,6 +1142,15 @@ export default function Mushaf1441Viewer({
   ), [mutshabehatPanelAyahKey, pageHighlights])
   // The one stable object gated through MushafPageSlot's memo comparator (like `highlights`
   // above) — a mounted page's Qiraat rendering only updates when THIS reference changes.
+  const visibleRulingsByPage = useMemo(
+    () => Object.fromEntries(Object.entries(qiraatRulingsByPage).map(([key, list]) => [key, filterRulingsByPrefs(list, usulPrefs)])),
+    [qiraatRulingsByPage, usulPrefs],
+  )
+  const usulOptions = useMemo(() => usulCategoryOptions(Object.values(qiraatRulingsByPage).flat()), [qiraatRulingsByPage])
+  function updateUsulPrefs(next: QiraatUsulPrefs) {
+    setUsulPrefs(next)
+    try { saveUsulPrefs(window.localStorage, next) } catch { /* storage unavailable */ }
+  }
   const qiraatView = useMemo(() => ({
     mode: qiraatMode,
     selectedReadingId: qiraatSelectedReadingId,
@@ -1139,8 +1160,8 @@ export default function Mushaf1441Viewer({
     includeReviewed: true,
     variantsByPage: qiraatVariantsByPage,
     rulesByPage: qiraatRulesByPage,
-    rulingsByPage: qiraatRulingsByPage,
-  }), [qiraatMode, qiraatSelectedReadingId, qiraatShowDiffFromHafs, qiraatFilter, qiraatVariantsByPage, qiraatRulesByPage, qiraatRulingsByPage])
+    rulingsByPage: visibleRulingsByPage,
+  }), [qiraatMode, qiraatSelectedReadingId, qiraatShowDiffFromHafs, qiraatFilter, qiraatVariantsByPage, qiraatRulesByPage, visibleRulingsByPage])
 
   function qiraatVariantsForPage(pageNo: number): QiraatVariant[] {
     return qiraatView.variantsByPage[`${pageNo}:${qiraatView.includeReviewed ? 1 : 0}`] ?? EMPTY_QIRAAT_VARIANTS
@@ -1241,6 +1262,15 @@ export default function Mushaf1441Viewer({
 
     return () => { cancelled = true }
   }, [slotGroups, isSpread, qiraatMode])
+
+  useEffect(() => {
+    try {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setUsulPrefs(loadUsulPrefs(window.localStorage))
+    } catch {
+      // Blocked storage: defaults.
+    }
+  }, [])
 
   // Restore/persist Qiraat preferences (mode, reading, diff toggle, filter) the same
   // way the swipe-nav setting and the last-page key do: read after mount, write on change.
@@ -4087,6 +4117,7 @@ export default function Mushaf1441Viewer({
             onFilterChange={setQiraatFilter}
           />
         </div>
+        <UsulPrefsPanel prefs={usulPrefs} options={usulOptions} onChange={updateUsulPrefs} />
 
         {/* The Qiraat peek lives here rather than floating over the page: an overlay on top of
             the lines swallowed the next word press and closed itself before it could be read. */}
@@ -5109,6 +5140,7 @@ export default function Mushaf1441Viewer({
                 filter={qiraatFilter}
                 onFilterChange={setQiraatFilter}
               />
+              <UsulPrefsPanel prefs={usulPrefs} options={usulOptions} onChange={updateUsulPrefs} />
               {renderQiraatRules()}
             </div>
 

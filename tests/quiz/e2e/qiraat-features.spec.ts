@@ -66,3 +66,38 @@ test.describe('word sheet', () => {
     for (const line of lines) expect(line).toMatch(/^(فرش الحروف|أصول القراءات)/)
   })
 })
+
+test.describe('أبواب الأصول switches', () => {
+  test('farsh-only hides the أصول marks and the choice survives a reload', async ({ page }) => {
+    await openQiraatPage(page, 17)
+    const marked = page.locator(MARKED_WORDS)
+    const before = await marked.count()
+    expect(before).toBeGreaterThan(1)
+
+    await page.getByTestId('usul-prefs').locator('summary').click()
+    await page.getByTestId('usul-farsh-only').check()
+    await expect.poll(() => marked.count()).toBeLessThan(before)
+    const farshOnly = await marked.count()
+    expect(farshOnly).toBeGreaterThan(0) // the فرش variants of page 17 stay
+
+    await page.reload()
+    await expect(page.locator('[data-page-slot-current] [data-quran-word-id]').first()).toBeVisible()
+    await expect.poll(() => page.locator(MARKED_WORDS).count()).toBe(farshOnly)
+
+    await page.getByTestId('usul-prefs').locator('summary').click()
+    await page.getByTestId('usul-farsh-only').uncheck()
+    await expect.poll(() => page.locator(MARKED_WORDS).count()).toBe(before)
+  })
+
+  test('switching one باب off removes only its words', async ({ page }) => {
+    await openQiraatPage(page, 17)
+    const marked = page.locator(MARKED_WORDS)
+    const before = await marked.count()
+    await page.getByTestId('usul-prefs').locator('summary').click()
+    await page.getByTestId('usul-switch-IMALAH_TAQLIL').uncheck()
+    await expect.poll(() => marked.count()).toBeLessThan(before)
+    await page.getByTestId('usul-switch-IMALAH_TAQLIL').check()
+    await expect.poll(() => marked.count()).toBe(before)
+  })
+})
+
