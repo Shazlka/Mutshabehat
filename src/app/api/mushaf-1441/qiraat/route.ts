@@ -293,6 +293,8 @@ export async function GET(request: NextRequest) {
         {
           headers: {
             'Cache-Control': 'private, no-cache, no-store, must-revalidate',
+            // Lets the reader say whether this page was confirmed by the database or is the bundled copy.
+            'X-Qiraat-Source': 'live',
           },
         }
       )
@@ -317,6 +319,7 @@ export async function GET(request: NextRequest) {
     {
       headers: {
         'Cache-Control': 'private, no-cache, no-store, must-revalidate',
+        'X-Qiraat-Source': 'fixtures',
       },
     }
   )

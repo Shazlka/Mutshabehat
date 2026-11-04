@@ -54,6 +54,8 @@ import { FaceBadge } from '../_features/word-sheet/FaceBadge'
 import { QiraatFeaturesHost, HUB_ENTRIES, type FeatureName } from '../_features/host/QiraatFeaturesHost'
 import { QiraatHubBar } from '../_features/hub/QiraatHubBar'
 import { UsulPrefsPanel } from '../_features/hub/UsulPrefsPanel'
+import { ReportErrorButton } from '../_features/sync-status/ReportErrorButton'
+import type { SyncOutcome } from '../../../../packages/qiraat-core/features/syncStatus'
 import { WordNotes } from '../_features/notes/WordNotes'
 import { ClassificationChips } from '../_features/word-sheet/ClassificationChips'
 import { ReadingFormLine } from '../_features/word-sheet/ReadingFormLine'
@@ -664,6 +666,14 @@ export default function Mushaf1441Viewer({
   // «فرش فقط» and the per-باب switches (iOS Settings). Applied where rulings enter qiraatView, so every
   // surface (page marks, sheet, hover card, marked-word list) agrees on what is shown.
   const [usulPrefs, setUsulPrefs] = useState<QiraatUsulPrefs>(DEFAULT_USUL_PREFS)
+  // When the server last confirmed each page's Qiraat data (for the «محدّث …» chip). Not a slot prop.
+  const [qiraatSync, setQiraatSync] = useState<Record<number, { outcome: SyncOutcome | null; lastSuccess: number | null }>>({})
+  function recordQiraatSync(page: number, outcome: SyncOutcome) {
+    setQiraatSync((current) => ({
+      ...current,
+      [page]: { outcome, lastSuccess: outcome === 'updated' || outcome === 'unchanged' ? Date.now() : (current[page]?.lastSuccess ?? null) },
+    }))
+  }
   // Which iOS-parity sheet is open (picker, colour key, search …); rendered by QiraatFeaturesHost.
   const [qiraatFeature, setQiraatFeature] = useState<FeatureName | null>(null)
   const wheelStateRef = useRef({ accumulated: 0, lastTurn: 0, lastEvent: 0 })
@@ -1619,6 +1629,8 @@ export default function Mushaf1441Viewer({
       // 2. Fetch live data from /api/mushaf-1441/qiraat in background to reflect live editor/DB updates
       void fetch(`/api/mushaf-1441/qiraat?page=${nextPage}&debug=${includeUnpublished ? 1 : 0}`)
         .then(async (res) => {
+          // «live» means the database answered; «fixtures» is the bundled copy the route falls back to.
+          recordQiraatSync(nextPage, res.ok && res.headers.get('x-qiraat-source') === 'live' ? 'updated' : 'failed')
           if (!res.ok) return
           const apiData = (await res.json()) as {
             variants?: QiraatVariant[]
@@ -1655,6 +1667,7 @@ export default function Mushaf1441Viewer({
         })
         .catch(() => {
           // Live API fetch failed or offline; static fixtures remain active
+          recordQiraatSync(nextPage, 'failed')
         })
 
       return { variants, rules, rulings }
@@ -4036,6 +4049,17 @@ export default function Mushaf1441Viewer({
             ⇄ قارن قارئين في هذه الكلمة
           </button>
         ) : null}
+        {selection === qiraatSelection ? (
+          <ReportErrorButton
+            page={word.pageNumber}
+            surah={word.surahNumber}
+            ayah={word.ayahNumber}
+            token={word.wordIndexInAyah}
+            word={word.textUthmani}
+            variantIds={variants.map((v) => v.id)}
+            rulingIds={rulings.map((r) => r.id)}
+          />
+        ) : null}
         {selection === qiraatSelection ? <WordNotes surah={word.surahNumber} ayah={word.ayahNumber} token={word.wordIndexInAyah} /> : null}
         {markedIndex >= 0 ? (
           <WordSheetNav
@@ -4190,7 +4214,7 @@ export default function Mushaf1441Viewer({
         {readerLayer === 'qiraat' ? (
         <>
         <div className={`rounded-lg border p-2.5 ${currentThemeTokens.sidebarCardClass}`}>
-          <div className="mb-2"><QiraatHubBar filter={qiraatFilter} entries={HUB_ENTRIES} onOpen={setQiraatFeature} /></div>
+          <div className="mb-2"><QiraatHubBar filter={qiraatFilter} entries={HUB_ENTRIES} onOpen={setQiraatFeature} sync={qiraatSync[pageNumber] ?? { outcome: null, lastSuccess: null }} /></div>
           <QiraatToolbar
             mode={qiraatMode}
             onModeChange={applyQiraatMode}
@@ -5215,7 +5239,7 @@ export default function Mushaf1441Viewer({
                   {renderQiraatSelection()}
                 </div>
               ) : null}
-              <div className="mb-2"><QiraatHubBar filter={qiraatFilter} entries={HUB_ENTRIES} onOpen={setQiraatFeature} /></div>
+              <div className="mb-2"><QiraatHubBar filter={qiraatFilter} entries={HUB_ENTRIES} onOpen={setQiraatFeature} sync={qiraatSync[pageNumber] ?? { outcome: null, lastSuccess: null }} /></div>
               <QiraatToolbar
                 mode={qiraatMode}
                 onModeChange={applyQiraatMode}

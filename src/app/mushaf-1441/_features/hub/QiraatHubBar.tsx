@@ -3,6 +3,8 @@
 import { filterLabel } from '../../../../../packages/qiraat-core/features/readerPicker'
 import type { QiraatComparisonFilter } from '../../_components/qiraat/types'
 import type { FeatureName } from '../host/QiraatFeaturesHost'
+import type { SyncOutcome } from '../../../../../packages/qiraat-core/features/syncStatus'
+import { SyncStatusChip } from '../sync-status/SyncStatusChip'
 
 // The Qiraat entry row: the filter chip (opens the picker) and the «المزيد» menu listing the sheets that exist
 // (colour key, page summary, search, usul index, compare, «المتون»).
@@ -10,8 +12,9 @@ export function QiraatHubBar(props: {
   filter: QiraatComparisonFilter
   entries: { name: FeatureName; label: string }[]
   onOpen: (name: FeatureName) => void
+  sync?: { outcome: SyncOutcome | null; lastSuccess: number | null }
 }) {
-  const { filter, entries, onOpen } = props
+  const { filter, entries, onOpen, sync } = props
   const active = filter.kind !== 'all'
   return (
     <div data-testid="qiraat-hub" className="flex flex-wrap items-center gap-2" dir="rtl">
@@ -26,6 +29,7 @@ export function QiraatHubBar(props: {
       >
         {active ? '✓ ' : ''}{filterLabel(filter)}
       </button>
+      {sync ? <SyncStatusChip outcome={sync.outcome} lastSuccess={sync.lastSuccess} /> : null}
       {entries.length > 0 ? (
         <details className="relative">
           <summary className="min-h-6 cursor-pointer list-none rounded border border-[var(--mushaf-rule)] px-3 py-0.5 text-[11px] font-bold [@media(pointer:coarse)]:min-h-11">

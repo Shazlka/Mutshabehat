@@ -327,3 +327,32 @@ test.describe('المتون', () => {
   })
 })
 
+test.describe('sync status and report', () => {
+  test('the page says whether its data is confirmed, and an error report copies the word facts', async ({ page, context }) => {
+    await context.grantPermissions(['clipboard-read', 'clipboard-write'])
+    // Desktop Chrome has a native share sheet; force the clipboard path the other browsers use.
+    await page.addInitScript(() => Object.defineProperty(navigator, 'share', { value: undefined }))
+    await openQiraatPage(page, 17)
+    const chip = page.getByTestId('sync-status').first()
+    await expect(chip).toBeVisible()
+    // The test backend is unreachable, so the route answers with the bundled copy: never «محدّث الآن».
+    await expect(chip).toHaveAttribute('data-kind', /localCopy|confirmed/)
+    await expect(chip).toContainText('نسخة محلية')
+
+    await openFirstMarkedWord(page)
+    await page.mouse.move(2, 400)
+    await page.getByTestId('report-error').first().click()
+    const copied = await page.evaluate(() => navigator.clipboard.readText())
+    expect(copied).toMatch(/^بلاغ عن خطأ في القراءات\nالصفحة: 1[78]\nالموضع: 2:\d+:\d+\nالكلمة: /)
+  })
+
+  test('a live answer reads «محدّث الآن»', async ({ page }) => {
+    await page.route('**/api/mushaf-1441/qiraat?*', async (route) => {
+      const response = await route.fetch()
+      await route.fulfill({ response, headers: { ...response.headers(), 'x-qiraat-source': 'live' } })
+    })
+    await openQiraatPage(page, 17)
+    await expect(page.getByTestId('sync-status').first()).toContainText('محدّث الآن')
+  })
+})
+
