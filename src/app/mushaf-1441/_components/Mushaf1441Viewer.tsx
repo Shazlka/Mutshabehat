@@ -40,6 +40,7 @@ import {
   riwayahResolutionForWord,
   rulingMarkerForWord,
   matchesFilter,
+  isQiraatMarkedWord,
   qiraatDataForWord,
   imalahTaqlilMarkerForWord,
   PERFORMANCE_MARKER_COLOR,
@@ -47,6 +48,9 @@ import {
   type RulingMarker,
   type ImalahTaqlilMarker,
 } from './qiraat/qiraatWordMarker'
+import { markedWords, nextMarked, nearestMarked, previousMarked, toOrderable, variantWajhNumbers } from '../../../../packages/qiraat-core/features/wordOrder'
+import { WordSheetNav } from '../_features/word-sheet/WordSheetNav'
+import { FaceBadge } from '../_features/word-sheet/FaceBadge'
 import { QIRAAT_PREFS_STORAGE_KEY, type QiraatComparisonFilter, type QiraatMode, type QiraatPrefs } from './qiraat/types'
 import { impactHaptic } from './haptics'
 import {
@@ -1160,6 +1164,42 @@ export default function Mushaf1441Viewer({
     [qiraatView, pageNumber],
   )
 
+  // The marked words of the visible page(s) in Quran order: what the word sheet steps through.
+  // Not a MushafPageSlot prop, so building it never re-renders a page slot.
+  const qiraatMarkedList = useMemo(() => {
+    if (qiraatView.mode === 'normal') return []
+    const pages = companionPageNumber ? [pageNumber, companionPageNumber] : [pageNumber]
+    const filter: QiraatComparisonFilter = qiraatView.mode === 'riwayah'
+      ? { kind: 'reading', readingId: qiraatView.selectedReadingId }
+      : qiraatView.filter
+    const words = pages
+      .flatMap((no) => (pageCache[no]?.lines ?? []).flatMap((line) => line.words))
+      .map((word) => Object.assign(toOrderable(word), { word }))
+    return markedWords(pages, words, (entry) => isQiraatMarkedWord(entry.word, {
+      variants: qiraatVariantsForPage(entry.page),
+      rulings: qiraatRulingsForPage(entry.page),
+      filter,
+      includeUnpublished: qiraatView.includeReviewed,
+    }))
+    // qiraatVariantsForPage / qiraatRulingsForPage read qiraatView only.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [qiraatView, pageNumber, companionPageNumber, pageCache])
+
+  // A filter or a live update can remove the word the sheet is showing: move to the nearest marked
+  // word (or close) instead of leaving the sheet on a word the page no longer marks.
+  useEffect(() => {
+    if (!qiraatSelection || qiraatMode === 'normal') return
+    const selectedPage = qiraatSelection.word.pageNumber
+    if (selectedPage !== pageNumber && selectedPage !== companionPageNumber) return
+    if (qiraatMarkedList.some((entry) => entry.id === qiraatSelection.word.id)) return
+    const target = nearestMarked(qiraatMarkedList, Object.assign(toOrderable(qiraatSelection.word), { word: qiraatSelection.word }))
+    if (target) goToMarkedQiraatWord(target.word)
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    else setQiraatSelection(null)
+    // goToMarkedQiraatWord only reads qiraatView, which qiraatMarkedList already depends on.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [qiraatMarkedList])
+
   const qiraatVariantsForSelectedAyah = useMemo(() => {
     if (!selectedAyahKey) return []
     const [surahPart, ayahPart] = selectedAyahKey.split(':')
@@ -1924,6 +1964,12 @@ export default function Mushaf1441Viewer({
     return { word, rulings, variants }
   }
 
+  // Step the open word sheet to another marked word; never toggles it closed (unlike a press on the page).
+  function goToMarkedQiraatWord(word: MushafWord) {
+    const selection = qiraatSelectionForWord(word)
+    if (selection) setQiraatSelection(selection)
+  }
+
   function selectWordForQiraat(word: MushafWord): boolean {
     setSelectedAyahKey(null)
     setSelectedWord(null)
@@ -2417,6 +2463,7 @@ export default function Mushaf1441Viewer({
         type="button"
         data-quran-word-id={word.id}
         data-qiraat-multi-reader={qiraatMarker?.isGradient ? 'true' : undefined}
+        data-qiraat-marked={qiraatMarker || rulingMarker ? 'true' : undefined}
         id={word.wordIndexInAyah === 1 ? navigateToAyah(word.ayahKey).slice(1) : undefined}
         onPointerUp={(event) => {
           // Some mobile WebKit builds suppress the synthetic click after a touch gesture on the
@@ -3853,8 +3900,26 @@ export default function Mushaf1441Viewer({
       )
     }
     const { word, rulings, variants } = selection
+    const faceNumbers = variantWajhNumbers(variants)
+    const markedIndex = selection === qiraatSelection ? qiraatMarkedList.findIndex((entry) => entry.id === word.id) : -1
     return (
       <div className="space-y-2.5">
+        {markedIndex >= 0 ? (
+          <WordSheetNav
+            position={markedIndex + 1}
+            total={qiraatMarkedList.length}
+            canPrev={previousMarked(qiraatMarkedList, qiraatMarkedList[markedIndex]) !== null}
+            canNext={nextMarked(qiraatMarkedList, qiraatMarkedList[markedIndex]) !== null}
+            onPrev={() => {
+              const target = previousMarked(qiraatMarkedList, qiraatMarkedList[markedIndex])
+              if (target) goToMarkedQiraatWord(target.word)
+            }}
+            onNext={() => {
+              const target = nextMarked(qiraatMarkedList, qiraatMarkedList[markedIndex])
+              if (target) goToMarkedQiraatWord(target.word)
+            }}
+          />
+        ) : null}
         <div className="flex items-baseline justify-between gap-2 border-b border-[var(--mushaf-rule-soft)] pb-2">
           <span className="text-[11px] font-bold text-[var(--mushaf-muted)]" dir="ltr">{word.ayahKey}</span>
           <span className="font-[family-name:var(--font-amiri-quran)] text-2xl font-bold text-[var(--mushaf-ink)]">
@@ -3868,7 +3933,10 @@ export default function Mushaf1441Viewer({
           return (
             <div key={variant.id} className="rounded-lg border border-[#e3d6b4] bg-white p-2.5">
               <div className="mb-1.5 flex items-center justify-between gap-2">
-                <span className="rounded-full bg-[#f1e2b6] px-2 py-0.5 text-[11px] font-bold text-[#7a5a10]">{label}</span>
+                <span className="flex items-center gap-1.5">
+                  {faceNumbers[variant.id] ? <FaceBadge number={faceNumbers[variant.id]} /> : null}
+                  <span className="rounded-full bg-[#f1e2b6] px-2 py-0.5 text-[11px] font-bold text-[#7a5a10]">{label}</span>
+                </span>
                 <span className="text-[11px] font-bold text-[var(--mushaf-muted)]">خلاف في الرسم</span>
               </div>
               <p className="text-center font-[family-name:var(--font-amiri-quran)] text-2xl font-bold text-[#7a1f1a]">

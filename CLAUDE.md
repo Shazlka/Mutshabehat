@@ -48,6 +48,11 @@ section below **and** the root
 
 # Changelog
 
+## 2026-11-04 — Web parity step 2: word sheet steps through marked words and numbers faces (branch web/ios-parity)
+- **Change:** the Qiraat word sheet now shows «k من n» with previous/next buttons that step through the marked words of the visible page(s) in Quran order (no wraparound), and numbers a word's faces «وجه 1 / وجه 2» only when it has several. If a filter removes the open word the sheet moves to the nearest marked word or closes. Marked words carry `data-qiraat-marked` for tests.
+- **Verification:** Playwright flows `word sheet steps through marked words` and `only a word with several faces shows face numbers` (page 17, desktop, against a local production build with a dummy backend, so Qiraat data came from the bundled fixtures) pass; typecheck; feature unit tests 15/15. **Not run:** `tests/test_mushaf_page_performance.py` (Python Playwright is not installed here). **DB migration:** none.
+- **Files:** `src/app/mushaf-1441/_features/word-sheet/{WordSheetNav,FaceBadge}.tsx`, `src/app/mushaf-1441/_components/Mushaf1441Viewer.tsx`, `tests/quiz/e2e/qiraat-features.spec.ts`.
+
 ## 2026-11-04 — Web parity with the Qiraat iOS app, step 1: word order and marked-word predicate (branch web/ios-parity)
 - **Request:** make every feature of the Qiraat iOS app work in the web reader, reading the same database (spec `docs/superpowers/specs/2026-11-04-web-ios-parity-design.md`, plan `docs/superpowers/plans/2026-11-04-web-ios-parity-qiraat-ux.md`). Built on branch `web/ios-parity`, not yet on `main`.
 - **Change:** ported the iOS marked-word ordering (`packages/qiraat-core/features/wordOrder.ts`: Quran-position order, next/previous/nearest marked word, face numbers) and extracted the viewer's inline "has something to explain" check as `isQiraatMarkedWord` / `qiraatDataForWord` (`qiraatWordMarker.ts`); the viewer now uses it. Added the empty `QiraatFeaturesHost` for the sheets of the next steps.
