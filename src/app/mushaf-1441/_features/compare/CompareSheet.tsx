@@ -6,6 +6,7 @@ import {
   type CompareSelection, type ComparedUsul, type Voice,
 } from '../../../../../packages/qiraat-core/features/compare'
 import type { QiraatComparisonFilter } from '../../_components/qiraat/types'
+import { CREAM_SURFACE, readableInkOn } from '../../../../../packages/qiraat-core/features/contrast'
 import { FeatureSheet } from '../host/FeatureSheet'
 import { ReaderPicker } from '../reader-picker/ReaderPicker'
 
@@ -19,19 +20,19 @@ function sourceLabel(source: { kind: 'variant' } | { kind: 'base'; sameAsHafs: b
 function UsulLine({ usul }: { usul: ComparedUsul }) {
   return (
     <li data-testid="compare-usul" className="rounded border border-[var(--mushaf-rule-soft)] p-1.5 text-[11px]">
-      <span className="font-black" style={{ color: usul.color }}>{usul.categoryAr}</span>
+      <span className="font-black" style={{ color: readableInkOn(usul.color, CREAM_SURFACE) }}>{usul.categoryAr}</span>
       {usul.status.kind === 'entries' ? (
         <ul className="mt-0.5 space-y-0.5">
           {usul.status.entries.map((e, i) => (
             <li key={i}>
               {e.wajhOrder && e.wajhOrder > 1 ? <b>وجه {e.wajhOrder}: </b> : null}{e.action}
-              {e.condition ? <span className="text-[var(--mushaf-muted)]"> ({e.condition})</span> : null}
-              {e.wajhNote ? <span className="block text-[var(--mushaf-muted)]">الخلاف: {e.wajhNote}</span> : null}
+              {e.condition ? <span className="text-[var(--qx-muted)]"> ({e.condition})</span> : null}
+              {e.wajhNote ? <span className="block text-[var(--qx-muted)]">الخلاف: {e.wajhNote}</span> : null}
             </li>
           ))}
         </ul>
       ) : (
-        <span className="block text-[var(--mushaf-muted)]">{usul.status.sameAsHafs ? 'لم يُذكر: كحفص' : 'لم يُذكر: على الأصل'}</span>
+        <span className="block text-[var(--qx-muted)]">{usul.status.sameAsHafs ? 'لم يُذكر: كحفص' : 'لم يُذكر: على الأصل'}</span>
       )}
     </li>
   )
@@ -40,13 +41,13 @@ function UsulLine({ usul }: { usul: ComparedUsul }) {
 function VoiceColumn({ voice }: { voice: Voice }) {
   return (
     <div data-testid={`compare-voice-${voice.authorityId}`} className="rounded-lg border bg-white p-2" style={{ borderColor: voice.color }}>
-      <p className="mb-1 text-xs font-black" style={{ color: voice.color }}>{voice.name}</p>
+      <p className="mb-1 text-xs font-black" style={{ color: readableInkOn(voice.color, CREAM_SURFACE) }}>{voice.name}</p>
       <ul className="space-y-1">
         {voice.content.wajhs.map((w, i) => (
           <li key={i} className="text-center">
             <span className="block font-[family-name:var(--font-amiri-quran)] text-2xl">{w.text}</span>
             {w.note ? <span className="block text-[11px] font-bold">{w.note}</span> : null}
-            <span className="block text-[11px] text-[var(--mushaf-muted)]">{sourceLabel(w.source)}</span>
+            <span className="block text-[11px] text-[var(--qx-muted)]">{sourceLabel(w.source)}</span>
           </li>
         ))}
       </ul>
@@ -84,18 +85,18 @@ export function CompareSheet(props: { word: { surah: number; ayah: number; token
       ) : null}
       {result ? (
         <>
-          <p data-testid="compare-verdict" className={`mb-3 rounded px-2 py-1 text-xs font-black ${result.isSame ? 'bg-[#e4f1df] text-[#2a5a1f]' : 'bg-[#fbe9d3] text-[#7a3d10]'}`}>
+          <p data-testid="compare-verdict" className={`mb-3 rounded px-2 py-1 text-xs font-black ${result.isSame ? 'bg-[var(--qx-ok-bg)] text-[var(--qx-ok-ink)]' : 'bg-[var(--qx-diff-bg)] text-[var(--qx-diff-ink)]'}`}>
             {result.isSame ? '✓ يقرآن الكلمة بالطريقة نفسها' : '≠ يختلفان في قراءة الكلمة'}
           </p>
           <div className="grid gap-3 sm:grid-cols-2">
             {[result.first, result.second].map((reading, i) => (
               <div key={`${reading.authorityId}-${i}`} className="space-y-2">
-                {reading.voices.length === 0 ? <p className="text-xs text-[var(--mushaf-muted)]">غير معروف.</p> : reading.voices.map((voice) => <VoiceColumn key={voice.authorityId} voice={voice} />)}
+                {reading.voices.length === 0 ? <p className="text-xs text-[var(--qx-muted)]">غير معروف.</p> : reading.voices.map((voice) => <VoiceColumn key={voice.authorityId} voice={voice} />)}
               </div>
             ))}
           </div>
         </>
-      ) : <p className="text-xs text-[var(--mushaf-muted)]">لا بيانات لهذه الكلمة.</p>}
+      ) : <p className="text-xs text-[var(--qx-muted)]">لا بيانات لهذه الكلمة.</p>}
     </FeatureSheet>
   )
 }

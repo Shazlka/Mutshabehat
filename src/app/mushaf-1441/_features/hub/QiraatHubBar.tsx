@@ -5,6 +5,7 @@ import { filterLabel } from '../../../../../packages/qiraat-core/features/reader
 import type { QiraatComparisonFilter } from '../../_components/qiraat/types'
 import type { FeatureName } from '../host/QiraatFeaturesHost'
 import type { SyncOutcome } from '../../../../../packages/qiraat-core/features/syncStatus'
+import { Glyph } from '../host/Glyph'
 import { SyncStatusChip } from '../sync-status/SyncStatusChip'
 
 // The Qiraat entry row: the filter chip (opens the picker) and the «المزيد» menu listing the sheets that exist
@@ -42,13 +43,13 @@ export function QiraatHubBar(props: {
           active ? 'border-[var(--mushaf-ink)] bg-[var(--mushaf-ink)] text-white' : 'border-[var(--mushaf-rule)] text-[var(--mushaf-ink)]'
         }`}
       >
-        {active ? '✓ ' : ''}{filterLabel(filter)}
+        {active ? <><Glyph>✓</Glyph>{' '}</> : null}{filterLabel(filter)}
       </button>
       {sync ? <SyncStatusChip outcome={sync.outcome} lastSuccess={sync.lastSuccess} /> : null}
       {entries.length > 0 ? (
         <details ref={menu} data-testid="hub-menu" className="relative">
           <summary className="min-h-6 cursor-pointer list-none rounded border border-[var(--mushaf-rule)] px-3 py-0.5 text-[11px] font-bold [@media(pointer:coarse)]:min-h-11">
-            المزيد ▾
+            المزيد <Glyph>▾</Glyph>
           </summary>
           <ul className="absolute start-0 z-10 mt-1 min-w-40 rounded-lg border border-[var(--mushaf-rule)] bg-white p-1 shadow">
             {entries.map((entry) => (

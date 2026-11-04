@@ -14,14 +14,12 @@ export interface SyncStatus {
 /** Confirmations this recent still read as «الآن». */
 export const CURRENT_WINDOW_SECONDS = 60
 
-const ARABIC_DIGITS = '٠١٢٣٤٥٦٧٨٩'
-const arabicDigits = (n: number) => String(n).replace(/\d/g, (d) => ARABIC_DIGITS[Number(d)])
 
 function arabicCount(n: number, one: string, two: string, few: string, many: string): string {
   if (n === 1) return one
   if (n === 2) return two
-  if (n >= 3 && n <= 10) return `${arabicDigits(n)} ${few}`
-  return `${arabicDigits(n)} ${many}`
+  if (n >= 3 && n <= 10) return `${n} ${few}`
+  return `${n} ${many}`
 }
 
 /** «قبل دقيقة», «قبل ٥ دقائق», «قبل ساعتين», «قبل ٣ أيام» (minutes, hours, days; Arabic plurals). */

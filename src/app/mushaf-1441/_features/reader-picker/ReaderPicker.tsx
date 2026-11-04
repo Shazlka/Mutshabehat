@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react'
 import { narratorColor, readerColor } from '../../../../../packages/qiraat-core/colors'
 import { filterLabel, narratorLabel, searchReaders, toggleCompare } from '../../../../../packages/qiraat-core/features/readerPicker'
 import type { QiraatComparisonFilter } from '../../_components/qiraat/types'
+import { Glyph } from '../host/Glyph'
 import { FeatureSheet } from '../host/FeatureSheet'
 
 const ROW =
@@ -37,7 +38,7 @@ export function ReaderPicker(props: {
       />
       {comparing ? (
         <div className="mb-3 flex items-center justify-between gap-2">
-          <span className="text-[11px] font-bold text-[var(--mushaf-muted)]">اختر اثنين للمقارنة ({compare.length}/2)</span>
+          <span className="text-[11px] font-bold text-[var(--qx-muted)]">اختر اثنين للمقارنة ({compare.length}/2)</span>
           <button
             type="button"
             data-testid="compare-go"
@@ -55,7 +56,7 @@ export function ReaderPicker(props: {
           onClick={() => { onPick({ kind: 'all' }); onClose() }}
           className={`${ROW} mb-2 border-[var(--mushaf-rule)]`}
         >
-          {isSelected('all') ? '✓ ' : ''}الكل
+          {isSelected('all') ? <><Glyph>✓</Glyph>{' '}</> : null}الكل
         </button>
       )}
       <ul className="space-y-3">
@@ -90,8 +91,8 @@ export function ReaderPicker(props: {
           </li>
         ))}
       </ul>
-      {readers.length === 0 ? <p className="text-xs text-[var(--mushaf-muted)]">لا نتائج لـ «{query}».</p> : null}
-      <p className="mt-3 text-[11px] text-[var(--mushaf-muted)]">الاختيار الحالي: {filterLabel(filter.kind === 'reading' ? { kind: 'reading', readingId: filter.readingId } : filter)}</p>
+      {readers.length === 0 ? <p className="text-xs text-[var(--qx-muted)]">لا نتائج لـ «{query}».</p> : null}
+      <p className="mt-3 text-[11px] text-[var(--qx-muted)]">الاختيار الحالي: {filterLabel(filter.kind === 'reading' ? { kind: 'reading', readingId: filter.readingId } : filter)}</p>
     </FeatureSheet>
   )
 }

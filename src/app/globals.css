@@ -131,6 +131,29 @@
   --mushaf-ink-2: #3a3326;
   --mushaf-gold: #b99b51;
   --mushaf-muted: #8b7f6a;
+
+  /* Qiraat UX sheets (hub, colour key, summary, search, compare, notes). Text tokens reach 4.5:1 on the surfaces
+     they sit on (checked by tests/qiraat/features/contrast.test.ts); --mushaf-muted stays for the reader's chrome. */
+  --qx-muted: #6b6150;
+  --qx-err: #8a2f10;
+  --qx-ok-ink: #24501a;
+  --qx-ok-bg: #e4f1df;
+  --qx-diff-ink: #6e3410;
+  --qx-diff-bg: #fbe9d3;
+  --qx-info-ink: #1d4f7a;
+  --qx-info-bg: #e1edf7;
+  --qx-warn-ink: #6a4306;
+  --qx-warn-bg: #f8ecd0;
+  --qx-face-ink: #6a4a0a;
+  --qx-face-bg: #fbf3dc;
+  --qx-face-rule: #e3d6b4;
+  /* Sample strokes of the colour key's marks (decorative, drawn on a sample word). */
+  --qx-mark-solid: #2563eb;
+  --qx-mark-green: #16a34a;
+  --qx-mark-red: #dc2626;
+  --qx-mark-performance: #4f46e5;
+  --qx-mark-unresolved: #8a8a8a;
+  --qx-mark-usul: #c026d3;
 }
 
 :root {

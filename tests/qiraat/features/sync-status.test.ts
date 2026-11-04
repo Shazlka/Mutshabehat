@@ -17,7 +17,7 @@ test('an answer with no recorded time counts as now', () => {
 
 test('after a minute the time is shown', () => {
   const s = syncStatus({ outcome: 'unchanged', lastSuccess: ago(5 * 60), now: NOW, offline: false })
-  assert.deepEqual([s.kind, s.title], ['confirmed', 'محدّث قبل ٥ دقائق'])
+  assert.deepEqual([s.kind, s.title], ['confirmed', 'محدّث قبل 5 دقائق'])
 })
 
 test('the window is exactly 60 seconds', () => {
@@ -65,16 +65,16 @@ test('agoText uses Arabic plurals for minutes, hours and days', () => {
   const m = (n: number) => agoText(n * 60)
   assert.equal(m(1), 'قبل دقيقة')
   assert.equal(m(2), 'قبل دقيقتين')
-  assert.equal(m(5), 'قبل ٥ دقائق')
-  assert.equal(m(15), 'قبل ١٥ دقيقة')
+  assert.equal(m(5), 'قبل 5 دقائق')
+  assert.equal(m(15), 'قبل 15 دقيقة')
   assert.equal(m(60), 'قبل ساعة')
   assert.equal(m(120), 'قبل ساعتين')
-  assert.equal(m(3 * 60), 'قبل ٣ ساعات')
-  assert.equal(m(12 * 60), 'قبل ١٢ ساعة')
+  assert.equal(m(3 * 60), 'قبل 3 ساعات')
+  assert.equal(m(12 * 60), 'قبل 12 ساعة')
   assert.equal(m(24 * 60), 'قبل يوم')
   assert.equal(m(48 * 60), 'قبل يومين')
-  assert.equal(m(5 * 24 * 60), 'قبل ٥ أيام')
-  assert.equal(m(15 * 24 * 60), 'قبل ١٥ يومًا')
+  assert.equal(m(5 * 24 * 60), 'قبل 5 أيام')
+  assert.equal(m(15 * 24 * 60), 'قبل 15 يومًا')
 })
 
 test('the error report carries only facts the page holds', () => {
@@ -88,11 +88,11 @@ test('the report leaves out the lists that are empty', () => {
 })
 
 test('agoText at the edges of each unit', () => {
-  assert.equal(agoText(59 * 60), 'قبل ٥٩ دقيقة')
-  assert.equal(agoText(10 * 60), 'قبل ١٠ دقائق')
-  assert.equal(agoText(11 * 60), 'قبل ١١ دقيقة')
-  assert.equal(agoText(23 * 3600), 'قبل ٢٣ ساعة')
-  assert.equal(agoText(10 * 24 * 3600), 'قبل ١٠ أيام')
+  assert.equal(agoText(59 * 60), 'قبل 59 دقيقة')
+  assert.equal(agoText(10 * 60), 'قبل 10 دقائق')
+  assert.equal(agoText(11 * 60), 'قبل 11 دقيقة')
+  assert.equal(agoText(23 * 3600), 'قبل 23 ساعة')
+  assert.equal(agoText(10 * 24 * 3600), 'قبل 10 أيام')
 })
 
 test('updated and unchanged read the same', () => {
@@ -113,5 +113,5 @@ test('the report lists several ids with the Arabic comma', () => {
 })
 
 test('a long outage reads in days', () => {
-  assert.equal(syncStatus({ outcome: 'failed', lastSuccess: ago(3 * 24 * 3600), now: NOW, offline: false }).title, 'محدّث قبل ٣ أيام')
+  assert.equal(syncStatus({ outcome: 'failed', lastSuccess: ago(3 * 24 * 3600), now: NOW, offline: false }).title, 'محدّث قبل 3 أيام')
 })

@@ -1,5 +1,7 @@
 'use client'
 
+import { Glyph } from '../host/Glyph'
+
 // Next / previous marked word inside the Qiraat word sheet (iOS QiraatSheetNavigator).
 // Pure presentation: the viewer owns the marked-word list and the selection.
 export interface WordSheetNavProps {
@@ -20,13 +22,13 @@ export function WordSheetNav({ position, total, canPrev, canNext, onPrev, onNext
   return (
     <div data-testid="word-sheet-nav" className="flex items-center justify-between gap-2" dir="rtl">
       <button type="button" className={BUTTON} disabled={!canPrev} onClick={onPrev} aria-label="الكلمة السابقة">
-        ‹ السابقة
+        <Glyph>‹</Glyph> السابقة
       </button>
-      <span data-testid="word-sheet-position" className="text-[11px] font-bold text-[var(--mushaf-muted)]">
+      <span data-testid="word-sheet-position" className="text-[11px] font-bold text-[var(--qx-muted)]">
         {position} من {total}
       </span>
       <button type="button" className={BUTTON} disabled={!canNext} onClick={onNext} aria-label="الكلمة التالية">
-        التالية ›
+        التالية <Glyph>›</Glyph>
       </button>
     </div>
   )

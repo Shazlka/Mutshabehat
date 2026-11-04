@@ -18,11 +18,12 @@ export function UsulPrefsPanel(props: {
   const { prefs, options, onChange } = props
   return (
     <details data-testid="usul-prefs" className="rounded-lg border border-[var(--mushaf-rule)] p-2 text-xs">
-      <summary className="cursor-pointer text-[11px] font-black text-[var(--mushaf-ink)]">أبواب الأصول المعروضة</summary>
+      <summary className="flex min-h-6 cursor-pointer items-center text-[11px] font-black text-[var(--mushaf-ink)] [@media(pointer:coarse)]:min-h-11">أبواب الأصول المعروضة</summary>
       <div className="mt-2 space-y-1">
         <label className={ROW}>
           <input
             type="checkbox"
+            className="h-4 w-4 shrink-0 [@media(pointer:coarse)]:h-6 [@media(pointer:coarse)]:w-6"
             data-testid="usul-farsh-only"
             checked={prefs.farshOnly}
             onChange={(event) => onChange({ ...prefs, farshOnly: event.target.checked })}
@@ -34,6 +35,7 @@ export function UsulPrefsPanel(props: {
             <label key={option.code} className={`${ROW} ${prefs.farshOnly ? 'opacity-50' : ''}`}>
               <input
                 type="checkbox"
+                className="h-4 w-4 shrink-0 [@media(pointer:coarse)]:h-6 [@media(pointer:coarse)]:w-6"
                 data-testid={`usul-switch-${option.code}`}
                 disabled={prefs.farshOnly}
                 checked={!prefs.disabledCategories.includes(option.code)}

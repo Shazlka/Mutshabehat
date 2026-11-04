@@ -499,3 +499,56 @@ test.describe('deferred minors', () => {
   })
 })
 
+test.describe('audit fixes', () => {
+  test('tabs move with the arrow keys and expose a labelled panel', async ({ page }) => {
+    await openQiraatPage(page, 17)
+    await openHub(page)
+    await page.getByTestId('hub-legend').first().click()
+    const sheet = page.getByTestId('legend-sheet')
+    const tabs = sheet.getByRole('tab')
+    await tabs.first().focus()
+    await expect(tabs.first()).toHaveAttribute('aria-selected', 'true')
+    await page.keyboard.press('ArrowLeft') // RTL: the next tab
+    await expect(tabs.nth(1)).toHaveAttribute('aria-selected', 'true')
+    await expect(tabs.nth(1)).toBeFocused()
+    await expect(tabs.first()).toHaveAttribute('tabindex', '-1')
+    await page.keyboard.press('End')
+    await expect(tabs.last()).toHaveAttribute('aria-selected', 'true')
+    const panel = sheet.getByRole('tabpanel')
+    await expect(panel).toBeVisible()
+    await expect(panel).toHaveAttribute('aria-labelledby', (await tabs.last().getAttribute('id'))!)
+  })
+
+  test('a long search lists a chunk and «عرض المزيد» adds more', async ({ page }) => {
+    await openQiraatPage(page, 17)
+    await openHub(page)
+    await page.getByTestId('hub-search').first().click()
+    const search = page.getByTestId('qiraat-search')
+    await search.getByRole('tab', { name: 'قارئ أو راوٍ' }).click()
+    await search.getByRole('combobox', { name: 'القارئ أو الراوي' }).selectOption('Q01')
+    await expect(page.getByTestId('search-progress')).toBeHidden({ timeout: 120_000 })
+    await expect(search.getByTestId('search-result')).toHaveCount(100)
+    await search.getByTestId('show-more').click()
+    expect(await search.getByTestId('search-result').count()).toBeGreaterThan(100)
+  })
+
+  test('on a touch device every control in the sheets is at least 44 px', async ({ page, isMobile }) => {
+    test.skip(!isMobile, 'touch targets are a phone concern')
+    await openQiraatPage(page, 17)
+    await ensureQiraatTools(page)
+    await page.getByTestId('usul-prefs').locator('summary').click()
+    const tooSmall = async (root: string) => page.locator(`${root} button, ${root} summary, ${root} select, ${root} input:not([type=checkbox]), ${root} textarea`).evaluateAll((els) =>
+      els.filter((el) => { const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0 && (r.height < 43.5 || r.width < 43.5) && !(el as HTMLButtonElement).disabled })
+        .map((el) => `${el.tagName}:${(el.textContent ?? '').trim().slice(0, 18)}:${Math.round(el.getBoundingClientRect().width)}x${Math.round(el.getBoundingClientRect().height)}`))
+    expect(await tooSmall('[data-testid="usul-prefs"]')).toEqual([])
+    for (const key of ['legend', 'pageSummary', 'search', 'notes', 'mutoon']) {
+      await ensureQiraatTools(page)
+      await page.getByTestId('qiraat-hub').first().locator('summary').click()
+      await page.getByTestId(`hub-${key}`).first().click()
+      await expect(page.locator('[role="dialog"]')).toBeVisible()
+      expect(await tooSmall('[role="dialog"]'), key).toEqual([])
+      await page.keyboard.press('Escape')
+    }
+  })
+})
+

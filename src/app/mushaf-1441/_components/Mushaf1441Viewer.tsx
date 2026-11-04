@@ -56,7 +56,9 @@ import { QiraatHubBar } from '../_features/hub/QiraatHubBar'
 import { UsulPrefsPanel } from '../_features/hub/UsulPrefsPanel'
 import { ReportErrorButton } from '../_features/sync-status/ReportErrorButton'
 import type { SyncOutcome } from '../../../../packages/qiraat-core/features/syncStatus'
+import { CREAM_SURFACE, readableInkOn, readableTextOn } from '../../../../packages/qiraat-core/features/contrast'
 import { aggregateRulings } from '../../../../packages/qiraat-core/features/aggregateRulings'
+import { Glyph } from '../_features/host/Glyph'
 import { WordNotes } from '../_features/notes/WordNotes'
 import { ClassificationChips } from '../_features/word-sheet/ClassificationChips'
 import { ReadingFormLine } from '../_features/word-sheet/ReadingFormLine'
@@ -3991,7 +3993,7 @@ export default function Mushaf1441Viewer({
       <span
         key={pill.key}
         className="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-bold"
-        style={{ borderColor: `${pill.color}55`, backgroundColor: `${pill.color}14`, color: pill.color }}
+        style={{ borderColor: `${pill.color}55`, backgroundColor: `${pill.color}14`, color: readableInkOn(pill.color, CREAM_SURFACE) }}
       >
         <span className="size-1.5 shrink-0 rounded-full" style={{ backgroundColor: pill.color }} />
         {pill.name}
@@ -4060,7 +4062,7 @@ export default function Mushaf1441Viewer({
   function renderQiraatSelection(selection: QiraatSelection | null = qiraatSelection) {
     if (!selection) {
       return (
-        <p className="rounded-lg border border-dashed border-[var(--mushaf-rule)] bg-[var(--mushaf-cream-3)] p-3 text-xs leading-6 text-[var(--mushaf-muted)]">
+        <p className="rounded-lg border border-dashed border-[var(--mushaf-rule)] bg-[var(--mushaf-cream-3)] p-3 text-xs leading-6 text-[var(--qx-muted)]">
           اضغط على أي كلمة ملوَّنة في الصفحة ليظهر هنا بيانُ حكمها: كيف تُقرأ، ولمن.
         </p>
       )
@@ -4079,7 +4081,7 @@ export default function Mushaf1441Viewer({
             onClick={() => setQiraatFeature('compare')}
             className="min-h-6 rounded border border-[var(--mushaf-rule)] px-2 py-0.5 text-[11px] font-bold text-[var(--mushaf-ink)] [@media(pointer:coarse)]:min-h-11"
           >
-            ⇄ قارن قارئين في هذه الكلمة
+            <Glyph>⇄</Glyph> قارن قارئين في هذه الكلمة
           </button>
         ) : null}
         {selection === qiraatSelection ? (
@@ -4111,7 +4113,7 @@ export default function Mushaf1441Viewer({
           />
         ) : null}
         <div className="flex items-baseline justify-between gap-2 border-b border-[var(--mushaf-rule-soft)] pb-2">
-          <span className="text-[11px] font-bold text-[var(--mushaf-muted)]" dir="ltr">{word.ayahKey}</span>
+          <span className="text-[11px] font-bold text-[var(--qx-muted)]" dir="ltr">{word.ayahKey}</span>
           <span className="font-[family-name:var(--font-amiri-quran)] text-2xl font-bold text-[var(--mushaf-ink)]">
             {word.textUthmani}
           </span>
@@ -4128,7 +4130,7 @@ export default function Mushaf1441Viewer({
                   {faceNumbers[variant.id] ? <FaceBadge number={faceNumbers[variant.id]} /> : null}
                   <span className="rounded-full bg-[#f1e2b6] px-2 py-0.5 text-[11px] font-bold text-[#7a5a10]">{label}</span>
                 </span>
-                <span className="text-[11px] font-bold text-[var(--mushaf-muted)]">خلاف في الرسم</span>
+                <span className="text-[11px] font-bold text-[var(--qx-muted)]">خلاف في الرسم</span>
               </div>
               <p className="text-center font-[family-name:var(--font-amiri-quran)] text-2xl font-bold text-[#7a1f1a]">
                 {variant.uthmaniText ?? (isPerformanceOnly ? variant.hafsText : variant.variantText)}
@@ -4164,7 +4166,7 @@ export default function Mushaf1441Viewer({
               <ClassificationChips segments={classificationSegments(ruling)} />
               <div className="mb-1.5 flex items-center justify-between gap-2">
                 <span className="flex flex-wrap items-center gap-1">
-                  <span className="rounded-full px-2 py-0.5 text-[11px] font-bold text-white" style={{ background: ruling.color }}>
+                  <span className="rounded-full px-2 py-0.5 text-[11px] font-bold" style={{ background: ruling.color, color: readableTextOn(ruling.color) }}>
                     {ruling.categoryAr}
                   </span>
                   {ruling.subCategory ? (
@@ -4174,7 +4176,7 @@ export default function Mushaf1441Viewer({
                   ) : null}
                 </span>
                 {ruling.condition ? (
-                  <span className="text-[11px] font-bold text-[var(--mushaf-muted)]">{ruling.condition}</span>
+                  <span className="text-[11px] font-bold text-[var(--qx-muted)]">{ruling.condition}</span>
                 ) : null}
               </div>
               {Array.from(byAction.entries()).map(([action, list]) => {
@@ -4199,9 +4201,9 @@ export default function Mushaf1441Viewer({
                   ذو وجهين (بخلف عنه) — الوجه الآخر جائز أيضًا
                 </p>
               ) : null}
-              {ruling.notes ? <p className="mt-1.5 text-[11px] leading-6 text-[var(--mushaf-muted)]">{ruling.notes}</p> : null}
+              {ruling.notes ? <p className="mt-1.5 text-[11px] leading-6 text-[var(--qx-muted)]">{ruling.notes}</p> : null}
               {ruling.sourceNotes?.map((note, i) => (
-                <p key={`${ruling.id}-source-note-${i}`} className="mt-1.5 text-[11px] leading-6 text-[var(--mushaf-muted)]">{note}</p>
+                <p key={`${ruling.id}-source-note-${i}`} className="mt-1.5 text-[11px] leading-6 text-[var(--qx-muted)]">{note}</p>
               ))}
               {ruling.verificationStatus === 'NEEDS_MANUAL_REVIEW' ? (
                 <p className="mt-1.5 inline-block rounded-full bg-[#f7d2c4] px-2 py-0.5 text-[11px] font-bold text-[#8a2f10]">تحتاج مراجعة يدوية</p>
@@ -4211,7 +4213,7 @@ export default function Mushaf1441Viewer({
         })}
 
         {variants.length === 0 && rulings.length === 0 ? (
-          <p className="text-xs text-[var(--mushaf-muted)]">لا توجد أحكام مسجَّلة على هذه الكلمة.</p>
+          <p className="text-xs text-[var(--qx-muted)]">لا توجد أحكام مسجَّلة على هذه الكلمة.</p>
         ) : null}
       </div>
     )
@@ -4235,7 +4237,7 @@ export default function Mushaf1441Viewer({
             <button
               type="button"
               onClick={() => setQiraatSelection(null)}
-              className={`rounded border px-2 py-0.5 text-[11px] font-bold ${currentThemeTokens.headerBtnClass}`}
+              className={`min-h-6 rounded border px-2 py-0.5 text-[11px] font-bold ${currentThemeTokens.headerBtnClass}`}
             >
               مسح التحديد
             </button>

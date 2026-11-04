@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { isEmptyNote, noteId, NOTES_STORE, type QiraatWordNote } from '../../../../../packages/qiraat-core/features/notes'
+import { Glyph } from '../host/Glyph'
 import { usePersonalStore } from './usePersonalStore'
 
 /** Favourite star and a personal note for the open Qiraat word, kept on this device. */
@@ -76,7 +77,7 @@ export function WordNotes({ surah, ayah, token }: { surah: number; ayah: number;
           onClick={() => void save({ favourite: !(note?.favourite ?? false) })}
           className="min-h-6 rounded border border-[var(--mushaf-rule)] px-2 text-[11px] font-bold [@media(pointer:coarse)]:min-h-11"
         >
-          {note?.favourite ? '★ في المفضلة' : '☆ أضف إلى المفضلة'}
+          {note?.favourite ? <><Glyph>★</Glyph> في المفضلة</> : <><Glyph>☆</Glyph> أضف إلى المفضلة</>}
         </button>
         <button
           type="button"
@@ -85,7 +86,7 @@ export function WordNotes({ surah, ayah, token }: { surah: number; ayah: number;
           onClick={() => setOpen((v) => !v)}
           className="min-h-6 rounded border border-[var(--mushaf-rule)] px-2 text-[11px] font-bold [@media(pointer:coarse)]:min-h-11"
         >
-          {open ? 'إخفاء الملاحظة' : note?.text.trim() ? 'ملاحظتي' : '+ ملاحظة'}
+          {open ? 'إخفاء الملاحظة' : note?.text.trim() ? 'ملاحظتي' : <><Glyph>+</Glyph> ملاحظة</>}
         </button>
       </div>
       {open ? (
@@ -100,8 +101,8 @@ export function WordNotes({ surah, ayah, token }: { surah: number; ayah: number;
           className="mt-2 w-full rounded border border-[var(--mushaf-rule)] p-2 text-xs"
         />
       ) : null}
-      {saveFailed ? <p data-testid="save-failed" className="mt-1 text-[11px] font-bold text-[#8a2f10]">تعذّر الحفظ على هذا الجهاز.</p> : null}
-      {!store.available ? <p data-testid="not-saved" className="mt-1 text-[11px] font-bold text-[#8a2f10]">غير محفوظ على هذا الجهاز: يبقى حتى تغلق الصفحة.</p> : null}
+      {saveFailed ? <p data-testid="save-failed" className="mt-1 text-[11px] font-bold text-[var(--qx-err)]">تعذّر الحفظ على هذا الجهاز.</p> : null}
+      {!store.available ? <p data-testid="not-saved" className="mt-1 text-[11px] font-bold text-[var(--qx-err)]">غير محفوظ على هذا الجهاز: يبقى حتى تغلق الصفحة.</p> : null}
     </div>
   )
 }

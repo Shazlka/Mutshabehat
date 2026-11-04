@@ -34,14 +34,14 @@ export function MutoonSheet({ onClose }: { onClose: () => void }) {
 
   return (
     <FeatureSheet title="المتون" onClose={onClose} testId="mutoon-sheet">
-      {load.state === 'loading' ? <p className="text-sm text-[var(--mushaf-muted)]">جارٍ تحميل المتون…</p> : null}
+      {load.state === 'loading' ? <p className="text-sm text-[var(--qx-muted)]">جارٍ تحميل المتون…</p> : null}
       {load.state === 'error' ? (
         <div data-testid="mutoon-error" className="space-y-2 text-sm">
           <p>تعذّر تحميل المتون الآن.</p>
           <button type="button" onClick={() => setAttempt((n) => n + 1)} className="min-h-6 rounded border border-[var(--mushaf-rule)] px-3 text-xs font-bold [@media(pointer:coarse)]:min-h-11">إعادة المحاولة</button>
         </div>
       ) : null}
-      {load.state === 'ready' && works.length === 0 ? <p data-testid="mutoon-empty" className="text-sm text-[var(--mushaf-muted)]">لا متون مضمّنة بعد.</p> : null}
+      {load.state === 'ready' && works.length === 0 ? <p data-testid="mutoon-empty" className="text-sm text-[var(--qx-muted)]">لا متون مضمّنة بعد.</p> : null}
       {works.length > 0 ? (
         <>
           <input
@@ -54,11 +54,11 @@ export function MutoonSheet({ onClose }: { onClose: () => void }) {
           />
           <div style={{ fontFamily: 'var(--font-cairo), system-ui, sans-serif' }}>
             {searching ? (
-              hits.length === 0 ? <p className="text-sm text-[var(--mushaf-muted)]">لا نتائج.</p> : (
+              hits.length === 0 ? <p className="text-sm text-[var(--qx-muted)]">لا نتائج.</p> : (
                 <ul className="space-y-2">
                   {hits.map((hit) => (
                     <li key={`${hit.work}-${hit.chapterTitle}-${hit.verse.number}`} data-testid="mutoon-hit" className="rounded-lg border border-[var(--mushaf-rule-soft)] bg-white p-2 text-sm leading-8">
-                      <span className="block text-[11px] font-bold text-[var(--mushaf-muted)]">{hit.workTitle} · {hit.chapterTitle} · بيت {hit.verse.number}</span>
+                      <span className="block text-[11px] font-bold text-[var(--qx-muted)]">{hit.workTitle} · {hit.chapterTitle} · بيت {hit.verse.number}</span>
                       {hit.verse.lines.map((line, i) => <span key={i} className="block">{line}</span>)}
                     </li>
                   ))}
@@ -68,7 +68,7 @@ export function MutoonSheet({ onClose }: { onClose: () => void }) {
               <div className="space-y-3">
                 {works.map((work) => (
                   <details key={work.work} data-testid={`mutoon-work-${work.work}`} className="rounded-lg border border-[var(--mushaf-rule)] bg-white p-2">
-                    <summary className="cursor-pointer text-sm font-black">{work.title} <span className="text-[11px] font-bold text-[var(--mushaf-muted)]">· {work.author}</span></summary>
+                    <summary className="cursor-pointer text-sm font-black">{work.title} <span className="text-[11px] font-bold text-[var(--qx-muted)]">· {work.author}</span></summary>
                     <div className="mt-2 space-y-2">
                       {work.chapters.map((chapter) => (
                         <details key={chapter.title} className="rounded border border-[var(--mushaf-rule-soft)] p-1.5">
@@ -76,7 +76,7 @@ export function MutoonSheet({ onClose }: { onClose: () => void }) {
                           <ol className="mt-1 space-y-1 text-sm leading-8">
                             {chapter.verses.map((verse) => (
                               <li key={verse.number} data-testid="mutoon-verse">
-                                <span className="me-2 text-[11px] font-bold text-[var(--mushaf-muted)]">{verse.number}</span>
+                                <span className="me-2 text-[11px] font-bold text-[var(--qx-muted)]">{verse.number}</span>
                                 {verse.lines.map((line, i) => <span key={i} className="block">{line}</span>)}
                               </li>
                             ))}
