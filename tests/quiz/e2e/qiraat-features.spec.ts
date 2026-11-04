@@ -456,3 +456,46 @@ test.describe('final review fixes', () => {
   })
 })
 
+test.describe('deferred minors', () => {
+  test('the «المزيد» menu closes on Escape and on an outside click', async ({ page }) => {
+    await openQiraatPage(page, 17)
+    await ensureQiraatTools(page)
+    const menu = page.getByTestId('hub-menu').first()
+    await menu.locator('summary').click()
+    await expect(menu).toHaveAttribute('open', '')
+    await page.keyboard.press('Escape')
+    await expect(menu).not.toHaveAttribute('open', '')
+    await menu.locator('summary').click()
+    await expect(menu).toHaveAttribute('open', '')
+    await page.getByTestId('filter-chip').first().evaluate((el) => el.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true })))
+    await expect(menu).not.toHaveAttribute('open', '')
+  })
+
+  test('the sync chip is an announced status and the colour key draws each mark', async ({ page }) => {
+    await openQiraatPage(page, 17)
+    await ensureQiraatTools(page)
+    await expect(page.getByRole('status').filter({ hasText: 'نسخة محلية' })).toBeVisible()
+    await openHub(page)
+    await page.getByTestId('hub-legend').first().click()
+    const sheet = page.getByTestId('legend-sheet')
+    await sheet.getByRole('tab', { name: 'العلامات' }).click()
+    for (const key of ['mark-solid', 'mark-dotted', 'mark-imalah', 'mark-taqlil']) {
+      await expect(sheet.getByTestId(`legend-row-${key}`).getByText('كلمة', { exact: true })).toBeVisible()
+    }
+  })
+
+  test('a note typed and left without leaving the field is still saved', async ({ page }) => {
+    await openQiraatPage(page, 17)
+    await openFirstMarkedWord(page)
+    await page.mouse.move(2, 400)
+    await page.getByTestId('note-toggle').first().click()
+    await page.getByTestId('note-text').first().pressSequentially('نص بلا مغادرة')
+    await page.waitForTimeout(1000) // the field keeps focus; the note is saved after typing stops
+    await page.reload()
+    await expect(page.locator('[data-page-slot-current] [data-quran-word-id]').first()).toBeVisible()
+    await openHub(page)
+    await page.getByTestId('hub-notes').first().click()
+    await expect(page.getByTestId('notes-panel')).toContainText('نص بلا مغادرة')
+  })
+})
+

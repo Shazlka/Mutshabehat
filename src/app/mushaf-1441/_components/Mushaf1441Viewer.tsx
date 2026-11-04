@@ -56,6 +56,7 @@ import { QiraatHubBar } from '../_features/hub/QiraatHubBar'
 import { UsulPrefsPanel } from '../_features/hub/UsulPrefsPanel'
 import { ReportErrorButton } from '../_features/sync-status/ReportErrorButton'
 import type { SyncOutcome } from '../../../../packages/qiraat-core/features/syncStatus'
+import { aggregateRulings } from '../../../../packages/qiraat-core/features/aggregateRulings'
 import { WordNotes } from '../_features/notes/WordNotes'
 import { ClassificationChips } from '../_features/word-sheet/ClassificationChips'
 import { ReadingFormLine } from '../_features/word-sheet/ReadingFormLine'
@@ -1209,6 +1210,11 @@ export default function Mushaf1441Viewer({
     })
     return { word: { surah: word.surahNumber, ayah: word.ayahNumber, token: word.wordIndexInAyah, text: word.textUthmani }, selection: data }
   }, [qiraatSelection, variantsByPageNumber, allRulingsByPageNumber])
+  // «مقارنة» is about the open word: when that word closes under it, the sheet closes too.
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (qiraatFeature === 'compare' && !compareTarget) setQiraatFeature(null)
+  }, [qiraatFeature, compareTarget])
   function updateUsulPrefs(next: QiraatUsulPrefs) {
     setUsulPrefs(next)
     try { saveUsulPrefs(window.localStorage, next) } catch { /* storage unavailable */ }
@@ -2067,8 +2073,10 @@ export default function Mushaf1441Viewer({
 
   // The Mushaf words just before and after a ruling's span (for نقل, which crosses a word boundary).
   function wordsAroundRuling(ruling: QiraatRuling): { previous: string | null; next: string | null } {
-    const flat = [pageNumber, companionPageNumber]
-      .filter((no): no is number => no !== null)
+    // The visible page(s) and their neighbours: a naql can cross into the next page's first word.
+    const near = [pageNumber - 1, pageNumber, pageNumber + 1, ...(companionPageNumber !== null ? [companionPageNumber - 1, companionPageNumber, companionPageNumber + 1] : [])]
+    const flat = Array.from(new Set(near))
+      .filter((no) => no >= MIN_PAGE && no <= MAX_PAGE)
       .sort((a, b) => a - b)
       .flatMap((no) => (pageCache[no]?.lines ?? []).flatMap((line) => line.words))
       .filter(isRealWordToken)
@@ -2114,6 +2122,9 @@ export default function Mushaf1441Viewer({
     const word = findVisibleWord(pending)
     if (!word) return
     if (goToMarkedQiraatWord(word)) pendingQiraatWordRef.current = null
+    // Its page's Qiraat data is here and the word still is not marked (a باب switched off, a filter): give up, so
+    // it does not pop open later when the switch is turned back on.
+    else if (qiraatView.variantsByPage[`${word.pageNumber}:1`] && qiraatView.rulingsByPage[`${word.pageNumber}:1`]) pendingQiraatWordRef.current = null
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageCache, pageNumber, companionPageNumber, qiraatView, pendingQiraatTick])
 
@@ -4054,7 +4065,9 @@ export default function Mushaf1441Viewer({
         </p>
       )
     }
-    const { word, rulings, variants } = selection
+    const { word, variants } = selection
+    // One card per باب and span: the several rows of a locus are one ruling with every reader's row kept.
+    const rulings = aggregateRulings(selection.rulings)
     const faceNumbers = variantWajhNumbers(variants)
     const markedIndex = selection === qiraatSelection ? qiraatMarkedList.findIndex((entry) => entry.id === word.id) : -1
     return (
@@ -4077,7 +4090,7 @@ export default function Mushaf1441Viewer({
             token={word.wordIndexInAyah}
             word={word.textUthmani}
             variantIds={variants.map((v) => v.id)}
-            rulingIds={rulings.map((r) => r.id)}
+            rulingIds={selection.rulings.map((r) => r.id)}
           />
         ) : null}
         {selection === qiraatSelection ? <WordNotes surah={word.surahNumber} ayah={word.ayahNumber} token={word.wordIndexInAyah} /> : null}

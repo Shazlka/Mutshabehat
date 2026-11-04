@@ -84,7 +84,7 @@ export function buildSearchIndex(
       append({
         page, surah: r.surah, ayah: r.ayah, token: r.startToken, displayText: r.baseText,
         texts: [r.baseText], kind: 'ruling', wordAnchored: r.wordAnchored,
-      }, [...r.readings.map((x) => x.readingId as string), ...r.attribution.map((a) => a.authorityId)], r.category)
+      }, r.readings.map((x) => x.readingId as string), r.category) // readings only, like the page's own marks
     }
   }
 

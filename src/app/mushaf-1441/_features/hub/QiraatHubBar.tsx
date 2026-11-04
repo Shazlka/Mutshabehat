@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import { filterLabel } from '../../../../../packages/qiraat-core/features/readerPicker'
 import type { QiraatComparisonFilter } from '../../_components/qiraat/types'
 import type { FeatureName } from '../host/QiraatFeaturesHost'
@@ -15,6 +16,20 @@ export function QiraatHubBar(props: {
   sync?: { outcome: SyncOutcome | null; lastSuccess: number | null }
 }) {
   const { filter, entries, onOpen, sync } = props
+  const menu = useRef<HTMLDetailsElement>(null)
+  // The «المزيد» menu closes on Escape and on a click outside it, like any menu.
+  useEffect(() => {
+    const close = (event: Event) => {
+      const el = menu.current
+      if (!el?.open) return
+      if (event.type === 'keydown' && (event as KeyboardEvent).key !== 'Escape') return
+      if (event.type === 'pointerdown' && el.contains(event.target as Node)) return
+      el.open = false
+    }
+    document.addEventListener('keydown', close)
+    document.addEventListener('pointerdown', close)
+    return () => { document.removeEventListener('keydown', close); document.removeEventListener('pointerdown', close) }
+  }, [])
   const active = filter.kind !== 'all'
   return (
     <div data-testid="qiraat-hub" className="flex flex-wrap items-center gap-2" dir="rtl">
@@ -31,7 +46,7 @@ export function QiraatHubBar(props: {
       </button>
       {sync ? <SyncStatusChip outcome={sync.outcome} lastSuccess={sync.lastSuccess} /> : null}
       {entries.length > 0 ? (
-        <details className="relative">
+        <details ref={menu} data-testid="hub-menu" className="relative">
           <summary className="min-h-6 cursor-pointer list-none rounded border border-[var(--mushaf-rule)] px-3 py-0.5 text-[11px] font-bold [@media(pointer:coarse)]:min-h-11">
             المزيد ▾
           </summary>

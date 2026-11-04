@@ -155,7 +155,8 @@ export function rollupAuthorityPills(authorityIds: readonly string[]): Authority
         if (presentNarratorIds.has(narrator.id)) {
           pills.push({
             key: narrator.id,
-            name: `الراوي ${narrator.nameAr}`,
+            // «خلف» alone is also the reader Q10's name; the narrator is always «خلف عن حمزة».
+            name: `الراوي ${narrator.id === 'Q06-R01' ? 'خلف عن حمزة' : narrator.nameAr}`,
             color: narratorColor(narrator.id as ReadingId),
             kind: 'narrator',
             narratorId: narrator.id,

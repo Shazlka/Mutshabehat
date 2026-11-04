@@ -144,3 +144,27 @@ test('defaultPair is Hafs and the first other authority the data names, or null'
   assert.equal(defaultPair(sel([variant('v', ['Q05-R02'])])), null)
   assert.equal(defaultPair(sel()), null)
 })
+
+test('a ruling that starts in an earlier ayah is its own locus', () => {
+  const across = ruling('x', 'IDGHAM_KABIR', [{ authorityId: 'Q03', action: 'إدغام' }], { ayah: 4, startToken: 9, endAyah: 5, endToken: 1 })
+  const all = loci(sel([variant('v', ['Q01-R02'])], [across]))
+  assert.deepEqual(all.map((l) => `${l.ayah}:${l.startToken}-${l.endAyah}:${l.endToken}`), ['4:9-5:1', '5:3-5:3'])
+})
+
+test('a reader-level ruling row reads the same for both narrators, so the reader is one column', () => {
+  const [locus] = loci(sel([], [ruling('a', 'SAKT', [{ authorityId: 'Q02', action: 'سكت' }])]))
+  const reading = readingOf('Q02', locus, WORD)
+  assert.equal(reading.voices.length, 1)
+  assert.equal(reading.voices[0].kind, 'reader')
+})
+
+test('an entry without its own condition takes the ruling\'s condition', () => {
+  const [locus] = loci(sel([], [ruling('a', 'SAKT', [{ authorityId: 'Q01-R02', action: 'سكت' }], { condition: 'وقفًا' })]))
+  const status = readingOf('Q01-R02', locus, WORD).voices[0].content.usul[0].status
+  assert.equal(status.kind === 'entries' && status.entries[0].condition, 'وقفًا')
+})
+
+test('comparing a reading with itself is the same', () => {
+  const [locus] = loci(sel([variant('v', ['Q01-R02'])]))
+  assert.equal(compare('Q01-R02', 'Q01-R02', locus, WORD).isSame, true)
+})

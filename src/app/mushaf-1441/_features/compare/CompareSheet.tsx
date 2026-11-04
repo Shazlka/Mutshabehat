@@ -62,7 +62,7 @@ export function CompareSheet(props: { word: { surah: number; ayah: number; token
   const [choosing, setChoosing] = useState(false)
   const all = useMemo(() => loci(selection), [selection])
   const [locusIndex, setLocusIndex] = useState<number | null>(null)
-  const locus = locusIndex !== null ? all[locusIndex] : defaultLocus(all, word)
+  const locus = (locusIndex !== null ? all[locusIndex] : undefined) ?? defaultLocus(all, word)
   const result = useMemo(() => (pair && locus ? compare(pair[0], pair[1], locus, word.text) : null), [pair, locus, word.text])
 
   if (choosing || !pair) {

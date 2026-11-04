@@ -86,3 +86,32 @@ test('the report leaves out the lists that are empty', () => {
   const text = errorReportText({ page: 1, surah: 1, ayah: 1, token: 1, word: 'ب', variantIds: [], rulingIds: [] })
   assert.equal(text.split('\n').length, 4)
 })
+
+test('agoText at the edges of each unit', () => {
+  assert.equal(agoText(59 * 60), 'قبل ٥٩ دقيقة')
+  assert.equal(agoText(10 * 60), 'قبل ١٠ دقائق')
+  assert.equal(agoText(11 * 60), 'قبل ١١ دقيقة')
+  assert.equal(agoText(23 * 3600), 'قبل ٢٣ ساعة')
+  assert.equal(agoText(10 * 24 * 3600), 'قبل ١٠ أيام')
+})
+
+test('updated and unchanged read the same', () => {
+  const a = syncStatus({ outcome: 'updated', lastSuccess: ago(30), now: NOW, offline: false })
+  const b = syncStatus({ outcome: 'unchanged', lastSuccess: ago(30), now: NOW, offline: false })
+  assert.deepEqual(a, b)
+})
+
+test('offline with no confirmation is still the bundled copy', () => {
+  const s = syncStatus({ outcome: null, lastSuccess: null, now: NOW, offline: true })
+  assert.deepEqual([s.kind, s.offline], ['localCopy', true])
+})
+
+test('the report lists several ids with the Arabic comma', () => {
+  const text = errorReportText({ page: 2, surah: 2, ayah: 1, token: 1, word: 'ا', variantIds: ['a', 'b', 'c'], rulingIds: ['x', 'y'] })
+  assert.ok(text.includes('الوجوه: a، b، c'))
+  assert.ok(text.includes('الأحكام: x، y'))
+})
+
+test('a long outage reads in days', () => {
+  assert.equal(syncStatus({ outcome: 'failed', lastSuccess: ago(3 * 24 * 3600), now: NOW, offline: false }).title, 'محدّث قبل ٣ أيام')
+})

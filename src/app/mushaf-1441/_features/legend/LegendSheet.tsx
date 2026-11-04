@@ -12,10 +12,36 @@ const TABS: { id: Tab; label: string }[] = [
   { id: 'marks', label: 'العلامات' },
 ]
 
+/** The word «كلمة» drawn the way the page draws that mark, so a mark row shows its shape, not only words about it. */
+function MarkSample({ markKey }: { markKey: string }) {
+  const line = (style: React.CSSProperties) => ({ paddingBottom: 2, ...style })
+  const dot = (pos: React.CSSProperties, extra: React.CSSProperties = {}) => (
+    <span aria-hidden="true" style={{ position: 'absolute', width: 6, height: 6, borderRadius: 9999, background: '#C026D3', ...pos, ...extra }} />
+  )
+  const styles: Record<string, React.CSSProperties> = {
+    'mark-solid': line({ borderBottom: '2px solid #2563EB' }),
+    'mark-segmented': line({ borderBottom: '2px solid transparent', borderImage: 'linear-gradient(to left, #2563EB 33%, #16A34A 33% 66%, #DC2626 66%) 1' }),
+    'mark-performance': line({ borderBottom: '2px solid #4F46E5' }),
+    'mark-unresolved': line({ borderBottom: '2px solid #8a8a8a' }),
+    'mark-dotted': line({ borderBottom: '2px dotted #C026D3' }),
+    'mark-ruling-word': { color: '#C026D3' },
+  }
+  return (
+    <span aria-hidden="true" className="relative inline-block shrink-0 px-2 font-[family-name:var(--font-amiri-quran)] text-lg" style={styles[markKey]}>
+      كلمة
+      {markKey === 'mark-family' ? dot({ top: 0, left: 0 }) : null}
+      {markKey === 'mark-imalah' ? dot({ bottom: -2, left: 0 }) : null}
+      {markKey === 'mark-taqlil' ? dot({ bottom: -2, left: 0 }, { background: 'transparent', border: '1.5px solid #C026D3' }) : null}
+    </span>
+  )
+}
+
 function Row({ row, nested }: { row: LegendRow; nested?: boolean }) {
   return (
     <li data-testid={`legend-row-${row.key}`} className={`flex items-start gap-2 rounded border border-[var(--mushaf-rule-soft)] bg-white p-2 ${nested ? 'ms-4' : ''}`}>
-      <span aria-hidden="true" className="mt-1 inline-block h-3 w-3 shrink-0 rounded-full border border-[var(--mushaf-rule)]" style={{ background: row.color }} />
+      {row.key.startsWith('mark-')
+        ? <MarkSample markKey={row.key} />
+        : <span aria-hidden="true" className="mt-1 inline-block h-3 w-3 shrink-0 rounded-full border border-[var(--mushaf-rule)]" style={{ background: row.color }} />}
       <span className="flex-1 text-xs">
         <span className="font-black">{row.label}</span>
         {row.explanation ? <span className="mt-0.5 block leading-5 text-[var(--mushaf-muted)]">{row.explanation}</span> : null}

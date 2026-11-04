@@ -89,7 +89,6 @@ export function MutoonSheet({ onClose }: { onClose: () => void }) {
               </div>
             )}
           </div>
-          <p className="mt-3 text-[11px] text-[var(--mushaf-muted)]">للتحرير: <a href="/mushaf-1441/mutoon-editor" className="underline">محرر المتون</a></p>
         </>
       ) : null}
     </FeatureSheet>

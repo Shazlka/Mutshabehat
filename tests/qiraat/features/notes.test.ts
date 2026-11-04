@@ -89,3 +89,39 @@ test('a note with no text that is not a favourite is empty and is not kept', () 
   assert.equal(isEmptyNote(note(1, 1, 1, { favourite: true })), false)
   assert.equal(isEmptyNote(note(1, 1, 1, { text: 'x' })), false)
 })
+
+test('putting a note again replaces it', async () => {
+  const store = createMemoryStore()
+  await store.put(NOTES_STORE, '2:5:3', note(2, 5, 3, { text: 'أول' }))
+  await store.put(NOTES_STORE, '2:5:3', note(2, 5, 3, { text: 'ثانٍ' }))
+  assert.equal((await store.all(NOTES_STORE)).length, 1)
+  assert.equal((await store.get<QiraatWordNote>(NOTES_STORE, '2:5:3'))?.text, 'ثانٍ')
+})
+
+test('two stores do not share data', async () => {
+  const a = createMemoryStore()
+  const b = createMemoryStore()
+  await a.put(NOTES_STORE, 'k', { id: 'k' })
+  assert.deepEqual(await b.all(NOTES_STORE), [])
+})
+
+test('the export is versioned and dated', async () => {
+  const parsed = JSON.parse(await exportPersonalData(createMemoryStore()))
+  assert.equal(parsed.version, 1)
+  assert.ok(!Number.isNaN(Date.parse(parsed.exportedAt)))
+  assert.deepEqual(parsed.stores[NOTES_STORE], [])
+})
+
+test('importing a note with the same update time keeps the local one', async () => {
+  const store = createMemoryStore()
+  await store.put(NOTES_STORE, '2:5:3', note(2, 5, 3, { text: 'محلي' }))
+  const other = createMemoryStore()
+  await other.put(NOTES_STORE, '2:5:3', note(2, 5, 3, { text: 'وارد' }))
+  assert.equal((await importPersonalData(store, await exportPersonalData(other))).imported, 0)
+  assert.equal((await store.get<QiraatWordNote>(NOTES_STORE, '2:5:3'))?.text, 'محلي')
+})
+
+test('importing an empty backup imports nothing and succeeds', async () => {
+  const result = await importPersonalData(createMemoryStore(), await exportPersonalData(createMemoryStore()))
+  assert.equal(result.imported, 0)
+})

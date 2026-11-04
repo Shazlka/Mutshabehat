@@ -20,6 +20,7 @@ export function SyncStatusChip({ outcome, lastSuccess }: { outcome: SyncOutcome 
   const tint = status.kind === 'current' ? '#2a5a1f' : status.kind === 'confirmed' ? '#1d4f7a' : '#8a5a10'
   return (
     <span
+      role="status"
       data-testid="sync-status"
       data-kind={status.kind}
       aria-label={offline ? `${status.title} — بلا اتصال` : status.title}

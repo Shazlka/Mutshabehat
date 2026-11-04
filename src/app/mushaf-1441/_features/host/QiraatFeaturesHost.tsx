@@ -59,7 +59,7 @@ export function QiraatFeaturesHost({ active, onClose, filter, onFilterChange, va
   }
   if (active === 'usulIndex') return <UsulIndexSheet onGoToPlace={onGoToPlace} onClose={onClose} />
   if (active === 'search') return <QiraatSearchSheet surahName={surahName} onGoToPlace={onGoToPlace} onClose={onClose} />
-  if (active === 'compare' && compareTarget) return <CompareSheet word={compareTarget.word} selection={compareTarget.selection} onClose={onClose} />
+  if (active === 'compare' && compareTarget) return <CompareSheet key={`${compareTarget.word.surah}:${compareTarget.word.ayah}:${compareTarget.word.token}`} word={compareTarget.word} selection={compareTarget.selection} onClose={onClose} />
   if (active === 'notes') return <NotesPanel surahName={surahName} onGoToWord={onGoToWord} onClose={onClose} />
   if (active === 'mutoon') return <MutoonSheet onClose={onClose} />
   return null

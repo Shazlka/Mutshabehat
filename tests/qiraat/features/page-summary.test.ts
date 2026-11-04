@@ -92,3 +92,33 @@ test('a ruling with no attribution rows but readings keeps its actions', () => {
   const items = buildPageSummary({ page: 5, words, variants: [], rulings: [r], filter: ALL })
   assert.equal(items[0].rulingGroups[0].rulings[0].actionGroups[0].action, 'سكت')
 })
+
+test('two words of the page with the same Quran position appear once', () => {
+  const dup = [word('a', 1, 1, 1), word('a2', 1, 2, 1)]
+  assert.equal(buildPageSummary({ page: 5, words: dup, variants: [variant('v', 1, ['Q01-R01'])], rulings: [], filter: ALL }).length, 1)
+})
+
+test('rulings that are not word-anchored are not listed', () => {
+  const r = ruling('r', 'AYAH_COUNT', 1, [{ authorityId: 'Q01', action: 'x' }])
+  r.wordAnchored = false
+  assert.deepEqual(buildPageSummary({ page: 5, words, variants: [], rulings: [r], filter: ALL }), [])
+})
+
+test('a ruling that spans two words lists both words', () => {
+  const r = ruling('r', 'IDGHAM_KABIR', 1, [{ authorityId: 'Q03', action: 'إدغام' }])
+  r.endToken = 2
+  assert.deepEqual(buildPageSummary({ page: 5, words, variants: [], rulings: [r], filter: ALL }).map((i) => i.wordId), ['w1', 'w2'])
+})
+
+test('a variant with no readers still lists its word, with no pills', () => {
+  const items = buildPageSummary({ page: 5, words, variants: [variant('v', 1, [])], rulings: [], filter: ALL })
+  assert.equal(items.length, 1)
+  assert.deepEqual(items[0].variants[0].pills, [])
+})
+
+test('a narrator filter keeps the reader-level ruling rows of that narrator\'s reader', () => {
+  const r = ruling('r', 'SAKT', 1, [{ authorityId: 'Q01', action: 'سكت' }, { authorityId: 'Q02', action: 'سكت' }])
+  r.readings = [{ readingId: 'Q01-R02' as never, action: 'سكت', isDefault: true }]
+  const items = buildPageSummary({ page: 5, words, variants: [], rulings: [r], filter: { kind: 'reading', readingId: 'Q01-R02' } })
+  assert.deepEqual(items[0].rulingGroups[0].rulings[0].actionGroups[0].entries.map((e) => e.authorityId), ['Q01'])
+})

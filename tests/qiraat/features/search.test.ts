@@ -82,12 +82,33 @@ test('rulings that are not word-anchored never match a word or authority query',
   assert.deepEqual(idx.search({ kind: 'authority', authorityId: 'Q01' }), [])
 })
 
-test('a ruling attributed through attribution rows (reader or narrator ids) is found by authority', () => {
-  const idx = buildSearchIndex({}, {
-    1: [ruling('a', 'SAKT', 1, 1, 'نص', [], { attribution: [{ authorityId: 'Q06', action: 'سكت' }, { authorityId: 'Q07-R02', action: 'سكت' }] })],
+test('authority search follows the rulings\' readings, as the page marks do, not attribution-only rows', () => {
+  const only = buildSearchIndex({}, {
+    1: [ruling('a', 'SAKT', 1, 1, 'نص', [], { attribution: [{ authorityId: 'Q07', action: 'سكت' }] })],
   })
-  assert.equal(idx.search({ kind: 'authority', authorityId: 'Q07' }).length, 1)
-  assert.equal(idx.search({ kind: 'authority', authorityId: 'Q06' }).length, 1)
-  assert.equal(idx.search({ kind: 'authority', authorityId: 'Q07-R02' }).length, 1)
-  assert.equal(idx.search({ kind: 'authority', authorityId: 'Q07-R01' }).length, 0)
+  assert.equal(only.search({ kind: 'authority', authorityId: 'Q07' }).length, 0)
+  const withReadings = buildSearchIndex({}, {
+    1: [ruling('b', 'SAKT', 1, 1, 'نص', ['Q07-R02'], { attribution: [{ authorityId: 'Q07', action: 'سكت' }] })],
+  })
+  assert.equal(withReadings.search({ kind: 'authority', authorityId: 'Q07' }).length, 1)
+  assert.equal(withReadings.search({ kind: 'authority', authorityId: 'Q07-R02' }).length, 1)
+  assert.equal(withReadings.search({ kind: 'authority', authorityId: 'Q07-R01' }).length, 0)
+})
+
+test('a place shows source text even when its first record has none', () => {
+  const idx = buildSearchIndex({}, { 1: [ruling('a', 'SAKT', 1, 1, '', ['Q01-R01']), ruling('b', 'IKHFA', 1, 1, 'نص', ['Q01-R01'])] })
+  assert.equal(idx.search({ kind: 'authority', authorityId: 'Q01' })[0].displayText, 'نص')
+})
+
+test('a multi-word ruling opens at its start token', () => {
+  const idx = buildSearchIndex({}, { 1: [ruling('a', 'IDGHAM_KABIR', 4, 7, 'كلمتان', ['Q03-R01'], { endToken: 8 })] })
+  const [hit] = idx.search({ kind: 'category', code: 'IDGHAM_KABIR' })
+  assert.deepEqual([hit.ayah, hit.token], [4, 7])
+})
+
+test('a variant and a ruling at one anchor are one place with both kinds counted', () => {
+  const idx = buildSearchIndex({ 1: [variant('v', 1, 3, 3, ['Q02-R01'], 'نص')] }, { 1: [ruling('r', 'SAKT', 3, 3, 'نص', ['Q02-R01'])] })
+  const hits = idx.search({ kind: 'authority', authorityId: 'Q02-R01' })
+  assert.equal(hits.length, 1)
+  assert.deepEqual([hits[0].recordCount, hits[0].kinds], [2, ['variant', 'ruling']])
 })

@@ -42,7 +42,12 @@ function indexedDbStore(db: IDBDatabase): PersonalStore {
   }
 }
 
-export async function openPersonalStore(factory: IDBFactory | null | undefined = typeof indexedDB === 'undefined' ? null : indexedDB): Promise<PersonalStore> {
+export async function openPersonalStore(given?: IDBFactory | null): Promise<PersonalStore> {
+  let factory: IDBFactory | null | undefined = given
+  if (factory === undefined) {
+    // Reading `indexedDB` itself can throw (blocked site data, sandboxed frames).
+    try { factory = typeof indexedDB === 'undefined' ? null : indexedDB } catch { factory = null }
+  }
   if (!factory) return createMemoryStore(false)
   try {
     const db = await new Promise<IDBDatabase>((resolve, reject) => {

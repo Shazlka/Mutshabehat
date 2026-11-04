@@ -23,10 +23,14 @@ const MAX_HITS = 100
 
 /** The books in their fixed order, chapters in order, verses sorted by number. */
 export function mutoonWorks(snapshot: MutoonSnapshot | null): Work[] {
-  const works = snapshot?.document?.mutoon?.works ?? []
-  return WORK_IDS.flatMap((id) => works.filter((w) => w.work === id)).map((w) => ({
+  const works = snapshot?.document?.mutoon?.works
+  if (!Array.isArray(works)) return []
+  return WORK_IDS.flatMap((id) => works.filter((w) => w?.work === id)).map((w) => ({
     ...w,
-    chapters: w.chapters.map((c) => ({ ...c, verses: [...c.verses].sort((a, b) => a.number - b.number) })),
+    chapters: (Array.isArray(w.chapters) ? w.chapters : []).map((c) => ({
+      ...c,
+      verses: (Array.isArray(c.verses) ? [...c.verses] : []).sort((a, b) => a.number - b.number),
+    })),
   }))
 }
 
