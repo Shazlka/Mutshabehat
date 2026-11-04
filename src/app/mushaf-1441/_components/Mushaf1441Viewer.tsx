@@ -51,6 +51,10 @@ import {
 import { markedWords, nextMarked, nearestMarked, previousMarked, toOrderable, variantWajhNumbers } from '../../../../packages/qiraat-core/features/wordOrder'
 import { WordSheetNav } from '../_features/word-sheet/WordSheetNav'
 import { FaceBadge } from '../_features/word-sheet/FaceBadge'
+import { ClassificationChips } from '../_features/word-sheet/ClassificationChips'
+import { ReadingFormLine } from '../_features/word-sheet/ReadingFormLine'
+import { readingForm } from '../../../../packages/qiraat-core/features/readingForm'
+import { classificationSegments } from '../../../../packages/qiraat-core/features/classification'
 import { QIRAAT_PREFS_STORAGE_KEY, type QiraatComparisonFilter, type QiraatMode, type QiraatPrefs } from './qiraat/types'
 import { impactHaptic } from './haptics'
 import {
@@ -1962,6 +1966,21 @@ export default function Mushaf1441Viewer({
     })
     if (!rulings.length && !variants.length) return null
     return { word, rulings, variants }
+  }
+
+  // The Mushaf words just before and after a ruling's span (for نقل, which crosses a word boundary).
+  function wordsAroundRuling(ruling: QiraatRuling): { previous: string | null; next: string | null } {
+    const flat = [pageNumber, companionPageNumber]
+      .filter((no): no is number => no !== null)
+      .sort((a, b) => a - b)
+      .flatMap((no) => (pageCache[no]?.lines ?? []).flatMap((line) => line.words))
+      .filter((w) => w.charTypeName === undefined || w.charTypeName === 'word')
+    const start = flat.findIndex((w) => w.surahNumber === ruling.surah && w.ayahNumber === ruling.ayah && w.wordIndexInAyah === ruling.startToken)
+    const end = flat.findIndex((w) => w.surahNumber === ruling.surah && w.ayahNumber === ruling.endAyah && w.wordIndexInAyah === ruling.endToken)
+    return {
+      previous: start > 0 ? flat[start - 1].textUthmani : null,
+      next: end >= 0 && end + 1 < flat.length ? flat[end + 1].textUthmani : null,
+    }
   }
 
   // Step the open word sheet to another marked word; never toggles it closed (unlike a press on the page).
@@ -3932,6 +3951,7 @@ export default function Mushaf1441Viewer({
           const label = variant.performanceNote ?? DIFFERENCE_TYPE_LABELS_AR[variant.differenceType]
           return (
             <div key={variant.id} className="rounded-lg border border-[#e3d6b4] bg-white p-2.5">
+              <ClassificationChips segments={classificationSegments(variant)} />
               <div className="mb-1.5 flex items-center justify-between gap-2">
                 <span className="flex items-center gap-1.5">
                   {faceNumbers[variant.id] ? <FaceBadge number={faceNumbers[variant.id]} /> : null}
@@ -3970,6 +3990,7 @@ export default function Mushaf1441Viewer({
           const alternates = ruling.readings.filter((r) => !r.isDefault)
           return (
             <div key={ruling.id} className="rounded-lg border p-2.5" style={{ borderColor: ruling.color, background: `color-mix(in srgb, ${ruling.color} 5%, white)` }}>
+              <ClassificationChips segments={classificationSegments(ruling)} />
               <div className="mb-1.5 flex items-center justify-between gap-2">
                 <span className="flex flex-wrap items-center gap-1">
                   <span className="rounded-full px-2 py-0.5 text-[11px] font-bold text-white" style={{ background: ruling.color }}>
@@ -3993,6 +4014,11 @@ export default function Mushaf1441Viewer({
                       {pills.map(renderReaderPill)}
                     </div>
                     {renderReaderPerformance(action, list, ruling.categoryAr, ruling.attribution.some((a) => (a.wajhOrder ?? 1) > 1))}
+                    {(() => {
+                      const around = wordsAroundRuling(ruling)
+                      const form = readingForm({ baseText: ruling.baseText, action, categoryCode: ruling.category, previousWord: around.previous, nextWord: around.next })
+                      return form ? <ReadingFormLine form={form} /> : null
+                    })()}
                   </div>
                 )
               })}

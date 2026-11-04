@@ -57,4 +57,12 @@ test.describe('word sheet', () => {
     // numbers, and every other marked word, which has a single face, shows none.
     expect(numbered).toEqual([['وجه 1', 'وجه 2'], ['وجه 1', 'وجه 2']])
   })
+
+  test('each card names its classification', async ({ page }) => {
+    await openQiraatPage(page, 17)
+    await openFirstMarkedWord(page)
+    const lines = await page.getByTestId('classification').allTextContents()
+    expect(lines.length).toBeGreaterThan(0)
+    for (const line of lines) expect(line).toMatch(/^(فرش الحروف|أصول القراءات)/)
+  })
 })

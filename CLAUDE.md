@@ -48,6 +48,12 @@ section below **and** the root
 
 # Changelog
 
+## 2026-11-04 — Web parity step 3: «تُقرأ هكذا» and the classification line in the Qiraat word sheet (branch web/ios-parity)
+- **Change:** each variant and ruling card in the word sheet starts with its classification («فرش الحروف › تشكيل» or «أصول القراءات › الممال والمقلل › …», the باب keeps its colour as text), and a ruling whose action is صلة ميم الجمع or نقل shows the word as it is read («تُقرأ هكذا»). Ported from the iOS `QiraatReadingForm` and `QiraatClassification` with their Swift test cases.
+- **Ruling:** the plan's `readingFormFor(ruling, attribution)` and `classificationChips` became `readingForm({baseText, action, categoryCode, previousWord, nextWord})` and `classificationSegments(item)`, matching the Swift API (naql needs the neighbouring Mushaf words).
+- **Verification:** 9 new unit tests (feature suite 24/24), Playwright 3/3 on page 17, `test:qiraat` 51/51, typecheck, `next build`. Not added to the hover card (it keeps its own layout). **DB migration:** none.
+- **Files:** `packages/qiraat-core/features/{readingForm,classification}.ts`, `src/app/mushaf-1441/_features/word-sheet/{ClassificationChips,ReadingFormLine}.tsx`, `Mushaf1441Viewer.tsx`, `tests/qiraat/features/reading-form.test.ts`, `tests/quiz/e2e/qiraat-features.spec.ts`.
+
 ## 2026-11-04 — Web parity step 2: word sheet steps through marked words and numbers faces (branch web/ios-parity)
 - **Change:** the Qiraat word sheet now shows «k من n» with previous/next buttons that step through the marked words of the visible page(s) in Quran order (no wraparound), and numbers a word's faces «وجه 1 / وجه 2» only when it has several. If a filter removes the open word the sheet moves to the nearest marked word or closes. Marked words carry `data-qiraat-marked` for tests.
 - **Verification:** Playwright flows `word sheet steps through marked words` and `only a word with several faces shows face numbers` (page 17, desktop, against a local production build with a dummy backend, so Qiraat data came from the bundled fixtures) pass; typecheck; feature unit tests 15/15. **Not run:** `tests/test_mushaf_page_performance.py` (Python Playwright is not installed here). **DB migration:** none.
