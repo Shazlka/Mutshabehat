@@ -227,3 +227,27 @@ test.describe('Qiraat search', () => {
   })
 })
 
+test.describe('compare', () => {
+  test('two readers are compared at the open word', async ({ page }) => {
+    await openQiraatPage(page, 17)
+    await openFirstMarkedWord(page)
+    await page.mouse.move(2, 400)
+    await page.getByTestId('open-compare').first().click()
+    const compare = page.getByTestId('compare-sheet')
+    // a word with data opens with the default pair (Hafs and the first other authority it names)
+    await expect(compare).toBeVisible()
+    await expect(page.getByTestId('compare-verdict')).toBeVisible()
+    await compare.getByTestId('compare-change').click()
+    const picker = page.getByTestId('reader-picker')
+    await picker.getByRole('button', { name: /ورش عن نافع/ }).click()
+    await picker.getByRole('button', { name: /^حفص عن عاصم|حفص/ }).first().click()
+    await expect(picker.getByTestId('compare-go')).toBeEnabled()
+    await picker.getByTestId('compare-go').click()
+    await expect(page.getByTestId('compare-sheet')).toBeVisible()
+    await expect(page.getByTestId('compare-voice-Q01-R02')).toContainText('ورش')
+    await expect(page.getByTestId('compare-voice-Q05-R02')).toContainText('حفص')
+    await page.getByTestId('compare-sheet').getByRole('button', { name: 'إغلاق' }).click()
+    await expect(page.getByTestId('compare-sheet')).toBeHidden()
+  })
+})
+

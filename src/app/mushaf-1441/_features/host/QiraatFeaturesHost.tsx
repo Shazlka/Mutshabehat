@@ -6,6 +6,8 @@
 import type { QiraatComparisonFilter } from '../../_components/qiraat/types'
 import type { QiraatRuling, QiraatVariant } from '../../../../../packages/qiraat-core/types'
 import type { SummaryWord } from '../../../../../packages/qiraat-core/features/pageSummary'
+import { CompareSheet } from '../compare/CompareSheet'
+import type { CompareSelection } from '../../../../../packages/qiraat-core/features/compare'
 import { QiraatSearchSheet } from '../search/QiraatSearchSheet'
 import { UsulIndexSheet } from '../usul-index/UsulIndexSheet'
 import { PageSummarySheet } from '../page-summary/PageSummarySheet'
@@ -37,9 +39,11 @@ export interface QiraatFeaturesHostProps {
   /** Go to a place (page, then open its word in the sheet). */
   onGoToPlace: (place: { page: number; surah: number; ayah: number; startToken: number }) => void
   surahName: (surah: number) => string
+  /** The open word and its complete (unfiltered) data, for «مقارنة»; null when no word is open. */
+  compareTarget: { word: { surah: number; ayah: number; token: number; text: string }; selection: CompareSelection } | null
 }
 
-export function QiraatFeaturesHost({ active, onClose, filter, onFilterChange, variantsByPage, rulingsByPage, pages, words, onSelectWord, onGoToPlace, surahName }: QiraatFeaturesHostProps) {
+export function QiraatFeaturesHost({ active, onClose, filter, onFilterChange, variantsByPage, rulingsByPage, pages, words, onSelectWord, onGoToPlace, surahName, compareTarget }: QiraatFeaturesHostProps) {
   if (active === 'readerPicker') return <ReaderPicker filter={filter} onPick={onFilterChange} onClose={onClose} />
   if (active === 'legend') return <LegendSheet variantsByPage={variantsByPage} rulingsByPage={rulingsByPage} onClose={onClose} />
   if (active === 'pageSummary') {
@@ -47,5 +51,6 @@ export function QiraatFeaturesHost({ active, onClose, filter, onFilterChange, va
   }
   if (active === 'usulIndex') return <UsulIndexSheet onGoToPlace={onGoToPlace} onClose={onClose} />
   if (active === 'search') return <QiraatSearchSheet surahName={surahName} onGoToPlace={onGoToPlace} onClose={onClose} />
+  if (active === 'compare' && compareTarget) return <CompareSheet word={compareTarget.word} selection={compareTarget.selection} onClose={onClose} />
   return null
 }

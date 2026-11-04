@@ -1173,6 +1173,19 @@ export default function Mushaf1441Viewer({
       .map((w) => Object.assign(toOrderable(w), { text: w.textUthmani })),
     [visibleQiraatPages, pageCache],
   )
+  // «مقارنة» needs the open word's complete data, not what the current filter would show: a filtered fallback would
+  // make omitted readers look as if they follow the Mushaf text.
+  const compareTarget = useMemo(() => {
+    if (!qiraatSelection) return null
+    const word = qiraatSelection.word
+    const data = qiraatDataForWord(word, {
+      variants: variantsByPageNumber[word.pageNumber] ?? [],
+      rulings: rulingsByPageNumber[word.pageNumber] ?? [],
+      filter: { kind: 'all' },
+      includeUnpublished: true,
+    })
+    return { word: { surah: word.surahNumber, ayah: word.ayahNumber, token: word.wordIndexInAyah, text: word.textUthmani }, selection: data }
+  }, [qiraatSelection, variantsByPageNumber, rulingsByPageNumber])
   function updateUsulPrefs(next: QiraatUsulPrefs) {
     setUsulPrefs(next)
     try { saveUsulPrefs(window.localStorage, next) } catch { /* storage unavailable */ }
@@ -4006,6 +4019,16 @@ export default function Mushaf1441Viewer({
     const markedIndex = selection === qiraatSelection ? qiraatMarkedList.findIndex((entry) => entry.id === word.id) : -1
     return (
       <div className="space-y-2.5">
+        {selection === qiraatSelection ? (
+          <button
+            type="button"
+            data-testid="open-compare"
+            onClick={() => setQiraatFeature('compare')}
+            className="min-h-6 rounded border border-[var(--mushaf-rule)] px-2 py-0.5 text-[11px] font-bold text-[var(--mushaf-ink)] [@media(pointer:coarse)]:min-h-11"
+          >
+            ⇄ قارن قارئين في هذه الكلمة
+          </button>
+        ) : null}
         {markedIndex >= 0 ? (
           <WordSheetNav
             position={markedIndex + 1}
@@ -5361,6 +5384,7 @@ export default function Mushaf1441Viewer({
         pages={visibleQiraatPages}
         words={summaryWords}
         onGoToPlace={goToQiraatPlace}
+        compareTarget={compareTarget}
         surahName={(surah) => surahOptions.find((o) => o.surahNumber === surah)?.name ?? String(surah)}
         onSelectWord={(wordId) => {
           const target = visibleQiraatPages.flatMap((no) => (pageCache[no]?.lines ?? []).flatMap((line) => line.words)).find((w) => w.id === wordId)
