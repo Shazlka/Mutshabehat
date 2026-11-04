@@ -285,3 +285,45 @@ test.describe('favourites and notes', () => {
   })
 })
 
+test.describe('المتون', () => {
+  const snapshot = {
+    seq: 1,
+    revision: 1,
+    document: { mutoon: { schemaVersion: 1, works: [
+      { work: 'durrah', title: 'الدرة', author: 'ابن الجزري', bookId: null, chapters: [{ title: 'باب الهمز', farsh: false, verses: [{ number: 1, lines: ['بيتٌ في الدرة'], printedPage: null, pageId: null }] }] },
+      { work: 'shatibiyyah', title: 'الشاطبية', author: 'الشاطبي', bookId: 1, chapters: [{ title: 'باب المد', farsh: false, verses: [{ number: 2, lines: ['وَمَدُّ الْبَدَلِ', 'بيت ثان'], printedPage: null, pageId: null }, { number: 1, lines: ['أول بيت'], printedPage: null, pageId: null }] }] },
+    ] } },
+    symbols: { schemaVersion: 1, annotations: [] },
+  }
+
+  async function openMutoon(page: Page) {
+    await openQiraatPage(page, 17)
+    await page.getByTestId('qiraat-hub').first().locator('summary').click()
+    await page.getByTestId('hub-mutoon').first().click()
+    return page.getByTestId('mutoon-sheet')
+  }
+
+  test('the books are listed in order and a search finds a verse', async ({ page }) => {
+    await page.route('**/api/public/v1/mutoon', (route) => route.fulfill({ json: snapshot }))
+    const sheet = await openMutoon(page)
+    const works = sheet.locator('[data-testid^="mutoon-work-"]')
+    await expect(works).toHaveCount(2)
+    await expect(works.first()).toContainText('الشاطبية')
+    await sheet.getByRole('searchbox', { name: 'ابحث في المتون' }).fill('مد البدل')
+    await expect(sheet.getByTestId('mutoon-hit')).toHaveCount(1)
+    await expect(sheet.getByTestId('mutoon-hit')).toContainText('الشاطبية · باب المد · بيت 2')
+    await sheet.getByRole('searchbox', { name: 'ابحث في المتون' }).fill('لا يوجد')
+    await expect(sheet).toContainText('لا نتائج')
+  })
+
+  test('a failing feed shows an error with a retry, never a blank sheet', async ({ page }) => {
+    await page.route('**/api/public/v1/mutoon', (route) => route.fulfill({ status: 503, json: { error: 'unavailable' } }))
+    const sheet = await openMutoon(page)
+    await expect(sheet.getByTestId('mutoon-error')).toBeVisible()
+    await page.unroute('**/api/public/v1/mutoon')
+    await page.route('**/api/public/v1/mutoon', (route) => route.fulfill({ json: snapshot }))
+    await sheet.getByRole('button', { name: 'إعادة المحاولة' }).click()
+    await expect(sheet.locator('[data-testid^="mutoon-work-"]')).toHaveCount(2)
+  })
+})
+

@@ -6,6 +6,7 @@
 import type { QiraatComparisonFilter } from '../../_components/qiraat/types'
 import type { QiraatRuling, QiraatVariant } from '../../../../../packages/qiraat-core/types'
 import type { SummaryWord } from '../../../../../packages/qiraat-core/features/pageSummary'
+import { MutoonSheet } from '../mutoon/MutoonSheet'
 import { NotesPanel } from '../notes/NotesPanel'
 import { CompareSheet } from '../compare/CompareSheet'
 import type { CompareSelection } from '../../../../../packages/qiraat-core/features/compare'
@@ -22,6 +23,7 @@ export const HUB_ENTRIES: { name: FeatureName; label: string }[] = [
   { name: 'pageSummary', label: 'ملخص الصفحة' },
   { name: 'search', label: 'بحث في القراءات' },
   { name: 'notes', label: 'مفضلتي وملاحظاتي' },
+  { name: 'mutoon', label: 'المتون' },
   { name: 'usulIndex', label: 'فهرس الأصول' },
   { name: 'legend', label: 'مفتاح الألوان' },
 ]
@@ -57,5 +59,6 @@ export function QiraatFeaturesHost({ active, onClose, filter, onFilterChange, va
   if (active === 'search') return <QiraatSearchSheet surahName={surahName} onGoToPlace={onGoToPlace} onClose={onClose} />
   if (active === 'compare' && compareTarget) return <CompareSheet word={compareTarget.word} selection={compareTarget.selection} onClose={onClose} />
   if (active === 'notes') return <NotesPanel surahName={surahName} onGoToWord={onGoToWord} onClose={onClose} />
+  if (active === 'mutoon') return <MutoonSheet onClose={onClose} />
   return null
 }
