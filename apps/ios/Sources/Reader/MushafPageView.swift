@@ -484,7 +484,7 @@ final class MushafPageView: UIView {
         let ribbonRect = CGRect(x: ribbonX, y: 0, width: ribbonWidth, height: ribbonHeight)
 
         context.saveGState()
-        let ribbonColor = UIColor(red: 0.76, green: 0.22, blue: 0.18, alpha: 0.95)
+        let ribbonColor = appearance.bookmarkRibbon(for: traitCollection, tint: qiraat.pageTint)
         let goldBorder = appearance.gold(for: traitCollection)
 
         let path = UIBezierPath()
@@ -930,7 +930,7 @@ final class MushafPageView: UIView {
         ribbon.close()
 
         let gold = appearance.gold(for: traitCollection)
-        let crimson = UIColor(red: 0.76, green: 0.22, blue: 0.18, alpha: 0.95)
+        let crimson = appearance.bookmarkRibbon(for: traitCollection, tint: qiraat.pageTint)
         context.setFillColor(crimson.cgColor)
         context.addPath(ribbon.cgPath)
         context.fillPath()

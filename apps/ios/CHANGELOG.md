@@ -3,6 +3,13 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-11-04 — Bookmark ribbons hold 3:1 on every page and wash
+- **Audit finding (P3):** the page and ayah bookmark ribbons used a fixed crimson (no theme variant): exactly 3.00:1 on the dark page, lower once a reader's wash is applied.
+- **Change:** `MushafAppearance.bookmarkRibbon(for:tint:)` moves the crimson toward the page ink only as far as it takes to hold 3:1 on the (washed) page; both ribbons use it, drawn opaque. Light and white pages keep the original crimson.
+- **Audit correction:** the fixed 13/16 pt surah and section labels in `PageController` are always hidden, and the page number already scales with Dynamic Type (capped at 24 pt), so that P3 item needs no change.
+- **Test:** `testTheBookmarkRibbonHoldsThreeToOneOnEveryPage` (5 themes, both system styles, no wash and all ten readers' washes). The whole unit target passes (402 tests). Written together with the change, so not seen failing first. Not checked on screen.
+- **Files:** `Sources/Reader/{MushafAppearance,MushafPageView}.swift`, `Tests/MushafAppearanceTests.swift`.
+
 ## [Unreleased] — 2026-11-04 — One page shadow with an explicit path
 - **Audit finding (P2):** `MushafPageView` set a brown shadow in `init`, then `PageController.updateBookStyling` replaced it with a black one (the first was dead code), and neither set a `shadowPath`, so Core Animation rendered the page offscreen to find its outline on every frame of a page curl.
 - **Change:** the page view defines the shadow once (black, radius 8, offset 0/3) and sets `shadowPath` from its bounds, corner radius and rounded corners (`updateShadowPath()`, on every layout and after the controller sets spread or single corners). The controller only sets the strength (0.16 spread, 0.10 single). The look is unchanged.
