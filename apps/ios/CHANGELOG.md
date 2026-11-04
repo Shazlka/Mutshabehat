@@ -3,6 +3,14 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-11-04 — App Intents: continue reading, open a page, open a surah
+- **What:** three actions for Siri, Shortcuts and Spotlight, all opening the app: «متابعة القراءة» (continue where you stopped), «فتح صفحة من المصحف» (page 1 to 604) and «فتح سورة» (one of the 114, chosen by name or number, opens at its first page). `SurahEntity` (id, Arabic name, start page) is the only entity; `SurahEntityQuery` matches by number or by name without diacritics.
+- **Handoff:** one `AppIntentRouter` (`Sources/Intents/AppIntentRouter.swift`). `open(page:)` clamps to 1...604, saves the reading position (a cold launch resumes there) and sets `pendingPage`, which `ReaderView` takes once on appear and on change (a running app jumps at once, clearing any highlighted words). Business logic stays in the router; the intents are thin.
+- **Discoverability:** `QiraatShortcuts` with Arabic phrases («تابع القراءة في …», «افتح … في …», «افتح صفحة في …»); English phrases and titles in `Sources/AppShortcuts.xcstrings` and `Localizable.xcstrings` (Arabic keys, as the rest of the app). Build extracts 3 actions, 1 entity and 4 phrase templates; compiled `ar` and `en` lproj contain them.
+- **Scope kept small:** no reader or riwayah filter intents, no widgets, no inline actions yet. No network, no new data, no privacy manifest change.
+- **Verification:** `AppIntentsTests` (6) and the whole unit target pass (408); `make release-guard` ok. Not exercised: invoking the actions from Siri, Shortcuts or Spotlight on a device or simulator, and the Arabic phrases in Siri.
+- **Files:** `Sources/Intents/{AppIntentRouter,QiraatIntents}.swift`, `Sources/Reader/ReaderView.swift`, `Sources/AppShortcuts.xcstrings`, `Sources/Localizable.xcstrings`, `Tests/AppIntentsTests.swift`.
+
 ## [Unreleased] — 2026-11-04 — Reader page wash halved to a light touch
 - **Request:** the per-reader page colour should be softer and lighter, just a light touch of the colour.
 - **Change:** `QiraatPageTint.washAmount` 0.10 to 0.05. The wash still tints the page, the desk and the banner fill; contrast margins for ink, words, marks and ribbons only grow (their tests use the same constant and pass).

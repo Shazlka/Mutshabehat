@@ -20,6 +20,7 @@ struct ReaderView: View {
         return library.qiraatReferences
     }
     @StateObject private var tracker = ReadingTracker.shared
+    private let intentRouter = AppIntentRouter.shared
     @State private var page: Int = {
         if let idx = CommandLine.arguments.firstIndex(of: "-page"),
            CommandLine.arguments.indices.contains(idx + 1),
@@ -165,6 +166,8 @@ struct ReaderView: View {
             }
         }
         .onGeometryChange(for: CGFloat.self) { $0.safeAreaInsets.bottom } action: { safeBottom = $0 }
+        .onChange(of: intentRouter.pendingPage) { _, _ in takeIntentJump() }
+        .onAppear { takeIntentJump() }
         .onChange(of: page) { _, newPage in
             if sideSelection != nil, sideWordPage != newPage {
                 sideSelection = nil
@@ -534,6 +537,13 @@ struct ReaderView: View {
     func closeQiraatHubRoute() {
         pendingQiraatWord = nil
         qiraatRoute = nil
+    }
+
+    /// Siri, Shortcuts or Spotlight asked for a page or a surah (`AppIntentRouter`).
+    private func takeIntentJump() {
+        guard let target = intentRouter.takePendingPage() else { return }
+        highlightedWordIDs = []
+        page = target
     }
 
     private func jumpToBookmark(_ bookmark: QuranBookmark) {

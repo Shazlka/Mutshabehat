@@ -1,0 +1,46 @@
+{
+  "sourceLanguage": "ar",
+  "strings": {
+    "افتح ${applicationName}": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open ${applicationName}"
+          }
+        }
+      }
+    },
+    "افتح ${surah} في ${applicationName}": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open ${surah} in ${applicationName}"
+          }
+        }
+      }
+    },
+    "افتح صفحة في ${applicationName}": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open a page in ${applicationName}"
+          }
+        }
+      }
+    },
+    "تابع القراءة في ${applicationName}": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue reading in ${applicationName}"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

@@ -4501,7 +4501,14 @@
 
     },
     "متابعة القراءة" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue reading"
+          }
+        }
+      }
     },
     "متفق عليها بين القراء العشرة ورواتهم" : {
       "localizations" : {
@@ -5274,6 +5281,86 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "two days"
+          }
+        }
+      }
+    },
+    "سورة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Surah"
+          }
+        }
+      }
+    },
+    "يفتح التطبيق حيث توقفت عن القراءة." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens the app where you stopped reading."
+          }
+        }
+      }
+    },
+    "فتح صفحة من المصحف" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open a Mushaf page"
+          }
+        }
+      }
+    },
+    "يفتح المصحف على صفحة من ١ إلى ٦٠٤." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens the Mushaf at a page, 1 to 604."
+          }
+        }
+      }
+    },
+    "الصفحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Page"
+          }
+        }
+      }
+    },
+    "فتح سورة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open a surah"
+          }
+        }
+      }
+    },
+    "يفتح المصحف على بداية سورة." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens the Mushaf at the start of a surah."
+          }
+        }
+      }
+    },
+    "فتح صفحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open a page"
           }
         }
       }
