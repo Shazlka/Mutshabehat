@@ -54,6 +54,7 @@ import { FaceBadge } from '../_features/word-sheet/FaceBadge'
 import { QiraatFeaturesHost, HUB_ENTRIES, type FeatureName } from '../_features/host/QiraatFeaturesHost'
 import { QiraatHubBar } from '../_features/hub/QiraatHubBar'
 import { UsulPrefsPanel } from '../_features/hub/UsulPrefsPanel'
+import { WordNotes } from '../_features/notes/WordNotes'
 import { ClassificationChips } from '../_features/word-sheet/ClassificationChips'
 import { ReadingFormLine } from '../_features/word-sheet/ReadingFormLine'
 import { readingForm } from '../../../../packages/qiraat-core/features/readingForm'
@@ -2069,6 +2070,12 @@ export default function Mushaf1441Viewer({
     // Qiraat data have both arrived (see the effect below).
     pendingQiraatWordRef.current = target
   }
+  function goToQiraatWord(surah: number, ayah: number, token: number) {
+    const target = { surah, ayah, token }
+    const here = findVisibleWord(target)
+    if (here) { goToMarkedQiraatWord(here); return }
+    void goToAyah(surah, ayah).then(() => { pendingQiraatWordRef.current = target })
+  }
   useEffect(() => {
     const pending = pendingQiraatWordRef.current
     if (!pending) return
@@ -4029,6 +4036,7 @@ export default function Mushaf1441Viewer({
             ⇄ قارن قارئين في هذه الكلمة
           </button>
         ) : null}
+        {selection === qiraatSelection ? <WordNotes surah={word.surahNumber} ayah={word.ayahNumber} token={word.wordIndexInAyah} /> : null}
         {markedIndex >= 0 ? (
           <WordSheetNav
             position={markedIndex + 1}
@@ -5385,6 +5393,7 @@ export default function Mushaf1441Viewer({
         words={summaryWords}
         onGoToPlace={goToQiraatPlace}
         compareTarget={compareTarget}
+        onGoToWord={goToQiraatWord}
         surahName={(surah) => surahOptions.find((o) => o.surahNumber === surah)?.name ?? String(surah)}
         onSelectWord={(wordId) => {
           const target = visibleQiraatPages.flatMap((no) => (pageCache[no]?.lines ?? []).flatMap((line) => line.words)).find((w) => w.id === wordId)

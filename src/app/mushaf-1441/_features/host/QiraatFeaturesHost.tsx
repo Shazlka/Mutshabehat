@@ -6,6 +6,7 @@
 import type { QiraatComparisonFilter } from '../../_components/qiraat/types'
 import type { QiraatRuling, QiraatVariant } from '../../../../../packages/qiraat-core/types'
 import type { SummaryWord } from '../../../../../packages/qiraat-core/features/pageSummary'
+import { NotesPanel } from '../notes/NotesPanel'
 import { CompareSheet } from '../compare/CompareSheet'
 import type { CompareSelection } from '../../../../../packages/qiraat-core/features/compare'
 import { QiraatSearchSheet } from '../search/QiraatSearchSheet'
@@ -14,12 +15,13 @@ import { PageSummarySheet } from '../page-summary/PageSummarySheet'
 import { LegendSheet } from '../legend/LegendSheet'
 import { ReaderPicker } from '../reader-picker/ReaderPicker'
 
-export type FeatureName = 'legend' | 'readerPicker' | 'pageSummary' | 'search' | 'usulIndex' | 'compare' | 'mutoon'
+export type FeatureName = 'notes' | 'legend' | 'readerPicker' | 'pageSummary' | 'search' | 'usulIndex' | 'compare' | 'mutoon'
 
 /** Hub «المزيد» entries, in order; a feature appears once its sheet exists (the picker is the filter chip itself). */
 export const HUB_ENTRIES: { name: FeatureName; label: string }[] = [
   { name: 'pageSummary', label: 'ملخص الصفحة' },
   { name: 'search', label: 'بحث في القراءات' },
+  { name: 'notes', label: 'مفضلتي وملاحظاتي' },
   { name: 'usulIndex', label: 'فهرس الأصول' },
   { name: 'legend', label: 'مفتاح الألوان' },
 ]
@@ -40,10 +42,12 @@ export interface QiraatFeaturesHostProps {
   onGoToPlace: (place: { page: number; surah: number; ayah: number; startToken: number }) => void
   surahName: (surah: number) => string
   /** The open word and its complete (unfiltered) data, for «مقارنة»; null when no word is open. */
+  /** Go to a word by its Quran position (looks its page up, then opens it in the sheet). */
+  onGoToWord: (surah: number, ayah: number, token: number) => void
   compareTarget: { word: { surah: number; ayah: number; token: number; text: string }; selection: CompareSelection } | null
 }
 
-export function QiraatFeaturesHost({ active, onClose, filter, onFilterChange, variantsByPage, rulingsByPage, pages, words, onSelectWord, onGoToPlace, surahName, compareTarget }: QiraatFeaturesHostProps) {
+export function QiraatFeaturesHost({ active, onClose, filter, onFilterChange, variantsByPage, rulingsByPage, pages, words, onSelectWord, onGoToPlace, surahName, compareTarget, onGoToWord }: QiraatFeaturesHostProps) {
   if (active === 'readerPicker') return <ReaderPicker filter={filter} onPick={onFilterChange} onClose={onClose} />
   if (active === 'legend') return <LegendSheet variantsByPage={variantsByPage} rulingsByPage={rulingsByPage} onClose={onClose} />
   if (active === 'pageSummary') {
@@ -52,5 +56,6 @@ export function QiraatFeaturesHost({ active, onClose, filter, onFilterChange, va
   if (active === 'usulIndex') return <UsulIndexSheet onGoToPlace={onGoToPlace} onClose={onClose} />
   if (active === 'search') return <QiraatSearchSheet surahName={surahName} onGoToPlace={onGoToPlace} onClose={onClose} />
   if (active === 'compare' && compareTarget) return <CompareSheet word={compareTarget.word} selection={compareTarget.selection} onClose={onClose} />
+  if (active === 'notes') return <NotesPanel surahName={surahName} onGoToWord={onGoToWord} onClose={onClose} />
   return null
 }

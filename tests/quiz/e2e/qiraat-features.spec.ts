@@ -251,3 +251,37 @@ test.describe('compare', () => {
   })
 })
 
+test.describe('favourites and notes', () => {
+  test('a favourite and a note survive a reload and appear in the list', async ({ page }) => {
+    await openQiraatPage(page, 17)
+    await openFirstMarkedWord(page)
+    await page.mouse.move(2, 400)
+    await page.getByTestId('favourite-toggle').first().click()
+    await expect(page.getByTestId('favourite-toggle').first()).toHaveAttribute('aria-pressed', 'true')
+    await page.getByTestId('note-toggle').first().click()
+    await page.getByTestId('note-text').first().fill('ملاحظة اختبار')
+    await page.getByTestId('note-text').first().blur()
+
+    await page.reload()
+    await expect(page.locator('[data-page-slot-current] [data-quran-word-id]').first()).toBeVisible()
+    await page.getByTestId('qiraat-hub').first().locator('summary').click()
+    await page.getByTestId('hub-notes').first().click()
+    const panel = page.getByTestId('notes-panel')
+    await expect(panel.getByTestId('note-item')).toHaveCount(1)
+    await expect(panel).toContainText('ملاحظة اختبار')
+    await expect(panel.getByTestId('note-item')).toContainText('★')
+    await panel.getByTestId('note-item').click()
+    await expect(panel).toBeHidden()
+    await page.mouse.move(2, 400)
+    await expect(page.getByTestId('favourite-toggle').first()).toHaveAttribute('aria-pressed', 'true')
+
+    // clearing both removes the entry
+    await page.getByTestId('favourite-toggle').first().click()
+    await page.getByTestId('note-text').first().fill('')
+    await page.getByTestId('note-text').first().blur()
+    await page.getByTestId('qiraat-hub').first().locator('summary').click()
+    await page.getByTestId('hub-notes').first().click()
+    await expect(page.getByTestId('notes-panel')).toContainText('لا مفضلة ولا ملاحظات بعد')
+  })
+})
+
