@@ -1,3 +1,9 @@
+## 2026-11-04 — Web parity with the Qiraat iOS app, step 1: word order and marked-word predicate (branch web/ios-parity)
+- **Request:** make every feature of the Qiraat iOS app work in the web reader, reading the same database (spec `docs/superpowers/specs/2026-11-04-web-ios-parity-design.md`, plan `docs/superpowers/plans/2026-11-04-web-ios-parity-qiraat-ux.md`). Built on branch `web/ios-parity`, not yet on `main`.
+- **Change:** ported the iOS marked-word ordering (`packages/qiraat-core/features/wordOrder.ts`: Quran-position order, next/previous/nearest marked word, face numbers) and extracted the viewer's inline "has something to explain" check as `isQiraatMarkedWord` / `qiraatDataForWord` (`qiraatWordMarker.ts`); the viewer now uses it. Added the empty `QiraatFeaturesHost` for the sheets of the next steps.
+- **Verification:** 15 new tests (`npm run test:qiraat:features`, includes an equality check against the old viewer logic on every word of page 17 for three filters), `test:qiraat` 51/51, typecheck. **DB migration:** none.
+- **Files:** `packages/qiraat-core/features/wordOrder.ts`, `src/app/mushaf-1441/_components/qiraat/qiraatWordMarker.ts`, `src/app/mushaf-1441/_components/Mushaf1441Viewer.tsx`, `src/app/mushaf-1441/_features/host/QiraatFeaturesHost.tsx`, `tests/qiraat/features/*`, `package.json`.
+
 ## 2026-11-03 — Public API: CDN cache cut from 5 minutes to 15 seconds
 - **Request:** the owner reviews word by word; an edit in the review tab must reach the iPhone at once, not after the CDN's 5-minute cache (measured live: `x-vercel-cache: HIT`, then one `STALE` answer while it refreshed).
 - **Change:** `/api/public/v1/qiraat`, `/qiraat/versions` and `/mutoon` now send `Cache-Control: public, s-maxage=15, stale-while-revalidate=15` (was `s-maxage=300, stale-while-revalidate=86400`). The strong ETag/304 is unchanged, so an unchanged page still costs no body.

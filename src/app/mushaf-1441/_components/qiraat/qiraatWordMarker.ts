@@ -9,6 +9,7 @@ import { computeAttribution, gradientCss } from '../../../../../packages/qiraat-
 import { narratorColor } from '../../../../../packages/qiraat-core/colors'
 import { getReadingOrNull } from '../../../../../packages/qiraat-core/readings'
 import type { QiraatVariant, ReadingId } from '../../../../../packages/qiraat-core/types'
+import type { MushafWord } from '../../../../../packages/quran-data/mushaf1441/types'
 import type { QiraatComparisonFilter } from './types'
 
 export interface WordMarker {
@@ -257,4 +258,37 @@ export function imalahTaqlilMarkerForWord(
   if (!sawImalah && !sawTaqlil) return null
 
   return { color: matches[0].color, filled: sawImalah }
+}
+
+export interface QiraatWordContext {
+  variants: readonly QiraatVariant[]
+  rulings: readonly QiraatRuling[]
+  /** The effective filter (a riwayah selection is already expressed as a `reading` filter). */
+  filter: QiraatComparisonFilter
+  includeUnpublished?: boolean
+}
+
+/** The variants and rulings a press on `word` would explain; empty when the word carries nothing. */
+export function qiraatDataForWord(
+  word: Pick<MushafWord, 'surahNumber' | 'ayahNumber' | 'wordIndexInAyah'>,
+  ctx: QiraatWordContext,
+): { rulings: QiraatRuling[]; variants: QiraatVariant[] } {
+  const rulings = rulingMarkerForWord(
+    ctx.rulings, word.surahNumber, word.ayahNumber, word.wordIndexInAyah, ctx.filter,
+  )?.rulings ?? []
+  const all = variantsForToken(
+    ctx.variants, word.surahNumber, word.ayahNumber, word.wordIndexInAyah,
+    { includeUnpublished: ctx.includeUnpublished ?? false },
+  )
+  const variants = ctx.filter.kind === 'all' ? all : all.filter((variant) => matchesFilter(variant, ctx.filter))
+  return { rulings, variants }
+}
+
+/** True when a press on `word` has something to explain (the marked-word predicate of the word sheet). */
+export function isQiraatMarkedWord(
+  word: Pick<MushafWord, 'surahNumber' | 'ayahNumber' | 'wordIndexInAyah'>,
+  ctx: QiraatWordContext,
+): boolean {
+  const { rulings, variants } = qiraatDataForWord(word, ctx)
+  return rulings.length > 0 || variants.length > 0
 }

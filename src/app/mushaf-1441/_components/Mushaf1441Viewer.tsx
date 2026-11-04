@@ -40,6 +40,7 @@ import {
   riwayahResolutionForWord,
   rulingMarkerForWord,
   matchesFilter,
+  qiraatDataForWord,
   imalahTaqlilMarkerForWord,
   PERFORMANCE_MARKER_COLOR,
   type WordMarker,
@@ -1913,17 +1914,12 @@ export default function Mushaf1441Viewer({
     const effectiveFilter: QiraatComparisonFilter = qiraatView.mode === 'riwayah'
       ? { kind: 'reading', readingId: qiraatView.selectedReadingId }
       : qiraatView.filter
-    const rulings = rulingMarkerForWord(
-      qiraatRulingsForPage(word.pageNumber), word.surahNumber, word.ayahNumber, word.wordIndexInAyah,
-      effectiveFilter,
-    )?.rulings ?? []
-    const allVariants = variantsForToken(
-      qiraatVariantsForPage(word.pageNumber), word.surahNumber, word.ayahNumber, word.wordIndexInAyah,
-      { includeUnpublished: qiraatView.includeReviewed },
-    )
-    const variants = effectiveFilter.kind === 'all'
-      ? allVariants
-      : allVariants.filter((variant) => matchesFilter(variant, effectiveFilter))
+    const { rulings, variants } = qiraatDataForWord(word, {
+      variants: qiraatVariantsForPage(word.pageNumber),
+      rulings: qiraatRulingsForPage(word.pageNumber),
+      filter: effectiveFilter,
+      includeUnpublished: qiraatView.includeReviewed,
+    })
     if (!rulings.length && !variants.length) return null
     return { word, rulings, variants }
   }
