@@ -38,7 +38,7 @@ struct MushafPager: UIViewControllerRepresentable {
         let pager = UIPageViewController(transitionStyle: .pageCurl, navigationOrientation: .horizontal,
                                          options: [.spineLocation: NSNumber(value: spine.rawValue)])
         pager.view.semanticContentAttribute = .forceLeftToRight
-        pager.view.backgroundColor = appearance.desk(for: pager.traitCollection)
+        pager.view.backgroundColor = appearance.desk(for: pager.traitCollection, tint: qiraat.pageTint)
         pager.isDoubleSided = spread
         pager.dataSource = context.coordinator
         pager.delegate = context.coordinator
@@ -50,7 +50,7 @@ struct MushafPager: UIViewControllerRepresentable {
 
     func updateUIViewController(_ pager: UIPageViewController, context: Context) {
         context.coordinator.parent = self
-        pager.view.backgroundColor = appearance.desk(for: pager.traitCollection)
+        pager.view.backgroundColor = appearance.desk(for: pager.traitCollection, tint: qiraat.pageTint)
         disableTapToTurn(in: pager)
         for controller in pager.viewControllers ?? [] {
             if let pc = controller as? PageController {

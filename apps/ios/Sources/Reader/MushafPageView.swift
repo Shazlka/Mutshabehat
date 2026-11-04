@@ -13,7 +13,7 @@ final class MushafPageView: UIView {
     var appearance: MushafAppearance {
         didSet {
             guard appearance != oldValue else { return }
-            backgroundColor = appearance.paper(for: traitCollection)
+            backgroundColor = paper
             setNeedsDisplay()
         }
     }
@@ -29,6 +29,10 @@ final class MushafPageView: UIView {
     var qiraat: QiraatDisplay = .off {
         didSet {
             guard qiraat != oldValue else { return }
+            if qiraat.pageTint != oldValue.pageTint {
+                backgroundColor = paper
+                setNeedsDisplay()
+            }
             refreshQiraatMarks()
             if qiraat.enabled { refreshLiveQiraat(force: true); prefetchNeighbourQiraat() }
         }
@@ -88,7 +92,7 @@ final class MushafPageView: UIView {
         self.library = library
         self.appearance = appearance
         super.init(frame: .zero)
-        backgroundColor = appearance.paper(for: traitCollection)
+        backgroundColor = paper
         contentMode = .redraw
         isAccessibilityElement = false
         layer.shadowColor = UIColor(red: 0.25, green: 0.19, blue: 0.08, alpha: 1).cgColor
@@ -96,13 +100,16 @@ final class MushafPageView: UIView {
         layer.shadowRadius = 12
         layer.shadowOffset = CGSize(width: 0, height: 6)
         registerForTraitChanges([UITraitUserInterfaceStyle.self]) { (view: MushafPageView, _) in
-            view.backgroundColor = view.appearance.paper(for: view.traitCollection)
+            view.backgroundColor = view.paper
             view.setNeedsDisplay()
         }
         updateAccessibilityElements()
     }
 
     required init?(coder: NSCoder) { fatalError("not used") }
+
+    /// The page's paper: the theme's, washed softly with the chosen reader's colour.
+    private var paper: UIColor { appearance.paper(for: traitCollection, tint: qiraat.pageTint) }
 
     private func layoutPage() {
         guard bounds.width > 0, layout?.pageSize != bounds.size else { return }
@@ -614,7 +621,7 @@ final class MushafPageView: UIView {
         let strokeColor = isDarkTheme ? appearance.gold(for: traitCollection) : appearance.brown(for: traitCollection)
         let titleColor = appearance.ink(for: traitCollection)
         let subtitleColor = isDarkTheme ? appearance.gold(for: traitCollection) : appearance.brown(for: traitCollection)
-        let fillColor = appearance.paper(for: traitCollection)
+        let fillColor = paper
 
         if let art = bannerStyle.art {
             let surahName = Self.canonicalSurahTitles[number] ?? library.surahNames[number] ?? "\(number)"

@@ -79,7 +79,7 @@ struct ReaderView: View {
                                               landscapeView: LandscapeView(stored: landscapeView))
             let rails = layout != .single
             ZStack {
-                Color(uiColor: appearance.desk(for: interfaceTraits)).ignoresSafeArea()
+                Color(uiColor: appearance.desk(for: interfaceTraits, tint: qiraatDisplay.pageTint)).ignoresSafeArea()
                 // Left to right whatever the app's language: the information rail on the left, the page, the Qiraat
                 // side bar (learning view) and the action rail on the right, as on the web.
                 HStack(spacing: 0) {
@@ -436,6 +436,11 @@ struct ReaderView: View {
         MushafAppearance(rawValue: theme) ?? .system
     }
 
+    /// The Qiraat layer as the page views draw it, with the chosen reader's soft page wash.
+    private var qiraatDisplay: QiraatDisplay {
+        library.qiraat.map { qiraat.display(catalog: $0.catalog) } ?? .off
+    }
+
     private var appLanguage: AppLanguage {
         AppLanguage(rawValue: language) ?? .deviceDefault
     }
@@ -655,7 +660,7 @@ struct ReaderView: View {
         MushafPager(library: library, page: $page, spread: spread,
                     appearance: appearance,
                     bannerStyle: SurahBannerStyle(stored: bannerStyle),
-                    qiraat: library.qiraat == nil ? .off : qiraat.display,
+                    qiraat: qiraatDisplay,
                     highlightedWordIDs: highlightedWordIDs,
                     bookmarkedAyahs: { tracker.bookmarkedAyahs(on: $0) },
                     isPageBookmarked: { tracker.isPageBookmarked(page: $0) },

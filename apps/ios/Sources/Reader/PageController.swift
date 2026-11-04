@@ -7,6 +7,8 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
     let page: MushafPage
     private let pageView: MushafPageView
     private var appearance: MushafAppearance
+    /// The chosen reader's wash, for the desk around the page.
+    private var pageTint: QiraatColor?
     private let surahLabel = UILabel()
     private let sectionLabel = UILabel()
     /// With the side rails the page's printed number stands centred under the paper.
@@ -43,6 +45,7 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
         self.page = page
         self.pageView = MushafPageView(page: page, library: library, appearance: appearance)
         self.appearance = appearance
+        self.pageTint = qiraat.pageTint
         self.isSpreadHalf = isSpreadHalf
         self.fillsHeight = fillsHeight
         let spine: PageLayoutConstants.SpineSide = !isSpreadHalf ? .none : page.isRightHandPage ? .left : .right
@@ -76,12 +79,13 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
                bannerStyle: SurahBannerStyle = .current,
                chromeVisible: Bool = false) {
         self.appearance = appearance
+        pageTint = qiraat.pageTint
         pageView.appearance = appearance
         pageView.bannerStyle = bannerStyle
         pageView.isSpreadHalf = isSpreadHalf
         let spine: PageLayoutConstants.SpineSide = !isSpreadHalf ? .none : page.isRightHandPage ? .left : .right
         pageView.spineSide = spine
-        view.backgroundColor = appearance.desk(for: traitCollection)
+        view.backgroundColor = appearance.desk(for: traitCollection, tint: pageTint)
         for label in [surahLabel, sectionLabel, pageNumberLabel] {
             label.textColor = appearance.ink(for: traitCollection)
         }
@@ -113,7 +117,7 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = appearance.desk(for: traitCollection)
+        view.backgroundColor = appearance.desk(for: traitCollection, tint: pageTint)
         configureMetadataLabels()
         view.addSubview(pageView)
         configurePageNumberLabel()

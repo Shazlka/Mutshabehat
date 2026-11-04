@@ -3,6 +3,13 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-11-04 — The Mushaf page takes a soft wash of the chosen reader's colour
+- **Request:** the page colour follows the reader the learner picks: soft, light, one colour per reader.
+- **Change:** with a reader (or one of their narrators) chosen in the Qiraat filter, the page paper, the desk around it and the surah banner fill take 10% of that reader's catalog colour (`QiraatPageTint`, `washAmount` 0.10). «الكل» and the layer off keep the plain paper. A narrator uses its reader's colour, so there are ten tints. Works in every theme (light, dark, white page, black page).
+- **Readability:** a test checks all ten readers in light and dark: paper stays light/dark and the ink keeps at least 7:1 contrast.
+- **Verification:** `QiraatPageTintTests` (7) and `testAReadersWashTintsPaperAndDeskTogether` added; simulator screenshots on page 3 show cream for «الكل», peach for عاصم, mint for أبو عمرو.
+- **Files:** `MushafCore/Sources/MushafCore/QiraatPageTint.swift`, `Sources/Qiraat/QiraatPreferences.swift`, `Sources/Reader/{MushafAppearance,MushafPageView,MushafPager,PageController,ReaderView}.swift`, `MushafCore/Tests/MushafCoreTests/QiraatPageTintTests.swift`, `Tests/MushafAppearanceTests.swift`.
+
 ## [Unreleased] — 2026-11-03 — Development builds read the uncached review routes until the review is finished
 - **Owner decision:** keep the old routes working while the Qiraat review goes on; an edit in the web review tab must reach the iPhone at once. Switch to the public API only as the last step before publishing.
 - **Change:** new `LiveSyncRoute` (`Sources/Sync/AppEndpoints.swift`). DEBUG (`make device`) reads `/api/mushaf-1441/qiraat` and `/api/mushaf-1441/mutoon` (never cached by the CDN) through the shared session with the site's sign-in cookie, as before today; Release reads only `/api/public/v1/*` through the cookie-less session. The page-versions index stays public (its CDN cache is now 15 s on the web side). DEBUG polls the open page every 5 s, backing off to at most 15 s (Release: 10 s up to 300 s).

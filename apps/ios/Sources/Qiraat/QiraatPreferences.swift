@@ -10,6 +10,8 @@ struct QiraatDisplay: Equatable {
     var hidesUsul: Bool = false
     /// The أصول categories (`QiraatRuling.category` codes) the reader switched off one by one.
     var hiddenUsulCategories: Set<String> = []
+    /// The soft wash the page takes from the chosen reader; nil for «الكل» or while the layer is off.
+    var pageTint: QiraatColor?
 
     static let off = QiraatDisplay(enabled: false, filter: .all)
 }
@@ -57,8 +59,14 @@ final class QiraatPreferences {
         hiddenUsulCategories = Set(defaults.stringArray(forKey: Self.hiddenUsulCategoriesKey) ?? [])
     }
 
-    var display: QiraatDisplay { QiraatDisplay(enabled: enabled, filter: filter, hidesUsul: hidesUsul,
-                      hiddenUsulCategories: hiddenUsulCategories) }
+    var display: QiraatDisplay { display(catalog: nil) }
+
+    /// With the catalog, the chosen reader also tints the page.
+    func display(catalog: QiraatCatalog?) -> QiraatDisplay {
+        let tint = enabled ? catalog.flatMap { QiraatPageTint.readerColor(for: filter, catalog: $0) } : nil
+        return QiraatDisplay(enabled: enabled, filter: filter, hidesUsul: hidesUsul,
+                             hiddenUsulCategories: hiddenUsulCategories, pageTint: tint)
+    }
 }
 
 extension UIColor {

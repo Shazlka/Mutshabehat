@@ -1,3 +1,4 @@
+import MushafCore
 import SwiftUI
 import UIKit
 
@@ -41,6 +42,15 @@ enum MushafAppearance: String, CaseIterable, Identifiable {
 
     /// What shows around the page, under the header and footer: the page's own colour in every theme, never darker.
     func desk(for traits: UITraitCollection) -> UIColor { paper(for: traits) }
+
+    /// The paper with the chosen reader's soft wash (`QiraatPageTint.washAmount`); plain paper without one.
+    func paper(for traits: UITraitCollection, tint: QiraatColor?) -> UIColor {
+        guard let tint else { return paper(for: traits) }
+        return paper(for: traits).mixed(with: UIColor(red: tint.red, green: tint.green, blue: tint.blue, alpha: 1),
+                                        amount: CGFloat(QiraatPageTint.washAmount))
+    }
+
+    func desk(for traits: UITraitCollection, tint: QiraatColor?) -> UIColor { paper(for: traits, tint: tint) }
 
     func ink(for traits: UITraitCollection) -> UIColor {
         switch self {
