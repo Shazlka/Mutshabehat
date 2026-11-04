@@ -48,6 +48,12 @@ section below **and** the root
 
 # Changelog
 
+## 2026-11-04 — Web parity step 9: Qiraat search «بحث في القراءات» (branch web/ios-parity)
+- **Change:** hub «المزيد» → «بحث في القراءات»: search the places of the Mushaf by reader or narrator (a reader covers both narrators), by word (diacritics and alef wasla ignored; matches the Hafs text and the variant text) or by أصول باب, results grouped by surah and page with the word, ayah:token, فرش/أصول and the number of records; a result turns to its page and opens the word. «لا نتائج» when nothing matches. Uses the same all-pages loader as the usul index (progress line while it fills). Ported from the iOS `QiraatSearch`.
+- **Ruling:** the plan's `buildSearchIndex(…, wordText)` has no `wordText` argument (display text comes from the record's own Hafs / base text, as in iOS). A ruling's authority is taken from both its `readings` and its attribution rows; a reader-level row also matches that reader's two narrators.
+- **Verification:** 9 new unit tests (feature suite 70/70), Playwright 12/12 (word search «الصراط», reader search for Warsh, result opens its word, no-match message), `test:qiraat` 51/51, typecheck, `next build`. **DB migration:** none.
+- **Files:** `packages/qiraat-core/features/search.ts`, `src/app/mushaf-1441/_features/search/QiraatSearchSheet.tsx`, `QiraatFeaturesHost.tsx`, `Mushaf1441Viewer.tsx`, `tests/qiraat/features/search.test.ts`, `tests/quiz/e2e/qiraat-features.spec.ts`.
+
 ## 2026-11-04 — Web parity step 8: usul index «فهرس الأصول» (branch web/ios-parity)
 - **Change:** hub «المزيد» → «فهرس الأصول»: every أصول باب (ordered by number of places, then code) with a count; opening one lists its places (word, ayah, page) and tapping a place turns to its page and opens that word in the word sheet. Rows with the same باب and span are one place and keep every reader's row (93 loci in the database carry several rows). The data of all 604 pages loads on first use from the public API (six requests at a time, per-page fallback to the bundled data, kept for the visit) with a progress line while the index fills. Ported from the iOS `UsulIndex`.
 - **Ruling:** the plan wanted a place to keep the page its row was filed under; iOS uses the page of the place's first word. The web builder takes an optional `pageOfWord` resolver for that and otherwise uses the page the data was loaded under (so the 5 misfiled rulings of the database navigate to the page that carries them). Not-word-anchored rulings (عد الآي) are left out.

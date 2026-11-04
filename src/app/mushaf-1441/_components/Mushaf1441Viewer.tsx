@@ -5361,6 +5361,7 @@ export default function Mushaf1441Viewer({
         pages={visibleQiraatPages}
         words={summaryWords}
         onGoToPlace={goToQiraatPlace}
+        surahName={(surah) => surahOptions.find((o) => o.surahNumber === surah)?.name ?? String(surah)}
         onSelectWord={(wordId) => {
           const target = visibleQiraatPages.flatMap((no) => (pageCache[no]?.lines ?? []).flatMap((line) => line.words)).find((w) => w.id === wordId)
           if (target) goToMarkedQiraatWord(target)

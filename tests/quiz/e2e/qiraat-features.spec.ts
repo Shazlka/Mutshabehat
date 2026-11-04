@@ -197,3 +197,33 @@ test.describe('usul index', () => {
   })
 })
 
+test.describe('Qiraat search', () => {
+  test('a word search lists places and a result opens its word', async ({ page }) => {
+    await openQiraatPage(page, 17)
+    await page.getByTestId('qiraat-hub').first().locator('summary').click()
+    await page.getByTestId('hub-search').first().click()
+    const search = page.getByTestId('qiraat-search')
+    await expect(search).toBeVisible()
+    await search.getByRole('searchbox', { name: 'الكلمة' }).fill('الصراط')
+    await expect(page.getByTestId('search-progress')).toBeHidden({ timeout: 120_000 })
+    await expect(page.getByTestId('search-count')).not.toHaveText('0 موضعًا')
+    expect(await search.getByTestId('search-result').count()).toBeGreaterThan(3)
+    await search.getByRole('tab', { name: 'قارئ أو راوٍ' }).click()
+    await search.getByRole('combobox', { name: 'القارئ أو الراوي' }).selectOption('Q01-R02')
+    expect(await search.getByTestId('search-result').count()).toBeGreaterThan(10)
+    await search.getByTestId('search-result').first().click()
+    await expect(search).toBeHidden()
+    await expect(page.getByTestId('word-sheet-position')).toBeVisible({ timeout: 20_000 })
+  })
+
+  test('a word with no match says so', async ({ page }) => {
+    await openQiraatPage(page, 17)
+    await page.getByTestId('qiraat-hub').first().locator('summary').click()
+    await page.getByTestId('hub-search').first().click()
+    const search = page.getByTestId('qiraat-search')
+    await search.getByRole('searchbox', { name: 'الكلمة' }).fill('زززززز')
+    await expect(page.getByTestId('search-progress')).toBeHidden({ timeout: 120_000 })
+    await expect(search).toContainText('لا نتائج')
+  })
+})
+
