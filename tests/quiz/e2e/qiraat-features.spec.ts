@@ -394,3 +394,65 @@ test.describe('sync status and report', () => {
   })
 })
 
+test.describe('final review fixes', () => {
+  test('a sheet takes focus, keeps it inside while open, and Escape closes it', async ({ page }) => {
+    await openQiraatPage(page, 17)
+    await openHub(page)
+    await page.getByTestId('hub-legend').first().click()
+    const dialog = page.getByTestId('legend-sheet')
+    await expect(dialog).toBeVisible()
+    const inside = () => dialog.evaluate((el) => el.contains(document.activeElement))
+    expect(await inside()).toBe(true)
+    for (let i = 0; i < 6; i += 1) {
+      await page.keyboard.press('Tab')
+      expect(await inside()).toBe(true)
+    }
+    await page.keyboard.press('Shift+Tab')
+    expect(await inside()).toBe(true)
+    await page.keyboard.press('Escape')
+    await expect(dialog).toBeHidden()
+  })
+
+  test('the page summary follows the riwayah in «القراءة برواية»: every item opens its word', async ({ page }) => {
+    await openQiraatPage(page, 17)
+    await ensureQiraatTools(page)
+    await page.getByRole('button', { name: 'القراءة برواية' }).first().click()
+    await closeQiraatMenu(page)
+    await page.waitForTimeout(600) // let the riwayah marks settle (Hafs, the default, marks nothing)
+    const markedNow = await page.locator(MARKED_WORDS).count()
+    await openHub(page)
+    await page.getByTestId('hub-pageSummary').first().click()
+    const summary = page.getByTestId('page-summary')
+    const items = summary.getByTestId('summary-item')
+    // one item per marked word: the summary lists exactly what the page marks in this mode
+    await expect.poll(() => items.count()).toBe(markedNow)
+    if (markedNow === 0) await expect(summary.getByTestId('page-summary-empty')).toBeVisible()
+    else {
+      await items.first().click()
+      await page.mouse.move(2, 400)
+      await expect(sheet(page)).toBeVisible()
+    }
+  })
+
+  test('a note on a page that is already cached still opens its word from the list', async ({ page, isMobile }) => {
+    test.skip(isMobile, 'the page arrows are on desktop and tablet; phones turn pages by touch (same code path)')
+    await openQiraatPage(page, 17)
+    await openFirstMarkedWord(page)
+    await page.mouse.move(2, 400)
+    await page.getByTestId('favourite-toggle').first().click()
+    await expect(page.getByTestId('favourite-toggle').first()).toHaveAttribute('aria-pressed', 'true')
+    await ensureQiraatTools(page)
+    await closeQiraatMenu(page)
+    // turn away and let the neighbours load, so page 17 and its Qiraat data are cached
+    await page.getByRole('button', { name: 'الصفحة التالية' }).click()
+    await expect(page).not.toHaveURL(/page=17$/)
+    await page.getByRole('button', { name: 'الصفحة التالية' }).click()
+    await page.waitForTimeout(800)
+    await openHub(page)
+    await page.getByTestId('hub-notes').first().click()
+    await page.getByTestId('notes-panel').getByTestId('note-item').first().click()
+    await page.mouse.move(2, 400) // a hover card over a page word would take the sidebar
+    await expect(page.getByTestId('word-sheet-position')).toBeVisible({ timeout: 20_000 })
+  })
+})
+

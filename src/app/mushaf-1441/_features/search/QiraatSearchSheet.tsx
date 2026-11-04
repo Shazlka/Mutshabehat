@@ -5,7 +5,7 @@ import { buildSearchIndex, groupResults, type QiraatSearchQuery } from '../../..
 import { narratorLabel } from '../../../../../packages/qiraat-core/features/readerPicker'
 import { QIRAAT_NARRATORS } from '../../../../../packages/qiraat-core/narrators'
 import { QIRAAT_READERS } from '../../../../../packages/qiraat-core/readers'
-import { useAllPagesData } from '../host/allPagesData'
+import { retryAllPages, useAllPagesData } from '../host/allPagesData'
 import { FeatureSheet } from '../host/FeatureSheet'
 
 type Scope = 'authority' | 'word' | 'category'
@@ -37,8 +37,13 @@ export function QiraatSearchSheet(props: {
 
   return (
     <FeatureSheet title="بحث في القراءات" onClose={props.onClose} testId="qiraat-search">
-      {!data.done ? (
+      {!data.done && data.failed === 0 ? (
         <p data-testid="search-progress" className="mb-2 text-[11px] font-bold text-[var(--mushaf-muted)]">جارٍ تحميل الصفحات {data.loaded} من {data.total}…</p>
+      ) : null}
+      {data.failed > 0 ? (
+        <p data-testid="load-failed" className="mb-2 text-xs font-bold text-[#8a2f10]">
+          تعذّر تحميل {data.failed} صفحة، فقد تنقص النتائج. <button type="button" onClick={retryAllPages} className="underline">إعادة المحاولة</button>
+        </p>
       ) : null}
       <div role="tablist" className="mb-3 flex gap-1">
         {SCOPES.map((s) => (

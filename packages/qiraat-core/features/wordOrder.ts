@@ -88,3 +88,8 @@ export function toOrderable(word: MushafWord): OrderableWord {
     indexInLine: word.wordIndexInLine,
   }
 }
+
+/** A real word of the page, not an ayah-end, pause, sajdah or rub-al-hizb glyph (those are never marked words). */
+export function isRealWordToken(word: Pick<MushafWord, 'charTypeName'>): boolean {
+  return word.charTypeName === undefined || word.charTypeName === 'word'
+}

@@ -18,7 +18,7 @@ function sourceLabel(source: { kind: 'variant' } | { kind: 'base'; sameAsHafs: b
 
 function UsulLine({ usul }: { usul: ComparedUsul }) {
   return (
-    <li className="rounded border border-[var(--mushaf-rule-soft)] p-1.5 text-[11px]">
+    <li data-testid="compare-usul" className="rounded border border-[var(--mushaf-rule-soft)] p-1.5 text-[11px]">
       <span className="font-black" style={{ color: usul.color }}>{usul.categoryAr}</span>
       {usul.status.kind === 'entries' ? (
         <ul className="mt-0.5 space-y-0.5">

@@ -48,7 +48,7 @@ import {
   type RulingMarker,
   type ImalahTaqlilMarker,
 } from './qiraat/qiraatWordMarker'
-import { markedWords, nextMarked, nearestMarked, previousMarked, toOrderable, variantWajhNumbers } from '../../../../packages/qiraat-core/features/wordOrder'
+import { isRealWordToken, markedWords, nextMarked, nearestMarked, previousMarked, toOrderable, variantWajhNumbers } from '../../../../packages/qiraat-core/features/wordOrder'
 import { WordSheetNav } from '../_features/word-sheet/WordSheetNav'
 import { FaceBadge } from '../_features/word-sheet/FaceBadge'
 import { QiraatFeaturesHost, HUB_ENTRIES, type FeatureName } from '../_features/host/QiraatFeaturesHost'
@@ -1185,10 +1185,17 @@ export default function Mushaf1441Viewer({
   const summaryWords = useMemo(
     () => visibleQiraatPages
       .flatMap((no) => (pageCache[no]?.lines ?? []).flatMap((line) => line.words))
-      .filter((w) => w.charTypeName === undefined || w.charTypeName === 'word')
+      .filter(isRealWordToken)
       .map((w) => Object.assign(toOrderable(w), { text: w.textUthmani })),
     [visibleQiraatPages, pageCache],
   )
+  // What the page really shows: in «القراءة برواية» the riwayah is the filter, whatever the comparison filter holds.
+  const effectiveQiraatFilter = useMemo<QiraatComparisonFilter>(
+    () => (qiraatMode === 'riwayah' ? { kind: 'reading', readingId: qiraatSelectedReadingId } : qiraatFilter),
+    [qiraatMode, qiraatSelectedReadingId, qiraatFilter],
+  )
+  // Complete rulings (ignoring the باب switches): compare must never make a hidden باب look like «كحفص».
+  const allRulingsByPageNumber = useMemo(() => byPageNumber(qiraatRulingsByPage), [qiraatRulingsByPage])
   // «مقارنة» needs the open word's complete data, not what the current filter would show: a filtered fallback would
   // make omitted readers look as if they follow the Mushaf text.
   const compareTarget = useMemo(() => {
@@ -1196,12 +1203,12 @@ export default function Mushaf1441Viewer({
     const word = qiraatSelection.word
     const data = qiraatDataForWord(word, {
       variants: variantsByPageNumber[word.pageNumber] ?? [],
-      rulings: rulingsByPageNumber[word.pageNumber] ?? [],
+      rulings: allRulingsByPageNumber[word.pageNumber] ?? [],
       filter: { kind: 'all' },
       includeUnpublished: true,
     })
     return { word: { surah: word.surahNumber, ayah: word.ayahNumber, token: word.wordIndexInAyah, text: word.textUthmani }, selection: data }
-  }, [qiraatSelection, variantsByPageNumber, rulingsByPageNumber])
+  }, [qiraatSelection, variantsByPageNumber, allRulingsByPageNumber])
   function updateUsulPrefs(next: QiraatUsulPrefs) {
     setUsulPrefs(next)
     try { saveUsulPrefs(window.localStorage, next) } catch { /* storage unavailable */ }
@@ -1254,6 +1261,7 @@ export default function Mushaf1441Viewer({
       : qiraatView.filter
     const words = pages
       .flatMap((no) => (pageCache[no]?.lines ?? []).flatMap((line) => line.words))
+      .filter(isRealWordToken)
       .map((word) => Object.assign(toOrderable(word), { word }))
     return markedWords(pages, words, (entry) => isQiraatMarkedWord(entry.word, {
       variants: qiraatVariantsForPage(entry.page),
@@ -2063,7 +2071,7 @@ export default function Mushaf1441Viewer({
       .filter((no): no is number => no !== null)
       .sort((a, b) => a - b)
       .flatMap((no) => (pageCache[no]?.lines ?? []).flatMap((line) => line.words))
-      .filter((w) => w.charTypeName === undefined || w.charTypeName === 'word')
+      .filter(isRealWordToken)
     const start = flat.findIndex((w) => w.surahNumber === ruling.surah && w.ayahNumber === ruling.ayah && w.wordIndexInAyah === ruling.startToken)
     const end = flat.findIndex((w) => w.surahNumber === ruling.surah && w.ayahNumber === ruling.endAyah && w.wordIndexInAyah === ruling.endToken)
     return {
@@ -2074,6 +2082,7 @@ export default function Mushaf1441Viewer({
 
   // Go to a place chosen in a sheet (usul index, search): turn to its page, then open its word in the word sheet.
   const pendingQiraatWordRef = useRef<{ surah: number; ayah: number; token: number } | null>(null)
+  const [pendingQiraatTick, setPendingQiraatTick] = useState(0)
   function findVisibleWord(target: { surah: number; ayah: number; token: number }): MushafWord | undefined {
     return visibleQiraatPages
       .flatMap((no) => (pageCache[no]?.lines ?? []).flatMap((line) => line.words))
@@ -2087,12 +2096,17 @@ export default function Mushaf1441Viewer({
     // goToPage clears any pending place first, so set ours after it. The word opens once its page and its
     // Qiraat data have both arrived (see the effect below).
     pendingQiraatWordRef.current = target
+    setPendingQiraatTick((n) => n + 1)
   }
   function goToQiraatWord(surah: number, ayah: number, token: number) {
     const target = { surah, ayah, token }
     const here = findVisibleWord(target)
     if (here) { goToMarkedQiraatWord(here); return }
-    void goToAyah(surah, ayah).then(() => { pendingQiraatWordRef.current = target })
+    void goToAyah(surah, ayah).then(() => {
+      pendingQiraatWordRef.current = target
+      // The page and its data may already be cached, so nothing else would re-run the effect below.
+      setPendingQiraatTick((n) => n + 1)
+    })
   }
   useEffect(() => {
     const pending = pendingQiraatWordRef.current
@@ -2101,10 +2115,11 @@ export default function Mushaf1441Viewer({
     if (!word) return
     if (goToMarkedQiraatWord(word)) pendingQiraatWordRef.current = null
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageCache, pageNumber, companionPageNumber, qiraatView])
+  }, [pageCache, pageNumber, companionPageNumber, qiraatView, pendingQiraatTick])
 
   // Step the open word sheet to another marked word; never toggles it closed (unlike a press on the page).
   function goToMarkedQiraatWord(word: MushafWord): boolean {
+    if (!isRealWordToken(word)) return false
     const selection = qiraatSelectionForWord(word)
     if (selection) setQiraatSelection(selection)
     return selection !== null
@@ -5424,6 +5439,7 @@ export default function Mushaf1441Viewer({
         words={summaryWords}
         onGoToPlace={goToQiraatPlace}
         compareTarget={compareTarget}
+        summaryFilter={effectiveQiraatFilter}
         onGoToWord={goToQiraatWord}
         surahName={(surah) => surahOptions.find((o) => o.surahNumber === surah)?.name ?? String(surah)}
         onSelectWord={(wordId) => {

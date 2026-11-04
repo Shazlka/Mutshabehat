@@ -46,14 +46,16 @@ export interface QiraatFeaturesHostProps {
   /** The open word and its complete (unfiltered) data, for «مقارنة»; null when no word is open. */
   /** Go to a word by its Quran position (looks its page up, then opens it in the sheet). */
   onGoToWord: (surah: number, ayah: number, token: number) => void
+  /** The filter the page really applies (the riwayah in «القراءة برواية»), for the sheets that list marked words. */
+  summaryFilter: QiraatComparisonFilter
   compareTarget: { word: { surah: number; ayah: number; token: number; text: string }; selection: CompareSelection } | null
 }
 
-export function QiraatFeaturesHost({ active, onClose, filter, onFilterChange, variantsByPage, rulingsByPage, pages, words, onSelectWord, onGoToPlace, surahName, compareTarget, onGoToWord }: QiraatFeaturesHostProps) {
+export function QiraatFeaturesHost({ active, onClose, filter, onFilterChange, variantsByPage, rulingsByPage, pages, words, onSelectWord, onGoToPlace, surahName, compareTarget, onGoToWord, summaryFilter }: QiraatFeaturesHostProps) {
   if (active === 'readerPicker') return <ReaderPicker filter={filter} onPick={onFilterChange} onClose={onClose} />
   if (active === 'legend') return <LegendSheet variantsByPage={variantsByPage} rulingsByPage={rulingsByPage} onClose={onClose} />
   if (active === 'pageSummary') {
-    return <PageSummarySheet pages={pages} words={words} variantsByPage={variantsByPage} rulingsByPage={rulingsByPage} filter={filter} onSelectWord={onSelectWord} onClose={onClose} />
+    return <PageSummarySheet pages={pages} words={words} variantsByPage={variantsByPage} rulingsByPage={rulingsByPage} filter={summaryFilter} onSelectWord={onSelectWord} onClose={onClose} />
   }
   if (active === 'usulIndex') return <UsulIndexSheet onGoToPlace={onGoToPlace} onClose={onClose} />
   if (active === 'search') return <QiraatSearchSheet surahName={surahName} onGoToPlace={onGoToPlace} onClose={onClose} />

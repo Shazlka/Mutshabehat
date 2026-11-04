@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import { buildUsulIndex, type UsulPlace } from '../../../../../packages/qiraat-core/features/usulIndex'
-import { useAllPagesData } from '../host/allPagesData'
+import { retryAllPages, useAllPagesData } from '../host/allPagesData'
 import { FeatureSheet } from '../host/FeatureSheet'
 
 /** «فهرس الأصول»: every أصول باب and the places it applies across the Mushaf. */
@@ -15,9 +15,14 @@ export function UsulIndexSheet(props: {
   const categories = useMemo(() => buildUsulIndex(data.rulingsByPage), [data.rulingsByPage])
   return (
     <FeatureSheet title="فهرس الأصول" onClose={props.onClose} testId="usul-index">
-      {!data.done ? (
+      {!data.done && data.failed === 0 ? (
         <p data-testid="usul-index-progress" className="mb-3 text-[11px] font-bold text-[var(--mushaf-muted)]">
           جارٍ تحميل الصفحات {data.loaded} من {data.total}…
+        </p>
+      ) : null}
+      {data.failed > 0 ? (
+        <p data-testid="load-failed" className="mb-3 text-xs font-bold text-[#8a2f10]">
+          تعذّر تحميل {data.failed} صفحة. <button type="button" onClick={retryAllPages} className="underline">إعادة المحاولة</button>
         </p>
       ) : null}
       {categories.length === 0 && data.done ? <p className="text-sm text-[var(--mushaf-muted)]">لا توجد أحكام مسجَّلة.</p> : null}

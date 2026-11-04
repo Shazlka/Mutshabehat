@@ -51,3 +51,28 @@ test('toOrderable maps the viewer word fields', () => {
   })
   assert.deepEqual(o, { id: 'w', surah: 2, ayah: 9, tokenInAyah: 5, page: 17, line: 3, indexInLine: 4 })
 })
+
+// Final review, Important 1: ayah-end and pause glyphs are not words and must never be marked words.
+test('the marked-word list of page 1 holds no ayah-end glyph', async () => {
+  const { isRealWordToken, markedWords } = await import('../../../packages/qiraat-core/features/wordOrder')
+  const page = await loadMushaf1441Page(1)
+  assert.ok(page)
+  const words = page.lines.flatMap((l) => l.words)
+  const variants = await defaultQiraatRepository.getVariantsForPage(1, { includeUnpublished: true })
+  const rulings = await defaultQiraatRepository.getRulingsForPage(1, { includeUnpublished: true })
+  const ctx = { variants, rulings, filter: { kind: 'all' } as const, includeUnpublished: true }
+  const entries = words.map((w) => Object.assign(toOrderable(w), { word: w }))
+  const raw = markedWords([1], entries, (e) => isQiraatMarkedWord(e.word, ctx))
+  assert.ok(raw.some((e) => e.word.charTypeName === 'end'), 'the cross-ayah idgham touches the ayah-3 end glyph (this is the defect)')
+  const real = markedWords([1], entries, (e) => isRealWordToken(e.word) && isQiraatMarkedWord(e.word, ctx))
+  assert.ok(real.length > 0)
+  assert.ok(real.every((e) => e.word.charTypeName === undefined || e.word.charTypeName === 'word'))
+})
+
+test('isRealWordToken accepts words and rejects end, pause and sajdah marks', async () => {
+  const { isRealWordToken } = await import('../../../packages/qiraat-core/features/wordOrder')
+  const w = (charTypeName?: string) => ({ charTypeName }) as never
+  assert.equal(isRealWordToken(w()), true)
+  assert.equal(isRealWordToken(w('word')), true)
+  for (const t of ['end', 'pause', 'sajdah', 'rub-el-hizb']) assert.equal(isRealWordToken(w(t)), false)
+})

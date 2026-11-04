@@ -16,11 +16,17 @@ export interface AllPagesSnapshot {
   loaded: number
   total: number
   done: boolean
+  /** Pages that could not be loaded at all (network and bundled data both failed). */
+  failed: number
 }
 
-const store: { variants: Record<number, QiraatVariant[]>; rulings: Record<number, QiraatRuling[]>; loaded: number; running: Promise<void> | null } = {
-  variants: {}, rulings: {}, loaded: 0, running: null,
-}
+const store: {
+  variants: Record<number, QiraatVariant[]>
+  rulings: Record<number, QiraatRuling[]>
+  loaded: Set<number>
+  failed: number
+  running: Promise<void> | null
+} = { variants: {}, rulings: {}, loaded: new Set(), failed: 0, running: null }
 const listeners = new Set<() => void>()
 const notify = () => listeners.forEach((fn) => fn())
 
@@ -41,31 +47,73 @@ async function loadPage(page: number): Promise<{ variants: QiraatVariant[]; ruli
   return { variants: variants as QiraatVariant[], rulings: rulings as QiraatRuling[] }
 }
 
-function start(): Promise<void> {
-  if (store.running) return store.running
-  let next = 1
+/**
+ * Loads `pages`, `concurrency` at a time. A page whose load throws is reported in `failed` and the rest carry on, so
+ * one bad chunk can never leave the sheets waiting forever.
+ */
+export async function loadPagesResilient(args: {
+  pages: number[]
+  concurrency: number
+  loadPage: (page: number) => Promise<{ variants: QiraatVariant[]; rulings: QiraatRuling[] }>
+  onPage: (page: number, data: { variants: QiraatVariant[]; rulings: QiraatRuling[] }) => void
+}): Promise<{ failed: number[] }> {
+  const failed: number[] = []
+  let next = 0
   const worker = async () => {
-    while (next <= PAGE_COUNT) {
-      const page = next
+    while (next < args.pages.length) {
+      const page = args.pages[next]
       next += 1
-      const { variants, rulings } = await loadPage(page)
-      store.variants[page] = variants
-      store.rulings[page] = rulings
-      store.loaded += 1
-      if (store.loaded % 20 === 0 || store.loaded === PAGE_COUNT) notify()
+      try {
+        args.onPage(page, await args.loadPage(page))
+      } catch {
+        failed.push(page)
+      }
     }
   }
-  store.running = Promise.all(Array.from({ length: CONCURRENCY }, worker)).then(() => { notify() })
+  await Promise.all(Array.from({ length: Math.min(args.concurrency, args.pages.length) }, worker))
+  return { failed }
+}
+
+function start(): Promise<void> {
+  if (store.running) return store.running
+  const pages = Array.from({ length: PAGE_COUNT }, (_, i) => i + 1).filter((p) => !store.loaded.has(p))
+  if (pages.length === 0) return Promise.resolve()
+  let sinceNotify = 0
+  store.running = loadPagesResilient({
+    pages,
+    concurrency: CONCURRENCY,
+    loadPage,
+    onPage: (page, data) => {
+      store.variants[page] = data.variants
+      store.rulings[page] = data.rulings
+      store.loaded.add(page)
+      sinceNotify += 1
+      if (sinceNotify % 20 === 0) notify()
+    },
+  }).then(({ failed }) => {
+    store.failed = failed.length
+  }).finally(() => {
+    store.running = null
+    notify()
+  })
   return store.running
+}
+
+/** Try again for the pages that failed (after a network error). */
+export function retryAllPages(): void {
+  store.failed = 0
+  notify()
+  void start()
 }
 
 function snapshot(): AllPagesSnapshot {
   return {
     variantsByPage: { ...store.variants },
     rulingsByPage: { ...store.rulings },
-    loaded: store.loaded,
+    loaded: store.loaded.size,
     total: PAGE_COUNT,
-    done: store.loaded >= PAGE_COUNT,
+    done: store.loaded.size >= PAGE_COUNT,
+    failed: store.failed,
   }
 }
 
