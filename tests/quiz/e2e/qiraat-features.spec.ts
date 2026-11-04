@@ -173,3 +173,27 @@ test.describe('page summary', () => {
   })
 })
 
+test.describe('usul index', () => {
+  test('the index lists the أبواب and a place opens its page and word', async ({ page }) => {
+    await openQiraatPage(page, 17)
+    await page.getByTestId('qiraat-hub').first().locator('summary').click()
+    await page.getByTestId('hub-usulIndex').first().click()
+    const index = page.getByTestId('usul-index')
+    await expect(index).toBeVisible()
+    // all 604 pages load (from the bundled data here, since the dummy backend is unreachable)
+    await expect(page.getByTestId('usul-index-progress')).toBeHidden({ timeout: 120_000 })
+    const category = index.getByTestId('usul-category-IMALAH_TAQLIL')
+    await expect(category).toBeVisible()
+    await category.click()
+    const places = index.getByTestId('usul-place')
+    expect(await places.count()).toBeGreaterThan(50)
+    const last = places.last()
+    const label = await last.locator('span').last().innerText()
+    const targetPage = Number(label.split('ص')[1])
+    await last.click()
+    await expect(index).toBeHidden()
+    await expect(page.getByTestId('word-sheet-position')).toBeVisible({ timeout: 20_000 })
+    await expect(page).toHaveURL(new RegExp(`page=${targetPage}|page=${targetPage - 1}`))
+  })
+})
+

@@ -1418,6 +1418,7 @@ export default function Mushaf1441Viewer({
     setSelectedAyahKey(targetAyahKey ?? null)
     setIsMobileNotesOpen(false)
     setQiraatSelection(null)
+    pendingQiraatWordRef.current = null
     updateHoveredQiraatWord(null)
     setMutshabehatPanelAyahKey(null)
     setMutshabehatPopupAyahKey(null)
@@ -2039,10 +2040,36 @@ export default function Mushaf1441Viewer({
     }
   }
 
+  // Go to a place chosen in a sheet (usul index, search): turn to its page, then open its word in the word sheet.
+  const pendingQiraatWordRef = useRef<{ surah: number; ayah: number; token: number } | null>(null)
+  function findVisibleWord(target: { surah: number; ayah: number; token: number }): MushafWord | undefined {
+    return visibleQiraatPages
+      .flatMap((no) => (pageCache[no]?.lines ?? []).flatMap((line) => line.words))
+      .find((w) => w.surahNumber === target.surah && w.ayahNumber === target.ayah && w.wordIndexInAyah === target.token)
+  }
+  function goToQiraatPlace(place: { page: number; surah: number; ayah: number; startToken: number }) {
+    const target = { surah: place.surah, ayah: place.ayah, token: place.startToken }
+    const here = findVisibleWord(target)
+    if (here) { goToMarkedQiraatWord(here); return }
+    void goToPage(place.page)
+    // goToPage clears any pending place first, so set ours after it. The word opens once its page and its
+    // Qiraat data have both arrived (see the effect below).
+    pendingQiraatWordRef.current = target
+  }
+  useEffect(() => {
+    const pending = pendingQiraatWordRef.current
+    if (!pending) return
+    const word = findVisibleWord(pending)
+    if (!word) return
+    if (goToMarkedQiraatWord(word)) pendingQiraatWordRef.current = null
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageCache, pageNumber, companionPageNumber, qiraatView])
+
   // Step the open word sheet to another marked word; never toggles it closed (unlike a press on the page).
-  function goToMarkedQiraatWord(word: MushafWord) {
+  function goToMarkedQiraatWord(word: MushafWord): boolean {
     const selection = qiraatSelectionForWord(word)
     if (selection) setQiraatSelection(selection)
+    return selection !== null
   }
 
   function selectWordForQiraat(word: MushafWord): boolean {
@@ -5333,6 +5360,7 @@ export default function Mushaf1441Viewer({
         rulingsByPage={rulingsByPageNumber}
         pages={visibleQiraatPages}
         words={summaryWords}
+        onGoToPlace={goToQiraatPlace}
         onSelectWord={(wordId) => {
           const target = visibleQiraatPages.flatMap((no) => (pageCache[no]?.lines ?? []).flatMap((line) => line.words)).find((w) => w.id === wordId)
           if (target) goToMarkedQiraatWord(target)

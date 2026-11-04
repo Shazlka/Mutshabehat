@@ -6,6 +6,7 @@
 import type { QiraatComparisonFilter } from '../../_components/qiraat/types'
 import type { QiraatRuling, QiraatVariant } from '../../../../../packages/qiraat-core/types'
 import type { SummaryWord } from '../../../../../packages/qiraat-core/features/pageSummary'
+import { UsulIndexSheet } from '../usul-index/UsulIndexSheet'
 import { PageSummarySheet } from '../page-summary/PageSummarySheet'
 import { LegendSheet } from '../legend/LegendSheet'
 import { ReaderPicker } from '../reader-picker/ReaderPicker'
@@ -15,6 +16,7 @@ export type FeatureName = 'legend' | 'readerPicker' | 'pageSummary' | 'search' |
 /** Hub «المزيد» entries, in order; a feature appears once its sheet exists (the picker is the filter chip itself). */
 export const HUB_ENTRIES: { name: FeatureName; label: string }[] = [
   { name: 'pageSummary', label: 'ملخص الصفحة' },
+  { name: 'usulIndex', label: 'فهرس الأصول' },
   { name: 'legend', label: 'مفتاح الألوان' },
 ]
 
@@ -30,13 +32,16 @@ export interface QiraatFeaturesHostProps {
   pages: number[]
   words: SummaryWord[]
   onSelectWord: (wordId: string) => void
+  /** Go to a place (page, then open its word in the sheet). */
+  onGoToPlace: (place: { page: number; surah: number; ayah: number; startToken: number }) => void
 }
 
-export function QiraatFeaturesHost({ active, onClose, filter, onFilterChange, variantsByPage, rulingsByPage, pages, words, onSelectWord }: QiraatFeaturesHostProps) {
+export function QiraatFeaturesHost({ active, onClose, filter, onFilterChange, variantsByPage, rulingsByPage, pages, words, onSelectWord, onGoToPlace }: QiraatFeaturesHostProps) {
   if (active === 'readerPicker') return <ReaderPicker filter={filter} onPick={onFilterChange} onClose={onClose} />
   if (active === 'legend') return <LegendSheet variantsByPage={variantsByPage} rulingsByPage={rulingsByPage} onClose={onClose} />
   if (active === 'pageSummary') {
     return <PageSummarySheet pages={pages} words={words} variantsByPage={variantsByPage} rulingsByPage={rulingsByPage} filter={filter} onSelectWord={onSelectWord} onClose={onClose} />
   }
+  if (active === 'usulIndex') return <UsulIndexSheet onGoToPlace={onGoToPlace} onClose={onClose} />
   return null
 }
