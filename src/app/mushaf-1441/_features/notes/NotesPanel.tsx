@@ -14,7 +14,7 @@ export function NotesPanel(props: { surahName: (surah: number) => string; onGoTo
   const fileInput = useRef<HTMLInputElement>(null)
 
   const reload = () => { if (store) void store.all<QiraatWordNote>(NOTES_STORE).then((all) => setNotes(all.sort((a, b) => a.surah - b.surah || a.ayah - b.ayah || a.token - b.token))) }
-  useEffect(reload, [store]) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(reload, [store])
 
   async function doExport() {
     if (!store) return
