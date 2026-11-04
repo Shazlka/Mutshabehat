@@ -89,6 +89,38 @@ final class QiraatContrastTests: XCTestCase {
         }
     }
 
+    /// With a reader chosen the page is washed with that reader's colour, so the word and its marks must hold 3:1 against the
+    /// washed paper, for every data colour on every reader's wash, in every theme (WCAG 1.4.3 large text, 1.4.11).
+    func testWordsAndMarksHoldThreeToOneOnEveryReadersWash() throws {
+        let folder = try XCTUnwrap(Bundle.main.url(forResource: "Qiraat", withExtension: nil))
+        let catalog = try JSONDecoder().decode(QiraatCatalog.self,
+                                               from: Data(contentsOf: folder.appendingPathComponent("catalog.json")))
+        var hexes = Set<String>()
+        for file in try FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil)
+        where file.pathExtension == "json" {
+            hexes.formUnion(try colorHexes(in: String(contentsOf: file, encoding: .utf8)))
+        }
+        XCTAssertFalse(hexes.isEmpty)
+        XCTAssertEqual(catalog.readers.count, 10)
+        for appearance in MushafAppearance.allCases {
+            for (label, style) in styles {
+                let traits = UITraitCollection(userInterfaceStyle: style)
+                for reader in catalog.readers {
+                    let tint = QiraatColor(hex: reader.color)
+                    let paper = appearance.paper(for: traits, tint: tint)
+                    for hex in hexes {
+                        let word = UIColor.qiraatGlyph(UIColor(qiraatHex: hex), appearance: appearance, traits: traits, tint: tint)
+                        let mark = UIColor.qiraatMark(hex: hex, appearance: appearance, traits: traits, tint: tint)
+                        XCTAssertGreaterThanOrEqual(word.contrast(with: paper), 3,
+                                                    "word \(hex) on \(reader.id) wash, \(appearance.rawValue) (\(label))")
+                        XCTAssertGreaterThanOrEqual(mark.contrast(with: paper), 3,
+                                                    "mark \(hex) on \(reader.id) wash, \(appearance.rawValue) (\(label))")
+                    }
+                }
+            }
+        }
+    }
+
     /// The ruling word on a card is 28 to 40 pt text, which WCAG 1.4.3 allows at 3:1. In the raw data colour the gold fell
     /// to 2.9:1 on the light card and the violet to 2.7:1 on the dark one.
     func testTheRulingWordOnACardReadsAtThreeToOneInBothModes() throws {

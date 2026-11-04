@@ -853,7 +853,8 @@ final class MushafPageView: UIView {
         let line = QCFFontStore.line(box.word.glyph, font: font,
                                      color: mark.map { UIColor.qiraatGlyph(UIColor(qiraatHex: $0.textColor),
                                                                            appearance: appearance,
-                                                                           traits: traitCollection).cgColor }
+                                                                           traits: traitCollection,
+                                                                           tint: qiraat.pageTint).cgColor }
                                          ?? appearance.ink(for: traitCollection).cgColor)
         let natural = CGFloat(CTLineGetTypographicBounds(line, nil, nil, nil))
         context.saveGState()
@@ -934,7 +935,7 @@ final class MushafPageView: UIView {
         let dot = max(3, fontSize * 0.16)
         // Held to 3:1 on this page, like the word's own colour (the raw data colour fell to 2.3:1 on the dark page).
         func markColor(_ hex: String) -> UIColor {
-            UIColor.qiraatMark(hex: hex, appearance: appearance, traits: traitCollection)
+            UIColor.qiraatMark(hex: hex, appearance: appearance, traits: traitCollection, tint: qiraat.pageTint)
         }
         context.saveGState()
         switch mark.underline {

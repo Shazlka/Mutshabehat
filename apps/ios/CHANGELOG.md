@@ -3,6 +3,13 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-11-04 — Words and marks keep 3:1 on the reader's page wash
+- **Bug (from the audit):** `qiraatGlyph` / `qiraatMark` lifted each Qiraat word and mark to 3:1 against the plain paper, but with a reader chosen the page is the washed paper. In a simulation 10 of 40 reader and theme combinations fell under 3:1 (light Q08 2.73, dark Q04 2.63).
+- **Fix:** both helpers take the wash (`tint:`, default none) and measure on the washed paper; the page view passes `qiraat.pageTint` for words and marks.
+- **Test:** `testWordsAndMarksHoldThreeToOneOnEveryReadersWash` checks every data colour on every reader's wash in all five themes and both system styles.
+- **Verification:** `QiraatContrastTests`, `ReaderHeaderContrastTests`, `MushafAppearanceTests` pass.
+- **Files:** `Sources/Design/AppColors.swift`, `Sources/Reader/MushafPageView.swift`, `Tests/QiraatContrastTests.swift`.
+
 ## [Unreleased] — 2026-11-04 — The Mushaf page takes a soft wash of the chosen reader's colour
 - **Request:** the page colour follows the reader the learner picks: soft, light, one colour per reader.
 - **Change:** with a reader (or one of their narrators) chosen in the Qiraat filter, the page paper, the desk around it and the surah banner fill take 10% of that reader's catalog colour (`QiraatPageTint`, `washAmount` 0.10). «الكل» and the layer off keep the plain paper. A narrator uses its reader's colour, so there are ten tints. Works in every theme (light, dark, white page, black page).

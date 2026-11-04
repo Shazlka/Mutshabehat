@@ -1,3 +1,4 @@
+import MushafCore
 import SwiftUI
 import UIKit
 
@@ -128,8 +129,10 @@ extension UIColor {
     /// The colour a Qiraat-marked word is drawn in: the data's colour as the web gives it while it reads at 3:1 on the
     /// page (WCAG large text; the glyphs are well over 18 pt), otherwise moved toward the page's ink only that far
     /// (the web's gold #CA8A04 is 2.9:1 on the cream page, its violet #7C3AED 3.0:1 on the dark one).
-    static func qiraatGlyph(_ color: UIColor, appearance: MushafAppearance, traits: UITraitCollection) -> UIColor {
-        let paper = appearance.paper(for: traits), ink = appearance.ink(for: traits)
+    /// `tint` is the chosen reader's page wash: the 3:1 is measured on the washed paper the word is drawn on.
+    static func qiraatGlyph(_ color: UIColor, appearance: MushafAppearance, traits: UITraitCollection,
+                            tint: QiraatColor? = nil) -> UIColor {
+        let paper = appearance.paper(for: traits, tint: tint), ink = appearance.ink(for: traits)
         var glyph = color
         var step = 0
         while glyph.contrast(with: paper) < 3, step < 20 {
@@ -141,8 +144,9 @@ extension UIColor {
 
     /// The colour of a Qiraat mark on the page (the underline, dotted line and dots): the data's colour held to the same
     /// 3:1 as the word's own glyph, so the cue that says which reader a word belongs to is as visible as the word.
-    static func qiraatMark(hex: String, appearance: MushafAppearance, traits: UITraitCollection) -> UIColor {
-        qiraatGlyph(UIColor(qiraatHex: hex), appearance: appearance, traits: traits)
+    static func qiraatMark(hex: String, appearance: MushafAppearance, traits: UITraitCollection,
+                           tint: QiraatColor? = nil) -> UIColor {
+        qiraatGlyph(UIColor(qiraatHex: hex), appearance: appearance, traits: traits, tint: tint)
     }
 
     /// A data colour used as large text on a Qiraat card: moved toward the page ink only until it reads 3:1 on the card
