@@ -3,6 +3,13 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-11-06 — Word card shows only the selected reader's or narrator's groups (أصول)
+- **Report:** with one reader or narrator selected, tapping a word still listed every reader's groups in the cards.
+- **Cause:** the الفرش cards were already narrowed to the selection, but `RulingCard` (الأصول) grouped and showed all of a ruling's rows (إمالة for حمزة and الكسائي, تقليل for ورش …) whatever the filter.
+- **Fix:** `QiraatRuling.attribution(scopedTo:catalog:)`, `attributionByAction(scopedTo:catalog:)` and `hasAlternateReading(scopedTo:catalog:)` (MushafCore) narrow to the selected reader (their narrators and reader-level row) or narrator (their rows and their reader-level row). `RulingCard` takes the filter and uses it for the groups, the wajh numbers, the shared-form word, the redundant-text check and the «ذو وجهين» badge. «الكل» is unchanged.
+- **Verification:** `QiraatRulingScopeTests` (5, new) and the Qiraat suites pass; `make build` succeeds. Not exercised: tapping a word on a simulator or device with a reader selected.
+- **Files:** `MushafCore/Sources/MushafCore/QiraatPresentation.swift`, `Sources/Qiraat/{RulingCard,QiraatSheet}.swift`, `MushafCore/Tests/MushafCoreTests/QiraatRulingScopeTests.swift`.
+
 ## [Unreleased] — 2026-11-04 — App Intents: continue reading, open a page, open a surah
 - **What:** three actions for Siri, Shortcuts and Spotlight, all opening the app: «متابعة القراءة» (continue where you stopped), «فتح صفحة من المصحف» (page 1 to 604) and «فتح سورة» (one of the 114, chosen by name or number, opens at its first page). `SurahEntity` (id, Arabic name, start page) is the only entity; `SurahEntityQuery` matches by number or by name without diacritics.
 - **Handoff:** one `AppIntentRouter` (`Sources/Intents/AppIntentRouter.swift`). `open(page:)` clamps to 1...604, saves the reading position (a cold launch resumes there) and sets `pendingPage`, which `ReaderView` takes once on appear and on change (a running app jumps at once, clearing any highlighted words). Business logic stays in the router; the intents are thin.

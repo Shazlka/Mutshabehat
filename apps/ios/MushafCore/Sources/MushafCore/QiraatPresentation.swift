@@ -122,6 +122,36 @@ extension QiraatRuling {
     /// Readings whose second وجه is also valid.
     public var alternateReadings: [QiraatRulingReading] { readings.filter { !$0.isDefault } }
 
+    /// The per-reader rows for the selected reader or narrator only («all» keeps every row). A reader-level
+    /// row ("Q07") applies to each of that reader's narrators; a count-school id belongs to no reader and
+    /// drops out of a narrowed card.
+    public func attribution(scopedTo filter: QiraatFilter, catalog: QiraatCatalog) -> [QiraatRulingAttribution] {
+        switch filter {
+        case .all:
+            return attribution
+        case .reader(let readerId):
+            return attribution.filter { row in
+                row.authorityId == readerId || catalog.readerId(ofReading: row.authorityId) == readerId
+            }
+        case .reading(let readingId):
+            let readerId = catalog.readerId(ofReading: readingId)
+            return attribution.filter { $0.authorityId == readingId || (readerId != nil && $0.authorityId == readerId) }
+        }
+    }
+
+    public func attributionByAction(scopedTo filter: QiraatFilter, catalog: QiraatCatalog) -> [RulingActionGroup] {
+        RulingActionGroup.grouping(attribution(scopedTo: filter, catalog: catalog), fallback: categoryAr)
+    }
+
+    /// A second, also-valid وجه exists for the selected reader or narrator.
+    public func hasAlternateReading(scopedTo filter: QiraatFilter, catalog: QiraatCatalog) -> Bool {
+        switch filter {
+        case .all: return !alternateReadings.isEmpty
+        case .reader(let readerId): return alternateReadings.contains { catalog.readerId(ofReading: $0.readingId) == readerId }
+        case .reading(let readingId): return alternateReadings.contains { $0.readingId == readingId }
+        }
+    }
+
     /// More than one وجه is recorded, so each attribution shows its wajh number.
     public var hasSeveralWajhs: Bool { attribution.contains { ($0.wajhOrder ?? 1) > 1 } }
 }

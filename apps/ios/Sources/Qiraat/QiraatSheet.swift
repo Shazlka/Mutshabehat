@@ -108,7 +108,7 @@ struct QiraatSheet: View {
                     }
                     if !currentSelection.rulings.isEmpty {
                         sectionHeading("الأصول")
-                        ForEach(currentSelection.rulings) { RulingCard(ruling: $0, catalog: catalog) }
+                        ForEach(currentSelection.rulings) { RulingCard(ruling: $0, catalog: catalog, filter: filter) }
                     }
                     if currentSelection.variants.isEmpty && currentSelection.rulings.isEmpty {
                         emptyState

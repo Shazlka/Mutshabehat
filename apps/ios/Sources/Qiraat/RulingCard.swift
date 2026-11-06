@@ -6,6 +6,8 @@ import UIKit
 struct RulingCard: View {
     let ruling: QiraatRuling
     let catalog: QiraatCatalog
+    /// The selected reader or narrator: the card shows only that reader's groups.
+    var filter: QiraatFilter = .all
 
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Environment(\.colorScheme) private var colorScheme
@@ -16,7 +18,8 @@ struct RulingCard: View {
         // The ruling word is large text: held to 3:1 on the card. The outline and tint keep the category colour as it is.
         let wordColor = Color(uiColor: .qiraatCardText(
             hex: ruling.color, traits: UITraitCollection(userInterfaceStyle: colorScheme == .dark ? .dark : .light)))
-        let distinct = distinctRulingText(ruling.text, categoryAr: ruling.categoryAr, actions: ruling.attribution.map(\.action))
+        let distinct = distinctRulingText(ruling.text, categoryAr: ruling.categoryAr,
+                                      actions: ruling.attribution(scopedTo: filter, catalog: catalog).map(\.action))
         VStack(alignment: .leading, spacing: 8) {
             HStack(alignment: .firstTextBaseline) {
                 QiraatClassificationLine(ruling: ruling)
@@ -48,10 +51,10 @@ struct RulingCard: View {
                         .foregroundStyle(.secondary)
                 }
             }
-            ForEach(ruling.attributionByAction, id: \.action) { group in
+            ForEach(scopedGroups, id: \.action) { group in
                 VStack(alignment: .leading, spacing: 4) {
                     QiraatPills(pills: rollupAuthorityPills(group.entries.map(\.authorityId), catalog: catalog))
-                    QiraatGroupPerformance(group: group, categoryAr: ruling.categoryAr, showWajhs: ruling.hasSeveralWajhs)
+                    QiraatGroupPerformance(group: group, categoryAr: ruling.categoryAr, showWajhs: scopedGroups.contains { $0.entries.contains { ($0.wajhOrder ?? 1) > 1 } })
                     // One group reads the word differently from the others (نقل حركة الهمزة): show how it is written.
                     if sharedForm == nil, let changed = form(of: group) {
                         Text(verbatim: changed)
@@ -62,7 +65,7 @@ struct RulingCard: View {
                 }
             }
             if let distinct { Text(verbatim: distinct).font(.caption).foregroundStyle(Color(uiColor: .mushafBrown)) }
-            if !ruling.alternateReadings.isEmpty {
+            if ruling.hasAlternateReading(scopedTo: filter, catalog: catalog) {
                 Text("ذو وجهين (بخلف عنه) — الوجه الآخر جائز أيضًا")
                     .font(.caption.bold()).foregroundStyle(.qiraatBadgeInk)
                     .padding(.horizontal, 8).padding(.vertical, 4)
@@ -79,6 +82,8 @@ struct RulingCard: View {
         .overlay(RoundedRectangle(cornerRadius: 10).stroke(color))
         .environment(\.layoutDirection, .rightToLeft)
     }
+
+    private var scopedGroups: [RulingActionGroup] { ruling.attributionByAction(scopedTo: filter, catalog: catalog) }
 
     /// How each narrator group reads the word (nil when its action leaves the writing as it is).
     private func form(of group: RulingActionGroup) -> String? {
@@ -98,7 +103,7 @@ struct RulingCard: View {
 
     /// When every group reads the word the same changed way (صلة ميم الجمع: «كأنهمُۥ»), the card's word is drawn that way.
     private var sharedForm: String? {
-        let groups = ruling.attributionByAction
+        let groups = scopedGroups
         let forms = groups.map(form(of:))
         guard let first = forms.first, let value = first, forms.allSatisfy({ $0 == value }) else { return nil }
         return value
