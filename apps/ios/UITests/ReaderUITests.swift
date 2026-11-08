@@ -199,34 +199,6 @@ final class ReaderUITests: XCTestCase {
         wait(for: [gone], timeout: 5)
     }
 
-    func testMutshabehatOpensAsAFullScreenReaderDestination() {
-        let app = launch(atPage: 1)
-        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
-        app.buttons["more-button"].tap()
-        app.buttons["mutshabehat-button"].tap()
-        XCTAssertTrue(app.navigationBars["المتشابهات"].waitForExistence(timeout: 20))
-        // The reader stays in the accessibility tree behind a full-screen cover, but nothing in it can be reached.
-        XCTAssertFalse(app.buttons["settings-button"].isHittable)
-    }
-
-    /// Mutshabehat lives in the top bar, not in Settings (see `testSettingsShowsThemeLanguageAndQiraatControls`).
-    func testMutshabehatShowsItsPersonalAndAutomatedTabs() {
-        let app = launch(atPage: 50)
-        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
-        app.chromeMarginCoordinate.tap()
-        let more = app.buttons["more-button"]
-        XCTAssertTrue(more.waitForExistence(timeout: 20))
-        more.tap()
-        let button = app.buttons["mutshabehat-button"]
-        XCTAssertTrue(button.waitForExistence(timeout: 20))
-        button.tap()
-
-        XCTAssertTrue(app.navigationBars["المتشابهات"].waitForExistence(timeout: 20))
-        XCTAssertTrue(app.buttons["الشخصية"].exists)
-        XCTAssertTrue(app.buttons["الآلية"].exists)
-    }
-
     func testShowingTheFooterBarKeepsTheFullSurahOnTopWithoutMovingThePage() {
         let app = launch(atPage: 50)
         let mushafPage = page(50, in: app)
@@ -240,29 +212,6 @@ final class ReaderUITests: XCTestCase {
         XCTAssertEqual(mushafPage.frame, frameBeforeShowingChrome, "Showing the footer bar must overlay the fixed Mushaf page")
         XCTAssertFalse(app.staticTexts["page-number"].exists, "the page number is the printed one under the page")
         XCTAssertFalse(app.sliders["page-slider"].exists, "Lower banner slider is removed")
-    }
-
-    /// The khatma progress is on top; a tap opens the reading statistics.
-    func testTappingTheKhatmaProgressOpensTheReadingStatistics() {
-        let app = launch(atPage: 1)
-        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
-        let khatma = app.buttons["khatma-progress"]
-        XCTAssertTrue(khatma.waitForExistence(timeout: 20))
-        khatma.tap()
-        XCTAssertTrue(app.navigationBars["إحصائيات القراءة والختمة"].waitForExistence(timeout: 10))
-    }
-
-    func testDeveloperDatabaseTransferControlsAreVisibleInDebugBuilds() {
-        let app = launch(atPage: 50)
-        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
-        app.chromeMarginCoordinate.tap()
-        app.buttons["settings-button"].tap()
-        XCTAssertTrue(app.navigationBars["الإعدادات"].waitForExistence(timeout: 20))
-        settingsRow("open-database-settings", in: app).tap()
-        XCTAssertTrue(app.buttons["export-qiraat-database"].exists)
-        XCTAssertTrue(app.buttons["import-qiraat-database"].exists)
-        XCTAssertTrue(app.buttons["export-mutshabehat-database"].exists)
-        XCTAssertTrue(app.buttons["import-mutshabehat-database"].exists)
     }
 
     func testLanguageSelectionChangesSettingsMenusToEnglish() {
@@ -372,70 +321,6 @@ final class ReaderUITests: XCTestCase {
         // The middle of the screen is the spine: it belongs to the reader, not to page turning.
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
         XCTAssertTrue(app.buttons["open-index"].waitForExistence(timeout: 20))
-    }
-
-    func testReadingStatisticsSwipeToCompleteAndUnmark() {
-        let app = launch(atPage: 1)
-        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
-        app.buttons["settings-button"].tap()
-
-        let statsButton = app.buttons["open-reading-statistics"]
-        XCTAssertTrue(statsButton.waitForExistence(timeout: 20))
-        statsButton.tap()
-
-        XCTAssertTrue(app.navigationBars["إحصائيات القراءة والختمة"].waitForExistence(timeout: 4))
-        saveScreenshot(named: "reading-statistics-initial")
-
-        // Scroll down to the surah section
-        app.swipeUp()
-        saveScreenshot(named: "reading-statistics-surahs")
-
-        let row1 = app.descendants(matching: .any)["surah-progress-row-1"]
-        XCTAssertTrue(row1.waitForExistence(timeout: 4))
-
-        let start = row1.coordinate(withNormalizedOffset: CGVector(dx: 0.2, dy: 0.5))
-        let end = row1.coordinate(withNormalizedOffset: CGVector(dx: 0.8, dy: 0.5))
-        start.press(forDuration: 0.1, thenDragTo: end)
-
-        Thread.sleep(forTimeInterval: 0.5)
-        saveScreenshot(named: "reading-statistics-after-swipe")
-
-        // Test filter chip: tapping «المتبقي» must not crash and correctly filters
-        let remainingChip = app.buttons.containing(NSPredicate(format: "label CONTAINS[c] 'المتبقي'")).firstMatch
-        if remainingChip.waitForExistence(timeout: 4) {
-            remainingChip.tap()
-            Thread.sleep(forTimeInterval: 0.3)
-            saveScreenshot(named: "reading-statistics-remaining-filter")
-            // Surah 1 was completed above, so it should not be listed in remaining
-            XCTAssertFalse(app.descendants(matching: .any)["surah-progress-row-1"].exists)
-        }
-
-        // Test switching back to «الكل»
-        let allChip = app.buttons.containing(NSPredicate(format: "label CONTAINS[c] 'الكل'")).firstMatch
-        if allChip.waitForExistence(timeout: 4) {
-            allChip.tap()
-            Thread.sleep(forTimeInterval: 0.3)
-            XCTAssertTrue(app.descendants(matching: .any)["surah-progress-row-1"].waitForExistence(timeout: 4))
-        }
-
-        // Test smooth vertical scrolling down and up
-        app.swipeUp()
-        app.swipeDown()
-    }
-
-    func testICloudSyncSettingsViewShowsKhatmaStatus() {
-        let app = launch(atPage: 1)
-        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
-        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
-        app.buttons["settings-button"].tap()
-
-        let syncButton = app.buttons["open-icloud-sync-settings"]
-        XCTAssertTrue(syncButton.waitForExistence(timeout: 20))
-        syncButton.tap()
-
-        XCTAssertTrue(app.navigationBars["مزامنة السحابة (iCloud)"].waitForExistence(timeout: 4))
-        saveScreenshot(named: "icloud-sync-settings")
     }
 
     /// Keeps a screenshot with the test result (and in SCREENSHOT_DIR when the runner sets it).

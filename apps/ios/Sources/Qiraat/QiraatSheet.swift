@@ -1,8 +1,5 @@
 import CoreText
 import MushafCore
-#if DEBUG
-import ReviewEditor
-#endif
 import SwiftUI
 import UIKit
 
@@ -29,7 +26,6 @@ struct QiraatSheet: View {
     let onClose: () -> Void
 
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
-    @ObservedObject private var liveSync = QiraatLiveSync.shared
     @State private var detent: PresentationDetent = .large
 
     @State private var currentWord: MushafWord
@@ -99,9 +95,6 @@ struct QiraatSheet: View {
                     )
                     header
                     sheetActions
-#if DEBUG
-                    QiraatCardReviewSection(word: currentWord)
-#endif
                     if !currentSelection.variants.isEmpty {
                         sectionHeading("الفرش")
                         ForEach(currentSelection.variants) { VariantCard(variant: $0, catalog: catalog, filter: filter) }
@@ -147,13 +140,6 @@ struct QiraatSheet: View {
                     }
                 }
         )
-        .onReceive(NotificationCenter.default.publisher(for: .qiraatPageDidChange)) { note in
-            // Live data for the word's page arrived (a background sync, or a face saved from this card):
-            // show it now instead of keeping the selection the card opened with.
-            guard pageWordsProvider != nil, note.userInfo?["page"] as? Int == currentWord.page else { return }
-            let refreshed = resolvedSelection(for: currentWord)
-            if refreshed != currentSelection { withMotion { currentSelection = refreshed } }
-        }
         .onChange(of: item.word.id) { _, _ in
             withMotion {
                 currentWord = item.word
@@ -214,23 +200,15 @@ struct QiraatSheet: View {
                     .font(.caption.bold()).foregroundStyle(.secondary)
                     .environment(\.layoutDirection, .leftToRight)
             }
-            QiraatSyncStatusView(status: syncStatus)
         }
         .padding(.bottom, 4)
         .overlay(alignment: .bottom) { Divider() }
     }
 
     private var sheetActions: some View {
-        ViewThatFits(in: .horizontal) {
-            HStack(spacing: 8) {
-                compareLink
-                Spacer(minLength: 0)
-                QiraatNoteButton(word: currentWord)
-            }
-            VStack(alignment: .leading, spacing: 4) {
-                compareLink
-                QiraatNoteButton(word: currentWord)
-            }
+        HStack(spacing: 8) {
+            compareLink
+            Spacer(minLength: 0)
         }
     }
 
@@ -244,16 +222,6 @@ struct QiraatSheet: View {
                 .contentShape(Rectangle())
         }
         .accessibilityIdentifier("qiraat-compare-open")
-    }
-
-    private var syncStatus: QiraatSyncStatus {
-        let state = liveSync.pageState(for: currentWord.page)
-        return QiraatSyncStatus.make(
-            outcome: state.latestOutcome,
-            lastSuccess: state.lastConfirmation,
-            now: Date(),
-            isOffline: false
-        )
     }
 
     private var logicalRefs: [MarkedWordRef] {

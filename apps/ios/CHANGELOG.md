@@ -3,6 +3,16 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-11-08 — Branch `qiraat-standalone`: offline Qira'at-only app «مصحف القراءات»
+- **Branch:** `qiraat-standalone`, from `ios/main` @ `033a3f65`, in its own worktree `~/Projects/qiraat-standalone`. Never merged into `ios/main` or `main`; Qira'at fixes come in one way with `git merge ios/main`. The current app (`com.shazlka.qiraat`, `~/Projects/qiraat-ios`) is unchanged.
+- **Identity:** bundle ID `com.shazlka.qiraat.standalone` (tests `.standalone.tests` / `.standalone.uitests`), display name «مصحف القراءات» / "Mushaf Al-Qiraat".
+- **Removed:** المتشابهات (views, `mutshabehat.sqlite`, its build script); الحفظ والمراجعة (app and `MushafCore/Memorization`); reading tracker, khatma, statistics, bookmarks (`Sources/Reading`, index tab, header chip, page ribbons, long-press menu); Qira'at notes and favourites; iCloud sync and backup/restore (`Sources/Sync`, `Sources/Backup`, `MushafCore/Backup`); live and bulk sync from the web app and its overlay; the developer review editor (`ReviewEditor/`, `MushafCore/Review`, review reference data) and the developer settings; their tests.
+- **Offline:** the app reads only the bundled `Generated/Qiraat` snapshot, `mushaf.sqlite`, the fonts, `QiraatMutoon` and `QiraatReferences`. No `URLSession`, no web endpoints, no account. Keep-screen-awake moved into `ReaderView`.
+- **Privacy and support in the app:** Settings → «الخصوصية والدعم» opens in-app screens «سياسة الخصوصية» and «الدعم» (mailto Amr.eshazly@gmail.com, version); the Safari links to the web app are gone. «شكر وتراخيص» is now «المصادر والشكر»; the source list stays.
+- **Guard:** `scripts/release_guard.py` also fails a Release build that contains `URLSession`, `vercel.app`, `ts.net`, `supabase` or a removed feature's type name.
+- **Verification:** app builds (Debug and Release); `make release-guard` ok on the Release build (219 MB `.app` on the simulator, uncompressed); `swift test` for MushafCore passes; unit tests pass except `QiraatFilterNameTests.testKhalafAnHamzaIsNeverShownAsABareKhalaf` (expects Arabic «عن» while the simulator runs in English; code and strings unchanged from `ios/main`); data-script tests pass. UI test result: see the next entry or the handoff.
+- **Files:** `project.yml`, `Makefile`, `scripts/release_guard.py`, `scripts/test_release_guard.py`, `Sources/MushafLibrary.swift`, `Sources/Reader/{ReaderView,ReaderTopBar,ReaderBottomBar,ReaderActionRail,ReaderSettingsView,IndexSheet,PageController,MushafPager,MushafPageView,MushafAppearance,AcknowledgementsView}.swift`, `Sources/Qiraat/{QiraatSheet,MutoonView,QiraatPageSummaryView,QiraatErrorReport}.swift`, `Sources/{Localizable,InfoPlist}.xcstrings`, deleted folders above, tests.
+
 ## [Unreleased] — 2026-11-06 — Word card shows only the selected reader's or narrator's groups (أصول)
 - **Report:** with one reader or narrator selected, tapping a word still listed every reader's groups in the cards.
 - **Cause:** the الفرش cards were already narrowed to the selection, but `RulingCard` (الأصول) grouped and showed all of a ruling's rows (إمالة for حمزة and الكسائي, تقليل for ورش …) whatever the filter.

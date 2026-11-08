@@ -1,5 +1,4 @@
 /// Arabic-Indic digits (٠١٢…) for numbers shown in Arabic text: page, juz, hizb, ayah counts.
-/// `MemorizationTheme.number` is the variant that also adds thousands separators and follows the app language.
 enum ArabicDigits {
     static func string(_ value: Int) -> String {
         String(String(value).unicodeScalars.map { scalar -> Character in

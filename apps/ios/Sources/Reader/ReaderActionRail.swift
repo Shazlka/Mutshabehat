@@ -1,7 +1,7 @@
 import MushafCore
 import SwiftUI
 
-/// The footer bar's six actions as the right side rail of iPad landscape, top to bottom, each an icon over its name
+/// The footer bar's five actions as the right side rail of iPad landscape, top to bottom, each an icon over its name
 /// and at least 44 pt tall. القراءات and المزيد open their menus as popovers beside the rail. Same identifiers as the
 /// footer bar, so the reader works the same in every layout.
 struct ReaderActionRail: View {
@@ -9,9 +9,6 @@ struct ReaderActionRail: View {
     let traits: UITraitCollection
     let openIndex: () -> Void
     let openSearch: () -> Void
-    let openBookmarks: () -> Void
-    let openMutshabehat: () -> Void
-    let openMemorization: () -> Void
     var openMutoon: () -> Void = {}
     let openSettings: () -> Void
     var qiraat: QiraatPreferences
@@ -26,7 +23,6 @@ struct ReaderActionRail: View {
         VStack(spacing: 6) {
             item("الفهرس", "list.bullet", id: "open-index", action: openIndex)
             item("بحث", "magnifyingglass", id: "search-button", action: openSearch)
-            item("الفواصل", "bookmark.fill", id: "bookmarks-button", action: openBookmarks)
             item("القراءات", qiraat.enabled ? "character.book.closed.fill" : "character.book.closed",
                  id: "qiraat-button", value: qiraat.enabled ? appLocalized("مفعّلة") : appLocalized("متوقفة")) {
                 openMenu = .qiraat
@@ -39,10 +35,6 @@ struct ReaderActionRail: View {
             item("المزيد", "ellipsis.circle", id: "more-button") { openMenu = .more }
                 .popover(isPresented: menuBinding(.more), arrowEdge: menuArrowEdge) {
                     menuList {
-                        BarMenuRow("المتشابهات", systemImage: "square.stack.3d.up.fill") { actions.perform(openMutshabehat) }
-                            .accessibilityIdentifier("mutshabehat-button")
-                        BarMenuRow("الحفظ", systemImage: "book.closed.fill") { actions.perform(openMemorization) }
-                            .accessibilityIdentifier("memorization-button")
                         BarMenuRow("المتون", systemImage: "books.vertical.fill") { actions.perform(openMutoon) }
                             .accessibilityIdentifier("mutoon-button")
                     }

@@ -34,37 +34,12 @@ final class MushafPageView: UIView {
                 setNeedsDisplay()
             }
             refreshQiraatMarks()
-            if qiraat.enabled { refreshLiveQiraat(force: true); prefetchNeighbourQiraat() }
+            if qiraat.enabled { prefetchNeighbourQiraat() }
         }
     }
     var highlightedWordIDs: Set<String> = [] {
         didSet {
             if highlightedWordIDs != oldValue {
-                updateAccessibilityElements()
-                setNeedsDisplay()
-            }
-        }
-    }
-    var bookmarkedAyahs: Set<AyahKey> = [] {
-        didSet {
-            if bookmarkedAyahs != oldValue {
-                updateAccessibilityElements()
-                setNeedsDisplay()
-            }
-        }
-    }
-    /// Memorization statuses of this page's ayat for the optional marker under each ayah-end marker (empty = off).
-    var memorizationStatuses: [AyahKey: MemorizationStatus] = [:] {
-        didSet {
-            if memorizationStatuses != oldValue {
-                updateAccessibilityElements()
-                setNeedsDisplay()
-            }
-        }
-    }
-    var isPageBookmarked: Bool = false {
-        didSet {
-            if isPageBookmarked != oldValue {
                 updateAccessibilityElements()
                 setNeedsDisplay()
             }
@@ -121,51 +96,11 @@ final class MushafPageView: UIView {
         refreshQiraatMarks()
     }
 
-    // MARK: Live Qiraat data (the web app's database is the source of truth)
-
-    private var liveActive = false
-    private var liveTimer: Timer?
-    private var liveInterval = QiraatLiveSync.firstPollInterval
-    private var liveObservers: [NSObjectProtocol] = []
-
     override func didMoveToWindow() {
         super.didMoveToWindow()
-        if window != nil { startLiveQiraat() } else { stopLiveQiraat() }
-    }
-
-    /// While this page is on screen: fetch it now, on returning to the app, and again on a backing-off
-    /// schedule (`QiraatLiveSync.nextPollInterval`), so a face saved in the web review editor shows
-    /// here without relaunching or syncing.
-    private func startLiveQiraat() {
-        guard !liveActive else { return }
-        liveActive = true
-        let center = NotificationCenter.default
-        liveObservers = [
-            center.addObserver(forName: .qiraatPageDidChange, object: nil, queue: .main) { [weak self] note in
-                let changedPage = note.userInfo?["page"] as? Int
-                MainActor.assumeIsolated {
-                    guard let self, changedPage == self.page.number else { return }
-                    self.refreshQiraatMarks()
-                }
-            },
-            center.addObserver(forName: .qiraatDatabaseDidUpdate, object: nil, queue: .main) { [weak self] _ in
-                WordContextIndex.shared.invalidate()
-                MainActor.assumeIsolated { self?.refreshQiraatMarks() }
-            },
-            center.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) { [weak self] _ in
-                MainActor.assumeIsolated {
-                    guard let self else { return }
-                    self.liveInterval = QiraatLiveSync.firstPollInterval
-                    self.refreshLiveQiraat(force: true)
-                }
-            },
-        ]
-        // A snapshot can change while this page is detached and has no observers. Its size may
-        // be unchanged on return, so layoutPage() alone would keep the old marks and hit map.
-        refreshQiraatMarks()
-        liveInterval = QiraatLiveSync.firstPollInterval
-        refreshLiveQiraat(force: true)
-        prefetchNeighbourQiraat()
+        // A setting can change while this page is detached. Its size may be unchanged on return, so layoutPage()
+        // alone would keep the old marks and hit map.
+        if window != nil { refreshQiraatMarks() }
     }
 
     /// Prefetches Qiraat context of adjacent pages off the main thread so page turns find
@@ -183,41 +118,6 @@ final class MushafPageView: UIView {
             }
         }
         WordContextIndex.shared.prefetch(pages: neighbours, filter: filter, qiraatStore: store, wordsMap: wordsMap)
-        Task.detached(priority: .background) {
-            for n in neighbours {
-                _ = await QiraatLiveSync.shared.refresh(page: n, store: store, force: false)
-            }
-        }
-    }
-
-    private func stopLiveQiraat() {
-        liveActive = false
-        liveTimer?.invalidate()
-        liveTimer = nil
-        liveObservers.forEach(NotificationCenter.default.removeObserver)
-        liveObservers = []
-    }
-
-    private func scheduleLiveQiraat() {
-        liveTimer?.invalidate()
-        guard liveActive else { return }
-        liveTimer = Timer.scheduledTimer(withTimeInterval: liveInterval, repeats: false) { [weak self] _ in
-            MainActor.assumeIsolated { self?.refreshLiveQiraat(force: false) }
-        }
-    }
-
-    private func refreshLiveQiraat(force: Bool) {
-        guard qiraat.enabled, window != nil else { return }
-        let number = page.number, store = library.qiraat
-        Task { [weak self] in
-            let outcome = await QiraatLiveSync.shared.refresh(page: number, store: store, force: force)
-            guard let self, outcome != .skipped else {
-                self?.scheduleLiveQiraat()
-                return
-            }
-            self.liveInterval = QiraatLiveSync.nextPollInterval(after: outcome, current: self.liveInterval)
-            self.scheduleLiveQiraat()
-        }
     }
 
     private func refreshQiraatMarks() {
@@ -246,28 +146,19 @@ final class MushafPageView: UIView {
         prefetchNeighbourQiraat()
     }
 
-    /// The memorization status to show under this word, when it is an ayah-end marker with a visible status.
-    private func memorizationMarker(for box: WordBox) -> MemorizationStatus? {
-        guard box.word.charType == .end, let status = memorizationStatuses[box.word.ayahKey], status != .notMemorized else { return nil }
-        return status
-    }
-
     // MARK: VoiceOver
 
     /// Double-tap on the page element (VoiceOver): show or hide the reader's controls.
     var onToggleChrome: (() -> Void)?
-    /// Double-tap or the custom action on an ayah element: the same options a long press opens.
-    var onAyahOptions: ((AyahKey) -> Void)?
     /// A three-finger swipe (VoiceOver): `true` turns to the next page in reading order.
     var onAccessibilityTurn: ((_ forward: Bool) -> Bool)?
 
     /// The QCF glyphs are Private Use Area code points VoiceOver cannot read, so the page exposes its
     /// own elements, in reading order: the page, each surah header and basmala, then every ayah with
-    /// its text, each followed by its Qiraat-marked words, search hits and memorization marker.
+    /// its text, each followed by its Qiraat-marked words and search hits.
     private func updateAccessibilityElements() {
         let pageElement = MushafAccessibilityElement(accessibilityContainer: self)
         pageElement.accessibilityLabel = "\(appLocalized("صفحة")) \(page.number)"
-        pageElement.accessibilityValue = isPageBookmarked ? appLocalized("عليها علامة") : nil
         pageElement.accessibilityHint = appLocalized("انقر مرتين لإظهار أدوات القراءة أو إخفائها")
         // Turning a page was only a swipe; Switch Control and Voice Control cannot swipe, so the page names the actions.
         pageElement.accessibilityCustomActions = [
@@ -333,35 +224,17 @@ final class MushafPageView: UIView {
         let text = boxes.filter { $0.word.charType == .word }.map(\.word.textUthmani).joined(separator: " ")
         let element = MushafAccessibilityElement(accessibilityContainer: self)
         element.accessibilityLabel = appLocalized("الآية \(key.ayah)، \(text)")
-        element.accessibilityValue = bookmarkedAyahs.contains(key) ? appLocalized("عليها علامة") : nil
-        element.accessibilityHint = appLocalized("انقر مرتين لخيارات الآية")
         element.accessibilityIdentifier = "ayah-\(key.surah)-\(key.ayah)"
         element.accessibilityLanguage = "ar"
         element.accessibilityFrameInContainerSpace = boxes.map(\.frame).reduce(CGRect.null) { $0.union($1) }
-        element.onActivate = { [weak self] in
-            guard let options = self?.onAyahOptions else { return false }
-            options(key)
-            return true
-        }
-        element.accessibilityCustomActions = [
-            UIAccessibilityCustomAction(name: appLocalized("خيارات الآية")) { [weak self] _ in
-                guard let options = self?.onAyahOptions else { return false }
-                options(key)
-                return true
-            },
-        ]
         return element
     }
 
-    /// A Qiraat-marked word, a search hit or a memorization marker; nil for any other word.
+    /// A Qiraat-marked word or a search hit; nil for any other word.
     private func wordElement(_ box: WordBox) -> UIAccessibilityElement? {
         let word = box.word
         let element = UIAccessibilityElement(accessibilityContainer: self)
-        if let status = memorizationMarker(for: box) {
-            element.accessibilityLabel = appLocalized("حالة الحفظ: \(MemorizationTheme.label(status, language: AppLanguage(rawValue: appLanguageCode) ?? .deviceDefault))")
-            element.accessibilityIdentifier = "memo-ayah-marker-\(word.ayahKey.surah)-\(word.ayahKey.ayah)"
-            element.accessibilityTraits = .staticText
-        } else if marks[word.id] != nil {
+        if marks[word.id] != nil {
             element.accessibilityLabel = appLocalized("\(word.textUthmani)، فيها قراءات")
             element.accessibilityIdentifier = "qiraat-word-\(word.ayahKey.surah):\(word.ayahKey.ayah):\(word.indexInAyah)"
             element.accessibilityTraits = .button
@@ -453,11 +326,6 @@ final class MushafPageView: UIView {
             return
         }
 
-        // Draw page bookmark ribbon if this page is bookmarked
-        if isPageBookmarked {
-            drawPageBookmarkRibbon(in: context)
-        }
-
         // Draw physical book spine curvature and page edge shadows
         if isSpreadHalf && spineSide != .none {
             drawBookSpineAndPageEdges(in: context)
@@ -475,51 +343,6 @@ final class MushafPageView: UIView {
                 break
             }
         }
-    }
-
-    private func drawPageBookmarkRibbon(in context: CGContext) {
-        let ribbonWidth: CGFloat = max(14, bounds.width * 0.038)
-        let ribbonHeight: CGFloat = max(24, bounds.height * 0.045)
-        let ribbonX = page.isRightHandPage ? bounds.width * 0.08 : bounds.width * 0.92 - ribbonWidth
-        let ribbonRect = CGRect(x: ribbonX, y: 0, width: ribbonWidth, height: ribbonHeight)
-
-        context.saveGState()
-        let ribbonColor = appearance.bookmarkRibbon(for: traitCollection, tint: qiraat.pageTint)
-        let goldBorder = appearance.gold(for: traitCollection)
-
-        let path = UIBezierPath()
-        path.move(to: CGPoint(x: ribbonRect.minX, y: ribbonRect.minY))
-        path.addLine(to: CGPoint(x: ribbonRect.maxX, y: ribbonRect.minY))
-        path.addLine(to: CGPoint(x: ribbonRect.maxX, y: ribbonRect.maxY))
-        path.addLine(to: CGPoint(x: ribbonRect.midX, y: ribbonRect.maxY - ribbonHeight * 0.28))
-        path.addLine(to: CGPoint(x: ribbonRect.minX, y: ribbonRect.maxY))
-        path.close()
-
-        context.setFillColor(ribbonColor.cgColor)
-        context.addPath(path.cgPath)
-        context.fillPath()
-
-        context.setStrokeColor(goldBorder.cgColor)
-        context.setLineWidth(1.2)
-        context.addPath(path.cgPath)
-        context.strokePath()
-
-        // Delicate inner stitch line
-        let innerPath = UIBezierPath()
-        let inset: CGFloat = 2.0
-        innerPath.move(to: CGPoint(x: ribbonRect.minX + inset, y: ribbonRect.minY))
-        innerPath.addLine(to: CGPoint(x: ribbonRect.maxX - inset, y: ribbonRect.minY))
-        innerPath.addLine(to: CGPoint(x: ribbonRect.maxX - inset, y: ribbonRect.maxY - inset * 1.5))
-        innerPath.addLine(to: CGPoint(x: ribbonRect.midX, y: ribbonRect.maxY - ribbonHeight * 0.28 - inset))
-        innerPath.addLine(to: CGPoint(x: ribbonRect.minX + inset, y: ribbonRect.maxY - inset * 1.5))
-        innerPath.close()
-
-        context.setStrokeColor(goldBorder.withAlphaComponent(0.6).cgColor)
-        context.setLineWidth(0.6)
-        context.addPath(innerPath.cgPath)
-        context.strokePath()
-
-        context.restoreGState()
     }
 
     /// Where the two pages of a spread meet: one eased shade that deepens toward the spine (no flat band, no edge
@@ -880,67 +703,7 @@ final class MushafPageView: UIView {
         context.textPosition = CGPoint(x: 0, y: box.frame.height * 0.28)
         CTLineDraw(line, context)
         context.restoreGState()
-        if box.word.charType == .end && bookmarkedAyahs.contains(box.word.ayahKey) {
-            drawAyahBookmarkIndicator(around: box.frame, context: context)
-        }
-        if box.word.charType == .end, let status = memorizationStatuses[box.word.ayahKey] {
-            drawMemorizationMarker(status, below: box.frame, context: context)
-        }
         if let mark, let layout { drawQiraatMarks(mark, around: box.frame, fontSize: layout.fontSize, in: context) }
-    }
-
-    /// A tiny monochrome shape under the ayah-end marker: a filled disc (mastered), a ring with a centre dot
-    /// (memorized with errors) or a plain ring (needs the Mushaf). No hue, so it can never be mistaken for a
-    /// Qiraat colour, and the Quran text is not touched.
-    private func drawMemorizationMarker(_ status: MemorizationStatus, below frame: CGRect, context: CGContext) {
-        guard status != .notMemorized else { return }
-        let size = max(5, frame.height * 0.2)
-        let center = CGPoint(x: frame.midX, y: frame.maxY + size * 0.7)
-        let ink = appearance.ink(for: traitCollection).withAlphaComponent(0.55).cgColor
-        context.saveGState()
-        context.setFillColor(ink)
-        context.setStrokeColor(ink)
-        context.setLineWidth(max(0.9, size * 0.14))
-        let disc = CGRect(x: center.x - size / 2, y: center.y - size / 2, width: size, height: size)
-        switch status {
-        case .mastered:
-            context.fillEllipse(in: disc)
-        case .memorizedWithErrors:
-            context.strokeEllipse(in: disc.insetBy(dx: 0.5, dy: 0.5))
-            let dot = size * 0.3
-            context.fillEllipse(in: CGRect(x: center.x - dot / 2, y: center.y - dot / 2, width: dot, height: dot))
-        case .needsMushaf:
-            context.strokeEllipse(in: disc.insetBy(dx: 0.5, dy: 0.5))
-        case .notMemorized:
-            break
-        }
-        context.restoreGState()
-    }
-
-    private func drawAyahBookmarkIndicator(around frame: CGRect, context: CGContext) {
-        context.saveGState()
-        let size = max(7, frame.height * 0.30)
-        let rect = CGRect(x: frame.midX - size / 2, y: frame.minY - size * 0.85, width: size, height: size * 1.35)
-        let ribbon = UIBezierPath()
-        ribbon.move(to: CGPoint(x: rect.minX, y: rect.minY))
-        ribbon.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
-        ribbon.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-        ribbon.addLine(to: CGPoint(x: rect.midX, y: rect.maxY - size * 0.35))
-        ribbon.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
-        ribbon.close()
-
-        let gold = appearance.gold(for: traitCollection)
-        let crimson = appearance.bookmarkRibbon(for: traitCollection, tint: qiraat.pageTint)
-        context.setFillColor(crimson.cgColor)
-        context.addPath(ribbon.cgPath)
-        context.fillPath()
-
-        context.setStrokeColor(gold.cgColor)
-        context.setLineWidth(0.8)
-        context.addPath(ribbon.cgPath)
-        context.strokePath()
-
-        context.restoreGState()
     }
 
     /// The web's marks, scaled to the glyph size: the variant bar under the word (one equal segment per

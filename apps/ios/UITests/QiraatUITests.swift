@@ -72,18 +72,15 @@ final class QiraatUITests: XCTestCase {
         // iPad it is then as wide as the space between the rails allows).
         XCTAssertFalse(app.tabBars.firstMatch.exists, "no footer bar")
         XCTAssertLessThan(left.frame.minY, app.windows.firstMatch.frame.height * 0.1, "no header above the pages")
-        for id in ["reading-surah-title", "reading-section-text", "khatma-progress"] {
+        for id in ["reading-surah-title", "reading-section-text"] {
             let item = element(id, in: app)
             XCTAssertTrue(item.waitForExistence(timeout: 10), id)
             XCTAssertLessThanOrEqual(item.frame.maxX, left.frame.minX + 1, "\(id) is in the left rail")
         }
-        // The rail runs top to bottom: the surah, then the juz and hizb, then the khatma bar in its lower part.
+        // The rail runs top to bottom: the surah, then the juz and hizb.
         let surah = element("reading-surah-title", in: app), section = element("reading-section-text", in: app)
-        let khatma = element("khatma-progress", in: app)
         XCTAssertLessThan(surah.frame.minY, app.windows.firstMatch.frame.height * 0.15, "the surah tops the rail")
         XCTAssertLessThanOrEqual(surah.frame.maxY, section.frame.minY + 1, "the juz and hizb are under the surah")
-        XCTAssertGreaterThan(khatma.frame.midY, app.windows.firstMatch.frame.height * 0.5, "the khatma is low in the rail")
-        XCTAssertGreaterThan(khatma.frame.height, 150, "the khatma bar is tall")
         // Each page's number stands centred under it, not in the rail.
         XCTAssertFalse(element("reading-page-number", in: app).exists)
         for (number, page) in [(50, left), (49, right)] {
@@ -92,7 +89,7 @@ final class QiraatUITests: XCTestCase {
             XCTAssertGreaterThanOrEqual(label.frame.minY, page.frame.maxY - 1, "\(number) is under its page")
             XCTAssertEqual(label.frame.midX, page.frame.midX, accuracy: 2, "\(number) is centred under its page")
         }
-        for id in ["open-index", "search-button", "bookmarks-button", "qiraat-button", "more-button", "settings-button"] {
+        for id in ["open-index", "search-button", "qiraat-button", "more-button", "settings-button"] {
             let button = app.buttons[id]
             XCTAssertTrue(button.waitForExistence(timeout: 10), id)
             XCTAssertGreaterThanOrEqual(button.frame.minX, right.frame.maxX - 1, "\(id) is in the right rail")
@@ -105,9 +102,9 @@ final class QiraatUITests: XCTestCase {
         XCTAssertTrue(element("mushaf-page-51", in: app).waitForExistence(timeout: 20), "the next spread")
 
         app.buttons["more-button"].tap()
-        XCTAssertTrue(element("mutshabehat-button", in: app).waitForExistence(timeout: 10), "the more menu opened")
+        XCTAssertTrue(element("mutoon-button", in: app).waitForExistence(timeout: 10), "the more menu opened")
         app.otherElements["PopoverDismissRegion"].firstMatch.tap()   // a tap outside the popover closes it
-        XCTAssertTrue(element("mutshabehat-button", in: app).waitForNonExistence(timeout: 10))
+        XCTAssertTrue(element("mutoon-button", in: app).waitForNonExistence(timeout: 10))
 
         app.buttons["qiraat-button"].tap()
         let filterRow = element("qiraat-filter", in: app)

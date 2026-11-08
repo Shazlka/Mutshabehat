@@ -2,7 +2,7 @@ import MushafCore
 import SwiftUI
 import UIKit
 
-// Semantic colours for the app's chrome (statistics, memorization, Mutshabehat, settings).
+// Semantic colours for the app's chrome (Qiraat and settings).
 // The Mushaf page keeps its own palette in `MushafAppearance`, and Qiraat colours come from the web.
 //
 // Every text colour here measures at least 4.5:1 (WCAG AA) on the system backgrounds of its mode and
@@ -35,7 +35,7 @@ extension UIColor {
     }
 
     /// This colour, darkened (light mode) or lightened (dark mode) only as much as it takes to read as
-    /// text on the system background: for colours the user picks, such as a Mutshabehat group's.
+    /// text on the system background: for colours the user picks,.
     func readable(minimumContrast: CGFloat = 4.5) -> UIColor {
         UIColor { traits in
             let dark = traits.userInterfaceStyle == .dark

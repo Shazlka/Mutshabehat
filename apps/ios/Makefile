@@ -12,20 +12,16 @@ IPAD     ?= iPad Pro 13-inch (M5)
 APP      := $(DERIVED)/Build/Products/Debug-iphonesimulator/Mutshabehat.app
 XCB       = xcodebuild -project Mutshabehat.xcodeproj -scheme Mutshabehat -derivedDataPath $(DERIVED)
 
-.PHONY: all data fonts qiraat references mutoon matn-symbols qiraat-refresh qiraat-offline review-data review-golden project data-test core-test perf build test test-ipad screenshots run open device clean check-isolation release-guard
+.PHONY: all data fonts qiraat references mutoon matn-symbols qiraat-refresh qiraat-offline project data-test core-test perf build test test-ipad screenshots run open device clean check-isolation release-guard
 
-all: data fonts qiraat review-data project
+all: data fonts qiraat project
 
-data: $(GEN)/mushaf.sqlite $(GEN)/mutshabehat.sqlite
+data: $(GEN)/mushaf.sqlite
 
 $(GEN)/mushaf.sqlite: scripts/build_mushaf_db.py $(FIXTURES)/page-metadata.json $(wildcard $(FIXTURES)/page-words/*.json)
 	@mkdir -p $(GEN)
 	@mkdir -p Reports
 	python3 scripts/build_mushaf_db.py $(REPO) $@ Reports/quran-search-collisions.json
-
-$(GEN)/mutshabehat.sqlite: scripts/build_mutshabehat_db.py $(GEN)/mutshabehat_seed.json
-	@mkdir -p $(GEN)
-	python3 scripts/build_mutshabehat_db.py
 
 fonts:
 	scripts/fetch_qcf_fonts.sh $(GEN)/Fonts
@@ -71,21 +67,6 @@ qiraat-refresh:
 qiraat-offline:
 	python3 scripts/fetch_qiraat.py $(REPO) $(GEN)/Qiraat --source fixtures --refresh
 
-# Developer review editor: the web app's nquran / الشامل reference data, copied unchanged (never committed).
-review-data:
-	python3 scripts/build_review_reference.py $(REPO) $(GEN)/Review/reference
-
-# Golden data for the review editor's Swift ports: the web's own TypeScript run over the real data
-# (needs node_modules; a worktree borrows the web checkout's through a git-ignored symlink).
-WEB_CHECKOUT ?= $(HOME)/Projects/mutshabehat-v2
-review-golden:
-	@test -e $(REPO)/node_modules || ln -s $(WEB_CHECKOUT)/node_modules $(REPO)/node_modules
-	cd $(REPO) && npx tsx apps/ios/scripts/review_golden.mjs . apps/ios/$(GEN)/Review/golden
-
-# Sync all databases from web app to iCloud Drive Mushaf_Qiraat folder
-sync-icloud:
-	python3 scripts/sync_webapp_to_icloud.py --update-generated
-
 # Always regenerate: XcodeGen lists source files explicitly, so a new .swift file needs a new
 # project even when project.yml is unchanged. Generation takes under a second.
 project:
@@ -98,11 +79,10 @@ data-test:
 	python3 scripts/test_build_mutoon.py -v
 	python3 scripts/test_build_matn_symbols.py -v
 	python3 scripts/test_build_matn_sharh.py -v
-	python3 scripts/test_build_review_reference.py -v
 	cd scripts && python3 test_release_guard.py -v
 	python3 scripts/test_device.py -v
 
-core-test: data fonts qiraat review-data review-golden
+core-test: data fonts qiraat
 	swift test --package-path MushafCore
 
 perf: data fonts qiraat
@@ -129,7 +109,7 @@ screenshots: all
 run: build
 	xcrun simctl boot "$(SIM)" 2>/dev/null || true
 	xcrun simctl install "$(SIM)" $(APP)
-	xcrun simctl launch "$(SIM)" com.shazlka.qiraat
+	xcrun simctl launch "$(SIM)" com.shazlka.qiraat.standalone
 
 # On the person's iPhone: needs their Apple ID in Xcode → Settings → Accounts (see AGENTS.md §6).
 device: all

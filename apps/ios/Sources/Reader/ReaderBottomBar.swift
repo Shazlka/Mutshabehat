@@ -1,7 +1,7 @@
 import MushafCore
 import SwiftUI
 
-/// Every menu of the reader, in one capsule across the footer under the paper: index, search, bookmarks, the Qiraat
+/// Every menu of the reader, in one capsule across the footer under the paper: index, search, the Qiraat
 /// menu, more and settings, each an icon over its name. It shows and hides with a tap on the page and never covers
 /// the paper; the page number is in the header.
 ///
@@ -22,9 +22,6 @@ struct ReaderBottomBar: View {
     let safeBottom: CGFloat
     let openIndex: () -> Void
     let openSearch: () -> Void
-    let openBookmarks: () -> Void
-    let openMutshabehat: () -> Void
-    let openMemorization: () -> Void
     var openMutoon: () -> Void = {}
     let openSettings: () -> Void
     /// The Qiraat layer's state and catalog.
@@ -36,7 +33,7 @@ struct ReaderBottomBar: View {
     private static let capsuleInset: CGFloat = 21
 
     private enum Slot: Int {
-        case index, search, bookmarks, qiraat, more, settings
+        case index, search, qiraat, more, settings
     }
 
     private enum TouchOrigin { case bar, menu }
@@ -112,7 +109,6 @@ struct ReaderBottomBar: View {
         [
             .init(id: "open-index", title: appLocalized("الفهرس"), systemImage: "list.bullet"),
             .init(id: "search-button", title: appLocalized("بحث"), systemImage: "magnifyingglass"),
-            .init(id: "bookmarks-button", title: appLocalized("الفواصل"), systemImage: "bookmark.fill"),
             .init(id: "qiraat-button", title: appLocalized("القراءات"),
                   systemImage: qiraat.enabled ? "character.book.closed.fill" : "character.book.closed",
                   value: qiraat.enabled ? appLocalized("مفعّلة") : appLocalized("متوقفة")),
@@ -126,7 +122,6 @@ struct ReaderBottomBar: View {
         switch Slot(rawValue: index) {
         case .index: openIndex()
         case .search: openSearch()
-        case .bookmarks: openBookmarks()
         case .qiraat: toggleMenu(.qiraat)
         case .more: toggleMenu(.more)
         case .settings: openSettings()
@@ -191,11 +186,11 @@ struct ReaderBottomBar: View {
     /// layout.
     private func slot(at point: CGPoint) -> Slot? {
         let bar = menuModel.barFrame
-        let cell = (bar.width - 2 * Self.capsuleInset) / 6
+        let cell = (bar.width - 2 * Self.capsuleInset) / 5
         guard cell > 0 else { return nil }
         let fromStart = direction == .rightToLeft ? bar.maxX - point.x : point.x - bar.minX
         let index = Int(((fromStart - Self.capsuleInset) / cell).rounded(.down))
-        return Slot(rawValue: min(max(index, 0), 5))
+        return Slot(rawValue: min(max(index, 0), 4))
     }
 
     /// The open menu, as Liquid Glass above the item that opened it.
@@ -209,10 +204,6 @@ struct ReaderBottomBar: View {
         case .more:
             BarGlassMenu(anchorX: anchorX(of: .more, barWidth: barSize.width), barSize: barSize,
                          gap: ReaderFooterMetrics.gap, close: { openMenu = nil }) {
-                BarMenuRow("المتشابهات", systemImage: "square.stack.3d.up.fill") { actions.perform(openMutshabehat) }
-                    .accessibilityIdentifier("mutshabehat-button")
-                BarMenuRow("الحفظ", systemImage: "book.closed.fill") { actions.perform(openMemorization) }
-                    .accessibilityIdentifier("memorization-button")
                 BarMenuRow("المتون", systemImage: "books.vertical.fill") { actions.perform(openMutoon) }
                     .accessibilityIdentifier("mutoon-button")
             }
@@ -224,7 +215,7 @@ struct ReaderBottomBar: View {
     /// The middle of an item across the bar, in the bar's own space: the items share the capsule equally, from the
     /// right in a right-to-left layout.
     private func anchorX(of slot: Slot, barWidth: CGFloat) -> CGFloat {
-        let cell = (barWidth - 2 * Self.capsuleInset) / 6
+        let cell = (barWidth - 2 * Self.capsuleInset) / 5
         let fromStart = Self.capsuleInset + (CGFloat(slot.rawValue) + 0.5) * cell
         return direction == .rightToLeft ? barWidth - fromStart : fromStart
     }

@@ -1,7 +1,4 @@
 import MushafCore
-#if DEBUG
-import ReviewEditor
-#endif
 import SwiftUI
 import UIKit
 
@@ -14,16 +11,9 @@ struct SettingsView: View {
     @Bindable var qiraat: QiraatPreferences
     let library: MushafLibrary
     let onSelectPage: (Int) -> Void
-    let onSelectBookmark: (QuranBookmark) -> Void
     @State private var showingQiraatPicker = false
     @AppStorage(LandscapeView.storageKey) private var landscapeView = LandscapeView.reading.rawValue
     @AppStorage(SurahBannerStyle.storageKey) private var bannerStyle = SurahBannerStyle.royal.rawValue
-#if DEBUG
-    @State private var showingReviewEditor = false
-#if DEBUG
-    @AppStorage(DeveloperSettings.cardReviewKey) private var showsCardReview = true
-#endif
-#endif
 
     private var appLanguage: AppLanguage {
         AppLanguage(rawValue: language) ?? .deviceDefault
@@ -32,31 +22,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section(appLanguage == .english ? "Quran Reading & Khatma" : "قراءة القرآن والختمة") {
-                    NavigationLink {
-                        ReadingStatisticsView(library: library) { surah, targetPage in
-                            onSelectPage(targetPage)
-                        }
-                    } label: {
-                        Label(
-                            appLanguage == .english ? "Reading Statistics & Khatma" : "إحصائيات القراءة والختمة",
-                            systemImage: "chart.bar.xaxis"
-                        )
-                    }
-                    .accessibilityIdentifier("open-reading-statistics")
-
-                    NavigationLink {
-                        BookmarksView(library: library) { bookmark in
-                            onSelectBookmark(bookmark)
-                        }
-                    } label: {
-                        Label(
-                            appLanguage == .english ? "Bookmarks" : "الفواصل والعلامات",
-                            systemImage: "bookmark.fill"
-                        )
-                    }
-                    .accessibilityIdentifier("open-bookmarks-settings")
-
+                Section(appLanguage == .english ? "Reading" : "القراءة") {
                     Toggle(
                         appLanguage == .english ? "Keep Screen Awake" : "إبقاء الشاشة مضاءة أثناء القراءة",
                         isOn: $keepScreenAwake
@@ -120,26 +86,6 @@ struct SettingsView: View {
                             .accessibilityIdentifier("qiraat-data-unavailable")
                     }
                 }
-                if AppFeatures.iCloudSyncEnabled {
-                    Section(appLanguage == .english ? "Cloud Synchronization" : "مزامنة السحابة") {
-                        NavigationLink {
-                            ICloudSyncSettingsView(library: library)
-                        } label: {
-                            HStack {
-                                Label(
-                                    appLanguage == .english ? "iCloud Sync (Mushaf_Qiraat)" : "مزامنة iCloud (مصحف وقراءات)",
-                                    systemImage: "icloud.and.arrow.down.fill"
-                                )
-                                Spacer()
-                                Circle()
-                                    .fill(ICloudDatabaseSyncService.shared.isConnected ? Color.progress : Color.caution)
-                                    .frame(width: 8, height: 8)
-                            }
-                        }
-                        .accessibilityIdentifier("open-icloud-sync-settings")
-                    }
-                }
-
                 Section(appLanguage == .english ? "Preferences" : "التفضيلات") {
                     NavigationLink {
                         ThemeSettingsView(theme: $theme)
@@ -179,79 +125,26 @@ struct SettingsView: View {
                              : "القراءة: صفحتان متقابلتان. التعلّم: صفحة واحدة، وقراءات الكلمة التي تضغطها في شريط جانبي.")
                     }
                 }
-#if DEBUG
-                Section(language == AppLanguage.english.rawValue ? "Developer" : "المطور") {
-                    NavigationLink {
-                        DeveloperDataSettingsView(
-                            library: library,
-                            language: AppLanguage(rawValue: language) ?? .deviceDefault
-                        )
-                    } label: {
-                        Label(
-                            language == AppLanguage.english.rawValue ? "Databases" : "قواعد البيانات",
-                            systemImage: "externaldrive.connected.to.line.below"
-                        )
-                    }
-                    .accessibilityIdentifier("open-database-settings")
-
-                    Button { showingReviewEditor = true } label: {
-                        HStack {
-                            Label(
-                                language == AppLanguage.english.rawValue ? "Qiraat Editor" : "محرر القراءات",
-                                systemImage: "checkmark.seal.text.page"
-                            )
-                            Spacer()
-                            Image(systemName: "chevron.forward").font(.footnote.weight(.semibold)).foregroundStyle(.tertiary)
-                        }
-                    }
-                    .foregroundStyle(.primary)
-                    .accessibilityIdentifier("open-review-editor")
-
-                    Toggle(isOn: $showsCardReview) {
-                        Label(
-                            language == AppLanguage.english.rawValue ? "Review on word cards" : "المراجعة والتحرير في بطاقة الكلمة",
-                            systemImage: "checkmark.seal"
-                        )
-                    }
-                    .tint(.switchOn)
-                    .accessibilityIdentifier("developer-card-review-toggle")
-                }
-#endif
-
-                if let memorization = library.memorizationStore {
-                    Section(appLanguage == .english ? "Memorization" : "حفظ القرآن") {
-                        Toggle(appLanguage == .english ? "Show page status in the top banner" : "إظهار حالة الحفظ في الشريط العلوي",
-                               isOn: Binding(get: { memorization.showsBannerMark }, set: { memorization.showsBannerMark = $0 }))
-                            .tint(.switchOn)
-                            .accessibilityIdentifier("memo-setting-banner-mark")
-                        Toggle(appLanguage == .english ? "Show memorization marks on the Mushaf" : "إظهار حالة الحفظ على المصحف",
-                               isOn: Binding(get: { memorization.showsAyahMarker }, set: { memorization.showsAyahMarker = $0 }))
-                            .tint(.switchOn)
-                            .accessibilityIdentifier("memo-setting-ayah-marker")
-                    }
-                }
-
                 Section("الخصوصية والدعم") {
-                    Link(destination: LegalLinks.privacyPolicy(for: appLanguage)) {
-                        ExternalLinkRow(title: "سياسة الخصوصية", systemImage: "hand.raised.fill")
+                    NavigationLink {
+                        PrivacyPolicyView()
+                    } label: {
+                        Label("سياسة الخصوصية", systemImage: "hand.raised.fill")
                     }
-                    .accessibilityLabel(Text("سياسة الخصوصية"))
-                    .accessibilityHint(Text("يفتح في Safari"))
                     .accessibilityIdentifier("open-privacy-policy")
 
-                    Link(destination: LegalLinks.support(for: appLanguage)) {
-                        ExternalLinkRow(title: "الدعم", systemImage: "questionmark.circle")
+                    NavigationLink {
+                        SupportView()
+                    } label: {
+                        Label("الدعم", systemImage: "questionmark.circle")
                     }
-                    .accessibilityLabel(Text("الدعم"))
-                    .accessibilityHint(Text("يفتح في Safari"))
                     .accessibilityIdentifier("open-support")
 
                     NavigationLink {
                         AcknowledgementsView()
                     } label: {
-                        Label("شكر وتراخيص", systemImage: "text.book.closed")
+                        Label("المصادر والشكر", systemImage: "text.book.closed")
                     }
-                    .accessibilityLabel(Text("شكر وتراخيص"))
                     .accessibilityIdentifier("open-acknowledgements")
                 }
 
@@ -264,11 +157,6 @@ struct SettingsView: View {
                     .accessibilityIdentifier("app-version")
                 }
             }
-#if DEBUG
-            .fullScreenCover(isPresented: $showingReviewEditor) {
-                ReviewEditorEntry(host: .make(library: library))
-            }
-#endif
             .sheet(isPresented: $showingQiraatPicker) {
                 if let catalog = library.qiraat?.catalog {
                     QiraatReaderPicker(catalog: catalog, selection: $qiraat.filter)
@@ -282,24 +170,6 @@ struct SettingsView: View {
                 }
             }
         }
-    }
-}
-
-/// A Settings row that leaves the app: the title, then an arrow saying it opens outside (in Safari).
-private struct ExternalLinkRow: View {
-    let title: LocalizedStringKey
-    let systemImage: String
-
-    var body: some View {
-        HStack {
-            Label(title, systemImage: systemImage)
-            Spacer()
-            Image(systemName: "arrow.up.forward.square")
-                .font(.footnote.weight(.semibold))
-                .foregroundStyle(.tertiary)
-                .accessibilityHidden(true)
-        }
-        .foregroundStyle(.primary)
     }
 }
 

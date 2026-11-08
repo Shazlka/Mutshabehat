@@ -82,16 +82,6 @@ import Testing
         }
     }
 
-    @Test func validateAcceptsBundledMutshabehatSeed() throws {
-        // Same route as a real import: the bytes are staged to a fresh file first.
-        let bytes = try Data(contentsOf: generatedDirectory.appendingPathComponent("mutshabehat.sqlite"))
-        let directory = try temporaryDirectory()
-        defer { try? FileManager.default.removeItem(at: directory) }
-        let staged = directory.appendingPathComponent("seed.sqlite")
-        try bytes.write(to: staged)
-        try SQLiteFile.validate(at: staged, requiredTables: ["groups", "verses", "parts", "automated_groups"])
-    }
-
     // MARK: - checkpoint and configuration
 
     @Test func checkpointTruncateEmptiesTheWAL() throws {

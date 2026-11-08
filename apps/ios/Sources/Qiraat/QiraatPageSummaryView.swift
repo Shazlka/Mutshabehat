@@ -15,7 +15,6 @@ struct QiraatPageSummaryView: View {
 
     @ScaledMetric(relativeTo: .title2) private var wordSize: CGFloat = 30
     @Environment(\.dismiss) private var dismiss
-    @State private var liveRevision = 0
     @State private var groups: [AyahGroup]?
     /// The data could not be loaded (as opposed to loaded and empty).
     @State private var unavailable = false
@@ -32,7 +31,7 @@ struct QiraatPageSummaryView: View {
     }
 
     private var loadID: LoadID {
-        LoadID(pages: Array(Set(pages)).sorted(), filter: filter, revision: liveRevision)
+        LoadID(pages: Array(Set(pages)).sorted(), filter: filter, revision: 0)
     }
 
     var body: some View {
@@ -89,12 +88,6 @@ struct QiraatPageSummaryView: View {
         }
         .accessibilityIdentifier("qiraat-page-summary")
         .task(id: loadID) { await loadGroups() }
-        .onReceive(NotificationCenter.default.publisher(for: .qiraatPageDidChange)) { notification in
-            // A transport bucket can contain rulings printed on another page, so any changed
-            // bucket may affect the visible summary after coordinate resolution.
-            guard notification.userInfo?["page"] as? Int != nil else { return }
-            liveRevision &+= 1
-        }
     }
 
     private func row(_ item: QiraatPageSummaryItem) -> some View {

@@ -26,15 +26,4 @@ extension XCUIApplication {
         return coordinate(withNormalizedOffset: CGVector(dx: landscapePad ? 0.80 : 0.03, dy: 0.09))
     }
 
-    /// Dismisses the number keyboard of the memorization sheets. On iPhone the keyboard has the app's «تم»
-    /// accessory button; the iPad's number keyboard is a full keyboard whose Return key submits the field (the
-    /// accessory button is not hittable there).
-    func dismissNumberKeyboard() {
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            typeText("\n")
-        } else {
-            let done = buttons["memo-keyboard-done"]
-            if done.waitForExistence(timeout: 2) { done.tap() }
-        }
-    }
 }

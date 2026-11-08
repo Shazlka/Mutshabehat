@@ -21,7 +21,7 @@ final class MushafLibrary {
     let surahAyahCounts: [Int: Int]
     let surahNames: [Int: String]
     /// The bundled snapshot of the web app's Qiraat data; nil only if the build shipped without it.
-    private(set) var qiraat: QiraatStore?
+    let qiraat: QiraatStore?
     /// The scholarly references (الشاطبية، الدرة، طيبة النشر) per variant, from the optional `QiraatReferences` bundle
     /// folder. Empty when the build ships without it; the card then shows no references row. Read on first use (the
     /// first Qiraat card), not at launch: the full file is a few MB.
@@ -34,14 +34,6 @@ final class MushafLibrary {
 #if DEBUG
         if ProcessInfo.processInfo.arguments.contains("-mutoon-fixture") { return Self.mutoonFixture }
 #endif
-        let liveDir = QiraatLiveSync.overlayDirectory.appendingPathComponent("QiraatMutoon", isDirectory: true)
-        if FileManager.default.fileExists(atPath: liveDir.appendingPathComponent(MatnLibrary.fileName).path) {
-            return MatnLibrary(directory: liveDir, sharhDirectory: mutoonURL)
-        }
-        let importedDir = QiraatBackupService.importedDirectory.appendingPathComponent("QiraatMutoon", isDirectory: true)
-        if FileManager.default.fileExists(atPath: importedDir.appendingPathComponent(MatnLibrary.fileName).path) {
-            return MatnLibrary(directory: importedDir, sharhDirectory: mutoonURL)
-        }
         return mutoonFromBundle
     }
     private lazy var mutoonFromBundle: MatnLibrary = mutoonURL.map { MatnLibrary(directory: $0) } ?? .empty
@@ -89,18 +81,6 @@ final class MushafLibrary {
     }()
 #endif
 
-    /// The ayah → page/juz index memorization is computed from, built once on first use.
-    private(set) lazy var quranIndex: QuranIndex? = try? QuranIndex.load(from: database)
-
-    /// The one memorization store of the app, created on first use.
-    private(set) lazy var memorizationStore: MemorizationStore? = MemorizationRuntime.makeStore(library: self)
-
-    /// Backups and restores of the person's data, created together with the memorization store.
-    private(set) lazy var backupController: BackupController? = {
-        guard let store = memorizationStore else { return nil }
-        return MemorizationRuntime.makeBackupController(library: self, store: store)
-    }()
-
     init(bundle: Bundle = .main, qiraatStore: QiraatStore? = nil) throws {
         guard let databaseURL = bundle.url(forResource: "mushaf", withExtension: "sqlite") else {
             throw MushafLibraryError.missingResource("mushaf.sqlite")
@@ -124,10 +104,8 @@ final class MushafLibrary {
             return
         }
 #endif
-        let imported = QiraatBackupService.importedDirectory
-        let live = QiraatLiveSync.overlayDirectory
-        qiraat = qiraatStore ?? (try? QiraatStore(directory: imported, overlayDirectory: live))
-            ?? bundle.url(forResource: "Qiraat", withExtension: nil).flatMap { try? QiraatStore(directory: $0, overlayDirectory: live) }
+        // The bundled snapshot is the only Qiraat data: the standalone app never reads the network or the disk.
+        qiraat = qiraatStore ?? bundle.url(forResource: "Qiraat", withExtension: nil).flatMap { try? QiraatStore(directory: $0) }
     }
 
     private static var didRegisterHafsFont = false
@@ -191,22 +169,5 @@ final class MushafLibrary {
 
     func searchAyaat(matching query: String, mode: QuranSearchMode = .smart) -> [AyahSearchResult] {
         (try? database.searchAyaat(matching: query, mode: mode, limit: 200)) ?? []
-    }
-
-    /// An explicit restore: the backup replaces the snapshot, so pages fetched live earlier (laid over the old one)
-    /// are dropped; `QiraatBulkSync` fetches them again.
-    func installQiraatBackup(_ data: Data) throws {
-        try adoptInstalledQiraat(try QiraatBackupService.install(data), keepLivePages: false)
-    }
-
-    /// Starts reading from a Qiraat snapshot that is already installed on disk (the heavy install runs off the
-    /// main thread). `keepLivePages: true` is for automatic syncs: the live pages are newer than any archive and
-    /// still win over it.
-    func adoptInstalledQiraat(_ installed: QiraatStore, keepLivePages: Bool,
-                              overlayDirectory: URL = QiraatLiveSync.overlayDirectory) throws {
-        let replacement = try QiraatStore(directory: installed.directory, overlayDirectory: overlayDirectory)
-        if !keepLivePages { try? FileManager.default.removeItem(at: overlayDirectory) }
-        qiraat = replacement
-        NotificationCenter.default.post(name: .qiraatDatabaseDidUpdate, object: nil)
     }
 }

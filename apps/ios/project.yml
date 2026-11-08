@@ -12,8 +12,6 @@ settings:
 packages:
   MushafCore:
     path: MushafCore
-  ReviewEditor:
-    path: ReviewEditor
 targets:
   Mutshabehat:
     type: application
@@ -25,8 +23,6 @@ targets:
       - path: Sources
       - path: Generated/mushaf.sqlite
         buildPhase: resources
-      - path: Generated/mutshabehat.sqlite
-        buildPhase: resources
       - path: Generated/Fonts
         type: folder
         buildPhase: resources
@@ -35,14 +31,12 @@ targets:
         buildPhase: resources
     dependencies:
       - package: MushafCore
-      - package: ReviewEditor
     preBuildScripts:
       - name: Check generated Mushaf data
         basedOnDependencyAnalysis: false
         script: |
           GEN="$SRCROOT/Generated"
           test -s "$GEN/mushaf.sqlite" || { echo "error: $GEN/mushaf.sqlite missing — run: make -C apps/ios data"; exit 1; }
-          test -s "$GEN/mutshabehat.sqlite" || { echo "error: $GEN/mutshabehat.sqlite missing — run: make -C apps/ios data"; exit 1; }
           count=$(find "$GEN/Fonts" -name 'p*.woff2' -size +0 2>/dev/null | wc -l | tr -d ' ')
           test "$count" = "604" || { echo "error: $count/604 QCF fonts — run: make -C apps/ios fonts"; exit 1; }
           pages=$(find "$GEN/Qiraat" -name 'page-*.json' -size +0 2>/dev/null | wc -l | tr -d ' ')
@@ -76,20 +70,10 @@ targets:
           else
             rm -rf "$DEST"
           fi
-      - name: Copy review reference (Debug only)
-        basedOnDependencyAnalysis: false
-        script: |
-          # The developer review editor's reference data ships only in Debug builds.
-          if [ "$CONFIGURATION" = "Debug" ]; then
-            SRC="$SRCROOT/Generated/Review/reference"
-            test -d "$SRC/nquran" || { echo "error: $SRC missing — run: make -C apps/ios review-data"; exit 1; }
-            DEST="$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/ReviewReference"
-            mkdir -p "$DEST" && rsync -a --delete "$SRC/" "$DEST/"
-          fi
     info:
       path: Sources/Info.plist
       properties:
-        CFBundleDisplayName: Qiraat
+        CFBundleDisplayName: مصحف القراءات
         CFBundleDevelopmentRegion: ar
         ITSAppUsesNonExemptEncryption: false
         UIAppFonts:
@@ -103,7 +87,7 @@ targets:
       base:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         SWIFT_EMIT_LOC_STRINGS: YES
-        PRODUCT_BUNDLE_IDENTIFIER: com.shazlka.qiraat
+        PRODUCT_BUNDLE_IDENTIFIER: com.shazlka.qiraat.standalone
         TARGETED_DEVICE_FAMILY: "1,2"
         ENABLE_USER_SCRIPT_SANDBOXING: NO
   MutshabehatTests:
@@ -114,7 +98,7 @@ targets:
       - target: Mutshabehat
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.shazlka.qiraat.tests
+        PRODUCT_BUNDLE_IDENTIFIER: com.shazlka.qiraat.standalone.tests
         GENERATE_INFOPLIST_FILE: YES
   MutshabehatUITests:
     type: bundle.ui-testing
@@ -124,7 +108,7 @@ targets:
       - target: Mutshabehat
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.shazlka.qiraat.uitests
+        PRODUCT_BUNDLE_IDENTIFIER: com.shazlka.qiraat.standalone.uitests
         GENERATE_INFOPLIST_FILE: YES
 schemes:
   Mutshabehat:

@@ -18,11 +18,9 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
     private let fillsHeight: Bool
     private let onTapCentre: () -> Void
     private let onTapWord: (MushafPage, MushafWord) -> Void
-    private let onLongPressAyah: ((MushafPage, AyahKey) -> Void)?
     private let tap = UITapGestureRecognizer()
     /// Begins only on a Qiraat-marked word; while it can still succeed, the chrome tap waits for it.
     private let wordTap = UITapGestureRecognizer()
-    private let longPress = UILongPressGestureRecognizer()
     private(set) var chromeVisible: Bool = false
     /// VoiceOver page turn (three-finger swipe); set by the pager. `true` = next page in reading order.
     var onAccessibilityTurn: ((_ forward: Bool) -> Bool)? {
@@ -33,15 +31,11 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
     init(page: MushafPage, library: MushafLibrary, isSpreadHalf: Bool, appearance: MushafAppearance,
          qiraat: QiraatDisplay,
          highlightedWordIDs: Set<String>,
-         bookmarkedAyahs: Set<AyahKey> = [],
-         isPageBookmarked: Bool = false,
-         memorizationStatuses: [AyahKey: MemorizationStatus] = [:],
          chromeVisible: Bool = false,
          fillsHeight: Bool = false,
          bannerStyle: SurahBannerStyle = .current,
          onTapCentre: @escaping () -> Void,
-         onTapWord: @escaping (MushafPage, MushafWord) -> Void,
-         onLongPressAyah: ((MushafPage, AyahKey) -> Void)? = nil) {
+         onTapWord: @escaping (MushafPage, MushafWord) -> Void) {
         self.page = page
         self.pageView = MushafPageView(page: page, library: library, appearance: appearance)
         self.appearance = appearance
@@ -55,26 +49,15 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
         self.chromeVisible = chromeVisible
         self.onTapCentre = onTapCentre
         self.onTapWord = onTapWord
-        self.onLongPressAyah = onLongPressAyah
         super.init(nibName: nil, bundle: nil)
         pageView.onToggleChrome = onTapCentre
-        pageView.onAyahOptions = { [weak self] ayah in
-            guard let self else { return }
-            onLongPressAyah?(self.page, ayah)
-        }
         pageView.qiraat = qiraat
         pageView.highlightedWordIDs = highlightedWordIDs
-        pageView.bookmarkedAyahs = bookmarkedAyahs
-        pageView.isPageBookmarked = isPageBookmarked
-        pageView.memorizationStatuses = memorizationStatuses
     }
 
     /// The reader changed the Qiraat layer, appearance, or chrome state: redraw and update visibility.
     func apply(_ qiraat: QiraatDisplay,
                highlightedWordIDs: Set<String>,
-               bookmarkedAyahs: Set<AyahKey>,
-               isPageBookmarked: Bool,
-               memorizationStatuses: [AyahKey: MemorizationStatus] = [:],
                appearance: MushafAppearance,
                bannerStyle: SurahBannerStyle = .current,
                chromeVisible: Bool = false) {
@@ -91,9 +74,6 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
         }
         pageView.qiraat = qiraat
         pageView.highlightedWordIDs = highlightedWordIDs
-        pageView.bookmarkedAyahs = bookmarkedAyahs
-        pageView.isPageBookmarked = isPageBookmarked
-        pageView.memorizationStatuses = memorizationStatuses
         updateBookStyling()
         setChromeVisible(chromeVisible, animated: true)
     }
@@ -127,12 +107,6 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
         wordTap.delegate = self
         view.addGestureRecognizer(wordTap)
         tap.require(toFail: wordTap)
-
-        longPress.minimumPressDuration = 0.45
-        longPress.addTarget(self, action: #selector(longPressed(_:)))
-        longPress.delegate = self
-        view.addGestureRecognizer(longPress)
-        tap.require(toFail: longPress)
     }
 
     override func didMove(toParent parent: UIViewController?) {
@@ -294,14 +268,5 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
     @objc private func tapped(_ recognizer: UITapGestureRecognizer) {
         // Tapping anywhere toggles chrome; turning pages is only by swiping left and right.
         onTapCentre()
-    }
-
-    @objc private func longPressed(_ recognizer: UILongPressGestureRecognizer) {
-        guard recognizer.state == .began else { return }
-        let location = recognizer.location(in: pageView)
-        if let ayah = pageView.ayahKey(at: location) {
-            Haptics.wordPress()
-            onLongPressAyah?(page, ayah)
-        }
     }
 }

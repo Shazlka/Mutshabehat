@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fails when a built .app carries anything of the developer review editor.
+"""Fails when a built .app carries anything of the developer review editor, any network code, or removed features.
 
 The editor is DEBUG-only. A Release build must contain none of its type names, its API path or its bundled
 reference data. Usage: release_guard.py path/to/Mutshabehat.app
@@ -9,7 +9,10 @@ import re
 import sys
 
 FORBIDDEN_SYMBOLS = ("qiraat-review", "Qiraat-iOS-Review", "ReviewStore", "ReviewEditorEntry", "ReviewAPI", "ReviewQueue",
-                     "URLSessionReviewTransport", "ReferenceLibrary")
+                     "URLSessionReviewTransport", "ReferenceLibrary",
+                     # Standalone app: fully offline, no user data, no mutashabihat.
+                     "URLSession", "vercel.app", "ts.net", "supabase", "MutshabehatDatabase", "MemorizationStore",
+                     "QuranReadingDatabase", "Khatma", "QiraatLiveSync", "ICloudDatabaseSync", "BackupController")
 FORBIDDEN_DIRS = ("ReviewReference",)
 _PRINTABLE = re.compile(rb"[\x20-\x7e]{4,}")
 

@@ -1,19 +1,11 @@
 import SwiftUI
 
-/// The web pages Settings → «الخصوصية والدعم» opens in Safari. App Store Guideline 5.1.1 asks for the privacy policy
-/// to be reachable inside the app; each page has an Arabic and an English version, picked by the app language.
+/// The app's version and support address. The privacy policy and support pages live inside the app: the standalone
+/// app opens no web page and needs no server.
 enum LegalLinks {
-    static func privacyPolicy(for language: AppLanguage) -> URL {
-        language == .english
-            ? URL(string: "https://mutshabehat-v2.vercel.app/privacy/en")!
-            : URL(string: "https://mutshabehat-v2.vercel.app/privacy")!
-    }
+    static let supportEmail = "Amr.eshazly@gmail.com"
 
-    static func support(for language: AppLanguage) -> URL {
-        language == .english
-            ? URL(string: "https://mutshabehat-v2.vercel.app/support/en")!
-            : URL(string: "https://mutshabehat-v2.vercel.app/support")!
-    }
+    static var supportMail: URL { URL(string: "mailto:\(supportEmail)")! }
 
     /// "1.0 (12)": `CFBundleShortVersionString` and `CFBundleVersion`, wrapped in a left-to-right isolate so the
     /// parentheses stay put in an Arabic layout.
@@ -25,9 +17,55 @@ enum LegalLinks {
     }
 }
 
-/// Settings → «شكر وتراخيص»: the sources the app's text, fonts and data come from.
-/// Text from the draft in `docs/release/content-rights-register.md` §4, confirmed items only. The bracketed items there
-/// (Qiraat book sources, nquran.com, Quranpedia, icon and banner designer) wait on the owner's answers in §5.
+/// Settings → «سياسة الخصوصية». The same text is published once for the App Store record's Privacy Policy URL.
+struct PrivacyPolicyView: View {
+    var body: some View {
+        Form {
+            Section {
+                ForEach(Self.items.indices, id: \.self) { index in
+                    Text(Self.items[index])
+                        .fixedSize(horizontal: false, vertical: true)
+                        .padding(.vertical, 2)
+                }
+            }
+        }
+        .navigationTitle("سياسة الخصوصية")
+        .navigationBarTitleDisplayMode(.inline)
+        .accessibilityIdentifier("privacy-policy-view")
+    }
+
+    private static let items: [LocalizedStringKey] = [
+        "لا يجمع التطبيق أي بيانات عنك، ولا يرسل شيئًا إلى أي خادم.",
+        "لا يحتاج التطبيق إلى حساب أو تسجيل دخول.",
+        "يعمل التطبيق كله دون اتصال بالإنترنت؛ كل بيانات المصحف والقراءات مضمّنة فيه.",
+        "إعداداتك (المظهر، اللغة، القارئ المختار، آخر صفحة) تُحفظ على جهازك فقط، وتُحذف بحذف التطبيق.",
+    ]
+}
+
+/// Settings → «الدعم»: the contact address and the version.
+struct SupportView: View {
+    var body: some View {
+        Form {
+            Section {
+                Text("للأسئلة والملاحظات أو للإبلاغ عن خطأ في البيانات، راسلنا على البريد:")
+                    .fixedSize(horizontal: false, vertical: true)
+                Link(destination: LegalLinks.supportMail) {
+                    Text(verbatim: LegalLinks.supportEmail)
+                        .environment(\.layoutDirection, .leftToRight)
+                }
+                .accessibilityIdentifier("support-email")
+            }
+            Section {
+                LabeledContent("الإصدار") { Text(verbatim: LegalLinks.appVersion) }
+            }
+        }
+        .navigationTitle("الدعم")
+        .navigationBarTitleDisplayMode(.inline)
+        .accessibilityIdentifier("support-view")
+    }
+}
+
+/// Settings → «المصادر والشكر»: the sources the app's text, fonts and data come from.
 struct AcknowledgementsView: View {
     var body: some View {
         Form {
@@ -39,14 +77,14 @@ struct AcknowledgementsView: View {
                 }
             }
         }
-        .navigationTitle("شكر وتراخيص")
+        .navigationTitle("المصادر والشكر")
         .navigationBarTitleDisplayMode(.inline)
         .accessibilityIdentifier("acknowledgements-view")
     }
 
     /// Catalog keys (Arabic), resolved in the app's language through the environment locale.
     private static let items: [LocalizedStringKey] = [
-        "نص المصحف وخطوط صفحاته (QCF V2) وخط «KFGQPC Uthmanic Script HAFS»: مجمع الملك فهد لطباعة المصحف الشريف، المدينة المنورة. حقوق الخطوط محفوظة للمجمع.",
+        "نص المصحف وخطوط صفحاته (QCF V2) وخط «KFGQPC Uthmanic Script HAFS»: مجمع الملك فهد لطباعة المصحف الشريف، المدينة المنورة.",
         "بيانات الكلمات وتخطيط الصفحات وخطوط الصفحات عبر Quran Foundation (Quran.com). Quran data provided by Quran.Foundation.",
         "متن الشاطبية «حرز الأماني ووجه التهاني» للإمام الشاطبي (ت ٥٩٠هـ)، ومتنا «الدرة المضية» و«طيبة النشر» للإمام ابن الجزري (ت ٨٣٣هـ)، من نسخة المكتبة الشاملة (shamela.ws).",
         "شرحا «الوافي» لعبد الفتاح القاضي و«الهادي» لمحمد سالم محيسن.",

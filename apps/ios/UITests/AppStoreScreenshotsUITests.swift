@@ -41,8 +41,6 @@ final class AppStoreScreenshotsUITests: XCTestCase {
         captureWordCard(language: language)
         captureNarratorSummary(language: language)
         captureMutoon(language: language)
-        captureMutshabehat(language: language)
-        captureMemorization(language: language)
     }
 
     /// Screenshot 1, deliberately first: the ten-readings word layer is the app's differentiator.
@@ -109,32 +107,6 @@ final class AppStoreScreenshotsUITests: XCTestCase {
         waitFor("mutoon-verse-1", in: app)
         // Capture the poem chapter itself; do not open a verse action, which may show commentary.
         saveScreenshot(4, screen: "mutoon", language: language)
-        app.terminate()
-    }
-
-    private func captureMutshabehat(language: ScreenshotLanguage) {
-        let app = launch(
-            language: language,
-            page: 1,
-            extra: ["-open-mutshabehat", "-open-mutshabehat-group"]
-        )
-        let close = app.buttons["close-mutshabehat-button"]
-        XCTAssertTrue(close.waitForExistence(timeout: 30), "The Mutashabihat destination must open")
-        XCTAssertTrue(app.staticTexts["المواضع والآيات المتشابهة"].waitForExistence(timeout: 20),
-                      "The first bundled Mutashabihat group must open")
-        saveScreenshot(5, screen: "mutashabihat", language: language)
-        app.terminate()
-    }
-
-    private func captureMemorization(language: ScreenshotLanguage) {
-        let app = launch(
-            language: language,
-            page: 1,
-            extra: ["-memorization-seed", "demo", "-open-memorization"]
-        )
-        waitFor("memo-strict", in: app)
-        waitFor("memo-tile-surahs", in: app)
-        saveScreenshot(6, screen: "memorization", language: language)
         app.terminate()
     }
 

@@ -18,18 +18,11 @@ struct MushafPager: UIViewControllerRepresentable {
     var bannerStyle: SurahBannerStyle = .current
     let qiraat: QiraatDisplay
     let highlightedWordIDs: Set<String>
-    let bookmarkedAyahs: (Int) -> Set<AyahKey>
-    let isPageBookmarked: (Int) -> Bool
-    /// Per-page ayah statuses for the optional memorization marker; returns [:] when the marker is off.
-    var memorizationStatuses: (Int) -> [AyahKey: MemorizationStatus] = { _ in [:] }
-    /// Changes whenever memorization changes, so the pager redraws the visible pages.
-    var memorizationVersion = 0
     let chromeVisible: Bool
     /// The page takes the full height (iPad landscape with the side rails).
     var fillsHeight = false
     let onTapCentre: () -> Void
     let onTapWord: (MushafPage, MushafWord) -> Void
-    let onLongPressAyah: (MushafPage, AyahKey) -> Void
 
     func makeCoordinator() -> Coordinator { Coordinator(self) }
 
@@ -54,11 +47,7 @@ struct MushafPager: UIViewControllerRepresentable {
         disableTapToTurn(in: pager)
         for controller in pager.viewControllers ?? [] {
             if let pc = controller as? PageController {
-                let p = pc.page.number
                 pc.apply(qiraat, highlightedWordIDs: highlightedWordIDs,
-                         bookmarkedAyahs: bookmarkedAyahs(p),
-                         isPageBookmarked: isPageBookmarked(p),
-                         memorizationStatuses: memorizationStatuses(p),
                          appearance: appearance,
                          bannerStyle: bannerStyle,
                          chromeVisible: chromeVisible)
@@ -96,15 +85,11 @@ struct MushafPager: UIViewControllerRepresentable {
             let controller = PageController(page: page, library: parent.library, isSpreadHalf: parent.spread,
                                   appearance: parent.appearance, qiraat: parent.qiraat,
                                   highlightedWordIDs: parent.highlightedWordIDs,
-                                  bookmarkedAyahs: parent.bookmarkedAyahs(number),
-                                  isPageBookmarked: parent.isPageBookmarked(number),
-                                  memorizationStatuses: parent.memorizationStatuses(number),
                                   chromeVisible: parent.chromeVisible,
                                   fillsHeight: parent.fillsHeight,
                                   bannerStyle: parent.bannerStyle,
                                   onTapCentre: { [weak self] in self?.parent.onTapCentre() },
-                                  onTapWord: { [weak self] page, word in self?.parent.onTapWord(page, word) },
-                                  onLongPressAyah: { [weak self] page, ayah in self?.parent.onLongPressAyah(page, ayah) })
+                                  onTapWord: { [weak self] page, word in self?.parent.onTapWord(page, word) })
             controller.onAccessibilityTurn = { [weak self] forward in self?.accessibilityTurn(forward: forward) ?? false }
             return controller
         }

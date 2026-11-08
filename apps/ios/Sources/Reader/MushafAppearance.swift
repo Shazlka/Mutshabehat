@@ -52,19 +52,6 @@ enum MushafAppearance: String, CaseIterable, Identifiable {
 
     func desk(for traits: UITraitCollection, tint: QiraatColor?) -> UIColor { paper(for: traits, tint: tint) }
 
-    /// The bookmark ribbon's crimson, moved toward the ink only as far as it takes to hold 3:1 on the page (with the
-    /// reader's wash, if any). Opaque, so the measured contrast is the drawn one.
-    func bookmarkRibbon(for traits: UITraitCollection, tint: QiraatColor?) -> UIColor {
-        let page = paper(for: traits, tint: tint), ink = ink(for: traits)
-        var ribbon = UIColor(red: 0.76, green: 0.22, blue: 0.18, alpha: 1)
-        var step = 0
-        while ribbon.contrast(with: page) < 3, step < 20 {
-            ribbon = ribbon.mixed(with: ink, amount: 0.06)
-            step += 1
-        }
-        return ribbon
-    }
-
     func ink(for traits: UITraitCollection) -> UIColor {
         switch self {
         case .blackPage: .white

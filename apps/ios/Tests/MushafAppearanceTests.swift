@@ -31,21 +31,4 @@ final class MushafAppearanceTests: XCTestCase {
         }
     }
 
-    /// The bookmark ribbons are a non-text cue: 3:1 against the page (WCAG 1.4.11) on every theme, with and without a
-    /// reader's wash. The fixed crimson sat at exactly 3.00:1 on the dark page and fell under it with a wash.
-    func testTheBookmarkRibbonHoldsThreeToOneOnEveryPage() throws {
-        let readerColours = ["#2563EB", "#16A34A", "#0891B2", "#7C3AED", "#EA580C", "#DC2626", "#DB2777",
-                             "#CA8A04", "#B45309", "#475569"].map { QiraatColor(hex: $0) }
-        for style in [UIUserInterfaceStyle.light, .dark] {
-            let traits = UITraitCollection(userInterfaceStyle: style)
-            for appearance in MushafAppearance.allCases {
-                for tint in [nil] + readerColours {
-                    let paper = appearance.paper(for: traits, tint: tint)
-                    let ribbon = appearance.bookmarkRibbon(for: traits, tint: tint)
-                    XCTAssertGreaterThanOrEqual(ribbon.contrast(with: paper), 3,
-                                                "\(appearance) in \(style.rawValue), wash \(String(describing: tint))")
-                }
-            }
-        }
-    }
 }

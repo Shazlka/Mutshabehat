@@ -13,10 +13,7 @@ struct MutoonView: View {
     @State private var query = ""
     @AppStorage(MatnSymbolSettings.key) private var showsSymbols = true
     @State private var selectedHit: MatnSearchHit?
-    @ObservedObject private var liveSync = QiraatLiveSync.shared
-    @State private var liveLibrary: MatnLibrary?
-
-    var library: MatnLibrary { liveLibrary ?? liveSync.liveMutoonLibrary ?? initialLibrary }
+    var library: MatnLibrary { initialLibrary }
 
     init(library: MatnLibrary, catalog: QiraatCatalog? = nil) {
         self.initialLibrary = library
@@ -76,20 +73,6 @@ struct MutoonView: View {
         // Right to left whatever the app language: every title, chapter and verse here is Arabic. A full-screen
         // cover does not inherit the reader's direction, so it is set on the page itself.
         .environment(\.layoutDirection, .rightToLeft)
-        // Live: ask the web database what changed now, then every few seconds while this page is open.
-        .task {
-            while !Task.isCancelled {
-                if let synced = await liveSync.syncMutoon() {
-                    withAnimation(.easeInOut(duration: 0.2)) { liveLibrary = synced }
-                }
-                try? await Task.sleep(for: .seconds(10))
-            }
-        }
-        .refreshable {
-            if let synced = await liveSync.syncMutoon() {
-                liveLibrary = synced
-            }
-        }
     }
 
     private var searchField: some View {

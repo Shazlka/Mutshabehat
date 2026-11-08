@@ -40,13 +40,13 @@ final class QiraatTopBarUITests: XCTestCase {
         XCTAssertTrue(app.buttons["open-index"].waitForExistence(timeout: 20))
     }
 
-    /// Every menu is in the footer bar: six icons of at least 44 points, wholly below the page, each a touch target apart from the next.
-    func testTheFooterBarHasExactlySixIconsOfAtLeast44PointsBelowThePage() {
+    /// Every menu is in the footer bar: five icons of at least 44 points, wholly below the page, each a touch target apart from the next.
+    func testTheFooterBarHasExactlyFiveIconsOfAtLeast44PointsBelowThePage() {
         let app = launch()
         let mushafPage = element("mushaf-page-1", in: app)
         XCTAssertTrue(mushafPage.waitForExistence(timeout: 15))
         showChrome(app)
-        let ids = ["open-index", "search-button", "bookmarks-button", "qiraat-button", "more-button", "settings-button"]
+        let ids = ["open-index", "search-button", "qiraat-button", "more-button", "settings-button"]
         var frames: [CGRect] = []
         for id in ids {
             let icon = app.buttons[id]
@@ -63,19 +63,20 @@ final class QiraatTopBarUITests: XCTestCase {
         // themselves must be at least a touch target apart.
         let centers = frames.map(\.midX).sorted()
         for (a, b) in zip(centers, centers.dropFirst()) { XCTAssertGreaterThanOrEqual(b - a, 44, "two icons are less than 44 points apart") }
-        // The two moved buttons are inside the menu, not in the bar.
+        // Nothing of the removed features is left in the bar.
+        XCTAssertFalse(app.buttons["bookmarks-button"].exists)
         XCTAssertFalse(app.buttons["mutshabehat-button"].exists)
         XCTAssertFalse(app.buttons["memorization-button"].exists)
     }
 
-    /// All the information stays at the top, with the bar hidden and showing: the surah, the juz and hizb and the
-    /// khatma progress are on screen above the page in both states, and the page does not move.
+    /// All the information stays at the top, with the bar hidden and showing: the surah, the juz and hizb are on
+    /// screen above the page in both states, and the page does not move.
     func testTheInformationStaysOnTopWhileTheFooterBarShowsAndHides() {
         let app = launch()
         let mushafPage = element("mushaf-page-1", in: app)
         XCTAssertTrue(mushafPage.waitForExistence(timeout: 15))
         let before = mushafPage.frame
-        let ids = ["reading-surah-title", "reading-section-text", "khatma-progress", "reading-page-number"]
+        let ids = ["reading-surah-title", "reading-section-text", "reading-page-number"]
         func assertOnTop() {
             for id in ids {
                 let item = element(id, in: app)
@@ -109,8 +110,7 @@ final class QiraatTopBarUITests: XCTestCase {
     private func assertHeaderFits(_ app: XCUIApplication, file: StaticString = #filePath, line: UInt = #line) {
         XCTAssertTrue(element("mushaf-page-51", in: app).waitForExistence(timeout: 15), file: file, line: line)
         let width = app.windows.firstMatch.frame.width
-        let ids = ["reading-page-number", "reading-surah-title", "memo-banner-mark-51", "qiraat-filter-chip",
-                   "khatma-progress", "reading-section-text"]
+        let ids = ["reading-page-number", "reading-surah-title", "qiraat-filter-chip", "reading-section-text"]
         var frames: [String: CGRect] = [:]
         for id in ids {
             let item = element(id, in: app)
@@ -125,33 +125,6 @@ final class QiraatTopBarUITests: XCTestCase {
                                file: file, line: line)
             }
         }
-        for id in ["khatma-progress", "memo-banner-mark-51"] {
-            XCTAssertGreaterThanOrEqual(frames[id]!.height, 43.5, "\(id) is under 44 pt", file: file, line: line)
-        }
-    }
-
-    /// Page number and surah at the right, the khatma progress in the middle, the juz and hizb at the left.
-    func testTheHeaderPutsTheJuzOnTheLeftAndTheProgressInTheMiddle() {
-        let app = launch()
-        XCTAssertTrue(element("mushaf-page-1", in: app).waitForExistence(timeout: 15))
-        let surah = element("reading-surah-title", in: app)
-        let khatma = element("khatma-progress", in: app)
-        let section = element("reading-section-text", in: app)
-        for item in [surah, khatma, section] { XCTAssertTrue(item.waitForExistence(timeout: 20)) }
-        XCTAssertGreaterThan(surah.frame.midX, khatma.frame.midX, "the surah is right of the progress")
-        XCTAssertGreaterThan(khatma.frame.midX, section.frame.midX, "the progress is right of the juz and hizb")
-        XCTAssertLessThan(section.frame.midX, app.frame.midX, "the juz and hizb are on the left half")
-        XCTAssertEqual(khatma.frame.midX, app.frame.midX, accuracy: app.frame.width * 0.2, "the progress is in the middle")
-        XCTAssertFalse(khatma.frame.intersects(section.frame))
-        XCTAssertFalse(khatma.frame.intersects(surah.frame))
-    }
-
-    func testMoreMenuHoldsMutshabehatAndMemorization() {
-        let app = launch()
-        showChrome(app)
-        app.buttons["more-button"].tap()
-        XCTAssertTrue(app.buttons["mutshabehat-button"].waitForExistence(timeout: 20))
-        XCTAssertTrue(app.buttons["memorization-button"].exists)
     }
 
     func testTheQiraatMenuSwitchesTheLayerOffAndOn() {

@@ -6,31 +6,6 @@ import XCTest
 /// A long press finds its ayah even when it lands in the gap between two words of a line.
 @MainActor
 final class MushafPageHitTestTests: XCTestCase {
-    /// A startup sync announces the whole store, rather than an individual live page. Keep the
-    /// snapshot bytes unchanged: the fixture starts with an unavailable page, then receives it.
-    func testASnapshotUpdateMakesTheVisiblePageTappableWithoutTurningIt() throws {
-        let fixture = try makeQiraatFixture(page: 1)
-        defer { try? FileManager.default.removeItem(at: fixture.directory) }
-        let library = try MushafLibrary(qiraatStore: fixture.store)
-        let page = try XCTUnwrap(library.page(1))
-        let view = MushafPageView(page: page, library: library, appearance: .light)
-        view.qiraat = QiraatDisplay(enabled: true, filter: .all)
-        let window = show(view)
-        defer { window.isHidden = true }
-        let box = try XCTUnwrap(view.layout?.lines.flatMap(\.boxes).first {
-            $0.word.ayahKey == AyahKey(surah: 1, ayah: 4) && $0.word.indexInAyah == 1
-        })
-        let point = CGPoint(x: box.frame.midX, y: box.frame.midY)
-        XCTAssertNil(view.markedWord(at: point))
-
-        try fixture.store.applyLivePage(fixture.pageData, number: 1)
-        NotificationCenter.default.post(name: .qiraatDatabaseDidUpdate, object: nil)
-
-        XCTAssertEqual(view.markedWord(at: point)?.id, box.word.id,
-                       "A completed startup sync must update the visible hit map immediately")
-        XCTAssertEqual(view.layout?.pageSize, CGSize(width: 402, height: 692))
-    }
-
     func testASnapshotChangedWhileDetachedIsTappableWhenThePageReturns() throws {
         let fixture = try makeQiraatFixture(page: 1)
         defer { try? FileManager.default.removeItem(at: fixture.directory) }
@@ -42,7 +17,6 @@ final class MushafPageHitTestTests: XCTestCase {
         let parent = try XCTUnwrap(window.rootViewController?.view)
         view.removeFromSuperview()
         try fixture.store.applyLivePage(fixture.pageData, number: 1)
-        NotificationCenter.default.post(name: .qiraatDatabaseDidUpdate, object: nil)
         parent.addSubview(view)
 
         let box = try XCTUnwrap(view.layout?.lines.flatMap(\.boxes).first {

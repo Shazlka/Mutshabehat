@@ -51,14 +51,4 @@ final class AppLocalizedTests: XCTestCase {
         }
     }
 
-    func testTheSyncStatusFollowsTheAppLanguage() {
-        let status = QiraatSyncStatus(kind: .confirmed(elapsed: 5 * 60), isOffline: false)
-        withLanguage("en") {
-            XCTAssertEqual(status.title.removingBidiIsolates, "Updated 5 minutes ago")
-            XCTAssertEqual(QiraatSyncStatus(kind: .confirmed(elapsed: 3600), isOffline: false).title.removingBidiIsolates, "Updated 1 hour ago")
-            XCTAssertEqual(QiraatSyncStatus(kind: .current, isOffline: false).title, "Updated now")
-            XCTAssertEqual(QiraatSyncStatus(kind: .localCopy, isOffline: false).title, "Local copy")
-        }
-        withLanguage("ar") { XCTAssertEqual(status.title.removingBidiIsolates, "محدّث قبل ٥ دقائق") }
-    }
 }

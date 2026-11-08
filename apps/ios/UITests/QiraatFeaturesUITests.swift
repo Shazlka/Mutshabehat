@@ -378,50 +378,6 @@ final class QiraatFeaturesUITests: XCTestCase {
         XCTAssertTrue(app.navigationBars["الإعدادات"].exists, "Settings view must remain presented after picker dismissal")
     }
 
-    /// Flow 9: Favourite toggle persists state after closing and reopening the sheet.
-    func testFavoriteTogglePersistsAfterClosingAndReopeningSheet() {
-        let app = launch(atPage: 1, extra: ["-qiraat-notes-fresh"])
-        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
-
-        let word = app.descendants(matching: .any)["qiraat-word-1:4:1"]
-        XCTAssertTrue(word.waitForExistence(timeout: 20))
-        word.tap()
-
-        let sheetTitle = app.navigationBars["القراءات العشر"]
-        XCTAssertTrue(sheetTitle.waitForExistence(timeout: 20))
-
-        let favToggle = app.descendants(matching: .any)["qiraat-favorite-toggle"]
-        XCTAssertTrue(favToggle.waitForExistence(timeout: 20))
-
-        let stateBefore = (favToggle.isSelected, favToggle.value as? String, favToggle.label)
-        favToggle.tap()
-        let stateAfter = (favToggle.isSelected, favToggle.value as? String, favToggle.label)
-
-        XCTAssertTrue(
-            stateBefore.0 != stateAfter.0 || stateBefore.1 != stateAfter.1 || stateBefore.2 != stateAfter.2,
-            "Tapping favorite toggle must alter its selected, value, or label state"
-        )
-
-        let closeButton = app.buttons["qiraat-sheet-close"]
-        XCTAssertTrue(closeButton.waitForExistence(timeout: 20))
-        closeButton.tap()
-        XCTAssertFalse(sheetTitle.waitForExistence(timeout: 5))
-
-        word.tap()
-        XCTAssertTrue(sheetTitle.waitForExistence(timeout: 20))
-
-        let reopenedFav = app.descendants(matching: .any)["qiraat-favorite-toggle"]
-        XCTAssertTrue(reopenedFav.waitForExistence(timeout: 20))
-        let reopenedState = (reopenedFav.isSelected, reopenedFav.value as? String, reopenedFav.label)
-
-        XCTAssertEqual(reopenedState.0, stateAfter.0, "Favorite isSelected state must persist across sheet close and reopen")
-        XCTAssertEqual(reopenedState.1, stateAfter.1, "Favorite value state must persist across sheet close and reopen")
-        XCTAssertEqual(reopenedState.2, stateAfter.2, "Favorite label state must persist across sheet close and reopen")
-
-        closeButton.tap()
-        XCTAssertFalse(sheetTitle.waitForExistence(timeout: 5))
-    }
-
     // MARK: - Flow 10: Classification and drawn word in word sheet details
 
     /// Flow 10: Word sheet details show classification line and drawn word for readings and rulings.

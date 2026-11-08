@@ -25,7 +25,7 @@ class ReleaseGuardTests(unittest.TestCase):
         for symbol in release_guard.FORBIDDEN_SYMBOLS:
             with tempfile.TemporaryDirectory() as d:
                 app = make_app(d, b"\x00\x02" + symbol.encode() + b"\x00")
-                self.assertEqual(release_guard.check(app), [f"binary contains '{symbol}'"])
+                self.assertIn(f"binary contains '{symbol}'", release_guard.check(app))
 
     def test_detects_reference_folder(self):
         with tempfile.TemporaryDirectory() as d:

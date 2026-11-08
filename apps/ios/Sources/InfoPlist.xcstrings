@@ -7,14 +7,14 @@
       "localizations" : {
         "ar" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Qiraat"
+            "state" : "translated",
+            "value" : "مصحف القراءات"
           }
         },
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "Qiraat"
+            "state" : "translated",
+            "value" : "Mushaf Al-Qiraat"
           }
         }
       }
@@ -25,14 +25,14 @@
       "localizations" : {
         "ar" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Mutshabehat"
+            "state" : "translated",
+            "value" : "مصحف القراءات"
           }
         },
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "Mutshabehat"
+            "state" : "translated",
+            "value" : "Mushaf Al-Qiraat"
           }
         }
       }
