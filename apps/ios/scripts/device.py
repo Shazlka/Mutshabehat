@@ -14,7 +14,7 @@ import tempfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 APP_DIR = os.path.dirname(HERE)
-BUNDLE_ID = "com.shazlka.qiraat"
+BUNDLE_ID = "com.shazlka.qiraat.standalone"
 DERIVED = os.path.join(APP_DIR, "DerivedData")
 APP = os.path.join(DERIVED, "Build/Products/Debug-iphoneos/Mutshabehat.app")
 
