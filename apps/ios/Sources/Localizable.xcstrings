@@ -11,55 +11,29 @@
         }
       }
     },
-    "%@ #%lld (%lld %@) • %lld %@" : {
+    "— آية %@" : {
       "localizations" : {
-        "ar" : {
+        "en" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ #%2$lld (%3$lld %4$@) • %5$lld %6$@"
+            "state" : "machine_translated",
+            "value" : "— Verse %@"
           }
         }
       }
     },
-    "%@ %@، %@، %@" : {
+    "(%@)" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "ar" : {
+        "en" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ %2$@، %3$@، %4$@"
+            "state" : "machine_translated",
+            "value" : "(%@)"
           }
         }
       }
     },
-    "%@ - Ayah %lld (Page %lld)" : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ - Ayah %2$lld (Page %3$lld)"
-          }
-        }
-      }
-    },
-    "%@ - آية %@" : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ - آية %2$@"
-          }
-        }
-      }
-    },
-    "%@ - آية %lld (صفحة %lld)" : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ - آية %2$lld (صفحة %3$lld)"
-          }
-        }
-      }
+    "%@" : {
+
     },
     "%@ · الآية %lld" : {
       "localizations" : {
@@ -101,16 +75,6 @@
         }
       }
     },
-    "%@ من ٦٠٤ صفحة، بقي %@ · %@ من %@ آية" : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ من ٦٠٤ صفحة، بقي %2$@ · %3$@ من %4$@ آية"
-          }
-        }
-      }
-    },
     "%@ موضعًا" : {
       "localizations" : {
         "en" : {
@@ -121,8 +85,8 @@
         }
       }
     },
-    "%@." : {},
     "%@، %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -168,6 +132,9 @@
         }
       }
     },
+    "%@." : {
+
+    },
     "%lld" : {
       "localizations" : {
         "en" : {
@@ -178,19 +145,9 @@
         }
       }
     },
-    "%lld %@" : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld %2$@"
-          }
-        }
-      }
+    "%lld hidden" : {
+
     },
-    "%lld / 114" : {},
-    "%lld hidden" : {},
-    "%lld آية" : {},
     "%lld حكم" : {
       "localizations" : {
         "en" : {
@@ -201,8 +158,6 @@
         }
       }
     },
-    "%lld د" : {},
-    "%lld دقيقة" : {},
     "%lld مجموعة شخصية" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -274,7 +229,6 @@
         }
       }
     },
-    "%lld مجموعة في عرض المجلة" : {},
     "%lld مجموعة مرشحة" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -346,48 +300,15 @@
         }
       }
     },
-    "%lld مخفية" : {},
-    "%lld مواضع" : {},
+    "%lld مخفية" : {
+
+    },
     "%lld موضع" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "%lld locations"
-          }
-        }
-      }
-    },
-    "%lld نتيجة بحث" : {},
-    "%lld يوم" : {},
-    "%lld يوم مداومة" : {},
-    "%lld%%" : {},
-    "%lld. %@" : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld. %2$@"
-          }
-        }
-      }
-    },
-    "%lld. %@ — %lld" : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld. %2$@ — %3$lld"
-          }
-        }
-      }
-    },
-    "%lld. %@ — آية %lld" : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld. %2$@ — آية %3$lld"
           }
         }
       }
@@ -402,54 +323,18 @@
         }
       }
     },
-    "%lld/%lld • المتبقي: %lld" : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld/%2$lld • المتبقي: %3$lld"
-          }
-        }
-      }
+    "Advanced Search Examples:" : {
+
     },
-    "(%@ : %lld)" : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "(%1$@ : %2$lld)"
-          }
-        }
-      }
+    "Appearance" : {
+
     },
-    "(%@)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "(%@)"
-          }
-        }
-      }
+    "Choose Reader or Narrator" : {
+
     },
-    "+ %lld مواضع أخرى" : {},
-    "Advanced Search Examples:" : {},
-    "All" : {},
-    "Appearance" : {},
-    "Bookmark Ayah" : {},
-    "Bookmark Options" : {},
-    "Bookmark Page" : {},
-    "Bookmarks" : {},
-    "Cancel" : {},
-    "Choose Reader or Narrator" : {},
-    "Close" : {},
-    "Cloud Synchronization" : {},
-    "Complete" : {},
-    "Confirm" : {},
-    "Could not load the Qiraat data" : {},
-    "Could not update" : {},
-    "Currently learning" : {},
-    "Done" : {},
+    "Could not load the Qiraat data" : {
+
+    },
     "English" : {
       "localizations" : {
         "en" : {
@@ -460,64 +345,42 @@
         }
       }
     },
-    "Error" : {},
-    "Expected Result:" : {},
-    "Farsh only (hide Usul)" : {},
-    "Hide the footer after 10 seconds" : {},
-    "History" : {},
-    "How to use advanced search:" : {},
-    "Incomplete" : {},
-    "Keep Screen Awake" : {},
-    "Landscape view" : {},
-    "Language" : {},
-    "Learning" : {},
-    "Least memorized" : {},
-    "Loading categories…" : {},
-    "Memorization" : {},
-    "Most memorized" : {},
-    "Mushaf order" : {},
-    "Needs review" : {},
-    "Newer changes exist" : {},
-    "No Usul categories in the installed data." : {},
-    "No ayat" : {},
-    "No history" : {},
-    "OK" : {},
-    "Open the index" : {},
-    "Opens reading statistics" : {},
-    "Pages" : {},
-    "Preferences" : {},
-    "Quran Reading & Khatma" : {},
-    "Reading" : {},
-    "Reading Statistics & Khatma" : {},
-    "Reading shows two facing pages. Learning shows one page, with the Qira'at of the word you tap in a side bar." : {},
-    "Remove Ayah Bookmark" : {},
-    "Remove Page Bookmark" : {},
-    "Search Query:" : {},
-    "Search in Quran" : {},
-    "Search the Holy Quran..." : {},
-    "Show memorization marks on the Mushaf" : {},
-    "Show page status in the top banner" : {},
-    "Surah banner" : {},
-    "Ten Qira'at" : {},
-    "Total verses in search results: %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "Total verses in search results: %lld"
-          }
-        }
-      }
+    "Expected Result:" : {
+
     },
-    "Turn a category off to hide its marks, cards and search results. \"Farsh only\" hides all of them." : {},
-    "Undo" : {},
-    "Undo anyway" : {},
-    "Update memorization" : {},
-    "Update page status" : {},
-    "Usul categories" : {},
-    "date" : {},
-    "iCloud Sync (Mushaf_Qiraat)" : {},
-    "learning" : {},
+    "Farsh only (hide Usul)" : {
+
+    },
+    "Hide the footer after 10 seconds" : {
+
+    },
+    "How to use advanced search:" : {
+
+    },
+    "Keep Screen Awake" : {
+
+    },
+    "Landscape view" : {
+
+    },
+    "Language" : {
+
+    },
+    "Learning" : {
+
+    },
+    "Loading categories…" : {
+
+    },
+    "No Usul categories in the installed data." : {
+
+    },
+    "Open the index" : {
+
+    },
+    "Preferences" : {
+
+    },
     "qiraat.caption.read_as" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -875,12 +738,43 @@
         }
       }
     },
-    "series" : {},
-    "strict" : {},
-    "آخر التحديثات" : {},
-    "آية %@" : {},
-    "آية %lld" : {},
-    "آية: %lld" : {},
+    "Reading" : {
+
+    },
+    "Reading shows two facing pages. Learning shows one page, with the Qira'at of the word you tap in a side bar." : {
+
+    },
+    "Search in Quran" : {
+
+    },
+    "Search Query:" : {
+
+    },
+    "Search the Holy Quran..." : {
+
+    },
+    "Surah banner" : {
+
+    },
+    "Ten Qira'at" : {
+
+    },
+    "Total verses in search results: %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Total verses in search results: %lld"
+          }
+        }
+      }
+    },
+    "Turn a category off to hide its marks, cards and search results. \"Farsh only\" hides all of them." : {
+
+    },
+    "Usul categories" : {
+
+    },
     "أبواب الأصول" : {
       "localizations" : {
         "en" : {
@@ -891,7 +785,6 @@
         }
       }
     },
-    "أجزاء الآية" : {},
     "أخرى" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -913,8 +806,6 @@
         }
       }
     },
-    "أضف جلسة" : {},
-    "أضف جلسة قراءة" : {},
     "أضف نجمة أو ملاحظة من تفاصيل كلمة في القراءات العشر." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -926,8 +817,9 @@
         }
       }
     },
-    "أطول مدة مداومة: %lld يوم" : {},
-    "أغلق البابَ لإخفاء علاماته وبطاقاته ونتائج البحث عنه. خيار «فرش فقط» يخفي الأبواب كلها." : {},
+    "أغلق البابَ لإخفاء علاماته وبطاقاته ونتائج البحث عنه. خيار «فرش فقط» يخفي الأبواب كلها." : {
+
+    },
     "أقل" : {
       "localizations" : {
         "en" : {
@@ -968,7 +860,9 @@
         }
       }
     },
-    "أمثلة على البحث المتقدم:" : {},
+    "أمثلة على البحث المتقدم:" : {
+
+    },
     "أيام" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -991,9 +885,12 @@
         }
       }
     },
-    "إبقاء الشاشة مضاءة أثناء القراءة" : {},
-    "إجمالي الآيات في نتائج البحث: %lld" : {},
-    "إحصائيات القراءة والختمة" : {},
+    "إبقاء الشاشة مضاءة أثناء القراءة" : {
+
+    },
+    "إجمالي الآيات في نتائج البحث: %lld" : {
+
+    },
     "إخفاء التلميح" : {
       "localizations" : {
         "en" : {
@@ -1004,7 +901,9 @@
         }
       }
     },
-    "إخفاء الشريط السفلي تلقائيًا بعد ١٠ ثوانٍ" : {},
+    "إخفاء الشريط السفلي تلقائيًا بعد ١٠ ثوانٍ" : {
+
+    },
     "إخفاء تفاصيل المجموعة" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1027,9 +926,8 @@
         }
       }
     },
-    "إزالة فاصل الآية" : {},
-    "إزالة فاصل الصفحة" : {},
     "إزالة من المفضلة" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1061,10 +959,8 @@
         }
       }
     },
-    "إضافة" : {},
-    "إضافة آيات من القرآن" : {},
-    "إضافة آية" : {},
     "إضافة إلى المفضلة" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1074,8 +970,8 @@
         }
       }
     },
-    "إضافة للمجموعة" : {},
     "إضافة ملاحظة" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1085,7 +981,6 @@
         }
       }
     },
-    "إضافة من القرآن" : {},
     "إضافة نجمة" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1108,8 +1003,6 @@
         }
       }
     },
-    "إظهار حالة الحفظ على المصحف" : {},
-    "إظهار حالة الحفظ في الشريط العلوي" : {},
     "إظهار علامات القراءات" : {
       "localizations" : {
         "en" : {
@@ -1120,7 +1013,6 @@
         }
       }
     },
-    "إعادة تعيين" : {},
     "إعداداتك (المظهر، اللغة، القارئ المختار، آخر صفحة) تُحفظ على جهازك فقط، وتُحذف بحذف التطبيق." : {
       "localizations" : {
         "en" : {
@@ -1162,8 +1054,6 @@
         }
       }
     },
-    "إكمال السورة في الختمة" : {},
-    "إكمال في الختمة" : {},
     "إلغاء" : {
       "localizations" : {
         "en" : {
@@ -1174,9 +1064,6 @@
         }
       }
     },
-    "إلغاء إكمال السورة في الختمة" : {},
-    "إلغاء الإكمال" : {},
-    "إلى صفحة" : {},
     "إمالة في باب الممال والمقلل، بلون هذا الباب." : {
       "localizations" : {
         "en" : {
@@ -1187,7 +1074,6 @@
         }
       }
     },
-    "ابحث عن آية أو كلمة من القرآن..." : {},
     "ابحث عن باب" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1210,7 +1096,9 @@
         }
       }
     },
-    "ابحث في القرآن الكريم..." : {},
+    "ابحث في القرآن الكريم..." : {
+
+    },
     "ابحث في المتون أو اكتب رقم البيت" : {
       "localizations" : {
         "en" : {
@@ -1243,7 +1131,6 @@
         }
       }
     },
-    "اختر السورة لتسجيلها كاملة:" : {},
     "اختر القارئ أو الراوي" : {
       "localizations" : {
         "en" : {
@@ -1274,8 +1161,8 @@
         }
       }
     },
-    "اختر نوع التلوين ثم اضغط على الكلمات لتلوينها:" : {},
     "اختلاف" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1286,6 +1173,7 @@
       }
     },
     "اختلاف ٢" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1296,6 +1184,7 @@
       }
     },
     "اختلاف ٣" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1326,7 +1215,6 @@
         }
       }
     },
-    "اختياري" : {},
     "استجابة الخادم خالية من المجموعات" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1344,8 +1232,11 @@
         }
       }
     },
-    "استعلام البحث:" : {},
+    "استعلام البحث:" : {
+
+    },
     "استيراد" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1356,6 +1247,7 @@
       }
     },
     "استيراد القاعدة الآلية" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1366,6 +1258,7 @@
       }
     },
     "استيراد ملف الآلية (JSON)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1375,9 +1268,9 @@
         }
       }
     },
-    "اسحب أي سورة لليمين لإكمالها أو إلغائها في الختمة" : {},
-    "اسم السورة" : {},
-    "اضغط كلمة ملوّنة في الصفحة لترى قراءاتها" : {},
+    "اضغط كلمة ملوّنة في الصفحة لترى قراءاتها" : {
+
+    },
     "اضغط لعرض مواضع هذا الباب" : {
       "localizations" : {
         "en" : {
@@ -1430,6 +1323,7 @@
       }
     },
     "الآلية" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1439,7 +1333,6 @@
         }
       }
     },
-    "الآيات (%lld)" : {},
     "الآية %lld، %@" : {
       "localizations" : {
         "en" : {
@@ -1450,10 +1343,6 @@
         }
       }
     },
-    "الآية الأولى" : {},
-    "الآية الأولى (المرجع)" : {},
-    "الآية الثانية" : {},
-    "الآية الثانية (المقارنة)" : {},
     "الأبيات %@–%@" : {
       "localizations" : {
         "en" : {
@@ -1526,9 +1415,8 @@
         }
       }
     },
-    "الأقل حفظاً" : {},
-    "الأكثر حفظاً" : {},
     "الألوان:" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1619,7 +1507,9 @@
         }
       }
     },
-    "البحث في القرآن" : {},
+    "البحث في القرآن" : {
+
+    },
     "البحث في القراءات" : {
       "localizations" : {
         "en" : {
@@ -1701,8 +1591,6 @@
         }
       }
     },
-    "التلوين التلقائي للفروقات" : {},
-    "التوقيت والمدة" : {},
     "الحالة" : {
       "localizations" : {
         "en" : {
@@ -1713,11 +1601,6 @@
         }
       }
     },
-    "الحالة والفرز" : {},
-    "الحفظ" : {},
-    "الختم على حسب السورة" : {},
-    "الختمة الحالية (%@)" : {},
-    "الختمة رقم %lld" : {},
     "الخصوصية والدعم" : {
       "localizations" : {
         "en" : {
@@ -1862,6 +1745,7 @@
       }
     },
     "الشخصية" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1892,7 +1776,6 @@
         }
       }
     },
-    "الصفحات" : {},
     "الصفحة" : {
       "localizations" : {
         "en" : {
@@ -1944,7 +1827,9 @@
         }
       }
     },
-    "العرض الأفقي" : {},
+    "العرض الأفقي" : {
+
+    },
     "الفرش" : {
       "localizations" : {
         "en" : {
@@ -1975,8 +1860,6 @@
         }
       }
     },
-    "الفواصل" : {},
-    "الفواصل والعلامات" : {},
     "القارئ" : {
       "localizations" : {
         "en" : {
@@ -2038,6 +1921,26 @@
         }
       }
     },
+    "القرّاء المذكورون (بالقراءة الأخرى)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Readers named (for the other reading)"
+          }
+        }
+      }
+    },
+    "القرّاء المذكورون (بهذه القراءة)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Readers named (for this reading)"
+          }
+        }
+      }
+    },
     "القراء والرواة:" : {
       "localizations" : {
         "en" : {
@@ -2048,7 +1951,9 @@
         }
       }
     },
-    "القراءات" : {},
+    "القراءات" : {
+
+    },
     "القراءات العشر" : {
       "localizations" : {
         "en" : {
@@ -2090,26 +1995,8 @@
         }
       }
     },
-    "القراءة: صفحتان متقابلتان. التعلّم: صفحة واحدة، وقراءات الكلمة التي تضغطها في شريط جانبي." : {},
-    "القرّاء المذكورون (بالقراءة الأخرى)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Readers named (for the other reading)"
-          }
-        }
-      }
-    },
-    "القرّاء المذكورون (بهذه القراءة)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Readers named (for this reading)"
-          }
-        }
-      }
+    "القراءة: صفحتان متقابلتان. التعلّم: صفحة واحدة، وقراءات الكلمة التي تضغطها في شريط جانبي." : {
+
     },
     "الكل" : {
       "localizations" : {
@@ -2172,9 +2059,8 @@
         }
       }
     },
-    "اللون المميّز" : {},
-    "المتبقي: %lld آية" : {},
     "المتشابهات" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2204,8 +2090,6 @@
         }
       }
     },
-    "المجموع: %lld آية" : {},
-    "المجموع: %lld صفحة" : {},
     "المزامنة جارية بالفعل" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2294,6 +2178,7 @@
       }
     },
     "المفضلة فقط" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2313,9 +2198,8 @@
         }
       }
     },
-    "المكتمل" : {},
-    "الملاحظات والفوائد" : {},
     "الملف %@ غير متاح على الجهاز بعد. نزّله من تطبيق الملفات ثم أعد المحاولة." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2325,7 +2209,6 @@
         }
       }
     },
-    "المواضع والآيات المتشابهة" : {},
     "الموضع" : {
       "localizations" : {
         "en" : {
@@ -2347,7 +2230,6 @@
         }
       }
     },
-    "الموضع المقروء" : {},
     "الموضع: %lld:%lld" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -2359,8 +2241,11 @@
         }
       }
     },
-    "النتيجة المتوقعة:" : {},
+    "النتيجة المتوقعة:" : {
+
+    },
     "النوع" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2391,8 +2276,6 @@
         }
       }
     },
-    "الْحَمْدُ لِلَّهِ" : {},
-    "انتهاء عند:" : {},
     "انقر مرتين لإظهار أدوات القراءة أو إخفائها" : {
       "localizations" : {
         "en" : {
@@ -2403,9 +2286,8 @@
         }
       }
     },
-    "انقر مرتين لإغلاق المحرر" : {},
-    "انقر مرتين لتحرير الأجزاء" : {},
     "انقر مرتين لخيارات الآية" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2486,7 +2368,6 @@
         }
       }
     },
-    "بحث في الفواصل..." : {},
     "بحث في القرآن..." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -2509,6 +2390,7 @@
       }
     },
     "بحث في المجموعات أو الآيات..." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2518,9 +2400,8 @@
         }
       }
     },
-    "بدء ختمة جديدة" : {},
-    "بدء من:" : {},
     "بلا اتصال" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2572,12 +2453,6 @@
         }
       }
     },
-    "بيانات المجموعة" : {},
-    "تأكيد" : {},
-    "تأكيد الحذف" : {},
-    "تأكيد وتسجيل الجلسة" : {},
-    "تابع القراءة" : {},
-    "تاريخ ووقت القراءة" : {},
     "تتفقان في هذه الكلمة" : {
       "localizations" : {
         "en" : {
@@ -2608,9 +2483,6 @@
         }
       }
     },
-    "تحديث الحفظ" : {},
-    "تحديث حالة الصفحة" : {},
-    "تحديد كامل السورة (%lld آية)" : {},
     "تختلفان في هذه الكلمة" : {
       "localizations" : {
         "en" : {
@@ -2621,9 +2493,6 @@
         }
       }
     },
-    "تراجع" : {},
-    "تراجع على أي حال" : {},
-    "ترتيب المصحف" : {},
     "تسهيل" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2663,11 +2532,18 @@
         }
       }
     },
-    "تصفية" : {},
-    "تصفية حسب الاسم أو الرقم..." : {},
-    "تطبيق" : {},
-    "تطبيق التلوين" : {},
+    "تُضاف المتون عند بناء التطبيق من نسختك من الكتب." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "They are added when the app is built from your copy of the books."
+          }
+        }
+      }
+    },
     "تعديل" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2677,8 +2553,8 @@
         }
       }
     },
-    "تعديل المجموعة" : {},
     "تعديل الملاحظة" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2722,8 +2598,8 @@
         }
       }
     },
-    "تعذر التحديث" : {},
     "تعذر الحفظ" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2771,17 +2647,6 @@
         }
       }
     },
-    "تعذر قراءة الملاحظات أو حفظها. أعد المحاولة." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "The notes could not be read or saved. Try again."
-          }
-        }
-      }
-    },
     "تعذّر تحميل بيانات القراءات" : {
       "localizations" : {
         "en" : {
@@ -2812,7 +2677,20 @@
         }
       }
     },
-    "تعلّم" : {},
+    "تعذر قراءة الملاحظات أو حفظها. أعد المحاولة." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "The notes could not be read or saved. Try again."
+          }
+        }
+      }
+    },
+    "تعلّم" : {
+
+    },
     "تعيين على الكلمة" : {
       "localizations" : {
         "en" : {
@@ -2823,7 +2701,9 @@
         }
       }
     },
-    "تفعيل القراءات" : {},
+    "تفعيل القراءات" : {
+
+    },
     "تقديم وتأخير" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -2831,6 +2711,16 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Word form / reordering"
+          }
+        }
+      }
+    },
+    "تُقرأ هكذا" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Read like this"
           }
         }
       }
@@ -2855,8 +2745,6 @@
         }
       }
     },
-    "تلوتُ عن ظهر قلب (من الذاكرة)" : {},
-    "تلوين تلقائي" : {},
     "تم" : {
       "localizations" : {
         "en" : {
@@ -2867,37 +2755,12 @@
         }
       }
     },
-    "تم النسخ" : {},
-    "تم تحديد %lld آية" : {},
     "تمييز الرموز" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Highlight symbols"
-          }
-        }
-      }
-    },
-    "تنبيه" : {},
-    "توجد تغييرات أحدث" : {},
-    "تَمَّتْ خَتْمَةُ الْقُرْآنِ الْكَرِيمِ بِحَمْدِ اللَّهِ وَتَوْفِيقِهِ" : {},
-    "تُضاف المتون عند بناء التطبيق من نسختك من الكتب." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "They are added when the app is built from your copy of the books."
-          }
-        }
-      }
-    },
-    "تُقرأ هكذا" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Read like this"
           }
         }
       }
@@ -2922,7 +2785,6 @@
         }
       }
     },
-    "جارٍ البحث في القرآن الكريم..." : {},
     "جارٍ تجهيز النتائج" : {
       "localizations" : {
         "en" : {
@@ -2953,7 +2815,9 @@
         }
       }
     },
-    "جارٍ تحميل الأبواب…" : {},
+    "جارٍ تحميل الأبواب…" : {
+
+    },
     "جرّب البحث الموسع أو راجع كتابة الكلمة" : {
       "localizations" : {
         "en" : {
@@ -2964,9 +2828,8 @@
         }
       }
     },
-    "جزء" : {},
-    "جلسة" : {},
     "حالة الحفظ: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2977,6 +2840,7 @@
       }
     },
     "حذف" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2987,6 +2851,7 @@
       }
     },
     "حذف الآية %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2997,6 +2862,7 @@
       }
     },
     "حذف الجزء %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3028,8 +2894,8 @@
         }
       }
     },
-    "حذف هذه المجموعة نهائياً" : {},
     "حسناً" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3040,6 +2906,7 @@
       }
     },
     "حسنًا" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3050,6 +2917,7 @@
       }
     },
     "حفظ" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3059,10 +2927,6 @@
         }
       }
     },
-    "حفظ أو مراجعة بدون الاستعانة بالمصحف" : {},
-    "حفظ القرآن" : {},
-    "حفظ فاصل للآية" : {},
-    "حفظ فاصل للصفحة" : {},
     "حكم أصولي على الكلمة: يلوّن نصها إن لم يكن فيها اختلاف قراءة، وتُرسم به النقطة والخط المنقّط." : {
       "localizations" : {
         "en" : {
@@ -3173,7 +3037,6 @@
         }
       }
     },
-    "خطأ" : {},
     "خلاف في الرسم" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3196,6 +3059,7 @@
       }
     },
     "خيارات الآية" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3206,6 +3070,7 @@
       }
     },
     "خيارات التلوين" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3215,7 +3080,6 @@
         }
       }
     },
-    "خيارات الفواصل" : {},
     "داكن" : {
       "localizations" : {
         "en" : {
@@ -3289,9 +3153,6 @@
         }
       }
     },
-    "ربط الكلمات" : {},
-    "ربط وتلوين الكلمات" : {},
-    "رقم الآية" : {},
     "رمز جماعي" : {
       "localizations" : {
         "en" : {
@@ -3344,6 +3205,7 @@
       }
     },
     "زيادة" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3360,6 +3222,23 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Letter addition"
+          }
+        }
+      }
+    },
+    "سـ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سـ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "s"
           }
         }
       }
@@ -3393,24 +3272,6 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "two hours"
-          }
-        }
-      }
-    },
-    "سجل القراءة اليومي" : {},
-    "سـ" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "سـ"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "s"
           }
         }
       }
@@ -3463,16 +3324,6 @@
         }
       }
     },
-    "سورة %@، آية %lld • ص %lld" : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "سورة %1$@، آية %2$lld • ص %3$lld"
-          }
-        }
-      }
-    },
     "سورة %lld" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3496,6 +3347,7 @@
       }
     },
     "سورة %lld · آية %lld · كلمة %lld · صفحة %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3525,7 +3377,9 @@
         }
       }
     },
-    "شكل ترويسة السورة" : {},
+    "شكل ترويسة السورة" : {
+
+    },
     "ص %@" : {
       "localizations" : {
         "en" : {
@@ -3536,10 +3390,14 @@
         }
       }
     },
-    "ص %lld" : {},
-    "صفحة" : {},
-    "صفحة %@" : {},
+    "صفحة" : {
+
+    },
+    "صفحة %@" : {
+
+    },
     "صفحة %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3579,8 +3437,9 @@
         }
       }
     },
-    "طبقة القراءات متوقفة" : {},
-    "طريقة التلاوة" : {},
+    "طبقة القراءات متوقفة" : {
+
+    },
     "طيبة النشر" : {
       "localizations" : {
         "en" : {
@@ -3591,8 +3450,6 @@
         }
       }
     },
-    "عادي" : {},
-    "عرض الإحصائيات" : {},
     "عرض البيت والشرح" : {
       "localizations" : {
         "en" : {
@@ -3603,8 +3460,6 @@
         }
       }
     },
-    "عرض كامل التفاصيل" : {},
-    "عرض مجلّاتي" : {},
     "علامات الكلمة" : {
       "localizations" : {
         "en" : {
@@ -3672,6 +3527,7 @@
       }
     },
     "عليها علامة" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3681,7 +3537,6 @@
         }
       }
     },
-    "عنوان المتشابه" : {},
     "عُيّن يدويًا من محرر المتون" : {
       "localizations" : {
         "en" : {
@@ -3692,8 +3547,6 @@
         }
       }
     },
-    "غير المكتمل" : {},
-    "فائدة فريدة / إضافية" : {},
     "فاتح" : {
       "localizations" : {
         "en" : {
@@ -3704,7 +3557,9 @@
         }
       }
     },
-    "فتح الفهرس" : {},
+    "فتح الفهرس" : {
+
+    },
     "فتح سورة" : {
       "localizations" : {
         "en" : {
@@ -3757,6 +3612,7 @@
       }
     },
     "فريد" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3767,6 +3623,7 @@
       }
     },
     "في المفضلة" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3807,8 +3664,6 @@
         }
       }
     },
-    "قاعدة آلية" : {},
-    "قاعدة آلية رسمية" : {},
     "قبل " : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3820,9 +3675,9 @@
         }
       }
     },
-    "قراءة" : {},
-    "قراءة القرآن والختمة" : {},
-    "قيد الحفظ" : {},
+    "قراءة" : {
+
+    },
     "كحفص" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3835,6 +3690,7 @@
       }
     },
     "كل السور" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3885,10 +3741,12 @@
         }
       }
     },
-    "كيفية استخدام البحث المتقدم:" : {},
-    "لا توجد آيات" : {},
-    "لا توجد آيات مضافة حتى الآن. يمكنك إضافة آيات من القرآن الكريم أو كتابتها يدوياً." : {},
-    "لا توجد أبواب أصول في البيانات المثبّتة." : {},
+    "كيفية استخدام البحث المتقدم:" : {
+
+    },
+    "لا توجد أبواب أصول في البيانات المثبّتة." : {
+
+    },
     "لا توجد أصول متاحة" : {
       "localizations" : {
         "en" : {
@@ -3909,9 +3767,6 @@
         }
       }
     },
-    "لا توجد تحديثات" : {},
-    "لا توجد سور مطابقة للتصفية" : {},
-    "لا توجد فواصل محفوظة" : {},
     "لا توجد كلمات محفوظة" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3924,6 +3779,7 @@
       }
     },
     "لا توجد مجموعات آلية مخزنة" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3934,6 +3790,7 @@
       }
     },
     "لا توجد مجموعات تطابق البحث" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3953,7 +3810,6 @@
         }
       }
     },
-    "لا توجد نتائج مطابقة" : {},
     "لا خلاف في هذه الصفحة" : {
       "localizations" : {
         "en" : {
@@ -4025,6 +3881,7 @@
       }
     },
     "لا يوجد مجلد للنسخ الاحتياطي. اختر مجلدًا من تطبيق الملفات في إعدادات النسخ الاحتياطي." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4034,8 +3891,11 @@
         }
       }
     },
-    "لتغيير القارئ أو الراوي" : {},
+    "لتغيير القارئ أو الراوي" : {
+
+    },
     "لحذف الملاحظة، امسح النص ثم احفظ. تبقى الكلمة في المفضلة إذا كانت النجمة مفعّلة." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4045,7 +3905,6 @@
         }
       }
     },
-    "لحفظ فاصل، اضغط مطولاً على رقم الآية في المصحف" : {},
     "للأسئلة والملاحظات أو للإبلاغ عن خطأ في البيانات، راسلنا على البريد:" : {
       "localizations" : {
         "en" : {
@@ -4056,7 +3915,6 @@
         }
       }
     },
-    "لم تُقرأ بعد • المتبقي: %lld آية" : {},
     "لم يتم العثور على بيانات أصول القراءات في هذا المصحف." : {
       "localizations" : {
         "en" : {
@@ -4096,6 +3954,7 @@
       }
     },
     "ليست في المفضلة" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4105,7 +3964,6 @@
         }
       }
     },
-    "متابعة إنجاز كل سورة والمتبقي منها" : {},
     "متابعة القراءة" : {
       "localizations" : {
         "en" : {
@@ -4156,7 +4014,6 @@
         }
       }
     },
-    "مثال: الرجفة / الصيحة" : {},
     "مجموع ما تدل عليه الرموز في هذا الموضع هو القرّاء الذين سمّاهم الشارح للبيت نفسه." : {
       "localizations" : {
         "en" : {
@@ -4167,8 +4024,8 @@
         }
       }
     },
-    "مجموعة جديدة" : {},
     "محدّث %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4179,6 +4036,7 @@
       }
     },
     "محدّث الآن" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4198,8 +4056,6 @@
         }
       }
     },
-    "مخصص" : {},
-    "مدة الجلسة" : {},
     "مراجَع" : {
       "localizations" : {
         "en" : {
@@ -4210,8 +4066,8 @@
         }
       }
     },
-    "مزامنة iCloud (مصحف وقراءات)" : {},
     "مزامنة iCloud معطلة في هذا الإصدار" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4221,7 +4077,6 @@
         }
       }
     },
-    "مزامنة السحابة" : {},
     "مستخرج" : {
       "localizations" : {
         "en" : {
@@ -4243,6 +4098,7 @@
       }
     },
     "مسح التصفية" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4252,7 +4108,6 @@
         }
       }
     },
-    "مسودة" : {},
     "مشاركة الآية" : {
       "localizations" : {
         "en" : {
@@ -4283,7 +4138,6 @@
         }
       }
     },
-    "معاينة الآية %lld" : {},
     "مغلق" : {
       "localizations" : {
         "en" : {
@@ -4347,7 +4201,6 @@
         }
       }
     },
-    "مفضّلة" : {},
     "مفعّلة" : {
       "localizations" : {
         "en" : {
@@ -4368,12 +4221,8 @@
         }
       }
     },
-    "مقفلة" : {},
-    "مكتملة" : {},
-    "مكتملة • %lld%%" : {},
-    "مكتملة • لم يبقَ شيء" : {},
-    "ملاحظة" : {},
     "ملاحظة الكلمة" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4384,6 +4233,7 @@
       }
     },
     "ملاحظة شخصية" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4393,8 +4243,6 @@
         }
       }
     },
-    "ملاحظة عامة" : {},
-    "ملاحظة: سيتم استبدال الأجزاء الحالية للآيتين بنتيجة المقارنة." : {},
     "ملف القراءة لم يكتمل تنزيله بعد" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4450,8 +4298,6 @@
         }
       }
     },
-    "من القرآن" : {},
-    "من صفحة" : {},
     "من متن الدرة" : {
       "localizations" : {
         "en" : {
@@ -4483,6 +4329,7 @@
       }
     },
     "منسوخة" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4503,7 +4350,6 @@
         }
       }
     },
-    "منشورة" : {},
     "منظومة الدرة تعتمد أصولها على الشاطبية وفرشها على ما خالف أصله، ولم يُضمَّن لها شرح مستقل في التطبيق حالياً." : {
       "localizations" : {
         "en" : {
@@ -4545,8 +4391,6 @@
         }
       }
     },
-    "مَدَنِيَّة" : {},
-    "مَكِّيَّة" : {},
     "نتيجة البحث: %@" : {
       "localizations" : {
         "en" : {
@@ -4568,9 +4412,8 @@
         }
       }
     },
-    "نسخ إلى مجموعاتي الخاصة" : {},
-    "نسخ للمجموعات الخاصة" : {},
     "نسخة محلية" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4580,7 +4423,6 @@
         }
       }
     },
-    "نص الجزء..." : {},
     "نص الكلمة ملوّن بلا خط تحتها" : {
       "localizations" : {
         "en" : {
@@ -4663,6 +4505,7 @@
       }
     },
     "نقل الآية %lld للأسفل" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4673,6 +4516,7 @@
       }
     },
     "نقل الآية %lld للأعلى" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4683,6 +4527,7 @@
       }
     },
     "نقل الجزء %lld للأسفل" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4693,6 +4538,7 @@
       }
     },
     "نقل الجزء %lld للأعلى" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4712,7 +4558,6 @@
         }
       }
     },
-    "نمط التحديد" : {},
     "هذه القراءة لم تُراجَع بعد" : {
       "localizations" : {
         "en" : {
@@ -4723,7 +4568,6 @@
         }
       }
     },
-    "هل أنت متأكد من حذف هذه المجموعة نهائياً؟ لا يمكن التراجع عن هذا الإجراء." : {},
     "وجه %lld" : {
       "localizations" : {
         "en" : {
@@ -4734,8 +4578,6 @@
         }
       }
     },
-    "يحتاج مراجعة" : {},
-    "يرجى اختيار آيتين مختلفتين للمقارنة" : {},
     "يطوي الملاحظات" : {
       "localizations" : {
         "en" : {
@@ -4766,7 +4608,6 @@
         }
       }
     },
-    "يفتح إحصائيات القراءة" : {},
     "يفتح التطبيق حيث توقفت عن القراءة." : {
       "localizations" : {
         "en" : {
@@ -4797,50 +4638,6 @@
         }
       }
     },
-    "يقارن آيتين كلمةً كلمة ويعيّن أنواع الفروقات (مشترك، اختلاف، زيادة، فريد) تلقائياً." : {},
-    "يمكنك استيراد ملف بيانات الآلية (JSON) بالضغط على زر استيراد في الأعلى." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "You can import an automation data file (JSON) by tapping Import above."
-          }
-        }
-      }
-    },
-    "يوم" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "day"
-          }
-        }
-      }
-    },
-    "يومين" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "two days"
-          }
-        }
-      }
-    },
-    "يومًا" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "days"
-          }
-        }
-      }
-    },
     "يُلوَّن الخط ونص الكلمة بلونه إذا ذُكر راوياه معًا، أو قطعةً من الخط المقسَّم." : {
       "localizations" : {
         "en" : {
@@ -4861,24 +4658,46 @@
         }
       }
     },
-    "— آية %@" : {
+    "يمكنك استيراد ملف بيانات الآلية (JSON) بالضغط على زر استيراد في الأعلى." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "machine_translated",
-            "value" : "— Verse %@"
+            "value" : "You can import an automation data file (JSON) by tapping Import above."
           }
         }
       }
     },
-    "— آية %lld" : {},
-    "•" : {},
-    "• %@ ص • %@ آية" : {
+    "يوم" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "ar" : {
+        "en" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "• %1$@ ص • %2$@ آية"
+            "state" : "needs_review",
+            "value" : "day"
+          }
+        }
+      }
+    },
+    "يومًا" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "days"
+          }
+        }
+      }
+    },
+    "يومين" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "two days"
           }
         }
       }
