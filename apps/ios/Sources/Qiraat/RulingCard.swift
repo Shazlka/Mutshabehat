@@ -20,7 +20,7 @@ struct RulingCard: View {
             hex: ruling.color, traits: UITraitCollection(userInterfaceStyle: colorScheme == .dark ? .dark : .light)))
         let distinct = distinctRulingText(ruling.text, categoryAr: ruling.categoryAr,
                                       actions: ruling.attribution(scopedTo: filter, catalog: catalog).map(\.action))
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 12) {
             HStack(alignment: .firstTextBaseline) {
                 QiraatClassificationLine(ruling: ruling)
                 Spacer()
@@ -28,32 +28,68 @@ struct RulingCard: View {
                     Text(verbatim: condition).font(.caption2.bold()).foregroundStyle(.secondary)
                 }
             }
-            if !ruling.baseText.isEmpty {
-                VStack(spacing: 4) {
-                    if ruling.endToken > ruling.startToken {
-                        Text("الكلمات محل الخلاف")
-                            .font(.caption.bold())
-                            .foregroundStyle(Color(uiColor: .mushafBrown))
-                            .accessibilityIdentifier("qiraat-span-heading")
-                    }
-                    Text(verbatim: sharedForm ?? QiraatReadingForm.display(ruling.baseText))
-                        .font(rulingWordFont)
-                        .foregroundStyle(wordColor)
-                        .multilineTextAlignment(.center)
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.65)
-                        .allowsTightening(true)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .frame(maxWidth: .infinity)
-                        .accessibilityIdentifier("qiraat-ruling-word")
-                    Text("تُقرأ هكذا")
-                        .font(.caption2.bold())
-                        .foregroundStyle(.secondary)
-                }
+            QiraatMatrixRow {
+                wordColumn(wordColor: wordColor, descriptor: distinct)
+            } readers: {
+                groupsColumn(wordColor: wordColor)
             }
+            .padding(.vertical, 4)
+            if ruling.hasAlternateReading(scopedTo: filter, catalog: catalog) {
+                Text("ذو وجهين (بخلف عنه) — الوجه الآخر جائز أيضًا")
+                    .font(.caption.bold()).foregroundStyle(.qiraatBadgeInk)
+                    .padding(.horizontal, 8).padding(.vertical, 4)
+                    .background(RoundedRectangle(cornerRadius: 6).fill(.qiraatBadgeFill))
+            }
+            if !noteParagraphs.isEmpty { CollapsibleText(text: noteParagraphs.joined(separator: "\n")) }
+            if ruling.verificationStatus == "NEEDS_MANUAL_REVIEW" { QiraatNeedsReviewBadge() }
+        }
+        .padding(14)
+        .background {
+            RoundedRectangle(cornerRadius: 16).fill(.qiraatCardFill)
+            RoundedRectangle(cornerRadius: 16).fill(color.opacity(0.06))
+        }
+        .overlay(RoundedRectangle(cornerRadius: 16).stroke(color))
+        .environment(\.layoutDirection, .rightToLeft)
+    }
+
+    /// The word as it is read, with the rule's short descriptor above it (the old «تُقرأ هكذا» caption is gone).
+    @ViewBuilder private func wordColumn(wordColor: Color, descriptor: String?) -> some View {
+        if !ruling.baseText.isEmpty {
+            let shown = sharedForm ?? QiraatReadingForm.display(ruling.baseText)
+            VStack(spacing: 6) {
+                if ruling.endToken > ruling.startToken {
+                    Text("الكلمات محل الخلاف")
+                        .font(.caption.bold())
+                        .foregroundStyle(Color(uiColor: .mushafBrown))
+                        .accessibilityIdentifier("qiraat-span-heading")
+                }
+                if let descriptor { QiraatDescriptorPill(text: descriptor) }
+                Text(verbatim: shown)
+                    .font(rulingWordFont(size: shown.contains(" ") ? 26 : 34))
+                    .foregroundStyle(wordColor)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.7)
+                    .allowsTightening(true)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: .infinity)
+                    .accessibilityIdentifier("qiraat-ruling-word")
+            }
+            .frame(maxWidth: .infinity)
+        } else if let descriptor {
+            QiraatDescriptorPill(text: descriptor).frame(maxWidth: .infinity)
+        } else {
+            Color.clear.frame(height: 1)
+        }
+    }
+
+    /// The readers, one group per action, each with its chips and details.
+    private func groupsColumn(wordColor: Color) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
             ForEach(scopedGroups, id: \.action) { group in
                 VStack(alignment: .leading, spacing: 4) {
-                    QiraatPills(pills: rollupAuthorityPills(group.entries.map(\.authorityId), catalog: catalog))
+                    QiraatAttributionGrid(pills: rollupAuthorityPills(group.entries.map(\.authorityId), catalog: catalog),
+                                          catalog: catalog)
                     QiraatGroupPerformance(group: group, categoryAr: ruling.categoryAr, showWajhs: scopedGroups.contains { $0.entries.contains { ($0.wajhOrder ?? 1) > 1 } })
                     // One group reads the word differently from the others (نقل حركة الهمزة): show how it is written.
                     if sharedForm == nil, let changed = form(of: group) {
@@ -64,23 +100,7 @@ struct RulingCard: View {
                     }
                 }
             }
-            if let distinct { Text(verbatim: distinct).font(.caption).foregroundStyle(Color(uiColor: .mushafBrown)) }
-            if ruling.hasAlternateReading(scopedTo: filter, catalog: catalog) {
-                Text("ذو وجهين (بخلف عنه) — الوجه الآخر جائز أيضًا")
-                    .font(.caption.bold()).foregroundStyle(.qiraatBadgeInk)
-                    .padding(.horizontal, 8).padding(.vertical, 4)
-                    .background(RoundedRectangle(cornerRadius: 6).fill(.qiraatBadgeFill))
-            }
-            if !noteParagraphs.isEmpty { CollapsibleText(text: noteParagraphs.joined(separator: "\n")) }
-            if ruling.verificationStatus == "NEEDS_MANUAL_REVIEW" { QiraatNeedsReviewBadge() }
         }
-        .padding(10)
-        .background {
-            RoundedRectangle(cornerRadius: 10).fill(.qiraatCardFill)
-            RoundedRectangle(cornerRadius: 10).fill(color.opacity(0.06))
-        }
-        .overlay(RoundedRectangle(cornerRadius: 10).stroke(color))
-        .environment(\.layoutDirection, .rightToLeft)
     }
 
     private var scopedGroups: [RulingActionGroup] { ruling.attributionByAction(scopedTo: filter, catalog: catalog) }
@@ -115,11 +135,11 @@ struct RulingCard: View {
         return Font(UIFontMetrics(forTextStyle: .title2).scaledFont(for: baseFont, maximumPointSize: 44))
     }
 
-    private var rulingWordFont: Font {
+    private func rulingWordFont(size: CGFloat) -> Font {
         _ = dynamicTypeSize
-        let baseFont = UIFont(name: "KFGQPCUthmanicScriptHAFS", size: 40)
-            ?? UIFont(name: "DamascusBold", size: 40)
-            ?? UIFont.systemFont(ofSize: 40, weight: .bold)
+        let baseFont = UIFont(name: "KFGQPCUthmanicScriptHAFS", size: size)
+            ?? UIFont(name: "DamascusBold", size: size)
+            ?? UIFont.systemFont(ofSize: size, weight: .bold)
         return Font(UIFontMetrics(forTextStyle: .title1)
             .scaledFont(for: baseFont, maximumPointSize: VariantCard.maxWordSize))
     }

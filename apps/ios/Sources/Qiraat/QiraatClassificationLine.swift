@@ -29,16 +29,16 @@ struct QiraatClassificationLine: View {
 
     init(variant: QiraatVariant) {
         let sub = QiraatClassification.subCategory(for: variant)
+        // The card sits under the «الفرش» heading, so the root «فرش الحروف» is not repeated inside it.
         self.chips = [
-            Chip(name: QiraatClassification.farshCategoryTitle, localizationKey: QiraatClassification.farshCategoryTitle),
             Chip(name: sub, localizationKey: QiraatClassification.subCategoryKey(for: variant.differenceType))
         ]
         self.fullClassification = QiraatClassification.classification(for: variant)
     }
 
     init(ruling: QiraatRuling) {
+        // The card sits under the «الأصول» heading, so the root «أصول القراءات» is not repeated inside it.
         var items = [
-            Chip(name: QiraatClassification.usulCategoryTitle, localizationKey: QiraatClassification.usulCategoryTitle),
             Chip(name: ruling.categoryAr, colorHex: ruling.color)
         ]
         if let subDetail = QiraatClassification.usulSubCategory(for: ruling), !subDetail.isEmpty {

@@ -15,6 +15,12 @@ final class QiraatUITests: XCTestCase {
         return app
     }
 
+    /// A reader or narrator chip on a Qiraat card, by its name without the «الإمام» / «الراوي» label
+    /// (a lone narrator's chip also says «عن <الإمام>»).
+    private func readerChip(_ name: String, in app: XCUIApplication) -> XCUIElement {
+        app.descendants(matching: .any).matching(NSPredicate(format: "label BEGINSWITH %@", name)).firstMatch
+    }
+
     private func element(_ id: String, in app: XCUIApplication) -> XCUIElement {
         app.descendants(matching: .any)[id]
     }
@@ -45,7 +51,7 @@ final class QiraatUITests: XCTestCase {
         let close = app.buttons["qiraat-sheet-close"]
         XCTAssertTrue(close.waitForExistence(timeout: 10))
         XCTAssertTrue(sideBar.frame.contains(close.frame), "the card is in the side bar, not a sheet")
-        XCTAssertTrue(app.staticTexts["الإمام نافع"].exists)
+        XCTAssertTrue(readerChip("نافع", in: app).exists)
         XCTAssertTrue(mushafPage.isHittable, "the page stays usable beside the card")
 
         close.tap()
@@ -177,7 +183,7 @@ final class QiraatUITests: XCTestCase {
                 if close.waitForExistence(timeout: attempt == 1 ? 3 : 5) { break }
             }
             XCTAssertTrue(close.exists)
-            XCTAssertTrue(app.staticTexts["الإمام نافع"].exists)
+            XCTAssertTrue(readerChip("نافع", in: app).exists)
             close.tap()
             XCTAssertTrue(element("mushaf-page-1", in: app).exists)
         }
@@ -203,9 +209,9 @@ final class QiraatUITests: XCTestCase {
         let word = element("qiraat-word-1:4:1", in: app)
         XCTAssertTrue(word.waitForExistence(timeout: 20))
         word.tap()
-        XCTAssertTrue(app.staticTexts["الإمام نافع"].waitForExistence(timeout: 20))
-        XCTAssertTrue(app.staticTexts["الإمام أبو جعفر"].exists)
-        XCTAssertFalse(app.staticTexts["الإمام عاصم"].exists)
+        XCTAssertTrue(readerChip("نافع", in: app).waitForExistence(timeout: 20))
+        XCTAssertTrue(readerChip("أبو جعفر", in: app).exists)
+        XCTAssertFalse(readerChip("عاصم", in: app).exists)
         saveScreenshot(named: "qiraat-sheet-1-4", app: app)
     }
 
@@ -214,8 +220,8 @@ final class QiraatUITests: XCTestCase {
         let word = element("qiraat-word-1:4:1", in: app)
         XCTAssertTrue(word.waitForExistence(timeout: 20))
         word.tap()
-        XCTAssertTrue(app.staticTexts["الراوي ورش"].waitForExistence(timeout: 20))
-        XCTAssertFalse(app.staticTexts["الإمام ابن كثير"].exists)
+        XCTAssertTrue(readerChip("ورش", in: app).waitForExistence(timeout: 20))
+        XCTAssertFalse(readerChip("ابن كثير", in: app).exists)
     }
 
     func testANewInstallStartsWithTheQiraatLayerOn() {

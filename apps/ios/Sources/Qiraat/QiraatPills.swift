@@ -47,6 +47,114 @@ struct QiraatPills: View {
     }
 }
 
+extension AuthorityPill {
+    /// The name without the «الإمام» / «الراوي» label: the chip's colour and outline already say which it is.
+    var cleanName: String {
+        for prefix in ["الإمام ", "الراوي "] where name.hasPrefix(prefix) {
+            return String(name.dropFirst(prefix.count))
+        }
+        return name
+    }
+}
+
+/// The readers of one reading as a two-column grid of chips (one column at accessibility text sizes).
+/// A whole reader (both his narrators) is a solid tinted chip with a filled initial; a single narrator is a
+/// white chip with a dashed outline, an outlined initial and «عن <الإمام>» under the name, so the two are
+/// told apart by shape as well as colour.
+struct QiraatAttributionGrid: View {
+    let pills: [AuthorityPill]
+    let catalog: QiraatCatalog
+
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
+    var body: some View {
+        let columns = Array(repeating: GridItem(.flexible(), spacing: 8, alignment: .leading),
+                            count: dynamicTypeSize.isAccessibilitySize ? 1 : 2)
+        LazyVGrid(columns: columns, alignment: .leading, spacing: 8) {
+            ForEach(pills) { pill in
+                QiraatAttributionChip(pill: pill, parentName: parentName(of: pill))
+            }
+        }
+    }
+
+    /// The imam a lone narrator reads for, unless the narrator's own name already says it («الدوري عن أبي عمرو»).
+    private func parentName(of pill: AuthorityPill) -> String? {
+        guard pill.kind == .narrator, !pill.cleanName.contains(" عن "),
+              let narrator = catalog.narrator(pill.key), let reader = catalog.reader(narrator.readerId) else { return nil }
+        return reader.nameArShort
+    }
+}
+
+struct QiraatAttributionChip: View {
+    let pill: AuthorityPill
+    let parentName: String?
+
+    @Environment(\.colorScheme) private var colorScheme
+    @ScaledMetric(relativeTo: .caption) private var dotSize: CGFloat = 22
+
+    private var isNarrator: Bool { pill.kind == .narrator }
+
+    var body: some View {
+        let fill = UIColor(qiraatHex: pill.color)
+        let accent = Color(uiColor: fill)
+        let traits = UITraitCollection(userInterfaceStyle: colorScheme == .dark ? .dark : .light)
+        let accentInk = Color(uiColor: .qiraatCardText(hex: pill.color, traits: traits))
+        HStack(spacing: 6) {
+            ZStack {
+                if isNarrator {
+                    Circle().fill(accent.opacity(0.10))
+                    Circle().strokeBorder(accent, lineWidth: 1.5)
+                } else {
+                    Circle().fill(accent)
+                }
+                Text(verbatim: pill.initial)
+                    .font(.caption2.bold())
+                    .foregroundStyle(isNarrator ? accentInk : Color(uiColor: .qiraatInk(onFill: fill)))
+            }
+            .frame(width: dotSize, height: dotSize)
+            .accessibilityHidden(true)
+            VStack(alignment: .leading, spacing: 0) {
+                Text(verbatim: pill.cleanName)
+                    .font(.caption.bold())
+                    .foregroundStyle(Color(uiColor: .mushafInk))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
+                if let parentName {
+                    Text(verbatim: "عن \(parentName)")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.8)
+                }
+            }
+            Spacer(minLength: 0)
+        }
+        .padding(.leading, 4).padding(.trailing, 9).padding(.vertical, 4)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Capsule().fill(isNarrator ? Color(uiColor: .systemBackground).opacity(0.85) : accent.opacity(0.14)))
+        .overlay(
+            Capsule().strokeBorder(accent.opacity(isNarrator ? 0.85 : 0.45),
+                                   style: StrokeStyle(lineWidth: 1.2, dash: isNarrator ? [4, 3] : []))
+        )
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(Text(verbatim: parentName.map { "\(pill.cleanName) عن \($0)" } ?? pill.cleanName))
+    }
+}
+
+/// The short phonetic or rule descriptor above a card's word («بلا ألف», «إبدال الهمزة وصلاً ووقفاً»).
+struct QiraatDescriptorPill: View {
+    let text: String
+
+    var body: some View {
+        Text(verbatim: text)
+            .font(.caption2.weight(.medium))
+            .foregroundStyle(Color(uiColor: .mushafBrown))
+            .multilineTextAlignment(.center)
+            .padding(.horizontal, 8).padding(.vertical, 3)
+            .background(RoundedRectangle(cornerRadius: 10).fill(Color.primary.opacity(0.06)))
+    }
+}
+
 /// A small capsule label: a ruling category, a variant kind, a wajh number. The caller decides whether the
 /// text is data (`Text(verbatim:)`, as the web gives it) or app chrome (`Text("…")`, translated).
 struct QiraatBadge: View {

@@ -375,6 +375,10 @@ final class QiraatFeaturesUITests: XCTestCase {
         asimRow.tap()
 
         XCTAssertFalse(pickerNavBar.waitForExistence(timeout: 5), "Single tap on a reader row must dismiss the picker sheet")
+        // KNOWN (fails the same way on the code before the 2026-11 audit): after a nested picker sheet closes under iOS 27
+        // the Settings sheet's accessibility tree is not queryable here although the sheet is on screen (checked by hand on
+        // the simulator without the search step: the reader's filter chip changes and Settings stays open; the search
+        // path could not be typed by hand). Tracked in HANDOFF.md.
         XCTAssertTrue(app.navigationBars["الإعدادات"].exists, "Settings view must remain presented after picker dismissal")
     }
 
@@ -438,9 +442,10 @@ final class QiraatFeaturesUITests: XCTestCase {
 
         let classification = app.descendants(matching: .any)["qiraat-classification"].firstMatch
         XCTAssertTrue(classification.waitForExistence(timeout: 20), "Word details must display classification line")
-        XCTAssertTrue(
+        XCTAssertFalse(classification.label.isEmpty, "Classification label names the sub-category")
+        XCTAssertFalse(
             classification.label.contains("أصول القراءات") || classification.label.contains("فرش الحروف"),
-            "Classification label must contain «أصول القراءات» or «فرش الحروف»"
+            "The card sits under the «الفرش» / «الأصول» heading, so it does not repeat the root category"
         )
 
         let variantText = app.descendants(matching: .any)["qiraat-variant-text"].firstMatch

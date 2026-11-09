@@ -35,8 +35,10 @@ struct QiraatReferencesRow: View {
                         .foregroundStyle(.secondary)
                         .accessibilityIdentifier("qiraat-references-none")
                 } else {
-                    header
-                    chips(references)
+                    HStack(alignment: .center, spacing: 8) {
+                        header
+                        chips(references)
+                    }
                     if expanded {
                         // Offsets are the ids: two references can share a work and a verse.
                         ForEach(Array(references.enumerated()), id: \.offset) { _, reference in
@@ -45,7 +47,9 @@ struct QiraatReferencesRow: View {
                     }
                 }
             }
+            .padding(8)
             .frame(maxWidth: .infinity, alignment: .leading)
+            .background(RoundedRectangle(cornerRadius: 10).fill(Color.primary.opacity(0.04)))
         }
     }
 
@@ -54,7 +58,6 @@ struct QiraatReferencesRow: View {
             HStack(spacing: 6) {
                 Text("المصادر").font(.caption.bold())
                 Image(systemName: expanded ? "chevron.up" : "chevron.down").font(.caption2).accessibilityHidden(true)
-                Spacer(minLength: 0)
             }
             .foregroundStyle(Color(uiColor: .mushafBrown))
             .frame(minHeight: 44)
@@ -77,8 +80,11 @@ struct QiraatReferencesRow: View {
                 HStack(spacing: 4) {
                     workName(work).font(.caption.bold())
                     if verses.count == 1, let verse = verses.first { Text(verbatim: "\(verse)").font(.caption.bold()) }
-                    Text(verbatim: "·").font(.caption).accessibilityHidden(true)
-                    statusLabel(status).font(.caption2)
+                    // «مستخرج» is the default state and says nothing; only a checked status is written.
+                    if status != .extracted {
+                        Text(verbatim: "·").font(.caption).accessibilityHidden(true)
+                        statusLabel(status).font(.caption2)
+                    }
                 }
                 .foregroundStyle(Color(uiColor: .mushafInk))
                 .padding(.horizontal, 8)
