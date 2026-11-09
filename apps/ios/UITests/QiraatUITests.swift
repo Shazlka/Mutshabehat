@@ -215,6 +215,27 @@ final class QiraatUITests: XCTestCase {
         saveScreenshot(named: "qiraat-sheet-1-4", app: app)
     }
 
+    /// «التصنيف الفرعي» («خلاف في الرسم») is off on a variant card until Settings turns it on.
+    func testTheSubcategoryBadgeIsHiddenOnVariantCardsByDefaultAndShownWhenSwitchedOn() {
+        func subcategory(in app: XCUIApplication) -> XCUIElement {
+            app.descendants(matching: .any).matching(identifier: "qiraat-classification")
+                .matching(NSPredicate(format: "label CONTAINS %@", "خلاف في الرسم")).firstMatch
+        }
+        let off = launch(atPage: 1)
+        element("qiraat-word-1:4:1", in: off).tap()
+        XCTAssertTrue(readerChip("نافع", in: off).waitForExistence(timeout: 20))
+        XCTAssertFalse(subcategory(in: off).exists)
+        off.terminate()
+
+        let on = XCUIApplication.isolated()
+        on.launchArguments = ["-mushaf1441:last-page:v1", "1", "-mushaf1441:qiraat-filter:v1", "all",
+                              "-reading-fresh", "-app:language:v1", "ar",
+                              "-mushaf1441:reader-layer:v1", "qiraat", "-mushaf1441:qiraat-show-subcategory:v1", "YES"]
+        on.launch()
+        element("qiraat-word-1:4:1", in: on).tap()
+        XCTAssertTrue(subcategory(in: on).waitForExistence(timeout: 20))
+    }
+
     func testANarratorFilterNarrowsTheCardToThatNarrator() {
         let app = launch(atPage: 1, filter: "reading:Q01-R02")
         let word = element("qiraat-word-1:4:1", in: app)

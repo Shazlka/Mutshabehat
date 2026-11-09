@@ -3,6 +3,10 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-11-09 — Variant card: التصنيف الفرعي hidden by default, switch in Settings
+- The sub-category badge on a variant (فرش) card («خلاف في الرسم» etc.) is no longer shown by default. Settings › القراءات العشر has a new switch, «إظهار التصنيف الفرعي في بطاقة الفرش» (English: "Show sub-category on Farsh cards"), stored per device in `mushaf1441:qiraat-show-subcategory:v1` and read by the card through `@AppStorage`, so it applies at once in the sheet and the iPad side bar. Ruling (أصول) cards are unchanged: their category badge is the rule's name.
+- **Tests:** new `testTheSubcategoryBadgeIsHiddenOnVariantCardsByDefaultAndShownWhenSwitchedOn`; the localization tests launch with the switch on. All of `QiraatLocalizationUITests` and `QiraatFeaturesUITests` pass except `testReaderPickerOpensAsSheetSearchNarrowsAndSingleTapSelects`, the known iOS 27 Settings-after-picker failure already tracked in `HANDOFF.md`.
+
 ## [Unreleased] — 2026-11-09 — Qiraat word sheet: split-matrix variant and ruling cards
 - **Layout (spec "Option 3"):** each card is now the sub-category badge row, then a split body (the word and its short descriptor on the right 38%, a hairline divider, the readers on the left 62% as a two-column chip grid; stacked at accessibility text sizes), then a «المصادر» footer bar with the source chips inline. Word size 34 pt (26 pt for a phrase), card radius 16 (`QiraatMatrixLayout.swift`, `VariantCard`, `RulingCard`, `QiraatReferencesRow`).
 - **De-duplication:** the root badges «فرش الحروف» / «أصول القراءات» are no longer inside cards (the «الفرش» / «الأصول» headings carry them); «الإمام» / «الراوي» are dropped from chip names; «مستخرج» is dropped from source chips (reviewed/verified still show); the «تُقرأ هكذا» caption is gone, and the ruling's own text now sits above the word as the descriptor pill.

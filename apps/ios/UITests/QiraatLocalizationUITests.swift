@@ -16,6 +16,7 @@ final class QiraatLocalizationUITests: XCTestCase {
             "-mushaf1441:last-page:v1", "1",
             "-mushaf1441:reader-layer:v1", "qiraat",
             "-mushaf1441:qiraat-filter:v1", "all",
+            "-mushaf1441:qiraat-show-subcategory:v1", "YES",
             "-app:language:v1", language,
         ]
         app.launch()

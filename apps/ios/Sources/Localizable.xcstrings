@@ -4710,6 +4710,7 @@
       }
     },
     "تُقرأ هكذا" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

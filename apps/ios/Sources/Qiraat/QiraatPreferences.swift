@@ -26,6 +26,9 @@ final class QiraatPreferences {
     static let filterKey = "mushaf1441:qiraat-filter:v1"
     static let hidesUsulKey = "mushaf1441:qiraat-hide-usul:v1"
     static let hiddenUsulCategoriesKey = "mushaf1441:qiraat-hidden-usul-categories:v1"
+    /// «التصنيف الفرعي» on a variant card (e.g. «خلاف في الرسم»). Off unless the reader turns it on in Settings;
+    /// read with `@AppStorage` by the card and the settings toggle so both see the same value at once.
+    static let showSubcategoryKey = "mushaf1441:qiraat-show-subcategory:v1"
 
     @ObservationIgnored private let defaults: UserDefaults
 

@@ -23,6 +23,7 @@ struct SettingsView: View {
     @State private var showingReviewEditor = false
 #if DEBUG
     @AppStorage(DeveloperSettings.cardReviewKey) private var showsCardReview = true
+    @AppStorage(QiraatPreferences.showSubcategoryKey) private var showsSubcategory = false
 #endif
 #endif
 
@@ -93,6 +94,13 @@ struct SettingsView: View {
                         .tint(.switchOn)
                         .disabled(!qiraat.enabled)
                         .accessibilityIdentifier("qiraat-hide-usul-toggle")
+                        Toggle(
+                            appLanguage == .english ? "Show sub-category on Farsh cards" : "إظهار التصنيف الفرعي في بطاقة الفرش",
+                            isOn: $showsSubcategory
+                        )
+                        .tint(.switchOn)
+                        .disabled(!qiraat.enabled)
+                        .accessibilityIdentifier("qiraat-show-subcategory-toggle")
                         NavigationLink {
                             UsulCategoriesSettingsView(qiraat: qiraat, library: library, language: appLanguage)
                         } label: {

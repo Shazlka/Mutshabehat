@@ -10,6 +10,7 @@ struct VariantCard: View {
     let filter: QiraatFilter
 
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @AppStorage(QiraatPreferences.showSubcategoryKey) private var showsSubcategory = false
 
     /// The reading follows the title metric up to `maxWordSize`.
     static let maxWordSize: CGFloat = 72
@@ -18,7 +19,7 @@ struct VariantCard: View {
         let performanceOnly = variant.isPerformanceOnly && variant.performanceNote != nil
         let text = variant.uthmaniText ?? (performanceOnly ? variant.hafsText : variant.variantText)
         VStack(alignment: .leading, spacing: 12) {
-            QiraatClassificationLine(variant: variant)
+            if showsSubcategory { QiraatClassificationLine(variant: variant) }
             QiraatMatrixRow {
                 wordColumn(text)
             } readers: {
