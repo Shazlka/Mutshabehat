@@ -165,59 +165,100 @@ function PreviewCard({ row }: { row: ReviewRow }) {
   )
 }
 
-/**
- * The word's card as the app's word sheet shows it: the word and its place, one card per فرش وجه
- * («الفرش»), one per أصول rule («الأصول»), each with the readers grouped by what they do. It is built
- * from the saved faces, so the reviewer can check what a reader of the app will actually see.
- */
-export default function WordPreviewCard({ wordText, ayahKey, rows, unsavedEdits }: Props) {
+function PreviewBody({ wordText, ayahKey, rows, unsavedEdits }: Props) {
   const live = useMemo(() => rows.filter((r) => !r.deleted), [rows])
   const farsh = live.filter((r) => r.kind === 'farsh')
   const usul = live.filter((r) => r.kind === 'usul')
 
   return (
+    <div className="space-y-2 p-2.5" data-word-preview>
+      <div className="flex items-baseline justify-between border-b border-[var(--color-border)] pb-1.5">
+        <span className="font-quran text-3xl leading-none text-[var(--color-ink)]">{wordText ?? '—'}</span>
+        {ayahKey ? (
+          <span dir="ltr" className="text-xs font-bold text-[var(--color-ink-muted)]">
+            {ayahKey}
+          </span>
+        ) : null}
+      </div>
+      {unsavedEdits ? (
+        <p className="rounded bg-amber-50 px-2 py-1 text-[11px] font-bold text-amber-800">
+          تعديلات غير محفوظة — البطاقة تعرض المحفوظ فقط
+        </p>
+      ) : null}
+
+      {farsh.length > 0 ? (
+        <section className="space-y-2">
+          <h3 className="text-xs font-bold text-[var(--color-primary)]">الفرش</h3>
+          {farsh.map((row) => (
+            <PreviewCard key={row.entryId} row={row} />
+          ))}
+        </section>
+      ) : null}
+      {usul.length > 0 ? (
+        <section className="space-y-2">
+          <h3 className="text-xs font-bold text-[var(--color-primary)]">الأصول</h3>
+          {usul.map((row) => (
+            <PreviewCard key={row.entryId} row={row} />
+          ))}
+        </section>
+      ) : null}
+      {live.length === 0 ? (
+        <div className="py-4 text-center">
+          <p className="text-sm font-bold text-[var(--color-ink)]">لا خلاف في هذه الكلمة</p>
+          <p className="text-xs text-[var(--color-ink-muted)]">متفق عليها بين القراء العشرة ورواتهم</p>
+        </div>
+      ) : null}
+    </div>
+  )
+}
+
+/**
+ * The word's card as the app's word sheet shows it: the word and its place, one card per فرش وجه
+ * («الفرش»), one per أصول rule («الأصول»), each with the readers grouped by what they do. It is built
+ * from the saved faces, so the reviewer can check what a reader of the app will actually see.
+ * Inline (collapsible) version, used in the phone-width editor.
+ */
+export default function WordPreviewCard(props: Props) {
+  return (
     <details open className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-2)]/40" dir="rtl">
       <summary className="cursor-pointer select-none px-3 py-1.5 text-xs font-bold text-[var(--color-ink)]">
         معاينة البطاقة كما تظهر في التطبيق
       </summary>
-      <div className="space-y-2 p-2.5" data-word-preview>
-        <div className="flex items-baseline justify-between border-b border-[var(--color-border)] pb-1.5">
-          <span className="font-quran text-3xl leading-none text-[var(--color-ink)]">{wordText ?? '—'}</span>
-          {ayahKey ? (
-            <span dir="ltr" className="text-xs font-bold text-[var(--color-ink-muted)]">
-              {ayahKey}
-            </span>
-          ) : null}
-        </div>
-        {unsavedEdits ? (
-          <p className="rounded bg-amber-50 px-2 py-1 text-[11px] font-bold text-amber-800">
-            تعديلات غير محفوظة — البطاقة تعرض المحفوظ فقط
-          </p>
-        ) : null}
-
-        {farsh.length > 0 ? (
-          <section className="space-y-2">
-            <h3 className="text-xs font-bold text-[var(--color-primary)]">الفرش</h3>
-            {farsh.map((row) => (
-              <PreviewCard key={row.entryId} row={row} />
-            ))}
-          </section>
-        ) : null}
-        {usul.length > 0 ? (
-          <section className="space-y-2">
-            <h3 className="text-xs font-bold text-[var(--color-primary)]">الأصول</h3>
-            {usul.map((row) => (
-              <PreviewCard key={row.entryId} row={row} />
-            ))}
-          </section>
-        ) : null}
-        {live.length === 0 ? (
-          <div className="py-4 text-center">
-            <p className="text-sm font-bold text-[var(--color-ink)]">لا خلاف في هذه الكلمة</p>
-            <p className="text-xs text-[var(--color-ink-muted)]">متفق عليها بين القراء العشرة ورواتهم</p>
-          </div>
-        ) : null}
-      </div>
+      <PreviewBody {...props} />
     </details>
+  )
+}
+
+// An iPhone screen is 390 × 844 points. The card is laid out at exactly that size and scaled down, so
+// the reviewer sees the line breaks and sizes the app will have, in a small frame.
+const PHONE_W = 390
+const PHONE_H = 844
+const BEZEL = 6
+
+/** The same card inside a small iPhone-shaped frame (390 × 844, scaled), for beside the Mushaf page. */
+export function WordPreviewPhone({ scale = 0.72, ...props }: Props & { scale?: number }) {
+  const width = PHONE_W * scale + BEZEL * 2
+  const height = PHONE_H * scale + BEZEL * 2
+  return (
+    <div
+      dir="rtl"
+      className="shrink-0 overflow-hidden rounded-[28px] border-neutral-800 bg-[var(--color-paper)] shadow-md"
+      style={{ width, height, borderWidth: BEZEL, borderStyle: 'solid' }}
+      aria-label="معاينة البطاقة كما تظهر في التطبيق"
+      data-phone-preview
+    >
+      <div
+        className="flex flex-col"
+        style={{ width: PHONE_W, height: PHONE_H, transform: `scale(${scale})`, transformOrigin: 'top right' }}
+      >
+        <div className="relative flex h-11 shrink-0 items-center justify-center border-b border-[var(--color-border)] bg-[var(--color-surface)]">
+          <span className="absolute top-1.5 h-1.5 w-20 rounded-full bg-neutral-300" aria-hidden />
+          <span className="mt-3 text-sm font-bold text-[var(--color-ink)]">القراءات العشر</span>
+        </div>
+        <div className="min-h-0 flex-1 overflow-y-auto">
+          <PreviewBody {...props} />
+        </div>
+      </div>
+    </div>
   )
 }

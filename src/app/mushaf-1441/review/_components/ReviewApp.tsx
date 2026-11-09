@@ -26,6 +26,7 @@ import HistoryPanel from './HistoryPanel'
 import ReviewMushafPane from './ReviewMushafPane'
 import ReviewStatsBar from './ReviewStatsBar'
 import ReviewEditorPane, { type WordMeta } from './ReviewEditorPane'
+import { WordPreviewPhone } from './WordPreviewCard'
 import type { SaveRowOptions } from './useReviewEditorDraft'
 import ReviewNav from './ReviewNav'
 import { filterReviewRows, type KindFilter, type StatusFilter } from './statusMeta'
@@ -187,8 +188,10 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
   const pageNumberRef = useRef(pageNumber)
   // Whether the desktop editor holds edits that are not saved yet (reported by ReviewEditorPane).
   const draftDirtyRef = useRef(false)
+  const [draftDirty, setDraftDirty] = useState(false)
   const handleDraftDirtyChange = useCallback((dirty: boolean) => {
     draftDirtyRef.current = dirty
+    setDraftDirty(dirty)
   }, [])
   const confirmDiscardDraft = useCallback(
     () =>
@@ -1173,6 +1176,20 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
                   spanEndKey={spanEndKey}
                 />
                 <ReviewStatsBar pageStats={page.stats} overview={overview} />
+              </div>
+
+              {/* The word's card as the iPhone app shows it (390 × 844, scaled), beside the Mushaf page. */}
+              <div className="hidden shrink-0 flex-col items-center overflow-y-auto border-l border-[var(--color-border)] p-2 lg:flex">
+                <WordPreviewPhone
+                  wordText={selectedWordMeta?.text ?? null}
+                  ayahKey={selectedWordMeta ? `${selectedWordMeta.surah}:${selectedWordMeta.ayah}` : null}
+                  rows={
+                    selectedWordKey
+                      ? page.rows.filter((r) => !r.deleted && r.startKey <= selectedWordKey && selectedWordKey <= r.endKey)
+                      : []
+                  }
+                  unsavedEdits={draftDirty}
+                />
               </div>
 
               {/* LEFT PANE: Compact High-Speed Single-Word Editor (75% width) */}

@@ -24,7 +24,6 @@ import { normalizeArabic } from '@/lib/arabic'
 import { describeNarratorGroup } from './narratorDisplay'
 import { NarratorBadges } from './NarratorBadges'
 import SuggestionsPanel from './SuggestionsPanel'
-import WordPreviewCard from './WordPreviewCard'
 import { labelForRow } from './facesSummary'
 import ReferencePanel from './ReferencePanel'
 import { planApplyReferenceGroup, type ReferenceSourceId } from '../_lib/referenceApply'
@@ -1193,16 +1192,6 @@ export default function ReviewEditorPane({
           </div>
         </div>
       )}
-
-      {/* The word's card as the app shows it, built from the saved faces, to check the data. */}
-      {selectedWordKey && selectedWordMeta ? (
-        <WordPreviewCard
-          wordText={selectedWordMeta.text}
-          ayahKey={`${selectedWordMeta.surah}:${selectedWordMeta.ayah}`}
-          rows={page.rows.filter((r) => !r.deleted && r.startKey <= selectedWordKey && selectedWordKey <= r.endKey)}
-          unsavedEdits={isDirty}
-        />
-      ) : null}
 
       {/* Learned suggestions from previously approved entries: one click adds an unreviewed وجه. */}
       {!spanEndKey ? (
