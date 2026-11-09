@@ -20,7 +20,7 @@ type Props = {
   hoveredRowId: string | null
   statusFilter?: StatusFilter
   kindFilter?: KindFilter
-  categoryFilter?: string | null
+  categoryFilter?: readonly string[] | string | null
   onSelectWord(key: string, wordMeta: WordMeta, extend?: boolean): void
   onHoverWord(rowIds: string[] | null): void
   onGoToPage(page: number): void

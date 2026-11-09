@@ -34,11 +34,13 @@ type Props = {
   onStatusFilterChange?(filter: StatusFilter): void
   kindFilter?: KindFilter
   onKindFilterChange?(kind: KindFilter): void
-  categoryFilter?: string | null
-  onCategoryFilterChange?(code: string | null): void
+  categoryFilter?: readonly string[]
+  onCategoryFilterChange?(codes: string[]): void
   onGoToPage(page: number): void
   onToggleHistory(): void
 }
+
+const NO_CATEGORIES: readonly string[] = []
 
 function findNextPageWith(overview: ReviewOverview | null, current: number, key: 'flagged' | 'unreviewed'): number | null {
   if (!overview) return null
@@ -58,7 +60,7 @@ export default function ReviewNav({
   onStatusFilterChange,
   kindFilter = 'all',
   onKindFilterChange,
-  categoryFilter = null,
+  categoryFilter = NO_CATEGORIES,
   onCategoryFilterChange,
   onGoToPage,
   onToggleHistory,
@@ -220,16 +222,16 @@ export default function ReviewNav({
       {onCategoryFilterChange && kindFilter === 'usul' ? (
         <div
           role="group"
-          aria-label="تصفية أبواب الأصول"
+          aria-label="تصفية أبواب الأصول (يمكن اختيار أكثر من باب)"
           className="flex w-full flex-wrap items-center gap-1.5 border-t border-[var(--color-border)] pt-2"
         >
           <button
             type="button"
-            aria-pressed={categoryFilter === null}
-            onClick={() => onCategoryFilterChange(null)}
+            aria-pressed={categoryFilter.length === 0}
+            onClick={() => onCategoryFilterChange([])}
             className={cn(
               'min-h-7 rounded-full border px-3 text-xs font-bold transition-colors cursor-pointer',
-              categoryFilter === null
+              categoryFilter.length === 0
                 ? 'border-[var(--color-primary)] bg-[var(--color-primary)]/10 text-[var(--color-primary)]'
                 : 'border-[var(--color-border)] text-[var(--color-ink-soft)] hover:border-[var(--color-primary)]'
             )}
@@ -237,13 +239,15 @@ export default function ReviewNav({
             كل الأصول
           </button>
           {usulCategories.map((cat) => {
-            const active = categoryFilter === cat.code
+            const active = categoryFilter.includes(cat.code)
             return (
               <button
                 key={cat.code}
                 type="button"
                 aria-pressed={active}
-                onClick={() => onCategoryFilterChange(active ? null : cat.code)}
+                onClick={() =>
+                  onCategoryFilterChange(active ? categoryFilter.filter((c) => c !== cat.code) : [...categoryFilter, cat.code])
+                }
                 className={cn(
                   'min-h-7 rounded-full border px-3 text-xs font-bold transition-colors cursor-pointer',
                   active

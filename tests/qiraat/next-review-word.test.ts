@@ -3,6 +3,7 @@ import test from 'node:test'
 
 import { findNextReviewFace, findNextReviewWord } from '../../src/app/mushaf-1441/review/_lib/nextReviewWord'
 import type { ReviewPage, ReviewRow } from '../../src/app/mushaf-1441/review/_lib/types'
+import { filterReviewRows, usulCategoriesOnPage } from '../../src/app/mushaf-1441/review/_components/statusMeta'
 import { row } from './_helpers/review-row'
 
 const key = (w: number) => `002:002:${String(w).padStart(3, '0')}`
@@ -152,4 +153,26 @@ test('an auto-approved word is not skipped when moving to the next word, under a
   assert.equal(findNextReviewWord(page, key(2), ALL)?.key, key(4))
   assert.equal(findNextReviewWord(page, key(2), { ...ALL, kind: 'usul' })?.key, key(5))
   assert.equal(findNextReviewWord(page, key(4), { ...ALL, kind: 'farsh' })?.key, key(2))
+})
+
+test('several أصول categories can be ticked at once: rows of any of them are kept, the rest are not', () => {
+  const rows = [
+    at(2, { kind: 'usul', categoryCode: 'IDGHAM_KABIR' }),
+    at(4, { kind: 'usul', categoryCode: 'MADD_BADAL' }),
+    at(6, { kind: 'usul', categoryCode: 'SAKT' }),
+    at(7),
+  ]
+  const kept = filterReviewRows(rows, 'all', 'usul', ['IDGHAM_KABIR', 'SAKT']).map((r) => r.categoryCode)
+  assert.deepEqual(kept, ['IDGHAM_KABIR', 'SAKT'])
+  assert.equal(filterReviewRows(rows, 'all', 'usul', []).length, 3, 'none ticked = every أصول category')
+  assert.equal(filterReviewRows(rows, 'all', 'usul', 'MADD_BADAL').length, 1, 'a single code still works')
+  const page = pageWith(rows)
+  const filters = { ...ALL, kind: 'usul', category: ['IDGHAM_KABIR', 'SAKT'] } as const
+  assert.equal(findNextReviewWord(page, key(2), filters)?.key, key(6), 'the next word skips an unticked category')
+})
+
+test('a ticked category with no row on this page stays listed so it can be unticked', () => {
+  const rows = [at(2, { kind: 'usul', categoryCode: 'IDGHAM_KABIR', categoryNameAr: 'الإدغام الكبير' })]
+  const codes = usulCategoriesOnPage(rows, 'all', ['IDGHAM_KABIR', 'MADD_BADAL']).map((c) => c.code)
+  assert.deepEqual(codes.sort(), ['IDGHAM_KABIR', 'MADD_BADAL'])
 })

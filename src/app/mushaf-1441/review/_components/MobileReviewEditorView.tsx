@@ -19,6 +19,7 @@ import { useReviewEditorDraft, type SaveRowOptions, type WordMeta } from './useR
 import { NarratorBadges } from './NarratorBadges'
 import { labelForRow } from './facesSummary'
 import SuggestionsPanel from './SuggestionsPanel'
+import WordPreviewCard from './WordPreviewCard'
 import { cn } from '@/lib/cn'
 
 type Props = {
@@ -264,6 +265,7 @@ export default function MobileReviewEditorView({
                 <button
                   type="button"
                   onClick={() => (isDirty ? void handleSaveExisting({ approve: true }) : onConfirmRow(selectedRow))}
+                  data-review-approve
                   title={
                     isDirty
                       ? 'يحفظ تعديلاتك الحالية ثم يعتمد الوجه'
@@ -845,6 +847,15 @@ export default function MobileReviewEditorView({
             disabled={isSaving}
           />
         </section>
+
+        {selectedWordKey && selectedWordMeta ? (
+          <WordPreviewCard
+            wordText={selectedWordMeta.text}
+            ayahKey={`${selectedWordMeta.surah}:${selectedWordMeta.ayah}`}
+            rows={page.rows.filter((r) => !r.deleted && r.startKey <= selectedWordKey && selectedWordKey <= r.endKey)}
+            unsavedEdits={isDirty}
+          />
+        ) : null}
 
         {!spanEndKey ? (
           <SuggestionsPanel word={selectedWordMeta} activeRows={activeRowsForWord} onAdd={onCreateNewEntry} />

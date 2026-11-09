@@ -48,6 +48,15 @@ section below **and** the root
 
 # Changelog
 
+## 2026-11-09 — Review editor: several أبواب الأصول at once, Alt+Enter approve-and-advance, app-style word preview
+- **Owner request:** filter by more than one أصول باب, «اعتماد» moves to the next unapproved word, Alt+Enter approves and moves on, and a preview of the word's card as the mobile app shows it.
+- **Filter:** the أصول باب chips in the review header are now multi-select (tick any number; «كل الأصول» clears). `filterReviewRows`, `usulCategoriesOnPage` and the next-word search take a list of codes (a single code still works); a ticked باب with no row on the page stays listed so it can be unticked.
+- **Approve:** «اعتماد» already went to the next unapproved وجه/word under the active filter; when nothing is left on the page and no filter is on, it now carries on to the next page that still has unreviewed or flagged words.
+- **Alt+Enter:** presses the editor's approve button (so «حفظ واعتماد» when edits are unsaved, plain «اعتماد» otherwise), then the same advance runs. Works while typing in a field (desktop and mobile editor; buttons carry `data-review-approve`).
+- **Preview:** new `WordPreviewCard` (desktop pane and mobile editor): the word and its ayah, then «الفرش» and «الأصول» cards built from the saved faces the way the app's word sheet is laid out (classification crumbs, the reading in the Quran font, description/performance note, readers grouped by action with wajh and الخلاف, ruling text, notes, وصل/وقف condition, approval status). Faces with no readers or hidden from the Mushaf are flagged on the card; a note shows when edits are unsaved.
+- **Verification:** typecheck, eslint clean on touched files, `test:qiraat:review` 209/209 (2 new filter tests). The React flows (chips, Alt+Enter, card) were not exercised in a browser against the real database. **DB migration:** none.
+- **Files:** `review/_components/{ReviewApp,ReviewNav,ReviewEditorPane,MobileReviewEditorView,WordPreviewCard,statusMeta,ReviewMushafPane,MobileReviewMushafView}.tsx`, `review/_lib/nextReviewWord.ts`, `tests/qiraat/next-review-word.test.ts`.
+
 ## 2026-11-04 — Qiraat UX audit fixes: contrast, tabs, touch targets, tokens, chunked lists (branch web/qiraat-audit-fixes)
 - **Source:** `/impeccable audit` of the Qiraat sheets (13/20). Measured again after the fixes in the browser: no text under 4.5:1 and no control under 24 px in the hub row, the usul prefs panel or any of the nine sheets (the three that remained were in the word card and are fixed too); on a touch emulation every control in the sheets is at least 44 px.
 - **Contrast (colorize):** `--qx-muted` replaces the reader's `--mushaf-muted` (3.67:1) for text in the new sheets; sync chip, compare verdict and face badge use `--qx-ok/info/warn/diff/face-*` pairs that reach 4.5:1; authority pills and ruling badges pick white or near-black text per colour (`readableTextOn`), and family-coloured text is darkened only as far as needed (`readableInkOn`). Tests in `contrast.test.ts` check every reader, narrator and أصول colour and the CSS tokens.

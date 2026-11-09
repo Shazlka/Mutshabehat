@@ -36,7 +36,7 @@ type Props = {
   hoveredRowId: string | null
   statusFilter?: StatusFilter
   kindFilter?: KindFilter
-  categoryFilter?: string | null
+  categoryFilter?: readonly string[] | string | null
   // `extend` is true on a Ctrl/Cmd-click (desktop) -- or, on mobile, when `extendNextSelection`
   // ("ربط بالكلمة التالية") is armed -- meaning "extend the current selection into a span
   // ending at this word" rather than "select this word instead".

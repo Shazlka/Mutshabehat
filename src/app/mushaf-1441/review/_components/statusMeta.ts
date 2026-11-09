@@ -18,18 +18,27 @@ export type KindFilter = 'all' | 'farsh' | 'usul'
 
 // Shared between review workstation (renders the filtered list) and ReviewApp (keyboard navigation
 // needs the exact same order/membership shown).
+// One أصول category code, several (the reviewer ticked more than one باب), or none (= all).
+export type CategoryFilter = string | readonly string[] | null
+
+export function categoryCodes(filter: CategoryFilter | undefined): readonly string[] {
+  if (!filter) return []
+  return typeof filter === 'string' ? [filter] : filter
+}
+
 export function filterReviewRows(
   rows: ReviewRow[],
   statusFilter: StatusFilter,
   kindFilter: KindFilter,
-  // Only meaningful with kindFilter === 'usul': keep one أصول category (its code).
-  categoryFilter: string | null = null
+  // Only meaningful with kindFilter === 'usul': keep rows of any of these أصول categories.
+  categoryFilter: CategoryFilter = null
 ): ReviewRow[] {
+  const codes = categoryCodes(categoryFilter)
   return rows.filter((row) => {
     if (statusFilter === 'deleted') return row.deleted
     if (row.deleted) return false
     if (kindFilter !== 'all' && row.kind !== kindFilter) return false
-    if (kindFilter === 'usul' && categoryFilter && row.categoryCode !== categoryFilter) return false
+    if (kindFilter === 'usul' && codes.length > 0 && !(row.categoryCode && codes.includes(row.categoryCode))) return false
     if (statusFilter === 'all') return true
     if (statusFilter === 'manual') return approvalKind(row) === 'manual'
     if (statusFilter === 'auto') return approvalKind(row) === 'auto'
@@ -46,7 +55,7 @@ export type UsulCategoryOption = { code: string; nameAr: string; count: number }
 export function usulCategoriesOnPage(
   rows: ReviewRow[],
   statusFilter: StatusFilter,
-  keep: string | null = null
+  keep: CategoryFilter = null
 ): UsulCategoryOption[] {
   const byCode = new Map<string, UsulCategoryOption>()
   for (const row of filterReviewRows(rows, statusFilter, 'usul')) {
@@ -55,9 +64,10 @@ export function usulCategoriesOnPage(
     if (entry) entry.count += 1
     else byCode.set(row.categoryCode, { code: row.categoryCode, nameAr: row.categoryNameAr ?? row.categoryCode, count: 1 })
   }
-  if (keep && !byCode.has(keep)) {
-    const named = rows.find((row) => row.categoryCode === keep)
-    byCode.set(keep, { code: keep, nameAr: named?.categoryNameAr ?? keep, count: 0 })
+  for (const code of categoryCodes(keep)) {
+    if (byCode.has(code)) continue
+    const named = rows.find((row) => row.categoryCode === code)
+    byCode.set(code, { code, nameAr: named?.categoryNameAr ?? code, count: 0 })
   }
   return [...byCode.values()].sort((a, b) => b.count - a.count || a.nameAr.localeCompare(b.nameAr, 'ar'))
 }

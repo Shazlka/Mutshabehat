@@ -1,13 +1,13 @@
 // Which word «اعتماد» (and mobile «حفظ والتالي») moves to next. Pure so it can be tested.
 import type { ReviewPage, ReviewRow } from './types'
 import type { WordMeta } from '../_components/ReviewEditorPane'
-import { approvalKind, filterReviewRows, type KindFilter, type StatusFilter } from '../_components/statusMeta'
+import { approvalKind, filterReviewRows, type CategoryFilter, type KindFilter, type StatusFilter } from '../_components/statusMeta'
 
 // A face is done only once a person approved it. «معتمد آليًا» (auto-approved by the import) still
 // has to be approved by hand, so it counts as still to review, like unreviewed and flagged ones.
 export const needsManualApproval = (r: ReviewRow) => !r.deleted && approvalKind(r) !== 'manual'
 
-export type ReviewFilters = { status: StatusFilter; kind: KindFilter; category: string | null }
+export type ReviewFilters = { status: StatusFilter; kind: KindFilter; category: CategoryFilter }
 
 // `filters` are the ones the reviewer has on (status, فرش/أصول, أصول category): the next word is
 // always one that has a row they can see under them. With no filter on, any word may follow.

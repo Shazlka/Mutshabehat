@@ -175,11 +175,11 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
   const [overview, setOverview] = useState<ReviewOverview | null>(null)
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all')
   const [kindFilter, setKindFilterState] = useState<KindFilter>('all')
-  // An أصول category code; only applies while kindFilter is 'usul'.
-  const [categoryFilter, setCategoryFilter] = useState<string | null>(null)
+  // The أصول category codes the reviewer ticked (none = all); only applies while kindFilter is 'usul'.
+  const [categoryFilter, setCategoryFilter] = useState<string[]>([])
   const setKindFilter = useCallback((kind: KindFilter) => {
     setKindFilterState(kind)
-    setCategoryFilter(null)
+    setCategoryFilter([])
   }, [])
 
   // Latest page/pageNumber for background save jobs, which outlive the render that started them.
@@ -627,6 +627,19 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
         setSaveMessage('تم الاعتماد، والانتقال للكلمة التالية ✓')
       } else {
         const filterOn = statusFilter !== 'all' || kindFilter !== 'all'
+        // Nothing left on this page: with no filter on, carry on to the next page that still has
+        // unreviewed words (the overview counts ignore the filters, so only then).
+        const nextPage = filterOn
+          ? undefined
+          : [...(overview?.pages ?? [])]
+              .sort((a, b) => a.page - b.page)
+              .find((entry) => entry.page > current.page && entry.unreviewed + entry.flagged > 0)
+        if (nextPage) {
+          goToPage(nextPage.page)
+          setSaveMessage(`تم الاعتماد، والانتقال إلى الصفحة ${nextPage.page} ✓`)
+          setTimeout(() => setSaveMessage(null), 3000)
+          return
+        }
         setSaveMessage(
           filterOn
             ? 'تم الاعتماد — لا توجد كلمات أخرى مطابقة للتصفية في هذه الصفحة ✓'
@@ -635,7 +648,7 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
       }
       setTimeout(() => setSaveMessage(null), 3000)
     },
-    [handleSelectWord, statusFilter, kindFilter, categoryFilter]
+    [handleSelectWord, goToPage, overview, statusFilter, kindFilter, categoryFilter]
   )
 
   // Browser history popstate handler (for mobile Back button)
@@ -1042,6 +1055,15 @@ export default function ReviewApp({ initialPage }: { initialPage: number }) {
   // Keyboard shortcuts
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
+      // Alt+Enter: «اعتماد» (or «حفظ واعتماد» when edits are unsaved) and on to the next word. It
+      // presses the editor's own approve button so both go through exactly the same path, and it
+      // works while typing in a field, since the draft already lives in state.
+      if (event.altKey && !event.ctrlKey && !event.metaKey && event.key === 'Enter') {
+        event.preventDefault()
+        if (event.repeat) return
+        document.querySelector<HTMLButtonElement>('[data-review-approve]:not(:disabled)')?.click()
+        return
+      }
       if (isEditableTarget(event.target)) return
       if (event.metaKey || event.ctrlKey || event.altKey) return
 
