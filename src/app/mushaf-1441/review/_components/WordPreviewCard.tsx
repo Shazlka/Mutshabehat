@@ -1,12 +1,28 @@
 'use client'
 
-import { useMemo } from 'react'
+import { useMemo, type CSSProperties } from 'react'
+import { normalizeArabic } from '@/lib/arabic'
+import { categoryColor } from '../../../../../packages/qiraat-core/categoryColors'
+import { QIRAAT_NARRATORS } from '../../../../../packages/qiraat-core/narrators'
+import { QIRAAT_READERS } from '../../../../../packages/qiraat-core/readers'
 import type { ReviewNarrator, ReviewRow } from '../_lib/types'
 import { cn } from '@/lib/cn'
 import { CANONICAL_VARIANT_TYPES, normalizeVariantType } from './FarshFields'
-import { describeNarratorGroup } from './narratorDisplay'
-import { NarratorBadges } from './NarratorBadges'
 import { approvalKind } from './statusMeta'
+
+// The word sheet of the iPhone app (QiraatSheet, VariantCard, RulingCard, QiraatPills), in the same
+// colours, shapes and order: the word and its ayah, «الفرش» then «الأصول», one card per وجه with the
+// reader pills and what each group does. Light appearance. Built from the SAVED faces.
+
+const INK = '#171717'
+const BROWN = '#59461D'
+const CARD_FILL = '#FFFEFA'
+const CARD_STROKE = '#D9C99B'
+const VARIANT_INK = '#7A1F1A'
+const BADGE_INK = '#6B4A00'
+const BADGE_FILL = '#F1E2B6'
+const SECONDARY = '#6B6B6B'
+const UNKNOWN_PILL = '#8A7C5C'
 
 type Props = {
   /** The word as the Mushaf prints it, and its "surah:ayah" place. */
@@ -18,9 +34,125 @@ type Props = {
   unsavedEdits?: boolean
 }
 
+// ---------- pills: «الإمام X» for a whole reader, «الراوي Y» for a lone narrator ----------
+
+type Pill = { key: string; name: string; color: string; narrator: boolean }
+
+function rollupPills(narrators: readonly ReviewNarrator[]): Pill[] {
+  const ids = new Set(narrators.map((n) => n.id))
+  const pills: Pill[] = []
+  const known = new Set<string>()
+  for (const reader of [...QIRAAT_READERS].sort((a, b) => a.sortOrder - b.sortOrder)) {
+    const all = QIRAAT_NARRATORS.filter((n) => n.readerId === reader.id)
+    const present = all.filter((n) => ids.has(n.id))
+    all.forEach((n) => known.add(n.id))
+    if (present.length === 0) continue
+    if (present.length === all.length) {
+      pills.push({ key: reader.id, name: `الإمام ${reader.nameArShort}`, color: reader.color, narrator: false })
+    } else {
+      for (const n of present) pills.push({ key: n.id, name: `الراوي ${n.nameAr}`, color: n.color, narrator: true })
+    }
+  }
+  for (const n of narrators) {
+    if (!known.has(n.id)) pills.push({ key: n.id, name: n.nameAr || n.id, color: UNKNOWN_PILL, narrator: false })
+  }
+  return pills
+}
+
+// The first letter of the name, after the label and the article, so the pill says who without colour.
+function initialOf(name: string): string {
+  let base = name
+  for (const prefix of ['الإمام ', 'الراوي ']) {
+    if (base.startsWith(prefix)) {
+      base = base.slice(prefix.length)
+      break
+    }
+  }
+  if (base.startsWith('ال') && base.length > 3) base = base.slice(2)
+  return base.charAt(0) || '؟'
+}
+
+function onFill(hex: string): string {
+  const n = Number.parseInt(hex.replace('#', ''), 16)
+  const lin = (c: number) => {
+    const v = c / 255
+    return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4
+  }
+  const lum = 0.2126 * lin((n >> 16) & 255) + 0.7152 * lin((n >> 8) & 255) + 0.0722 * lin(n & 255)
+  return lum > 0.4 ? '#16110A' : '#FFFFFF'
+}
+
+function PillRow({ pills }: { pills: Pill[] }) {
+  return (
+    <div className="flex flex-wrap gap-1.5">
+      {pills.map((pill) => (
+        <span
+          key={pill.key}
+          className="inline-flex items-center gap-1.5 rounded-full py-[3px] pe-[9px] ps-1"
+          style={{
+            background: `${pill.color}1A`,
+            border: `1px ${pill.narrator ? 'dashed' : 'solid'} ${pill.color}8C`,
+          }}
+        >
+          <span
+            aria-hidden
+            className="flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold"
+            style={{ background: pill.color, color: onFill(pill.color) }}
+          >
+            {initialOf(pill.name)}
+          </span>
+          <span className="text-xs font-bold" style={{ color: INK }}>
+            {pill.name}
+          </span>
+        </span>
+      ))}
+    </div>
+  )
+}
+
+// ---------- small pieces ----------
+
+function Badge({ children, fill = BADGE_FILL, ink = BADGE_INK }: { children: React.ReactNode; fill?: string; ink?: string }) {
+  return (
+    <span className="rounded-full px-2 py-[3px] text-[11px] font-bold" style={{ background: fill, color: ink }}>
+      {children}
+    </span>
+  )
+}
+
+function Dabt({ note }: { note: string }) {
+  return (
+    <>
+      {note.includes('تسهيل') ? (
+        <span aria-label="علامة ضبط التسهيل" className="inline-block h-[7px] w-[7px] rounded-full" style={{ background: INK }} />
+      ) : null}
+      {note.includes('سكت') ? (
+        <span aria-label="علامة ضبط السكت" className="text-[11px] font-bold" style={{ color: SECONDARY }}>
+          سـ
+        </span>
+      ) : null}
+    </>
+  )
+}
+
+const fold = (text: string | null | undefined) => normalizeArabic(text ?? '').replace(/\s+/g, ' ').trim()
+
+// The action is shown once under the pills, unless it only repeats the category.
+function showAction(action: string, categoryAr: string): boolean {
+  const a = fold(action)
+  return a !== '' && a !== fold(categoryAr)
+}
+
+// The ruling's general text only when it says something the badge and the actions do not.
+function distinctRulingText(text: string | null | undefined, categoryAr: string, actions: string[]): string | null {
+  const t = fold(text)
+  if (!t) return null
+  const others = [fold(categoryAr), ...actions.map(fold)].filter(Boolean)
+  return others.some((o) => o === t || o.includes(t) || t.includes(o)) ? null : (text ?? '').trim()
+}
+
 type ActionGroup = { action: string; narrators: ReviewNarrator[] }
 
-// One group per action, in the order the actions first appear, like the app's «القرّاء والرواة» lines.
 function groupByAction(narrators: readonly ReviewNarrator[]): ActionGroup[] {
   const groups: ActionGroup[] = []
   for (const narrator of narrators) {
@@ -37,64 +169,88 @@ function conditionLabel(row: ReviewRow): string | null {
   return row.appliesWaqf ? 'وقفًا فقط' : 'وصلًا فقط'
 }
 
-function subCategoryLabel(row: ReviewRow): string {
-  if (row.kind === 'usul') return row.subCategory?.trim() ?? ''
-  const normalized = normalizeVariantType(row.variantType)
-  return CANONICAL_VARIANT_TYPES.find((t) => t.dbEnum === normalized)?.label ?? (row.variantType?.trim() ?? '')
-}
-
-function ReaderGroups({ row }: { row: ReviewRow }) {
+function ReaderGroups({ row, categoryAr }: { row: ReviewRow; categoryAr: string }) {
   const groups = useMemo(() => groupByAction(row.narrators), [row.narrators])
   const showWajhs = row.narrators.some((n) => n.wajhOrder > 1)
+  const condition = conditionLabel(row)
   if (groups.length === 0) {
-    return <p className="text-[11px] font-bold text-red-700">لا قرّاء مسجّلون لهذا الوجه — لن يظهر في التطبيق</p>
+    return <p className="text-xs font-bold text-red-700">لا قرّاء مسجّلون لهذا الوجه — لن يظهر في التطبيق</p>
   }
   return (
-    <div className="space-y-1.5">
+    <>
       {groups.map((group) => {
-        const wajhs = [...new Set(group.narrators.map((n) => n.wajhOrder))].filter((w) => w > 1)
+        const wajhs = showWajhs ? [...new Set(group.narrators.map((n) => n.wajhOrder))].sort((a, b) => a - b) : []
         const notes = [...new Set(group.narrators.map((n) => n.wajhNote?.trim()).filter((n): n is string => !!n))]
+        const withAction = showAction(group.action, categoryAr)
         return (
-          <div key={group.action || '_'} className="space-y-0.5" data-preview-group>
-            <NarratorBadges items={describeNarratorGroup(group.narrators)} />
-            {group.action ? (
-              <p className="text-[12px] font-bold text-[var(--color-ink-soft)]">{group.action}</p>
-            ) : null}
-            {showWajhs && wajhs.length > 0 ? (
-              <p className="text-[11px] text-[var(--color-ink-muted)]">وجه {wajhs.join('، ')}</p>
+          <div key={group.action || '_'} className="space-y-1" data-preview-group>
+            <PillRow pills={rollupPills(group.narrators)} />
+            {withAction || condition || wajhs.length > 0 ? (
+              <div className="flex flex-wrap items-center gap-1">
+                {wajhs.map((n) => (
+                  <Badge key={n}>وجه {n}</Badge>
+                ))}
+                {withAction ? (
+                  <>
+                    <Dabt note={group.action} />
+                    <span className="text-xs font-bold" style={{ color: INK }}>
+                      {group.action}
+                    </span>
+                  </>
+                ) : null}
+                {condition ? (
+                  <span className="text-xs" style={{ color: SECONDARY }}>
+                    {withAction ? '— ' : ''}
+                    {condition}
+                  </span>
+                ) : null}
+              </div>
             ) : null}
             {notes.map((note) => (
-              <p key={note} className="text-[11px] text-[var(--color-ink-muted)]">
+              <p key={note} className="text-xs" style={{ color: SECONDARY }}>
                 الخلاف: {note}
               </p>
             ))}
           </div>
         )
       })}
-    </div>
+    </>
   )
 }
 
-function Crumbs({ parts }: { parts: string[] }) {
+function Classification({ segments, colored }: { segments: { text: string; color?: string }[]; colored?: boolean }) {
+  const parts = segments.filter((s) => s.text)
   return (
-    <div className="flex flex-wrap items-center gap-1 text-[11px] font-bold">
-      {parts
-        .filter(Boolean)
-        .flatMap((part, i) => [
-          i > 0 ? (
-            <span key={`s${i}`} aria-hidden className="text-[var(--color-ink-muted)]">
-              ›
-            </span>
-          ) : null,
-          <span key={part} className="rounded bg-[var(--color-surface-2)] px-1.5 py-0.5 text-[var(--color-ink-soft)]">
-            {part}
-          </span>,
-        ])}
+    <div className="flex flex-wrap items-center gap-[5px]" aria-label={parts.map((p) => p.text).join(' › ')}>
+      {parts.flatMap((part, i) => [
+        i > 0 ? (
+          <span key={`s${i}`} aria-hidden className="text-[11px] font-bold" style={{ color: SECONDARY }}>
+            ›
+          </span>
+        ) : null,
+        part.color && colored ? (
+          <Badge key={part.text} fill={part.color} ink={onFill(part.color)}>
+            {part.text}
+          </Badge>
+        ) : (
+          <Badge key={part.text}>{part.text}</Badge>
+        ),
+      ])}
     </div>
   )
 }
 
-function StatusChip({ row }: { row: ReviewRow }) {
+function subCategoryLabel(row: ReviewRow): string {
+  if (row.kind === 'usul') return row.subCategory?.trim() ?? ''
+  const normalized = normalizeVariantType(row.variantType)
+  return CANONICAL_VARIANT_TYPES.find((t) => t.dbEnum === normalized)?.label ?? (row.variantType?.trim() ?? '')
+}
+
+// ---------- cards ----------
+
+const cardBase = 'space-y-2 rounded-[10px] p-2.5'
+
+function ReviewAid({ row }: { row: ReviewRow }) {
   const kind = approvalKind(row)
   const [label, tone] =
     row.reviewStatus === 'flagged'
@@ -104,64 +260,127 @@ function StatusChip({ row }: { row: ReviewRow }) {
         : kind === 'auto'
           ? ['معتمد آليًا — يحتاج اعتمادًا يدويًا', 'bg-sky-100 text-sky-800']
           : ['غير معتمد بعد', 'bg-amber-100 text-amber-800']
-  return <span className={cn('rounded-full px-2 py-0.5 text-[11px] font-bold', tone)}>{label}</span>
+  return (
+    <div className="mt-1 flex flex-wrap items-center gap-1.5" data-review-aid>
+      <span className={cn('rounded-full px-2 py-0.5 text-[10px] font-bold', tone)}>{label}</span>
+      {row.hiddenFromMushaf ? (
+        <span className="text-[10px] font-bold" style={{ color: SECONDARY }}>
+          مخفي عن المصحف — لا يظهر في التطبيق
+        </span>
+      ) : null}
+    </div>
+  )
 }
 
-function PreviewCard({ row }: { row: ReviewRow }) {
-  const isUsul = row.kind === 'usul'
-  // What the app prints: the changed reading for a فرش, the word as the Mushaf has it for an أصل.
-  const text = isUsul
-    ? row.uthmaniText?.trim() || row.hafsText
-    : row.uthmaniText?.trim() || row.readingText?.trim() || row.hafsText
-  const condition = conditionLabel(row)
+function VariantCard({ row }: { row: ReviewRow }) {
   const description = row.description?.trim()
-  const performance = row.performanceNote?.trim()
-  const ruling = row.rulingText?.trim()
-  const notes = row.notes?.trim()
-  const spansWords = row.endKey !== row.startKey
-
+  const note = row.performanceNote?.trim()
+  const performanceOnly = !!note && (!row.readingText?.trim() || row.readingText.trim() === row.hafsText.trim())
+  const text = row.uthmaniText?.trim() || (performanceOnly ? row.hafsText : row.readingText?.trim() || row.hafsText)
+  const spans = row.endKey !== row.startKey
+  const label = note || subCategoryLabel(row)
   return (
-    <article
-      className={cn(
-        'space-y-2 rounded-[10px] border bg-[var(--color-surface)] p-2.5',
-        isUsul ? 'border-[var(--color-primary)]/60' : 'border-[var(--color-border)]',
-        row.hiddenFromMushaf && 'opacity-60'
-      )}
-      data-preview-card={row.kind}
-    >
-      <div className="flex flex-wrap items-center justify-between gap-1">
-        <Crumbs
-          parts={
-            isUsul
-              ? ['أصول القراءات', row.categoryNameAr?.trim() ?? '', subCategoryLabel(row)]
-              : ['فرش الحروف', subCategoryLabel(row)]
-          }
-        />
-        <div className="flex items-center gap-1">
-          {condition ? <span className="text-[11px] font-bold text-[var(--color-ink-muted)]">{condition}</span> : null}
-          <StatusChip row={row} />
+    <div className={row.hiddenFromMushaf ? 'opacity-60' : undefined}>
+      <article
+        className={cardBase}
+        style={{ background: CARD_FILL, border: `1px solid ${CARD_STROKE}` }}
+        data-preview-card="farsh"
+      >
+        <Classification segments={[{ text: 'فرش الحروف' }, { text: subCategoryLabel(row) }]} />
+        {spans ? (
+          <p className="text-[11px] font-bold" style={{ color: BROWN }}>
+            الكلمات محل الخلاف
+          </p>
+        ) : null}
+        <p className="text-center font-quran text-[40px] leading-snug" style={{ color: VARIANT_INK }} data-preview-text>
+          {text}
+        </p>
+        {description ? (
+          <p className="text-xs" style={{ color: BROWN }}>
+            {description}
+          </p>
+        ) : null}
+        {note && note !== description ? (
+          <div className="flex items-center gap-1">
+            <Dabt note={note} />
+            <span className="text-xs font-bold" style={{ color: SECONDARY }}>
+              {note}
+            </span>
+          </div>
+        ) : null}
+        <ReaderGroups row={row} categoryAr={label} />
+      </article>
+      <ReviewAid row={row} />
+    </div>
+  )
+}
+
+function RulingCard({ row }: { row: ReviewRow }) {
+  const color = categoryColor(row.categoryCode)
+  const categoryAr = row.categoryNameAr?.trim() ?? ''
+  const condition = conditionLabel(row)
+  const spans = row.endKey !== row.startKey
+  const notes = row.notes?.trim()
+  const distinct = distinctRulingText(
+    row.rulingText,
+    categoryAr,
+    row.narrators.map((n) => n.action ?? '')
+  )
+  const style: CSSProperties = {
+    background: `linear-gradient(${color}0F, ${color}0F), ${CARD_FILL}`,
+    border: `1px solid ${color}`,
+  }
+  return (
+    <div className={row.hiddenFromMushaf ? 'opacity-60' : undefined}>
+      <article className={cardBase} style={style} data-preview-card="usul">
+        <div className="flex items-baseline justify-between gap-2">
+          <Classification
+            colored
+            segments={[{ text: 'أصول القراءات' }, { text: categoryAr, color }, { text: row.subCategory?.trim() ?? '' }]}
+          />
+          {condition ? (
+            <span className="shrink-0 text-[10px] font-bold" style={{ color: SECONDARY }}>
+              {condition}
+            </span>
+          ) : null}
         </div>
-      </div>
+        {row.hafsText ? (
+          <div className="space-y-1 text-center">
+            {spans ? (
+              <p className="text-[11px] font-bold" style={{ color: BROWN }}>
+                الكلمات محل الخلاف
+              </p>
+            ) : null}
+            <p className="font-quran text-[40px] leading-snug" style={{ color }} data-preview-text>
+              {row.uthmaniText?.trim() || row.hafsText}
+            </p>
+            <p className="text-[10px] font-bold" style={{ color: SECONDARY }}>
+              تُقرأ هكذا
+            </p>
+          </div>
+        ) : null}
+        <ReaderGroups row={row} categoryAr={categoryAr} />
+        {distinct ? (
+          <p className="text-xs" style={{ color: BROWN }}>
+            {distinct}
+          </p>
+        ) : null}
+        {notes ? (
+          <p className="whitespace-pre-line text-xs" style={{ color: SECONDARY }}>
+            {notes}
+          </p>
+        ) : null}
+      </article>
+      <ReviewAid row={row} />
+    </div>
+  )
+}
 
-      {spansWords ? <p className="text-[11px] font-bold text-[var(--color-ink-soft)]">الكلمات محل الخلاف</p> : null}
-      <p className="text-center font-quran text-[34px] leading-snug text-[var(--color-ink)]" data-preview-text>
-        {text}
-      </p>
-      {isUsul ? <p className="text-center text-[11px] font-bold text-[var(--color-ink-muted)]">تُقرأ هكذا</p> : null}
-
-      {!isUsul && description ? <p className="text-[12px] text-[var(--color-ink-soft)]">{description}</p> : null}
-      {!isUsul && performance && performance !== description ? (
-        <p className="text-[12px] font-bold text-[var(--color-ink-muted)]">{performance}</p>
-      ) : null}
-
-      <ReaderGroups row={row} />
-
-      {isUsul && ruling ? <p className="text-[12px] text-[var(--color-ink-soft)]">{ruling}</p> : null}
-      {notes ? <p className="whitespace-pre-line text-[12px] text-[var(--color-ink-muted)]">{notes}</p> : null}
-      {row.hiddenFromMushaf ? (
-        <p className="text-[11px] font-bold text-[var(--color-ink-muted)]">مخفي عن المصحف — لا يظهر في التطبيق</p>
-      ) : null}
-    </article>
+function SectionHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <h3 className="pt-1 text-sm font-bold" style={{ color: BROWN }}>
+      {children}
+    </h3>
   )
 }
 
@@ -171,57 +390,63 @@ function PreviewBody({ wordText, ayahKey, rows, unsavedEdits }: Props) {
   const usul = live.filter((r) => r.kind === 'usul')
 
   return (
-    <div className="space-y-2 p-2.5" data-word-preview>
-      <div className="flex items-baseline justify-between border-b border-[var(--color-border)] pb-1.5">
-        <span className="font-quran text-3xl leading-none text-[var(--color-ink)]">{wordText ?? '—'}</span>
+    <div className="space-y-3 p-4" data-word-preview style={{ color: INK }}>
+      <div className="flex items-baseline justify-between border-b pb-2" style={{ borderColor: CARD_STROKE }}>
+        <span className="font-quran text-[34px] leading-none">{wordText ?? '—'}</span>
         {ayahKey ? (
-          <span dir="ltr" className="text-xs font-bold text-[var(--color-ink-muted)]">
+          <span dir="ltr" className="text-xs font-bold" style={{ color: SECONDARY }}>
             {ayahKey}
           </span>
         ) : null}
       </div>
       {unsavedEdits ? (
-        <p className="rounded bg-amber-50 px-2 py-1 text-[11px] font-bold text-amber-800">
+        <p className="rounded bg-amber-50 px-2 py-1 text-[11px] font-bold text-amber-800" data-review-aid>
           تعديلات غير محفوظة — البطاقة تعرض المحفوظ فقط
         </p>
       ) : null}
 
       {farsh.length > 0 ? (
-        <section className="space-y-2">
-          <h3 className="text-xs font-bold text-[var(--color-primary)]">الفرش</h3>
+        <section className="space-y-3">
+          <SectionHeading>الفرش</SectionHeading>
           {farsh.map((row) => (
-            <PreviewCard key={row.entryId} row={row} />
+            <VariantCard key={row.entryId} row={row} />
           ))}
         </section>
       ) : null}
       {usul.length > 0 ? (
-        <section className="space-y-2">
-          <h3 className="text-xs font-bold text-[var(--color-primary)]">الأصول</h3>
+        <section className="space-y-3">
+          <SectionHeading>الأصول</SectionHeading>
           {usul.map((row) => (
-            <PreviewCard key={row.entryId} row={row} />
+            <RulingCard key={row.entryId} row={row} />
           ))}
         </section>
       ) : null}
       {live.length === 0 ? (
-        <div className="py-4 text-center">
-          <p className="text-sm font-bold text-[var(--color-ink)]">لا خلاف في هذه الكلمة</p>
-          <p className="text-xs text-[var(--color-ink-muted)]">متفق عليها بين القراء العشرة ورواتهم</p>
+        <div className="space-y-1 py-8 text-center">
+          <div
+            aria-hidden
+            className="mx-auto flex h-10 w-10 items-center justify-center rounded-full border-2 text-xl"
+            style={{ color: BROWN, borderColor: BROWN }}
+          >
+            ✓
+          </div>
+          <p className="text-[17px] font-bold" style={{ color: BROWN }}>
+            لا خلاف في هذه الكلمة
+          </p>
+          <p className="text-sm" style={{ color: SECONDARY }}>
+            متفق عليها بين القراء العشرة ورواتهم
+          </p>
         </div>
       ) : null}
     </div>
   )
 }
 
-/**
- * The word's card as the app's word sheet shows it: the word and its place, one card per فرش وجه
- * («الفرش»), one per أصول rule («الأصول»), each with the readers grouped by what they do. It is built
- * from the saved faces, so the reviewer can check what a reader of the app will actually see.
- * Inline (collapsible) version, used in the phone-width editor.
- */
+/** Inline (collapsible) version, used in the phone-width editor. */
 export default function WordPreviewCard(props: Props) {
   return (
-    <details open className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-2)]/40" dir="rtl">
-      <summary className="cursor-pointer select-none px-3 py-1.5 text-xs font-bold text-[var(--color-ink)]">
+    <details open className="rounded-lg border" style={{ background: '#FFFDF6', borderColor: CARD_STROKE }} dir="rtl">
+      <summary className="cursor-pointer select-none px-3 py-1.5 text-xs font-bold" style={{ color: BROWN }}>
         معاينة البطاقة كما تظهر في التطبيق
       </summary>
       <PreviewBody {...props} />
@@ -235,15 +460,15 @@ const PHONE_W = 390
 const PHONE_H = 844
 const BEZEL = 6
 
-/** The same card inside a small iPhone-shaped frame (390 × 844, scaled), for beside the Mushaf page. */
+/** The same card as the app's sheet, inside a small iPhone-shaped frame (390 × 844, scaled). */
 export function WordPreviewPhone({ scale = 0.72, ...props }: Props & { scale?: number }) {
   const width = PHONE_W * scale + BEZEL * 2
   const height = PHONE_H * scale + BEZEL * 2
   return (
     <div
       dir="rtl"
-      className="shrink-0 overflow-hidden rounded-[28px] border-neutral-800 bg-[var(--color-paper)] shadow-md"
-      style={{ width, height, borderWidth: BEZEL, borderStyle: 'solid' }}
+      className="shrink-0 overflow-hidden rounded-[28px] shadow-md"
+      style={{ width, height, border: `${BEZEL}px solid #262626`, background: '#FFFDF6' }}
       aria-label="معاينة البطاقة كما تظهر في التطبيق"
       data-phone-preview
     >
@@ -251,9 +476,15 @@ export function WordPreviewPhone({ scale = 0.72, ...props }: Props & { scale?: n
         className="flex flex-col"
         style={{ width: PHONE_W, height: PHONE_H, transform: `scale(${scale})`, transformOrigin: 'top right' }}
       >
-        <div className="relative flex h-11 shrink-0 items-center justify-center border-b border-[var(--color-border)] bg-[var(--color-surface)]">
-          <span className="absolute top-1.5 h-1.5 w-20 rounded-full bg-neutral-300" aria-hidden />
-          <span className="mt-3 text-sm font-bold text-[var(--color-ink)]">القراءات العشر</span>
+        {/* The sheet's navigation bar: «إغلاق» on the leading side, the title centred. */}
+        <div className="relative flex h-12 shrink-0 items-center justify-center border-b" style={{ borderColor: CARD_STROKE }}>
+          <span className="absolute top-1.5 h-1 w-9 rounded-full bg-neutral-300" aria-hidden />
+          <span className="mt-2 text-[15px] font-semibold" style={{ color: INK }}>
+            القراءات العشر
+          </span>
+          <span className="absolute start-4 top-[22px] text-[15px]" style={{ color: BROWN }} aria-hidden>
+            إغلاق
+          </span>
         </div>
         <div className="min-h-0 flex-1 overflow-y-auto">
           <PreviewBody {...props} />
