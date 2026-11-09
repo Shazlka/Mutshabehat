@@ -291,7 +291,7 @@ struct ReaderTopBar: View {
             filterChipBody(name: name, vertical: vertical)
             .frame(maxWidth: vertical ? .infinity : 130)
             .fixedSize(horizontal: !vertical, vertical: true)
-            .accessibilityLabel(Text("القراءات العشر") + Text(verbatim: ": ") + Text(full))
+            .accessibilityLabel(Text("\(Text("القراءات العشر")): \(Text(full))"))
             .accessibilityHint("لتغيير القارئ أو الراوي")
             .accessibilityIdentifier("qiraat-filter-chip")
         }

@@ -383,6 +383,18 @@ struct UsulCategoriesSettingsView: View {
 
     var body: some View {
         Form {
+            if let categories, !categories.isEmpty {
+                Section {
+                    Toggle(isOn: Binding(
+                        get: { categories.contains { !qiraat.hiddenUsulCategories.contains($0.code) } },
+                        set: { qiraat.setAllUsul(categories.map(\.code), shown: $0) }
+                    )) {
+                        Text(isEnglish ? "All categories" : "كل الأبواب").fontWeight(.semibold)
+                    }
+                    .tint(.switchOn)
+                    .accessibilityIdentifier("qiraat-usul-toggle-all")
+                }
+            }
             Section {
                 if let categories {
                     if categories.isEmpty {

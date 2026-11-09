@@ -47,4 +47,26 @@ final class QiraatHideUsulTests: XCTestCase {
         prefs.setUsul("IMALAH_TAQLIL", shown: false)
         XCTAssertEqual(QiraatPreferences(defaults: defaults).hiddenUsulCategories, ["USUL_HA_SAKT", "IMALAH_TAQLIL"])
     }
+
+    func testOneSwitchHidesOrShowsEveryCategoryAtOnce() {
+        let defaults = freshDefaults()
+        let prefs = QiraatPreferences(defaults: defaults)
+        let all = ["USUL_SAKT", "IMALAH_TAQLIL", "USUL_MADD"]
+
+        prefs.setAllUsul(all, shown: false)
+        XCTAssertEqual(prefs.hiddenUsulCategories, Set(all))
+        XCTAssertEqual(QiraatPreferences(defaults: defaults).hiddenUsulCategories, Set(all), "kept on the device")
+
+        prefs.setAllUsul(all, shown: true)
+        XCTAssertTrue(prefs.hiddenUsulCategories.isEmpty)
+    }
+
+    func testTheAllSwitchLeavesCodesOutsideTheListAlone() {
+        let prefs = QiraatPreferences(defaults: freshDefaults())
+        prefs.setUsul("RETIRED_CODE", shown: false)
+
+        prefs.setAllUsul(["USUL_SAKT"], shown: false)
+        prefs.setAllUsul(["USUL_SAKT"], shown: true)
+        XCTAssertEqual(prefs.hiddenUsulCategories, ["RETIRED_CODE"])
+    }
 }

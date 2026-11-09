@@ -337,6 +337,52 @@ struct WeeklyStreakTrackerCard: View {
     }
 }
 
+// MARK: - Horizontal pan
+
+/// A UIKit pan that begins only when the finger moves mostly sideways. A vertical drag never starts it, so the
+/// surrounding scroll view keeps every vertical gesture to itself and is never left waiting on this row.
+struct HorizontalPanGesture: UIGestureRecognizerRepresentable {
+    /// Horizontal translation since the pan began.
+    let onChanged: (CGFloat) -> Void
+    /// Called once when the pan ends; `committed` is false when the system cancelled it.
+    let onEnded: (_ committed: Bool) -> Void
+
+    final class Coordinator: NSObject, UIGestureRecognizerDelegate {
+        func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+            guard let pan = gestureRecognizer as? UIPanGestureRecognizer else { return true }
+            let velocity = pan.velocity(in: pan.view)
+            return abs(velocity.x) > abs(velocity.y) * 1.5
+        }
+
+        func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                               shouldRecognizeSimultaneouslyWith other: UIGestureRecognizer) -> Bool {
+            true
+        }
+    }
+
+    func makeCoordinator(converter: CoordinateSpaceConverter) -> Coordinator { Coordinator() }
+
+    func makeUIGestureRecognizer(context: Context) -> UIPanGestureRecognizer {
+        let pan = UIPanGestureRecognizer()
+        pan.delegate = context.coordinator
+        pan.maximumNumberOfTouches = 1
+        return pan
+    }
+
+    func handleUIGestureRecognizerAction(_ recognizer: UIPanGestureRecognizer, context: Context) {
+        switch recognizer.state {
+        case .changed:
+            onChanged(recognizer.translation(in: recognizer.view).x)
+        case .ended:
+            onEnded(true)
+        case .cancelled, .failed:
+            onEnded(false)
+        default:
+            break
+        }
+    }
+}
+
 // MARK: - Swipeable Surah Progress Row Item
 
 struct SwipeableSurahProgressRow: View {
@@ -346,8 +392,6 @@ struct SwipeableSurahProgressRow: View {
 
     @State private var dragOffset: CGFloat = 0
     @State private var hasPassedThreshold: Bool = false
-    @State private var isHorizontalSwipe: Bool = false
-    @State private var isVerticalScroll: Bool = false
 
     private let actionThreshold: CGFloat = 75
 
@@ -388,71 +432,36 @@ struct SwipeableSurahProgressRow: View {
             SurahProgressItemRow(progress: progress)
                 .offset(x: dragOffset)
                 .contentShape(Rectangle())
-                .simultaneousGesture(
-                    DragGesture(minimumDistance: 15)
-                        .onChanged { value in
-                            if isVerticalScroll { return }
-
-                            let h = abs(value.translation.width)
-                            let v = abs(value.translation.height)
-
-                            // Lock in direction once moved enough: let vertical scroll freely
-                            if !isHorizontalSwipe {
-                                if v > 8 && v >= h {
-                                    // Definite vertical scroll -> lock out horizontal swipe for this gesture
-                                    isVerticalScroll = true
-                                    return
-                                }
-                                if h > 15 && h > v * 1.5 {
-                                    isHorizontalSwipe = true
-                                } else {
-                                    return
-                                }
-                            }
-
-                            guard isHorizontalSwipe else { return }
-
-                            if value.translation.width > 0 {
-                                dragOffset = min(130, value.translation.width)
-                            } else {
-                                dragOffset = max(-130, value.translation.width)
-                            }
-
+                .gesture(
+                    HorizontalPanGesture(
+                        onChanged: { translation in
+                            dragOffset = min(130, max(-130, translation))
                             if abs(dragOffset) >= actionThreshold && !hasPassedThreshold {
                                 hasPassedThreshold = true
                                 UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                             } else if abs(dragOffset) < actionThreshold && hasPassedThreshold {
                                 hasPassedThreshold = false
                             }
-                        }
-                        .onEnded { value in
-                            let triggered = isHorizontalSwipe && abs(dragOffset) >= actionThreshold
-                            let wasHorizontal = isHorizontalSwipe || dragOffset != 0
-                            isHorizontalSwipe = false
-                            isVerticalScroll = false
-                            if wasHorizontal {
-                                withMotion {
-                                    dragOffset = 0
-                                    hasPassedThreshold = false
-                                }
-                            } else {
+                        },
+                        onEnded: { committed in
+                            let triggered = committed && abs(dragOffset) >= actionThreshold
+                            withMotion {
                                 dragOffset = 0
                                 hasPassedThreshold = false
                             }
                             if triggered {
                                 UINotificationFeedbackGenerator().notificationOccurred(.success)
-                                onToggleCompleted()
+                                // After the pan has fully ended, so the row is never re-rendered or removed mid-gesture.
+                                DispatchQueue.main.async { onToggleCompleted() }
                             }
                         }
+                    )
                 )
                 .onTapGesture {
                     if dragOffset == 0 {
                         onSelect()
                     } else {
-                        withMotion {
-                            dragOffset = 0
-                            isHorizontalSwipe = false
-                        }
+                        withMotion { dragOffset = 0 }
                     }
                 }
         }

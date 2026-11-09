@@ -240,8 +240,28 @@
         }
       }
     },
+    "%@: %@" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@: %2$@"
+          }
+        }
+      }
+    },
     "%@." : {
 
+    },
+    "%@%@%@" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@%3$@"
+          }
+        }
+      }
     },
     "%lld" : {
       "localizations" : {
@@ -1689,6 +1709,9 @@
         }
       }
     },
+    "Show sub-category on Farsh cards" : {
+
+    },
     "Slide" : {
       "localizations" : {
         "en" : {
@@ -2222,6 +2245,9 @@
           }
         }
       }
+    },
+    "إظهار التصنيف الفرعي في بطاقة الفرش" : {
+
     },
     "إظهار تفاصيل المجموعة" : {
       "extractionState" : "stale",

@@ -54,6 +54,11 @@ final class QiraatPreferences {
         if shown { hiddenUsulCategories.remove(code) } else { hiddenUsulCategories.insert(code) }
     }
 
+    /// Switches every باب in `codes` on or off at once; codes outside the list keep their state.
+    func setAllUsul(_ codes: [String], shown: Bool) {
+        if shown { hiddenUsulCategories.subtract(codes) } else { hiddenUsulCategories.formUnion(codes) }
+    }
+
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
         enabled = (defaults.string(forKey: Self.layerKey) ?? "qiraat") == "qiraat"

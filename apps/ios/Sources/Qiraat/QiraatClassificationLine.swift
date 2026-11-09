@@ -77,7 +77,7 @@ struct QiraatClassificationLine: View {
     /// The chips read in order, in the app's language where a chip follows it (VoiceOver and UI tests read this).
     private var accessibilityText: Text {
         chips.dropFirst().reduce(chips.first?.text ?? Text(verbatim: "")) { line, chip in
-            line + Text(verbatim: " › ") + chip.text
+            Text("\(line)\(Text(verbatim: " › "))\(chip.text)")
         }
     }
 }
