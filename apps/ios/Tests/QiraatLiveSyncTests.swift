@@ -80,7 +80,8 @@ final class QiraatLiveSyncTests: XCTestCase {
         XCTAssertEqual(store.page(8)?.variants.map(\.id), ["v-live"])
         let second = await sync.refresh(page: 8, store: store)
         XCTAssertEqual(second, .unchanged)
-        XCTAssertEqual(announcements.pages, [8], "only a real change redraws the page")
+        // The notification is app-wide: a late post from another test (another page) must not count.
+        XCTAssertEqual(announcements.pages.filter { $0 == 8 }, [8], "only a real change redraws the page")
     }
 
     private func pageEight(variants count: Int) -> String {

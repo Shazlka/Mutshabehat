@@ -42,7 +42,7 @@ final class MemorizationStore {
     }
 
     init(database: MemorizationDatabase, index: QuranIndex, policy: MemorizationPolicy = .standard,
-         clock: @escaping @MainActor () -> Date = { Date() }, calendar: Calendar = .current,
+         clock: @escaping @MainActor () -> Date = { Date() }, calendar: Calendar = .autoupdatingCurrent,
          defaults: UserDefaults = .standard) {
         self.database = database
         self.index = index
@@ -54,6 +54,9 @@ final class MemorizationStore {
         showsBannerMark = defaults.object(forKey: Self.bannerMarkKey) as? Bool ?? true
         showsAyahMarker = defaults.object(forKey: Self.ayahMarkerKey) as? Bool ?? false
     }
+
+    /// Why memorization cannot be saved (a failed schema migration), or nil when it can. Shown by the screens.
+    var storageProblem: String? { database.failedMigration }
 
     // MARK: Reading state
 

@@ -22,6 +22,8 @@ struct MutshabehatView: View {
     @State private var showFileImporter: Bool = false
     @State private var importMessage: String?
     @State private var showImportAlert: Bool = false
+    /// The read in flight (or waiting out the typing pause); a newer one cancels it.
+    @State private var loadTask: Task<Void, Never>?
 
     enum Mode: String, CaseIterable, Identifiable {
         case personal
@@ -225,7 +227,7 @@ struct MutshabehatView: View {
                 loadData()
             }
             .onChange(of: selectedTab) { loadData() }
-            .onChange(of: searchText) { loadData() }
+            .onChange(of: searchText) { loadData(debounce: true) }
             .onChange(of: selectedSurah) { loadData() }
             .onReceive(NotificationCenter.default.publisher(for: .mutshabehatDatabaseDidUpdate)) { _ in
                 surahs = db.allSurahNames()
@@ -354,22 +356,36 @@ struct MutshabehatView: View {
 
     // MARK: - Helpers
 
-    private func loadData() {
-        if selectedTab == .personal {
-            personalGroups = db.fetchPersonalGroups(
-                surah: selectedSurah.isEmpty ? nil : selectedSurah,
-                query: searchText.isEmpty ? nil : searchText
-            )
-            if CommandLine.arguments.contains("-open-mutshabehat-group"),
-               let first = personalGroups.first,
-               navigationPath.isEmpty {
-                navigationPath.append(first)
+    /// Reads the groups for the current tab, surah and search text off the main thread. `debounce` waits for the typing
+    /// to pause first; a newer call cancels an older one still waiting or running, so a slow query never overwrites the
+    /// answer to what is typed now.
+    private func loadData(debounce: Bool = false) {
+        loadTask?.cancel()
+        let tab = selectedTab
+        let surah = selectedSurah.isEmpty ? nil : selectedSurah
+        let query = searchText.isEmpty ? nil : searchText
+        let database = db
+        loadTask = Task { @MainActor in
+            if debounce {
+                try? await Task.sleep(for: SearchDebounce.interval)
+                guard !Task.isCancelled else { return }
             }
-        } else {
-            automatedGroups = db.fetchAutomatedGroups(
-                surah: selectedSurah.isEmpty ? nil : selectedSurah,
-                query: searchText.isEmpty ? nil : searchText
-            )
+            if tab == .personal {
+                let groups = await Task.detached(priority: .userInitiated) {
+                    database.fetchPersonalGroups(surah: surah, query: query)
+                }.value
+                guard !Task.isCancelled else { return }
+                personalGroups = groups
+                if LaunchHooks.has("-open-mutshabehat-group"), let first = groups.first, navigationPath.isEmpty {
+                    navigationPath.append(first)
+                }
+            } else {
+                let groups = await Task.detached(priority: .userInitiated) {
+                    database.fetchAutomatedGroups(surah: surah, query: query)
+                }.value
+                guard !Task.isCancelled else { return }
+                automatedGroups = groups
+            }
         }
     }
 

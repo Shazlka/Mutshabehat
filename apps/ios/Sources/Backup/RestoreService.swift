@@ -47,6 +47,10 @@ struct RestoreReport: Equatable {
 /// Restores a backup set (or a JSON file) into the app. Everything is verified against the manifest first and
 /// refused untouched if anything is wrong; before the first change the current data is copied to a local safety
 /// folder; each store is then restored on its own, so one failing store cannot undo the others.
+///
+/// The heavy, UI-free work (hashing, integrity checks, decoding, reading the archives, the safety copy) lives in
+/// `nonisolated` helpers. The `…Async` methods run it off the main actor and hold `StoreMaintenanceGate` so a
+/// restore never overlaps a backup run; the synchronous methods are kept for callers that cannot await.
 @MainActor
 final class RestoreService {
     struct Targets {
@@ -68,7 +72,8 @@ final class RestoreService {
     private let safetyDirectory: URL
     private let now: () -> Date
     private let calendar: Calendar
-    private static func qiraatEntry(in manifest: BackupManifest) -> BackupFileEntry? {
+
+    private nonisolated static func qiraatEntry(in manifest: BackupManifest) -> BackupFileEntry? {
         manifest.files.first { $0.name.hasPrefix("shared/qiraat") && $0.name.hasSuffix(".qiraatdata") }
     }
 
@@ -84,24 +89,40 @@ final class RestoreService {
     // MARK: Preview and verification
 
     func preview(_ info: SnapshotInfo) throws -> RestorePreview {
-        let export = try verify(info, includingQiraat: false)
+        try Self.previewFiles(info, backupsRoot: backupsRoot)
+    }
+
+    /// The same preview with the hashing and decoding done off the main actor.
+    func previewAsync(_ info: SnapshotInfo) async throws -> RestorePreview {
+        let root = backupsRoot
+        return try await Task.detached(priority: .userInitiated) {
+            try Self.previewFiles(info, backupsRoot: root)
+        }.value
+    }
+
+    private nonisolated static func previewFiles(_ info: SnapshotInfo, backupsRoot: URL) throws -> RestorePreview {
+        let export = try verifyFiles(info, backupsRoot: backupsRoot, includingQiraat: false)
         var stores: Set<BackupStore> = [.memorization]
         let names = Set(info.manifest.files.map(\.name))
         if names.contains("qiraat-notes.sqlite") { stores.insert(.qiraatNotes) }
         if names.contains("reading.sqlite") { stores.insert(.reading) }
         if names.contains("mutshabehat.sqlite") { stores.insert(.mutshabehat) }
-        if let entry = Self.qiraatEntry(in: info.manifest),
+        if let entry = qiraatEntry(in: info.manifest),
            FileManager.default.fileExists(atPath: backupsRoot.appendingPathComponent(entry.name).path) {
             stores.insert(.qiraat)
         }
         return RestorePreview(info: info, ayahRecords: export.records.count, batches: export.batches.count, stores: stores)
     }
 
-    /// Checks every file against the manifest and returns the decoded memorization document.
-    @discardableResult
-    private func verify(_ info: SnapshotInfo, includingQiraat: Bool) throws -> MemorizationExport {
+    /// Checks every file against the manifest and returns the decoded memorization document. Pure file work.
+    private nonisolated static func verifyFiles(_ info: SnapshotInfo, backupsRoot: URL,
+                                                includingQiraat: Bool) throws -> MemorizationExport {
         if info.manifest.formatVersion > BackupManifest.currentFormatVersion {
             throw RestoreError.newerFormat(info.manifest.formatVersion)
+        }
+        // A manifest is data from a folder anyone with access can edit: its names are joined onto paths below.
+        for entry in info.manifest.files where !ManifestNameGuard.isSafe(entry.name) {
+            throw RestoreError.hashMismatch(entry.name)
         }
         let fileManager = FileManager.default
         for entry in info.manifest.files where !entry.name.hasPrefix("shared/") {
@@ -114,7 +135,7 @@ final class RestoreService {
                 throw RestoreError.hashMismatch(entry.name)
             }
         }
-        if includingQiraat, let entry = Self.qiraatEntry(in: info.manifest) {
+        if includingQiraat, let entry = qiraatEntry(in: info.manifest) {
             let file = backupsRoot.appendingPathComponent(entry.name)
             try requirePresent(file, name: entry.name)
             guard let hash = try? BackupHash.sha256Hex(ofFileAt: file), hash == entry.sha256 else {
@@ -131,7 +152,7 @@ final class RestoreService {
     }
 
     /// A cloud-backed Files item that is not on the device yet shows up as ".name.icloud": ask for it and refuse.
-    private func requirePresent(_ file: URL, name: String) throws {
+    private nonisolated static func requirePresent(_ file: URL, name: String) throws {
         let fileManager = FileManager.default
         if fileManager.fileExists(atPath: file.path) { return }
         let placeholder = file.deletingLastPathComponent().appendingPathComponent(".\(file.lastPathComponent).icloud")
@@ -144,23 +165,82 @@ final class RestoreService {
 
     // MARK: Restore
 
+    /// Everything a restore reads from disk, loaded before the first store is touched.
+    private struct Prepared: Sendable {
+        let export: MemorizationExport
+        let payloads: [BackupStore: Result<Data, any Error>]
+
+        func data(for store: BackupStore) throws -> Data {
+            guard let result = payloads[store] else { throw RestoreError.fileMissing(String(describing: store)) }
+            return try result.get()
+        }
+    }
+
+    /// Verifies the set and reads the files the chosen stores will import. A file that cannot be read fails only
+    /// its own store, as before; a set that does not verify refuses the whole restore.
+    private nonisolated static func prepare(_ info: SnapshotInfo, backupsRoot: URL,
+                                            stores: Set<BackupStore>) throws -> Prepared {
+        let export = try verifyFiles(info, backupsRoot: backupsRoot, includingQiraat: stores.contains(.qiraat))
+        var payloads: [BackupStore: Result<Data, any Error>] = [:]
+        for store in stores {
+            switch store {
+            case .memorization:
+                break
+            case .reading:
+                payloads[store] = Result { try Data(contentsOf: info.url.appendingPathComponent("reading.sqlite")) }
+            case .mutshabehat:
+                payloads[store] = Result { try Data(contentsOf: info.url.appendingPathComponent("mutshabehat.sqlite")) }
+            case .qiraatNotes:
+                // Older backups have no notes file; the store reports that itself when it is applied.
+                guard info.manifest.files.contains(where: { $0.name == "qiraat-notes.sqlite" }) else { break }
+                payloads[store] = Result { try Data(contentsOf: info.url.appendingPathComponent("qiraat-notes.sqlite")) }
+            case .qiraat:
+                guard let entry = qiraatEntry(in: info.manifest) else { break }
+                payloads[store] = Result { try Data(contentsOf: backupsRoot.appendingPathComponent(entry.name)) }
+            }
+        }
+        return Prepared(export: export, payloads: payloads)
+    }
+
+    /// Restore on the calling thread. Kept for callers that cannot await; the app's screens use `restoreAsync`.
     func restore(_ info: SnapshotInfo, stores: Set<BackupStore>, memorizationMode: MemorizationRestoreMode) throws -> RestoreReport {
-        let export = try verify(info, includingQiraat: stores.contains(.qiraat))
+        let prepared = try Self.prepare(info, backupsRoot: backupsRoot, stores: stores)
         var report = RestoreReport()
         report.safetyCopy = try makeSafetyCopy()
+        apply(prepared, info: info, stores: stores, memorizationMode: memorizationMode, into: &report)
+        return report
+    }
 
+    /// Restore with the reading, hashing and safety copy off the main actor, serialized against backup runs.
+    func restoreAsync(_ info: SnapshotInfo, stores: Set<BackupStore>,
+                      memorizationMode: MemorizationRestoreMode) async throws -> RestoreReport {
+        let root = backupsRoot
+        return try await StoreMaintenanceGate.shared.hold {
+            let prepared = try await Task.detached(priority: .userInitiated) {
+                try Self.prepare(info, backupsRoot: root, stores: stores)
+            }.value
+            var report = RestoreReport()
+            report.safetyCopy = try await self.makeSafetyCopyAsync()
+            self.apply(prepared, info: info, stores: stores, memorizationMode: memorizationMode, into: &report)
+            return report
+        }
+    }
+
+    /// Hands the prepared data to each store in turn. The targets are main-actor work (they write live databases).
+    private func apply(_ prepared: Prepared, info: SnapshotInfo, stores: Set<BackupStore>,
+                       memorizationMode: MemorizationRestoreMode, into report: inout RestoreReport) {
         for store in BackupStore.allCases where stores.contains(store) {
             do {
                 switch store {
                 case .memorization:
                     switch memorizationMode {
-                    case .merge: try targets.memorizationMerge(export)
-                    case .replace: try targets.memorizationReplace(export)
+                    case .merge: try targets.memorizationMerge(prepared.export)
+                    case .replace: try targets.memorizationReplace(prepared.export)
                     }
                 case .reading:
-                    try targets.readingImport(Data(contentsOf: info.url.appendingPathComponent("reading.sqlite")))
+                    try targets.readingImport(try prepared.data(for: .reading))
                 case .mutshabehat:
-                    try targets.mutshabehatImport(Data(contentsOf: info.url.appendingPathComponent("mutshabehat.sqlite")))
+                    try targets.mutshabehatImport(try prepared.data(for: .mutshabehat))
                 case .qiraatNotes:
                     let name = "qiraat-notes.sqlite"
                     // Older backups have no notes file and must leave current notes untouched.
@@ -170,18 +250,17 @@ final class RestoreService {
                     guard let restore = targets.qiraatNotesImport else {
                         throw RestoreError.storeUnavailable("ملاحظات القراءات")
                     }
-                    try restore(Data(contentsOf: info.url.appendingPathComponent(name)))
+                    try restore(try prepared.data(for: .qiraatNotes))
                 case .qiraat:
                     guard let install = targets.qiraatInstall else { throw RestoreError.storeUnavailable("Qiraat") }
-                    guard let entry = Self.qiraatEntry(in: info.manifest) else { throw RestoreError.fileMissing("Qiraat") }
-                    try install(Data(contentsOf: backupsRoot.appendingPathComponent(entry.name)))
+                    guard Self.qiraatEntry(in: info.manifest) != nil else { throw RestoreError.fileMissing("Qiraat") }
+                    try install(try prepared.data(for: .qiraat))
                 }
                 report.restored.insert(store)
             } catch {
                 report.failed[store] = error.localizedDescription
             }
         }
-        return report
     }
 
     // MARK: JSON transfer
@@ -200,18 +279,61 @@ final class RestoreService {
         }
     }
 
+    /// The same, with decoding and the safety copy off the main actor, serialized against backup runs.
+    func importJSONAsync(_ data: Data, mode: MemorizationRestoreMode) async throws {
+        try await StoreMaintenanceGate.shared.hold {
+            let export = try await Task.detached(priority: .userInitiated) {
+                try MemorizationExport.decode(data)
+            }.value
+            _ = try await self.makeSafetyCopyAsync()
+            switch mode {
+            case .merge: try self.targets.memorizationMerge(export)
+            case .replace: try self.targets.memorizationReplace(export)
+            }
+        }
+    }
+
     // MARK: Safety copy
 
-    /// Copies the current data beside the app before it is replaced; the last three copies are kept.
+    private struct SafetyCopyPlan: Sendable {
+        let export: MemorizationExport
+        let files: [(name: String, origin: URL)]
+        let directory: URL
+        let moment: Date
+        let calendar: Calendar
+    }
+
+    /// Reads what only the main actor can (the live export, the clock); the file work happens in `writeSafetyCopy`.
+    private func planSafetyCopy() throws -> SafetyCopyPlan {
+        var files: [(name: String, origin: URL)] = [("memorization.sqlite", targets.memorizationFileURL),
+                                                    ("reading.sqlite", targets.readingFileURL),
+                                                    ("mutshabehat.sqlite", targets.mutshabehatFileURL)]
+        if let url = targets.qiraatNotesFileURL { files.append(("qiraat-notes.sqlite", url)) }
+        return SafetyCopyPlan(export: try targets.memorizationCurrentExport(), files: files, directory: safetyDirectory,
+                              moment: now(), calendar: calendar)
+    }
+
     private func makeSafetyCopy() throws -> URL {
+        try Self.writeSafetyCopy(try planSafetyCopy())
+    }
+
+    private func makeSafetyCopyAsync() async throws -> URL {
+        let plan = try planSafetyCopy()
+        return try await Task.detached(priority: .userInitiated) { try Self.writeSafetyCopy(plan) }.value
+    }
+
+    /// Copies the current data beside the app before it is replaced. The first copy ever made and the newest two are
+    /// kept (`SafetyCopyRetention`).
+    private nonisolated static func writeSafetyCopy(_ plan: SafetyCopyPlan) throws -> URL {
         let fileManager = FileManager.default
+        let safetyDirectory = plan.directory
         try fileManager.createDirectory(at: safetyDirectory, withIntermediateDirectories: true)
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.calendar = calendar
-        formatter.timeZone = calendar.timeZone
+        formatter.calendar = plan.calendar
+        formatter.timeZone = plan.calendar.timeZone
         formatter.dateFormat = "yyyyMMdd-HHmmss"
-        let base = formatter.string(from: now())
+        let base = formatter.string(from: plan.moment)
         var name = base
         var counter = 0
         while fileManager.fileExists(atPath: safetyDirectory.appendingPathComponent(name).path) {
@@ -221,17 +343,15 @@ final class RestoreService {
         let folder = safetyDirectory.appendingPathComponent(name)
         try fileManager.createDirectory(at: folder, withIntermediateDirectories: true)
 
-        try targets.memorizationCurrentExport().encode().write(to: folder.appendingPathComponent("memorization.json"))
-        var files: [(String, URL)] = [("memorization.sqlite", targets.memorizationFileURL),
-                                      ("reading.sqlite", targets.readingFileURL),
-                                      ("mutshabehat.sqlite", targets.mutshabehatFileURL)]
-        if let url = targets.qiraatNotesFileURL { files.append(("qiraat-notes.sqlite", url)) }
-        for (fileName, origin) in files where fileManager.fileExists(atPath: origin.path) {
+        try plan.export.encode().write(to: folder.appendingPathComponent("memorization.json"))
+        for (fileName, origin) in plan.files where fileManager.fileExists(atPath: origin.path) {
             try SQLiteSnapshot.copy(from: origin, to: folder.appendingPathComponent(fileName))
         }
 
         let copies = ((try? fileManager.contentsOfDirectory(atPath: safetyDirectory.path)) ?? []).sorted()
-        for old in copies.dropLast(3) { try? fileManager.removeItem(at: safetyDirectory.appendingPathComponent(old)) }
+        for old in SafetyCopyRetention.namesToDelete(sortedNames: copies) {
+            try? fileManager.removeItem(at: safetyDirectory.appendingPathComponent(old))
+        }
         return folder
     }
 }

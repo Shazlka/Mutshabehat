@@ -9,6 +9,9 @@ public final class MemorizationDatabase: @unchecked Sendable {
     /// Prepared statements reused for the rows of one write transaction (set only while `lock` is held).
     var statementCache: StatementCache?
     public let fileURL: URL
+    /// Set when a schema migration failed (the step and the reason). The tables may be missing or half built,
+    /// so every write throws while this is set instead of silently running without a schema.
+    public private(set) var failedMigration: String?
 
     public init(url: URL? = nil, migrations: [MemorizationMigration] = MemorizationMigrations.all) {
         let targetURL: URL
@@ -22,6 +25,8 @@ public final class MemorizationDatabase: @unchecked Sendable {
         self.fileURL = targetURL
 
         if sqlite3_open(targetURL.path, &db) != SQLITE_OK {
+            // A failed open can still leave a handle behind; release it.
+            if let db { sqlite3_close_v2(db) }
             db = nil
             return
         }
@@ -55,20 +60,33 @@ public final class MemorizationDatabase: @unchecked Sendable {
 
         for migration in pending {
             guard sqlite3_exec(db, "BEGIN IMMEDIATE;", nil, nil, nil) == SQLITE_OK else {
+                failedMigration = "v\(migration.version): \(String(cString: sqlite3_errmsg(db)))"
                 break
             }
             do {
                 try migration.apply(db)
                 try setMetaDirect("schema_version", String(migration.version), on: db)
                 guard sqlite3_exec(db, "COMMIT;", nil, nil, nil) == SQLITE_OK else {
+                    let reason = String(cString: sqlite3_errmsg(db))
                     sqlite3_exec(db, "ROLLBACK;", nil, nil, nil)
+                    failedMigration = "v\(migration.version): \(reason)"
                     break
                 }
             } catch {
                 sqlite3_exec(db, "ROLLBACK;", nil, nil, nil)
+                failedMigration = "v\(migration.version): \(error.localizedDescription)"
                 break
             }
         }
+    }
+
+    /// The open connection for a write; throws when the database never opened or a migration failed. Lock held.
+    func writableDatabaseLocked() throws -> OpaquePointer {
+        if let failedMigration {
+            throw MemorizationError.writeFailed("تعذر تحديث بنية بيانات الحفظ (\(failedMigration)). لن تُحفظ التغييرات قبل إصلاح ذلك.")
+        }
+        guard let db else { throw MemorizationError.writeFailed("database unavailable") }
+        return db
     }
 
     public var schemaVersion: Int {

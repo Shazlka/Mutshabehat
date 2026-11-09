@@ -21,8 +21,34 @@ struct ReaderActionRail: View {
     private enum Menu { case qiraat, more }
     @State private var openMenu: Menu?
     @Environment(\.layoutDirection) private var direction
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+    @Environment(\.colorSchemeContrast) private var contrast
+    @Namespace private var glassNamespace
+
+    private var opaque: Bool { ChromeContrast.prefersOpaque(reduceTransparency: reduceTransparency, contrast: contrast) }
 
     var body: some View {
+        glassGroup {
+            railItems
+        }
+        .padding(.horizontal, 6)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .foregroundStyle(Color(uiColor: appearance.ink(for: traits)))
+        // Fixed targets in a fixed-width rail; the large content viewer shows the names beyond this size.
+        .dynamicTypeSize(...DynamicTypeSize.xxLarge)
+    }
+
+    /// One glass container so the six buttons blend and respond as a group; the flat rail when opaque.
+    @ViewBuilder
+    private func glassGroup<Content: View>(@ViewBuilder _ content: () -> Content) -> some View {
+        if !opaque {
+            GlassEffectContainer(spacing: 6) { content() }
+        } else {
+            content()
+        }
+    }
+
+    private var railItems: some View {
         VStack(spacing: 6) {
             item("الفهرس", "list.bullet", id: "open-index", action: openIndex)
             item("بحث", "magnifyingglass", id: "search-button", action: openSearch)
@@ -73,6 +99,7 @@ struct ReaderActionRail: View {
             }
             .frame(maxWidth: .infinity, minHeight: 56)
             .contentShape(Rectangle())
+            .modifier(RailGlass(id: id, namespace: glassNamespace, enabled: !opaque, outlined: opaque))
         }
         .buttonStyle(.plain)
         .accessibilityLabel(appLocalized(title))
@@ -102,6 +129,33 @@ struct ReaderActionRail: View {
             Task { @MainActor in
                 try? await Task.sleep(for: .milliseconds(350))
                 action()
+            }
+        }
+    }
+}
+
+
+/// The rail button's surface: interactive Liquid Glass, nothing (the flat rail) when the
+/// user asks for less transparency.
+private struct RailGlass: ViewModifier {
+    let id: String
+    let namespace: Namespace.ID
+    let enabled: Bool
+    /// Reduce Transparency or Increase Contrast: the flat button gets a hairline edge.
+    let outlined: Bool
+
+    func body(content: Content) -> some View {
+        if enabled {
+            content
+                .glassEffect(.regular.interactive(), in: .rect(cornerRadius: 16))
+                .glassEffectID(id, in: namespace)
+        } else {
+            if outlined {
+                content
+                    .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .strokeBorder(Color(uiColor: .separator), lineWidth: ChromeContrast.separatorWidth))
+            } else {
+                content
             }
         }
     }

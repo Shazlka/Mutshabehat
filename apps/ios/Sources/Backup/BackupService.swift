@@ -93,7 +93,10 @@ final class BackupService {
         let worker = BackupWorker(root: root, sources: sources, reason: reason, now: moment, calendar: calendar,
                                   beforeVerify: beforeVerify)
         do {
-            let result = try await Task.detached(priority: .utility) { try worker.run() }.value
+            // Never overlaps a restore, which closes databases and deletes their -wal/-shm files.
+            let result = try await StoreMaintenanceGate.shared.hold {
+                try await Task.detached(priority: .utility) { try worker.run() }.value
+            }
             lastSuccess = moment
             defaults.set(Double(moment.epochMilliseconds), forKey: Self.lastSuccessKey)
             lastError = nil
@@ -107,8 +110,19 @@ final class BackupService {
     /// The memorization document alone, for the manual export when no backup folder is set up.
     func memorizationExportData() throws -> Data { try sources.memorizationExport().encode() }
 
-    /// Backup sets in the folder, newest first.
+    /// Backup sets in the folder, newest first. Reads every history manifest on the calling thread; screens use
+    /// `loadSnapshots()`. Nothing is cached, so a set written by a backup run is always in the next listing.
     func listSnapshots() -> [SnapshotInfo] {
+        Self.readSnapshots(folder: folder)
+    }
+
+    /// The same listing with the folder lookup and the manifest decoding done off the main actor.
+    func loadSnapshots() async -> [SnapshotInfo] {
+        let folder = folder
+        return await Task.detached(priority: .userInitiated) { Self.readSnapshots(folder: folder) }.value
+    }
+
+    private nonisolated static func readSnapshots(folder: BackupFolder) -> [SnapshotInfo] {
         guard let root = folder.backupsRoot() else { return [] }
         let history = root.appendingPathComponent("history")
         let names = (try? FileManager.default.contentsOfDirectory(atPath: history.path)) ?? []
@@ -179,8 +193,23 @@ struct BackupWorker: Sendable {
             }
             let hash = try BackupHash.sha256Hex(ofFileAt: target)
             let size = (try? fileManager.attributesOfItem(atPath: target.path)[.size] as? Int) ?? 0
-            entries.append(BackupFileEntry(name: source.name, sha256: hash, size: size, rowCount: nil))
+            let rows = SQLiteFile.totalRowCount(ofStagedCopyAt: target)
+            entries.append(BackupFileEntry(name: source.name, sha256: hash, size: size, rowCount: rows))
             if previous?.files.first(where: { $0.name == source.name })?.sha256 != hash { sqliteChanged = true }
+        }
+
+        // The same guard for the other stores: a fresh install must not replace a set that holds the person's reading,
+        // bookmarks, groups or notes with empty databases.
+        if reason != .manual {
+            var before: [String: Int] = [:]
+            var after: [String: Int] = [:]
+            for entry in entries where entry.name.hasSuffix(".sqlite") {
+                if let rows = entry.rowCount { after[entry.name] = rows }
+                if let old = previous?.files.first(where: { $0.name == entry.name })?.rowCount { before[entry.name] = old }
+            }
+            if BackupRegressionGuard.regressed(previous: before, current: after) {
+                return BackupResult(createdAt: now, skipped: true, files: previous?.files ?? [])
+            }
         }
 
         var qiraatEntry = previous?.files.first { $0.name.hasPrefix("shared/qiraat") }

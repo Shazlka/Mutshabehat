@@ -72,21 +72,10 @@ struct BookmarksView: View {
                 Divider()
 
                 if bookmarks.isEmpty {
-                    VStack(spacing: 16) {
-                        Spacer()
-                        Image(systemName: "bookmark")
-                            .scaledFont(size: 48)
-                            .foregroundColor(.secondary)
-                            .accessibilityHidden(true)
-                        Text("لا توجد فواصل محفوظة")
-                            .font(.headline)
-                            .foregroundColor(.primary)
+                    ContentUnavailableView {
+                        Label("لا توجد فواصل محفوظة", systemImage: "bookmark")
+                    } description: {
                         Text("لحفظ فاصل، اضغط مطولاً على رقم الآية في المصحف")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal, 32)
-                        Spacer()
                     }
                 } else {
                     List {

@@ -48,9 +48,38 @@ public enum SQLiteFile {
         return names
     }
 
+    /// The number of rows in all of the file's own tables, or nil when it cannot be read. For a private copy
+    /// (a backup's staged snapshot): it is opened read-write, as `tableNames(at:readOnly:)` explains.
+    public static func totalRowCount(ofStagedCopyAt url: URL) -> Int? {
+        guard let names = try? tableNames(at: url, readOnly: false) else { return nil }
+        var handle: OpaquePointer?
+        guard sqlite3_open_v2(url.path, &handle, SQLITE_OPEN_READWRITE, nil) == SQLITE_OK, let handle else {
+            if let handle { sqlite3_close(handle) }
+            return nil
+        }
+        defer { sqlite3_close(handle) }
+        var total = 0
+        for name in names where !name.hasPrefix("sqlite_") {
+            let quoted = "\"" + name.replacingOccurrences(of: "\"", with: "\"\"") + "\""
+            var statement: OpaquePointer?
+            guard sqlite3_prepare_v2(handle, "SELECT COUNT(*) FROM \(quoted)", -1, &statement, nil) == SQLITE_OK,
+                  let statement else { return nil }
+            defer { sqlite3_finalize(statement) }
+            guard sqlite3_step(statement) == SQLITE_ROW else { return nil }
+            total += Int(sqlite3_column_int64(statement, 0))
+        }
+        return total
+    }
+
     /// Throws unless `url` is a SQLite file holding every required table and passing `PRAGMA quick_check`.
     public static func validate(at url: URL, requiredTables: Set<String>) throws {
         try validate(at: url, requiredTables: requiredTables, readOnly: true)
+    }
+
+    /// `validate(at:requiredTables:)` for a private staged copy of a file whose bytes came without their `-wal` and
+    /// `-shm` (a database built in WAL mode): it is opened read-write, as `replaceContents` does.
+    public static func validate(stagedCopyAt url: URL, requiredTables: Set<String>) throws {
+        try validate(at: url, requiredTables: requiredTables, readOnly: false)
     }
 
     private static func validate(at url: URL, requiredTables: Set<String>, readOnly: Bool) throws {

@@ -55,6 +55,8 @@ extension QuranReadingDatabase {
         return KhatmaRecord(id: newId, khatmaNumber: nextNumber, startedAt: now, status: "active", percentComplete: 0.0)
     }
 
+    /// Records ayahs as read in one transaction. Returns how many were new; 0 when nothing was recorded, and
+    /// also when a step failed (then nothing is stored).
     @discardableResult
     public func recordReadAyahs(khatmaId: String, items: [(surah: Int, ayah: Int, page: Int)], at readDate: Date = Date()) -> Int {
         guard !items.isEmpty else { return 0 }
@@ -62,30 +64,55 @@ extension QuranReadingDatabase {
         defer { lock.unlock() }
         guard let db = db else { return 0 }
 
-        execute("BEGIN TRANSACTION;")
+        var newCount = 0
+        let saved = transactionLocked(db) {
+            guard let count = insertReadAyahsLocked(db, khatmaId: khatmaId, items: items, at: readDate) else { return false }
+            newCount = count
+            return true
+        }
+        return saved ? newCount : 0
+    }
+
+    /// Records the read ayahs and the day's activity as ONE transaction, so a failure of either step stores
+    /// neither. `activityAyahs` maps the number of newly read ayahs to the number the day's activity gets
+    /// (0 = no activity row). Returns the number of newly read ayahs, or nil when nothing could be stored.
+    public func recordReading(khatmaId: String, items: [(surah: Int, ayah: Int, page: Int)], at date: Date = Date(),
+                              pagesCount: Int, seconds: Int, activityAyahs: (Int) -> Int) -> Int? {
+        guard !items.isEmpty else { return 0 }
+        lock.lock()
+        defer { lock.unlock() }
+        guard let db = db else { return nil }
+
+        var newCount = 0
+        let saved = transactionLocked(db) {
+            guard let count = insertReadAyahsLocked(db, khatmaId: khatmaId, items: items, at: date) else { return false }
+            newCount = count
+            let activityCount = activityAyahs(count)
+            guard activityCount > 0 else { return true }
+            return insertActivityLocked(db, ayahsCount: activityCount, pagesCount: pagesCount, seconds: seconds, on: date)
+        }
+        return saved ? newCount : nil
+    }
+
+    /// Inserts the rows (already-read ayahs are ignored); nil when any step fails. Lock held, inside a transaction.
+    func insertReadAyahsLocked(_ db: OpaquePointer, khatmaId: String, items: [(surah: Int, ayah: Int, page: Int)],
+                               at readDate: Date) -> Int? {
         let dateStr = Self.isoFormatter.string(from: readDate)
         let insertSql = "INSERT OR IGNORE INTO khatma_read_ayahs (khatma_id, surah, ayah, page, read_at) VALUES (?, ?, ?, ?, ?);"
         var stmt: OpaquePointer?
+        guard sqlite3_prepare_v2(db, insertSql, -1, &stmt, nil) == SQLITE_OK else { return nil }
+        defer { sqlite3_finalize(stmt) }
         var newCount = 0
-
-        if sqlite3_prepare_v2(db, insertSql, -1, &stmt, nil) == SQLITE_OK {
-            for item in items {
-                sqlite3_reset(stmt)
-                SQLiteBind.text(stmt, 1, khatmaId)
-                sqlite3_bind_int64(stmt, 2, Int64(item.surah))
-                sqlite3_bind_int64(stmt, 3, Int64(item.ayah))
-                sqlite3_bind_int64(stmt, 4, Int64(item.page))
-                SQLiteBind.text(stmt, 5, dateStr)
-                if sqlite3_step(stmt) == SQLITE_DONE {
-                    if sqlite3_changes(db) > 0 {
-                        newCount += 1
-                    }
-                }
-            }
+        for item in items {
+            sqlite3_reset(stmt)
+            SQLiteBind.text(stmt, 1, khatmaId)
+            sqlite3_bind_int64(stmt, 2, Int64(item.surah))
+            sqlite3_bind_int64(stmt, 3, Int64(item.ayah))
+            sqlite3_bind_int64(stmt, 4, Int64(item.page))
+            SQLiteBind.text(stmt, 5, dateStr)
+            guard sqlite3_step(stmt) == SQLITE_DONE else { return nil }
+            if sqlite3_changes(db) > 0 { newCount += 1 }
         }
-        sqlite3_finalize(stmt)
-        execute("COMMIT;")
-
         return newCount
     }
 

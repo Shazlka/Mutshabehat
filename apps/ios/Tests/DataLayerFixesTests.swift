@@ -1,3 +1,4 @@
+import Combine
 import Foundation
 import SQLite3
 import XCTest
@@ -27,6 +28,20 @@ final class DataLayerFixesTests: XCTestCase {
         let key = formatter.string(from: Date(timeIntervalSince1970: 1_700_000_000))
         XCTAssertNotNil(key.range(of: #"^\d{4}-\d{2}-\d{2}$"#, options: .regularExpression))
         XCTAssertTrue(key.allSatisfy { $0.isASCII })
+    }
+
+    /// The reader observes the tracker as a whole, and `@Published` announces a change even for an equal value: a
+    /// refresh that finds nothing new must not redraw it.
+    @MainActor
+    func testRefreshingUnchangedStatsPublishesNothing() {
+        let tracker = ReadingTracker(database: testDB)
+        tracker.refreshStats()
+        var announcements = 0
+        let cancellable = tracker.objectWillChange.sink { announcements += 1 }
+        tracker.refreshStats()
+        tracker.refreshStats()
+        cancellable.cancel()
+        XCTAssertEqual(announcements, 0)
     }
 
     func testStreakSurvivesALastRecordedDayAheadOfToday() {

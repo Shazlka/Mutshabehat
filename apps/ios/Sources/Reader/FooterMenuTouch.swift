@@ -23,8 +23,6 @@ final class FooterMenuModel {
     /// How far the menu is moved from where layout put it. The panel's frame is that of the view that carries the
     /// offset, which leaves the offset out; the rows' frames are inside it and have the offset in.
     @ObservationIgnored var translation: CGSize = .zero
-    @ObservationIgnored private let selection = UISelectionFeedbackGenerator()
-    @ObservationIgnored private let impact = UIImpactFeedbackGenerator(style: .medium)
 
     /// The menu as the finger sees it, offset included.
     var visiblePanelFrame: CGRect { panelFrame.offsetBy(dx: translation.width, dy: translation.height) }
@@ -38,13 +36,10 @@ final class FooterMenuModel {
         if hoveredID == id { setHovered(nil) }
     }
 
-    func prepareHaptics() {
-        selection.prepare()
-        impact.prepare()
-    }
+    func prepareHaptics() { Haptics.prepare() }
 
     /// A menu coming up under the finger.
-    func menuOpened() { impact.impactOccurred(intensity: 0.7) }
+    func menuOpened() { Haptics.menuOpened() }
 
     /// How far a finger that went down on an open menu may move before it counts as scrolling the menu's list
     /// rather than pressing a row.
@@ -79,7 +74,7 @@ final class FooterMenuModel {
     func commit(at point: CGPoint) -> Bool {
         defer { setHovered(nil) }
         guard !isScrollingMenu, let id = row(at: point), let row = rows[id] else { return false }
-        impact.impactOccurred()
+        Haptics.rowChosen()
         row.action()
         return true
     }
@@ -95,8 +90,7 @@ final class FooterMenuModel {
         hoveredID = id
         hoveredFrame = id.flatMap { rows[$0]?.frame }
         if id != nil {
-            selection.selectionChanged()
-            selection.prepare()
+            Haptics.selectionChanged()
         }
     }
 }

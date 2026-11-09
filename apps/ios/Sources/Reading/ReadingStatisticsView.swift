@@ -13,7 +13,12 @@ struct ReadingStatisticsView: View {
     @State private var recentDays: [ReadingDayRecord] = []
     @State private var selectedFilter: SurahProgressFilter = .all
     @State private var searchText: String = ""
+#if DEBUG
+    // UI tests open the add-session sheet with a launch argument; Release builds never read launch arguments.
     @State private var showingAddSessionSheet: Bool = CommandLine.arguments.contains("-open-add-session")
+#else
+    @State private var showingAddSessionSheet: Bool = false
+#endif
 
     private var currentPositionPage: Int {
         ReadingPosition().page

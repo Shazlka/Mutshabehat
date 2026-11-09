@@ -162,6 +162,30 @@ final class BackupServiceTests: XCTestCase {
         XCTAssertEqual(latest.files.first { $0.name == "memorization.json" }?.rowCount, 1)
     }
 
+    /// A fresh install has an empty reading, bookmarks or notes database as well. The memorization check alone would
+    /// let it replace a set that holds the person's reading: any store that lost over half its rows is left alone.
+    func testAutomaticBackupDoesNotReplaceASetWithAMuchEmptierReadingStore() async throws {
+        try makeDatabase("reading", rows: 20)
+        _ = try await makeService().runBackup(reason: .manual)
+        var handle: OpaquePointer?
+        XCTAssertEqual(sqlite3_open(databaseURL("reading").path, &handle), SQLITE_OK)
+        sqlite3_exec(handle, "DELETE FROM t WHERE x >= 3;", nil, nil, nil)
+        sqlite3_close(handle)
+        clock = clock.addingTimeInterval(3_600)
+
+        let automatic = try await makeService().runBackup(reason: .launch)
+
+        XCTAssertTrue(automatic.skipped)
+        let kept = try manifest(at: backups.appendingPathComponent("latest"))
+        XCTAssertEqual(kept.files.first { $0.name == "reading.sqlite" }?.rowCount, 23)
+
+        let manual = try await makeService().runBackup(reason: .manual)
+        XCTAssertFalse(manual.skipped)
+        let latest = try manifest(at: backups.appendingPathComponent("latest"))
+        // setUp left 3 rows (x = 0...2) and the test added 20 more; deleting x >= 3 keeps both copies of 0...2.
+        XCTAssertEqual(latest.files.first { $0.name == "reading.sqlite" }?.rowCount, 6)
+    }
+
     /// The same empty store is still backed up when the person asks for it.
     func testManualBackupOfAnEmptyStoreIsStillWritten() async throws {
         _ = try await makeService().runBackup(reason: .manual)

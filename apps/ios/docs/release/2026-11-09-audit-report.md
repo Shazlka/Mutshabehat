@@ -35,16 +35,16 @@ Tests: app 415/415. Release build and `release-guard`: pass. Core package: 1 fai
 
 | # | Severity | Item | Why open |
 |---|---|---|---|
-| E1 | High | Empty-store backup safeguard covers memorization only; a fresh device could replace a good backup of reading, bookmarks, Mutshabehat or notes | Needs a row count per database |
-| E2 | Medium | Reading tracker's 1 Hz tick redraws the whole reader | Profile first |
+| E1 | Done | Backup safeguard now covers every database (row counts + guard) | Tests pass |
+| E2 | Reduced | Tracker now publishes only changed values; still not profiled on a device | Profile |
 | E3 | Medium | Restore and backup listing run on the main thread | Move to a worker |
 | E4 | Medium | The hang is not profiled before and after | Needs ETTrace / Instruments on a device |
 | E5 | Medium | Mutshabehat merge has no deletion tombstones (a deleted group can return) | Schema change |
 | E6 | Medium | Security-scope access never released; iCloud placeholders can abort a merge | Debug-only today (iCloud off in Release) |
-| E7 | Medium | English text: 277 of 676 keys lack English, 220 need review | Translate, or list Arabic only |
+| E7 | Reduced | 274 English strings added; 480 now need a human review | Review |
 | E8 | Low | Launch arguments such as `-page` work in Release | Wrap in DEBUG |
 | E9 | Low | iOS 18 minimum keeps the fallbacks | Owner decision (O6) |
-| E10 | Low | Remaining Liquid Glass: Qiraat sheet background, iPad rail, search bar, header chips | Needs on-screen checking |
+| E10 | Reduced | Glass added to header chips, iPad rail, search bar, Qiraat sheet; iPad rail and dark mode not yet seen on screen | Check |
 | E11 | Low | Tests still to add: footer scroll UI test, slide direction UI test, VoiceOver pass | |
 
 ## 3. Needs the owner
@@ -117,3 +117,35 @@ Tests: app 415/415. Release build and `release-guard`: pass. Core package: 1 fai
 | ٥ | عالية | ١١٦ ملاحظة خاصة داخل المجموعات الـ٢٥١ المضمّنة |
 | ٦ | متوسطة | قرار رفع الحد الأدنى من iOS 18 إلى 26 |
 | ٧ | حساب | عضوية مطوّر Apple، سجل App Store Connect، الاسم القانوني، بريد الدعم، مدة حفظ السجلات، حالة DSA، التقديم النهائي |
+
+---
+
+## Final status (second round, 2026-11-09)
+
+| Area | State |
+|---|---|
+| Unit tests | App 459/459, core package 550/550 |
+| UI tests (iPhone 18 Pro Max sim) | ReaderUITests 25/25 (2 iPad-only skipped); Qiraat suites 69 run, 1 known failure that also fails before this work (HANDOFF.md) |
+| Release build + leak guard | pass; the commentary file is no longer in a Release build unless `INCLUDE_COMMENTARY=YES` |
+| Liquid Glass | seen on iPhone (light, dark) and iPad landscape |
+| English | no entry left "needs review"; a native speaker should still read it |
+| Done from the open list | E1, E3, E5, E6, E7, E8, E10 and most of E11; E2 reduced (not profiled on a device) |
+| Left on purpose | the reading merge stays one transaction; haptics on the reading and undo screens keep their own feedback |
+
+**Still needs you (cannot be done in code):** O1 commentary permission (now a build switch), O2 nquran.com, O3 Quran Foundation, O4 artwork, O5 private notes, O6 iOS minimum, O8 Apple account. Also a real-device pass: Instruments profile of the hang and a VoiceOver walk-through.
+
+### الحالة النهائية (الجولة الثانية)
+
+- اختبارات الوحدة: التطبيق ٤٥٩/٤٥٩ والنواة ٥٥٠/٥٥٠.
+- اختبارات الواجهة على المحاكي: القارئ ٢٥/٢٥، واختبار واحد معروف يفشل أيضًا قبل هذا العمل (مسجّل في HANDOFF.md).
+- بناء الإصدار وفحص التسرّب ناجحان، وملف الشروح لم يعد يدخل بناء الإصدار إلا بالإعداد `INCLUDE_COMMENTARY=YES`.
+- زجاج «ليكويد» ظهر سليمًا على الآيفون (فاتح وداكن) وعلى الآيباد أفقيًا.
+- ما زال بحاجة إليك: إذن الشروح، nquran.com، ترخيص مؤسسة القرآن، مصدر الصور، الملاحظات الخاصة، قرار الحد الأدنى لـ iOS، حساب Apple، وفحص على جهاز حقيقي (Instruments وVoiceOver).
+
+### Owner decisions (2026-11-09, later)
+- Minimum iOS raised to 26 (E9/O6 closed). Private notes ship only in the owner's own builds (O5 closed: Release bundle checked, 0 notes). Artwork: recorded as the owner's own AI-made work (O4 recorded; keep the tool's terms; classic banner reference still open).
+- Open: O1 commentaries (build switch), O2 nquran.com, O3 Quran Foundation, O8 Apple account.
+
+### قرارات المالك (لاحقًا)
+- رُفع الحد الأدنى إلى iOS 26. الملاحظات الخاصة تبقى في نسختك فقط (تأكدت من حزمة الإصدار: صفر ملاحظات). الصور: مسجّلة أنها من عملك بأدوات ذكاء اصطناعي.
+- ما زال مفتوحًا: الشروح (مفتاح بناء)، nquran.com، مؤسسة القرآن، حساب Apple.

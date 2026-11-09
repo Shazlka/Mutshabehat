@@ -36,7 +36,8 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         f.locale = Locale(identifier: "en_US_POSIX")
         f.calendar = Calendar(identifier: .gregorian)
         f.dateFormat = "yyyy-MM-dd"
-        f.timeZone = TimeZone.current
+        // Follows the device time zone live (travel, daylight saving), while the digits and calendar stay fixed.
+        f.timeZone = TimeZone.autoupdatingCurrent
         return f
     }()
 
@@ -52,8 +53,11 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         self.databaseURL = targetURL
 
         if sqlite3_open(targetURL.path, &db) != SQLITE_OK {
+            // A failed open can still leave a handle behind; release it.
+            if let db { sqlite3_close_v2(db) }
             db = nil
         } else {
+            sqlite3_busy_timeout(db, 2000)
             setupTables()
         }
     }
@@ -134,6 +138,7 @@ public final class QuranReadingDatabase: @unchecked Sendable {
             throw TransferError.databaseUnavailable
         }
         db = opened
+        sqlite3_busy_timeout(opened, 2000)
         do {
             try setupTablesStrict()
         } catch {
@@ -238,6 +243,17 @@ public final class QuranReadingDatabase: @unchecked Sendable {
             try checkedExec(db, "ALTER TABLE reading_days ADD COLUMN seconds_read INTEGER NOT NULL DEFAULT 0;")
         }
         try checkedExec(db, Self.legacyMigrationSQL)
+    }
+
+    /// Runs `body` inside one `BEGIN IMMEDIATE` … `COMMIT`. Returns false, with everything rolled back, when
+    /// the transaction cannot start, `body` reports a failed step, or the commit fails. The lock must be held.
+    func transactionLocked(_ db: OpaquePointer, _ body: () -> Bool) -> Bool {
+        guard sqlite3_exec(db, "BEGIN IMMEDIATE TRANSACTION;", nil, nil, nil) == SQLITE_OK else { return false }
+        guard body(), sqlite3_exec(db, "COMMIT;", nil, nil, nil) == SQLITE_OK else {
+            sqlite3_exec(db, "ROLLBACK;", nil, nil, nil)
+            return false
+        }
+        return true
     }
 
     func execute(_ sql: String) {

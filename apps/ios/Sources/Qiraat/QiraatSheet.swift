@@ -29,6 +29,7 @@ struct QiraatSheet: View {
     let onClose: () -> Void
 
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @ObservedObject private var liveSync = QiraatLiveSync.shared
     @State private var detent: PresentationDetent = .large
 
@@ -148,7 +149,7 @@ struct QiraatSheet: View {
                 }
                 .padding()
             }
-            .background(Color(uiColor: .mushafPaper))
+            .modifier(SheetContentSurface(useGlass: !reduceTransparency))
             .navigationTitle("القراءات العشر")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -163,6 +164,7 @@ struct QiraatSheet: View {
         .environment(\.layoutDirection, .rightToLeft)
         .tint(Color(uiColor: .mushafBrown))
         .presentationDetents([.medium, .large], selection: $detent)
+        .modifier(SheetPresentationSurface(useGlass: !reduceTransparency))
         .simultaneousGesture(
             DragGesture(minimumDistance: 25)
                 .onEnded { value in
@@ -503,5 +505,36 @@ private final class QiraatNavResolver {
             }
         }
         return nil
+    }
+}
+
+
+/// The sheet's content surface. The paper is a light tint (still opaque enough for the text's contrast)
+/// so the sheet's own glass bar shows, with a soft scroll edge under it; the opaque paper when transparency is reduced.
+private struct SheetContentSurface: ViewModifier {
+    let useGlass: Bool
+
+    func body(content: Content) -> some View {
+        if useGlass {
+            content
+                .background(Color(uiColor: .mushafPaper).opacity(0.94))
+                .scrollEdgeEffectStyle(.soft, for: .top)
+                .scrollEdgeEffectStyle(.soft, for: .bottom)
+        } else {
+            content.background(Color(uiColor: .mushafPaper))
+        }
+    }
+}
+
+/// Clears the sheet's own background so the paper tint above and the system glass chrome carry it.
+private struct SheetPresentationSurface: ViewModifier {
+    let useGlass: Bool
+
+    func body(content: Content) -> some View {
+        if useGlass {
+            content.presentationBackground(.clear)
+        } else {
+            content
+        }
     }
 }

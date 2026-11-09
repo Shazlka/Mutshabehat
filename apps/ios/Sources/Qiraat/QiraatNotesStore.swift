@@ -23,6 +23,8 @@ final class QiraatNotesStore {
     let fileURL: URL
     private(set) var notes: [QiraatNote] = []
     private(set) var loadError: String?
+    /// Rows in the file that could not be read (a bad id or anchor) and were left out of `notes`.
+    private(set) var skippedRowCount = 0
     @ObservationIgnored var onDataChanged: (() -> Void)?
     @ObservationIgnored private var connection: Connection?
 
@@ -78,7 +80,9 @@ final class QiraatNotesStore {
                     """)
                 }
             }
-            notes = try readNotes(on: opened.handle)
+            let loaded = try readNotes(on: opened.handle, skippingInvalid: true)
+            notes = loaded.notes
+            skippedRowCount = loaded.skipped
         } catch {
             connection = nil
             loadError = error.localizedDescription
@@ -92,7 +96,9 @@ final class QiraatNotesStore {
 
     func list() throws -> [QiraatNote] {
         guard let connection else { throw Self.failure(loadError) }
-        return try readNotes(on: connection.handle)
+        let loaded = try readNotes(on: connection.handle, skippingInvalid: true)
+        skippedRowCount = loaded.skipped
+        return loaded.notes
     }
 
     func note(surah: Int, ayah: Int, token: Int) -> QiraatNote? {
@@ -127,6 +133,15 @@ final class QiraatNotesStore {
             else if connection == nil { throw Self.failure(loadError) }
             return
         }
+        if old == nil {
+            // An unreadable row left on this word (skipped when loading) would otherwise keep its bad id.
+            try statement("DELETE FROM qiraat_notes WHERE surah = ? AND ayah = ? AND token = ?") { stmt in
+                for (offset, value) in [surah, ayah, token].enumerated() {
+                    sqlite3_bind_int64(stmt, Int32(offset + 1), Int64(value))
+                }
+                guard sqlite3_step(stmt) == SQLITE_DONE else { throw Self.failure() }
+            }
+        }
         let now = Date().normalizedToMilliseconds
         let row = QiraatNote(id: old?.id ?? UUID().uuidString, surah: surah, ayah: ayah, token: token, page: page,
                             favorite: favorite, note: text, createdAt: old?.createdAt ?? now, updatedAt: now)
@@ -145,7 +160,7 @@ final class QiraatNotesStore {
         let incoming = Connection()
         guard sqlite3_open_v2(temporary.path, &incoming.handle, SQLITE_OPEN_READONLY, nil) == SQLITE_OK,
               try schemaVersion(on: incoming.handle) == 1 else { throw Self.failure("إصدار ملف الملاحظات غير مدعوم.") }
-        let rows = try readNotes(on: incoming.handle)
+        let rows = try readNotes(on: incoming.handle).notes
         var anchors = Set<String>()
         for row in rows where !anchors.insert("\(row.surah):\(row.ayah):\(row.token)").inserted {
             throw Self.failure("ملف الملاحظات غير صالح.")
@@ -163,7 +178,7 @@ final class QiraatNotesStore {
     }
 
     private func didChange() throws {
-        notes = try list()
+        notes = try list()  // also refreshes `skippedRowCount`
         onDataChanged?()
     }
 
@@ -223,29 +238,41 @@ final class QiraatNotesStore {
         return Int(sqlite3_column_int(stmt, 0))
     }
 
-    private func readNotes(on db: OpaquePointer?) throws -> [QiraatNote] {
+    /// Reads every row. A row that fails validation throws, unless `skippingInvalid` is set: then it is left out
+    /// and counted, so one bad row cannot make the other notes unreadable.
+    private func readNotes(on db: OpaquePointer?, skippingInvalid: Bool = false) throws -> (notes: [QiraatNote], skipped: Int) {
         var stmt: OpaquePointer?
         guard sqlite3_prepare_v2(db, "SELECT id, surah, ayah, token, page, favorite, note, created_at, updated_at FROM qiraat_notes ORDER BY page, surah, ayah, token", -1, &stmt, nil) == SQLITE_OK else { throw Self.failure() }
         defer { sqlite3_finalize(stmt) }
         var result: [QiraatNote] = []
+        var skipped = 0
         var step = sqlite3_step(stmt)
         while step == SQLITE_ROW {
-            guard sqlite3_column_type(stmt, 0) == SQLITE_TEXT, sqlite3_column_type(stmt, 6) == SQLITE_TEXT,
-                  [1, 2, 3, 4, 5, 7, 8].allSatisfy({ sqlite3_column_type(stmt, Int32($0)) == SQLITE_INTEGER }) else { throw Self.failure() }
-            let favorite = sqlite3_column_int64(stmt, 5)
-            guard (0...1).contains(favorite) else { throw Self.failure() }
-            let row = QiraatNote(id: try readText(stmt, column: 0), surah: Int(sqlite3_column_int64(stmt, 1)),
-                ayah: Int(sqlite3_column_int64(stmt, 2)), token: Int(sqlite3_column_int64(stmt, 3)),
-                page: Int(sqlite3_column_int64(stmt, 4)), favorite: favorite == 1,
-                note: try readText(stmt, column: 6), createdAt: try readDate(stmt, column: 7),
-                updatedAt: try readDate(stmt, column: 8))
-            guard UUID(uuidString: row.id) != nil,
-                  Self.validAnchor(page: row.page, surah: row.surah, ayah: row.ayah, token: row.token) else { throw Self.failure() }
-            result.append(row)
+            do {
+                result.append(try readRow(stmt))
+            } catch {
+                guard skippingInvalid else { throw error }
+                skipped += 1
+            }
             step = sqlite3_step(stmt)
         }
         guard step == SQLITE_DONE else { throw Self.failure() }
-        return result
+        return (result, skipped)
+    }
+
+    private func readRow(_ stmt: OpaquePointer?) throws -> QiraatNote {
+        guard sqlite3_column_type(stmt, 0) == SQLITE_TEXT, sqlite3_column_type(stmt, 6) == SQLITE_TEXT,
+              [1, 2, 3, 4, 5, 7, 8].allSatisfy({ sqlite3_column_type(stmt, Int32($0)) == SQLITE_INTEGER }) else { throw Self.failure() }
+        let favorite = sqlite3_column_int64(stmt, 5)
+        guard (0...1).contains(favorite) else { throw Self.failure() }
+        let row = QiraatNote(id: try readText(stmt, column: 0), surah: Int(sqlite3_column_int64(stmt, 1)),
+            ayah: Int(sqlite3_column_int64(stmt, 2)), token: Int(sqlite3_column_int64(stmt, 3)),
+            page: Int(sqlite3_column_int64(stmt, 4)), favorite: favorite == 1,
+            note: try readText(stmt, column: 6), createdAt: try readDate(stmt, column: 7),
+            updatedAt: try readDate(stmt, column: 8))
+        guard UUID(uuidString: row.id) != nil,
+              Self.validAnchor(page: row.page, surah: row.surah, ayah: row.ayah, token: row.token) else { throw Self.failure() }
+        return row
     }
 
     private func readText(_ statement: OpaquePointer?, column: Int32) throws -> String {

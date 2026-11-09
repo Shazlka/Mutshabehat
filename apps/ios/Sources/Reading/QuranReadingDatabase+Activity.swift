@@ -17,16 +17,23 @@ extension QuranReadingDatabase {
         defer { lock.unlock() }
         guard let db = db else { return (0, 0) }
 
+        // The event row and the day row are one transaction: both are stored, or neither.
+        _ = transactionLocked(db) {
+            insertActivityLocked(db, ayahsCount: ayahsCount, pagesCount: pagesCount, seconds: seconds, on: date)
+        }
+
+        return recalculateStreaks(asOf: date)
+    }
+
+    /// The activity event and the day's totals; false when either step fails. Lock held, inside a transaction.
+    func insertActivityLocked(_ db: OpaquePointer, ayahsCount: Int, pagesCount: Int, seconds: Int, on date: Date) -> Bool {
         let dateStr = Self.dayFormatter.string(from: date)
         let nowStr = Self.isoFormatter.string(from: date)
 
         let eventSQL = "INSERT INTO reading_activity_events(id, date_string, ayahs_read, pages_read, seconds_read, recorded_at) VALUES (?, ?, ?, ?, ?, ?);"
         var eventStatement: OpaquePointer?
-        guard sqlite3_prepare_v2(db, eventSQL, -1, &eventStatement, nil) == SQLITE_OK else {
-            return recalculateStreaks(asOf: date)
-        }
-        let id = UUID().uuidString
-        SQLiteBind.text(eventStatement, 1, id)
+        guard sqlite3_prepare_v2(db, eventSQL, -1, &eventStatement, nil) == SQLITE_OK else { return false }
+        SQLiteBind.text(eventStatement, 1, UUID().uuidString)
         SQLiteBind.text(eventStatement, 2, dateStr)
         sqlite3_bind_int64(eventStatement, 3, Int64(ayahsCount))
         sqlite3_bind_int64(eventStatement, 4, Int64(pagesCount))
@@ -34,7 +41,7 @@ extension QuranReadingDatabase {
         SQLiteBind.text(eventStatement, 6, nowStr)
         let eventSaved = sqlite3_step(eventStatement) == SQLITE_DONE
         sqlite3_finalize(eventStatement)
-        guard eventSaved else { return recalculateStreaks(asOf: date) }
+        guard eventSaved else { return false }
 
         let upsertSql = """
         INSERT INTO reading_days (date_string, ayahs_read, pages_read, seconds_read, last_read_at)
@@ -46,17 +53,14 @@ extension QuranReadingDatabase {
             last_read_at = excluded.last_read_at;
         """
         var stmt: OpaquePointer?
-        if sqlite3_prepare_v2(db, upsertSql, -1, &stmt, nil) == SQLITE_OK {
-            SQLiteBind.text(stmt, 1, dateStr)
-            sqlite3_bind_int64(stmt, 2, Int64(ayahsCount))
-            sqlite3_bind_int64(stmt, 3, Int64(pagesCount))
-            sqlite3_bind_int64(stmt, 4, Int64(seconds))
-            SQLiteBind.text(stmt, 5, nowStr)
-            _ = sqlite3_step(stmt)
-        }
-        sqlite3_finalize(stmt)
-
-        return recalculateStreaks(asOf: date)
+        guard sqlite3_prepare_v2(db, upsertSql, -1, &stmt, nil) == SQLITE_OK else { return false }
+        defer { sqlite3_finalize(stmt) }
+        SQLiteBind.text(stmt, 1, dateStr)
+        sqlite3_bind_int64(stmt, 2, Int64(ayahsCount))
+        sqlite3_bind_int64(stmt, 3, Int64(pagesCount))
+        sqlite3_bind_int64(stmt, 4, Int64(seconds))
+        SQLiteBind.text(stmt, 5, nowStr)
+        return sqlite3_step(stmt) == SQLITE_DONE
     }
 
     public func calculateStreaks(asOf date: Date = Date()) -> (currentStreak: Int, longestStreak: Int, totalReadingDays: Int) {
@@ -187,7 +191,7 @@ extension QuranReadingDatabase {
 
         guard !days.isEmpty else { return (0, 0) }
 
-        let calendar = Calendar.current
+        let calendar = Calendar.autoupdatingCurrent
         var streak = 0
         var maxStreak = 0
         var prevDate: Date? = nil

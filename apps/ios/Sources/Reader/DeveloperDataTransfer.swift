@@ -35,7 +35,8 @@ enum QiraatBackupService {
 
     static func install(_ data: Data) throws -> QiraatStore {
         let archive = try JSONDecoder().decode(Archive.self, from: data)
-        guard archive.formatVersion == 1, Set(archive.files.keys) == Set(requiredFilenames) else {
+        guard archive.formatVersion == 1, Set(archive.files.keys) == Set(requiredFilenames),
+              archive.files.keys.allSatisfy(ManifestNameGuard.isSafe) else {
             throw BackupError.invalidQiraatArchive
         }
 

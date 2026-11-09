@@ -89,7 +89,7 @@ import Testing
         defer { try? FileManager.default.removeItem(at: directory) }
         let staged = directory.appendingPathComponent("seed.sqlite")
         try bytes.write(to: staged)
-        try SQLiteFile.validate(at: staged, requiredTables: ["groups", "verses", "parts", "automated_groups"])
+        try SQLiteFile.validate(stagedCopyAt: staged, requiredTables: ["groups", "verses", "parts", "automated_groups"])
     }
 
     // MARK: - checkpoint and configuration

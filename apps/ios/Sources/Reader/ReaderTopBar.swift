@@ -30,6 +30,25 @@ struct ReaderTopBar: View {
     /// `.vertical`: the left side rail of iPad landscape.
     var axis: Axis = .horizontal
 
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+    @Environment(\.colorSchemeContrast) private var contrast
+
+    /// Liquid Glass chips unless the user asks for less transparency or more contrast; the tinted capsules
+    /// (an opaque fill with an edge) otherwise.
+    private var usesGlass: Bool {
+        !ChromeContrast.prefersOpaque(reduceTransparency: reduceTransparency, contrast: contrast)
+    }
+
+    /// The header's chips in one glass container, so neighbouring glass blends and responds together.
+    @ViewBuilder
+    private func chipCluster<Content: View>(spacing: CGFloat, @ViewBuilder _ content: () -> Content) -> some View {
+        if usesGlass {
+            GlassEffectContainer(spacing: spacing) { content() }
+        } else {
+            content()
+        }
+    }
+
     var body: some View {
         if axis == .vertical { column } else { bar }
     }
@@ -87,6 +106,10 @@ struct ReaderTopBar: View {
         .accessibilityIdentifier("reading-section-text")
     }
 
+    private func khatmaLabel(percent: Int) -> String {
+        memorizationLanguage == .english ? "Khatma \(percent)%" : "ختمة \(ArabicDigits.string(percent))٪"
+    }
+
     /// The khatma in the rail: a tall bar filled from the bottom up in the progress colour, the percent under it;
     /// opens the reading statistics.
     private var khatmaBar: some View {
@@ -112,7 +135,8 @@ struct ReaderTopBar: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .accessibilityLabel(Text(verbatim: memorizationLanguage == .english ? "Khatma \(percent)%" : "ختمة \(ArabicDigits.string(percent))٪"))
+        .accessibilityLabel(Text(verbatim: khatmaLabel(percent: percent)))
+        .accessibilityShowsLargeContentViewer { Text(verbatim: khatmaLabel(percent: percent)) }
         .accessibilityHint(memorizationLanguage == .english ? "Opens reading statistics" : "يفتح إحصائيات القراءة")
         .accessibilityIdentifier("khatma-progress")
     }
@@ -150,10 +174,12 @@ struct ReaderTopBar: View {
             surahTitleButton(ink: ink, tight: tight, wraps: false)
 
             Spacer(minLength: tight ? 4 : 8)
-            HStack(spacing: tight ? 5 : 8) {
-                memorizationMarkRow(form: mark)
-                qiraatFilterChip(vertical: false)
-                khatmaChip(showsPercent: showsPercent)
+            chipCluster(spacing: tight ? 5 : 8) {
+                HStack(spacing: tight ? 5 : 8) {
+                    memorizationMarkRow(form: mark)
+                    qiraatFilterChip(vertical: false)
+                    khatmaChip(showsPercent: showsPercent)
+                }
             }
             Spacer(minLength: tight ? 4 : 8)
 
@@ -233,15 +259,17 @@ struct ReaderTopBar: View {
             }
             .padding(.horizontal, showsPercent ? 10 : 6)
             .frame(height: 40)
-            .background(Capsule().fill(Color(uiColor: ProgressTint.chipFill(fraction, appearance: appearance, traits: traits))))
-            .overlay(Capsule().strokeBorder(tint.opacity(0.55), lineWidth: 1))
+            .modifier(ChipSurface(
+                fill: Color(uiColor: ProgressTint.chipFill(fraction, appearance: appearance, traits: traits)),
+                tint: tint, useGlass: usesGlass))
             // The capsule stays 40 pt; the button around it is 44 pt tall.
             .frame(height: 44)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
         .fixedSize()
-        .accessibilityLabel(Text(verbatim: memorizationLanguage == .english ? "Khatma \(percent)%" : "ختمة \(ArabicDigits.string(percent))٪"))
+        .accessibilityLabel(Text(verbatim: khatmaLabel(percent: percent)))
+        .accessibilityShowsLargeContentViewer { Text(verbatim: khatmaLabel(percent: percent)) }
         .accessibilityHint(memorizationLanguage == .english ? "Opens reading statistics" : "يفتح إحصائيات القراءة")
         .accessibilityIdentifier("khatma-progress")
     }
@@ -260,17 +288,43 @@ struct ReaderTopBar: View {
     private func qiraatFilterChip(vertical: Bool) -> some View {
         if qiraat.enabled, let name = qiraatCatalog?.filterShortName(qiraat.filter),
            let full = qiraatCatalog?.filterName(qiraat.filter) {
+            filterChipBody(name: name, vertical: vertical)
+            .frame(maxWidth: vertical ? .infinity : 130)
+            .fixedSize(horizontal: !vertical, vertical: true)
+            .accessibilityLabel(Text("القراءات العشر") + Text(verbatim: ": ") + Text(full))
+            .accessibilityHint("لتغيير القارئ أو الراوي")
+            .accessibilityIdentifier("qiraat-filter-chip")
+        }
+    }
+
+    /// The chip itself: the shared `FilterChip`, or a glass capsule tinted with the reader's colour
+    /// (text in the header ink, since the white-on-fill label would not read on a light tint).
+    @ViewBuilder
+    private func filterChipBody(name: String, vertical: Bool) -> some View {
+        if usesGlass {
+            Button(action: openQiraatFilter) {
+                Text(name)
+                    .font(.caption.bold())
+                    .lineLimit(vertical ? 2 : 1)
+                    .multilineTextAlignment(.center)
+                    .minimumScaleFactor(0.8)
+                    .foregroundStyle(Color(uiColor: appearance.ink(for: traits)))
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 7)
+                    .modifier(ChipSurface(fill: filterColor, tint: filterColor, useGlass: true))
+                    .frame(minHeight: 44)
+                    .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .accessibilityAddTraits(.isSelected)
+            .accessibilityShowsLargeContentViewer { Text(verbatim: name) }
+        } else {
             FilterChip(isSelected: true, selectedFill: filterColor, action: openQiraatFilter) {
                 Text(name)
                     .lineLimit(vertical ? 2 : 1)
                     .multilineTextAlignment(.center)
                     .minimumScaleFactor(0.8)
             }
-            .frame(maxWidth: vertical ? .infinity : 130)
-            .fixedSize(horizontal: !vertical, vertical: true)
-            .accessibilityLabel(Text("القراءات العشر") + Text(verbatim: ": ") + Text(full))
-            .accessibilityHint("لتغيير القارئ أو الراوي")
-            .accessibilityIdentifier("qiraat-filter-chip")
         }
     }
 
@@ -290,6 +344,24 @@ struct ReaderTopBar: View {
             }
             .fixedSize()
             .environment(\.layoutDirection, .leftToRight)
+        }
+    }
+}
+
+/// A header chip's capsule: Liquid Glass tinted with the chip's colour, the filled and outlined capsule
+/// when transparency is reduced.
+private struct ChipSurface: ViewModifier {
+    let fill: Color
+    let tint: Color
+    let useGlass: Bool
+
+    func body(content: Content) -> some View {
+        if useGlass {
+            content.glassEffect(.regular.tint(tint.opacity(0.25)).interactive(), in: .capsule)
+        } else {
+            content
+                .background(Capsule().fill(fill))
+                .overlay(Capsule().strokeBorder(tint.opacity(0.55), lineWidth: 1))
         }
     }
 }

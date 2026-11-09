@@ -145,12 +145,16 @@ final class MushafPageView: UIView {
                 let changedPage = note.userInfo?["page"] as? Int
                 MainActor.assumeIsolated {
                     guard let self, changedPage == self.page.number else { return }
+                    self.prefetchGate.reset()
                     self.refreshQiraatMarks()
                 }
             },
             center.addObserver(forName: .qiraatDatabaseDidUpdate, object: nil, queue: .main) { [weak self] _ in
                 WordContextIndex.shared.invalidate()
-                MainActor.assumeIsolated { self?.refreshQiraatMarks() }
+                MainActor.assumeIsolated {
+                    self?.prefetchGate.reset()
+                    self?.refreshQiraatMarks()
+                }
             },
             center.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) { [weak self] _ in
                 MainActor.assumeIsolated {
@@ -172,6 +176,8 @@ final class MushafPageView: UIView {
     /// colours ready in memory with zero delay.
     private func prefetchNeighbourQiraat() {
         guard qiraat.enabled, let store = library.qiraat else { return }
+        // Once per page and Qiraat setting: the setters and every layout pass all land here.
+        guard prefetchGate.shouldRun(qiraat) else { return }
         let number = page.number
         let filter = qiraat.filter
         WordContextIndex.shared.cancelObsolete(around: number, maxDistance: 2)
@@ -190,7 +196,11 @@ final class MushafPageView: UIView {
         }
     }
 
+    /// Lets the neighbour prefetch run again after the page was off screen or the Qiraat data changed.
+    private var prefetchGate = ChangeGate<QiraatDisplay>()
+
     private func stopLiveQiraat() {
+        prefetchGate.reset()
         liveActive = false
         liveTimer?.invalidate()
         liveTimer = nil
@@ -264,7 +274,24 @@ final class MushafPageView: UIView {
     /// The QCF glyphs are Private Use Area code points VoiceOver cannot read, so the page exposes its
     /// own elements, in reading order: the page, each surah header and basmala, then every ayah with
     /// its text, each followed by its Qiraat-marked words, search hits and memorization marker.
+    ///
+    /// Built when an accessibility client (VoiceOver, Switch Control, UI tests) asks, not on every change: a change
+    /// only drops the stale list, so a burst of setters costs one rebuild at the next query and none with no client.
+    private var cachedAccessibilityElements: [Any]?
+
+    override var accessibilityElements: [Any]? {
+        get {
+            if cachedAccessibilityElements == nil { cachedAccessibilityElements = buildAccessibilityElements() }
+            return cachedAccessibilityElements
+        }
+        set { cachedAccessibilityElements = newValue }
+    }
+
     private func updateAccessibilityElements() {
+        cachedAccessibilityElements = nil
+    }
+
+    private func buildAccessibilityElements() -> [Any] {
         let pageElement = MushafAccessibilityElement(accessibilityContainer: self)
         pageElement.accessibilityLabel = "\(appLocalized("صفحة")) \(page.number)"
         pageElement.accessibilityValue = isPageBookmarked ? appLocalized("عليها علامة") : nil
@@ -326,7 +353,7 @@ final class MushafPageView: UIView {
                 elements.append(contentsOf: boxes.compactMap(wordElement))
             }
         }
-        accessibilityElements = elements
+        return elements
     }
 
     private func ayahElement(_ key: AyahKey, boxes: [WordBox]) -> UIAccessibilityElement {

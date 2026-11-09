@@ -2,23 +2,20 @@ import MushafCore
 import SwiftUI
 
 extension View {
-    /// Lets content scroll under a bottom bar with a soft fade on iOS 26; nothing before it.
-    @ViewBuilder
+    /// Lets content scroll under a bottom bar with a soft fade.
     func softBottomScrollEdge() -> some View {
-        if #available(iOS 26, *) { scrollEdgeEffectStyle(.soft, for: .bottom) } else { self }
+        scrollEdgeEffectStyle(.soft, for: .bottom)
     }
 
-    /// The backing of a bar inset at the bottom: the content scrolls under it on iOS 26 (the bar's own controls are
-    /// glass there), a regular material before it.
-    @ViewBuilder
+    /// The backing of a bar inset at the bottom: the content scrolls under it (the bar's own controls are
+    /// glass), opaque with a hairline when transparency is reduced.
     func bottomBarSurface() -> some View {
-        if #available(iOS 26, *) { self } else { background(.regularMaterial) }
+        adaptiveBarBackground()
     }
 
-    /// The bar's one primary action: prominent Liquid Glass on iOS 26, the prominent bordered style before it.
-    @ViewBuilder
+    /// The bar's one primary action: prominent Liquid Glass.
     func primaryActionStyle() -> some View {
-        if #available(iOS 26, *) { buttonStyle(.glassProminent) } else { buttonStyle(.borderedProminent) }
+        buttonStyle(.glassProminent)
     }
 }
 

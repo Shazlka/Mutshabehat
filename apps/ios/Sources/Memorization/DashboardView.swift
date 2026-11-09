@@ -81,7 +81,7 @@ struct DashboardView: View {
                 Image(systemName: "chevron.forward").font(.caption)
             }
             .padding(10)
-            .background(RoundedRectangle(cornerRadius: 10).fill(Color.secondary.opacity(0.1)))
+            .appCard()
         }
         .buttonStyle(.plain)
         .accessibilityIdentifier("memo-search-result")
@@ -168,7 +168,7 @@ struct DashboardView: View {
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 12)
-            .background(RoundedRectangle(cornerRadius: 12).fill(Color.secondary.opacity(0.1)))
+            .appCard()
         }
         .buttonStyle(.plain)
         .accessibilityElement(children: .combine)
@@ -212,7 +212,7 @@ struct DashboardView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(14)
-        .background(RoundedRectangle(cornerRadius: 12).fill(Color.secondary.opacity(0.1)))
+        .appCard()
         .accessibilityElement(children: .contain)
         .accessibilityIdentifier("memo-current")
     }
@@ -226,6 +226,12 @@ struct DashboardView: View {
 
     // MARK: Status bar
 
+    private var statusBarLabel: String {
+        MemorizationStatus.allCases
+            .map { "\(MemorizationTheme.label($0, language: language)): \(number(snapshot.counts[$0] ?? 0))" }
+            .joined(separator: language == .arabic ? "، " : ", ")
+    }
+
     private var statusSection: some View {
         let total = max(1, snapshot.totalAyahs)
         return VStack(alignment: .leading, spacing: 10) {
@@ -233,20 +239,18 @@ struct DashboardView: View {
                 HStack(spacing: 1) {
                     ForEach(MemorizationStatus.allCases, id: \.self) { status in
                         let count = snapshot.counts[status] ?? 0
-                        Button { navigate(.ayahList(.status(status))) } label: {
-                            Rectangle()
-                                .fill(MemorizationTheme.color(status).opacity(status == .notMemorized ? 0.35 : 0.9))
-                        }
-                        .buttonStyle(.plain)
-                        .frame(width: max(0, proxy.size.width * CGFloat(count) / CGFloat(total)))
-                        .accessibilityIdentifier("memo-status-seg-\(status.rawValue)")
-                        .accessibilityLabel(MemorizationTheme.label(status, language: language))
+                        Rectangle()
+                            .fill(MemorizationTheme.color(status).opacity(status == .notMemorized ? 0.35 : 0.9))
+                            .frame(width: max(0, proxy.size.width * CGFloat(count) / CGFloat(total)))
                     }
                 }
             }
             .frame(height: 12)
             .clipShape(Capsule())
-            .accessibilityElement(children: .contain)
+            // A 12 pt strip of segments a few points wide is not a usable tap target: the 44 pt rows below are.
+            .allowsHitTesting(false)
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(statusBarLabel)
             .accessibilityIdentifier("memo-status-bar")
 
             ForEach(MemorizationStatus.allCases, id: \.self) { status in
@@ -367,7 +371,7 @@ struct DashboardView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(14)
-        .background(RoundedRectangle(cornerRadius: 12).fill(Color.secondary.opacity(0.1)))
+        .appCard()
         .accessibilityElement(children: .contain)
         .accessibilityIdentifier(identifier)
     }

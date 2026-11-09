@@ -58,6 +58,21 @@ struct MemorizationView: View {
                     destination(route)
                 }
                 .softBottomScrollEdge()
+                .overlay {
+                    if let problem = store.storageProblem {
+                        ContentUnavailableView {
+                            Label(language == .arabic ? "تعذّر فتح بيانات الحفظ" : "Couldn’t open the memorization data",
+                                  systemImage: "exclamationmark.triangle")
+                        } description: {
+                            Text(language == .arabic
+                                 ? "لن تُحفظ أي تغييرات حتى تُحل المشكلة. أعد تشغيل التطبيق، وإن استمرت فاستعد نسخة احتياطية من الإعدادات."
+                                 : "No changes will be saved until this is fixed. Restart the app, and if it persists restore a backup from Settings.")
+                            Text(verbatim: problem).font(.footnote).foregroundStyle(.secondary)
+                        }
+                        .background(Color(.systemBackground))
+                        .accessibilityIdentifier("memo-storage-problem")
+                    }
+                }
                 .safeAreaInset(edge: .bottom) { updateButton }
                 .memorizationToast($toast, store: store, library: library, language: language,
                                    undoFailed: { path.append(.history) })   // the history screen explains and offers "undo anyway"

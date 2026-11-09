@@ -76,6 +76,10 @@ Built, tested and committed on `ios/memorization`; **not pushed, not merged into
 - **Open items:** real iCloud Drive behaviour and real-device haptics are not verified; the full `make test-ipad` was
   not re-run after the last fixes; five Reader/Qiraat UI tests fail on `ios/main` itself (pre-existing).
 
+## Known failing UI test (2026-11-09)
+
+`QiraatFeaturesUITests.testReaderPickerOpensAsSheetSearchNarrowsAndSingleTapSelects` fails at «Settings view must remain presented after picker dismissal». It fails the same way on `033a3f65` (before the 2026-11 audit work), so it is not caused by it. By hand on the iPhone 18 Pro Max simulator (iOS 27.2) without the search step: choosing a reader closes the picker, the reader's filter chip changes and the Settings sheet stays open. The search path (typing Arabic) could not be driven by hand. Likely an iOS 27 accessibility-tree quirk after a nested sheet closes; needs a look with Accessibility Inspector.
+
 ## Start here
 
 1. Read `AGENTS.md`, then the repository-root `HANDOFF.md` and `PROJECT_MASTER.md`, then `CLAUDE.md`.

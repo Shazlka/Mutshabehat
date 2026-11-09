@@ -3,7 +3,7 @@ options:
   bundleIdPrefix: com.shazlka
   developmentLanguage: ar
   deploymentTarget:
-    iOS: "18.0"
+    iOS: "26.0"
   createIntermediateGroups: true
 settings:
   base:
@@ -36,6 +36,20 @@ targets:
     dependencies:
       - package: MushafCore
       - package: ReviewEditor
+    postBuildScripts:
+      - name: Remove private group notes (Release)
+        basedOnDependencyAnalysis: false
+        script: |
+          # The owner's own groups carry private notes (`unote`). They stay in Debug builds and in a Release build made
+          # with KEEP_PRIVATE_NOTES=YES (the owner's own device); an App Store / TestFlight build ships the groups
+          # without them. The bundled copy is cleaned, never the source database.
+          if [ "$CONFIGURATION" = "Release" ] && [ "$KEEP_PRIVATE_NOTES" != "YES" ]; then
+            DB="$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/mutshabehat.sqlite"
+            if [ -f "$DB" ]; then
+              /usr/bin/sqlite3 "$DB" "PRAGMA journal_mode=DELETE; PRAGMA secure_delete=ON; UPDATE groups SET unote = NULL; VACUUM;" >/dev/null || { echo "error: could not remove private notes from $DB"; exit 1; }
+              rm -f "$DB-wal" "$DB-shm"
+            fi
+          fi
     preBuildScripts:
       - name: Check generated Mushaf data
         basedOnDependencyAnalysis: false
@@ -72,7 +86,13 @@ targets:
           if [ -s "$SRC" ]; then
             mkdir -p "$DEST" && cp "$SRC" "$DEST/mutoon.json"
             if [ -s "$SYMBOLS" ]; then cp "$SYMBOLS" "$DEST/mutoon-symbols.json"; else rm -f "$DEST/mutoon-symbols.json"; fi
-            if [ -s "$SHARH" ]; then cp "$SHARH" "$DEST/mutoon-sharh.json"; else rm -f "$DEST/mutoon-sharh.json"; fi
+            # The two modern commentaries (الوافي، الهادي) are in Release only once their rights holders have given written
+            # permission: build with INCLUDE_COMMENTARY=YES to ship them. Debug builds always include them.
+            if [ -s "$SHARH" ] && { [ "$CONFIGURATION" != "Release" ] || [ "$INCLUDE_COMMENTARY" = "YES" ]; }; then
+              cp "$SHARH" "$DEST/mutoon-sharh.json"
+            else
+              rm -f "$DEST/mutoon-sharh.json"
+            fi
           else
             rm -rf "$DEST"
           fi

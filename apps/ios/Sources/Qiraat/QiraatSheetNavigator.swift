@@ -12,6 +12,7 @@ struct QiraatSheetNavigator: View {
     let onSelect: ((MarkedWordRef) -> Void)?
 
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
 
     init(
         orderedRefs: [MarkedWordRef],
@@ -57,7 +58,7 @@ struct QiraatSheetNavigator: View {
         .font(.subheadline)
         .foregroundStyle(Color(uiColor: .mushafInk))
         .padding(.horizontal, 8)
-        .background(Color(uiColor: .mushafPaper))
+        .modifier(NavigatorSurface(useGlass: !reduceTransparency))
         .environment(\.layoutDirection, .rightToLeft)
         .onAppear(perform: recoverMissingSelection)
         .onChange(of: orderedRefs) { _, _ in recoverMissingSelection() }
@@ -138,5 +139,20 @@ struct QiraatSheetNavigator: View {
         guard onSelectPrevious == nil && onSelectNext == nil else { return }
         guard !orderedRefs.contains(where: { $0.id == currentRef.id }), let activeRef else { return }
         onSelect?(activeRef)
+    }
+}
+
+
+/// The navigator's paper. It sits directly on the sheet's tinted surface instead of laying an opaque slab
+/// over it; the opaque paper when transparency is reduced.
+private struct NavigatorSurface: ViewModifier {
+    let useGlass: Bool
+
+    func body(content: Content) -> some View {
+        if useGlass {
+            content
+        } else {
+            content.background(Color(uiColor: .mushafPaper))
+        }
     }
 }

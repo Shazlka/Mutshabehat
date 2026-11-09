@@ -43,6 +43,17 @@ final class QiraatLiveSync: ObservableObject {
     }
 
     nonisolated static let baseURL = AppEndpoints.webApp
+    /// The largest answer accepted before anything is decoded: one page, and the whole متون snapshot.
+    nonisolated static let maxPageBytes = 8 * 1024 * 1024
+    nonisolated static let maxMutoonBytes = 32 * 1024 * 1024
+
+    nonisolated static func maxBytes(for request: URLRequest) -> Int {
+        request.url?.path.contains("/mutoon") == true ? maxMutoonBytes : maxPageBytes
+    }
+
+    nonisolated static func requireWithinLimit(_ response: FetchResponse, limit: Int) throws {
+        guard response.data.count <= limit else { throw URLError(.dataLengthExceedsMaximum) }
+    }
     static let shared = QiraatLiveSync()
     /// The overlay lives in Application Support, next to the imported backup directory.
     static let overlayDirectory: URL = {
@@ -115,8 +126,17 @@ final class QiraatLiveSync: ObservableObject {
 #else
         let session = PublicLiveSyncSession.shared
 #endif
-        let (data, response) = try await session.data(for: request)
+        guard request.url?.scheme == "https" else { throw URLError(.appTransportSecurityRequiresSecureConnection) }
+        // Stream the body and stop at the limit instead of buffering whatever the server sends.
+        let limit = maxBytes(for: request)
+        let (bytes, response) = try await session.bytes(for: request)
         guard let response = response as? HTTPURLResponse else { throw URLError(.badServerResponse) }
+        if response.expectedContentLength > Int64(limit) { throw URLError(.dataLengthExceedsMaximum) }
+        var data = Data()
+        for try await byte in bytes {
+            data.append(byte)
+            if data.count > limit { throw URLError(.dataLengthExceedsMaximum) }
+        }
         return FetchResponse(data: data, statusCode: response.statusCode,
                              etag: response.value(forHTTPHeaderField: "ETag"))
     }
@@ -149,6 +169,7 @@ final class QiraatLiveSync: ObservableObject {
                 return PageRefreshResult(outcome: note(.unchanged), etag: confirmedETag)
             }
             guard response.statusCode == 200 else { throw URLError(.badServerResponse) }
+            try Self.requireWithinLimit(response, limit: Self.maxPageBytes)
             if let etag = response.etag { pageETags[page] = etag }
             // The web review page is edited all the time while development builds read it: a page with fewer records is
             // a deletion there, so those builds never refuse a shrink. The public API the store build reads is cached,
@@ -173,6 +194,7 @@ final class QiraatLiveSync: ObservableObject {
     func fetchVersions(total: Int = mushafPageCount) async throws -> [Int: String] {
         let response = try await fetch(Self.request(url: AppEndpoints.publicQiraatVersions))
         guard response.statusCode == 200 else { throw URLError(.badServerResponse) }
+        try Self.requireWithinLimit(response, limit: Self.maxPageBytes)
         let versions = try Self.decodeVersions(response.data)
         guard (1...total).allSatisfy({ versions[$0] != nil }) else { throw VersionsError.incomplete }
         return versions
@@ -242,6 +264,7 @@ final class QiraatLiveSync: ObservableObject {
             if let seq = MatnOverlay.seq(in: liveDir) {
                 let response = try await fetch(Self.request(url: AppEndpoints.liveMutoon(since: seq, route: route)))
                 guard response.statusCode == 200 else { throw URLError(.badServerResponse) }
+                try Self.requireWithinLimit(response, limit: Self.maxMutoonBytes)
                 let result = try await Task.detached(priority: .utility) { () -> MatnOverlay.DeltaResult in
                     guard let json = try JSONSerialization.jsonObject(with: response.data) as? [String: Any] else { return .needsSnapshot }
                     return try MatnOverlay.applyDelta(json, to: liveDir)
@@ -275,6 +298,7 @@ final class QiraatLiveSync: ObservableObject {
                               fetch: @escaping (URLRequest) async throws -> FetchResponse) async throws -> Bool {
         let response = try await fetch(Self.request(url: AppEndpoints.liveMutoon(route: route)))
         guard response.statusCode == 200 else { throw URLError(.badServerResponse) }
+        try Self.requireWithinLimit(response, limit: Self.maxMutoonBytes)
         return try await Task.detached(priority: .utility) { () -> Bool in
             guard let json = try JSONSerialization.jsonObject(with: response.data) as? [String: Any] else { return false }
             try MatnOverlay.writeSnapshot(json, to: directory)

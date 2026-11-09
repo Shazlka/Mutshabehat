@@ -78,13 +78,15 @@ final class BackupController {
         switch phase {
         case .background:
             pending?.cancel()
+            // Going to the background twice must not forget the first task: end it before keeping the new id.
+            endBackgroundTask()
             let taskID = UIApplication.shared.beginBackgroundTask(withName: "memorization-backup") { [weak self] in
                 self?.endBackgroundTask()
             }
             backgroundTaskID = taskID
             Task { [weak self] in
                 await self?.run(.background)
-                self?.endBackgroundTask()
+                self?.endBackgroundTask(ifCurrent: taskID)
             }
         case .active:
             launchCheck()
@@ -94,8 +96,11 @@ final class BackupController {
 
     private var backgroundTaskID: UIBackgroundTaskIdentifier = .invalid
 
-    private func endBackgroundTask() {
+    /// Ends the open background task. With `ifCurrent`, only when that is still the open one, so a finished run
+    /// cannot end the task of a later background transition.
+    private func endBackgroundTask(ifCurrent expected: UIBackgroundTaskIdentifier? = nil) {
         guard backgroundTaskID != .invalid else { return }
+        if let expected, expected != backgroundTaskID { return }
         let taskID = backgroundTaskID
         backgroundTaskID = .invalid
         UIApplication.shared.endBackgroundTask(taskID)

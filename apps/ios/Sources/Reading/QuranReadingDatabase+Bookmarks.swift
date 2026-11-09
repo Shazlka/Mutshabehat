@@ -45,7 +45,22 @@ extension QuranReadingDatabase {
         }
         sqlite3_finalize(stmt)
 
-        return QuranBookmark(id: id, type: type, surah: surah, ayah: ayah, page: page, note: note, createdAt: createdAt)
+        // On a conflict the stored row keeps its own id, so the returned bookmark carries that one, not the new UUID.
+        let storedID = storedBookmarkIDLocked(db, type: type, surah: surah, ayah: ayah, page: page) ?? id
+        return QuranBookmark(id: storedID, type: type, surah: surah, ayah: ayah, page: page, note: note, createdAt: createdAt)
+    }
+
+    private func storedBookmarkIDLocked(_ db: OpaquePointer, type: BookmarkType, surah: Int, ayah: Int, page: Int) -> String? {
+        var lookup: OpaquePointer?
+        guard sqlite3_prepare_v2(db, "SELECT id FROM bookmarks WHERE type = ? AND surah = ? AND ayah = ? AND page = ? LIMIT 1;",
+                                 -1, &lookup, nil) == SQLITE_OK else { return nil }
+        defer { sqlite3_finalize(lookup) }
+        SQLiteBind.text(lookup, 1, type.rawValue)
+        sqlite3_bind_int64(lookup, 2, Int64(surah))
+        sqlite3_bind_int64(lookup, 3, Int64(ayah))
+        sqlite3_bind_int64(lookup, 4, Int64(page))
+        guard sqlite3_step(lookup) == SQLITE_ROW else { return nil }
+        return sqliteColumnText(lookup, 0)
     }
 
     /// Removes the bookmark the reader's own state check found. That check ignores the pressed ayah for a page
@@ -185,7 +200,7 @@ extension QuranReadingDatabase {
             if let query = query, !query.trimmingCharacters(in: .whitespaces).isEmpty {
                 let pattern = "%\(query)%"
                 SQLiteBind.text(stmt, 1, pattern)
-                let num = Int(query) ?? -1
+                let num = Int(Self.latinDigits(query.trimmingCharacters(in: .whitespacesAndNewlines))) ?? -1
                 sqlite3_bind_int64(stmt, 2, Int64(num))
                 sqlite3_bind_int64(stmt, 3, Int64(num))
             }
@@ -217,5 +232,17 @@ extension QuranReadingDatabase {
         }
         sqlite3_finalize(stmt)
         return results
+    }
+
+    /// Arabic-Indic (٠-٩) and Persian (۰-۹) digits as Latin digits, so a number typed on an Arabic keyboard finds
+    /// the surah or page it names.
+    static func latinDigits(_ text: String) -> String {
+        String(text.unicodeScalars.map { scalar -> Character in
+            switch scalar.value {
+            case 0x0660...0x0669: Character(Unicode.Scalar(scalar.value - 0x0660 + 0x30)!)
+            case 0x06F0...0x06F9: Character(Unicode.Scalar(scalar.value - 0x06F0 + 0x30)!)
+            default: Character(scalar)
+            }
+        })
     }
 }

@@ -75,7 +75,7 @@ public struct KhatmaRecord: Identifiable, Hashable, Sendable {
 
     public var durationInDays: Int {
         let end = completedAt ?? Date()
-        let diff = Calendar.current.dateComponents([.day], from: startedAt, to: end).day ?? 0
+        let diff = Calendar.autoupdatingCurrent.dateComponents([.day], from: startedAt, to: end).day ?? 0
         return max(1, diff + 1)
     }
 }

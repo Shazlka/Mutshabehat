@@ -124,7 +124,7 @@ final class ICloudSyncInjectionTests: XCTestCase {
         XCTAssertEqual(merged.verses.count, 1, "the old verses are replaced, not mixed with the new ones")
     }
 
-    func testUnchangedFileIsNotImportedAgainUnlessForced() async throws {
+    func testUnchangedFileIsNotImportedAgainAndADeletionHereIsNotUndoneByAForcedSync() async throws {
         let folder = try makeFolder()
         let local = MutshabehatDatabase(url: base.appendingPathComponent("local-\(UUID().uuidString).sqlite"))
         let remote = group(title: "مجموعة الماك")
@@ -138,8 +138,10 @@ final class ICloudSyncInjectionTests: XCTestCase {
         _ = try await service.syncFromICloud(library: nil)
         XCTAssertNil(local.fetchPersonalGroup(id: remote.id), "same file, nothing to import")
 
+        // A forced sync reads the file again (see the test above), but a group deleted on this device is remembered
+        // (`group_deletions`) and is not brought back by it.
         _ = try await service.syncFromICloud(library: nil, force: true)
-        XCTAssertNotNil(local.fetchPersonalGroup(id: remote.id), "a forced sync imports again")
+        XCTAssertNil(local.fetchPersonalGroup(id: remote.id), "a deletion made here stays deleted")
     }
 
     func testAutomaticSyncShowsAFailureInsteadOfDroppingIt() async throws {

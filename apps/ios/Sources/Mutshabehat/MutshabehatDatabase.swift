@@ -29,6 +29,8 @@ public final class MutshabehatDatabase: @unchecked Sendable {
         databaseURL = dbUrl
 
         if sqlite3_open(dbUrl.path, &db) != SQLITE_OK {
+            // A failed open still returns a handle that has to be released.
+            if let failed = db { sqlite3_close_v2(failed) }
             db = nil
         } else {
             execute("""
@@ -52,6 +54,9 @@ public final class MutshabehatDatabase: @unchecked Sendable {
             CREATE TABLE IF NOT EXISTS automated_groups (
                 id INTEGER PRIMARY KEY, legacy_id TEXT, title TEXT NOT NULL,
                 color TEXT, surahs TEXT, payload TEXT NOT NULL, copied INTEGER DEFAULT 0
+            );
+            CREATE TABLE IF NOT EXISTS group_deletions (
+                group_id TEXT PRIMARY KEY, deleted_at TEXT NOT NULL
             );
             CREATE INDEX IF NOT EXISTS idx_verses_group ON verses(group_id);
             CREATE INDEX IF NOT EXISTS idx_verses_surah ON verses(surah);
@@ -207,8 +212,11 @@ public final class MutshabehatDatabase: @unchecked Sendable {
         defer { lock.unlock() }
         guard let db = db else { return false }
         do {
-            try run(db, "UPDATE groups SET favorite = CASE WHEN favorite = 1 THEN 0 ELSE 1 END WHERE id = ?") { stmt in
-                SQLiteBind.text(stmt, 1, groupId)
+            // `updated_at` moves with the flag, or a newer remote copy would overwrite it on the next merge.
+            let nowStr = ISO8601DateFormatter().string(from: Date())
+            try run(db, "UPDATE groups SET favorite = CASE WHEN favorite = 1 THEN 0 ELSE 1 END, updated_at = ? WHERE id = ?") { stmt in
+                SQLiteBind.text(stmt, 1, nowStr)
+                SQLiteBind.text(stmt, 2, groupId)
             }
             return true
         } catch {
@@ -225,6 +233,9 @@ public final class MutshabehatDatabase: @unchecked Sendable {
 
         let nowStr = ISO8601DateFormatter().string(from: Date())
         try inTransaction(db) {
+            // Saving a group again (an undo, a restore) lifts its deletion marker.
+            try ensureDeletionTable(db)
+            try run(db, "DELETE FROM group_deletions WHERE group_id = ?;") { SQLiteBind.text($0, 1, group.id) }
             try run(db, """
             INSERT OR REPLACE INTO groups (id, title, color, status, favorite, completed, note, unote, created_at, updated_at)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
@@ -274,9 +285,16 @@ public final class MutshabehatDatabase: @unchecked Sendable {
         lock.lock()
         defer { lock.unlock() }
         guard let db = db else { throw DatabaseTransferError.databaseUnavailable }
+        let nowStr = ISO8601DateFormatter().string(from: Date())
         try inTransaction(db) {
             try deleteChildren(of: groupId, in: db)
             try run(db, "DELETE FROM groups WHERE id = ?;") { SQLiteBind.text($0, 1, groupId) }
+            // The marker stops a merge from bringing the group back from a device that still has it.
+            try ensureDeletionTable(db)
+            try run(db, "INSERT OR REPLACE INTO group_deletions (group_id, deleted_at) VALUES (?, ?);") { stmt in
+                SQLiteBind.text(stmt, 1, groupId)
+                SQLiteBind.text(stmt, 2, nowStr)
+            }
         }
     }
 
@@ -286,6 +304,11 @@ public final class MutshabehatDatabase: @unchecked Sendable {
     }
 
     // MARK: Checked statements
+
+    /// A database restored from an older file has no deletion table yet.
+    private func ensureDeletionTable(_ db: OpaquePointer) throws {
+        try run(db, "CREATE TABLE IF NOT EXISTS group_deletions (group_id TEXT PRIMARY KEY, deleted_at TEXT NOT NULL);")
+    }
 
     private func deleteChildren(of groupId: String, in db: OpaquePointer) throws {
         try run(db, "DELETE FROM parts WHERE verse_id IN (SELECT id FROM verses WHERE group_id = ?);") { SQLiteBind.text($0, 1, groupId) }
@@ -381,19 +404,22 @@ public final class MutshabehatDatabase: @unchecked Sendable {
         }
     }
 
-    public func copyAutomatedToPersonal(automatedId: Int) {
+    /// One transaction: any failing statement rolls the whole copy back, and the candidate is marked copied
+    /// only after everything was written. False when nothing was copied.
+    @discardableResult
+    public func copyAutomatedToPersonal(automatedId: Int) -> Bool {
         lock.lock()
         defer { lock.unlock() }
-        guard let db = db else { return }
+        guard let db = db else { return false }
 
         var stmt: OpaquePointer?
         let sql = "SELECT id, title, color, payload FROM automated_groups WHERE id = ?"
-        guard sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK else { return }
+        guard sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK else { return false }
         sqlite3_bind_int(stmt, 1, Int32(automatedId))
 
         guard sqlite3_step(stmt) == SQLITE_ROW else {
             sqlite3_finalize(stmt)
-            return
+            return false
         }
 
         let title = sqliteColumnText(stmt, 1)
@@ -403,62 +429,47 @@ public final class MutshabehatDatabase: @unchecked Sendable {
 
         let newGroupId = UUID().uuidString
         let dateStr = ISO8601DateFormatter().string(from: Date())
-
-        let insertGroupSql = """
-        INSERT INTO groups (id, title, color, status, favorite, completed, note, unote, created_at, updated_at)
-        VALUES (?, ?, ?, 'draft', 0, 0, '', '', ?, ?);
-        """
-        var gStmt: OpaquePointer?
-        if sqlite3_prepare_v2(db, insertGroupSql, -1, &gStmt, nil) == SQLITE_OK {
-            SQLiteBind.text(gStmt, 1, newGroupId)
-            SQLiteBind.text(gStmt, 2, title)
-            SQLiteBind.text(gStmt, 3, color)
-            SQLiteBind.text(gStmt, 4, dateStr)
-            SQLiteBind.text(gStmt, 5, dateStr)
-            sqlite3_step(gStmt)
-        }
-        sqlite3_finalize(gStmt)
-
         let verses = parseAutomatedVerses(from: payloadStr)
-        for (vi, v) in verses.enumerated() {
-            let vid = UUID().uuidString
-            let vSql = "INSERT INTO verses (id, group_id, surah, ayah, label, sort_order) VALUES (?, ?, ?, ?, ?, ?);"
-            var vStmt: OpaquePointer?
-            if sqlite3_prepare_v2(db, vSql, -1, &vStmt, nil) == SQLITE_OK {
-                SQLiteBind.text(vStmt, 1, vid)
-                SQLiteBind.text(vStmt, 2, newGroupId)
-                SQLiteBind.text(vStmt, 3, v.surah)
-                sqlite3_bind_int(vStmt, 4, Int32(v.ayah))
-                if let l = v.label { SQLiteBind.text(vStmt, 5, l) }
-                else { sqlite3_bind_null(vStmt, 5) }
-                sqlite3_bind_int(vStmt, 6, Int32(vi))
-                sqlite3_step(vStmt)
-            }
-            sqlite3_finalize(vStmt)
 
-            for (pi, p) in v.parts.enumerated() {
-                let pid = UUID().uuidString
-                let pSql = "INSERT INTO parts (id, verse_id, type, text, sort_order) VALUES (?, ?, ?, ?, ?);"
-                var pStmt: OpaquePointer?
-                if sqlite3_prepare_v2(db, pSql, -1, &pStmt, nil) == SQLITE_OK {
-                    SQLiteBind.text(pStmt, 1, pid)
-                    SQLiteBind.text(pStmt, 2, vid)
-                    SQLiteBind.text(pStmt, 3, p.type)
-                    SQLiteBind.text(pStmt, 4, p.text)
-                    sqlite3_bind_int(pStmt, 5, Int32(pi))
-                    sqlite3_step(pStmt)
+        do {
+            try inTransaction(db) {
+                try run(db, """
+                INSERT INTO groups (id, title, color, status, favorite, completed, note, unote, created_at, updated_at)
+                VALUES (?, ?, ?, 'draft', 0, 0, '', '', ?, ?);
+                """) { stmt in
+                    SQLiteBind.text(stmt, 1, newGroupId)
+                    SQLiteBind.text(stmt, 2, title)
+                    SQLiteBind.text(stmt, 3, color)
+                    SQLiteBind.text(stmt, 4, dateStr)
+                    SQLiteBind.text(stmt, 5, dateStr)
                 }
-                sqlite3_finalize(pStmt)
+                for (vi, v) in verses.enumerated() {
+                    let vid = UUID().uuidString
+                    try run(db, "INSERT INTO verses (id, group_id, surah, ayah, label, sort_order) VALUES (?, ?, ?, ?, ?, ?);") { stmt in
+                        SQLiteBind.text(stmt, 1, vid)
+                        SQLiteBind.text(stmt, 2, newGroupId)
+                        SQLiteBind.text(stmt, 3, v.surah)
+                        sqlite3_bind_int(stmt, 4, Int32(v.ayah))
+                        SQLiteBind.text(stmt, 5, v.label)
+                        sqlite3_bind_int(stmt, 6, Int32(vi))
+                    }
+                    for (pi, p) in v.parts.enumerated() {
+                        let pid = UUID().uuidString
+                        try run(db, "INSERT INTO parts (id, verse_id, type, text, sort_order) VALUES (?, ?, ?, ?, ?);") { stmt in
+                            SQLiteBind.text(stmt, 1, pid)
+                            SQLiteBind.text(stmt, 2, vid)
+                            SQLiteBind.text(stmt, 3, p.type)
+                            SQLiteBind.text(stmt, 4, p.text)
+                            sqlite3_bind_int(stmt, 5, Int32(pi))
+                        }
+                    }
+                }
+                try run(db, "UPDATE automated_groups SET copied = 1 WHERE id = ?") { sqlite3_bind_int($0, 1, Int32(automatedId)) }
             }
+            return true
+        } catch {
+            return false
         }
-
-        let markSql = "UPDATE automated_groups SET copied = 1 WHERE id = ?"
-        var mStmt: OpaquePointer?
-        if sqlite3_prepare_v2(db, markSql, -1, &mStmt, nil) == SQLITE_OK {
-            sqlite3_bind_int(mStmt, 1, Int32(automatedId))
-            sqlite3_step(mStmt)
-        }
-        sqlite3_finalize(mStmt)
     }
 
     public func importAutomatedJSON(data: Data) throws -> Int {
@@ -526,7 +537,7 @@ public final class MutshabehatDatabase: @unchecked Sendable {
     public func importDatabase(_ data: Data) throws {
         try replaceContents(with: data)
         // Posted after the lock is released: observers run synchronously and read this database.
-        NotificationCenter.default.post(name: Notification.Name("mutshabehatDatabaseDidUpdate"), object: nil)
+        NotificationCenter.default.post(name: .mutshabehatDatabaseDidUpdate, object: nil)
     }
 
     private static let requiredTables: Set<String> = ["groups", "verses", "parts", "automated_groups"]
@@ -536,7 +547,8 @@ public final class MutshabehatDatabase: @unchecked Sendable {
     /// - a group only in `sourceURL` is added;
     /// - a group in both keeps whichever copy was saved last (`updated_at`), with its verses and parts;
     /// - automated candidates come from the source, and one copied to a personal group on either side stays marked copied.
-    /// A group deleted at the source is not deleted here. Posts no notification: the caller does, on the main thread.
+    /// A group deleted at the source is not deleted here. A group deleted here (see `group_deletions`) is not brought
+    /// back by the source, and the source's own deletion markers are kept so a deletion survives the next merge. Posts no notification: the caller does, on the main thread.
     public func mergeDatabase(from sourceURL: URL) throws {
         do { try SQLiteFile.validate(at: sourceURL, requiredTables: Self.requiredTables) } catch {
             throw DatabaseTransferError.invalidDatabase
@@ -550,10 +562,19 @@ public final class MutshabehatDatabase: @unchecked Sendable {
         defer { sqlite3_exec(db, "DETACH DATABASE source_db;", nil, nil, nil) }
 
         try inTransaction(db) {
+            try ensureDeletionTable(db)
+            // The source's deletion markers (absent in an older file) join ours first.
+            if try sourceHasDeletionTable(db) {
+                try run(db, """
+                INSERT OR IGNORE INTO main.group_deletions (group_id, deleted_at)
+                SELECT group_id, COALESCE(deleted_at, '') FROM source_db.group_deletions;
+                """)
+            }
             try run(db, """
             CREATE TEMP TABLE sync_ids AS
             SELECT s.id FROM source_db.groups s LEFT JOIN main.groups g ON g.id = s.id
-            WHERE g.id IS NULL OR COALESCE(julianday(s.updated_at), 0) > COALESCE(julianday(g.updated_at), 0);
+            WHERE (g.id IS NULL OR COALESCE(julianday(s.updated_at), 0) > COALESCE(julianday(g.updated_at), 0))
+              AND s.id NOT IN (SELECT group_id FROM main.group_deletions);
             """)
             defer { sqlite3_exec(db, "DROP TABLE IF EXISTS temp.sync_ids;", nil, nil, nil) }
             try run(db, "DELETE FROM parts WHERE verse_id IN (SELECT id FROM verses WHERE group_id IN (SELECT id FROM temp.sync_ids));")
@@ -580,6 +601,16 @@ public final class MutshabehatDatabase: @unchecked Sendable {
             FROM source_db.automated_groups s;
             """)
         }
+    }
+
+    private func sourceHasDeletionTable(_ db: OpaquePointer) throws -> Bool {
+        var stmt: OpaquePointer?
+        let sql = "SELECT 1 FROM source_db.sqlite_master WHERE type = 'table' AND name = 'group_deletions' LIMIT 1;"
+        guard sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK else {
+            throw DatabaseTransferError.writeFailed(String(cString: sqlite3_errmsg(db)))
+        }
+        defer { sqlite3_finalize(stmt) }
+        return sqlite3_step(stmt) == SQLITE_ROW
     }
 
     private func replaceContents(with data: Data) throws {

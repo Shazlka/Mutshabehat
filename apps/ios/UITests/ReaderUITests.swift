@@ -65,6 +65,23 @@ final class ReaderUITests: XCTestCase {
         XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20), "right edge → previous page")
     }
 
+    /// Settings → Page turn → Slide: the finger moves the same way as in the curl (left to right is forward), in Arabic
+    /// too, and Reduce Motion is not needed for it.
+    func testSlideTurnsForwardLeftToRightAndBackRightToLeftInArabic() {
+        let app = XCUIApplication.isolated()
+        app.launchArguments = ["-mushaf1441:last-page:v1", "50", "-mushaf1441:reader-layer:v1", "none", "-reading-fresh",
+                               "-app:language:v1", "ar", "-mushaf:pageTurn:v1", "slide",
+                               "-AppleLanguages", "(ar)", "-AppleLocale", "ar_SA"]
+        app.launch()
+        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
+        let left = app.coordinate(withNormalizedOffset: CGVector(dx: 0.1, dy: 0.5))
+        let right = app.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5))
+        left.press(forDuration: 0.05, thenDragTo: right)
+        XCTAssertTrue(page(51, in: app).waitForExistence(timeout: 20), "slide: left to right → next page")
+        right.press(forDuration: 0.05, thenDragTo: left)
+        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20), "slide: right to left → previous page")
+    }
+
     func testReopensOnThePageItWasLeftOn() {
         let app = launch(atPage: 50)
         XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))

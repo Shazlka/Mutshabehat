@@ -104,6 +104,10 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
     /// Test seam for the compile-time v1 availability switch.
     private let iCloudSyncEnabled: Bool
     private let lock = NSLock()
+    /// The folder chosen in Files, held open by ONE security-scoped lease for as long as that bookmark is the saved
+    /// one. Resolving the folder on every view update used to start a new, never-stopped access each time.
+    private let folderLock = NSLock()
+    private var heldFolder: (bookmark: Data, lease: ScopedFolderLease)?
 
     private let lastSyncKey = "icloud:sync:last_date"
     private let autoSyncKey = "icloud:sync:auto_enabled"
@@ -143,19 +147,8 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
         if ProcessInfo.processInfo.arguments.contains("-reading-fresh") ||
             ProcessInfo.processInfo.environment["QIRAAT_TEST_ISOLATION"] == "1" { return nil }
 #endif
-        // 1. Check custom saved security-scoped bookmark
-        if let bookmarkData = defaults.data(forKey: bookmarkKey) {
-            var isStale = false
-            if let resolved = try? URL(resolvingBookmarkData: bookmarkData,
-                                      options: .withoutUI,
-                                      relativeTo: nil,
-                                      bookmarkDataIsStale: &isStale),
-               resolved.startAccessingSecurityScopedResource() {
-                if FileManager.default.fileExists(atPath: resolved.path) {
-                    return resolved
-                }
-            }
-        }
+        // 1. The folder saved from the Files picker
+        if let folder = bookmarkedFolder() { return folder }
 
         // Release v1 may still use a folder explicitly chosen in Files for manual backups, but it must not
         // discover or operate an iCloud synchronization folder without the feature being enabled.
@@ -186,14 +179,61 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
         return nil
     }
 
+    /// The saved Files folder, or nil when none is saved, it cannot be opened, or it no longer exists. The first call
+    /// after the bookmark changes starts the access and keeps the lease; later calls reuse it. A stale bookmark is
+    /// renewed from the folder it resolved to.
+    private func bookmarkedFolder() -> URL? {
+        folderLock.lock()
+        defer { folderLock.unlock() }
+        guard var bookmark = defaults.data(forKey: bookmarkKey) else {
+            heldFolder?.lease.end()
+            heldFolder = nil
+            return nil
+        }
+        if let held = heldFolder, held.bookmark == bookmark, held.lease.isActive {
+            return FileManager.default.fileExists(atPath: held.lease.url.path) ? held.lease.url : nil
+        }
+        heldFolder?.lease.end()
+        heldFolder = nil
+
+        var isStale = false
+        guard let resolved = try? URL(resolvingBookmarkData: bookmark, options: .withoutUI, relativeTo: nil,
+                                      bookmarkDataIsStale: &isStale) else { return nil }
+        let lease = ScopedFolderLease(url: resolved)
+        guard lease.isActive else { return nil }
+        if isStale,
+           let fresh = try? resolved.bookmarkData(options: .minimalBookmark, includingResourceValuesForKeys: nil, relativeTo: nil) {
+            defaults.set(fresh, forKey: bookmarkKey)
+            bookmark = fresh
+        }
+        heldFolder = (bookmark, lease)
+        return FileManager.default.fileExists(atPath: resolved.path) ? resolved : nil
+    }
+
+    private func releaseHeldFolder() {
+        folderLock.lock()
+        heldFolder?.lease.end()
+        heldFolder = nil
+        folderLock.unlock()
+    }
+
     func setCustomFolder(url: URL) throws {
-        guard url.startAccessingSecurityScopedResource() else {
+        let lease = ScopedFolderLease(url: url)
+        defer { lease.end() }
+        guard lease.isActive else {
             throw NSError(domain: "ICloudSync", code: 1, userInfo: [NSLocalizedDescriptionKey: appLocalized("تعذر الوصول للمجلد المحدد")])
         }
-        defer { url.stopAccessingSecurityScopedResource() }
 
         let bookmark = try url.bookmarkData(options: .minimalBookmark, includingResourceValuesForKeys: nil, relativeTo: nil)
         defaults.set(bookmark, forKey: bookmarkKey)
+        releaseHeldFolder()
+        refreshConnectionStatus()
+    }
+
+    /// Forgets the folder chosen in Files and stops its access.
+    func clearCustomFolder() {
+        defaults.removeObject(forKey: bookmarkKey)
+        releaseHeldFolder()
         refreshConnectionStatus()
     }
 
@@ -388,20 +428,21 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
         var sources: [URL] = []
         let legacy = folder.appendingPathComponent("reading.sqlite")
         let backup = folder.appendingPathComponent("Backups/latest/reading.sqlite")
-        if fileManager.fileExists(atPath: folder.appendingPathComponent(".reading.sqlite.icloud").path) &&
-            !fileManager.fileExists(atPath: legacy.path) {
+        // A file that is still in the cloud is requested and left for the next sync; it never stops the merge or
+        // the publishing of this device's own snapshot.
+        let legacyPlaceholder = folder.appendingPathComponent(".reading.sqlite.icloud")
+        let legacyStillInCloud = fileManager.fileExists(atPath: legacyPlaceholder.path) && !fileManager.fileExists(atPath: legacy.path)
+        if legacyStillInCloud {
             try? fileManager.startDownloadingUbiquitousItem(at: legacy)
-            throw NSError(domain: "ICloudSync", code: 12,
-                          userInfo: [NSLocalizedDescriptionKey: appLocalized("ملف القراءة لم يكتمل تنزيله بعد")])
+        } else if fileManager.fileExists(atPath: legacy.path) {
+            sources.append(legacy)
+        } else if fileManager.fileExists(atPath: backup.path) {
+            sources.append(backup)
         }
-        if fileManager.fileExists(atPath: legacy.path) { sources.append(legacy) }
-        else if fileManager.fileExists(atPath: backup.path) { sources.append(backup) }
         let deviceContents = try fileManager.contentsOfDirectory(at: devices, includingPropertiesForKeys: nil)
-        for placeholder in deviceContents where placeholder.pathExtension == "icloud" {
-            let filename = String(placeholder.lastPathComponent.dropFirst().dropLast(".icloud".count))
-            try? fileManager.startDownloadingUbiquitousItem(at: devices.appendingPathComponent(filename))
-            throw NSError(domain: "ICloudSync", code: 12,
-                          userInfo: [NSLocalizedDescriptionKey: appLocalized("ملف قراءة من جهاز آخر لم يكتمل تنزيله بعد")])
+        for placeholder in deviceContents {
+            guard let destination = ICloudPlaceholder.destination(of: placeholder) else { continue }
+            try? fileManager.startDownloadingUbiquitousItem(at: destination)
         }
         sources += deviceContents.filter { $0.pathExtension == "sqlite" }
             .sorted { $0.lastPathComponent < $1.lastPathComponent }
@@ -548,8 +589,9 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
     private func triggerDownloadsIfNeeded(in folder: URL) throws {
         let contents = try FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil)
         for item in contents {
-            if item.lastPathComponent.hasPrefix(".") && item.pathExtension == "icloud" {
-                try? FileManager.default.startDownloadingUbiquitousItem(at: item)
+            // The download is requested for the file the placeholder stands for, not for the placeholder.
+            if let destination = ICloudPlaceholder.destination(of: item) {
+                try? FileManager.default.startDownloadingUbiquitousItem(at: destination)
             }
         }
     }

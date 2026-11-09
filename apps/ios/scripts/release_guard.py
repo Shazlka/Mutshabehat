@@ -6,6 +6,7 @@ reference data. Usage: release_guard.py path/to/Mutshabehat.app
 """
 import os
 import re
+import sqlite3
 import sys
 
 FORBIDDEN_SYMBOLS = ("qiraat-review", "Qiraat-iOS-Review", "ReviewStore", "ReviewEditorEntry", "ReviewAPI", "ReviewQueue",
@@ -33,9 +34,25 @@ def leaked_dirs(app: str) -> list[str]:
     return found
 
 
+def private_notes(app: str) -> int:
+    """How many bundled groups still carry a private note (`unote`); 0 when the database is absent."""
+    db = os.path.join(app, "mutshabehat.sqlite")
+    if not os.path.isfile(db):
+        return 0
+    conn = sqlite3.connect(f"file:{db}?mode=ro&immutable=1", uri=True)
+    try:
+        return conn.execute("SELECT COUNT(*) FROM groups WHERE unote IS NOT NULL AND TRIM(unote) <> ''").fetchone()[0]
+    finally:
+        conn.close()
+
+
 def check(app: str) -> list[str]:
     problems = [f"binary contains '{s}'" for s in leaked_symbols(binary_path(app))]
     problems += [f"bundle contains {d}" for d in leaked_dirs(app)]
+    if os.environ.get("KEEP_PRIVATE_NOTES") != "YES":
+        notes = private_notes(app)
+        if notes:
+            problems.append(f"{notes} bundled groups still carry a private note (unote)")
     return problems
 
 

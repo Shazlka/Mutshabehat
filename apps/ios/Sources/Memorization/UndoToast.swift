@@ -20,16 +20,9 @@ struct ToastState: Equatable {
 
 extension View {
     /// The surface of a floating pill or toast: Liquid Glass on iOS 26, the thick material with a hairline and a
-    /// soft shadow before it.
-    @ViewBuilder
+    /// soft shadow before it, an opaque fill with a hairline when transparency is reduced or contrast increased.
     func floatingSurface<S: InsettableShape>(_ shape: S) -> some View {
-        if #available(iOS 26, *) {
-            glassEffect(.regular, in: shape)
-        } else {
-            background(.thickMaterial, in: shape)
-                .overlay(shape.strokeBorder(Color.primary.opacity(0.12), lineWidth: 0.5))
-                .shadow(color: .black.opacity(0.12), radius: 8, y: 2)
-        }
+        adaptiveSurface(in: shape, glass: true, shadowed: true)
     }
 }
 
@@ -65,6 +58,7 @@ struct UndoToast: View {
         .floatingSurface(RoundedRectangle(cornerRadius: 14))
         .padding(.horizontal, 16)
         .onTapGesture(perform: dismiss)
+        .accessibilityElement(children: .contain)
         .onAppear {
             // The toast is an overlay that comes last in reading order and goes away by itself: say it out loud.
             let milestones = state.milestones.map {

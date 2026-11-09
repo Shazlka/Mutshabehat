@@ -148,8 +148,10 @@ final class ReadingTracker: ObservableObject {
         let targetCount = Int(Double(total) * ratio)
         if targetCount > creditedAyahsCount {
             let ayahsToCredit = Array(currentPageAyahs.prefix(targetCount))
-            recordEarnedAyahs(ayahsToCredit, page: page, library: library, isFullPage: false)
-            creditedAyahsCount = targetCount
+            // The credit advances only when the ayahs were stored, so a failed write is tried again next tick.
+            if recordEarnedAyahs(ayahsToCredit, page: page, library: library, isFullPage: false) {
+                creditedAyahsCount = targetCount
+            }
         }
     }
 
@@ -195,29 +197,35 @@ final class ReadingTracker: ObservableObject {
 
     private func completeFullPage(page: Int, library: MushafLibrary, elapsedSeconds: Int = 30) {
         guard !isFullPageCompleted, !currentPageAyahs.isEmpty else { return }
+        // A failed write leaves the page uncompleted (and the timers running), so the next tick tries again.
+        guard recordEarnedAyahs(currentPageAyahs, page: page, library: library, isFullPage: true,
+                                seconds: max(30, elapsedSeconds)) else { return }
         isFullPageCompleted = true
         creditedAyahsCount = currentPageAyahs.count
         fullCompletionTimer?.invalidate()
         fullCompletionTimer = nil
         periodicTickTimer?.invalidate()
         periodicTickTimer = nil
-        recordEarnedAyahs(currentPageAyahs, page: page, library: library, isFullPage: true, seconds: max(30, elapsedSeconds))
     }
 
+    /// Stores the earned ayahs and the day's activity in one transaction. True when they are stored (also when
+    /// every ayah was already read); false when the write failed and nothing was stored.
+    @discardableResult
     private func recordEarnedAyahs(
         _ items: [(surah: Int, ayah: Int, page: Int)],
         page: Int,
         library: MushafLibrary,
         isFullPage: Bool,
         seconds: Int = 0
-    ) {
-        guard !items.isEmpty else { return }
+    ) -> Bool {
+        guard !items.isEmpty else { return true }
         let totalQuranAyahs = library.surahs.map(\.ayahCount).reduce(0, +)
         self.cachedTotalQuranAyahs = totalQuranAyahs > 0 ? totalQuranAyahs : 6236
 
-        let newAyahsCount = db.recordReadAyahs(khatmaId: activeKhatma.id, items: items)
+        guard let newAyahsCount = db.recordReading(khatmaId: activeKhatma.id, items: items, at: Date(),
+                                                   pagesCount: isFullPage ? 1 : 0, seconds: seconds,
+                                                   activityAyahs: { $0 }) else { return false }
         if newAyahsCount > 0 {
-            db.recordDailyReadingActivity(ayahsCount: newAyahsCount, pagesCount: isFullPage ? 1 : 0, seconds: seconds, on: Date())
             refreshStats()
 
             // Check Khatma completion (100%)
@@ -227,6 +235,7 @@ final class ReadingTracker: ObservableObject {
                 sync.scheduleDebouncedReadingPush()
             }
         }
+        return true
     }
 
     func reloadFromDatabase() {
@@ -362,10 +371,12 @@ final class ReadingTracker: ObservableObject {
                                      durationMinutes: Int, pageCount: Int) -> Int {
         guard !items.isEmpty else { return 0 }
 
-        let newAyahsCount = db.recordReadAyahs(khatmaId: activeKhatma.id, items: items, at: sessionDate)
         let sessionSeconds = max(60, durationMinutes * 60)
-        db.recordDailyReadingActivity(ayahsCount: max(1, newAyahsCount > 0 ? newAyahsCount : items.count),
-                                      pagesCount: pageCount, seconds: sessionSeconds, on: sessionDate)
+        let itemCount = items.count
+        // The read ayahs and the day's activity are one transaction; a failure stores neither and reports 0.
+        guard db.recordReading(khatmaId: activeKhatma.id, items: items, at: sessionDate, pagesCount: pageCount,
+                               seconds: sessionSeconds,
+                               activityAyahs: { max(1, $0 > 0 ? $0 : itemCount) }) != nil else { return 0 }
         refreshStats()
 
         if totalAyahsRead >= cachedTotalQuranAyahs {
@@ -378,7 +389,7 @@ final class ReadingTracker: ObservableObject {
     }
 
     func currentWeekReadingDays() -> [WeeklyDayStatus] {
-        let calendar = Calendar.current
+        let calendar = Calendar.autoupdatingCurrent
         let today = Date()
         let dayFormatter = DateFormatter()
         dayFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -496,18 +507,24 @@ final class ReadingTracker: ObservableObject {
 
     // MARK: - Statistics & Queries
 
+    /// Re-reads the numbers the reader and the statistics show. A `@Published` property announces a change even when it
+    /// is set to the value it already has, and the reader observes this object as a whole, so each value is written only
+    /// when it differs: crediting an ayah then redraws the reader once, not once per property.
     func refreshStats() {
-        totalAyahsRead = db.readAyahsCount(khatmaId: activeKhatma.id)
-        khatmaPercent = KhatmaProgress.percent(
+        let read = db.readAyahsCount(khatmaId: activeKhatma.id)
+        if totalAyahsRead != read { totalAyahsRead = read }
+        let percent = KhatmaProgress.percent(
             pagesRead: db.readPagesCount(khatmaId: activeKhatma.id),
-            allAyahsRead: cachedTotalQuranAyahs > 0 && totalAyahsRead >= cachedTotalQuranAyahs
+            allAyahsRead: cachedTotalQuranAyahs > 0 && read >= cachedTotalQuranAyahs
         )
+        if khatmaPercent != percent { khatmaPercent = percent }
 
         let streaks = db.calculateStreaks(asOf: Date())
-        currentStreak = streaks.currentStreak
-        longestStreak = streaks.longestStreak
-        totalReadingDays = streaks.totalReadingDays
-        completedKhatmasCount = db.completedKhatmasCount()
+        if currentStreak != streaks.currentStreak { currentStreak = streaks.currentStreak }
+        if longestStreak != streaks.longestStreak { longestStreak = streaks.longestStreak }
+        if totalReadingDays != streaks.totalReadingDays { totalReadingDays = streaks.totalReadingDays }
+        let completed = db.completedKhatmasCount()
+        if completedKhatmasCount != completed { completedKhatmasCount = completed }
     }
 
     func allSurahProgress(library: MushafLibrary) -> [SurahProgress] {

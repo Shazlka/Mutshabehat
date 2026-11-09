@@ -115,7 +115,7 @@ extension MemorizationDatabase {
     // MARK: Transaction
 
     private func commitLocked(batch: BatchRecord, writes: [RowWrite], at now: Date, markUndone: UUID?) throws {
-        guard let db else { throw MemorizationError.writeFailed("database unavailable") }
+        let db = try writableDatabaseLocked()
         guard sqlite3_exec(db, "BEGIN IMMEDIATE;", nil, nil, nil) == SQLITE_OK else {
             throw MemorizationError.writeFailed(String(cString: sqlite3_errmsg(db)))
         }
@@ -283,7 +283,10 @@ extension MemorizationDatabase {
         guard sqlite3_prepare_v2(db, sql, -1, &statement, nil) == SQLITE_OK else { return [] }
         defer { sqlite3_finalize(statement) }
         var result: [BatchRecord] = []
-        while sqlite3_step(statement) == SQLITE_ROW, let batch = readBatch(statement!) { result.append(batch) }
+        // A row this version cannot read (an unknown kind) is skipped; it must not hide the batches after it.
+        while sqlite3_step(statement) == SQLITE_ROW {
+            if let batch = readBatch(statement!) { result.append(batch) }
+        }
         return result
     }
 
@@ -314,7 +317,9 @@ extension MemorizationDatabase {
         defer { sqlite3_finalize(statement) }
         sqlite3_bind_text(statement, 1, batchID.uuidString, -1, transient)
         var result: [BatchRecord] = []
-        while sqlite3_step(statement) == SQLITE_ROW, let batch = readBatch(statement!) { result.append(batch) }
+        while sqlite3_step(statement) == SQLITE_ROW {
+            if let batch = readBatch(statement!) { result.append(batch) }
+        }
         return result
     }
 

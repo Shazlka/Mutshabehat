@@ -44,7 +44,16 @@ struct AddReadingSessionView: View {
     @State private var durationMinutes: Int = 15
     @State private var isFromMemory: Bool = false
 
+    /// Shown under the save button when a session recorded nothing (an empty range, or a failed write).
+    @State private var saveError: String?
+
     private let quickDurations = [5, 10, 15, 20, 30, 45, 60]
+
+    /// The ayah range ends before it starts, so it holds no ayah.
+    private var isRangeInvalid: Bool {
+        guard mode == .byAyah else { return false }
+        return fromSurahNumber > toSurahNumber || (fromSurahNumber == toSurahNumber && toAyahNumber < fromAyahNumber)
+    }
 
     private var selectedSurah: Surah? {
         library.surahs.first { $0.number == selectedSurahNumber }
@@ -243,6 +252,12 @@ struct AddReadingSessionView: View {
                         Spacer()
                     }
                     .padding(.vertical, 2)
+
+                    if isRangeInvalid {
+                        Text("آخر آية في النطاق تسبق أول آية. عدّل النطاق ليشمل آية واحدة على الأقل.")
+                            .font(.caption)
+                            .foregroundColor(.red)
+                    }
                 } header: {
                     Text("الموضع المقروء")
                 }
@@ -316,6 +331,13 @@ struct AddReadingSessionView: View {
                         .padding(.vertical, 6)
                     }
                     .listRowBackground(Color.progressFill)
+                    .disabled(isRangeInvalid)
+
+                    if let saveError {
+                        Text(saveError)
+                            .font(.caption)
+                            .foregroundColor(.red)
+                    }
                 }
             }
             .navigationTitle("أضف جلسة قراءة")
@@ -333,17 +355,21 @@ struct AddReadingSessionView: View {
                     }
                     .bold()
                     .tint(.progressFill)
+                    .disabled(isRangeInvalid)
                 }
             }
         }
     }
 
     private func saveSession() {
+        guard !isRangeInvalid else { return }
         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+        saveError = nil
 
+        let recorded: Int
         switch mode {
         case .bySurah:
-            tracker.recordManualSession(
+            recorded = tracker.recordManualSession(
                 fromSurah: selectedSurahNumber,
                 fromAyah: 1,
                 toSurah: selectedSurahNumber,
@@ -354,7 +380,7 @@ struct AddReadingSessionView: View {
                 library: library
             )
         case .byAyah:
-            tracker.recordManualSession(
+            recorded = tracker.recordManualSession(
                 fromSurah: fromSurahNumber,
                 fromAyah: fromAyahNumber,
                 toSurah: toSurahNumber,
@@ -365,7 +391,7 @@ struct AddReadingSessionView: View {
                 library: library
             )
         case .byPage:
-            tracker.recordManualPageRangeSession(
+            recorded = tracker.recordManualPageRangeSession(
                 fromPage: fromPage,
                 toPage: toPage,
                 sessionDate: sessionDate,
@@ -373,6 +399,13 @@ struct AddReadingSessionView: View {
                 fromMemory: isFromMemory,
                 library: library
             )
+        }
+
+        // Nothing recorded (an empty range or a failed write) must not look like a saved session.
+        guard recorded > 0 else {
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
+            saveError = "لم تُسجَّل أي آية. تحقق من النطاق ثم حاول مرة أخرى."
+            return
         }
 
         UINotificationFeedbackGenerator().notificationOccurred(.success)

@@ -26,6 +26,9 @@ struct MushafPager: UIViewControllerRepresentable {
     var memorizationStatuses: (Int) -> [AyahKey: MemorizationStatus] = { _ in [:] }
     /// Changes whenever memorization changes, so the pager redraws the visible pages.
     var memorizationVersion = 0
+    /// Changes whenever a bookmark is added or removed (`ReadingTracker.bookmarksVersion`), so the visible pages
+    /// read their bookmarks again; unchanged, the pager does not touch the database on a redraw.
+    var bookmarksVersion = 0
     let chromeVisible: Bool
     /// The page takes the full height (iPad landscape with the side rails).
     var fillsHeight = false
@@ -38,6 +41,26 @@ struct MushafPager: UIViewControllerRepresentable {
     /// site).
     var slides: Bool {
         turnStyle.effective(spread: spread, reduceMotion: UIAccessibility.isReduceMotionEnabled) == .slide
+    }
+
+    /// Everything that decides how a page looks and that `PageController.apply` takes. The bookmark and memorization
+    /// closures are stood for by their versions, the colour scheme by the pager's own trait.
+    struct Inputs: Equatable {
+        let appearance: MushafAppearance
+        let bannerStyle: SurahBannerStyle
+        let qiraat: QiraatDisplay
+        let highlightedWordIDs: Set<String>
+        let chromeVisible: Bool
+        let memorizationVersion: Int
+        let bookmarksVersion: Int
+        let interfaceStyle: UIUserInterfaceStyle
+    }
+
+    func inputs(interfaceStyle: UIUserInterfaceStyle) -> Inputs {
+        Inputs(appearance: appearance, bannerStyle: bannerStyle, qiraat: qiraat,
+               highlightedWordIDs: highlightedWordIDs, chromeVisible: chromeVisible,
+               memorizationVersion: memorizationVersion, bookmarksVersion: bookmarksVersion,
+               interfaceStyle: interfaceStyle)
     }
 
     func makeCoordinator() -> Coordinator { Coordinator(self) }
@@ -68,8 +91,12 @@ struct MushafPager: UIViewControllerRepresentable {
         context.coordinator.parent = self
         pager.view.backgroundColor = appearance.desk(for: pager.traitCollection, tint: qiraat.pageTint)
         disableTapToTurn(in: pager)
+        let current = inputs(interfaceStyle: pager.traitCollection.userInterfaceStyle)
+        // A redraw with nothing new (the reader's body runs for many reasons) neither re-reads the database for the
+        // visible pages nor throws away the neighbours built ahead of the next turn.
+        context.coordinator.inputsChanged(to: current)
         for controller in pager.viewControllers ?? [] {
-            if let pc = controller as? PageController {
+            if let pc = controller as? PageController, pc.appliedInputs != current {
                 let p = pc.page.number
                 pc.apply(qiraat, highlightedWordIDs: highlightedWordIDs,
                          bookmarkedAyahs: bookmarkedAyahs(p),
@@ -78,9 +105,11 @@ struct MushafPager: UIViewControllerRepresentable {
                          appearance: appearance,
                          bannerStyle: bannerStyle,
                          chromeVisible: chromeVisible)
+                pc.appliedInputs = current
             }
         }
         context.coordinator.show(page, in: pager, animated: true)
+        context.coordinator.warmNeighbours(in: pager)
     }
 
     private func disableTapToTurn(in pager: UIPageViewController) {
@@ -113,7 +142,42 @@ struct MushafPager: UIViewControllerRepresentable {
             return true
         }
 
+        /// The inputs the controllers in `spare` and on screen were built for.
+        private var currentInputs: Inputs?
+        /// Neighbour pages built ahead (off the gesture path), each handed to the pager once.
+        private var spare: [Int: PageController] = [:]
+
+        /// New inputs make the spare neighbours stale: drop them.
+        func inputsChanged(to inputs: Inputs) {
+            guard inputs != currentInputs else { return }
+            currentInputs = inputs
+            spare.removeAll()
+        }
+
+        /// Builds the pages the next turn will ask for, on the next main-queue pass, so a swipe finds them ready.
+        func warmNeighbours(in pager: UIPageViewController) {
+            guard let visible = visiblePage(in: pager) else { return }
+            let wanted: Set<Int> = parent.spread
+                ? [visible - 2, visible - 1, visible + 2, visible + 3]
+                : [visible - 1, visible + 1]
+            let valid = wanted.filter { (1...mushafPageCount).contains($0) }
+            spare = spare.filter { valid.contains($0.key) }
+            let builtFor = currentInputs
+            DispatchQueue.main.async { [weak self] in
+                // The inputs changed while this waited: the next pass builds for the new ones.
+                guard let self, self.currentInputs == builtFor else { return }
+                for number in valid where self.spare[number] == nil {
+                    self.spare[number] = self.makeController(for: number)
+                }
+            }
+        }
+
         func controller(for number: Int) -> PageController? {
+            if let ready = spare.removeValue(forKey: number), ready.parent == nil { return ready }
+            return makeController(for: number)
+        }
+
+        private func makeController(for number: Int) -> PageController? {
             guard (1...mushafPageCount).contains(number), let page = parent.library.page(number) else { return nil }
             let controller = PageController(page: page, library: parent.library, isSpreadHalf: parent.spread,
                                   appearance: parent.appearance, qiraat: parent.qiraat,
@@ -128,6 +192,7 @@ struct MushafPager: UIViewControllerRepresentable {
                                   onTapWord: { [weak self] page, word in self?.parent.onTapWord(page, word) },
                                   onLongPressAyah: { [weak self] page, ayah in self?.parent.onLongPressAyah(page, ayah) })
             controller.onAccessibilityTurn = { [weak self] forward in self?.accessibilityTurn(forward: forward) ?? false }
+            controller.appliedInputs = parent.inputs(interfaceStyle: pager?.traitCollection.userInterfaceStyle ?? .unspecified)
             return controller
         }
 
@@ -178,6 +243,7 @@ struct MushafPager: UIViewControllerRepresentable {
             guard completed, let number = visiblePage(in: pager) else { return }
             parent.page = number
             prewarm(around: number)
+            warmNeighbours(in: pager)
         }
     }
 }

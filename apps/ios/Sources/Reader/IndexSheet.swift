@@ -1,3 +1,4 @@
+import Combine
 import MushafCore
 import SwiftUI
 
@@ -19,7 +20,10 @@ struct IndexSheet: View {
     let library: MushafLibrary
     let currentPage: Int
     let onSelect: (Int) -> Void
-    @StateObject private var tracker = ReadingTracker.shared
+    /// Read for its data when the sheet opens and when a bookmark changes; not observed, so the reading statistics
+    /// ticking in the background do not redraw the whole index.
+    private let tracker = ReadingTracker.shared
+    @State private var bookmarks: [QuranBookmark] = []
     @State private var tab = Tab.surahs
     @State private var surahFilter = SurahProgressFilter.all
     @State private var surahsProgress: [Int: SurahProgress] = [:]
@@ -28,8 +32,6 @@ struct IndexSheet: View {
         self.library = library
         self.currentPage = currentPage
         self.onSelect = onSelect
-        let all = ReadingTracker.shared.allSurahProgress(library: library)
-        self._surahsProgress = State(initialValue: Dictionary(uniqueKeysWithValues: all.map { ($0.surahNumber, $0) }))
     }
 
     private var displayedSurahs: [Surah] {
@@ -105,7 +107,7 @@ struct IndexSheet: View {
                                     .id(juz)
                             }
                         case .bookmarks:
-                            let all = tracker.allBookmarks()
+                            let all = bookmarks
                             if all.isEmpty {
                                 VStack(spacing: 12) {
                                     Image(systemName: "bookmark")
@@ -154,8 +156,10 @@ struct IndexSheet: View {
                     }
                     .listStyle(.plain)
                     .id(tab)
+                    .task { loadSurahProgress() }
+                    // Fires once on subscribing, which loads the bookmarks, and again whenever one changes.
+                    .onReceive(tracker.$bookmarksVersion) { _ in loadBookmarks() }
                     .onAppear {
-                        loadSurahProgress()
                         if let currentRow {
                             DispatchQueue.main.async {
                                 proxy.scrollTo(currentRow, anchor: .center)
@@ -178,6 +182,7 @@ struct IndexSheet: View {
                     }
                     .onReceive(NotificationCenter.default.publisher(for: .readingDatabaseDidUpdate)) { _ in
                         loadSurahProgress()
+                        loadBookmarks()
                     }
                 }
             }
@@ -198,6 +203,10 @@ struct IndexSheet: View {
     private func loadSurahProgress() {
         let all = tracker.allSurahProgress(library: library)
         surahsProgress = Dictionary(uniqueKeysWithValues: all.map { ($0.surahNumber, $0) })
+    }
+
+    private func loadBookmarks() {
+        bookmarks = tracker.allBookmarks()
     }
 
     private func containsCurrentPage(_ surah: Surah) -> Bool {

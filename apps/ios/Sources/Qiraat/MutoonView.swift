@@ -15,6 +15,10 @@ struct MutoonView: View {
     @State private var selectedHit: MatnSearchHit?
     @ObservedObject private var liveSync = QiraatLiveSync.shared
     @State private var liveLibrary: MatnLibrary?
+    /// The hits for `hitsQuery`, searched off the main thread after the typing paused.
+    @State private var hits: [MatnSearchHit] = []
+    @State private var hitsQuery = ""
+    @State private var searchDebouncer = Debouncer()
 
     var library: MatnLibrary { liveLibrary ?? liveSync.liveMutoonLibrary ?? initialLibrary }
 
@@ -81,6 +85,7 @@ struct MutoonView: View {
             while !Task.isCancelled {
                 if let synced = await liveSync.syncMutoon() {
                     withAnimation(.easeInOut(duration: 0.2)) { liveLibrary = synced }
+                    runSearch()
                 }
                 try? await Task.sleep(for: .seconds(10))
             }
@@ -88,7 +93,31 @@ struct MutoonView: View {
         .refreshable {
             if let synced = await liveSync.syncMutoon() {
                 liveLibrary = synced
+                runSearch()
             }
+        }
+        .onChange(of: query) { _, newValue in
+            if newValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                searchDebouncer.cancel()
+                hits = []
+                hitsQuery = ""
+            } else {
+                searchDebouncer.schedule { runSearch() }
+            }
+        }
+    }
+
+    /// Searches the current library for the current query on a background task and publishes the hits here.
+    private func runSearch() {
+        let current = query
+        guard !current.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+        let books = library
+        Task { @MainActor in
+            let found = await Task.detached(priority: .userInitiated) { books.search(current) }.value
+            // Typing went on while this ran: the newer search will publish its own answer.
+            guard current == query else { return }
+            hits = found
+            hitsQuery = current
         }
     }
 
@@ -131,9 +160,8 @@ struct MutoonView: View {
     }
 
     private var results: some View {
-        let hits = library.search(query)
-        return List {
-            if hits.isEmpty {
+        List {
+            if hits.isEmpty, hitsQuery == query {
                 Text("لا نتائج").foregroundStyle(.secondary)
                     .listRowBackground(Color.clear)
             }

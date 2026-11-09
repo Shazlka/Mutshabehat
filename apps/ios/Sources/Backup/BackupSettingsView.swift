@@ -16,13 +16,10 @@ struct BackupSettingsView: View {
     @State private var busy = false
     @State private var pendingImport: Data?
     @State private var refresh = 0
+    @State private var snapshots: [SnapshotInfo] = []
+    @State private var snapshotsLoaded = false
 
     private func copy(_ ar: String, _ en: String) -> String { language == .arabic ? ar : en }
-
-    private var snapshots: [SnapshotInfo] {
-        _ = refresh
-        return controller.service.listSnapshots()
-    }
 
     var body: some View {
         List {
@@ -35,11 +32,17 @@ struct BackupSettingsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .accessibilityElement(children: .contain)
         .accessibilityIdentifier("memo-backup")
+        // The manifests are read off the main actor; a backup, restore or new folder bumps `refresh`.
+        .task(id: refresh) {
+            snapshots = await controller.service.loadSnapshots()
+            snapshotsLoaded = true
+        }
         .fileImporter(isPresented: $isPickingFolder, allowedContentTypes: [.folder]) { result in
             if case let .success(url) = result {
                 do {
                     try ICloudDatabaseSyncService.shared.setCustomFolder(url: url)
                     controller.refreshFolder()
+                    refresh += 1
                     message = copy("تم اختيار المجلد", "Folder selected")
                 } catch {
                     message = error.localizedDescription
@@ -122,7 +125,7 @@ struct BackupSettingsView: View {
 
     private var snapshotsSection: some View {
         Section(copy("النسخ المحفوظة", "Saved backups")) {
-            if snapshots.isEmpty {
+            if snapshots.isEmpty, snapshotsLoaded {
                 Text(verbatim: copy("لا توجد نسخ بعد", "No backups yet")).foregroundStyle(.secondary)
             }
             ForEach(snapshots) { info in
@@ -189,13 +192,18 @@ struct BackupSettingsView: View {
     private func importJSON(_ mode: MemorizationRestoreMode) {
         guard let data = pendingImport else { return }
         pendingImport = nil
-        do {
-            let service = try controller.makeRestoreService()
-            try service.importJSON(data, mode: mode)
-            controller.didRestore()
-            message = copy("تم استيراد الحفظ", "Memorization imported")
-        } catch {
-            message = error.localizedDescription
+        busy = true
+        Task {
+            defer { busy = false }
+            do {
+                let service = try controller.makeRestoreService()
+                try await service.importJSONAsync(data, mode: mode)
+                controller.didRestore()
+                refresh += 1
+                message = copy("تم استيراد الحفظ", "Memorization imported")
+            } catch {
+                message = error.localizedDescription
+            }
         }
     }
 }
@@ -214,6 +222,7 @@ struct RestoreView: View {
     @State private var errorMessage: String?
     @State private var report: RestoreReport?
     @State private var confirming = false
+    @State private var restoring = false
 
     private func copy(_ ar: String, _ en: String) -> String { language == .arabic ? ar : en }
 
@@ -256,7 +265,7 @@ struct RestoreView: View {
                     }
                     Section {
                         Button(copy("استعادة", "Restore")) { confirming = true }
-                            .disabled(selected.isEmpty)
+                            .disabled(selected.isEmpty || restoring)
                             .accessibilityIdentifier("memo-restore-apply")
                     }
                 }
@@ -287,13 +296,13 @@ struct RestoreView: View {
         .environment(\.layoutDirection, language.layoutDirection)
         .presentationDetents([.large])
         .presentationSizing(.page)
-        .task { load() }
+        .task { await load() }
     }
 
-    private func load() {
+    private func load() async {
         do {
             let service = try controller.makeRestoreService()
-            let value = try service.preview(info)
+            let value = try await service.previewAsync(info)
             preview = value
             selected = [.memorization]
         } catch {
@@ -302,13 +311,20 @@ struct RestoreView: View {
     }
 
     private func restore() {
-        do {
-            let service = try controller.makeRestoreService()
-            report = try service.restore(info, stores: selected, memorizationMode: replaceMemorization ? .replace : .merge)
-            controller.didRestore()
-            onFinished()
-        } catch {
-            errorMessage = error.localizedDescription
+        guard !restoring else { return }
+        restoring = true
+        let stores = selected
+        let mode: MemorizationRestoreMode = replaceMemorization ? .replace : .merge
+        Task {
+            defer { restoring = false }
+            do {
+                let service = try controller.makeRestoreService()
+                report = try await service.restoreAsync(info, stores: stores, memorizationMode: mode)
+                controller.didRestore()
+                onFinished()
+            } catch {
+                errorMessage = error.localizedDescription
+            }
         }
     }
 }

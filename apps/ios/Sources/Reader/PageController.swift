@@ -24,6 +24,8 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
     private let wordTap = UITapGestureRecognizer()
     private let longPress = UILongPressGestureRecognizer()
     private(set) var chromeVisible: Bool = false
+    /// The pager's inputs this page was last built or updated with; the pager skips `apply` when they are unchanged.
+    var appliedInputs: MushafPager.Inputs?
     /// VoiceOver page turn (three-finger swipe); set by the pager. `true` = next page in reading order.
     var onAccessibilityTurn: ((_ forward: Bool) -> Bool)? {
         get { pageView.onAccessibilityTurn }

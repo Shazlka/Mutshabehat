@@ -6,6 +6,7 @@ struct AyahSearchView: View {
     let selectResult: (AyahSearchResult) -> Void
 
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @AppStorage("app:language:v1") private var language = AppLanguage.defaultCode
     @State private var query = ""
     @State private var mode = QuranSearchMode.smart
@@ -205,6 +206,7 @@ struct AyahSearchView: View {
                         Image(systemName: "arrow.up.circle.fill")
                             .foregroundColor(.accentColor)
                             .font(.title2)
+                            .minimumHitTarget(overhang: 8)
                     }
                     .accessibilityIdentifier("search-submit")
                     .accessibilityLabel("بحث")
@@ -225,24 +227,12 @@ struct AyahSearchView: View {
                 }
                 .padding(.horizontal, 14)
                 .padding(.vertical, 9)
-                .background(
-                    Capsule()
-                        .fill(Color(uiColor: .systemBackground))
-                        .shadow(color: .black.opacity(0.10), radius: 8, y: 3)
-                        .overlay(
-                            Capsule()
-                                .stroke(Color.gray.opacity(0.25), lineWidth: 1)
-                        )
-                )
+                .modifier(SearchCapsuleSurface(useGlass: !reduceTransparency))
                 .padding(.horizontal, 16)
                 .padding(.bottom, 6)
             }
             .padding(.top, 8)
-            .background(
-                Rectangle()
-                    .fill(.ultraThinMaterial)
-                    .ignoresSafeArea(edges: .bottom)
-            )
+            .modifier(SearchBarStrip(useGlass: !reduceTransparency))
         }
         .onChange(of: query) { _, newQuery in
             if newQuery.trimmingCharacters(in: .whitespacesAndNewlines).count >= 2 {
@@ -585,3 +575,40 @@ private let vocalizedSurahNames: [Int: String] = [
     113: "سُورَةُ الفَلَقِ",
     114: "سُورَةُ النَّاسِ"
 ]
+
+
+/// The search field's capsule: interactive Liquid Glass, the opaque capsule with its shadow
+/// when the user asks for less transparency.
+private struct SearchCapsuleSurface: ViewModifier {
+    let useGlass: Bool
+
+    func body(content: Content) -> some View {
+        if useGlass {
+            content.glassEffect(.regular.interactive(), in: .capsule)
+        } else {
+            content.background(
+                Capsule()
+                    .fill(Color(uiColor: .systemBackground))
+                    .shadow(color: .black.opacity(0.10), radius: 8, y: 3)
+                    .overlay(
+                        Capsule()
+                            .stroke(Color.gray.opacity(0.25), lineWidth: 1)
+                    )
+            )
+        }
+    }
+}
+
+/// The material strip behind the floating search controls. The glass capsule floats above it,
+/// but the mode picker, description and filters above the capsule must not run into the results scrolling underneath.
+private struct SearchBarStrip: ViewModifier {
+    let useGlass: Bool
+
+    func body(content: Content) -> some View {
+        content.background(
+            Rectangle()
+                .fill(.ultraThinMaterial)
+                .ignoresSafeArea(edges: .bottom)
+        )
+    }
+}

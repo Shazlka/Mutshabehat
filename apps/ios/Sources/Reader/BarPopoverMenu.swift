@@ -97,7 +97,7 @@ struct BarMenuList<Content: View>: View {
 
 /// A footer menu, drawn as Liquid Glass above the item that opened it. It is part of the reader's own view tree, not a
 /// popover window, so the glass sees the page behind it, as the footer capsule does: a popover is a window of its own
-/// and its glass would have nothing to show. Before iOS 26 the surface is the system's regular material.
+/// and its glass would have nothing to show. With Reduce Transparency or Increase Contrast the surface is solid.
 struct BarGlassMenu<Content: View>: View {
     /// Where the item that opened the menu is, across the bar.
     let anchorX: CGFloat
@@ -108,7 +108,11 @@ struct BarGlassMenu<Content: View>: View {
     @ViewBuilder let content: () -> Content
     @Environment(\.layoutDirection) private var direction
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+    @Environment(\.colorSchemeContrast) private var contrast
     @Environment(FooterMenuModel.self) private var model: FooterMenuModel?
+
+    private var opaque: Bool { ChromeContrast.prefersOpaque(reduceTransparency: reduceTransparency, contrast: contrast) }
 
     var body: some View {
         ZStack(alignment: .bottomLeading) {
@@ -127,9 +131,9 @@ struct BarGlassMenu<Content: View>: View {
             .frame(width: BarMenuMetrics.width)
             .frame(maxHeight: 520)
             .fixedSize(horizontal: false, vertical: true)
-            .background { BarMenuSurface(lens: lensFrame) }
+            .background { BarMenuSurface(lens: lensFrame, opaque: opaque) }
             .overlay(alignment: .top) {
-                if #available(iOS 26, *) { BarMenuLens(frame: lensFrame) }
+                if !opaque { BarMenuLens(frame: lensFrame) }
             }
             .offset(x: originShift, y: -(barSize.height + gap))
             .onGeometryChange(for: CGRect.self) { $0.frame(in: .global) } action: { model?.panelFrame = $0; model?.translation = translation }
@@ -169,22 +173,23 @@ struct BarGlassMenu<Content: View>: View {
     private var anchorUnit: CGFloat { min(max((anchorX - leading) / BarMenuMetrics.width, 0), 1) }
 }
 
-/// The menu's surface, behind its rows: Liquid Glass on iOS 26 and later (the lens is `BarMenuLens`, over the rows).
-/// Before iOS 26 it is the system's regular material with the lens as a soft fill.
+/// The menu's surface, behind its rows: Liquid Glass (the lens is `BarMenuLens`, over the rows).
+/// With Reduce Transparency or Increase Contrast it is a solid fill with the lens as a soft fill.
 private struct BarMenuSurface: View {
-    /// The lens's frame in the menu's space; nil while no row is under the finger. Used before iOS 26 only.
+    /// The lens's frame in the menu's space; nil while no row is under the finger. Used when opaque.
     let lens: CGRect?
+    /// Reduce Transparency or Increase Contrast: a solid fill with a hairline edge, and the lens as a soft fill.
+    var opaque = false
     private let shape = RoundedRectangle(cornerRadius: 30, style: .continuous)
     private let lensShape = RoundedRectangle(cornerRadius: 22, style: .continuous)
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
-        if #available(iOS 26, *) {
+        if !opaque {
             Color.clear.glassEffect(.regular, in: shape)
         } else {
             ZStack(alignment: .top) {
-                shape.fill(.regularMaterial)
-                    .overlay(shape.strokeBorder(.primary.opacity(0.12), lineWidth: 0.5))
+                surface
                     .shadow(color: .black.opacity(0.18), radius: 14, y: 4)
                 if let lens {
                     lensShape.fill(.primary.opacity(0.10))
@@ -199,9 +204,20 @@ private struct BarMenuSurface: View {
     }
 }
 
+extension BarMenuSurface {
+    @ViewBuilder fileprivate var surface: some View {
+        if opaque {
+            shape.fill(Color(uiColor: .secondarySystemBackground))
+                .overlay(shape.strokeBorder(Color(uiColor: .separator), lineWidth: ChromeContrast.separatorWidth))
+        } else {
+            shape.fill(.regularMaterial)
+                .overlay(shape.strokeBorder(.primary.opacity(0.12), lineWidth: 0.5))
+        }
+    }
+}
+
 /// The lens under the row the finger is over, as in the system tab bar: untinted Liquid Glass drawn over the rows, so it
 /// refracts the row it sits on instead of painting it, and glides to the next row with the finger.
-@available(iOS 26, *)
 private struct BarMenuLens: View {
     /// The row's frame in the menu's space; nil while no row is under the finger.
     let frame: CGRect?

@@ -22,9 +22,14 @@ struct MutshabehatApp: App {
                 ReaderView(library: library)
             case let .failure(error):
                 // Only reachable if the build shipped without its generated data (see project.yml).
-                Text("تعذّر فتح بيانات المصحف\n\(error.localizedDescription)")
-                    .multilineTextAlignment(.center)
-                    .padding()
+                ContentUnavailableView {
+                    Label("تعذّر فتح بيانات المصحف", systemImage: "exclamationmark.triangle")
+                } description: {
+                    Text(verbatim: error.localizedDescription)
+                } actions: {
+                    Button("إعادة المحاولة") { library = MushafLibrary.load() }
+                        .buttonStyle(.borderedProminent)
+                }
             }
         }
     }

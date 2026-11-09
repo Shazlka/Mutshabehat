@@ -5,6 +5,23 @@ import ReviewEditor
 import SwiftUI
 import UIKit
 
+/// The launch-argument hooks the UI tests use (`-page`, `-show-chrome`, `-open-…`). They exist in DEBUG builds only: a
+/// Release build ignores every one of them, so a launch argument cannot move or open anything in a shipped app.
+enum LaunchHooks {
+#if DEBUG
+    static func has(_ flag: String) -> Bool { CommandLine.arguments.contains(flag) }
+
+    static func intValue(after flag: String) -> Int? {
+        guard let idx = CommandLine.arguments.firstIndex(of: flag),
+              CommandLine.arguments.indices.contains(idx + 1) else { return nil }
+        return Int(CommandLine.arguments[idx + 1])
+    }
+#else
+    static func has(_ flag: String) -> Bool { false }
+    static func intValue(after flag: String) -> Int? { nil }
+#endif
+}
+
 struct ReaderView: View {
     let library: MushafLibrary
     @Environment(\.colorScheme) private var colorScheme
@@ -22,21 +39,17 @@ struct ReaderView: View {
     @StateObject private var tracker = ReadingTracker.shared
     private let intentRouter = AppIntentRouter.shared
     @State private var page: Int = {
-        if let idx = CommandLine.arguments.firstIndex(of: "-page"),
-           CommandLine.arguments.indices.contains(idx + 1),
-           let p = Int(CommandLine.arguments[idx + 1]) {
-            return clampPage(p)
-        }
+        if let p = LaunchHooks.intValue(after: "-page") { return clampPage(p) }
         return ReadingPosition().page
     }()
-    @State private var chromeVisible = CommandLine.arguments.contains("-show-chrome")
+    @State private var chromeVisible = LaunchHooks.has("-show-chrome")
     @State private var showingIndex = false
     @State private var showingSearch = false
     @State private var showingSettings = false
-    @State private var showingBookmarks = CommandLine.arguments.contains("-open-bookmarks")
-    @State private var showingStatistics = CommandLine.arguments.contains("-open-statistics")
-    @State private var showingMutshabehat = CommandLine.arguments.contains("-open-mutshabehat")
-    @State private var showingMemorization = CommandLine.arguments.contains("-open-memorization")
+    @State private var showingBookmarks = LaunchHooks.has("-open-bookmarks")
+    @State private var showingStatistics = LaunchHooks.has("-open-statistics")
+    @State private var showingMutshabehat = LaunchHooks.has("-open-mutshabehat")
+    @State private var showingMemorization = LaunchHooks.has("-open-memorization")
     @State private var showingMutoon = false
     @State private var pageSheetRequest: PageSheetRequest?
     @State private var ayahSheetTarget: AyahSheetTarget?
@@ -74,6 +87,11 @@ struct ReaderView: View {
     @State private var sideWordPage: Int?
     /// iPad landscape: the header and footer stand as side rails, and the page takes the full height.
     @State private var usesRails = false
+    /// The header's surah name and juz/hizb for the page and language they were built for; a page turn or a change
+    /// of language replaces it, so `body` does not read the page's metadata on every pass.
+    @State private var headerCache = KeyedCache<HeaderKey, HeaderInfo>()
+    /// The marked words the Qiraat card steps through, built when a card opens or the page turns under it.
+    @State private var markedWordsCache = KeyedCache<MarkedWordsKey, [MarkedWordRef]>()
 
     var body: some View {
         GeometryReader { geometry in
@@ -176,6 +194,13 @@ struct ReaderView: View {
             }
             ReadingPosition().page = newPage
             tracker.pageDidChange(to: newPage, library: library)
+            refreshHeaderInfo()
+            if qiraatSelection != nil || sideSelection != nil { refreshMarkedWords() }
+        }
+        .onChange(of: language) { _, _ in refreshHeaderInfo() }
+        .onChange(of: isSpread) { _, _ in
+            refreshHeaderInfo()
+            if qiraatSelection != nil || sideSelection != nil { refreshMarkedWords() }
         }
         .task(id: qiraat.enabled) { startQiraatBulkSync() }
         .onChange(of: qiraat.hidesUsul, initial: true) { _, hidden in library.qiraat?.hidesUsul = hidden }
@@ -183,6 +208,7 @@ struct ReaderView: View {
             library.qiraat?.hiddenUsulCategories = hidden
         }
         .onAppear {
+            refreshHeaderInfo()
             tracker.configureScreenAwake(enabled: keepScreenAwake, scenePhase: scenePhase)
             tracker.pageDidChange(to: page, library: library)
             if ICloudDatabaseSyncService.shared.autoSyncEnabled {
@@ -224,14 +250,20 @@ struct ReaderView: View {
         .sheet(item: $qiraatRoute, onDismiss: presentPendingQiraatWord) { route in
             qiraatDestination(route)
         }
-        .fullScreenCover(isPresented: $showingQiraatLegend) {
+        // Sheets, not full-screen covers: the page and the reader's glass stay in view behind them.
+        .sheet(isPresented: $showingQiraatLegend) {
             if let store = library.qiraat {
                 QiraatLegendSheet(catalog: store.catalog, store: store)
+                    .presentationDetents([.medium, .large])
+                    .presentationDragIndicator(.visible)
             }
         }
-        .fullScreenCover(isPresented: $showingQiraatFilter) {
+        .sheet(isPresented: $showingQiraatFilter) {
             if let catalog = library.qiraat?.catalog {
+                // Every reader and narrator is shown at once, without a scroll: the grid needs the full height.
                 QiraatFilterGrid(catalog: catalog, selection: $qiraat.filter)
+                    .presentationDetents([.large])
+                    .presentationDragIndicator(.visible)
             }
         }
         .sheet(isPresented: $showingIndex) {
@@ -453,20 +485,44 @@ struct ReaderView: View {
         UITraitCollection(userInterfaceStyle: colorScheme == .dark ? .dark : .light)
     }
 
-    private var metadata: PageMetadata? { library.page(page)?.metadata }
+    private struct HeaderKey: Equatable {
+        let page: Int
+        let language: AppLanguage
+    }
 
-    private var surahTitle: String {
+    private struct HeaderInfo {
+        let surahTitle: String
+        let section: ReaderSection?
+    }
+
+    private var headerKey: HeaderKey { HeaderKey(page: page, language: appLanguage) }
+
+    private var headerInfo: HeaderInfo {
+        headerCache.value(for: headerKey) ?? makeHeaderInfo(for: headerKey)
+    }
+
+    private func refreshHeaderInfo() {
+        headerCache.store(makeHeaderInfo(for: headerKey), for: headerKey)
+    }
+
+    private func makeHeaderInfo(for key: HeaderKey) -> HeaderInfo {
+        let metadata = library.page(key.page)?.metadata
+        return HeaderInfo(surahTitle: Self.surahTitle(metadata, language: key.language),
+                          section: Self.readerSection(metadata, language: key.language))
+    }
+
+    private static func surahTitle(_ metadata: PageMetadata?, language: AppLanguage) -> String {
         guard let names = metadata?.surahNames, !names.isEmpty else { return "" }
-        if appLanguage == .english {
+        if language == .english {
             return names.map { "Surah \($0.replacingOccurrences(of: "سورة ", with: ""))" }.joined(separator: " · ")
         }
         return names.map { $0.hasPrefix("سورة") ? $0 : "سورة \($0)" }.joined(separator: " · ")
     }
 
-    private var readerSection: ReaderSection? {
+    private static func readerSection(_ metadata: PageMetadata?, language: AppLanguage) -> ReaderSection? {
         guard let meta = metadata else { return nil }
         let quarter = meta.rubInHizb
-        if appLanguage == .english {
+        if language == .english {
             return ReaderSection(juzText: "Juz \(meta.juz)", hizbText: "Hizb \(meta.hizb)", rubInHizb: quarter,
                                  accessibilityText: "Juz \(meta.juz), Hizb \(meta.hizb), quarter \(quarter) of 4")
         }
@@ -489,7 +545,24 @@ struct ReaderView: View {
 
     var activeQiraatFilter: QiraatFilter { qiraat.filter }
 
+    private struct MarkedWordsKey: Equatable {
+        let pages: [Int]
+        let filter: QiraatFilter
+    }
+
+    private var markedWordsKey: MarkedWordsKey { MarkedWordsKey(pages: qiraatVisiblePages, filter: qiraat.filter) }
+
+    /// The words the card steps through: the copy built for these pages and this filter when a card opened, otherwise
+    /// built now (a different page or filter is a miss, never a stale list).
     private var qiraatMarkedWords: [MarkedWordRef] {
+        markedWordsCache.value(for: markedWordsKey) ?? makeQiraatMarkedWords()
+    }
+
+    private func refreshMarkedWords() {
+        markedWordsCache.store(makeQiraatMarkedWords(), for: markedWordsKey)
+    }
+
+    private func makeQiraatMarkedWords() -> [MarkedWordRef] {
         guard let store = library.qiraat else { return [] }
         let pages = qiraatVisiblePages
         let words = pages.compactMap(library.page).flatMap { $0.lines.flatMap(\.words) }
@@ -601,9 +674,9 @@ struct ReaderView: View {
     /// The reading header: across the top, or the left side rail of iPad landscape.
     private func readerHeader(axis: Axis) -> some View {
         ReaderTopBar(
-            surahTitle: surahTitle,
+            surahTitle: headerInfo.surahTitle,
             pageNumbers: qiraatVisiblePages,
-            section: readerSection,
+            section: headerInfo.section,
             appearance: appearance,
             traits: interfaceTraits,
             qiraat: qiraat,
@@ -678,6 +751,7 @@ struct ReaderView: View {
                     isPageBookmarked: { tracker.isPageBookmarked(page: $0) },
                     memorizationStatuses: { markerStatuses($0) },
                     memorizationVersion: memorizationVersion,
+                    bookmarksVersion: tracker.bookmarksVersion,
                     chromeVisible: chromeVisible,
                     fillsHeight: fillsHeight,
                     onTapCentre: { withAnimation(.easeInOut(duration: 0.2)) { chromeVisible.toggle() } },
@@ -798,6 +872,7 @@ struct ReaderView: View {
 
     /// The word's card goes to the side bar in the learning view, to the sheet otherwise.
     private func present(_ item: QiraatWordSelection) {
+        refreshMarkedWords()
         if isLearning {
             sideWordPage = item.word.page
             sideSelection = item

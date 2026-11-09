@@ -9,19 +9,29 @@ extension MemorizationDatabase {
 
     /// Everything memorization stores, as one document (the manual export file and the backup JSON).
     public func exportAll(now: Date) -> MemorizationExport {
+        exportAllReportingSkippedRows(now: now).export
+    }
+
+    /// The export and how many stored rows it had to leave out because they cannot be decoded (an unknown batch
+    /// kind from a newer version, damaged event or goal JSON). Zero for a database that is fully readable.
+    public func exportAllReportingSkippedRows(now: Date) -> (export: MemorizationExport, skippedRowCount: Int) {
         let moment = now.normalizedToMilliseconds
         let device = deviceID
         lock.lock()
         defer { lock.unlock() }
-        return exportAllLocked(now: moment, deviceID: device)
+        let export = exportAllLocked(now: moment, deviceID: device)
+        return (export, unreadableRowCountLocked(readable: export))
     }
 
     /// Makes memorization exactly what `export` holds. All or nothing; this database's own device id and
-    /// schema version are kept.
+    /// schema version are kept. Throws, changing nothing, when the database holds rows this version cannot read:
+    /// replacing the tables would delete them for good.
     public func replaceAll(with export: MemorizationExport) throws {
+        let device = deviceID
         lock.lock()
         defer { lock.unlock() }
-        try replaceAllLocked(with: export)
+        let local = exportAllLocked(now: Date().normalizedToMilliseconds, deviceID: device)
+        try replaceAllLocked(with: export, unreadableLocalRows: unreadableRowCountLocked(readable: local))
     }
 
     /// Merges an export into the current data (the newer row of each ayah wins, history is unioned by id) in
@@ -31,8 +41,9 @@ extension MemorizationDatabase {
         let device = deviceID
         lock.lock()
         defer { lock.unlock() }
-        let merged = MemorizationMerge.merge(local: exportAllLocked(now: moment, deviceID: device), incoming: incoming)
-        try replaceAllLocked(with: merged)
+        let local = exportAllLocked(now: moment, deviceID: device)
+        let merged = MemorizationMerge.merge(local: local, incoming: incoming)
+        try replaceAllLocked(with: merged, unreadableLocalRows: unreadableRowCountLocked(readable: local))
     }
 
     private func exportAllLocked(now: Date, deviceID: String) -> MemorizationExport {
@@ -56,8 +67,27 @@ extension MemorizationDatabase {
             goals: goalsLocked(), meta: meta)
     }
 
-    private func replaceAllLocked(with export: MemorizationExport) throws {
-        guard let db else { throw MemorizationError.writeFailed("database unavailable") }
+    /// Stored rows that `readable` (a fresh read of every table) could not include.
+    private func unreadableRowCountLocked(readable: MemorizationExport) -> Int {
+        guard let db else { return 0 }
+        func rawCount(_ table: String) -> Int {
+            var statement: OpaquePointer?
+            defer { sqlite3_finalize(statement) }
+            guard sqlite3_prepare_v2(db, "SELECT COUNT(*) FROM \(table)", -1, &statement, nil) == SQLITE_OK,
+                  sqlite3_step(statement) == SQLITE_ROW else { return 0 }
+            return Int(sqlite3_column_int64(statement, 0))
+        }
+        return max(0, rawCount("memorization_ayahs") - readable.records.count)
+            + max(0, rawCount("memorization_batches") - readable.batches.count)
+            + max(0, rawCount("memorization_events") - readable.events.count)
+            + max(0, rawCount("memorization_goals") - readable.goals.count)
+    }
+
+    private func replaceAllLocked(with export: MemorizationExport, unreadableLocalRows: Int) throws {
+        let db = try writableDatabaseLocked()
+        guard unreadableLocalRows == 0 else {
+            throw MemorizationError.writeFailed("يوجد \(unreadableLocalRows) سجلاً محفوظاً لا يمكن قراءته (ربما من إصدار أحدث)، وسيُحذف نهائياً لو استُبدلت البيانات. لم يتغير شيء.")
+        }
         guard sqlite3_exec(db, "BEGIN IMMEDIATE;", nil, nil, nil) == SQLITE_OK else {
             throw MemorizationError.writeFailed(String(cString: sqlite3_errmsg(db)))
         }
@@ -102,14 +132,14 @@ extension MemorizationDatabase {
     public func saveGoal(_ goal: GoalDefinition) throws {
         lock.lock()
         defer { lock.unlock() }
-        guard let db else { throw MemorizationError.writeFailed("database unavailable") }
+        let db = try writableDatabaseLocked()
         try saveGoalLocked(goal, db: db)
     }
 
     public func deleteGoal(id: UUID) {
         lock.lock()
         defer { lock.unlock() }
-        guard let db else { return }
+        guard failedMigration == nil, let db else { return }
         try? runLocked("DELETE FROM memorization_goals WHERE id = ?", db: db) { statement in
             sqlite3_bind_text(statement, 1, id.uuidString, -1, transient)
         }
