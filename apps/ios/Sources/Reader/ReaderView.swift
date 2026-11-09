@@ -65,6 +65,7 @@ struct ReaderView: View {
     @AppStorage("mushaf:autoHidesFooter") private var autoHidesFooter = false
     @AppStorage(LandscapeView.storageKey) private var landscapeView = LandscapeView.reading.rawValue
     @AppStorage(SurahBannerStyle.storageKey) private var bannerStyle = SurahBannerStyle.royal.rawValue
+    @AppStorage(PageTurnStyle.storageKey) private var pageTurn = PageTurnStyle.curl.rawValue
     /// iPad landscape with «تعلّم»: one page, and the Qiraat side bar instead of the word sheet.
     @State private var isLearning = false
     /// The word the side bar shows; nil shows the page's differences.
@@ -668,6 +669,7 @@ struct ReaderView: View {
 
     private func mushafPager(spread: Bool, fillsHeight: Bool = false) -> some View {
         MushafPager(library: library, page: $page, spread: spread,
+                    turnStyle: PageTurnStyle(stored: pageTurn),
                     appearance: appearance,
                     bannerStyle: SurahBannerStyle(stored: bannerStyle),
                     qiraat: qiraatDisplay,
@@ -685,7 +687,7 @@ struct ReaderView: View {
                     })
         // Single ↔ spread needs a different spine, and the page's frame depends on the rails: rebuild the pager,
         // keep the page.
-        .id("\(spread)-\(fillsHeight)")
+        .id("\(spread)-\(fillsHeight)-\(PageTurnStyle(stored: pageTurn).effective(spread: spread, reduceMotion: UIAccessibility.isReduceMotionEnabled).rawValue)")
         // The rails' stack is left to right; the pager keeps the app's own direction, which sets which edge turns
         // the page forward.
         .environment(\.layoutDirection, appLanguage.layoutDirection)

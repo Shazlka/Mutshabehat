@@ -307,6 +307,8 @@ private struct ReaderSelectionRow: View {
 
     var body: some View {
         let color = Color(qiraatHex: colorHex)
+        // The selection cue is a graphic: held to 3:1 on the list in dark mode, the reader's hue kept as far as it can.
+        let cue = Color(uiColor: UIColor(qiraatHex: colorHex).readable(minimumContrast: 3))
         HStack(spacing: 12) {
             HStack(spacing: 8) {
                 Circle()
@@ -332,11 +334,11 @@ private struct ReaderSelectionRow: View {
             if isMultiSelect {
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                     .font(.title3)
-                    .foregroundStyle(isSelected ? color : Color.secondary)
+                    .foregroundStyle(isSelected ? cue : Color.secondary)
             } else if isSelected {
                 Image(systemName: "checkmark")
                     .font(.body.weight(.bold))
-                    .foregroundStyle(color)
+                    .foregroundStyle(cue)
             }
         }
         .frame(minHeight: 44)

@@ -188,9 +188,18 @@ public final class QiraatStore: @unchecked Sendable {
         return true
     }
 
+    /// Deletes the live `page-NNN.json` files in `directory` and nothing else: the overlay folder also holds the
+    /// live المتون (`QiraatMutoon/`), which a Qiraat restore must not touch.
+    public static func removeLivePages(in directory: URL) {
+        let names = (try? FileManager.default.contentsOfDirectory(atPath: directory.path)) ?? []
+        for name in names where name.hasPrefix("page-") && name.hasSuffix(".json") {
+            try? FileManager.default.removeItem(at: directory.appendingPathComponent(name))
+        }
+    }
+
     /// Forgets every live page (an explicit backup import replaces the data they were laid over).
     public func clearOverlay() {
-        if let overlayDirectory { try? FileManager.default.removeItem(at: overlayDirectory) }
+        if let overlayDirectory { Self.removeLivePages(in: overlayDirectory) }
         lock.withLock {
             pages.removeAll()
             order.removeAll()

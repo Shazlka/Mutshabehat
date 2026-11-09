@@ -3,6 +3,24 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-11-09 — Audit round: hang fixes, data-safety fixes, first Liquid Glass and contrast items
+- **Source:** six read-only audits (performance, security/App Store, dead code, concurrency/data, UI/UX, and an independent Codex review). Findings and verdicts are in the EN/AR report `docs/release/2026-11-09-audit-report.md`.
+- **Slide direction:** checked on the simulator, slide mode first turned the wrong way (left→right went to the previous page). `MushafPager` now swaps the data source and the animation direction when it slides, so left→right is forward as in the curl. Reduce Motion makes a single page slide (`PageTurnStyle.effective(spread:reduceMotion:)`).
+- **Hangs:** `MushafLibrary.page(_)` keeps the last 12 pages (was 3 queries per call from view bodies); `QiraatSheet` resolves its logical spans once into state instead of on every body pass; a touch that began on an open footer menu and moved more than 10 pt is a scroll: it no longer runs the row it lifts over, ticks or moves the lens (`FooterMenuModel`).
+- **Data:** reading-day keys are POSIX Gregorian ASCII (Hijri/Arabic-digit locales no longer mismatch); restore reloads the reading tracker; the Qiraat signature is saved only after the snapshot is adopted; background backup has an expiry handler; NULL text columns no longer trap in merges (`sqliteColumnText`); a last-read day ahead of today keeps the streak; a Qiraat restore removes only live `page-*.json`, no longer the live المتون folder (`QiraatStore.removeLivePages`); the public (Release) live route keeps the store's shrink guard.
+- **UI:** chevrons follow reading direction; verse buttons meet 44 pt; index picker no longer fixed-width; two fixed fonts scale; toasts and bottom bars use glass on iOS 26+ (fallback unchanged); legend and reader-picker colours go through the contrast helpers in dark mode.
+- **Removed:** `MatnVerseRow`, `Haptics.prepareScrolling/scrollTick`, `ReadingTracker.surahProgress`, `QuranReadingDatabase.resetForTesting`.
+- **Verification:** `MutshabehatTests` 415/415 before the direction fix; core package: 1 failure, `validateAcceptsBundledMutshabehatSeed` (the generated seed is in WAL mode; not touched by this work). Slide swipes checked both ways on the iPhone 18 Pro Max simulator. Not run: UI tests, device, VoiceOver, Instruments (the hang cause is not profiled).
+- **Open:** empty-store backup safeguard covers memorization only; the 1 Hz reading tick still redraws the reader; remaining Liquid Glass items (Qiraat sheet background, iPad rail, search bar); content-rights and licence items need the owner.
+- **Files:** `Sources/{MushafLibrary,Reader/*,Qiraat/*,Reading/*,Backup/BackupController,Sync/ICloudDatabaseSyncService,Memorization/*}`, `MushafCore/Sources/MushafCore/QiraatStore.swift`, `Tests/{ReaderLayoutTests,DataLayerFixesTests,QiraatLiveSyncTests}.swift`, `MushafCore/Tests/MushafCoreTests/QiraatStoreTests.swift`.
+
+## [Unreleased] — 2026-11-08 — Page turn: choose Curl or Slide
+- **What:** Settings → «طريقة تقليب الصفحة» (Page turn) lets the reader choose the iBooks-style curl (default, unchanged) or a plain sideways slide.
+- **How:** `PageTurnStyle` (`ReaderLayout.swift`, stored in `mushaf:pageTurn:v1`) picks `UIPageViewController` `.scroll` or `.pageCurl` in `MushafPager`; the pager is rebuilt when the choice changes. Same RTL geometry (next page is the left one) and the same data source for both.
+- **Limit:** UIKit cannot slide two facing pages, so an iPad spread (landscape «قراءة») always curls; the setting says so.
+- **Verification:** `PageTurnStyleTests` (2, new) and `ReaderLayoutTests` pass on the iPhone 18 Pro Max simulator. Not exercised: swiping in the slide mode on a simulator or device, VoiceOver three-finger turn in slide mode.
+- **Files:** `Sources/Reader/{ReaderLayout,MushafPager,ReaderView,ReaderSettingsView}.swift`, `Tests/ReaderLayoutTests.swift`. Localisation: the two new labels are inline Arabic/English like the neighbouring pickers.
+
 ## [Unreleased] — 2026-11-06 — Word card shows only the selected reader's or narrator's groups (أصول)
 - **Report:** with one reader or narrator selected, tapping a word still listed every reader's groups in the cards.
 - **Cause:** the الفرش cards were already narrowed to the selection, but `RulingCard` (الأصول) grouped and showed all of a ruling's rows (إمالة for حمزة and الكسائي, تقليل for ورش …) whatever the filter.

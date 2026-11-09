@@ -1,46 +1,75 @@
 {
-  "sourceLanguage": "ar",
-  "strings": {
-    "افتح ${applicationName}": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Open ${applicationName}"
+  "sourceLanguage" : "ar",
+  "strings" : {
+    "افتح ${applicationName}" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open ${applicationName}"
           }
         }
       }
     },
-    "افتح ${surah} في ${applicationName}": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Open ${surah} in ${applicationName}"
+    "افتح ${surah} في ${applicationName}" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "ar" : {
+          "stringSet" : {
+            "state" : "new",
+            "values" : [
+              "افتح ${surah} في ${applicationName}"
+            ]
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Open ${surah} in ${applicationName}"
           }
         }
       }
     },
-    "افتح صفحة في ${applicationName}": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Open a page in ${applicationName}"
+    "افتح صفحة في ${applicationName}" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "ar" : {
+          "stringSet" : {
+            "state" : "new",
+            "values" : [
+              "افتح صفحة في ${applicationName}"
+            ]
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Open a page in ${applicationName}"
           }
         }
       }
     },
-    "تابع القراءة في ${applicationName}": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Continue reading in ${applicationName}"
+    "تابع القراءة في ${applicationName}" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "ar" : {
+          "stringSet" : {
+            "state" : "new",
+            "values" : [
+              "تابع القراءة في ${applicationName}",
+              "افتح ${applicationName}"
+            ]
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Continue reading in ${applicationName}"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

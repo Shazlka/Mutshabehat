@@ -135,7 +135,7 @@ extension QuranReadingDatabase {
             SQLiteBind.text(stmt, 1, startStr)
             SQLiteBind.text(stmt, 2, endStr)
             while sqlite3_step(stmt) == SQLITE_ROW {
-                let dateStr = String(cString: sqlite3_column_text(stmt, 0))
+                let dateStr = sqliteColumnText(stmt, 0)
                 var sec = Int(sqlite3_column_int64(stmt, 1))
                 let ayahs = Int(sqlite3_column_int64(stmt, 2))
                 let pages = Int(sqlite3_column_int64(stmt, 3))
@@ -164,7 +164,7 @@ extension QuranReadingDatabase {
             SQLiteBind.text(stmt, 1, startStr)
             SQLiteBind.text(stmt, 2, endStr)
             while sqlite3_step(stmt) == SQLITE_ROW {
-                set.insert(String(cString: sqlite3_column_text(stmt, 0)))
+                set.insert(sqliteColumnText(stmt, 0))
             }
         }
         sqlite3_finalize(stmt)
@@ -180,7 +180,7 @@ extension QuranReadingDatabase {
         var days: [String] = []
         if sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK {
             while sqlite3_step(stmt) == SQLITE_ROW {
-                days.append(String(cString: sqlite3_column_text(stmt, 0)))
+                days.append(sqliteColumnText(stmt, 0))
             }
         }
         sqlite3_finalize(stmt)
@@ -218,8 +218,8 @@ extension QuranReadingDatabase {
 
         let diffFromToday = calendar.dateComponents([.day], from: lastRecordedDate, to: todayDate).day ?? 0
         var activeStreak = 0
-        if diffFromToday == 0 {
-            // Read today
+        if diffFromToday <= 0 {
+            // Read today (or a clock moved back leaves the last day ahead of today)
             activeStreak = streak
         } else if diffFromToday == 1 {
             // Read yesterday, today not yet finished
@@ -263,7 +263,7 @@ extension QuranReadingDatabase {
         var records: [ReadingDayRecord] = []
         if sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK {
             while sqlite3_step(stmt) == SQLITE_ROW {
-                let dateStr = String(cString: sqlite3_column_text(stmt, 0))
+                let dateStr = sqliteColumnText(stmt, 0)
                 let ayahs = Int(sqlite3_column_int64(stmt, 1))
                 let pages = Int(sqlite3_column_int64(stmt, 2))
                 var seconds = Int(sqlite3_column_int64(stmt, 3))
@@ -271,7 +271,7 @@ extension QuranReadingDatabase {
                     if ayahs > 0 { seconds = ayahs * 20 }
                     else if pages > 0 { seconds = pages * 75 }
                 }
-                let lastRead = Self.isoFormatter.date(from: String(cString: sqlite3_column_text(stmt, 4))) ?? Date()
+                let lastRead = Self.isoFormatter.date(from: sqliteColumnText(stmt, 4)) ?? Date()
                 records.append(ReadingDayRecord(dateString: dateStr, ayahsRead: ayahs, pagesRead: pages, secondsRead: seconds, lastReadAt: lastRead))
             }
         }

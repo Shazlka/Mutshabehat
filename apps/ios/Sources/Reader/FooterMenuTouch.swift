@@ -46,16 +46,39 @@ final class FooterMenuModel {
     /// A menu coming up under the finger.
     func menuOpened() { impact.impactOccurred(intensity: 0.7) }
 
+    /// How far a finger that went down on an open menu may move before it counts as scrolling the menu's list
+    /// rather than pressing a row.
+    static let scrollSlop: CGFloat = 10
+
+    /// Where the current touch went down, and whether it has become a scroll of the open menu. A scroll does not
+    /// move the lens, tick, or choose the row it lifts over.
+    @ObservationIgnored private var touchStart: CGPoint?
+    @ObservationIgnored private(set) var isScrollingMenu = false
+
+    func touchBegan(at point: CGPoint, onMenu: Bool) {
+        touchStart = onMenu ? point : nil
+        isScrollingMenu = false
+    }
+
+    func touchEnded() {
+        touchStart = nil
+        isScrollingMenu = false
+    }
+
     /// Moves the lens to the row under `point`, with a tick each time it changes row; nil takes it away.
     func hover(at point: CGPoint?) {
-        setHovered(point.flatMap(row(at:)))
+        if let point, let start = touchStart, !isScrollingMenu,
+           abs(point.y - start.y) > Self.scrollSlop || abs(point.x - start.x) > Self.scrollSlop {
+            isScrollingMenu = true
+        }
+        setHovered(isScrollingMenu ? nil : point.flatMap(row(at:)))
     }
 
     /// Lifts the finger at `point`: runs the row under it, if there is one, and takes the lens away.
     @discardableResult
     func commit(at point: CGPoint) -> Bool {
         defer { setHovered(nil) }
-        guard let id = row(at: point), let row = rows[id] else { return false }
+        guard !isScrollingMenu, let id = row(at: point), let row = rows[id] else { return false }
         impact.impactOccurred()
         row.action()
         return true

@@ -381,8 +381,9 @@ final class ReadingTracker: ObservableObject {
         let calendar = Calendar.current
         let today = Date()
         let dayFormatter = DateFormatter()
-        dayFormatter.dateFormat = "yyyy-MM-dd"
         dayFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dayFormatter.calendar = Calendar(identifier: .gregorian)
+        dayFormatter.dateFormat = "yyyy-MM-dd"
 
         let dayNameFormatter = DateFormatter()
         dayNameFormatter.locale = Locale(identifier: "ar")
@@ -507,17 +508,6 @@ final class ReadingTracker: ObservableObject {
         longestStreak = streaks.longestStreak
         totalReadingDays = streaks.totalReadingDays
         completedKhatmasCount = db.completedKhatmasCount()
-    }
-
-    func surahProgress(surahNumber: Int, totalAyahs: Int) -> SurahProgress {
-        let readCount = db.readAyahsCountForSurah(khatmaId: activeKhatma.id, surah: surahNumber)
-        return SurahProgress(
-            surahNumber: surahNumber,
-            surahName: "",
-            readAyahsCount: readCount,
-            totalAyahsCount: totalAyahs,
-            firstPage: 1
-        )
     }
 
     func allSurahProgress(library: MushafLibrary) -> [SurahProgress] {

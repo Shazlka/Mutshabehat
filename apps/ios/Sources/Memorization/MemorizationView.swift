@@ -57,6 +57,7 @@ struct MemorizationView: View {
                 .navigationDestination(for: MemorizationRoute.self) { route in
                     destination(route)
                 }
+                .softBottomScrollEdge()
                 .safeAreaInset(edge: .bottom) { updateButton }
                 .memorizationToast($toast, store: store, library: library, language: language,
                                    undoFailed: { path.append(.history) })   // the history screen explains and offers "undo anyway"
@@ -85,11 +86,11 @@ struct MemorizationView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 14)
         }
-        .buttonStyle(.borderedProminent)
+        .primaryActionStyle()
         .tint(MemorizationTheme.color(.mastered))
         .padding(.horizontal, 16)
         .padding(.vertical, 8)
-        .background(.regularMaterial)
+        .bottomBarSurface()
         .accessibilityIdentifier("memo-update-button")
     }
 

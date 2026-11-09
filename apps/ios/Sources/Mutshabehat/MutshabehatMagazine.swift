@@ -162,7 +162,7 @@ private struct MagazineCard<Accessory: View, Menu: View>: View {
                             .foregroundStyle(.secondary)
                     }
                     Spacer()
-                    Image(systemName: "chevron.left")
+                    Image(systemName: "chevron.forward")
                         .font(.caption2.weight(.semibold))
                         .foregroundStyle(color.opacity(0.8))
                         .accessibilityHidden(true)

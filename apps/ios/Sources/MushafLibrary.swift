@@ -168,8 +168,28 @@ final class MushafLibrary {
         Result { try MushafLibrary() }
     }
 
+    /// The last pages read from SQLite. A page never changes, and the reader asks for the same few again and again
+    /// (view bodies, the pager, word look-ups), each ask being three queries and about 130 structs.
+    private var pageCache: [Int: MushafPage] = [:]
+    private var pageCacheOrder: [Int] = []
+    private static let pageCacheLimit = 12
+
     func page(_ number: Int) -> MushafPage? {
-        try? database.page(clampPage(number))
+        let n = clampPage(number)
+        if let cached = pageCache[n] {
+            if pageCacheOrder.last != n {
+                pageCacheOrder.removeAll { $0 == n }
+                pageCacheOrder.append(n)
+            }
+            return cached
+        }
+        guard let loaded = try? database.page(n) else { return nil }
+        pageCache[n] = loaded
+        pageCacheOrder.append(n)
+        if pageCacheOrder.count > Self.pageCacheLimit {
+            pageCache[pageCacheOrder.removeFirst()] = nil
+        }
+        return loaded
     }
 
     /// The text of one Quran word (surah, ayah, word index), looked up on `page` and the pages next to it,
@@ -205,7 +225,7 @@ final class MushafLibrary {
     func adoptInstalledQiraat(_ installed: QiraatStore, keepLivePages: Bool,
                               overlayDirectory: URL = QiraatLiveSync.overlayDirectory) throws {
         let replacement = try QiraatStore(directory: installed.directory, overlayDirectory: overlayDirectory)
-        if !keepLivePages { try? FileManager.default.removeItem(at: overlayDirectory) }
+        if !keepLivePages { QiraatStore.removeLivePages(in: overlayDirectory) }
         qiraat = replacement
         NotificationCenter.default.post(name: .qiraatDatabaseDidUpdate, object: nil)
     }

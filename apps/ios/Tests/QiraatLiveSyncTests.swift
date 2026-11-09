@@ -105,6 +105,20 @@ final class QiraatLiveSyncTests: XCTestCase {
         XCTAssertEqual(store.page(8)?.variants.count, 2)
     }
 
+    /// The store build reads the cached public API, where a much smaller page is as likely a stale or truncated answer
+    /// as a deletion: the store's shrink guard stays on there, and the page on the phone is kept.
+    func testThePublicRouteRefusesASuddenlyMuchSmallerPage() async {
+        let big = pageEight(variants: 12)
+        _ = try? store.applyLivePage(Data(big.utf8), number: 8)
+
+        let sync = QiraatLiveSync(fetch: { _ in .init(data: Data(self.pageEight(variants: 2).utf8)) },
+                                  minInterval: 0, route: .publicAPI)
+        let outcome = await sync.refresh(page: 8, store: store)
+
+        XCTAssertEqual(outcome, .failed)
+        XCTAssertEqual(store.page(8)?.variants.count, 12)
+    }
+
     func testAFailedFetchKeepsWhatIsShown() async {
         struct Offline: Error {}
         let sync = QiraatLiveSync(fetch: { _ in throw Offline() }, minInterval: 0)

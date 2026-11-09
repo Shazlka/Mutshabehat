@@ -17,9 +17,9 @@ extension QuranReadingDatabase {
         var stmt: OpaquePointer?
         if sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK {
             if sqlite3_step(stmt) == SQLITE_ROW {
-                let id = String(cString: sqlite3_column_text(stmt, 0))
+                let id = sqliteColumnText(stmt, 0)
                 let num = Int(sqlite3_column_int64(stmt, 1))
-                let startedStr = String(cString: sqlite3_column_text(stmt, 2))
+                let startedStr = sqliteColumnText(stmt, 2)
                 let started = Self.isoFormatter.date(from: startedStr) ?? Date()
                 let pct = sqlite3_column_double(stmt, 5)
                 sqlite3_finalize(stmt)
@@ -288,9 +288,9 @@ extension QuranReadingDatabase {
         if sqlite3_prepare_v2(db, selectSql, -1, &selectStmt, nil) == SQLITE_OK {
             SQLiteBind.text(selectStmt, 1, khatmaId)
             if sqlite3_step(selectStmt) == SQLITE_ROW {
-                let id = String(cString: sqlite3_column_text(selectStmt, 0))
+                let id = sqliteColumnText(selectStmt, 0)
                 let num = Int(sqlite3_column_int64(selectStmt, 1))
-                let startedStr = String(cString: sqlite3_column_text(selectStmt, 2))
+                let startedStr = sqliteColumnText(selectStmt, 2)
                 let started = Self.isoFormatter.date(from: startedStr) ?? now
                 completedRecord = KhatmaRecord(id: id, khatmaNumber: num, startedAt: started, completedAt: now, status: "completed", percentComplete: 100.0)
             }

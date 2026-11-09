@@ -13,6 +13,8 @@ struct MushafPager: UIViewControllerRepresentable {
     let library: MushafLibrary
     @Binding var page: Int
     let spread: Bool
+    /// Curl or slide; a spread always curls (`PageTurnStyle.effective`).
+    var turnStyle: PageTurnStyle = .curl
     let appearance: MushafAppearance
     /// How the surah banners look.
     var bannerStyle: SurahBannerStyle = .current
@@ -31,15 +33,29 @@ struct MushafPager: UIViewControllerRepresentable {
     let onTapWord: (MushafPage, MushafWord) -> Void
     let onLongPressAyah: (MushafPage, AyahKey) -> Void
 
+    /// Whether this pager slides (a `.scroll` pager) rather than curls. Reading it again later gives the same answer
+    /// for the pager that was built, because a change of style or Reduce Motion rebuilds the pager (`.id` on the call
+    /// site).
+    var slides: Bool {
+        turnStyle.effective(spread: spread, reduceMotion: UIAccessibility.isReduceMotionEnabled) == .slide
+    }
+
     func makeCoordinator() -> Coordinator { Coordinator(self) }
 
     func makeUIViewController(context: Context) -> UIPageViewController {
-        let spine: UIPageViewController.SpineLocation = spread ? .mid : .max
-        let pager = UIPageViewController(transitionStyle: .pageCurl, navigationOrientation: .horizontal,
+        let pager: UIPageViewController
+        if slides {
+            // `spineLocation` and `isDoubleSided` belong to the curl only; a slide has none.
+            pager = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal,
+                                         options: [.interPageSpacing: 0])
+        } else {
+            let spine: UIPageViewController.SpineLocation = spread ? .mid : .max
+            pager = UIPageViewController(transitionStyle: .pageCurl, navigationOrientation: .horizontal,
                                          options: [.spineLocation: NSNumber(value: spine.rawValue)])
+            pager.isDoubleSided = spread
+        }
         pager.view.semanticContentAttribute = .forceLeftToRight
         pager.view.backgroundColor = appearance.desk(for: pager.traitCollection, tint: qiraat.pageTint)
-        pager.isDoubleSided = spread
         pager.dataSource = context.coordinator
         pager.delegate = context.coordinator
         disableTapToTurn(in: pager)
@@ -77,7 +93,13 @@ struct MushafPager: UIViewControllerRepresentable {
     final class Coordinator: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
         var parent: MushafPager
         weak var pager: UIPageViewController?
-        init(_ parent: MushafPager) { self.parent = parent }
+        /// Fixed when the pager is built: a slide has the next page on the side the finger pulls from, which is the
+        /// opposite of the curl's data source order.
+        let slides: Bool
+        init(_ parent: MushafPager) {
+            self.parent = parent
+            self.slides = parent.slides
+        }
 
         /// VoiceOver's three-finger swipe: turn one page (or one spread) and announce where it landed.
         func accessibilityTurn(forward: Bool) -> Bool {
@@ -131,7 +153,9 @@ struct MushafPager: UIViewControllerRepresentable {
             let forward = target > (current ?? 0)
             // A jump across hundreds of pages would otherwise play a full 3D curl for someone who asked for less motion.
             let animate = animated && current != nil && !UIAccessibility.isReduceMotionEnabled
-            pager.setViewControllers(controllers, direction: forward ? .reverse : .forward, animated: animate)
+            let reading: UIPageViewController.NavigationDirection = slides ? .forward : .reverse
+            let back: UIPageViewController.NavigationDirection = slides ? .reverse : .forward
+            pager.setViewControllers(controllers, direction: forward ? reading : back, animated: animate)
             prewarm(around: target)
         }
 
@@ -142,11 +166,11 @@ struct MushafPager: UIViewControllerRepresentable {
         }
 
         func pageViewController(_ pager: UIPageViewController, viewControllerBefore vc: UIViewController) -> UIViewController? {
-            (vc as? PageController).flatMap { controller(for: $0.page.number + 1) }
+            (vc as? PageController).flatMap { controller(for: $0.page.number + (slides ? -1 : 1)) }
         }
 
         func pageViewController(_ pager: UIPageViewController, viewControllerAfter vc: UIViewController) -> UIViewController? {
-            (vc as? PageController).flatMap { controller(for: $0.page.number - 1) }
+            (vc as? PageController).flatMap { controller(for: $0.page.number + (slides ? 1 : -1)) }
         }
 
         func pageViewController(_ pager: UIPageViewController, didFinishAnimating finished: Bool,

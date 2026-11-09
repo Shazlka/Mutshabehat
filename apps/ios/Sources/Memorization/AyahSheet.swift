@@ -149,9 +149,7 @@ struct RangePill: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
-        .background(.thickMaterial, in: Capsule())
-        .overlay(Capsule().strokeBorder(Color.primary.opacity(0.12), lineWidth: 0.5))
-        .shadow(color: .black.opacity(0.12), radius: 8, y: 2)
+        .floatingSurface(Capsule())
         .environment(\.layoutDirection, language.layoutDirection)
     }
 }

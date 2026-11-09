@@ -218,6 +218,7 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
         var mutshabehatMerged = false
         var installedQiraat: QiraatStore?
         var qiraatError: String?
+        var qiraatSignature: String?
     }
 
     private func importedKey(_ name: String) -> String { "icloud:sync:imported:\(name)" }
@@ -261,7 +262,7 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
            force || defaults.string(forKey: importedKey("qiraat")) != signature {
             do {
                 result.installedQiraat = try QiraatBackupService.install(Data(contentsOf: qiraatArchive))
-                defaults.set(signature, forKey: importedKey("qiraat"))
+                result.qiraatSignature = signature
             } catch {
                 result.qiraatError = error.localizedDescription
             }
@@ -314,6 +315,9 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
         if let installed = imported.installedQiraat, let library {
             do {
                 try library.adoptInstalledQiraat(installed, keepLivePages: true)
+                if let signature = imported.qiraatSignature {
+                    defaults.set(signature, forKey: importedKey("qiraat"))
+                }
                 qiraatPages = installed.catalog.pageCount
             } catch {
                 qiraatNotice = error.localizedDescription

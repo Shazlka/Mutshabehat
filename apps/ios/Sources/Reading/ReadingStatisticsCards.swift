@@ -218,7 +218,7 @@ struct ContinueReadingBanner: View {
 
                 Spacer()
 
-                Image(systemName: "chevron.left")
+                Image(systemName: "chevron.forward")
                     .foregroundColor(.secondary)
                     .font(.footnote.bold())
             }
@@ -557,7 +557,7 @@ struct SurahProgressItemRow: View {
                 }
             }
 
-            Image(systemName: "chevron.left")
+            Image(systemName: "chevron.forward")
                 .font(.caption.weight(.semibold))
                 .foregroundColor(Color(uiColor: .tertiaryLabel))
         }

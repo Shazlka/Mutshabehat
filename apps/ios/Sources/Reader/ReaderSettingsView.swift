@@ -18,6 +18,7 @@ struct SettingsView: View {
     @State private var showingQiraatPicker = false
     @AppStorage(LandscapeView.storageKey) private var landscapeView = LandscapeView.reading.rawValue
     @AppStorage(SurahBannerStyle.storageKey) private var bannerStyle = SurahBannerStyle.royal.rawValue
+    @AppStorage(PageTurnStyle.storageKey) private var pageTurn = PageTurnStyle.curl.rawValue
 #if DEBUG
     @State private var showingReviewEditor = false
 #if DEBUG
@@ -162,6 +163,20 @@ struct SettingsView: View {
                         Label(appLanguage == .english ? "Language" : "اللغة", systemImage: "globe")
                     }
                     .accessibilityIdentifier("open-language-settings")
+                }
+                Section {
+                    Picker(selection: $pageTurn) {
+                        Text(appLanguage == .english ? "Curl" : "تقليب").tag(PageTurnStyle.curl.rawValue)
+                        Text(appLanguage == .english ? "Slide" : "انزلاق").tag(PageTurnStyle.slide.rawValue)
+                    } label: {
+                        Label(appLanguage == .english ? "Page turn" : "طريقة تقليب الصفحة",
+                              systemImage: "book.pages")
+                    }
+                    .accessibilityIdentifier("page-turn-picker")
+                } footer: {
+                    Text(appLanguage == .english
+                         ? "Curl turns the page like a book. Slide moves it sideways. Two facing pages (iPad landscape) always curl. With Reduce Motion on, a single page always slides."
+                         : "التقليب كصفحة الكتاب، والانزلاق يحرّك الصفحة جانبًا. الصفحتان المتقابلتان (آيباد أفقيًا) تُقلَّبان دائمًا. ومع تقليل الحركة تنزلق الصفحة المفردة دائمًا.")
                 }
                 if UIDevice.current.userInterfaceIdiom == .pad {
                     Section {

@@ -191,8 +191,8 @@ extension QuranReadingDatabase {
             }
 
             while sqlite3_step(stmt) == SQLITE_ROW {
-                let id = String(cString: sqlite3_column_text(stmt, 0))
-                let typeStr = String(cString: sqlite3_column_text(stmt, 1))
+                let id = sqliteColumnText(stmt, 0)
+                let typeStr = sqliteColumnText(stmt, 1)
                 let bType = BookmarkType(rawValue: typeStr) ?? .ayah
                 let surah = Int(sqlite3_column_int64(stmt, 2))
                 let ayah = Int(sqlite3_column_int64(stmt, 3))
@@ -201,7 +201,7 @@ extension QuranReadingDatabase {
                 if let notePtr = sqlite3_column_text(stmt, 5) {
                     note = String(cString: notePtr)
                 }
-                let dateStr = String(cString: sqlite3_column_text(stmt, 6))
+                let dateStr = sqliteColumnText(stmt, 6)
                 let date = Self.isoFormatter.date(from: dateStr) ?? Date()
 
                 results.append(QuranBookmark(

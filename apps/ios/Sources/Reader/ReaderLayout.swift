@@ -12,6 +12,24 @@ enum LandscapeView: String, CaseIterable {
     init(stored: String) { self = LandscapeView(rawValue: stored) ?? .reading }
 }
 
+/// How a page turns: the iBooks-style curl, or a plain slide. UIKit can only curl two facing pages, so a
+/// spread (iPad landscape) always curls.
+enum PageTurnStyle: String, CaseIterable {
+    case curl
+    case slide
+
+    static let storageKey = "mushaf:pageTurn:v1"
+
+    /// Curl unless «انزلاق» was chosen.
+    init(stored: String) { self = PageTurnStyle(rawValue: stored) ?? .curl }
+
+    /// The style that is really used: a spread cannot slide, and with Reduce Motion on a single page always slides
+    /// (a finger drag would otherwise still play the full 3D curl).
+    func effective(spread: Bool, reduceMotion: Bool = false) -> PageTurnStyle {
+        spread ? .curl : (reduceMotion ? .slide : self)
+    }
+}
+
 /// The reader's layout for a screen of this size.
 enum ReaderLayout: Equatable {
     case single

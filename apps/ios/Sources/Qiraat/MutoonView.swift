@@ -483,6 +483,7 @@ struct MatnVerseSheet: View {
                 .padding(.horizontal, 10)
                 .padding(.vertical, 6)
                 .background(Capsule().fill(Color(uiColor: .secondarySystemBackground)))
+                .minimumHitTarget()
             }
             .disabled(!canNavigatePrevious)
             .opacity(canNavigatePrevious ? 1 : 0.35)
@@ -505,6 +506,7 @@ struct MatnVerseSheet: View {
                 .padding(.horizontal, 10)
                 .padding(.vertical, 6)
                 .background(Capsule().fill(Color(uiColor: .secondarySystemBackground)))
+                .minimumHitTarget()
             }
             .disabled(!canNavigateNext)
             .opacity(canNavigateNext ? 1 : 0.35)
@@ -676,24 +678,6 @@ struct MatnVerseSheet: View {
         .padding(12)
         .background(RoundedRectangle(cornerRadius: 10).fill(.qiraatCardFill))
         .overlay(RoundedRectangle(cornerRadius: 10).stroke(.qiraatCardStroke))
-    }
-}
-
-/// Backwards-compatible row adapter wrapping `MatnVerseCard`.
-struct MatnVerseRow: View {
-    let verse: MatnVerse
-    var marks: [MatnSymbolAnnotation] = []
-
-    var body: some View {
-        MatnVerseCard(
-            work: marks.first?.work ?? .shatibiyyah,
-            chapterTitle: nil,
-            verse: verse,
-            marks: marks,
-            sharh: nil,
-            catalog: nil,
-            onTapVerse: {}
-        )
     }
 }
 

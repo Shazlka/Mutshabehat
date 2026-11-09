@@ -29,3 +29,23 @@ final class ReaderLayoutTests: XCTestCase {
         XCTAssertEqual(ReaderLayout.sideBarWidth(screenWidth: 1024), 1024 / 3, accuracy: 0.5)
     }
 }
+
+/// How a page turns: curl or slide, and why a spread always curls.
+final class PageTurnStyleTests: XCTestCase {
+    func testCurlIsTheDefaultAndAnUnknownStoredValueFallsBackToIt() {
+        XCTAssertEqual(PageTurnStyle(stored: ""), .curl)
+        XCTAssertEqual(PageTurnStyle(stored: "flip"), .curl)
+        XCTAssertEqual(PageTurnStyle(stored: "slide"), .slide)
+    }
+
+    func testASpreadAlwaysCurlsBecauseUIKitCannotSlideTwoFacingPages() {
+        XCTAssertEqual(PageTurnStyle.slide.effective(spread: true), .curl)
+        XCTAssertEqual(PageTurnStyle.slide.effective(spread: false), .slide)
+        XCTAssertEqual(PageTurnStyle.curl.effective(spread: false), .curl)
+    }
+
+    func testReduceMotionSlidesASinglePageButCannotSlideASpread() {
+        XCTAssertEqual(PageTurnStyle.curl.effective(spread: false, reduceMotion: true), .slide)
+        XCTAssertEqual(PageTurnStyle.curl.effective(spread: true, reduceMotion: true), .curl)
+    }
+}

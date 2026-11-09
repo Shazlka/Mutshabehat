@@ -44,6 +44,9 @@
         }
       }
     },
+    "%@" : {
+
+    },
     "%@ - Ayah %lld (Page %lld)" : {
       "localizations" : {
         "ar" : {
@@ -532,6 +535,12 @@
     "Could not update" : {
 
     },
+    "Curl" : {
+
+    },
+    "Curl turns the page like a book. Slide moves it sideways. Two facing pages (iPad landscape) always curl. With Reduce Motion on, a single page always slides." : {
+
+    },
     "Currently learning" : {
 
     },
@@ -627,6 +636,9 @@
 
     },
     "Opens reading statistics" : {
+
+    },
+    "Page turn" : {
 
     },
     "Pages" : {
@@ -1026,6 +1038,9 @@
 
     },
     "Show page status in the top banner" : {
+
+    },
+    "Slide" : {
 
     },
     "strict" : {
@@ -1971,6 +1986,9 @@
         }
       }
     },
+    "التقليب كصفحة الكتاب، والانزلاق يحرّك الصفحة جانبًا. الصفحتان المتقابلتان (آيباد أفقيًا) تُقلَّبان دائمًا. ومع تقليل الحركة تنزلق الصفحة المفردة دائمًا." : {
+
+    },
     "التلوين التلقائي للفروقات" : {
 
     },
@@ -2181,6 +2199,16 @@
     },
     "الصفحات" : {
 
+    },
+    "الصفحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Page"
+          }
+        }
+      }
     },
     "الصفحة التالية" : {
       "localizations" : {
@@ -2689,6 +2717,9 @@
       }
     },
     "انتهاء عند:" : {
+
+    },
+    "انزلاق" : {
 
     },
     "انقر مرتين لإظهار أدوات القراءة أو إخفائها" : {
@@ -3202,6 +3233,9 @@
           }
         }
       }
+    },
+    "تقليب" : {
+
     },
     "تقليل بلا إمالة في باب الممال والمقلل، بلون هذا الباب." : {
       "localizations" : {
@@ -3824,6 +3858,16 @@
         }
       }
     },
+    "سورة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Surah"
+          }
+        }
+      }
+    },
     "سورة %@" : {
       "localizations" : {
         "en" : {
@@ -3985,6 +4029,9 @@
     "طريقة التلاوة" : {
 
     },
+    "طريقة تقليب الصفحة" : {
+
+    },
     "طيبة النشر" : {
       "localizations" : {
         "en" : {
@@ -4124,6 +4171,36 @@
     },
     "فتح الفهرس" : {
 
+    },
+    "فتح سورة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open a surah"
+          }
+        }
+      }
+    },
+    "فتح صفحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open a page"
+          }
+        }
+      }
+    },
+    "فتح صفحة من المصحف" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open a Mushaf page"
+          }
+        }
+      }
     },
     "فرش الحروف" : {
       "extractionState" : "stale",
@@ -5209,6 +5286,36 @@
     "يفتح إحصائيات القراءة" : {
 
     },
+    "يفتح التطبيق حيث توقفت عن القراءة." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens the app where you stopped reading."
+          }
+        }
+      }
+    },
+    "يفتح المصحف على بداية سورة." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens the Mushaf at the start of a surah."
+          }
+        }
+      }
+    },
+    "يفتح المصحف على صفحة من ١ إلى ٦٠٤." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens the Mushaf at a page, 1 to 604."
+          }
+        }
+      }
+    },
     "يفتح في Safari" : {
       "localizations" : {
         "en" : {
@@ -5281,86 +5388,6 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "two days"
-          }
-        }
-      }
-    },
-    "سورة" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Surah"
-          }
-        }
-      }
-    },
-    "يفتح التطبيق حيث توقفت عن القراءة." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Opens the app where you stopped reading."
-          }
-        }
-      }
-    },
-    "فتح صفحة من المصحف" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Open a Mushaf page"
-          }
-        }
-      }
-    },
-    "يفتح المصحف على صفحة من ١ إلى ٦٠٤." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Opens the Mushaf at a page, 1 to 604."
-          }
-        }
-      }
-    },
-    "الصفحة" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Page"
-          }
-        }
-      }
-    },
-    "فتح سورة" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Open a surah"
-          }
-        }
-      }
-    },
-    "يفتح المصحف على بداية سورة." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Opens the Mushaf at the start of a surah."
-          }
-        }
-      }
-    },
-    "فتح صفحة" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Open a page"
           }
         }
       }

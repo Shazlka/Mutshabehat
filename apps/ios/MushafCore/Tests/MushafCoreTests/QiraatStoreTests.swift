@@ -122,6 +122,22 @@ import Testing
         #expect(store.page(7)?.variants.isEmpty == true)
     }
 
+    @Test func clearingTheOverlayKeepsTheLiveMutoonFolder() throws {
+        let dir = try temporaryStoreDirectory(pages: [7: #"{"pageNumber":7,"variants":[],"rulings":[],"rules":[]}"#])
+        let overlay = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: dir); try? FileManager.default.removeItem(at: overlay) }
+        let store = try QiraatStore(directory: dir, overlayDirectory: overlay)
+        try store.applyLivePage(Data(liveVariantPage.utf8), number: 7)
+        let mutoon = overlay.appendingPathComponent("QiraatMutoon", isDirectory: true)
+        try FileManager.default.createDirectory(at: mutoon, withIntermediateDirectories: true)
+        try Data("{}".utf8).write(to: mutoon.appendingPathComponent("mutoon.json"))
+
+        store.clearOverlay()
+
+        #expect(FileManager.default.fileExists(atPath: mutoon.appendingPathComponent("mutoon.json").path))
+        #expect(!FileManager.default.fileExists(atPath: overlay.appendingPathComponent("page-007.json").path))
+    }
+
     // MARK: Hiding أصول (the reader keeps only فرش)
 
     private let mixedPage7 = #"{"pageNumber":7,"variants":[{"id":"v1","surah":2,"ayah":51,"startToken":11,"hafsText":"a","variantText":"b","verificationStatus":"REVIEWED","readingIds":["Q06-R01"]}],"rulings":[{"id":"r1","surah":2,"ayah":51,"startToken":3,"baseText":"x"}],"rules":[]}"#

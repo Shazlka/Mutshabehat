@@ -1,6 +1,27 @@
 import MushafCore
 import SwiftUI
 
+extension View {
+    /// Lets content scroll under a bottom bar with a soft fade on iOS 26; nothing before it.
+    @ViewBuilder
+    func softBottomScrollEdge() -> some View {
+        if #available(iOS 26, *) { scrollEdgeEffectStyle(.soft, for: .bottom) } else { self }
+    }
+
+    /// The backing of a bar inset at the bottom: the content scrolls under it on iOS 26 (the bar's own controls are
+    /// glass there), a regular material before it.
+    @ViewBuilder
+    func bottomBarSurface() -> some View {
+        if #available(iOS 26, *) { self } else { background(.regularMaterial) }
+    }
+
+    /// The bar's one primary action: prominent Liquid Glass on iOS 26, the prominent bordered style before it.
+    @ViewBuilder
+    func primaryActionStyle() -> some View {
+        if #available(iOS 26, *) { buttonStyle(.glassProminent) } else { buttonStyle(.borderedProminent) }
+    }
+}
+
 /// The fast way to change memorization: pick what (a surah, ayat, pages or a juz), tap a status, apply. Large
 /// changes ask for confirmation first; the caller shows the undo toast afterwards.
 struct UpdateSheet: View {
@@ -105,6 +126,7 @@ struct UpdateSheet: View {
                         .accessibilityIdentifier("memo-update-set-current")
                 }
             }
+            .softBottomScrollEdge()
             .safeAreaInset(edge: .bottom) {
                 VStack(spacing: 8) {
                     Text(verbatim: countLine)
@@ -113,14 +135,14 @@ struct UpdateSheet: View {
                     Button(action: applyTapped) {
                         Text(verbatim: copy("حفظ", "Save")).frame(maxWidth: .infinity)
                     }
-                    .buttonStyle(.borderedProminent)
+                    .primaryActionStyle()
                     .tint(MemorizationTheme.color(.mastered))
                     .disabled(status == nil || resolvedCount == 0)
                     .accessibilityIdentifier("memo-update-apply")
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical, 10)
-                .background(.regularMaterial)
+                .bottomBarSurface()
             }
             .navigationTitle(copy("تحديث الحفظ", "Update memorization"))
             .navigationBarTitleDisplayMode(.inline)

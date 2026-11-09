@@ -189,7 +189,7 @@ struct IndexSheet: View {
                         ForEach(Tab.allCases, id: \.self) { Text($0.title).tag($0) }
                     }
                     .pickerStyle(.segmented)
-                    .frame(width: 270)
+                    .frame(maxWidth: .infinity)
                 }
             }
         }

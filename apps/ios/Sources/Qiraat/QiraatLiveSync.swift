@@ -150,11 +150,13 @@ final class QiraatLiveSync: ObservableObject {
             }
             guard response.statusCode == 200 else { throw URLError(.badServerResponse) }
             if let etag = response.etag { pageETags[page] = etag }
-            // The web review page is the only source of truth and is edited all the time: variants are changed, added and
-            // deleted there. A page with fewer records is a deletion, so a shrink is never refused here. The install
-            // reads and writes files, so it runs off the main actor.
+            // The web review page is edited all the time while development builds read it: a page with fewer records is
+            // a deletion there, so those builds never refuse a shrink. The public API the store build reads is cached,
+            // so a much smaller page is as likely a stale or truncated answer: the store's shrink guard stays on.
+            // The install reads and writes files, so it runs off the main actor.
+            let allowShrink = route == .reviewRoutes
             let changed = try await Task.detached(priority: .utility) {
-                try store.applyLivePage(response.data, number: page, allowShrink: true)
+                try store.applyLivePage(response.data, number: page, allowShrink: allowShrink)
             }.value
             guard changed else { return PageRefreshResult(outcome: note(.unchanged), etag: response.etag) }
             let outcome = note(.updated)

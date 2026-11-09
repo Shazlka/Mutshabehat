@@ -78,15 +78,27 @@ final class BackupController {
         switch phase {
         case .background:
             pending?.cancel()
-            let taskID = UIApplication.shared.beginBackgroundTask(withName: "memorization-backup")
+            let taskID = UIApplication.shared.beginBackgroundTask(withName: "memorization-backup") { [weak self] in
+                self?.endBackgroundTask()
+            }
+            backgroundTaskID = taskID
             Task { [weak self] in
                 await self?.run(.background)
-                UIApplication.shared.endBackgroundTask(taskID)
+                self?.endBackgroundTask()
             }
         case .active:
             launchCheck()
         default: break
         }
+    }
+
+    private var backgroundTaskID: UIBackgroundTaskIdentifier = .invalid
+
+    private func endBackgroundTask() {
+        guard backgroundTaskID != .invalid else { return }
+        let taskID = backgroundTaskID
+        backgroundTaskID = .invalid
+        UIApplication.shared.endBackgroundTask(taskID)
     }
 
     private var didLaunchCheck = false
@@ -136,6 +148,8 @@ final class BackupController {
     /// After a restore or import changed what the stores hold.
     func didRestore() {
         store.reloadFromDatabase()
+        stores.tracker().reloadFromDatabase()
         stores.tracker().refreshBookmarksCache()
+        NotificationCenter.default.post(name: .readingDatabaseDidUpdate, object: nil)
     }
 }

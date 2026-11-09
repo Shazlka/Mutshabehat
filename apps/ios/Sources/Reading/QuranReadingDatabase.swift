@@ -2,6 +2,11 @@ import Foundation
 import MushafCore
 import SQLite3
 
+/// A text column that is NULL reads as an empty string instead of trapping.
+func sqliteColumnText(_ statement: OpaquePointer?, _ index: Int32) -> String {
+    sqlite3_column_text(statement, index).map { String(cString: $0) } ?? ""
+}
+
 public final class QuranReadingDatabase: @unchecked Sendable {
     public static let shared = QuranReadingDatabase(url: launchOverrideURL)
 
@@ -28,8 +33,9 @@ public final class QuranReadingDatabase: @unchecked Sendable {
 
     static let dayFormatter: DateFormatter = {
         let f = DateFormatter()
+        f.locale = Locale(identifier: "en_US_POSIX")
+        f.calendar = Calendar(identifier: .gregorian)
         f.dateFormat = "yyyy-MM-dd"
-        f.calendar = Calendar.current
         f.timeZone = TimeZone.current
         return f
     }()
@@ -303,12 +309,5 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         sqlite3_finalize(statement)
         guard deleted, sqlite3_exec(db, "COMMIT;", nil, nil, nil) == SQLITE_OK else { return }
         committed = true
-    }
-
-    public func resetForTesting() {
-        lock.lock()
-        defer { lock.unlock() }
-        guard let db = db else { return }
-        sqlite3_exec(db, "DELETE FROM khatma_read_ayahs; DELETE FROM khatmas; DELETE FROM reading_days; DELETE FROM reading_metadata; DELETE FROM bookmarks;", nil, nil, nil)
     }
 }

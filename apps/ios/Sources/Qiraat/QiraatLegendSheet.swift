@@ -617,16 +617,31 @@ private struct QiraatLegendSample: View {
     /// A word of the Mushaf, drawn in the Mushaf's own font; nil draws the plain «كلمة».
     var word: String? = nil
 
+    @AppStorage("mushaf1441:theme:v1") private var theme = MushafAppearance.system.rawValue
+    @Environment(\.colorScheme) private var colorScheme
+
+    /// A data colour as it is drawn here: in the dark list it is held to the same 3:1 the reader page gives it
+    /// (`qiraatMark`); in light mode it is the data's own colour, unchanged.
+    private var tone: @Sendable (String) -> Color {
+        guard colorScheme == .dark else { return { Color(qiraatHex: $0) } }
+        let appearance = MushafAppearance(rawValue: theme) ?? .system
+        return {
+            Color(uiColor: UIColor.qiraatMark(hex: $0, appearance: appearance,
+                                              traits: UITraitCollection(userInterfaceStyle: .dark)))
+        }
+    }
+
     var body: some View {
+        let tone = tone
         sampleText
             .lineLimit(1)
             .minimumScaleFactor(0.5)
-            .foregroundStyle(textColor.map { Color(qiraatHex: $0) } ?? Color(uiColor: .mushafInk))
+            .foregroundStyle(textColor.map(tone) ?? Color(uiColor: .mushafInk))
             .padding(.horizontal, 12)
             .padding(.vertical, 14)
             .overlay {
                 Canvas { context, size in
-                    QiraatLegendSample.draw(mark, colors: colors, in: &context,
+                    QiraatLegendSample.draw(mark, colors: colors, tone: tone, in: &context,
                                             word: CGRect(origin: .zero, size: size).insetBy(dx: 12, dy: 14))
                 }
             }
@@ -643,11 +658,12 @@ private struct QiraatLegendSample: View {
 
     /// Same proportions as `drawQiraatMarks`: a bar of `thickness` under the word, a dotted line
     /// 2.6 thicknesses below it, dots of `dot` at the top-left and the bottom-left.
-    static func draw(_ mark: QiraatLegendMark, colors: [String], in context: inout GraphicsContext, word: CGRect) {
+    static func draw(_ mark: QiraatLegendMark, colors: [String], tone: (String) -> Color = { Color(qiraatHex: $0) },
+                     in context: inout GraphicsContext, word: CGRect) {
         let thickness = max(1.5, word.height * 0.09)
         let dot = max(4, word.height * 0.26)
         let ink = Color(uiColor: .mushafInk)
-        func color(_ index: Int) -> Color { index < colors.count ? Color(qiraatHex: colors[index]) : ink }
+        func color(_ index: Int) -> Color { index < colors.count ? tone(colors[index]) : ink }
 
         switch mark {
         case .solidLine, .performanceLine, .unresolvedLine:

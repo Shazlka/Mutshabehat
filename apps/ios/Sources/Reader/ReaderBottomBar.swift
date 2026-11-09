@@ -148,6 +148,7 @@ struct ReaderBottomBar: View {
         case .began:
             menuModel.prepareHaptics()
             touchOrigin = menuModel.barFrame.contains(point) ? .bar : .menu
+            menuModel.touchBegan(at: point, onMenu: touchOrigin == .menu)
             if touchOrigin == .bar { barTouch(at: point) }
             menuModel.hover(at: point)
         case .moved:
@@ -180,6 +181,7 @@ struct ReaderBottomBar: View {
     /// forgotten only a moment later.
     private func finishTouch() {
         touchOrigin = nil
+        menuModel.touchEnded()
         Task { @MainActor in
             try? await Task.sleep(for: .milliseconds(200))
             openedByTouch = nil

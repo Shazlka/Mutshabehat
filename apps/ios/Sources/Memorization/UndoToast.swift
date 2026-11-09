@@ -18,6 +18,21 @@ struct ToastState: Equatable {
     }
 }
 
+extension View {
+    /// The surface of a floating pill or toast: Liquid Glass on iOS 26, the thick material with a hairline and a
+    /// soft shadow before it.
+    @ViewBuilder
+    func floatingSurface<S: InsettableShape>(_ shape: S) -> some View {
+        if #available(iOS 26, *) {
+            glassEffect(.regular, in: shape)
+        } else {
+            background(.thickMaterial, in: shape)
+                .overlay(shape.strokeBorder(Color.primary.opacity(0.12), lineWidth: 0.5))
+                .shadow(color: .black.opacity(0.12), radius: 8, y: 2)
+        }
+    }
+}
+
 /// «تم تحديث N آية — تراجع», shown for a few seconds after an update, with any milestone it reached.
 struct UndoToast: View {
     let state: ToastState
@@ -35,6 +50,7 @@ struct UndoToast: View {
                 Spacer(minLength: 8)
                 Button(language == .arabic ? "تراجع" : "Undo", action: undo)
                     .font(.subheadline.weight(.bold))
+                    .minimumHitTarget(overhang: 12)
                     .accessibilityIdentifier("memo-undo-button")
             }
             ForEach(state.milestones, id: \.self) { milestone in
@@ -46,10 +62,8 @@ struct UndoToast: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
-        .background(.thickMaterial, in: RoundedRectangle(cornerRadius: 14))
-        .overlay(RoundedRectangle(cornerRadius: 14).strokeBorder(Color.primary.opacity(0.12), lineWidth: 0.5))
+        .floatingSurface(RoundedRectangle(cornerRadius: 14))
         .padding(.horizontal, 16)
-        .shadow(color: .black.opacity(0.12), radius: 8, y: 2)
         .onTapGesture(perform: dismiss)
         .onAppear {
             // The toast is an overlay that comes last in reading order and goes away by itself: say it out loud.

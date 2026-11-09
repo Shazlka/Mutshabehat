@@ -344,12 +344,12 @@ public final class MutshabehatDatabase: @unchecked Sendable {
         while sqlite3_step(stmt) == SQLITE_ROW {
             let id = Int(sqlite3_column_int(stmt, 0))
             let legacyId = sqlite3_column_text(stmt, 1).map { String(cString: $0) }
-            let title = String(cString: sqlite3_column_text(stmt, 2))
+            let title = sqliteColumnText(stmt, 2)
             let color = sqlite3_column_text(stmt, 3).map { String(cString: $0) } ?? "#888"
             let surahsRaw = sqlite3_column_text(stmt, 4).map { String(cString: $0) } ?? ""
             let surahs = surahsRaw.split(separator: ",").map { String($0).trimmingCharacters(in: .whitespaces) }
             let copied = sqlite3_column_int(stmt, 5) != 0
-            let payloadStr = String(cString: sqlite3_column_text(stmt, 6))
+            let payloadStr = sqliteColumnText(stmt, 6)
 
             let verses = parseAutomatedVerses(from: payloadStr)
             list.append(AutomatedGroup(id: id, legacyId: legacyId, title: title, color: color, surahs: surahs, copied: copied, verses: verses))
@@ -396,9 +396,9 @@ public final class MutshabehatDatabase: @unchecked Sendable {
             return
         }
 
-        let title = String(cString: sqlite3_column_text(stmt, 1))
+        let title = sqliteColumnText(stmt, 1)
         let color = sqlite3_column_text(stmt, 2).map { String(cString: $0) } ?? "#55b94f"
-        let payloadStr = String(cString: sqlite3_column_text(stmt, 3))
+        let payloadStr = sqliteColumnText(stmt, 3)
         sqlite3_finalize(stmt)
 
         let newGroupId = UUID().uuidString

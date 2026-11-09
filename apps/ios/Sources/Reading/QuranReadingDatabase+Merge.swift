@@ -67,14 +67,14 @@ extension QuranReadingDatabase {
         }
         var sourceStep = sqlite3_step(stmt)
         while sourceStep == SQLITE_ROW {
-            let id = String(cString: sqlite3_column_text(stmt, 0))
+            let id = sqliteColumnText(stmt, 0)
             let num = Int(sqlite3_column_int64(stmt, 1))
-            let started = String(cString: sqlite3_column_text(stmt, 2))
+            let started = sqliteColumnText(stmt, 2)
             var completed: String? = nil
             if sqlite3_column_type(stmt, 3) != SQLITE_NULL, let text = sqlite3_column_text(stmt, 3) {
                 completed = String(cString: text)
             }
-            let status = String(cString: sqlite3_column_text(stmt, 4))
+            let status = sqliteColumnText(stmt, 4)
             let pct = sqlite3_column_double(stmt, 5)
             sourceKhatmas.append(TempKhatma(id: id, number: num, startedAt: started, completedAt: completed, status: status, percent: pct))
             sourceStep = sqlite3_step(stmt)
@@ -94,7 +94,7 @@ extension QuranReadingDatabase {
             }
             sqlite3_bind_int64(findStmt, 1, Int64(srcKhatma.number))
             if sqlite3_step(findStmt) == SQLITE_ROW {
-                localKhatmaId = String(cString: sqlite3_column_text(findStmt, 0))
+                localKhatmaId = sqliteColumnText(findStmt, 0)
                 if sqlite3_column_type(findStmt, 2) != SQLITE_NULL, let text = sqlite3_column_text(findStmt, 2) {
                     localCompletedAt = String(cString: text)
                 }

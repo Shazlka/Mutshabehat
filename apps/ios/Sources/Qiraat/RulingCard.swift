@@ -208,7 +208,7 @@ struct QiraatDabtSymbol: View {
                 .accessibilityIdentifier("qiraat-dabt-tashil")
         case .sakt:
             Text("سـ")
-                .font(.system(size: 11, weight: .bold))
+                .scaledFont(size: 11, weight: .bold, relativeTo: .caption2)
                 .foregroundStyle(.secondary)
                 .accessibilityLabel(Text("علامة ضبط السكت: سين صغيرة فوق الحرف"))
                 .accessibilityIdentifier("qiraat-dabt-sakt")
