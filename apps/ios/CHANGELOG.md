@@ -3,6 +3,12 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-11-10 — Mushaf page: hold a finger on a marked word and slide to peek at each word's Qiraat
+- With the Qiraat layer on, a long press on a marked word shows a floating summary above it: the Mushaf word, each differing reading (up to 3) with its readers' coloured names, and up to 2 أصول أبواب with their أداء. Sliding the finger onto another marked word swaps the summary and gives a light haptic tick; over an unmarked word the bubble hides; lifting the finger closes it. The page does not turn during the slide.
+- Holding and lifting on the same word (without sliding) still opens the ayah's options as before; a long press on an unmarked word is unchanged. A tap still opens the full card.
+- `QiraatWordPeekView.swift` (new), `PageController.swift` (scrub states, hosted bubble), `MushafPageView.swift` (`wordFrame(of:)`, `qiraatSummary(for:)`).
+- **Tests:** `testHoldingAMarkedWordAndLiftingThereOpensTheAyahOptions`, `testHoldingAndSlidingAcrossMarkedWordsOnlyPeeks`; `MemorizationReaderUITests` (long-press sheet) still pass. The bubble was checked by screenshots taken mid-gesture on the iPhone 18 Pro Max simulator (page 1: «مالك» → «الصراط»). The haptic was not felt (simulator).
+
 ## [Unreleased] — 2026-11-10 — Mushaf page: dotted underline in the reader's colour when a variant says «بخلف»
 - A word whose variant says «بخلف» (in its description, performance note, notes, or a reader's أداء / condition / الخلاف note) now gets a dotted underline under it on the page, in the colour of the reader or narrator who reads it two ways: one narrator → the narrator's colour, both narrators of a reader → the reader's colour, several readers → one dotted segment per reader. A reader's own attribution row that says «بخلف» narrows the line to that reader or narrator; a reader or narrator filter keeps only their colour. It replaces the ruling's family-coloured dotted line on the same word; a ruling alone still draws its family colour.
 - Legend sentence for the dotted line updated (Arabic + English). `QiraatModels.swift`, `QiraatMarks.swift` (`WordMarks.alternateUnderline`, `dottedUnderline`), `MushafPageView.swift`, `QiraatLegendSheet.swift`.

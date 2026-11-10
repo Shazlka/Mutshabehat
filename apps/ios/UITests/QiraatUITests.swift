@@ -289,6 +289,32 @@ final class QiraatUITests: XCTestCase {
         XCTAssertTrue(element("qiraat-word-1:4:1", in: relaunched).waitForExistence(timeout: 20))
     }
 
+    /// Holding a finger on a marked word and lifting it there still opens the ayah's options.
+    func testHoldingAMarkedWordAndLiftingThereOpensTheAyahOptions() {
+        let app = launch(atPage: 1)
+        let word = element("qiraat-word-1:4:1", in: app)
+        XCTAssertTrue(word.waitForExistence(timeout: 15))
+        word.press(forDuration: 1.0)
+        XCTAssertTrue(element("ayah-sheet-bookmark-ayah", in: app).waitForExistence(timeout: 10))
+    }
+
+    /// Holding a finger on a marked word and sliding it to another one only peeks: lifting opens nothing and the
+    /// page does not turn. (The peek itself shows while the finger is down, which XCUITest cannot observe.)
+    func testHoldingAndSlidingAcrossMarkedWordsOnlyPeeks() {
+        let app = launch(atPage: 1)
+        let start = element("qiraat-word-1:4:1", in: app)
+        let end = element("qiraat-word-1:6:2", in: app)
+        XCTAssertTrue(start.waitForExistence(timeout: 15))
+        XCTAssertTrue(end.exists)
+        start.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
+            .press(forDuration: 1.0, thenDragTo: end.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)),
+                   withVelocity: .slow, thenHoldForDuration: 0.5)
+        XCTAssertFalse(element("ayah-sheet-bookmark-ayah", in: app).waitForExistence(timeout: 2))
+        XCTAssertFalse(app.buttons["qiraat-sheet-close"].exists)
+        XCTAssertFalse(element("qiraat-word-peek", in: app).exists, "the peek goes away with the finger")
+        XCTAssertTrue(element("mushaf-page-1", in: app).exists, "no page turn")
+    }
+
     private func saveScreenshot(named name: String, app: XCUIApplication) {
         let shot = XCUIScreen.main.screenshot()
         let attachment = XCTAttachment(screenshot: shot)

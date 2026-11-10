@@ -442,6 +442,19 @@ final class MushafPageView: UIView {
         }?.word
     }
 
+    /// The glyph box of `word` on this page (page coordinates).
+    func wordFrame(of word: MushafWord) -> CGRect? {
+        layout?.lines.flatMap(\.boxes).first { $0.word.id == word.id }?.frame
+    }
+
+    /// The short summary of a marked word (its readings and أبواب) for the finger-hold peek; nil when the layer is off.
+    func qiraatSummary(for word: MushafWord) -> QiraatPageSummaryItem? {
+        guard qiraat.enabled, marks[word.id] != nil, let store = library.qiraat,
+              let pageMarks = store.marks(page: page.number) else { return nil }
+        return QiraatPageSummary.build(page: page.number, words: [word], data: pageMarks.page, marks: pageMarks,
+                                       catalog: store.catalog, filter: qiraat.filter).first
+    }
+
     /// Locates the Ayah under `point`. Prioritizes ayah end-markers, then any word of the ayah.
     func ayahKey(at point: CGPoint) -> AyahKey? {
         guard let layout else { return nil }

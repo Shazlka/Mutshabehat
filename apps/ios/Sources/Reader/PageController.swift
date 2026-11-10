@@ -1,4 +1,5 @@
 import MushafCore
+import SwiftUI
 import UIKit
 
 /// One page inside the pager: the desk colour, and the page fitted to the safe area at the print
@@ -298,12 +299,92 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
         onTapCentre()
     }
 
+    // MARK: Finger-hold peek
+
+    /// A hold that began on a Qiraat-marked word: the finger slides across the page and each marked word it reaches
+    /// shows its summary, with a tick. Lifting without leaving the first word opens the ayah's options as before.
+    private struct Scrub {
+        let startWord: MushafWord
+        var currentWordID: String?
+        var movedOff = false
+    }
+    private var scrub: Scrub?
+    private var peekHost: UIHostingController<AnyView>?
+
     @objc private func longPressed(_ recognizer: UILongPressGestureRecognizer) {
-        guard recognizer.state == .began else { return }
         let location = recognizer.location(in: pageView)
-        if let ayah = pageView.ayahKey(at: location) {
-            Haptics.wordPress()
-            onLongPressAyah?(page, ayah)
+        switch recognizer.state {
+        case .began:
+            if let word = pageView.markedWord(at: location), let item = pageView.qiraatSummary(for: word) {
+                scrub = Scrub(startWord: word, currentWordID: word.id)
+                Haptics.prepare()
+                Haptics.wordPress()
+                showPeek(item, over: word)
+            } else if let ayah = pageView.ayahKey(at: location) {
+                Haptics.wordPress()
+                onLongPressAyah?(page, ayah)
+            }
+        case .changed:
+            guard var current = scrub else { return }
+            let word = pageView.markedWord(at: location)
+            guard word?.id != current.currentWordID else { return }
+            current.currentWordID = word?.id
+            if word?.id != current.startWord.id { current.movedOff = true }
+            scrub = current
+            if let word, let item = pageView.qiraatSummary(for: word) {
+                Haptics.selectionChanged()
+                showPeek(item, over: word)
+            } else {
+                hidePeek()
+            }
+        case .ended, .cancelled, .failed:
+            guard let finished = scrub else { return }
+            scrub = nil
+            hidePeek()
+            if recognizer.state == .ended, !finished.movedOff {
+                onLongPressAyah?(page, finished.startWord.ayahKey)
+            }
+        default:
+            break
         }
+    }
+
+    private func showPeek(_ item: QiraatPageSummaryItem, over word: MushafWord) {
+        let root = AnyView(QiraatWordPeekView(item: item))
+        let host: UIHostingController<AnyView>
+        if let peekHost {
+            host = peekHost
+            host.rootView = root
+        } else {
+            host = UIHostingController(rootView: root)
+            host.view.backgroundColor = .clear
+            host.view.isUserInteractionEnabled = false
+            host.sizingOptions = []
+            addChild(host)
+            view.addSubview(host.view)
+            host.didMove(toParent: self)
+            peekHost = host
+        }
+        view.bringSubviewToFront(host.view)
+        host.view.isHidden = false
+
+        let margin: CGFloat = 12
+        let maxWidth = min(view.bounds.width - margin * 2, 320)
+        // Its natural width when it fits, otherwise wrapped to the widest the screen allows.
+        var size = host.sizeThatFits(in: CGSize(width: CGFloat.greatestFiniteMagnitude, height: view.bounds.height))
+        if size.width > maxWidth { size = host.sizeThatFits(in: CGSize(width: maxWidth, height: view.bounds.height)) }
+        size.width = min(size.width, maxWidth)
+        let wordRect = pageView.wordFrame(of: word).map { pageView.convert($0, to: view) } ?? .zero
+        // Above the word, clear of the finger; below it when the top of the page has no room.
+        let gap: CGFloat = 28
+        var y = wordRect.minY - gap - size.height
+        if y < view.safeAreaInsets.top + margin { y = wordRect.maxY + gap }
+        y = min(max(y, view.safeAreaInsets.top + margin), view.bounds.height - size.height - margin)
+        let x = min(max(wordRect.midX - size.width / 2, margin), view.bounds.width - size.width - margin)
+        host.view.frame = CGRect(x: x, y: y, width: size.width, height: size.height)
+    }
+
+    private func hidePeek() {
+        peekHost?.view.isHidden = true
     }
 }
