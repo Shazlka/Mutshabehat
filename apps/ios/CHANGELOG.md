@@ -3,6 +3,9 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-11-10 — Qiraat word sheet: swipe between words follows right-to-left
+- Swiping the word sheet (the variant/ruling cards) now goes the RTL way: finger right → next word, finger left → previous word (it was the other way round). The previous/next buttons are unchanged. `QiraatSheet.swift`.
+
 ## [Unreleased] — 2026-11-09 — أبواب الأصول: one switch for all; خُتمة list froze after swiping a surah; Xcode warnings
 - **أبواب الأصول (Settings › القراءات العشر):** a new first row, «كل الأبواب» (English: "All categories"), turns every باب on or off at once; it reads as on while at least one باب is shown. `QiraatPreferences.setAllUsul(_:shown:)` changes only the listed codes, so a stored code that is no longer in the data keeps its state. Tests: `testOneSwitchHidesOrShowsEveryCategoryAtOnce`, `testTheAllSwitchLeavesCodesOutsideTheListAlone`.
 - **Khatma list stopped scrolling after swiping a surah to complete it:** reproduced on the iPhone 18 Pro Max simulator (after a swipe-to-complete the list ignored one scroll direction until the screen was reopened). Cause: each row used a SwiftUI `DragGesture` with hand-kept «horizontal / vertical» flags beside the scroll view; the system could cancel it (a scroll taking over, a surah disappearing from the «المتبقي» filter) without `onEnded`, leaving the gesture and flags stuck. It is now `HorizontalPanGesture`, a UIKit pan that begins only when the finger moves mostly sideways (`gestureRecognizerShouldBegin`) and runs alongside the scroll view, so vertical scrolling never depends on it; the completion is applied after the pan has ended. Checked on the simulator: complete a surah in «الكل» and in «المتبقي» (row removed), then scroll both directions.

@@ -171,11 +171,11 @@ struct QiraatSheet: View {
                     let h = value.translation.width
                     let v = value.translation.height
                     guard abs(h) > abs(v) * 1.5 else { return }
-                    if h < -30 {
-                        // Finger moving left -> next word in Quran RTL reading order
+                    if h > 30 {
+                        // Finger moving right -> next word, like turning a page of a right-to-left book
                         navigateToNext()
-                    } else if h > 30 {
-                        // Finger moving right -> previous word in Quran RTL reading order
+                    } else if h < -30 {
+                        // Finger moving left -> previous word
                         navigateToPrevious()
                     }
                 }
