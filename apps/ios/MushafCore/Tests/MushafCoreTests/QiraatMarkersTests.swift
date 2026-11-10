@@ -257,3 +257,102 @@ private func marks(_ variants: [QiraatVariant] = [], _ rulings: [QiraatRuling] =
         #expect(differenceTypeLabelAr("SOMETHING_NEW") == "غير مصنَّف")
     }
 }
+
+/// «بخلف» in a variant's text: one reader or narrator has a second valid way to read the word, so the page draws a
+/// dotted underline in that reader's or narrator's colour.
+@Suite struct QiraatVariantAlternateTests {
+    private func word(_ surah: Int, _ ayah: Int, _ token: Int) -> MushafWord {
+        MushafWord(id: "w", page: 9, line: 1, indexInLine: 1, ayahKey: AyahKey(surah: surah, ayah: ayah),
+                   indexInAyah: token, charType: .word, glyph: "x", textUthmani: "x")
+    }
+
+    private func variant(readings: [String], description: String? = nil, performanceNote: String? = nil,
+                         notes: String? = nil, attribution: [QiraatRulingAttribution] = []) -> QiraatVariant {
+        QiraatVariant(id: "v", surah: 2, ayah: 3, startToken: 1, endToken: 1, hafsText: "كلمة", variantText: "كلمه",
+                      description: description, performanceNote: performanceNote, verificationStatus: "REVIEWED",
+                      readingIds: readings, notes: notes, attribution: attribution)
+    }
+
+    private func marks(_ v: QiraatVariant) -> QiraatMarks {
+        QiraatMarks(catalog: testCatalog, page: QiraatPageData(pageNumber: 9, variants: [v], rulings: [], rules: []))
+    }
+
+    @Test func aVariantWithoutBikhilafHasNoDottedLine() throws {
+        let w = try #require(marks(variant(readings: ["Q01-R02"], description: "بإسكان الهمزة")).wordMarks(for: word(2, 3, 1), filter: .all))
+        #expect(w.alternateUnderline == nil)
+        #expect(w.dottedUnderline == nil)
+    }
+
+    @Test func bikhilafInTheDescriptionDrawsADottedLineInTheNarratorColour() throws {
+        let m = marks(variant(readings: ["Q01-R02"], description: "بإسكان الهمزة (بخلف عنه)"))
+        let w = try #require(m.wordMarks(for: word(2, 3, 1), filter: .all))
+        #expect(w.alternateUnderline == .solid("#1D4ED8"))
+        #expect(w.underline == .solid("#1D4ED8"))
+    }
+
+    @Test func bikhilafInThePerformanceNoteOrTheNotesCountsToo() throws {
+        for v in [variant(readings: ["Q01-R02"], performanceNote: "بخلف"), variant(readings: ["Q01-R02"], notes: "وللدوري وجه ثانٍ (بخلف عنه)")] {
+            let w = try #require(marks(v).wordMarks(for: word(2, 3, 1), filter: .all))
+            #expect(w.alternateUnderline == .solid("#1D4ED8"))
+        }
+    }
+
+    @Test func bothNarratorsOfAReaderGiveTheReaderColour() throws {
+        let m = marks(variant(readings: ["Q04-R01", "Q04-R02"], notes: "لابن ذكوان وجهان (بخلف عنه)"))
+        let w = try #require(m.wordMarks(for: word(2, 3, 1), filter: .all))
+        #expect(w.alternateUnderline == .solid(testCatalog.reader("Q04")!.color))
+    }
+
+    @Test func severalReadersGiveOneDottedSegmentPerReader() throws {
+        let m = marks(variant(readings: ["Q01-R01", "Q06-R02"], description: "بخلف"))
+        let w = try #require(m.wordMarks(for: word(2, 3, 1), filter: .all))
+        #expect(w.alternateUnderline == .segments([testCatalog.reader("Q01")!.color, testCatalog.reader("Q06")!.color]))
+    }
+
+    @Test func anAttributionRowWithBikhilafNarrowsTheLineToThatAuthority() throws {
+        let rows = [QiraatRulingAttribution(authorityId: "Q03-R01", action: "اختلاس", condition: "بخلف عنه"),
+                    QiraatRulingAttribution(authorityId: "Q03-R02", action: "إسكان")]
+        let m = marks(variant(readings: ["Q03-R01", "Q03-R02"], attribution: rows))
+        let w = try #require(m.wordMarks(for: word(2, 3, 1), filter: .all))
+        #expect(w.alternateUnderline == .solid(testCatalog.narrator("Q03-R01")!.color))
+    }
+
+    @Test func aReaderLevelAttributionRowExpandsToItsNarrators() throws {
+        let rows = [QiraatRulingAttribution(authorityId: "Q03", action: "اختلاس", wajhNote: "بخلف")]
+        let m = marks(variant(readings: ["Q03-R01", "Q03-R02", "Q01-R02"], attribution: rows))
+        let w = try #require(m.wordMarks(for: word(2, 3, 1), filter: .all))
+        #expect(w.alternateUnderline == .solid(testCatalog.reader("Q03")!.color))
+    }
+
+    @Test func aFilterKeepsOnlyTheSelectedReadersOrNarratorsColour() throws {
+        let m = marks(variant(readings: ["Q01-R01", "Q06-R02"], description: "بخلف"))
+        let reader = try #require(m.wordMarks(for: word(2, 3, 1), filter: .reader("Q06")))
+        #expect(reader.alternateUnderline == .solid(testCatalog.narrator("Q06-R02")!.color))
+        let reading = try #require(m.wordMarks(for: word(2, 3, 1), filter: .reading("Q01-R01")))
+        #expect(reading.alternateUnderline == .solid(testCatalog.narrator("Q01-R01")!.color))
+    }
+
+    @Test func theVariantDottedLineReplacesTheRulingOne() throws {
+        let page = QiraatPageData(
+            pageNumber: 9,
+            variants: [variant(readings: ["Q01-R02"], description: "بخلف")],
+            rulings: [QiraatRuling(id: "r", category: "IMALAH_TAQLIL", categoryAr: "x", color: "#C026D3", wordAnchored: true,
+                                   surah: 2, ayah: 3, startToken: 1, endToken: 1, baseText: "", verificationStatus: "REVIEWED",
+                                   hasAlternate: true, attribution: [], readings: [QiraatRulingReading(readingId: "Q01-R02", action: "تقليل", isDefault: false)])],
+            rules: [])
+        let w = try #require(QiraatMarks(catalog: testCatalog, page: page).wordMarks(for: word(2, 3, 1), filter: .all))
+        #expect(w.dottedUnderline == .solid("#1D4ED8"))
+    }
+
+    @Test func aRulingAloneStillDrawsItsFamilyColourDottedLine() throws {
+        let page = QiraatPageData(
+            pageNumber: 9, variants: [],
+            rulings: [QiraatRuling(id: "r", category: "IMALAH_TAQLIL", categoryAr: "x", color: "#C026D3", wordAnchored: true,
+                                   surah: 2, ayah: 3, startToken: 1, endToken: 1, baseText: "", verificationStatus: "REVIEWED",
+                                   hasAlternate: true, attribution: [], readings: [QiraatRulingReading(readingId: "Q01-R02", action: "تقليل", isDefault: false)])],
+            rules: [])
+        let w = try #require(QiraatMarks(catalog: testCatalog, page: page).wordMarks(for: word(2, 3, 1), filter: .all))
+        #expect(w.alternateUnderline == nil)
+        #expect(w.dottedUnderline == .solid("#C026D3"))
+    }
+}

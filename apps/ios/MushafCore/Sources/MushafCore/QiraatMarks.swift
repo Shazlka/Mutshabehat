@@ -60,6 +60,10 @@ public struct WordMarks: Hashable, Sendable {
     public let underline: Underline?
     /// Dotted underline in the ruling colour when the word is ذو وجهين.
     public let dottedUnderlineColor: String?
+    /// Dotted underline in the colour of the reader or narrator who reads the word two ways («بخلف» in a variant).
+    public let alternateUnderline: Underline?
+    /// The dotted line the page draws: the variant's, in its readers' colours, else the ruling's family colour.
+    public var dottedUnderline: Underline? { alternateUnderline ?? dottedUnderlineColor.map(Underline.solid) }
     /// Small dot at the word's top-left when more than one usul family applies.
     public let familyDotColor: String?
     /// إمالة/تقليل dot at the word's bottom-left.
@@ -154,6 +158,36 @@ public struct QiraatMarks: Sendable {
         return .multiReader(colors: ordered.map(\.color))
     }
 
+    /// The dotted line for a word whose variants say «بخلف»: one colour for one narrator or one whole reader, one
+    /// segment per reader otherwise. A row of the variant's attribution that says «بخلف» narrows it to that authority;
+    /// without one the variant's own readers carry it. A reader or narrator filter keeps only their colour.
+    func alternateUnderline(of marker: VariantMarker, filter: QiraatFilter) -> WordMarks.Underline? {
+        var ids: [String] = []
+        for variant in marker.variants {
+            let rowIds = variant.alternateAuthorityIds.flatMap { id -> [String] in
+                catalog.reader(id) != nil ? catalog.narrators(of: id).map(\.id) : [id]
+            }.filter(variant.readingIds.contains)
+            if !rowIds.isEmpty {
+                ids += rowIds
+            } else if variant.mentionsAlternate || !variant.alternateAuthorityIds.isEmpty {
+                ids += variant.readingIds
+            }
+        }
+        var known: [String] = []
+        for id in ids where catalog.narrator(id) != nil && !known.contains(id) { known.append(id) }
+        let scoped: [String] = switch filter {
+        case .all: known
+        case .reader(let readerId): known.filter { catalog.readerId(ofReading: $0) == readerId }
+        case .reading(let readingId): known.filter { $0 == readingId }
+        }
+        guard let style = attributionStyle(scoped) else { return nil }
+        switch style {
+        case .single(let color): return .solid(color)
+        case .multiReader(let colors): return .segments(colors)
+        case .unresolved, .performance: return nil
+        }
+    }
+
     /// The colour the word's text takes for a variant marker.
     public func textColor(of marker: VariantMarker) -> String {
         switch marker.style {
@@ -235,6 +269,7 @@ public struct QiraatMarks: Sendable {
             textColor: variantColor ?? ruling!.color,
             underline: underline,
             dottedUnderlineColor: ruling?.hasAlternate == true ? ruling?.color : nil,
+            alternateUnderline: variant.flatMap { alternateUnderline(of: $0, filter: filter) },
             familyDotColor: ruling?.multiple == true ? ruling?.color : nil,
             imalahDot: imalahTaqlilMarker(surah: s, ayah: a, token: t, filter: filter))
     }

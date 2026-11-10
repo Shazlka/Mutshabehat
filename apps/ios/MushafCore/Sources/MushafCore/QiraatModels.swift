@@ -59,6 +59,23 @@ public struct QiraatVariant: Codable, Sendable, Hashable, Identifiable {
 
     /// The text does not change; only the way it is recited (إشمام، إمالة، سكت …).
     public var isPerformanceOnly: Bool { variantText == hafsText }
+
+    /// The word the data uses when a reader or narrator has a second valid way to read the word.
+    public static let alternateWord = "بخلف"
+
+    /// «بخلف» in the description, the performance note or the notes: a reader or narrator of this variant reads the
+    /// word two ways.
+    public var mentionsAlternate: Bool {
+        [description, performanceNote, notes].contains { $0?.contains(Self.alternateWord) ?? false }
+    }
+
+    /// The authorities whose own attribution row (the أداء, its condition or the الخلاف note) says «بخلف»; a reader id
+    /// ("Q03") stands for that reader. Empty when only the variant's text says it.
+    public var alternateAuthorityIds: [String] {
+        attribution.filter { row in
+            [row.action, row.condition, row.wajhNote].contains { $0?.contains(Self.alternateWord) ?? false }
+        }.map(\.authorityId)
+    }
 }
 
 /// Who applies an أصول ruling, and how («إمالة», «تقليل وقفًا», a second وجه …).

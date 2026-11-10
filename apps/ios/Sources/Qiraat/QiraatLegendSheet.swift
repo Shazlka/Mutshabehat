@@ -69,7 +69,7 @@ enum QiraatLegendMark: Hashable, CaseIterable, Sendable {
         case .segments?: drawn.append(.segmentedLine)
         case nil: drawn.append(.rulingWord)
         }
-        if marks.dottedUnderlineColor != nil { drawn.append(.dottedLine) }
+        if marks.dottedUnderline != nil { drawn.append(.dottedLine) }
         if marks.familyDotColor != nil { drawn.append(.familyDot) }
         if let imalah = marks.imalahDot { drawn.append(imalah.filled ? .imalahFilled : .imalahRing) }
         return drawn
@@ -187,7 +187,7 @@ enum QiraatLegend {
             id: "mark-dotted", group: .marks, mark: .dottedLine,
             colors: [familyColor], textColor: nil,
             title: appLocalized("خط منقّط تحت الكلمة"),
-            explanation: appLocalized("ذو وجهين: لبعض القرّاء وجه ثانٍ جائز («بخلف عنه»)، بلون الباب."), isNarrator: false))
+            explanation: appLocalized("ذو وجهين: لقارئ أو راوٍ وجه ثانٍ جائز («بخلف عنه»)، بلونه، وبلون الباب في الأصول."), isNarrator: false))
         rows.append(QiraatLegendEntry(
             id: "mark-family", group: .marks, mark: .familyDot,
             colors: [familyColor], textColor: nil,
@@ -426,7 +426,12 @@ private struct SampleWordCollector {
         case .segmentedLine:
             if case .segments(let hexes)? = marks.underline { return (hexes, marks.textColor) }
             return nil
-        case .dottedLine: return marks.dottedUnderlineColor.map { ([$0], nil) }
+        case .dottedLine:
+            switch marks.dottedUnderline {
+            case .solid(let hex)?: return ([hex], nil)
+            case .segments(let hexes)?: return (hexes, nil)
+            case nil: return nil
+            }
         case .familyDot: return marks.familyDotColor.map { ([$0], nil) }
         case .imalahFilled, .imalahRing: return marks.imalahDot.map { ([$0.color], nil) }
         case .rulingWord: return ([marks.textColor], marks.textColor)

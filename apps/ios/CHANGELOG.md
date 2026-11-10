@@ -3,6 +3,11 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-11-10 — Mushaf page: dotted underline in the reader's colour when a variant says «بخلف»
+- A word whose variant says «بخلف» (in its description, performance note, notes, or a reader's أداء / condition / الخلاف note) now gets a dotted underline under it on the page, in the colour of the reader or narrator who reads it two ways: one narrator → the narrator's colour, both narrators of a reader → the reader's colour, several readers → one dotted segment per reader. A reader's own attribution row that says «بخلف» narrows the line to that reader or narrator; a reader or narrator filter keeps only their colour. It replaces the ruling's family-coloured dotted line on the same word; a ruling alone still draws its family colour.
+- Legend sentence for the dotted line updated (Arabic + English). `QiraatModels.swift`, `QiraatMarks.swift` (`WordMarks.alternateUnderline`, `dottedUnderline`), `MushafPageView.swift`, `QiraatLegendSheet.swift`.
+- **Tests:** `QiraatVariantAlternateTests` (10 cases); all 560 MushafCore tests pass. Checked on the iPhone 18 Pro Max simulator, page 8 (2:54 «بارئكم»). UI tests not run.
+
 ## [Unreleased] — 2026-11-10 — Qiraat word sheet: swipe between words follows right-to-left
 - Swiping the word sheet (the variant/ruling cards) now goes the RTL way: finger right → next word, finger left → previous word (it was the other way round). The previous/next buttons are unchanged. `QiraatSheet.swift`.
 

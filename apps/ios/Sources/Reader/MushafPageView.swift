@@ -971,7 +971,7 @@ final class MushafPageView: UIView {
     }
 
     /// The web's marks, scaled to the glyph size: the variant bar under the word (one equal segment per
-    /// reader, left to right in reader order), a dotted underline for ذو وجهين, a dot at the top-left for
+    /// reader, left to right in reader order), a dotted underline for ذو وجهين (in the reader's colour for a variant, the family colour for a ruling), a dot at the top-left for
     /// more than one usul family, and the إمالة/تقليل dot (filled / ring) at the bottom-left.
     private func drawQiraatMarks(_ mark: WordMarks, around frame: CGRect, fontSize: CGFloat, in context: CGContext) {
         let thickness = max(1.2, fontSize * 0.06)
@@ -994,12 +994,21 @@ final class MushafPageView: UIView {
         case nil:
             break
         }
-        if let hex = mark.dottedUnderlineColor {
+        if let dotted = mark.dottedUnderline {
+            // «بخلف»: the reader's or narrator's own colour, one dotted segment per reader when several share the word.
+            let colors: [String] = switch dotted {
+            case .solid(let hex): [hex]
+            case .segments(let hexes): hexes
+            }
             let y = frame.maxY + thickness * 2.6
-            context.setStrokeColor(markColor(hex).cgColor)
+            let width = frame.width / CGFloat(max(colors.count, 1))
             context.setLineWidth(thickness * 0.9)
             context.setLineDash(phase: 0, lengths: [thickness, thickness * 1.3])
-            context.strokeLineSegments(between: [CGPoint(x: frame.minX, y: y), CGPoint(x: frame.maxX, y: y)])
+            for (i, hex) in colors.enumerated() {
+                context.setStrokeColor(markColor(hex).cgColor)
+                context.strokeLineSegments(between: [CGPoint(x: frame.minX + CGFloat(i) * width, y: y),
+                                                     CGPoint(x: frame.minX + CGFloat(i + 1) * width, y: y)])
+            }
             context.setLineDash(phase: 0, lengths: [])
         }
         if let hex = mark.familyDotColor {

@@ -5354,12 +5354,12 @@
         }
       }
     },
-    "ذو وجهين: لبعض القرّاء وجه ثانٍ جائز («بخلف عنه»)، بلون الباب." : {
+    "ذو وجهين: لقارئ أو راوٍ وجه ثانٍ جائز («بخلف عنه»)، بلونه، وبلون الباب في الأصول." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Two wujuh: some readers have a second permitted wajh (“bi-khulf”), in the category color."
+            "value" : "Two wujuh: a reader or narrator has a second permitted wajh (“bi-khulf”), in their color (the category color for usul rulings)."
           }
         }
       }
