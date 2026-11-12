@@ -19,12 +19,10 @@ struct SettingsView: View {
     @AppStorage(LandscapeView.storageKey) private var landscapeView = LandscapeView.reading.rawValue
     @AppStorage(SurahBannerStyle.storageKey) private var bannerStyle = SurahBannerStyle.royal.rawValue
     @AppStorage(PageTurnStyle.storageKey) private var pageTurn = PageTurnStyle.curl.rawValue
+    @AppStorage(QiraatPreferences.showSubcategoryKey) private var showsSubcategory = false
 #if DEBUG
     @State private var showingReviewEditor = false
-#if DEBUG
     @AppStorage(DeveloperSettings.cardReviewKey) private var showsCardReview = true
-    @AppStorage(QiraatPreferences.showSubcategoryKey) private var showsSubcategory = false
-#endif
 #endif
 
     private var appLanguage: AppLanguage {

@@ -31,6 +31,16 @@ struct MutshabehatView: View {
 
         var id: String { rawValue }
 
+        /// The automated groups ship empty and are filled only by a developer import, so a Release build shows the
+        /// personal groups alone (and no picker).
+        static var shown: [Mode] {
+#if DEBUG
+            allCases
+#else
+            [.personal]
+#endif
+        }
+
         var title: LocalizedStringKey {
             switch self {
             case .personal: "الشخصية"
@@ -48,15 +58,16 @@ struct MutshabehatView: View {
     var body: some View {
         NavigationStack(path: $navigationPath) {
             VStack(spacing: 0) {
-                // Segmented Mode Picker
-                Picker("النوع", selection: $selectedTab) {
-                    ForEach(Mode.allCases) { mode in
-                        Text(mode.title).tag(mode)
+                if Mode.shown.count > 1 {
+                    Picker("النوع", selection: $selectedTab) {
+                        ForEach(Mode.shown) { mode in
+                            Text(mode.title).tag(mode)
+                        }
                     }
+                    .pickerStyle(.segmented)
+                    .padding(.horizontal)
+                    .padding(.vertical, 8)
                 }
-                .pickerStyle(.segmented)
-                .padding(.horizontal)
-                .padding(.vertical, 8)
 
                 // Search & Filter Bar
                 HStack(spacing: 8) {

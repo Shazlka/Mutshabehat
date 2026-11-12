@@ -75,6 +75,7 @@ struct ReaderTopBar: View {
                     }
                 }
                 .frame(maxWidth: .infinity)
+                .padding(.horizontal, -6)
             }
             qiraatFilterChip(vertical: true)
             // The space left is shared by this gap and the bar, so the bar takes the rail's lower part.
@@ -121,7 +122,7 @@ struct ReaderTopBar: View {
                 KhatmaBar(fraction: fraction, tint: tint)
                     .frame(width: 12)
                     .frame(minHeight: 96, maxHeight: .infinity)
-                Text(verbatim: "\(ArabicDigits.string(percent))٪")
+                Text(verbatim: memorizationLanguage == .english ? "\(percent)%" : "\(ArabicDigits.string(percent))٪")
                     .font(.system(.subheadline, design: .rounded).weight(.bold))
                     .monospacedDigit()
                     .foregroundStyle(Color(uiColor: ProgressTint.text(fraction, appearance: appearance, traits: traits)))
@@ -250,7 +251,7 @@ struct ReaderTopBar: View {
                 KhatmaRing(fraction: fraction, tint: tint)
                     .frame(width: 28, height: 28)
                 if showsPercent {
-                    Text(verbatim: "\(ArabicDigits.string(percent))٪")
+                    Text(verbatim: memorizationLanguage == .english ? "\(percent)%" : "\(ArabicDigits.string(percent))٪")
                         .font(.system(.headline, design: .rounded).weight(.bold))
                         .monospacedDigit()
                         .foregroundStyle(Color(uiColor: ProgressTint.text(fraction, appearance: appearance, traits: traits)))

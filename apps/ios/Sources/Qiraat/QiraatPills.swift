@@ -79,7 +79,7 @@ struct QiraatAttributionGrid: View {
 
     /// The imam a lone narrator reads for, unless the narrator's own name already says it («الدوري عن أبي عمرو»).
     private func parentName(of pill: AuthorityPill) -> String? {
-        guard pill.kind == .narrator, !pill.cleanName.contains(" عن "),
+        guard pill.kind == .narrator, !pill.namesItsReader,
               let narrator = catalog.narrator(pill.key), let reader = catalog.reader(narrator.readerId) else { return nil }
         return reader.nameArShort
     }
@@ -120,7 +120,7 @@ struct QiraatAttributionChip: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.8)
                 if let parentName {
-                    Text(verbatim: "عن \(parentName)")
+                    Text("عن \(parentName)")
                         .font(.caption2)
                         .foregroundStyle(.secondary)
                         .lineLimit(1)
@@ -137,7 +137,7 @@ struct QiraatAttributionChip: View {
                                    style: StrokeStyle(lineWidth: 1.2, dash: isNarrator ? [4, 3] : []))
         )
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel(Text(verbatim: parentName.map { "\(pill.cleanName) عن \($0)" } ?? pill.cleanName))
+        .accessibilityLabel(parentName.map { Text("\(pill.cleanName) عن \($0)") } ?? Text(verbatim: pill.cleanName))
     }
 }
 

@@ -126,6 +126,12 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.shazlka.qiraat
         TARGETED_DEVICE_FAMILY: "1,2"
         ENABLE_USER_SCRIPT_SANDBOXING: NO
+      configs:
+        Release:
+          # Strip the shipped binary in every Release build, not only an Archive: no symbols, no local build paths.
+          DEPLOYMENT_POSTPROCESSING: YES
+          STRIP_INSTALLED_PRODUCT: YES
+          STRIP_STYLE: all
   MutshabehatTests:
     type: bundle.unit-test
     platform: iOS

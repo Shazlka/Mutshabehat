@@ -387,4 +387,11 @@ final class PageController: UIViewController, UIGestureRecognizerDelegate {
     private func hidePeek() {
         peekHost?.view.isHidden = true
     }
+
+    /// A sheet or a page turn can take the page away mid-hold without the recognizer reporting an end.
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        scrub = nil
+        hidePeek()
+    }
 }

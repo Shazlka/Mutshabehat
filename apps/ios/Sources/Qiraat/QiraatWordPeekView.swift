@@ -29,7 +29,7 @@ struct QiraatWordPeekView: View {
                 }
             }
             if item.variants.count > Self.maxVariants {
-                Text(verbatim: "و\(item.variants.count - Self.maxVariants) أخرى").font(.caption).foregroundStyle(.secondary)
+                Text("و\(item.variants.count - Self.maxVariants) أخرى").font(.caption).foregroundStyle(.secondary)
             }
             ForEach(item.rulingGroups.prefix(Self.maxRulingGroups)) { group in
                 VStack(alignment: .leading, spacing: 3) {
@@ -43,7 +43,7 @@ struct QiraatWordPeekView: View {
                 }
             }
             if item.rulingGroups.count > Self.maxRulingGroups {
-                Text(verbatim: "و\(item.rulingGroups.count - Self.maxRulingGroups) أبواب أخرى")
+                Text("و\(item.rulingGroups.count - Self.maxRulingGroups) أبواب أخرى")
                     .font(.caption).foregroundStyle(.secondary)
             }
         }

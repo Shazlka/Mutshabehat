@@ -7,13 +7,13 @@
       "localizations" : {
         "ar" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Qiraat"
           }
         },
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "Qiraat"
           }
         }
@@ -25,14 +25,14 @@
       "localizations" : {
         "ar" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Mutshabehat"
+            "state" : "translated",
+            "value" : "Qiraat"
           }
         },
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "Mutshabehat"
+            "state" : "translated",
+            "value" : "Qiraat"
           }
         }
       }

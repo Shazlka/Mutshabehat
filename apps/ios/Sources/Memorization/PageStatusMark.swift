@@ -33,6 +33,7 @@ struct PageStatusMark: View {
                     Text(verbatim: MemorizationTheme.shortLabel(status, language: language))
                         .font(.caption2.weight(.semibold))
                         .lineLimit(wrapsWord ? 2 : 1)
+                        .minimumScaleFactor(wrapsWord ? 0.8 : 1)
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: !wrapsWord, vertical: true)
                 }
@@ -68,7 +69,8 @@ struct PageStatusMark: View {
             }
         }
         .foregroundStyle(color)
-        .padding(.horizontal, 10)
+        // The side rail is 80 pt wide: a narrower inset there lets «Not memorized» fit on two lines.
+        .padding(.horizontal, wrapsWord ? 5 : 10)
         .padding(.vertical, 5)
         .background(Capsule().fill(color.opacity(0.12)))
         .overlay(Capsule().strokeBorder(color.opacity(0.55), lineWidth: 1))

@@ -263,6 +263,16 @@
         }
       }
     },
+    "%@%@%@%@" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@%3$@%4$@"
+          }
+        }
+      }
+    },
     "%lld" : {
       "localizations" : {
         "en" : {
@@ -746,6 +756,22 @@
         }
       }
     },
+    "All categories" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All categories"
+          }
+        },
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كل الأبواب"
+          }
+        }
+      }
+    },
     "Appearance" : {
       "localizations" : {
         "en" : {
@@ -877,7 +903,20 @@
       }
     },
     "Couldn’t open the memorization data" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn’t open the memorization data"
+          }
+        },
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعذّر فتح بيانات الحفظ"
+          }
+        }
+      }
     },
     "Curl" : {
       "localizations" : {
@@ -1150,7 +1189,20 @@
       }
     },
     "No changes will be saved until this is fixed. Restart the app, and if it persists restore a backup from Settings." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No changes will be saved until this is fixed. Restart the app, and if it persists restore a backup from Settings."
+          }
+        },
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لن تُحفظ أي تغييرات حتى تُحل المشكلة. أعد تشغيل التطبيق، وإن استمرت فاستعد نسخة احتياطية من الإعدادات."
+          }
+        }
+      }
     },
     "No history" : {
       "localizations" : {
@@ -1710,7 +1762,20 @@
       }
     },
     "Show sub-category on Farsh cards" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show sub-category on Farsh cards"
+          }
+        },
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إظهار التصنيف الفرعي في بطاقة الفرش"
+          }
+        }
+      }
     },
     "Slide" : {
       "localizations" : {
@@ -1823,7 +1888,14 @@
       }
     },
     "آخر آية في النطاق تسبق أول آية. عدّل النطاق ليشمل آية واحدة على الأقل." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The last ayah of the range comes before the first. Adjust the range to include at least one ayah."
+          }
+        }
+      }
     },
     "آخر التحديثات" : {
       "localizations" : {
@@ -2247,7 +2319,14 @@
       }
     },
     "إظهار التصنيف الفرعي في بطاقة الفرش" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show sub-category on Farsh cards"
+          }
+        }
+      }
     },
     "إظهار تفاصيل المجموعة" : {
       "extractionState" : "stale",
@@ -4660,7 +4739,14 @@
       }
     },
     "تعذّر فتح بيانات الحفظ" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn’t open the memorization data"
+          }
+        }
+      }
     },
     "تعذّر فتح بيانات المصحف" : {
       "localizations" : {
@@ -6142,6 +6228,16 @@
         }
       }
     },
+    "كل الأبواب" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All categories"
+          }
+        }
+      }
+    },
     "كل السور" : {
       "localizations" : {
         "en" : {
@@ -6485,7 +6581,14 @@
       }
     },
     "لن تُحفظ أي تغييرات حتى تُحل المشكلة. أعد تشغيل التطبيق، وإن استمرت فاستعد نسخة احتياطية من الإعدادات." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No changes will be saved until this is fixed. Restart the app, and if it persists restore a backup from Settings."
+          }
+        }
+      }
     },
     "ليست في المفضلة" : {
       "localizations" : {
@@ -7359,6 +7462,26 @@
         }
       }
     },
+    "و%lld أبواب أخرى" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "and %lld more categories"
+          }
+        }
+      }
+    },
+    "و%lld أخرى" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "and %lld more"
+          }
+        }
+      }
+    },
     "وجه %lld" : {
       "localizations" : {
         "en" : {
@@ -7528,6 +7651,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "two days"
+          }
+        }
+      }
+    },
+    "عن %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "from %@"
           }
         }
       }

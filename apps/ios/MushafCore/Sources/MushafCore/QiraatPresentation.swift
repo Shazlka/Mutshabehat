@@ -10,6 +10,9 @@ public struct AuthorityPill: Hashable, Sendable, Identifiable {
     public let name: String
     public let color: String
     public let kind: Kind
+
+    /// True when the name already carries its reader («الدوري عن أبي عمرو»), so a chip need not add it.
+    public var namesItsReader: Bool { name.contains(" عن ") }
 }
 
 /// «الإمام حمزة» when a reader is named or both of his narrators appear, «الراوي ورش» for one
