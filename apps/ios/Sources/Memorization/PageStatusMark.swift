@@ -33,7 +33,8 @@ struct PageStatusMark: View {
                     Text(verbatim: MemorizationTheme.shortLabel(status, language: language))
                         .font(.caption2.weight(.semibold))
                         .lineLimit(wrapsWord ? 2 : 1)
-                        .minimumScaleFactor(wrapsWord ? 0.8 : 1)
+                        .minimumScaleFactor(wrapsWord ? 0.7 : 1)
+                        .allowsTightening(wrapsWord)
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: !wrapsWord, vertical: true)
                 }
@@ -72,8 +73,10 @@ struct PageStatusMark: View {
         // The side rail is 80 pt wide: a narrower inset there lets «Not memorized» fit on two lines.
         .padding(.horizontal, wrapsWord ? 5 : 10)
         .padding(.vertical, 5)
-        .background(Capsule().fill(color.opacity(0.12)))
-        .overlay(Capsule().strokeBorder(color.opacity(0.55), lineWidth: 1))
+        // A tall two-line mark in the side rail gets square-ish corners: a capsule's round ends would crowd the word.
+        .background(RoundedRectangle(cornerRadius: wrapsWord ? 12 : 22, style: .continuous).fill(color.opacity(0.12)))
+        .overlay(RoundedRectangle(cornerRadius: wrapsWord ? 12 : 22, style: .continuous)
+            .strokeBorder(color.opacity(0.55), lineWidth: 1))
         // The capsule keeps its size; the button around it is at least 44 pt tall.
         .frame(minHeight: 44)
         .contentShape(Rectangle())

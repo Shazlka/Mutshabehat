@@ -18,7 +18,7 @@
 - **Hold-to-peek:** the bubble is hidden and the hold forgotten when the page leaves the screen mid-hold (`PageController.viewWillDisappear`).
 - **English:** the peek's «و N أخرى» lines and the narrator chip's «عن …» went through the catalog (the two `QiraatLocalizationTests` failures); five sentences that showed Arabic in the English UI now have English; the bundle name is "Qiraat" (was "Mutshabehat"). The «عن» name check moved to `AuthorityPill.namesItsReader` (MushafCore).
 - **Release only:** the empty «الآلية» tab and its developer JSON import are hidden (`MutshabehatView.Mode.shown`); every Release build is stripped (`project.yml`), removing 726 local build paths from the binary.
-- **iPad side rail:** «Not memorized» no longer truncates to «Not mem…»; the English khatma percent uses Latin digits.
+- **iPad side rail:** «Not memorized» no longer truncates to «Not mem…» (it wraps on two lines in a rounded rectangle, which leaves the word room a tall capsule did not); the English khatma percent uses Latin digits. Checked on the iPad Pro 13 simulator in English.
 - Plan and the rest of this round: `docs/plans/2026-11-12-release-review.md`.
 - **Verification:** app unit tests 461/461 (were 459 + 2 failing), core 560/560, Release simulator build, `release_guard.py` ok, `release_check.sh` 0 FAIL / 3 WARN (iCloud off in Release, 209 MB bundle, simulator build). UI tests not run yet.
 

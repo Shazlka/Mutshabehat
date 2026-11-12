@@ -75,7 +75,7 @@ struct ReaderTopBar: View {
                     }
                 }
                 .frame(maxWidth: .infinity)
-                .padding(.horizontal, -6)
+                .padding(.horizontal, -4)
             }
             qiraatFilterChip(vertical: true)
             // The space left is shared by this gap and the bar, so the bar takes the rail's lower part.
