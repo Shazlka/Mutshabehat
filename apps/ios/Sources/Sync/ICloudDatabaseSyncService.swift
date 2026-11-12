@@ -231,12 +231,6 @@ final class ICloudDatabaseSyncService: ReadingSyncing, @unchecked Sendable {
     }
 
     /// Forgets the folder chosen in Files and stops its access.
-    func clearCustomFolder() {
-        defaults.removeObject(forKey: bookmarkKey)
-        releaseHeldFolder()
-        refreshConnectionStatus()
-    }
-
     func refreshConnectionStatus() {
         let folder = resolveSyncFolder()
         isConnected = (folder != nil)

@@ -1,6 +1,9 @@
 import SwiftUI
 
 enum AppLanguage: String, CaseIterable, Identifiable {
+    /// The `UserDefaults` / `@AppStorage` key of the chosen language.
+    static let storageKey = "app:language:v1"
+
     case arabic = "ar"
     case english = "en"
 
@@ -11,7 +14,7 @@ enum AppLanguage: String, CaseIterable, Identifiable {
     /// fills the gap on a first launch (or after the stored value is cleared). Read once per launch.
     static let deviceDefault = AppLanguage.defaultLanguage(preferredLanguages: Locale.preferredLanguages)
 
-    /// `deviceDefault` as the raw value every `@AppStorage("app:language:v1")` falls back to.
+    /// `deviceDefault` as the raw value every `@AppStorage(AppLanguage.storageKey)` falls back to.
     static var defaultCode: String { deviceDefault.rawValue }
 
     /// Arabic for an Arabic first preference ("ar", "ar-AE", "ar_EG"), English for anything else, including no

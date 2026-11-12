@@ -7,7 +7,7 @@ struct AyahSearchView: View {
 
     @Environment(\.dismiss) private var dismiss
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
-    @AppStorage("app:language:v1") private var language = AppLanguage.defaultCode
+    @AppStorage(AppLanguage.storageKey) private var language = AppLanguage.defaultCode
     @State private var query = ""
     @State private var mode = QuranSearchMode.smart
     @State private var results: [AyahSearchResult] = []

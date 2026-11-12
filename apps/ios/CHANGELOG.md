@@ -3,6 +3,16 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## [Unreleased] — 2026-11-12 — Module boundaries: a Shared folder, Qiraat no longer depends on Reader
+- **New `Sources/Shared/`** for code every feature uses and that uses no feature: `AppLanguage`, `MushafAppearance`, `MushafColors`, `Haptics`, `SearchDebounce`, the bar menus (`BarPopoverMenu`, `FooterMenuTouch`, `ChromeContrast`), `FlowLayout`, `AppEndpoints`, `ManifestNameGuard` and `LaunchHooks` (was at the top of `ReaderView.swift`). Checked by grep: no type from a feature folder is used in `Shared` or `Design`.
+- **Qiraat no longer references Reader:** the hub routes (`ReaderView.qiraatDestination`) moved to `Reader/ReaderView+QiraatRoutes.swift`; the Qiraat data archive (`QiraatBackupService`, used by backup, restore and sync in every build) moved out of the DEBUG developer-data screen into `Qiraat/QiraatArchiveService.swift`, and its error text has English.
+- **Backup is built by Backup:** `BackupRuntime.makeController` (was `MemorizationRuntime.makeBackupController`).
+- **Reading no longer names Sync:** `ReadingTracker.shared` is built in `UserStores.swift` (the composition root) with the iCloud service; a tracker made without a sync (tests) uses `NoReadingSync`.
+- **One key per setting:** `AppLanguage.storageKey` and `MushafAppearance.storageKey` replace eight copies of the literal keys.
+- **Dead code:** `ICloudDatabaseSyncService.clearCustomFolder()` (no callers).
+- Moves and wiring only; behaviour unchanged. README layout row updated.
+- **Verification:** app unit tests 461/461, core 560/560, Release simulator build, `release_guard.py` ok, `release_check.sh` 0 FAIL.
+
 ## [Unreleased] — 2026-11-12 — Release review: a Release-only build break, English gaps, Release cleanup
 - **Release build did not compile:** the «إظهار التصنيف الفرعي» setting was declared inside `#if DEBUG` but its switch is in every build (`ReaderSettingsView.swift`). Debug builds and tests never saw it; an App Store archive would have failed.
 - **Hold-to-peek:** the bubble is hidden and the hold forgotten when the page leaves the screen mid-hold (`PageController.viewWillDisappear`).

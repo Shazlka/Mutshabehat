@@ -622,7 +622,7 @@ private struct QiraatLegendSample: View {
     /// A word of the Mushaf, drawn in the Mushaf's own font; nil draws the plain «كلمة».
     var word: String? = nil
 
-    @AppStorage("mushaf1441:theme:v1") private var theme = MushafAppearance.system.rawValue
+    @AppStorage(MushafAppearance.storageKey) private var theme = MushafAppearance.system.rawValue
     @Environment(\.colorScheme) private var colorScheme
 
     /// A data colour as it is drawn here: in the dark list it is held to the same 3:1 the reader page gives it

@@ -5,23 +5,6 @@ import ReviewEditor
 import SwiftUI
 import UIKit
 
-/// The launch-argument hooks the UI tests use (`-page`, `-show-chrome`, `-open-…`). They exist in DEBUG builds only: a
-/// Release build ignores every one of them, so a launch argument cannot move or open anything in a shipped app.
-enum LaunchHooks {
-#if DEBUG
-    static func has(_ flag: String) -> Bool { CommandLine.arguments.contains(flag) }
-
-    static func intValue(after flag: String) -> Int? {
-        guard let idx = CommandLine.arguments.firstIndex(of: flag),
-              CommandLine.arguments.indices.contains(idx + 1) else { return nil }
-        return Int(CommandLine.arguments[idx + 1])
-    }
-#else
-    static func has(_ flag: String) -> Bool { false }
-    static func intValue(after flag: String) -> Int? { nil }
-#endif
-}
-
 struct ReaderView: View {
     let library: MushafLibrary
     @Environment(\.colorScheme) private var colorScheme
@@ -72,8 +55,8 @@ struct ReaderView: View {
     /// The home-indicator inset of the screen, above which the footer bar floats.
     @State private var safeBottom: CGFloat = 34
     @State private var bookmarkActionTarget: (page: MushafPage, ayah: AyahKey)? = nil
-    @AppStorage("mushaf1441:theme:v1") private var theme = MushafAppearance.system.rawValue
-    @AppStorage("app:language:v1") private var language = AppLanguage.defaultCode
+    @AppStorage(MushafAppearance.storageKey) private var theme = MushafAppearance.system.rawValue
+    @AppStorage(AppLanguage.storageKey) private var language = AppLanguage.defaultCode
     @AppStorage("mushaf:keepScreenAwake") private var keepScreenAwake = true
     @AppStorage("mushaf:autoHidesFooter") private var autoHidesFooter = false
     @AppStorage(LandscapeView.storageKey) private var landscapeView = LandscapeView.reading.rawValue

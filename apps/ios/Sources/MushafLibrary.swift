@@ -98,7 +98,7 @@ final class MushafLibrary {
     /// Backups and restores of the person's data, created together with the memorization store.
     private(set) lazy var backupController: BackupController? = {
         guard let store = memorizationStore else { return nil }
-        return MemorizationRuntime.makeBackupController(library: self, store: store)
+        return BackupRuntime.makeController(library: self, store: store)
     }()
 
     init(bundle: Bundle = .main, qiraatStore: QiraatStore? = nil) throws {

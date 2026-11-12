@@ -10,10 +10,14 @@ protocol ReadingSyncing: AnyObject {
     @MainActor func pushReadingToICloud()
 }
 
+/// A tracker built without a sync (tests, previews) tells no one.
+final class NoReadingSync: ReadingSyncing {
+    func scheduleDebouncedReadingPush() {}
+    func pushReadingToICloud() {}
+}
+
 @MainActor
 final class ReadingTracker: ObservableObject {
-    static let shared = ReadingTracker()
-
     @Published private(set) var activeKhatma: KhatmaRecord
     @Published private(set) var khatmaPercent: Double = 0.0
     @Published private(set) var totalAyahsRead: Int = 0
@@ -41,7 +45,7 @@ final class ReadingTracker: ObservableObject {
     private var keepScreenAwake: Bool = true
     private var cachedTotalQuranAyahs: Int = 6236
 
-    init(database: QuranReadingDatabase = .shared, sync: any ReadingSyncing = ICloudDatabaseSyncService.shared) {
+    init(database: QuranReadingDatabase = .shared, sync: any ReadingSyncing = NoReadingSync()) {
         self.db = database
         self.sync = sync
         self.activeKhatma = database.getOrCreateActiveKhatma()

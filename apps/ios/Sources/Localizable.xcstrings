@@ -7664,6 +7664,16 @@
           }
         }
       }
+    },
+    "الملف ليس نسخة قراءات صالحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This file is not a valid Qiraat backup"
+          }
+        }
+      }
     }
   },
   "version" : "1.3"

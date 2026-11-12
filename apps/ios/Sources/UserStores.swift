@@ -14,3 +14,9 @@ struct UserStores {
         UserStores(mutshabehat: .shared, reading: .shared, tracker: { .shared }, qiraatNotes: { .shared })
     }
 }
+
+extension ReadingTracker {
+    /// The app's tracker: the shared reading database, pushed to iCloud through the sync service. Built here, at the
+    /// composition root, so the Reading feature itself never names the Sync feature.
+    static let shared = ReadingTracker(database: .shared, sync: ICloudDatabaseSyncService.shared)
+}

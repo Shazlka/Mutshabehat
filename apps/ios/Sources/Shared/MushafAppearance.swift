@@ -3,6 +3,9 @@ import SwiftUI
 import UIKit
 
 enum MushafAppearance: String, CaseIterable, Identifiable {
+    /// The `UserDefaults` / `@AppStorage` key of the chosen Mushaf appearance.
+    static let storageKey = "mushaf1441:theme:v1"
+
     case system
     case light
     case dark
