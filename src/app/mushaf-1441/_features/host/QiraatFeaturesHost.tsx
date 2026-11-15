@@ -3,6 +3,7 @@
 // Single mount point for the iOS-parity Qiraat sheets. The viewer owns which sheet is open (it is the
 // component that opens them, so it cannot sit below its own provider); this host renders the active one.
 // A sheet is added here per feature, so Mushaf1441Viewer.tsx only keeps a state hook and one mount.
+import type { QiraatUsulPrefs } from '../../../../../packages/qiraat-core/features/preferences'
 import type { QiraatComparisonFilter } from '../../_components/qiraat/types'
 import type { QiraatRuling, QiraatVariant } from '../../../../../packages/qiraat-core/types'
 import type { SummaryWord } from '../../../../../packages/qiraat-core/features/pageSummary'
@@ -29,6 +30,7 @@ export const HUB_ENTRIES: { name: FeatureName; label: string }[] = [
 ]
 
 export interface QiraatFeaturesHostProps {
+  usulPrefs: QiraatUsulPrefs
   active: FeatureName | null
   onClose: () => void
   filter: QiraatComparisonFilter
@@ -51,14 +53,14 @@ export interface QiraatFeaturesHostProps {
   compareTarget: { word: { surah: number; ayah: number; token: number; text: string }; selection: CompareSelection } | null
 }
 
-export function QiraatFeaturesHost({ active, onClose, filter, onFilterChange, variantsByPage, rulingsByPage, pages, words, onSelectWord, onGoToPlace, surahName, compareTarget, onGoToWord, summaryFilter }: QiraatFeaturesHostProps) {
+export function QiraatFeaturesHost({ usulPrefs, active, onClose, filter, onFilterChange, variantsByPage, rulingsByPage, pages, words, onSelectWord, onGoToPlace, surahName, compareTarget, onGoToWord, summaryFilter }: QiraatFeaturesHostProps) {
   if (active === 'readerPicker') return <ReaderPicker filter={filter} onPick={onFilterChange} onClose={onClose} />
   if (active === 'legend') return <LegendSheet variantsByPage={variantsByPage} rulingsByPage={rulingsByPage} onClose={onClose} />
   if (active === 'pageSummary') {
     return <PageSummarySheet pages={pages} words={words} variantsByPage={variantsByPage} rulingsByPage={rulingsByPage} filter={summaryFilter} onSelectWord={onSelectWord} onClose={onClose} />
   }
-  if (active === 'usulIndex') return <UsulIndexSheet onGoToPlace={onGoToPlace} onClose={onClose} />
-  if (active === 'search') return <QiraatSearchSheet surahName={surahName} onGoToPlace={onGoToPlace} onClose={onClose} />
+  if (active === 'usulIndex') return <UsulIndexSheet usulPrefs={usulPrefs} onGoToPlace={onGoToPlace} onClose={onClose} />
+  if (active === 'search') return <QiraatSearchSheet usulPrefs={usulPrefs} surahName={surahName} onGoToPlace={onGoToPlace} onClose={onClose} />
   if (active === 'compare' && compareTarget) return <CompareSheet key={`${compareTarget.word.surah}:${compareTarget.word.ayah}:${compareTarget.word.token}`} word={compareTarget.word} selection={compareTarget.selection} onClose={onClose} />
   if (active === 'notes') return <NotesPanel surahName={surahName} onGoToWord={onGoToWord} onClose={onClose} />
   if (active === 'mutoon') return <MutoonSheet onClose={onClose} />

@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { filterRulingPagesByPrefs, type QiraatUsulPrefs } from '../../../../../packages/qiraat-core/features/preferences'
 import { INITIAL_LIMIT, nextLimit } from '../../../../../packages/qiraat-core/features/progressive'
 import { buildSearchIndex, groupResults, type QiraatSearchQuery } from '../../../../../packages/qiraat-core/features/search'
 import { narratorLabel } from '../../../../../packages/qiraat-core/features/readerPicker'
@@ -22,14 +23,16 @@ const KIND_LABEL = { variant: 'فرش', ruling: 'أصول' } as const
 export function QiraatSearchSheet(props: {
   surahName: (surah: number) => string
   onGoToPlace: (place: { page: number; surah: number; ayah: number; startToken: number }) => void
+  usulPrefs: QiraatUsulPrefs
   onClose: () => void
 }) {
   const data = useAllPagesData(true)
+  const visibleRulings = useMemo(() => filterRulingPagesByPrefs(data.rulingsByPage, props.usulPrefs), [data.rulingsByPage, props.usulPrefs])
   const [scope, setScope] = useState<Scope>('word')
   const [word, setWord] = useState('')
   const [authority, setAuthority] = useState('Q01')
   const [category, setCategory] = useState('')
-  const index = useMemo(() => buildSearchIndex(data.variantsByPage, data.rulingsByPage), [data.variantsByPage, data.rulingsByPage])
+  const index = useMemo(() => buildSearchIndex(data.variantsByPage, visibleRulings), [data.variantsByPage, visibleRulings])
   const query: QiraatSearchQuery | null =
     scope === 'authority' ? { kind: 'authority', authorityId: authority }
     : scope === 'category' ? (category || index.categories[0]?.code ? { kind: 'category', code: category || index.categories[0].code } : null)

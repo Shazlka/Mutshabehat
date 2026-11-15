@@ -3,6 +3,7 @@
 import { Fragment, memo, useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, type CSSProperties, type FormEvent, type ReactNode, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent, type TouchEvent as ReactTouchEvent, type WheelEvent as ReactWheelEvent } from 'react'
 import ReactDOM from 'react-dom'
 import Link from 'next/link'
+import { useReadingPreferences } from './useReadingPreferences'
 import PageCurlOverlay, { type PageCurlHandle, type PageCurlRect } from './PageCurlOverlay'
 import ArabicDiff, { type Part } from '@/components/ArabicDiff'
 import type {
@@ -628,6 +629,25 @@ export default function Mushaf1441Viewer({
   // Mushaf Appearance & Theme (Sepia / Dark / White)
   const [mushafTheme, setMushafTheme] = useState<MushafTheme>('sepia')
   const [isSettingsOpen, setIsSettingsOpen] = useState(false)
+  const readingPreferences = useReadingPreferences(isSettingsOpen || isMenuOpen || isSurahPickerOpen || pageSliderPreview !== null)
+  useEffect(() => {
+    if (!isSettingsOpen) return
+    const previous = document.activeElement as HTMLElement | null
+    const dialog = document.querySelector<HTMLElement>('[aria-labelledby="mushaf-settings-title"]')
+    const controls = () => Array.from(dialog?.querySelectorAll<HTMLElement>('button:not(:disabled), input:not(:disabled), select:not(:disabled), summary, [tabindex="0"]') ?? []).filter((element) => element.getClientRects().length > 0)
+    controls()[0]?.focus()
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') { event.preventDefault(); setIsSettingsOpen(false) }
+      if (event.key !== 'Tab') return
+      const items = controls()
+      const first = items[0]
+      const last = items[items.length - 1]
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus() }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus() }
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => { document.removeEventListener('keydown', onKeyDown); previous?.focus() }
+  }, [isSettingsOpen])
   const currentThemeTokens = THEME_TOKENS[mushafTheme]
 
   function switchMushafTheme(nextTheme: MushafTheme) {
@@ -4124,13 +4144,13 @@ export default function Mushaf1441Viewer({
           const label = variant.performanceNote ?? DIFFERENCE_TYPE_LABELS_AR[variant.differenceType]
           return (
             <div key={variant.id} className="rounded-lg border border-[#e3d6b4] bg-white p-2.5">
-              <ClassificationChips segments={classificationSegments(variant)} />
+              <ClassificationChips segments={classificationSegments(variant).filter((segment) => readingPreferences.prefs.showSubcategory || segment.kind !== 'sub')} />
               <div className="mb-1.5 flex items-center justify-between gap-2">
                 <span className="flex items-center gap-1.5">
                   {faceNumbers[variant.id] ? <FaceBadge number={faceNumbers[variant.id]} /> : null}
                   <span className="rounded-full bg-[#f1e2b6] px-2 py-0.5 text-[11px] font-bold text-[#7a5a10]">{label}</span>
                 </span>
-                <span className="text-[11px] font-bold text-[var(--qx-muted)]">خلاف في الرسم</span>
+                {readingPreferences.prefs.showSubcategory ? <span className="text-[11px] font-bold text-[var(--qx-muted)]">خلاف في الرسم</span> : null}
               </div>
               <p className="text-center font-[family-name:var(--font-amiri-quran)] text-2xl font-bold text-[#7a1f1a]">
                 {variant.uthmaniText ?? (isPerformanceOnly ? variant.hafsText : variant.variantText)}
@@ -4670,7 +4690,7 @@ export default function Mushaf1441Viewer({
         {/* Backdrop */}
         <button
           type="button"
-          aria-label="إغلاق إعدادات المظهر"
+          aria-label="إغلاق الإعدادات"
           onClick={() => setIsSettingsOpen(false)}
           className="fixed inset-0 bg-black/60 backdrop-blur-[2px] transition-opacity"
         />
@@ -4699,10 +4719,10 @@ export default function Mushaf1441Viewer({
               </span>
               <div>
                 <h2 id="mushaf-settings-title" className="text-base font-black sm:text-lg">
-                  مظهر المصحف وقراءة الصفحات
+                  إعدادات المصحف والقراءات
                 </h2>
                 <p className={`text-xs ${isDark ? 'text-[#9ca3af]' : 'text-[var(--mushaf-gold-ink)]'}`}>
-                  اختر الطابع البصري الملائم لبيئة قراءتك
+                  تُحفظ اختيارات القراءة والقراءات والمظهر على هذا الجهاز
                 </p>
               </div>
             </div>
@@ -4721,8 +4741,35 @@ export default function Mushaf1441Viewer({
           </div>
 
           {/* Body: Theme Options */}
-          <div className="flex-1 overflow-y-auto p-4 sm:p-5">
-            <div className="space-y-3" role="radiogroup" aria-labelledby="mushaf-settings-title">
+          <div className="flex-1 space-y-5 overflow-y-auto p-4 sm:p-5">
+            <section aria-labelledby="qiraat-settings-title" className="space-y-3">
+              <h3 id="qiraat-settings-title" className="text-sm font-black">القراءات العشر</h3>
+              <label className="flex min-h-11 items-center gap-3 text-sm font-bold">
+                <input type="checkbox" checked={readerLayer === 'qiraat'} onChange={(event) => activateLayer(event.target.checked ? 'qiraat' : 'none')} />
+                إظهار القراءات العشر
+              </label>
+              <button type="button" disabled={readerLayer !== 'qiraat'} onClick={() => { setQiraatSubMode('comparison'); setIsSettingsOpen(false); openQiraatFeature('readerPicker') }} className="min-h-11 w-full rounded-lg border border-[var(--mushaf-rule)] px-3 text-start text-sm font-bold disabled:opacity-50">اختيار القارئ أو الراوي ‹</button>
+              <label className="flex min-h-11 items-center gap-3 text-sm font-bold">
+                <input type="checkbox" checked={readingPreferences.prefs.showSubcategory} onChange={(event) => readingPreferences.update({ ...readingPreferences.prefs, showSubcategory: event.target.checked })} />
+                إظهار التصنيف الفرعي في بطاقة الفرش
+              </label>
+              <UsulPrefsPanel expanded prefs={usulPrefs} options={usulOptions} onChange={updateUsulPrefs} />
+            </section>
+            <section aria-labelledby="reading-settings-title" className="space-y-2 border-t border-[var(--mushaf-rule)] pt-4">
+              <h3 id="reading-settings-title" className="text-sm font-black">تفضيلات القراءة</h3>
+              <label className="flex min-h-11 items-center gap-3 text-sm font-bold">
+                <input type="checkbox" checked={readingPreferences.prefs.keepAwake} onChange={(event) => readingPreferences.update({ ...readingPreferences.prefs, keepAwake: event.target.checked })} />
+                إبقاء الشاشة مضاءة أثناء القراءة
+              </label>
+              {readingPreferences.wakeStatus ? <p role="status" className="text-xs leading-6">{readingPreferences.wakeStatus}</p> : null}
+              <label className="flex min-h-11 items-center gap-3 text-sm font-bold">
+                <input type="checkbox" checked={readingPreferences.prefs.autoHideFooter} onChange={(event) => readingPreferences.update({ ...readingPreferences.prefs, autoHideFooter: event.target.checked })} />
+                إخفاء الشريط السفلي تلقائيًا بعد ١٠ ثوانٍ
+              </label>
+              <p className="text-xs leading-6">المس الصفحة أو حرّك المؤشر أو استخدم لوحة المفاتيح لإظهار الشريط مجددًا.</p>
+            </section>
+            <h3 className="text-sm font-black">المظهر</h3>
+            <div className="space-y-3" role="radiogroup" aria-label="مظهر المصحف">
               {themes.map((theme) => {
                 const isSelected = mushafTheme === theme.id
                 return (
@@ -5109,7 +5156,9 @@ export default function Mushaf1441Viewer({
         }
         return (
           <div
-            className={`relative flex shrink-0 items-center gap-3 border-t px-3 py-2 ${currentThemeTokens.sliderContainerClass}`}
+            data-testid="reader-footer"
+            hidden={readingPreferences.footerHidden}
+            className={`${readingPreferences.footerHidden ? 'hidden' : 'flex'} relative shrink-0 items-center gap-3 border-t px-3 py-2 ${currentThemeTokens.sliderContainerClass}`}
             style={{ paddingBottom: 'calc(0.5rem + env(safe-area-inset-bottom))' }}
           >
             {pageSliderPreview !== null ? (
@@ -5177,7 +5226,7 @@ export default function Mushaf1441Viewer({
                   type="button"
                   onClick={() => setIsSettingsOpen(true)}
                   aria-label="إعدادات مظهر المصحف"
-                  title="المظهر والسمات"
+                  title="إعدادات المصحف والقراءات"
                   className={`flex size-10 items-center justify-center rounded-md border transition-colors ${currentThemeTokens.drawerCloseBtnClass}`}
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -5220,10 +5269,10 @@ export default function Mushaf1441Viewer({
                   />
                   <div>
                     <span className={`block text-sm font-black ${currentThemeTokens.drawerTitleClass}`}>
-                      تغيير مظهر الصفحات
+                      إعدادات القراءة والقراءات والمظهر
                     </span>
                     <span className={`block text-[11px] leading-5 ${currentThemeTokens.drawerSubtextClass}`}>
-                      ورق دافئ · ليلي داكن · ورق أبيض
+                      إخفاء الأصول · أبواب الأصول · تفضيلات القراءة
                     </span>
                   </div>
                 </div>
@@ -5444,6 +5493,7 @@ export default function Mushaf1441Viewer({
 
       {renderSettingsModal()}
       <QiraatFeaturesHost
+        usulPrefs={usulPrefs}
         active={qiraatFeature}
         onClose={() => setQiraatFeature(null)}
         filter={qiraatFilter}

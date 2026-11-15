@@ -52,6 +52,17 @@ export function toggleUsulCategory(prefs: QiraatUsulPrefs, code: string, shown: 
   return { ...prefs, disabledCategories: shown ? rest : [...rest, code] }
 }
 
+/** Only the categories in this list change; unseen/live category choices are preserved. */
+export function setAllUsulCategories(prefs: QiraatUsulPrefs, codes: readonly string[], shown: boolean): QiraatUsulPrefs {
+  const selected = new Set(codes)
+  const rest = prefs.disabledCategories.filter((code) => !selected.has(code))
+  return { ...prefs, disabledCategories: shown ? rest : [...new Set([...rest, ...codes])] }
+}
+
+export function filterRulingPagesByPrefs(pages: Record<number, readonly QiraatRuling[]>, prefs: QiraatUsulPrefs): Record<number, QiraatRuling[]> {
+  return Object.fromEntries(Object.entries(pages).map(([page, rulings]) => [page, rulings.filter((ruling) => isRulingVisible(ruling, prefs))]))
+}
+
 export interface UsulCategoryOption {
   code: string
   label: string

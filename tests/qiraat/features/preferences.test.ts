@@ -8,6 +8,8 @@ import {
   QIRAAT_USUL_PREFS_KEY,
   saveUsulPrefs,
   toggleUsulCategory,
+  setAllUsulCategories,
+  filterRulingPagesByPrefs,
   usulCategoryOptions,
 } from '../../../packages/qiraat-core/features/preferences'
 import type { QiraatRuling } from '../../../packages/qiraat-core/types'
@@ -73,4 +75,18 @@ test('usulCategoryOptions lists the registry and any category only the data carr
   assert.ok(codes.includes('USUL_MIM_JAM'))
   assert.equal(options.find((o) => o.code === 'USUL_MIM_JAM')?.color, '#123456')
   assert.equal(new Set(codes).size, codes.length)
+})
+
+
+test('bulk category changes preserve unknown choices and farsh-only', () => {
+  const prefs = { farshOnly: true, disabledCategories: ['UNSEEN', 'IKHFA'] }
+  const all = setAllUsulCategories(prefs, ['IKHFA', 'SAKT'], true)
+  assert.deepEqual(all, { farshOnly: true, disabledCategories: ['UNSEEN'] })
+  assert.deepEqual(setAllUsulCategories(all, ['IKHFA', 'SAKT', 'SAKT'], false).disabledCategories, ['UNSEEN', 'IKHFA', 'SAKT'])
+})
+
+test('whole-Mushaf search and index receive only visible categories on every page', () => {
+  const pages = { 1: [ruling('IKHFA')], 17: [ruling('SAKT'), ruling('IKHFA')] }
+  assert.deepEqual(filterRulingPagesByPrefs(pages, { farshOnly: false, disabledCategories: ['IKHFA'] }), { 1: [], 17: [ruling('SAKT')] })
+  assert.deepEqual(filterRulingPagesByPrefs(pages, { farshOnly: true, disabledCategories: [] }), { 1: [], 17: [] })
 })

@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { filterRulingPagesByPrefs, type QiraatUsulPrefs } from '../../../../../packages/qiraat-core/features/preferences'
 import { buildUsulIndex, type UsulPlace } from '../../../../../packages/qiraat-core/features/usulIndex'
 import { INITIAL_LIMIT, nextLimit } from '../../../../../packages/qiraat-core/features/progressive'
 import { retryAllPages, useAllPagesData } from '../host/allPagesData'
@@ -9,12 +10,14 @@ import { FeatureSheet } from '../host/FeatureSheet'
 /** «فهرس الأصول»: every أصول باب and the places it applies across the Mushaf. */
 export function UsulIndexSheet(props: {
   onGoToPlace: (place: Pick<UsulPlace, 'page' | 'surah' | 'ayah' | 'startToken'>) => void
+  usulPrefs: QiraatUsulPrefs
   onClose: () => void
 }) {
   const data = useAllPagesData(true)
+  const visibleRulings = useMemo(() => filterRulingPagesByPrefs(data.rulingsByPage, props.usulPrefs), [data.rulingsByPage, props.usulPrefs])
   const [open, setOpen] = useState<string | null>(null)
   const [limit, setLimit] = useState(INITIAL_LIMIT)
-  const categories = useMemo(() => buildUsulIndex(data.rulingsByPage), [data.rulingsByPage])
+  const categories = useMemo(() => buildUsulIndex(visibleRulings), [visibleRulings])
   return (
     <FeatureSheet title="فهرس الأصول" onClose={props.onClose} testId="usul-index">
       {!data.done && data.failed === 0 ? (

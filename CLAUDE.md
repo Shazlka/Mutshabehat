@@ -48,6 +48,13 @@ section below **and** the root
 
 # Changelog
 
+## 2026-11-15 — Qiraat and reading preferences in web reader Settings
+- Added a Qiraat section to the reader Settings: layer toggle, reader/narrator picker, Farsh-only, category switches with show/hide all, and the optional Farsh subcategory line (off by default, like iOS). Existing Usul preferences are reused; bulk changes preserve other category choices.
+- Added persistent keep-screen-awake and ten-second footer auto-hide preferences. Wake locks release on cleanup and reacquire when the page becomes visible; unsupported or denied requests show a status. Reading interaction restores the footer. Settings supports Escape, focus containment, and focus restoration.
+- Whole-Mushaf search and the Usul index now respect the same hidden categories as page marks, word cards, and the colour key.
+- Validation: TypeScript passed; 156 Qiraat feature tests passed; focused ESLint had no errors (15 existing viewer warnings); production build passed using a local placeholder backend. Isolated Chrome checks on page 17 used bundled fixtures: 36 marks became 6 in Farsh-only and returned to 36 with show-all; preferences survived reload; footer hide/restore and simulated wake-lock acquire/release passed; 390px layout had no horizontal overflow or page errors. Physical-device wake-lock behavior and production deployment were not verified.
+
+
 ## 2026-11-09 — Review editor: several أبواب الأصول at once, Alt+Enter approve-and-advance, app-style word preview
 - **Owner request:** filter by more than one أصول باب, «اعتماد» moves to the next unapproved word, Alt+Enter approves and moves on, and a preview of the word's card as the mobile app shows it.
 - **Filter:** the أصول باب chips in the review header are now multi-select (tick any number; «كل الأصول» clears). `filterReviewRows`, `usulCategoriesOnPage` and the next-word search take a list of codes (a single code still works); a ticked باب with no row on the page stays listed so it can be unticked.
