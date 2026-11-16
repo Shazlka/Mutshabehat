@@ -16,9 +16,10 @@ import {
   type GoalProgress,
 } from '../../packages/memorization-core/statistics'
 import type { GoalDefinition, GoalKind } from '../../packages/memorization-core/backup'
+import { loadDefaultQuranIndex } from '../../packages/memorization-core/quranIndexNode'
 
 describe('MemorizationGoalsTests', () => {
-  const index = QuranIndex.loadDefault()
+  const index = loadDefaultQuranIndex()
 
   const date = (day: number, hour: number): string => {
     const d = new Date(Date.UTC(2026, 9, day, hour)) // Month is 0-indexed: 9 = October

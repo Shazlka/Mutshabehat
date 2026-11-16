@@ -16,9 +16,10 @@ import {
   type Milestone,
 } from '../../packages/memorization-core/planner'
 import { createMemorizationPolicy } from '../../packages/memorization-core/policy'
+import { loadDefaultQuranIndex } from '../../packages/memorization-core/quranIndexNode'
 
 describe('MemorizationMilestoneTests', () => {
-  const index = QuranIndex.loadDefault()
+  const index = loadDefaultQuranIndex()
   const now = new Date(1_790_000_000 * 1000)
 
   const snapshot = (masteredKeys: readonly AyahKey[]): MemorizationSnapshot => {

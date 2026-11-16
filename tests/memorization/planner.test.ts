@@ -25,9 +25,10 @@ import {
   makeSpanSelection,
   type MemorizationSelection,
 } from '../../packages/memorization-core/selection'
+import { loadDefaultQuranIndex } from '../../packages/memorization-core/quranIndexNode'
 
 describe('MemorizationPlannerTests', () => {
-  const index = QuranIndex.loadDefault()
+  const index = loadDefaultQuranIndex()
   const now = new Date(1_790_000_000 * 1000)
 
   const key = (surah: number, ayah: number): AyahKey => makeAyahKey(surah, ayah)

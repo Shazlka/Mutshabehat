@@ -3,6 +3,7 @@ import { describe, it } from 'node:test'
 import { QuranIndex } from '../../packages/memorization-core/quranIndex'
 import { createMemoryReadingRepository } from '../../src/lib/storage/reading-db'
 import { ReadingTrackerCore } from '../../src/lib/storage/readingTrackerCore'
+import { loadDefaultQuranIndex } from '../../packages/memorization-core/quranIndexNode'
 
 describe('ReadingRepository', () => {
   it('upserts bookmarks by the iOS compound uniqueness key', async () => {
@@ -25,7 +26,7 @@ describe('ReadingRepository', () => {
 
   it('auto-completes at 6,236 ayat and creates khatma N+1', async () => {
     const repository = createMemoryReadingRepository()
-    const index = QuranIndex.loadDefault()
+    const index = loadDefaultQuranIndex()
     const items = index.ayahKeys.map((key) => ({ surah: key.surah, ayah: key.ayah, page: index.page(key)! }))
     const result = await repository.recordReadAyahs(items)
     assert.equal(result.newAyahs, 6236)

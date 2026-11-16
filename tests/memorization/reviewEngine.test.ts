@@ -20,11 +20,12 @@ import {
   getSuggestion,
 } from '../../packages/memorization-core/reviewEngine'
 import { planReview } from '../../packages/memorization-core/planner'
+import { loadDefaultQuranIndex } from '../../packages/memorization-core/quranIndexNode'
 
 describe('MemorizationReviewTests & DueReviewTests', () => {
   const now = new Date(1_790_000_000 * 1000)
   const dayMs = 86_400 * 1000
-  const index = QuranIndex.loadDefault()
+  const index = loadDefaultQuranIndex()
 
   const record = (
     surah = 1,
