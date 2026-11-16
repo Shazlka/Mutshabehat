@@ -128,7 +128,6 @@ export function PhoneFooterBar(props: {
   onOpenSettings: () => void
 }) {
   const [popover, setPopover] = useState<OpenPopover>(null)
-  const [previewPage, setPreviewPage] = useState<number | null>(null)
   const [pressedItem, setPressedItem] = useState<PhoneFooterItemId | null>(null)
   const pressedTimerRef = useRef<number | null>(null)
 
@@ -185,11 +184,6 @@ export function PhoneFooterBar(props: {
     else if (id === 'bookmarks') props.onOpenBookmarks()
     else if (id === 'settings') props.onOpenSettings()
   }
-  const sliderValue = previewPage ?? props.pageNumber
-  const commitSlider = () => {
-    if (previewPage !== null && previewPage !== props.pageNumber) props.onGoToPage(previewPage)
-    setPreviewPage(null)
-  }
   return (
     <>
       <div
@@ -197,22 +191,6 @@ export function PhoneFooterBar(props: {
         aria-hidden={!props.visible}
         onPointerDown={props.onInteraction}
       >
-        <div className="mx-auto mb-1 flex max-w-md items-center gap-2 rounded-full border border-[var(--mushaf-rule-soft)] bg-[var(--qiraat-card-fill)]/95 px-3 py-1 shadow-sm">
-          <span className="w-14 text-center text-[11px] font-bold tabular-nums text-[var(--mushaf-brown)]">صفحة {sliderValue}</span>
-          <input
-            type="range"
-            min={1}
-            max={props.pageCount}
-            value={sliderValue}
-            aria-label="انتقال سريع للصفحة"
-            onPointerDown={() => setPreviewPage(props.pageNumber)}
-            onChange={(event) => setPreviewPage(Number(event.target.value))}
-            onPointerUp={commitSlider}
-            onPointerCancel={() => setPreviewPage(null)}
-            onKeyUp={commitSlider}
-            className="h-11 min-w-0 flex-1 accent-[var(--mushaf-gold)]"
-          />
-        </div>
         <div className="phone-chrome-surface mx-auto grid h-[62px] max-w-md grid-cols-6 rounded-[24px] border px-1 text-[var(--mushaf-ink)] shadow-[0_8px_30px_color-mix(in_srgb,var(--mushaf-ink)_18%,transparent)]" role="toolbar" aria-label="أدوات قارئ المصحف">
           {phoneFooterItems(props.qiraatEnabled).map((item) => {
             const menu = item.id === 'qiraat' || item.id === 'more'
@@ -243,7 +221,7 @@ export function PhoneFooterBar(props: {
                   }
                   activate(item.id)
                 }}
-                className={`flex min-h-11 min-w-0 touch-manipulation flex-col items-center justify-center gap-0.5 rounded-[18px] px-0.5 text-[9px] font-semibold leading-none transition-all duration-150 active:scale-95 active:opacity-75 active:bg-[var(--mushaf-rule-soft)]/50 ${pressedItem === item.id ? 'scale-95 opacity-75 bg-[var(--mushaf-rule-soft)]/50' : ''} motion-reduce:transition-none motion-reduce:active:scale-100`}
+                className={`flex min-h-11 min-w-0 touch-manipulation flex-col items-center justify-center gap-0.5 rounded-[18px] px-0.5 text-[10px] font-semibold leading-none transition-all duration-150 active:scale-95 active:opacity-75 active:bg-[var(--mushaf-rule-soft)]/50 ${pressedItem === item.id ? 'scale-95 opacity-75 bg-[var(--mushaf-rule-soft)]/50' : ''} motion-reduce:transition-none motion-reduce:active:scale-100`}
               >
                 <FooterIcon id={item.id} filled={item.id === 'qiraat' && props.qiraatEnabled} />
                 <span className="w-full truncate">{item.label}</span>

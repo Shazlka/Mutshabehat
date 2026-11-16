@@ -1,3 +1,6 @@
+## 2026-11-16 — iOS parity: no page slider on phones, iOS type sizes in the chrome
+- Removed the page scrubber above the phone footer (page jumps live in the Index sheet, like iOS). Phone top bar text now uses the iOS sizes: surah title 19, page number 15, Juz/Hizb 13, Qiraat chip 12; footer labels 10 (system tab-bar size). Desktop unchanged.
+
 ## 2026-11-16 — iOS parity: entry points to reading statistics and memorization
 - The footer's «المزيد» menu now opens «الحفظ» (`/memorization`), and the reader Settings sheet links to «الإحصائيات والختمة» (`/reading`) and «حفظ القرآن». Reader integration (page-status mark, dwell tracker, khatma chip in the top bar) is still to come.
 
