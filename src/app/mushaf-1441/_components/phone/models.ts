@@ -45,3 +45,18 @@ export const morePopoverRows = (memorizationReady: boolean) => [
   { id: 'memorization' as const, label: 'الحفظ', disabled: !memorizationReady, hint: memorizationReady ? undefined : 'قريبًا' },
   { id: 'mutoon' as const, label: 'المتون' },
 ]
+
+export function phonePopoverStyle(): {
+  bottom: string
+  top: string
+  left: string
+  right: string
+} {
+  return {
+    bottom: 'calc(max(10px, env(safe-area-inset-bottom, 0px)) + 112px)',
+    top: 'max(12px, calc(env(safe-area-inset-top, 0px) + 56px))',
+    left: 'max(8px, env(safe-area-inset-left, 0px))',
+    right: 'max(8px, env(safe-area-inset-right, 0px))',
+  }
+}
+

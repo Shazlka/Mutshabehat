@@ -1,3 +1,12 @@
+## 2026-11-16 — iOS-parity phone reader chrome integration and polish (Task 6)
+- Wired «الفهرس» (both header surah title and footer item) to `IndexSheet` with surah, juz, bookmarks (fed from existing in-memory annotations converted via `indexBookmarksFromAnnotations`), and page scrubber navigation.
+- Wired «بحث» to `QuranSearchSheet`, jumping to the target ayah page and smoothly scrolling the target ayah element (`#ayah-s-a`) into view. Retained «قريبًا» toast for unbuilt items.
+- Header and desk color parity: enforced `--mushaf-desk` == `--mushaf-paper` across all five phone appearances (`#000000` pure black in blackPage, paper tint in light), with 0.5px hairline border `--mushaf-rule-soft`.
+- Removed phone vertical gap under the 52px top bar by anchoring mobile slot containers with `max-md:items-start md:items-center` (leaving desktop >=768px centered and byte-identical).
+- Top bar arrangement matches iOS `ReaderTopBar.swift`: Surah title button and «صفحة N» at start, centered Qiraat filter chip, and stacked Juz/Hizb/Rub quarter disc at end, fitting down to 320px viewport without overlap.
+- Footer items feature tactile pressed feedback with active scale/opacity/tint and state timer; Qiraat and More popovers are constrained within safe-area boundaries without clipping.
+- Added pure unit tests for safe-area popover bounds and bookmark conversion in `tests/ios-parity/phone-chrome.test.ts`.
+
 ## 2026-11-16 — iOS-parity phone reader chrome
 - Replaced the phone-width action header and permanent page slider with the native-style informational top bar and floating six-item footer, while retaining the existing desktop header and slider at 768px and above. The compact phone scrubber floats above the footer and page-centre taps show or hide the chrome; the outer thirds retain RTL page turning.
 - Added accessible Qiraat and More popovers that reuse the existing reader picker, colour key, page summary, Qiraat search, Usul index and Mutoon sheets. The Qiraat layer toggle and filter state stay synchronized; Usul hides in Farsh-only mode, and the future memorization route remains visibly marked «قريبًا» behind a phone feature flag.

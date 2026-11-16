@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import type { FeatureName } from '../../_features/host/QiraatFeaturesHost'
 import { PHONE_MEMORIZATION_READY } from './flags'
-import { morePopoverRows, phoneFooterItems, qiraatPopoverRows, type PhoneFooterItemId, type QiraatPopoverRowId } from './models'
+import { morePopoverRows, phoneFooterItems, phonePopoverStyle, qiraatPopoverRows, type PhoneFooterItemId, type QiraatPopoverRowId } from './models'
 
 type OpenPopover = 'qiraat' | 'more' | null
 
@@ -56,7 +56,11 @@ function PhonePopover(props: {
         role="menu"
         aria-label={label}
         dir="rtl"
-        className="phone-chrome-surface absolute inset-x-2 bottom-[calc(env(safe-area-inset-bottom)+82px)] mx-auto max-h-[min(60dvh,420px)] max-w-[330px] overflow-y-auto rounded-[28px] border p-1.5 text-[var(--mushaf-ink)] shadow-[0_14px_40px_color-mix(in_srgb,var(--mushaf-ink)_20%,transparent)]"
+        className="phone-chrome-surface absolute inset-x-2 mx-auto max-h-[min(55dvh,400px)] max-w-[330px] overflow-y-auto rounded-[28px] border p-1.5 text-[var(--mushaf-ink)] shadow-[0_14px_40px_color-mix(in_srgb,var(--mushaf-ink)_20%,transparent)]"
+        style={{
+          marginTop: 'auto',
+          ...phonePopoverStyle(),
+        }}
       >
         {children}
       </div>
@@ -86,6 +90,28 @@ export function PhoneFooterBar(props: {
 }) {
   const [popover, setPopover] = useState<OpenPopover>(null)
   const [previewPage, setPreviewPage] = useState<number | null>(null)
+  const [pressedItem, setPressedItem] = useState<PhoneFooterItemId | null>(null)
+  const pressedTimerRef = useRef<number | null>(null)
+
+  const triggerPressedFeedback = (id: PhoneFooterItemId) => {
+    if (pressedTimerRef.current !== null) {
+      window.clearTimeout(pressedTimerRef.current)
+    }
+    setPressedItem(id)
+    pressedTimerRef.current = window.setTimeout(() => {
+      setPressedItem(null)
+      pressedTimerRef.current = null
+    }, 200)
+  }
+
+  useEffect(() => {
+    return () => {
+      if (pressedTimerRef.current !== null) {
+        window.clearTimeout(pressedTimerRef.current)
+      }
+    }
+  }, [])
+
   const setOpen = (next: OpenPopover) => {
     setPopover(next)
     props.onPopoverOpenChange(next !== null)
@@ -113,6 +139,7 @@ export function PhoneFooterBar(props: {
   }
   const featureFor = (id: QiraatPopoverRowId) => featureByRow[id]
   const activate = (id: PhoneFooterItemId) => {
+    triggerPressedFeedback(id)
     props.onInteraction()
     if (id === 'index') props.onOpenIndex()
     else if (id === 'search') props.onOpenSearch()
@@ -164,9 +191,12 @@ export function PhoneFooterBar(props: {
                 onPointerDown={menu ? (event) => {
                   if (event.pointerType !== 'mouse' || event.button === 0) {
                     event.preventDefault()
+                    triggerPressedFeedback(item.id)
                     setOpen(item.id as OpenPopover)
                   }
-                } : undefined}
+                } : () => {
+                  triggerPressedFeedback(item.id)
+                }}
                 onClick={(event) => {
                   if (menu) {
                     if (event.detail === 0) setOpen(expanded ? null : item.id as OpenPopover)
@@ -174,7 +204,7 @@ export function PhoneFooterBar(props: {
                   }
                   activate(item.id)
                 }}
-                className="flex min-h-11 min-w-0 touch-manipulation flex-col items-center justify-center gap-0.5 rounded-[18px] px-0.5 text-[9px] font-semibold leading-none transition-transform duration-[220ms] ease-out active:scale-[1.16] motion-reduce:transition-none motion-reduce:active:scale-100"
+                className={`flex min-h-11 min-w-0 touch-manipulation flex-col items-center justify-center gap-0.5 rounded-[18px] px-0.5 text-[9px] font-semibold leading-none transition-all duration-150 active:scale-95 active:opacity-75 active:bg-[var(--mushaf-rule-soft)]/50 ${pressedItem === item.id ? 'scale-95 opacity-75 bg-[var(--mushaf-rule-soft)]/50' : ''} motion-reduce:transition-none motion-reduce:active:scale-100`}
               >
                 <FooterIcon id={item.id} filled={item.id === 'qiraat' && props.qiraatEnabled} />
                 <span className="w-full truncate">{item.label}</span>

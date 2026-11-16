@@ -1,6 +1,6 @@
 'use client'
 
-import { Fragment, memo, useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, type CSSProperties, type FormEvent, type ReactNode, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent, type TouchEvent as ReactTouchEvent, type WheelEvent as ReactWheelEvent } from 'react'
+import { Fragment, memo, useCallback, useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, type CSSProperties, type FormEvent, type ReactNode, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent, type TouchEvent as ReactTouchEvent, type WheelEvent as ReactWheelEvent } from 'react'
 import ReactDOM from 'react-dom'
 import Link from 'next/link'
 import { useReadingPreferences } from './useReadingPreferences'
@@ -91,6 +91,9 @@ import { filterLabel } from '../../../../packages/qiraat-core/features/readerPic
 import { PhoneTopBar } from './phone/PhoneTopBar'
 import { PhoneFooterBar } from './phone/PhoneFooterBar'
 import { usePhoneChrome } from './phone/usePhoneChrome'
+import { indexBookmarksFromAnnotations } from './phone/bookmarks'
+import { IndexSheet } from '../_features/index/IndexSheet'
+import { QuranSearchSheet } from '../_features/quran-search/QuranSearchSheet'
 
 const EMPTY_QIRAAT_VARIANTS: QiraatVariant[] = []
 const EMPTY_QIRAAT_RULES: QiraatRule[] = []
@@ -165,8 +168,6 @@ type Mushaf1441ViewerProps = {
   surahOptions: Mushaf1441SurahOption[]
   /** Every ayah → personal group link, loaded on the server; null = not available (client fetches). */
   initialMutshabehatHighlights?: MutshabehatAyahLink[] | null
-  onOpenSearch?: () => void
-  onOpenBookmarks?: () => void
 }
 
 const MIN_PAGE = 1
@@ -564,8 +565,6 @@ export default function Mushaf1441Viewer({
   initialPageMetadata,
   surahOptions,
   initialMutshabehatHighlights = null,
-  onOpenSearch,
-  onOpenBookmarks,
 }: Mushaf1441ViewerProps) {
   ReactDOM.preconnect('https://verses.quran.foundation', { crossOrigin: 'anonymous' })
   ReactDOM.preload(getQcfV2FontUrl(initialPage.pageNumber), {
@@ -617,6 +616,14 @@ export default function Mushaf1441Viewer({
   const [mutshabehatLoadError, setMutshabehatLoadError] = useState<string | null>(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isSurahPickerOpen, setIsSurahPickerOpen] = useState(false)
+  const [isIndexOpen, setIsIndexOpen] = useState(false)
+  // Each opening remounts the sheet (key) so it can start on the tab that was asked for.
+  const [indexOpening, setIndexOpening] = useState<{ n: number; tab: 'surahs' | 'bookmarks' }>({ n: 0, tab: 'surahs' })
+  const openIndex = useCallback((tab: 'surahs' | 'bookmarks') => {
+    setIndexOpening((prev) => ({ n: prev.n + 1, tab }))
+    setIsIndexOpen(true)
+  }, [])
+  const [isQuranSearchOpen, setIsQuranSearchOpen] = useState(false)
   const [surahPickerSearch, setSurahPickerSearch] = useState('')
   const currentSurahItemRef = useRef<HTMLButtonElement | null>(null)
   const surahListRef = useRef<HTMLDivElement | null>(null)
@@ -670,7 +677,7 @@ export default function Mushaf1441Viewer({
   const isPhone = useSyncExternalStore(subscribeToPhoneQuery, getPhoneSnapshot, getMediaServerSnapshot)
   const systemPrefersDark = useSyncExternalStore(subscribeToDarkQuery, getDarkSnapshot, getMediaServerSnapshot)
   const [isSettingsOpen, setIsSettingsOpen] = useState(false)
-  const readingPreferences = useReadingPreferences(isSettingsOpen || isMenuOpen || isSurahPickerOpen || pageSliderPreview !== null)
+  const readingPreferences = useReadingPreferences(isSettingsOpen || isMenuOpen || isSurahPickerOpen || isIndexOpen || isQuranSearchOpen || pageSliderPreview !== null)
   useEffect(() => {
     if (!isSettingsOpen) return
     const previous = document.activeElement as HTMLElement | null
@@ -751,7 +758,7 @@ export default function Mushaf1441Viewer({
   const phoneChrome = usePhoneChrome({
     autoHideAfterMs: 10_000,
     autoHidesFooter: readingPreferences.prefs.autoHideFooter,
-    forceVisible: phonePopoverOpen || isSurahPickerOpen || isSettingsOpen || qiraatFeature !== null
+    forceVisible: phonePopoverOpen || isSurahPickerOpen || isIndexOpen || isQuranSearchOpen || isSettingsOpen || qiraatFeature !== null
       || isMenuOpen || contextMenu !== null || mutshabehatPopupAyahKey !== null || isMobileNotesOpen
       || hoveredQiraatWord !== null || qiraatSelection !== null || qiraatReferenceOpen,
   })
@@ -1140,6 +1147,10 @@ export default function Mushaf1441Viewer({
       annotation.pageNumber === pageNumber || annotation.pageNumber === companionPageNumber
     )),
     [annotations, pageNumber, companionPageNumber]
+  )
+  const indexBookmarks = useMemo(
+    () => indexBookmarksFromAnnotations(annotations),
+    [annotations],
   )
   const annotationsForSelectedTarget = useMemo(() => {
     if (!selectedAyahKey) return []
@@ -5008,8 +5019,8 @@ export default function Mushaf1441Viewer({
           qiraatEnabled={qiraatMode !== 'normal'}
           filterName={effectiveQiraatFilter.kind === 'all' ? undefined : filterLabel(effectiveQiraatFilter)}
           filterColor={phoneFilterColor}
-          surahPickerOpen={isSurahPickerOpen}
-          onOpenSurahPicker={() => { setSurahPickerSearch(''); setIsSurahPickerOpen(true) }}
+          surahPickerOpen={isIndexOpen}
+          onOpenSurahPicker={() => setIsIndexOpen(true)}
           onOpenReaderPicker={() => openQiraatFeature('readerPicker')}
         />
       ) : null}
@@ -5179,7 +5190,7 @@ export default function Mushaf1441Viewer({
                 data-page-slot-current={isCurrent ? '' : undefined}
                 aria-hidden={isCurrent ? undefined : true}
                 inert={!isCurrent}
-                className={`flex min-h-0 min-w-0 items-center justify-center [grid-area:1/1] ${isSpread ? 'gap-[3px]' : ''}`}
+                className={`flex min-h-0 min-w-0 max-md:items-start md:items-center justify-center [grid-area:1/1] ${isSpread ? 'gap-[3px]' : ''}`}
                 style={{ visibility: isCurrent ? 'visible' : 'hidden' }}
               >
                 {groupPages.map((no) => {
@@ -5329,9 +5340,9 @@ export default function Mushaf1441Viewer({
           onInteraction={phoneChrome.reset}
           onPopoverOpenChange={setPhonePopoverOpen}
           onGoToPage={(page) => { void goToPage(page) }}
-          onOpenIndex={() => { setSurahPickerSearch(''); setIsSurahPickerOpen(true) }}
-          onOpenSearch={() => { if (onOpenSearch) onOpenSearch(); else setToast('قريبًا') }}
-          onOpenBookmarks={() => { if (onOpenBookmarks) onOpenBookmarks(); else setToast('قريبًا') }}
+          onOpenIndex={() => openIndex('surahs')}
+          onOpenSearch={() => setIsQuranSearchOpen(true)}
+          onOpenBookmarks={() => openIndex('bookmarks')}
           onToggleQiraat={() => toggleLayer('qiraat')}
           onOpenQiraatFeature={openQiraatFeature}
           onOpenMutoon={() => openQiraatFeature('mutoon')}
@@ -5647,6 +5658,35 @@ export default function Mushaf1441Viewer({
         onSelectWord={(wordId) => {
           const target = visibleQiraatPages.flatMap((no) => (pageCache[no]?.lines ?? []).flatMap((line) => line.words)).find((w) => w.id === wordId)
           if (target) goToMarkedQiraatWord(target)
+        }}
+      />
+      <IndexSheet
+        key={indexOpening.n}
+        initialTab={indexOpening.tab}
+        open={isIndexOpen}
+        onClose={() => setIsIndexOpen(false)}
+        currentPage={pageNumber}
+        currentSurah={visiblePageMetadata?.surahNumbers[0] ?? selectedSurahNumber}
+        onGoToPage={(page) => { void goToPage(page) }}
+        bookmarks={indexBookmarks}
+        onOpenBookmark={(b) => { void goToPage(b.page, b.ayah ? `${b.surah}:${b.ayah}` : undefined) }}
+        onDeleteBookmark={async (id) => {
+          const deleted = await deleteAnnotation(id)
+          if (deleted) void loadAnnotationsForPage(pageNumber)
+        }}
+      />
+      <QuranSearchSheet
+        open={isQuranSearchOpen}
+        onClose={() => setIsQuranSearchOpen(false)}
+        onGoToAyah={(surah, ayah, page) => {
+          const ayahKey = `${surah}:${ayah}`
+          setSelectedAyahKey(ayahKey)
+          void goToPage(page, ayahKey).then(() => {
+            window.requestAnimationFrame(() => {
+              const el = document.getElementById(navigateToAyah(ayahKey).slice(1))
+              el?.scrollIntoView({ block: 'center', behavior: 'smooth' })
+            })
+          })
         }}
       />
     </div>

@@ -34,6 +34,8 @@ export interface IndexBookmark {
 }
 
 export interface IndexSheetProps {
+  /** Tab shown when the sheet mounts (give the sheet a new `key` to reopen on another tab). */
+  initialTab?: 'surahs' | 'juz' | 'bookmarks'
   open: boolean
   onClose(): void
   currentPage: number
@@ -87,6 +89,7 @@ function getSurahForPage(page: number): Mushaf1441SurahOption | null {
 }
 
 export function IndexSheet({
+  initialTab,
   open,
   onClose,
   currentPage,
@@ -96,7 +99,7 @@ export function IndexSheet({
   onOpenBookmark,
   onDeleteBookmark,
 }: IndexSheetProps) {
-  const [activeTab, setActiveTab] = useState<IndexTab>('surahs')
+  const [activeTab, setActiveTab] = useState<IndexTab>(initialTab ?? 'surahs')
   const [searchQuery, setSearchQuery] = useState('')
   const [sliderPreview, setSliderPreview] = useState<number | null>(null)
 
