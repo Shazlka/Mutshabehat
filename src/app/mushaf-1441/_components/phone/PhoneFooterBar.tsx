@@ -21,7 +21,7 @@ function FooterIcon({ id, filled }: { id: PhoneFooterItemId; filled?: boolean })
 }
 
 function MenuIcon({ children }: { children: ReactNode }) {
-  return <span className="flex w-8 shrink-0 justify-center text-xl text-[var(--mushaf-brown)]" aria-hidden="true">{children}</span>
+  return <span className="ms-auto flex w-7 shrink-0 justify-end text-lg text-[var(--mushaf-brown)]" aria-hidden="true">{children}</span>
 }
 
 function PhonePopover(props: {
@@ -33,8 +33,36 @@ function PhonePopover(props: {
 }) {
   const { children, id, label, onClose, openerId } = props
   const panel = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
-    panel.current?.querySelector<HTMLElement>('[role^="menuitem"]:not([aria-disabled="true"])')?.focus()
+    // Focus first actionable menu item
+    const firstItem = panel.current?.querySelector<HTMLElement>('[role^="menuitem"]:not([aria-disabled="true"])')
+    if (firstItem) {
+      try {
+        firstItem.focus({ preventScroll: true })
+      } catch {
+        firstItem.focus()
+      }
+    }
+
+    // Anchor horizontally under the pressed item, matching iOS BarPopoverMenu
+    const updatePosition = () => {
+      if (!panel.current) return
+      const opener = document.getElementById(openerId)
+      if (!opener) return
+      const openerRect = opener.getBoundingClientRect()
+      const anchorX = openerRect.left + openerRect.width / 2
+      const menuWidth = panel.current.offsetWidth || 330
+      const viewportWidth = window.innerWidth
+      const targetLeft = Math.min(Math.max(anchorX - menuWidth / 2, 8), Math.max(8, viewportWidth - menuWidth - 8))
+      panel.current.style.left = `${targetLeft}px`
+      panel.current.style.right = 'auto'
+      panel.current.style.margin = '0'
+    }
+
+    updatePosition()
+    window.addEventListener('resize', updatePosition)
+
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') { event.preventDefault(); onClose() }
       if (event.key !== 'Tab') return
@@ -45,8 +73,15 @@ function PhonePopover(props: {
       else if (!event.shiftKey && current === items.length - 1) { event.preventDefault(); items[0]?.focus() }
     }
     document.addEventListener('keydown', onKeyDown)
-    return () => { document.removeEventListener('keydown', onKeyDown); document.getElementById(openerId)?.focus() }
+    return () => {
+      window.removeEventListener('resize', updatePosition)
+      document.removeEventListener('keydown', onKeyDown)
+      document.getElementById(openerId)?.focus()
+    }
   }, [onClose, openerId])
+
+  const bounds = phonePopoverStyle()
+
   return (
     <div className="fixed inset-0 z-[70] md:hidden">
       <button type="button" aria-label="إغلاق القائمة" onClick={onClose} className="absolute inset-0 cursor-default bg-transparent" />
@@ -56,10 +91,14 @@ function PhonePopover(props: {
         role="menu"
         aria-label={label}
         dir="rtl"
-        className="phone-chrome-surface absolute inset-x-2 mx-auto max-h-[min(55dvh,400px)] max-w-[330px] overflow-y-auto rounded-[28px] border p-1.5 text-[var(--mushaf-ink)] shadow-[0_14px_40px_color-mix(in_srgb,var(--mushaf-ink)_20%,transparent)]"
+        className="phone-chrome-surface absolute z-[70] h-fit w-[min(330px,calc(100vw-16px))] overflow-y-auto rounded-[24px] border-[0.5px] border-[var(--mushaf-rule-soft)] p-1 text-[var(--mushaf-ink)] shadow-[0_8px_24px_color-mix(in_srgb,var(--mushaf-ink)_12%,transparent)]"
         style={{
-          marginTop: 'auto',
-          ...phonePopoverStyle(),
+          bottom: bounds.bottom,
+          top: 'auto',
+          maxHeight: `calc(100dvh - (${bounds.top}) - (${bounds.bottom}))`,
+          left: bounds.left,
+          right: bounds.right,
+          margin: '0 auto',
         }}
       >
         {children}
@@ -68,7 +107,7 @@ function PhonePopover(props: {
   )
 }
 
-const rowClass = 'flex min-h-[58px] w-full items-center justify-between gap-3 border-b border-[var(--mushaf-rule-soft)] px-5 text-start text-base font-semibold last:border-b-0 disabled:opacity-50'
+const rowClass = 'flex h-12 w-full items-center justify-between gap-3 border-b border-[var(--mushaf-rule-soft)] [border-bottom-width:0.5px] px-4 text-start text-[15px] font-semibold last:border-b-0 disabled:opacity-50 outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--mushaf-gold)] focus-visible:ring-inset rounded-[14px] transition-colors hover:bg-[var(--mushaf-rule-soft)]/25 active:bg-[var(--mushaf-rule-soft)]/40'
 
 export function PhoneFooterBar(props: {
   visible: boolean

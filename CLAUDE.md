@@ -32,21 +32,17 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
   -v ON_ERROR_STOP=1 --single-transaction < file.sql` from `/Volumes/External Mini/Projects/apps/mutshabehat-selfhost`,
   then `NOTIFY pgrst, 'reload schema'` (PROJECT_MASTER.md §8). The `supabase` CLI and host `psql` are not installed.
 - **📋 CHANGELOG IS MANDATORY:** every bug fix, feature, or performance improvement **MUST** be
-  recorded — dated, newest-first — in **both** the `# Changelog` ## 2026-10-28 — Live متون preview, colored signs and wider authority editor
-- Added a sticky, live verse preview that reacts to text, symbol and manual reader/narrator edits in the unsaved draft. It uses the canonical Qiraat reader and narrator colors; multiple authorities on one sign use the shared-reader color with individually colored labels. Verified traditional symbols remain red.
-- Manual word assignments now choose a full word or a specific Arabic letter with its diacritics. Existing assignments default to full word. The authority selectors are colored add/remove buttons, and the desktop grid gives their column more width.
-- Focused validation covers letter indices and grapheme clusters. Typecheck, ESLint, eight focused tests and the production build passed. The live browser showed a wider authority column (651 px versus 501 px for the poem at 1440 px), working letter and add/remove controls, immediate preview updates and no page errors. The browser test did not save its draft. An assignment whose word was edited away is omitted from preview labels until reanchored.
-
-## 2026-10-28 — Word reader/narrator assignments and three-column متون editor
-- Added a clickable word picker for both hemistichs and independent manual assignments of any of the ten readers or twenty narrators to each word occurrence. Assignments carry optional source and note, are validated server-side, and are saved with the same optimistic revision as the poem and traditional symbols. The old symbol dictionary and its meaning are unchanged.
-- The desktop editor now presents search, poem/symbol editing, and word assignments in three independently scrolling columns. The responsive mobile layout stacks them. Added `mutoon-authorities.json` export and optional import; existing saved documents without assignments load as an empty set.
-- The iOS app does not yet consume the manual assignment export; only the traditional symbols currently appear there.
-
-section below **and** the root
+  recorded — dated, newest-first — in **both** the `# Changelog` section below **and** the root
   `CHANGELOG.md` (keep the two in sync), before the work is considered done. This is the running
   history/log of all changes for future reference.
 
 # Changelog
+
+## 2026-11-16 — iOS parity: phone reader polish, compact popovers, Qiraat first-use hint & reader Settings items (Task 10)
+- Footer popovers (Qiraat and More; `PhoneFooterBar.tsx`): converted to compact glass cards hugging their content (height = rows) anchored just above the footer capsule and centered under the pressed footer item matching iOS `BarPopoverMenu.swift`. Applied 0.5px hairline divider, soft shadow, 48px row height, icons aligned at the end, and restricted focus outline to keyboard focus (`:focus-visible` with 2px ring in `--mushaf-gold` without thick blue outline) while preserving `role="menu"`, Escape dismissal, and focus return.
+- Qiraat first-use hint (`QiraatFirstUseHint.tsx`): added small dismissible card above the footer («المس كلمة ملوّنة لعرض قراءاتها») when Qiraat layer is enabled, with inline SVG hand-tap icon, 44px close button, 8-second auto-dismiss timer, and persistent dismissal stored in `localStorage` key `mushaf1441:phone:qiraatHintSeen:v1` (with safe try/catch and in-memory fallback), wired surgically in `Mushaf1441Viewer.tsx`.
+- Reader Settings modal (`renderSettingsModal`): mapped phone width (<768px) surface, text, and border styling to iOS semantic variables (`--mushaf-paper`, `--mushaf-ink`, `--mushaf-brown`, `--mushaf-gold`, `--qiraat-card-fill`, `--qiraat-card-stroke`) so all appearances (System, Light, Dark, White Page, Black Page) remain legible, while desktop (`>=768px`) styling remains byte-identical. Added phone-only iOS parity sections for «الخصوصية والدعم» (linking to `/privacy` and `/support`) and «عن التطبيق» (displaying version string from `NEXT_PUBLIC_APP_VERSION` with fallback `'ويب'`).
+- Tests: added pure logic and persistence tests in `tests/ios-parity/qiraat-hint.test.ts` covering display conditions, storage persistence, error recovery, auto-dismiss timing, and version resolution.
 
 ## 2026-11-16 — iOS-parity phone reader chrome integration and polish (Task 6)
 - Wired «الفهرس» (both header surah title and footer item) to `IndexSheet` with surah, juz, bookmarks (fed from existing in-memory annotations converted via `indexBookmarksFromAnnotations`), and page scrubber navigation.
