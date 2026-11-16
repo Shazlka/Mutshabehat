@@ -4867,6 +4867,12 @@ export default function Mushaf1441Viewer({
             </section>
             <section aria-labelledby="reading-settings-title" className="space-y-2 border-t pt-4 max-md:border-[var(--mushaf-rule-soft)] max-md:text-[var(--mushaf-ink)] md:border-[var(--mushaf-rule)]">
               <h3 id="reading-settings-title" className="text-sm font-black max-md:text-[var(--mushaf-ink)]">تفضيلات القراءة</h3>
+              <Link href="/reading" className="flex min-h-11 items-center justify-between rounded-lg border px-3 text-sm font-bold max-md:border-[var(--qiraat-card-stroke)] max-md:bg-[var(--qiraat-card-fill)] max-md:text-[var(--mushaf-ink)]">
+                <span>الإحصائيات والختمة</span><span aria-hidden="true">‹</span>
+              </Link>
+              <Link href="/memorization" className="flex min-h-11 items-center justify-between rounded-lg border px-3 text-sm font-bold max-md:border-[var(--qiraat-card-stroke)] max-md:bg-[var(--qiraat-card-fill)] max-md:text-[var(--mushaf-ink)]">
+                <span>حفظ القرآن</span><span aria-hidden="true">‹</span>
+              </Link>
               <label className="flex min-h-11 items-center gap-3 text-sm font-bold max-md:text-[var(--mushaf-ink)]">
                 <input type="checkbox" checked={readingPreferences.prefs.keepAwake} onChange={(event) => readingPreferences.update({ ...readingPreferences.prefs, keepAwake: event.target.checked })} />
                 إبقاء الشاشة مضاءة أثناء القراءة
