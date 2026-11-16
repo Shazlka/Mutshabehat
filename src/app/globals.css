@@ -154,6 +154,45 @@
   --qx-mark-performance: #4f46e5;
   --qx-mark-unresolved: #8a8a8a;
   --qx-mark-usul: #c026d3;
+
+  /* iOS semantic tokens for app chrome & magazine feed */
+  --app-progress: #1A7340;
+  --app-progress-fill: #1A7340;
+  --app-caution: #A14D07;
+  --app-caution-fill: #A14D07;
+  --app-info: #1B5FC1;
+  --app-insight: #6A3DB0;
+  --app-favorite: #8F6A00;
+  --app-danger: #B4232A;
+  --qiraat-card-fill: #FFFEFA;
+  --qiraat-card-stroke: #D9C99B;
+  --qiraat-variant-ink: #7A1F1A;
+  --qiraat-badge-ink: #6B4A00;
+  --qiraat-badge-fill: #F1E2B6;
+  --qiraat-review-ink: #8A2F10;
+  --qiraat-review-fill: #F7D2C4;
+  --qiraat-on-fill-light: #FFFFFF;
+  --qiraat-on-fill-dark: #16110A;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --app-progress: #5FD38D;
+    --app-progress-fill: #23854D;
+    --app-caution: #F7A65E;
+    --app-caution-fill: #A8530C;
+    --app-info: #80B4FF;
+    --app-insight: #C3A5F7;
+    --app-favorite: #F2C94C;
+    --app-danger: #FF8A8A;
+    --qiraat-card-fill: #27241E;
+    --qiraat-card-stroke: #5A5036;
+    --qiraat-variant-ink: #F2A9A1;
+    --qiraat-badge-ink: #F0D58A;
+    --qiraat-badge-fill: #4A3A12;
+    --qiraat-review-ink: #FFC1A8;
+    --qiraat-review-fill: #5C2616;
+  }
 }
 
 /* iOS reader appearances. These variables only become authoritative inside the

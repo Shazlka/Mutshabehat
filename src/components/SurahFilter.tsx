@@ -40,7 +40,7 @@ export default function SurahFilter({ surahCounts }: Props) {
     <div className="relative">
       <button onClick={() => setOpen(!open)} type="button"
         className={cn(
-          'inline-flex items-center gap-1.5 px-3.5 py-1.5 text-[12px] font-bold rounded-full tap-shrink transition-colors',
+          'inline-flex items-center gap-1.5 px-3.5 py-2 sm:py-1.5 min-h-[40px] sm:min-h-0 text-[12px] font-bold rounded-full tap-shrink transition-colors',
           active
             ? 'bg-[var(--color-primary)] text-[var(--color-paper)] shadow-sm shadow-[var(--color-primary)]/20'
             : 'text-[var(--color-ink-soft)] bg-[var(--color-surface)] hover:bg-[var(--color-primary-soft)] hover:text-[var(--color-primary)]'

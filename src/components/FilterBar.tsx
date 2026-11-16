@@ -113,7 +113,7 @@ export default function FilterBar() {
               aria-pressed={isActive}
               onClick={() => update(f.key)}
               className={cn(
-                'px-4 py-1.5 text-[12px] rounded-full font-bold tap-shrink transition-all duration-150',
+                'px-3.5 sm:px-4 py-2 sm:py-1.5 min-h-[38px] sm:min-h-0 text-[12px] rounded-full font-bold tap-shrink transition-all duration-150',
                 isActive
                   ? 'bg-[var(--color-primary)] text-[var(--color-paper)] shadow-sm shadow-[var(--color-primary)]/20'
                   : 'text-[var(--color-ink-soft)] bg-[var(--color-surface)] hover:bg-[var(--color-primary-soft)] hover:text-[var(--color-primary)]'
@@ -124,7 +124,7 @@ export default function FilterBar() {
         })}
         <span className="flex-1" />
         <Link href="/groups/new"
-          className="inline-flex items-center gap-1 px-4 py-1.5 text-[12px] font-bold rounded-full bg-[var(--color-ink)] text-[var(--color-paper)] hover:bg-[var(--color-primary)] tap-shrink transition-colors shadow-sm">
+          className="inline-flex items-center gap-1 px-3.5 sm:px-4 py-2 sm:py-1.5 min-h-[38px] sm:min-h-0 text-[12px] font-bold rounded-full bg-[var(--color-ink)] text-[var(--color-paper)] hover:bg-[var(--color-primary)] tap-shrink transition-colors shadow-sm">
           <span aria-hidden="true">+</span> مجموعة جديدة
         </Link>
       </div>

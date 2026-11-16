@@ -10,6 +10,7 @@ import Pagination from '@/components/Pagination'
 import ColorLegend from '@/components/ColorLegend'
 import MainGroupSwipePager from '@/components/MainGroupSwipePager'
 import GroupCardGrid from '@/components/GroupCardGrid'
+import MobileMagazineFeed from '@/components/MobileMagazineFeed'
 
 type SP = Promise<{ page?: string; filter?: string; q?: string; sort?: string; view?: string; surah?: string }>
 
@@ -344,10 +345,14 @@ export default async function HomePage({ searchParams }: { searchParams: SP }) {
           startIndex={(page - 1) * limit + 1}
         />
       ) : isCardView ? (
-        // Collapsed / magazine cards on wide screens; phones and portrait tablets keep the list
+        // Collapsed / magazine cards on wide screens; below lg magazine mode renders MobileMagazineFeed
         <>
           <div className="lg:hidden">
-            <MainGroupSwipePager mode="full" groups={sorted} startIndex={(page - 1) * limit + 1} />
+            {view === 'magazine' ? (
+              <MobileMagazineFeed groups={sorted} startIndex={(page - 1) * limit + 1} />
+            ) : (
+              <MainGroupSwipePager mode="full" groups={sorted} startIndex={(page - 1) * limit + 1} />
+            )}
           </div>
           <div className="hidden lg:block">
             <GroupCardGrid mode={view as 'collapsed' | 'magazine'} groups={sorted} startIndex={(page - 1) * limit + 1} />

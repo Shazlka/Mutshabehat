@@ -44,14 +44,14 @@ export default function SortBar() {
       <label className="inline-flex items-center gap-1.5">
         <span className="text-[var(--color-ink-muted)] tracking-wider uppercase font-bold">الترتيب:</span>
         <select value={sort} onChange={(e) => setParam('sort', e.target.value, 'created')}
-          className="px-2.5 py-1.5 bg-[var(--color-surface)] border border-[var(--color-border-soft)] rounded-md text-[12px] font-bold focus:border-[var(--color-primary)] focus:outline-none transition-colors">
+          className="px-2.5 py-2 sm:py-1.5 min-h-[38px] sm:min-h-0 bg-[var(--color-surface)] border border-[var(--color-border-soft)] rounded-md text-[12px] font-bold focus:border-[var(--color-primary)] focus:outline-none transition-colors">
           {SORTS.map((s) => <option key={s.key} value={s.key}>{s.label}</option>)}
         </select>
       </label>
       <label className="inline-flex items-center gap-1.5">
         <span className="text-[var(--color-ink-muted)] tracking-wider uppercase font-bold">العرض:</span>
         <select value={view} onChange={(e) => setParam('view', e.target.value, 'flat')}
-          className="px-2.5 py-1.5 bg-[var(--color-surface)] border border-[var(--color-border-soft)] rounded-md text-[12px] font-bold focus:border-[var(--color-primary)] focus:outline-none transition-colors">
+          className="px-2.5 py-2 sm:py-1.5 min-h-[38px] sm:min-h-0 bg-[var(--color-surface)] border border-[var(--color-border-soft)] rounded-md text-[12px] font-bold focus:border-[var(--color-primary)] focus:outline-none transition-colors">
           {VIEWS.map((v) => <option key={v.key} value={v.key}>{v.label}</option>)}
         </select>
       </label>
