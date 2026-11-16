@@ -21,10 +21,11 @@ import {
   targetToSelection,
   type SelectionTarget,
 } from '../../packages/memorization-core/selectionParser'
+import { loadDefaultQuranIndex, loadSurahNames } from '../../packages/memorization-core/quranIndexNode'
 
 describe('MemorizationSelectionTests', () => {
-  const index = QuranIndex.loadDefault()
-  const names = QuranIndex.getSurahNames()
+  const index = loadDefaultQuranIndex()
+  const names = loadSurahNames()
 
   const key = (surah: number, ayah: number): AyahKey => makeAyahKey(surah, ayah)
 

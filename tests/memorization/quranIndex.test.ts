@@ -9,9 +9,10 @@ import {
   QuranIndex,
   type AyahLayoutRow,
 } from '../../packages/memorization-core/quranIndex'
+import { loadDefaultQuranIndex } from '../../packages/memorization-core/quranIndexNode'
 
 describe('QuranIndexTests', () => {
-  const index = QuranIndex.loadDefault()
+  const index = loadDefaultQuranIndex()
 
   it('totalIs6236', () => {
     assert.equal(index.totalAyahs, 6236)
@@ -127,4 +128,23 @@ describe('QuranIndexTests', () => {
     assert.deepEqual(synthIndex.ayatBetween(a, unknown), [])
     assert.deepEqual(synthIndex.ayatBetween(unknown, a), [])
   })
+})
+
+test('the browser layout file builds the same index as the Node loader', async () => {
+  const { readFileSync } = await import('node:fs')
+  const layout = JSON.parse(readFileSync('public/quran/ayah-layout.json', 'utf8'))
+  const fromFile = QuranIndex.fromLayout(layout)
+  const fromFixtures = loadDefaultQuranIndex()
+  assert.equal(fromFile.totalAyahs, 6236)
+  assert.equal(fromFile.totalAyahs, fromFixtures.totalAyahs)
+  let sum = 0
+  for (const key of fromFixtures.ayahKeys) {
+    assert.equal(fromFile.page(key), fromFixtures.page(key))
+    assert.equal(fromFile.weight(key), fromFixtures.weight(key))
+    sum += fromFile.weight(key)
+  }
+  assert.ok(Math.abs(sum - 604) < 1e-6, `page-equivalents sum to ${sum}`)
+  for (const juz of fromFixtures.juzNumbers) {
+    assert.deepEqual(fromFile.pagesOfJuz(juz), fromFixtures.pagesOfJuz(juz))
+  }
 })

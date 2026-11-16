@@ -19,9 +19,10 @@ import {
   computeMemorizationSnapshot,
   type ProgressRange,
 } from '../../packages/memorization-core/statistics'
+import { loadDefaultQuranIndex } from '../../packages/memorization-core/quranIndexNode'
 
 describe('MemorizationHistoryTests', () => {
-  const index = QuranIndex.loadDefault()
+  const index = loadDefaultQuranIndex()
   const base = 1_790_000_000_000
 
   const at = (seconds: number): string => toNormalizedIsoString(base + seconds * 1000)

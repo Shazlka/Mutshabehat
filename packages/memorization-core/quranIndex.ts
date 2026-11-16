@@ -1,10 +1,7 @@
-import { readFileSync, existsSync } from 'node:fs'
-import { join, resolve } from 'node:path'
 import {
   MUSHAF_PAGE_COUNT,
   type AyahKey,
   ayahKeyString,
-  compareAyahKeys,
   makeAyahKey,
 } from './types'
 
@@ -12,6 +9,12 @@ export interface AyahLayoutRow {
   readonly key: AyahKey
   readonly page: number
   readonly wordCount: number
+}
+
+/** Compact, JSON-friendly layout of the whole Quran: [surah, ayah, page, wordCount] per ayah. */
+export interface AyahLayoutFile {
+  readonly rows: ReadonlyArray<readonly [number, number, number, number]>
+  readonly pageJuz: Readonly<Record<string, number>>
 }
 
 export interface PageRange {
@@ -29,6 +32,7 @@ export class QuranIndex {
   private readonly pageJuzMap: Readonly<Record<number, number>>
   private readonly juzPagesMap = new Map<number, PageRange>()
   private readonly weights = new Map<string, number>()
+  private readonly words = new Map<string, number>()
 
   constructor(rows: readonly AyahLayoutRow[], pageJuz: Record<number, number>) {
     this.ayahKeys = rows.map((r) => r.key)
@@ -40,6 +44,7 @@ export class QuranIndex {
       const kStr = ayahKeyString(row.key)
       this.ordinals.set(kStr, ordinal)
       this.ayahPages.set(kStr, row.page)
+      this.words.set(kStr, row.wordCount)
 
       let pageAyat = this.pageAyatMap.get(row.page)
       if (!pageAyat) {
@@ -124,6 +129,11 @@ export class QuranIndex {
     return this.pageAyatMap.get(page) ?? []
   }
 
+  /** Words in the ayah (the basis of the page-equivalent weights). */
+  wordCount(key: AyahKey): number {
+    return this.words.get(ayahKeyString(key)) ?? 0
+  }
+
   weight(key: AyahKey): number {
     return this.weights.get(ayahKeyString(key)) ?? 0
   }
@@ -184,104 +194,15 @@ export class QuranIndex {
     return this.ayahKeys.slice(minOrd, maxOrd + 1)
   }
 
-  // --- Static loaders ---
-
-  private static defaultIndexInstance: QuranIndex | null = null
-  private static defaultSurahNames: Record<number, string> | null = null
-
-  public static loadDefault(): QuranIndex {
-    if (QuranIndex.defaultIndexInstance) {
-      return QuranIndex.defaultIndexInstance
-    }
-
-    const fixturesDir = findFixturesDir()
-    const metadataPath = join(fixturesDir, 'page-metadata.json')
-    const metadataRaw = JSON.parse(readFileSync(metadataPath, 'utf8'))
-
+  /** Browser-safe construction from the precomputed layout file (`public/quran/ayah-layout.json`). */
+  static fromLayout(layout: AyahLayoutFile): QuranIndex {
+    const rows: AyahLayoutRow[] = layout.rows.map(([surah, ayah, page, wordCount]) => ({
+      key: makeAyahKey(surah, ayah),
+      page,
+      wordCount,
+    }))
     const pageJuz: Record<number, number> = {}
-    for (const page of metadataRaw.pages) {
-      pageJuz[page.pageNumber] = page.juzNumber
-    }
-
-    const wordsDir = join(fixturesDir, 'page-words')
-    const rowsMap = new Map<string, { key: AyahKey; page: number; wordCount: number }>()
-
-    for (let p = 1; p <= MUSHAF_PAGE_COUNT; p += 1) {
-      const padded = String(p).padStart(3, '0')
-      const filePath = join(wordsDir, `page-${padded}.json`)
-      const pageData = JSON.parse(readFileSync(filePath, 'utf8'))
-
-      for (const line of pageData.lines) {
-        for (const word of line.words) {
-          const isWord = word.charTypeName === 'word' || (!word.charTypeName && word.textUthmani)
-          const kStr = `${word.surahNumber}:${word.ayahNumber}`
-          let entry = rowsMap.get(kStr)
-          if (!entry) {
-            entry = {
-              key: makeAyahKey(word.surahNumber, word.ayahNumber),
-              page: word.pageNumber ?? p,
-              wordCount: 0,
-            }
-            rowsMap.set(kStr, entry)
-          } else {
-            entry.page = Math.min(entry.page, word.pageNumber ?? p)
-          }
-          if (isWord) {
-            entry.wordCount += 1
-          }
-        }
-      }
-    }
-
-    const rows: AyahLayoutRow[] = Array.from(rowsMap.values()).sort((a, b) =>
-      compareAyahKeys(a.key, b.key),
-    )
-
-    QuranIndex.defaultIndexInstance = new QuranIndex(rows, pageJuz)
-    return QuranIndex.defaultIndexInstance
+    for (const [page, juz] of Object.entries(layout.pageJuz)) pageJuz[Number(page)] = juz
+    return new QuranIndex(rows, pageJuz)
   }
-
-  public static getSurahNames(): Record<number, string> {
-    if (QuranIndex.defaultSurahNames) {
-      return QuranIndex.defaultSurahNames
-    }
-
-    const candidatePaths = [
-      resolve(process.cwd(), 'public/quran/surah-names.json'),
-      resolve(__dirname, '../../../public/quran/surah-names.json'),
-      resolve(__dirname, '../../public/quran/surah-names.json'),
-    ]
-
-    for (const p of candidatePaths) {
-      if (existsSync(p)) {
-        const raw = JSON.parse(readFileSync(p, 'utf8'))
-        const result: Record<number, string> = {}
-        for (const [k, v] of Object.entries(raw)) {
-          result[Number(k)] = String(v)
-        }
-        QuranIndex.defaultSurahNames = result
-        return result
-      }
-    }
-
-    // Fallback names if file not found
-    throw new Error('surah-names.json could not be located')
-  }
-}
-
-function findFixturesDir(): string {
-  const candidatePaths = [
-    resolve(process.cwd(), 'packages/quran-data/mushaf1441/fixtures'),
-    resolve(__dirname, '../quran-data/mushaf1441/fixtures'),
-    resolve(__dirname, '../../quran-data/mushaf1441/fixtures'),
-    resolve(__dirname, '../../../packages/quran-data/mushaf1441/fixtures'),
-  ]
-
-  for (const p of candidatePaths) {
-    if (existsSync(p)) {
-      return p
-    }
-  }
-
-  throw new Error('mushaf1441 fixtures directory could not be located')
 }

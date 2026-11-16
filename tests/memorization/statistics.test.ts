@@ -22,9 +22,10 @@ import {
   type SurahListItem,
 } from '../../packages/memorization-core/statistics'
 import { createMemorizationPolicy } from '../../packages/memorization-core/policy'
+import { loadDefaultQuranIndex } from '../../packages/memorization-core/quranIndexNode'
 
 describe('MemorizationStatisticsTests', () => {
-  const index = QuranIndex.loadDefault()
+  const index = loadDefaultQuranIndex()
   const now = new Date(1_790_000_000 * 1000)
 
   const records = (
