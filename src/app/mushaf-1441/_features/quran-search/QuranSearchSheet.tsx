@@ -310,7 +310,7 @@ export function QuranSearchSheet({ open, onClose, onGoToAyah }: QuranSearchSheet
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 backdrop-blur-xs motion-reduce:backdrop-blur-none sm:items-center"
+      className="fixed inset-0 z-[80] flex items-end justify-center bg-black/50 backdrop-blur-xs motion-reduce:backdrop-blur-none sm:items-center"
       onClick={onClose}
     >
       <section

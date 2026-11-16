@@ -1,3 +1,6 @@
+## 2026-11-16 — iOS parity: sheets and menus cover the phone footer
+- Index, Quran search, word card, settings, surah picker and the burger drawer now stack above the floating footer and scrubber (`z-[80]`), like iOS sheets that cover the tab bar. No desktop change.
+
 ## 2026-11-16 — iOS-parity phone reader chrome integration and polish (Task 6)
 - Wired «الفهرس» (both header surah title and footer item) to `IndexSheet` with surah, juz, bookmarks (fed from existing in-memory annotations converted via `indexBookmarksFromAnnotations`), and page scrubber navigation.
 - Wired «بحث» to `QuranSearchSheet`, jumping to the target ayah page and smoothly scrolling the target ayah element (`#ayah-s-a`) into view. Retained «قريبًا» toast for unbuilt items.

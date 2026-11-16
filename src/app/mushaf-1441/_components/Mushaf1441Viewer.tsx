@@ -3385,7 +3385,7 @@ export default function Mushaf1441Viewer({
     const close = () => setMutshabehatPopupAyahKey(null)
 
     return (
-      <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-6" role="dialog" aria-modal="true" aria-labelledby="mutshabehat-popup-title">
+      <div className="fixed inset-0 z-[80] flex items-end justify-center sm:items-center sm:p-6" role="dialog" aria-modal="true" aria-labelledby="mutshabehat-popup-title">
         <button type="button" aria-label="إغلاق" onClick={close} className="absolute inset-0 cursor-default bg-[#2a2111]/40" />
         <section
           className="relative flex max-h-[86dvh] w-full max-w-xl flex-col overflow-hidden rounded-t-2xl border border-[var(--mushaf-rule)] bg-[var(--mushaf-cream-3)] shadow-[0_24px_60px_-12px_rgba(42,33,17,0.45)] sm:rounded-2xl"
@@ -3443,7 +3443,7 @@ export default function Mushaf1441Viewer({
     }
 
     return (
-      <div className="fixed inset-0 z-50">
+      <div className="fixed inset-0 z-[80]">
         <button
           type="button"
           aria-label="إغلاق قائمة الخيارات"
@@ -4622,7 +4622,7 @@ export default function Mushaf1441Viewer({
           dir="rtl"
           role="dialog"
           aria-label="فهرس السور"
-          className="fixed inset-0 z-50 flex touch-manipulation flex-col overflow-hidden bg-[var(--mushaf-cream-3)] sm:absolute sm:inset-auto sm:right-0 sm:top-full sm:mt-1 sm:max-h-[min(60vh,420px)] sm:w-[19rem] sm:rounded-xl sm:border sm:border-[var(--mushaf-rule)] sm:shadow-[0_18px_50px_rgba(23,23,23,0.28)]"
+          className="fixed inset-0 z-[80] flex touch-manipulation flex-col overflow-hidden bg-[var(--mushaf-cream-3)] sm:absolute sm:inset-auto sm:right-0 sm:top-full sm:mt-1 sm:max-h-[min(60vh,420px)] sm:w-[19rem] sm:rounded-xl sm:border sm:border-[var(--mushaf-rule)] sm:shadow-[0_18px_50px_rgba(23,23,23,0.28)]"
           style={{ paddingTop: 'env(safe-area-inset-top)', paddingBottom: 'env(safe-area-inset-bottom)' }}
         >
             {/* Full-screen header — only meaningful affordance to close on mobile, since the
@@ -4792,7 +4792,7 @@ export default function Mushaf1441Viewer({
     const themes = isPhone ? phoneThemes : desktopThemes
 
     return (
-      <div className="fixed inset-0 z-50 flex items-end justify-center p-0 sm:items-center sm:p-4" dir="rtl">
+      <div className="fixed inset-0 z-[80] flex items-end justify-center p-0 sm:items-center sm:p-4" dir="rtl">
         {/* Backdrop */}
         <button
           type="button"
@@ -5518,7 +5518,7 @@ export default function Mushaf1441Viewer({
       {renderMutshabehatPopup()}
 
       {qiraatReferenceOpen ? (
-        <div className="fixed inset-0 z-50">
+        <div className="fixed inset-0 z-[80]">
           <button
             type="button"
             aria-label="إغلاق المرجع"
