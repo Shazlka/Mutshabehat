@@ -76,7 +76,11 @@ import {
 import { QIRAAT_PREFS_STORAGE_KEY, type QiraatComparisonFilter, type QiraatMode, type QiraatPrefs } from './qiraat/types'
 import { impactHaptic } from './haptics'
 import {
+  type MushafAppearance,
   type MushafTheme,
+  isMushafAppearance,
+  MUSHAF_APPEARANCES,
+  MUSHAF_APPEARANCE_STORAGE_KEY,
   MUSHAF_THEME_STORAGE_KEY,
   THEME_TOKENS,
   tintForGroupWithTheme,
@@ -131,6 +135,17 @@ function readMushafTheme(): MushafTheme {
     // Storage unavailable
   }
   return 'sepia'
+}
+
+function readMushafAppearance(): MushafAppearance {
+  if (typeof window === 'undefined') return 'system'
+  try {
+    const stored = window.localStorage.getItem(MUSHAF_APPEARANCE_STORAGE_KEY)
+    if (isMushafAppearance(stored)) return stored
+  } catch {
+    // Storage unavailable
+  }
+  return 'system'
 }
 
 /** What the permanent Qiraat sidebar is currently explaining. */
@@ -226,6 +241,21 @@ function subscribeToSpreadQuery(onChange: () => void) {
 }
 const getSpreadSnapshot = () => window.matchMedia(SPREAD_MEDIA_QUERY).matches
 const getSpreadServerSnapshot = () => false
+const PHONE_MEDIA_QUERY = '(max-width: 767px)'
+const DARK_MEDIA_QUERY = '(prefers-color-scheme: dark)'
+function subscribeToPhoneQuery(onChange: () => void) {
+  const query = window.matchMedia(PHONE_MEDIA_QUERY)
+  query.addEventListener('change', onChange)
+  return () => query.removeEventListener('change', onChange)
+}
+function subscribeToDarkQuery(onChange: () => void) {
+  const query = window.matchMedia(DARK_MEDIA_QUERY)
+  query.addEventListener('change', onChange)
+  return () => query.removeEventListener('change', onChange)
+}
+const getPhoneSnapshot = () => window.matchMedia(PHONE_MEDIA_QUERY).matches
+const getDarkSnapshot = () => window.matchMedia(DARK_MEDIA_QUERY).matches
+const getMediaServerSnapshot = () => false
 
 type PopupGroup = {
   id: string
@@ -626,8 +656,11 @@ export default function Mushaf1441Viewer({
     ? 'qiraat'
     : readerLayer === 'mutshabehat' ? 'mutshabehat' : 'notes'
 
-  // Mushaf Appearance & Theme (Sepia / Dark / White)
+  // Desktop keeps the existing three themes. Phones use the separate iOS appearance model.
   const [mushafTheme, setMushafTheme] = useState<MushafTheme>('sepia')
+  const [mushafAppearance, setMushafAppearance] = useState<MushafAppearance>('system')
+  const isPhone = useSyncExternalStore(subscribeToPhoneQuery, getPhoneSnapshot, getMediaServerSnapshot)
+  const systemPrefersDark = useSyncExternalStore(subscribeToDarkQuery, getDarkSnapshot, getMediaServerSnapshot)
   const [isSettingsOpen, setIsSettingsOpen] = useState(false)
   const readingPreferences = useReadingPreferences(isSettingsOpen || isMenuOpen || isSurahPickerOpen || pageSliderPreview !== null)
   useEffect(() => {
@@ -654,6 +687,13 @@ export default function Mushaf1441Viewer({
     setMushafTheme(nextTheme)
     try {
       window.localStorage.setItem(MUSHAF_THEME_STORAGE_KEY, nextTheme)
+    } catch { /* ignore */ }
+  }
+
+  function switchMushafAppearance(nextAppearance: MushafAppearance) {
+    setMushafAppearance(nextAppearance)
+    try {
+      window.localStorage.setItem(MUSHAF_APPEARANCE_STORAGE_KEY, nextAppearance)
     } catch { /* ignore */ }
   }
 
@@ -962,10 +1002,11 @@ export default function Mushaf1441Viewer({
   }, [contextMenu])
 
   useEffect(() => {
-    // Restore the chosen layer and theme after hydration.
+    // Restore the chosen layer and desktop/phone appearances after hydration.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setReaderLayer(readReaderLayer())
     setMushafTheme(readMushafTheme())
+    setMushafAppearance(readMushafAppearance())
   }, [])
 
   // The ONE place the active layer changes. Switching layers also drops whatever the previous one
@@ -1217,6 +1258,13 @@ export default function Mushaf1441Viewer({
     () => (qiraatMode === 'riwayah' ? { kind: 'reading', readingId: qiraatSelectedReadingId } : qiraatFilter),
     [qiraatMode, qiraatSelectedReadingId, qiraatFilter],
   )
+  const qiraatReaderWashColor = useMemo(() => {
+    if (qiraatMode === 'normal' || effectiveQiraatFilter.kind === 'all') return undefined
+    const readerId = effectiveQiraatFilter.kind === 'reader'
+      ? effectiveQiraatFilter.readerId
+      : getReadingOrNull(effectiveQiraatFilter.readingId)?.readerId
+    return readerId ? readerColor(readerId) : undefined
+  }, [effectiveQiraatFilter, qiraatMode])
   // Complete rulings (ignoring the باب switches): compare must never make a hidden باب look like «كحفص».
   const allRulingsByPageNumber = useMemo(() => byPageNumber(qiraatRulingsByPage), [qiraatRulingsByPage])
   // «مقارنة» needs the open word's complete data, not what the current filter would show: a filtered fallback would
@@ -2650,6 +2698,7 @@ export default function Mushaf1441Viewer({
         key={word.id}
         type="button"
         data-quran-word-id={word.id}
+        data-mushaf-default-ink={!annotationTextColor && !effectiveMarkerColor && !effectiveRulingColor ? 'true' : undefined}
         data-qiraat-multi-reader={qiraatMarker?.isGradient ? 'true' : undefined}
         data-qiraat-marked={qiraatMarker || rulingMarker ? 'true' : undefined}
         id={word.wordIndexInAyah === 1 ? navigateToAyah(word.ayahKey).slice(1) : undefined}
@@ -4641,10 +4690,12 @@ export default function Mushaf1441Viewer({
   function renderSettingsModal() {
     if (!isSettingsOpen) return null
 
-    const isDark = mushafTheme === 'dark'
+    const isDark = isPhone
+      ? mushafAppearance === 'dark' || mushafAppearance === 'blackPage' || (mushafAppearance === 'system' && systemPrefersDark)
+      : mushafTheme === 'dark'
 
-    const themes: Array<{
-      id: MushafTheme
+    type ThemeChoice = {
+      id: MushafTheme | MushafAppearance
       title: string
       subtitle: string
       previewBg: string
@@ -4652,7 +4703,8 @@ export default function Mushaf1441Viewer({
       previewText: string
       previewAccent: string
       desc: string
-    }> = [
+    }
+    const desktopThemes: ThemeChoice[] = [
       {
         id: 'sepia',
         title: 'ورق كلاسيكي دافئ',
@@ -4684,6 +4736,22 @@ export default function Mushaf1441Viewer({
         desc: 'صفحة بيضاء صافية بحبر كربوني فاحم، تبرز علامات المصحف وتلوينات المتشابهات بوضوح تام.',
       },
     ]
+    const phoneThemes: ThemeChoice[] = MUSHAF_APPEARANCES.map((appearance) => {
+      const systemDark = appearance.id === 'system' && systemPrefersDark
+      return {
+        ...appearance,
+        title: appearance.nameAr,
+        subtitle: appearance.id === 'system' ? 'يتبع مظهر الجهاز تلقائيًا' : 'ألوان مطابقة لتطبيق قراءات على iOS',
+        previewBg: systemDark ? 'rgb(11% 10.5% 9%)' : appearance.previewBg,
+        previewBorder: systemDark ? '#5A5036' : appearance.previewBorder,
+        previewText: systemDark ? 'rgb(92% 91% 86%)' : appearance.previewText,
+        previewAccent: systemDark ? 'rgb(88% 75% 42%)' : appearance.previewAccent,
+        desc: appearance.id === 'system'
+          ? 'يتغير مباشرةً مع اختيار المظهر الفاتح أو الداكن في الجهاز.'
+          : 'الورق وسطح القراءة بلون واحد، مع الحبر والبني والذهبي المعتمد في التطبيق.',
+      }
+    })
+    const themes = isPhone ? phoneThemes : desktopThemes
 
     return (
       <div className="fixed inset-0 z-50 flex items-end justify-center p-0 sm:items-center sm:p-4" dir="rtl">
@@ -4771,14 +4839,17 @@ export default function Mushaf1441Viewer({
             <h3 className="text-sm font-black">المظهر</h3>
             <div className="space-y-3" role="radiogroup" aria-label="مظهر المصحف">
               {themes.map((theme) => {
-                const isSelected = mushafTheme === theme.id
+                const isSelected = isPhone ? mushafAppearance === theme.id : mushafTheme === theme.id
                 return (
                   <button
                     key={theme.id}
                     type="button"
                     role="radio"
                     aria-checked={isSelected}
-                    onClick={() => switchMushafTheme(theme.id)}
+                    onClick={() => {
+                      if (isPhone && isMushafAppearance(theme.id)) switchMushafAppearance(theme.id)
+                      else if (!isPhone && (theme.id === 'sepia' || theme.id === 'dark' || theme.id === 'white')) switchMushafTheme(theme.id)
+                    }}
                     className={`group relative flex w-full flex-col gap-3 rounded-xl border p-3.5 text-right transition-all sm:flex-row sm:items-center sm:p-4 ${
                       isSelected
                         ? isDark
@@ -4894,12 +4965,17 @@ export default function Mushaf1441Viewer({
   return (
     <div
       dir="rtl"
-      className={`flex h-[100dvh] flex-col overflow-hidden ${currentThemeTokens.viewerBgClass}`}
-      style={{ paddingTop: 'env(safe-area-inset-top)' }}
+      data-mushaf-appearance={isPhone ? mushafAppearance : undefined}
+      data-qiraat-reader-color={isPhone ? qiraatReaderWashColor : undefined}
+      className={`mushaf-reader-root flex h-[100dvh] flex-col overflow-hidden ${currentThemeTokens.viewerBgClass}`}
+      style={{
+        paddingTop: 'env(safe-area-inset-top)',
+        ...(qiraatReaderWashColor ? { '--qiraat-reader-color': qiraatReaderWashColor } : {}),
+      } as CSSProperties}
     >
       <h1 className="sr-only">المصحف الشريف — الصفحة {pageNumber}</h1>
       {/* Slim top bar — the main screen is the mushaf itself */}
-      <header className={`flex shrink-0 items-center justify-between gap-2 border-b px-3 py-2 ${currentThemeTokens.headerBgClass}`}>
+      <header className={`mushaf-reader-header flex shrink-0 items-center justify-between gap-2 border-b px-3 py-2 ${currentThemeTokens.headerBgClass}`}>
         <div className="flex min-w-0 items-center gap-2">
           <button
             type="button"

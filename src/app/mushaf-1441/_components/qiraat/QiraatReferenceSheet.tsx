@@ -65,7 +65,7 @@ function ReadingPills({ symbol }: { symbol: GroupSymbol }) {
 
 function GroupSymbolCard({ symbol }: { symbol: GroupSymbol }) {
   return (
-    <div className="rounded-lg border border-[var(--mushaf-rule)] bg-white p-3">
+    <div className="qiraat-phone-card rounded-lg border border-[var(--mushaf-rule)] bg-white p-3">
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-2">
           <SymbolBadge>{symbol.symbol}</SymbolBadge>
@@ -74,7 +74,7 @@ function GroupSymbolCard({ symbol }: { symbol: GroupSymbol }) {
             {symbol.labelAr ? <p className="text-[11px] text-[var(--mushaf-gold-ink)]">{symbol.labelAr}</p> : null}
           </div>
         </div>
-        <span className="shrink-0 rounded-full bg-[#f4efe6] px-2 py-0.5 text-[11px] font-bold text-[var(--mushaf-gold-deep)]">
+        <span className="qiraat-phone-badge shrink-0 rounded-full bg-[#f4efe6] px-2 py-0.5 text-[11px] font-bold text-[var(--mushaf-gold-deep)]">
           {symbol.readingCountInSource} روايات
         </span>
       </div>
@@ -137,7 +137,7 @@ export default function QiraatReferenceSheet() {
             </button>
 
             {isOpen ? (
-              <div className="space-y-3 border-t border-[var(--mushaf-rule-soft)] bg-white p-3">
+              <div className="qiraat-phone-card space-y-3 border-t border-[var(--mushaf-rule-soft)] bg-white p-3">
                 {section.id === 'readers' ? (
                   <>
                     {(['shatibiyyah', 'durrah'] as const).map((matn) => (
@@ -148,7 +148,7 @@ export default function QiraatReferenceSheet() {
                         <MatnSymbolTable matn={matn} />
                       </div>
                     ))}
-                    <p className="rounded-md bg-[#f4efe6] p-2.5 text-[11px] leading-6 text-[var(--mushaf-gold-deep)]">
+                    <p className="qiraat-phone-badge rounded-md bg-[#f4efe6] p-2.5 text-[11px] leading-6 text-[var(--mushaf-gold-deep)]">
                       عشرون رواية لا عشرون شخصًا: <strong>الدوري</strong> هو حفص بن عمر الدوري نفسه يروي عن
                       أبي عمرو وعن الكسائي، وهما روايتان مستقلتان. و<strong>خلف</strong> الراوي عن حمزة هو
                       خلف العاشر نفسه، لكن روايته عن حمزة غير اختياره بوصفه إمامًا — فلا يُدمج السجلان.
@@ -163,7 +163,7 @@ export default function QiraatReferenceSheet() {
                       إذا ورد اسم الإمام في مدلول الرمز شمل روايتيه، وإذا ورد اسم راوٍ بعينه اقتصر عليه.
                     </p>
                     {WORD_SYMBOLS.map((s) => <GroupSymbolCard key={s.symbol} symbol={s} />)}
-                    <p className="rounded-md bg-[#fff3c4] p-2.5 text-[11px] leading-6 text-[var(--mushaf-gold-deep)]">
+                    <p className="qiraat-phone-review rounded-md bg-[#fff3c4] p-2.5 text-[11px] leading-6 text-[var(--mushaf-gold-deep)]">
                       لضبط الفرق: <strong>صَحْبَة</strong> فيها شعبة ولا يدخل فيها حفص، و<strong>صِحَاب</strong> فيها
                       حفص ولا يدخل فيها شعبة؛ وكلتاهما تشمل حمزة والكسائي بروايتيهما. وهذه الدلالات خاصة
                       باصطلاح الشاطبية، فلا يُضاف خلف العاشر إلى أيٍّ منها تلقائيًا.
@@ -208,9 +208,9 @@ export default function QiraatReferenceSheet() {
                           {ex.phrase}
                         </p>
                         <p className="mt-1 text-[11px] text-[var(--mushaf-gold-ink)]">طريقة الفك: {ex.how}</p>
-                        <p className="mt-1 text-xs font-bold text-[#11643f]">{ex.result}</p>
+                        <p className="qiraat-phone-progress mt-1 text-xs font-bold text-[#11643f]">{ex.result}</p>
                         {ex.caution ? (
-                          <p className="mt-1.5 rounded bg-[#fff3c4] px-2 py-1 text-[11px] leading-5 text-[var(--mushaf-gold-deep)]">
+                          <p className="qiraat-phone-review mt-1.5 rounded bg-[#fff3c4] px-2 py-1 text-[11px] leading-5 text-[var(--mushaf-gold-deep)]">
                             {ex.caution}
                           </p>
                         ) : null}
@@ -223,19 +223,19 @@ export default function QiraatReferenceSheet() {
                   <>
                     <div className="overflow-hidden rounded-md border border-[var(--mushaf-rule-soft)]">
                       <div className="grid grid-cols-[auto_1fr_1fr] gap-px bg-[var(--mushaf-rule-soft)] text-[11px]">
-                        <div className="bg-[#f4efe6] px-2 py-1.5 font-bold text-[var(--mushaf-gold-deep)]">الحروف</div>
-                        <div className="bg-[#f4efe6] px-2 py-1.5 font-bold text-[var(--mushaf-gold-deep)]">في الشاطبية</div>
-                        <div className="bg-[#f4efe6] px-2 py-1.5 font-bold text-[var(--mushaf-gold-deep)]">في الدرة</div>
+                        <div className="qiraat-phone-badge bg-[#f4efe6] px-2 py-1.5 font-bold text-[var(--mushaf-gold-deep)]">الحروف</div>
+                        <div className="qiraat-phone-badge bg-[#f4efe6] px-2 py-1.5 font-bold text-[var(--mushaf-gold-deep)]">في الشاطبية</div>
+                        <div className="qiraat-phone-badge bg-[#f4efe6] px-2 py-1.5 font-bold text-[var(--mushaf-gold-deep)]">في الدرة</div>
                         {DURRAH_LETTER_REMAP.map((row) => (
                           <div key={row.letters} className="contents">
-                            <div className="bg-white px-2 py-1.5 font-[family-name:var(--font-amiri-quran)] text-sm font-black text-[var(--mushaf-gold-deep)]">{row.letters}</div>
-                            <div className="bg-white px-2 py-1.5 leading-5 text-[var(--mushaf-brown)]">{row.inShatibiyyah}</div>
-                            <div className="bg-white px-2 py-1.5 leading-5 text-[var(--mushaf-brown)]">{row.inDurrah}</div>
+                            <div className="qiraat-phone-card bg-white px-2 py-1.5 font-[family-name:var(--font-amiri-quran)] text-sm font-black text-[var(--mushaf-gold-deep)]">{row.letters}</div>
+                            <div className="qiraat-phone-card bg-white px-2 py-1.5 leading-5 text-[var(--mushaf-brown)]">{row.inShatibiyyah}</div>
+                            <div className="qiraat-phone-card bg-white px-2 py-1.5 leading-5 text-[var(--mushaf-brown)]">{row.inDurrah}</div>
                           </div>
                         ))}
                       </div>
                     </div>
-                    <p className="rounded-md bg-[#fff3c4] p-2.5 text-[11px] leading-6 text-[var(--mushaf-gold-deep)]">
+                    <p className="qiraat-phone-review rounded-md bg-[#fff3c4] p-2.5 text-[11px] leading-6 text-[var(--mushaf-gold-deep)]">
                       في اصطلاح الدرة: أصل أبي جعفر نافع، وأصل يعقوب أبو عمرو، وأصل خلف العاشر حمزة —
                       و«الأصل» هنا للمقارنة في النظم فقط، ولا يعني أن الثلاثة رواة عن هذه الأصول. فلا تُنسخ
                       أحكام الأصل آليًا بلا قراءة الدرة وقيودها. مثال مباشر:
@@ -256,7 +256,7 @@ export default function QiraatReferenceSheet() {
                         </li>
                       ))}
                     </ul>
-                    <p className="rounded-md bg-[#fff3c4] p-2.5 text-[11px] leading-6 text-[var(--mushaf-gold-deep)]">{REMAINDER_CAVEAT}</p>
+                    <p className="qiraat-phone-review rounded-md bg-[#fff3c4] p-2.5 text-[11px] leading-6 text-[var(--mushaf-gold-deep)]">{REMAINDER_CAVEAT}</p>
                   </>
                 ) : null}
 
@@ -274,7 +274,7 @@ export default function QiraatReferenceSheet() {
                               href={src.href}
                               target="_blank"
                               rel="noreferrer noopener"
-                              className="text-[11px] leading-5 text-[#1d4ed8] underline decoration-dotted underline-offset-2"
+                              className="qiraat-phone-info text-[11px] leading-5 text-[#1d4ed8] underline decoration-dotted underline-offset-2"
                             >
                               {src.label}
                             </a>

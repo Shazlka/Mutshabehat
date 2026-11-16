@@ -50,14 +50,14 @@ export function MutoonSheet({ onClose }: { onClose: () => void }) {
             onChange={(e) => setQuery(e.target.value)}
             placeholder="ابحث في المتون"
             aria-label="ابحث في المتون"
-            className="mb-3 min-h-6 w-full rounded border border-[var(--mushaf-rule)] bg-white px-3 py-1.5 text-sm [@media(pointer:coarse)]:min-h-11"
+            className="qiraat-phone-card mb-3 min-h-6 w-full rounded border border-[var(--mushaf-rule)] bg-white px-3 py-1.5 text-sm [@media(pointer:coarse)]:min-h-11"
           />
           <div style={{ fontFamily: 'var(--font-cairo), system-ui, sans-serif' }}>
             {searching ? (
               hits.length === 0 ? <p className="text-sm text-[var(--qx-muted)]">لا نتائج.</p> : (
                 <ul className="space-y-2">
                   {hits.map((hit) => (
-                    <li key={`${hit.work}-${hit.chapterTitle}-${hit.verse.number}`} data-testid="mutoon-hit" className="rounded-lg border border-[var(--mushaf-rule-soft)] bg-white p-2 text-sm leading-8">
+                    <li key={`${hit.work}-${hit.chapterTitle}-${hit.verse.number}`} data-testid="mutoon-hit" className="qiraat-phone-card rounded-lg border border-[var(--mushaf-rule-soft)] bg-white p-2 text-sm leading-8">
                       <span className="block text-[11px] font-bold text-[var(--qx-muted)]">{hit.workTitle} · {hit.chapterTitle} · بيت {hit.verse.number}</span>
                       {hit.verse.lines.map((line, i) => <span key={i} className="block">{line}</span>)}
                     </li>
@@ -67,7 +67,7 @@ export function MutoonSheet({ onClose }: { onClose: () => void }) {
             ) : (
               <div className="space-y-3">
                 {works.map((work) => (
-                  <details key={work.work} data-testid={`mutoon-work-${work.work}`} className="rounded-lg border border-[var(--mushaf-rule)] bg-white p-2">
+                  <details key={work.work} data-testid={`mutoon-work-${work.work}`} className="qiraat-phone-card rounded-lg border border-[var(--mushaf-rule)] bg-white p-2">
                     <summary className="cursor-pointer text-sm font-black">{work.title} <span className="text-[11px] font-bold text-[var(--qx-muted)]">· {work.author}</span></summary>
                     <div className="mt-2 space-y-2">
                       {work.chapters.map((chapter) => (

@@ -33,7 +33,7 @@ export function UsulIndexSheet(props: {
       {categories.length === 0 && data.done ? <p className="text-sm text-[var(--qx-muted)]">لا توجد أحكام مسجَّلة.</p> : null}
       <ul className="space-y-2">
         {categories.map((category) => (
-          <li key={category.code} className="rounded-lg border border-[var(--mushaf-rule-soft)] bg-white">
+          <li key={category.code} className="qiraat-phone-card rounded-lg border border-[var(--mushaf-rule-soft)] bg-white">
             <button
               type="button"
               data-testid={`usul-category-${category.code}`}

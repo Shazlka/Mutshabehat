@@ -35,7 +35,7 @@ export function PageSummarySheet(props: {
                 type="button"
                 data-testid="summary-item"
                 onClick={() => { onSelectWord(item.wordId); onClose() }}
-                className="w-full rounded-lg border border-[var(--mushaf-rule-soft)] bg-white p-2 text-start"
+                className="qiraat-phone-card w-full rounded-lg border border-[var(--mushaf-rule-soft)] bg-white p-2 text-start"
               >
                 <span className="mb-1 flex items-baseline justify-between gap-2">
                   <span className="font-[family-name:var(--font-amiri-quran)] text-xl font-bold">{item.text}</span>

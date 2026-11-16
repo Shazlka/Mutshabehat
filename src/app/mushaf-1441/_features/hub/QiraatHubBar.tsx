@@ -51,7 +51,7 @@ export function QiraatHubBar(props: {
           <summary className="min-h-6 cursor-pointer list-none rounded border border-[var(--mushaf-rule)] px-3 py-0.5 text-[11px] font-bold [@media(pointer:coarse)]:min-h-11">
             المزيد <Glyph>▾</Glyph>
           </summary>
-          <ul className="absolute start-0 z-10 mt-1 min-w-40 rounded-lg border border-[var(--mushaf-rule)] bg-white p-1 shadow">
+          <ul className="qiraat-phone-card absolute start-0 z-10 mt-1 min-w-40 rounded-lg border border-[var(--mushaf-rule)] bg-white p-1 shadow">
             {entries.map((entry) => (
               <li key={entry.name}>
                 <button

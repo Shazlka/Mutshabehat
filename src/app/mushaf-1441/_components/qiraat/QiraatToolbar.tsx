@@ -39,7 +39,7 @@ function ReaderList({ value, onChange }: { value: ReaderId; onChange: (id: Reade
             onClick={() => onChange(reader.id)}
             className="flex min-h-8 items-center gap-1.5 rounded-md border px-2 text-right text-[11px] font-bold transition-colors"
             style={{
-              borderColor: active ? reader.color : '#e3d6b4',
+              borderColor: active ? reader.color : 'var(--qiraat-toolbar-idle-stroke, #e3d6b4)',
               background: active ? tint(reader.color) : 'transparent',
               color: reader.color,
             }}
@@ -75,7 +75,7 @@ function RiwayahList({ value, onChange }: { value: ReadingId; onChange: (id: Rea
                   onClick={() => onChange(narrator.id)}
                   className="min-h-8 rounded-md border px-1.5 py-1 text-[11px] font-bold leading-tight transition-colors"
                   style={{
-                    borderColor: active ? narrator.color : '#e3d6b4',
+                    borderColor: active ? narrator.color : 'var(--qiraat-toolbar-idle-stroke, #e3d6b4)',
                     background: active ? tint(narrator.color) : 'transparent',
                     color: reader.color,
                   }}
@@ -107,7 +107,7 @@ export default function QiraatToolbar({
             type="button"
             onClick={() => onModeChange(option.id)}
             className={`min-h-9 rounded-[5px] px-2 transition-colors ${
-              mode === option.id ? 'bg-[var(--mushaf-ink)] text-white' : 'text-[var(--mushaf-gold-deep)] hover:bg-[#fff1cf]'
+              mode === option.id ? 'bg-[var(--mushaf-ink)] text-white' : 'qiraat-phone-hover text-[var(--mushaf-gold-deep)] hover:bg-[#fff1cf]'
             }`}
           >
             {option.label}
@@ -116,7 +116,7 @@ export default function QiraatToolbar({
       </div>
 
       {mode === 'riwayah' ? (
-        <div className="space-y-2 rounded-md border border-[var(--mushaf-rule)] bg-white p-2">
+        <div className="qiraat-phone-card space-y-2 rounded-md border border-[var(--mushaf-rule)] bg-white p-2">
           <RiwayahList value={selectedReadingId} onChange={onReadingChange} />
           <label className="flex items-center justify-between gap-3 pt-1 text-[11px] text-[var(--mushaf-ink-2)]">
             <span>إظهار الاختلاف عن حفص</span>
@@ -132,7 +132,7 @@ export default function QiraatToolbar({
       ) : null}
 
       {mode === 'comparison' ? (
-        <div className="space-y-2 rounded-md border border-[var(--mushaf-rule)] bg-white p-2">
+        <div className="qiraat-phone-card space-y-2 rounded-md border border-[var(--mushaf-rule)] bg-white p-2">
           <div className="grid grid-cols-3 gap-1 text-[11px] font-bold">
             {(['all', 'reader', 'reading'] as const).map((kind) => (
               <button
@@ -144,7 +144,7 @@ export default function QiraatToolbar({
                   else onFilterChange({ kind: 'reading', readingId: selectedReadingId !== BASE_READING ? selectedReadingId : 'Q01-R01' })
                 }}
                 className={`min-h-8 rounded-md border px-2 transition-colors ${
-                  filter.kind === kind ? 'border-[var(--mushaf-ink)] bg-[var(--mushaf-ink)] text-white' : 'border-[var(--mushaf-rule)] text-[var(--mushaf-gold-deep)] hover:bg-[#fff1cf]'
+                  filter.kind === kind ? 'border-[var(--mushaf-ink)] bg-[var(--mushaf-ink)] text-white' : 'qiraat-phone-hover border-[var(--mushaf-rule)] text-[var(--mushaf-gold-deep)] hover:bg-[#fff1cf]'
                 }`}
               >
                 {kind === 'all' ? 'الكل' : kind === 'reader' ? 'قارئ' : 'رواية'}

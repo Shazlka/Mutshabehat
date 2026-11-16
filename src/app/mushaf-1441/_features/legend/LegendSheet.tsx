@@ -39,7 +39,7 @@ function MarkSample({ markKey }: { markKey: string }) {
 
 function Row({ row, nested }: { row: LegendRow; nested?: boolean }) {
   return (
-    <li data-testid={`legend-row-${row.key}`} className={`flex items-start gap-2 rounded border border-[var(--mushaf-rule-soft)] bg-white p-2 ${nested ? 'ms-4' : ''}`}>
+    <li data-testid={`legend-row-${row.key}`} className={`qiraat-phone-card flex items-start gap-2 rounded border border-[var(--mushaf-rule-soft)] bg-white p-2 ${nested ? 'ms-4' : ''}`}>
       {row.key.startsWith('mark-')
         ? <MarkSample markKey={row.key} />
         : <span aria-hidden="true" className="mt-1 inline-block h-3 w-3 shrink-0 rounded-full border border-[var(--mushaf-rule)]" style={{ background: row.color }} />}

@@ -40,7 +40,7 @@ function UsulLine({ usul }: { usul: ComparedUsul }) {
 
 function VoiceColumn({ voice }: { voice: Voice }) {
   return (
-    <div data-testid={`compare-voice-${voice.authorityId}`} className="rounded-lg border bg-white p-2" style={{ borderColor: voice.color }}>
+    <div data-testid={`compare-voice-${voice.authorityId}`} className="qiraat-phone-card rounded-lg border bg-white p-2" style={{ borderColor: voice.color }}>
       <p className="mb-1 text-xs font-black" style={{ color: readableInkOn(voice.color, CREAM_SURFACE) }}>{voice.name}</p>
       <ul className="space-y-1">
         {voice.content.wajhs.map((w, i) => (
@@ -78,7 +78,7 @@ export function CompareSheet(props: { word: { surah: number; ayah: number; token
       {all.length > 1 ? (
         <label className="mb-3 block text-[11px] font-bold">
           الموضع المقارَن
-          <select value={locusIndex ?? Math.max(0, locus ? all.indexOf(locus) : 0)} onChange={(e) => setLocusIndex(Number(e.target.value))} className="mt-1 min-h-6 w-full rounded border border-[var(--mushaf-rule)] bg-white px-2 py-1 text-xs [@media(pointer:coarse)]:min-h-11">
+          <select value={locusIndex ?? Math.max(0, locus ? all.indexOf(locus) : 0)} onChange={(e) => setLocusIndex(Number(e.target.value))} className="qiraat-phone-card mt-1 min-h-6 w-full rounded border border-[var(--mushaf-rule)] bg-white px-2 py-1 text-xs [@media(pointer:coarse)]:min-h-11">
             {all.map((l, i) => <option key={i} value={i}>{l.ayah}:{l.startToken}{l.endToken !== l.startToken ? `–${l.endToken}` : ''}</option>)}
           </select>
         </label>

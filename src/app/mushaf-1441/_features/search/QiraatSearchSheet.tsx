@@ -62,11 +62,11 @@ export function QiraatSearchSheet(props: {
           onChange={(e) => setWord(e.target.value)}
           placeholder="اكتب الكلمة أو جزءًا منها"
           aria-label="الكلمة"
-          className="mb-3 min-h-6 w-full rounded border border-[var(--mushaf-rule)] bg-white px-3 py-1.5 text-sm [@media(pointer:coarse)]:min-h-11"
+          className="qiraat-phone-card mb-3 min-h-6 w-full rounded border border-[var(--mushaf-rule)] bg-white px-3 py-1.5 text-sm [@media(pointer:coarse)]:min-h-11"
         />
       ) : null}
       {scope === 'authority' ? (
-        <select aria-label="القارئ أو الراوي" value={authority} onChange={(e) => setAuthority(e.target.value)} className="mb-3 min-h-6 w-full rounded border border-[var(--mushaf-rule)] bg-white px-2 py-1.5 text-sm [@media(pointer:coarse)]:min-h-11">
+        <select aria-label="القارئ أو الراوي" value={authority} onChange={(e) => setAuthority(e.target.value)} className="qiraat-phone-card mb-3 min-h-6 w-full rounded border border-[var(--mushaf-rule)] bg-white px-2 py-1.5 text-sm [@media(pointer:coarse)]:min-h-11">
           {QIRAAT_READERS.map((reader) => (
             <optgroup key={reader.id} label={reader.nameAr}>
               <option value={reader.id}>{reader.nameAr} (كل الروايتين)</option>
@@ -76,7 +76,7 @@ export function QiraatSearchSheet(props: {
         </select>
       ) : null}
       {scope === 'category' ? (
-        <select aria-label="الباب" value={category || index.categories[0]?.code || ''} onChange={(e) => setCategory(e.target.value)} className="mb-3 min-h-6 w-full rounded border border-[var(--mushaf-rule)] bg-white px-2 py-1.5 text-sm [@media(pointer:coarse)]:min-h-11">
+        <select aria-label="الباب" value={category || index.categories[0]?.code || ''} onChange={(e) => setCategory(e.target.value)} className="qiraat-phone-card mb-3 min-h-6 w-full rounded border border-[var(--mushaf-rule)] bg-white px-2 py-1.5 text-sm [@media(pointer:coarse)]:min-h-11">
           {index.categories.map((c) => <option key={c.code} value={c.code}>{c.nameAr} ({c.rulingCount})</option>)}
         </select>
       ) : null}
@@ -96,7 +96,7 @@ export function QiraatSearchSheet(props: {
                         type="button"
                         data-testid="search-result"
                         onClick={() => { props.onGoToPlace({ page: r.page, surah: r.surah, ayah: r.ayah, startToken: r.token }); props.onClose() }}
-                        className="flex min-h-6 w-full items-baseline justify-between gap-2 rounded border border-[var(--mushaf-rule-soft)] bg-white px-2 py-1 text-start text-xs [@media(pointer:coarse)]:min-h-11"
+                        className="qiraat-phone-card flex min-h-6 w-full items-baseline justify-between gap-2 rounded border border-[var(--mushaf-rule-soft)] bg-white px-2 py-1 text-start text-xs [@media(pointer:coarse)]:min-h-11"
                       >
                         <span className="font-[family-name:var(--font-amiri-quran)] text-lg">{r.displayText || '—'}</span>
                         <span className="text-[11px] text-[var(--qx-muted)]">{r.ayah}:{r.token} · {r.kinds.map((k) => KIND_LABEL[k]).join(' + ')}{r.recordCount > 1 ? ` · ${r.recordCount}` : ''}</span>

@@ -1,6 +1,28 @@
 export type MushafTheme = 'sepia' | 'dark' | 'white'
 
+export type MushafAppearance = 'system' | 'light' | 'dark' | 'whitePage' | 'blackPage'
+
 export const MUSHAF_THEME_STORAGE_KEY = 'mushaf1441:theme:v1'
+export const MUSHAF_APPEARANCE_STORAGE_KEY = 'mushaf1441:appearance:v1'
+
+export const MUSHAF_APPEARANCES: ReadonlyArray<{
+  id: MushafAppearance
+  nameAr: string
+  previewBg: string
+  previewBorder: string
+  previewText: string
+  previewAccent: string
+}> = [
+  { id: 'system', nameAr: 'تلقائي', previewBg: 'rgb(100% 99.2% 96.5%)', previewBorder: '#D9C99B', previewText: 'rgb(9% 9% 9%)', previewAccent: 'rgb(78% 62% 24%)' },
+  { id: 'light', nameAr: 'فاتح', previewBg: 'rgb(100% 99.2% 96.5%)', previewBorder: '#D9C99B', previewText: 'rgb(9% 9% 9%)', previewAccent: 'rgb(78% 62% 24%)' },
+  { id: 'dark', nameAr: 'داكن', previewBg: 'rgb(11% 10.5% 9%)', previewBorder: '#5A5036', previewText: 'rgb(92% 91% 86%)', previewAccent: 'rgb(88% 75% 42%)' },
+  { id: 'whitePage', nameAr: 'صفحة بيضاء', previewBg: '#FFFFFF', previewBorder: '#D9C99B', previewText: '#000000', previewAccent: 'rgb(72% 55% 20%)' },
+  { id: 'blackPage', nameAr: 'صفحة سوداء', previewBg: '#000000', previewBorder: '#5A5036', previewText: '#FFFFFF', previewAccent: 'rgb(85% 72% 38%)' },
+]
+
+export function isMushafAppearance(value: unknown): value is MushafAppearance {
+  return value === 'system' || value === 'light' || value === 'dark' || value === 'whitePage' || value === 'blackPage'
+}
 
 export interface MushafThemeTokens {
   id: MushafTheme

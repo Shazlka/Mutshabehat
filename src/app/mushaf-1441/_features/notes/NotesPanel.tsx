@@ -54,7 +54,7 @@ export function NotesPanel(props: { surahName: (surah: number) => string; onGoTo
               type="button"
               data-testid="note-item"
               onClick={() => { props.onGoToWord(n.surah, n.ayah, n.token); props.onClose() }}
-              className="w-full rounded-lg border border-[var(--mushaf-rule-soft)] bg-white p-2 text-start text-xs"
+              className="qiraat-phone-card w-full rounded-lg border border-[var(--mushaf-rule-soft)] bg-white p-2 text-start text-xs"
             >
               <span className="flex items-center justify-between gap-2 font-black">
                 <span>{n.favourite ? <><Glyph>★</Glyph>{' '}</> : null}{props.surahName(n.surah)} {n.ayah}:{n.token}</span>

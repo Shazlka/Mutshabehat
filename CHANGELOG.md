@@ -1,3 +1,8 @@
+## 2026-11-16 — iOS-parity phone appearances and dynamic Qiraat surfaces
+- Added the five native Mushaf appearances on phone widths only: automatic, light, dark, white page and black page. The phone choice has its own guarded local-storage key; automatic follows the live system colour scheme, while the existing three desktop themes and their picker remain unchanged at 768px and above.
+- Added the exact iOS paper, ink, brown, gold, semantic and Qiraat-card tokens, with desk equal to paper in every appearance. Selecting a reader or narrator applies the native 5% parent-reader colour wash to both page and desk.
+- Converted the phone Qiraat sheets, cards, inputs, badges and reference panels to dynamic light/dark tokens without changing their desktop classes. Added WCAG contrast coverage for the native light and dark token pairs.
+
 ## 2026-11-15 — Qiraat and reading preferences in web reader Settings
 - Added a Qiraat section to the reader Settings: layer toggle, reader/narrator picker, Farsh-only, category switches with show/hide all, and the optional Farsh subcategory line (off by default, like iOS). Existing Usul preferences are reused; bulk changes preserve other category choices.
 - Added persistent keep-screen-awake and ten-second footer auto-hide preferences. Wake locks release on cleanup and reacquire when the page becomes visible; unsupported or denied requests show a status. Reading interaction restores the footer. Settings supports Escape, focus containment, and focus restoration.

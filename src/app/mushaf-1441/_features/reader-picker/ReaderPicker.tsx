@@ -34,7 +34,7 @@ export function ReaderPicker(props: {
         onChange={(event) => setQuery(event.target.value)}
         placeholder="ابحث عن قارئ أو راوٍ"
         aria-label="ابحث عن قارئ أو راوٍ"
-        className="mb-3 min-h-6 w-full rounded border border-[var(--mushaf-rule)] bg-white px-3 py-1.5 text-sm [@media(pointer:coarse)]:min-h-11"
+        className="qiraat-phone-card mb-3 min-h-6 w-full rounded border border-[var(--mushaf-rule)] bg-white px-3 py-1.5 text-sm [@media(pointer:coarse)]:min-h-11"
       />
       {comparing ? (
         <div className="mb-3 flex items-center justify-between gap-2">
@@ -104,7 +104,7 @@ function PickRow(props: { label: string; color: string; selected: boolean; compa
       type="button"
       aria-pressed={selected}
       onClick={onClick}
-      className={`${ROW} ${selected ? 'border-[var(--mushaf-ink)] bg-white' : 'border-transparent'}`}
+      className={`${ROW} ${selected ? 'qiraat-phone-card qiraat-phone-selected border-[var(--mushaf-ink)] bg-white' : 'border-transparent'}`}
     >
       <span aria-hidden="true" className="inline-block h-3 w-3 shrink-0 rounded-full" style={{ background: color }} />
       <span className="flex-1">{label}</span>

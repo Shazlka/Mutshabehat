@@ -68,7 +68,7 @@ export function WordNotes({ surah, ayah, token }: { surah: number; ayah: number;
   }
 
   return (
-    <div data-testid="word-notes" className="rounded-lg border border-[var(--mushaf-rule-soft)] bg-white p-2">
+    <div data-testid="word-notes" className="qiraat-phone-card rounded-lg border border-[var(--mushaf-rule-soft)] bg-white p-2">
       <div className="flex items-center justify-between gap-2">
         <button
           type="button"
