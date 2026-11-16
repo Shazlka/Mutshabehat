@@ -32,7 +32,7 @@ import { attributionForReadings, attributionLabelsAr, readingsNotIn, rollupAutho
 import { getReadingOrNull, QIRAAT_READINGS } from '../../../../packages/qiraat-core/readings'
 import { getReader } from '../../../../packages/qiraat-core/readers'
 import { getNarrator } from '../../../../packages/qiraat-core/narrators'
-import { QIRAAT_MULTI_READER_COLOR, readerColor, narratorColor } from '../../../../packages/qiraat-core/colors'
+import { QIRAAT_MULTI_READER_COLOR, readerColor, narratorColor, readerCssVar, narratorCssVar } from '../../../../packages/qiraat-core/colors'
 import { DIFFERENCE_TYPE_LABELS_AR, BASE_READING, type QiraatRulingAttribution, type QiraatVariant, type QiraatRule, type QiraatRuling, type ReadingId } from '../../../../packages/qiraat-core/types'
 import QiraatToolbar from './qiraat/QiraatToolbar'
 import QiraatReferenceSheet from './qiraat/QiraatReferenceSheet'
@@ -87,6 +87,10 @@ import {
   adaptColorForDark,
   adaptAnnotationForDark,
 } from './mushafTheme'
+import { filterLabel } from '../../../../packages/qiraat-core/features/readerPicker'
+import { PhoneTopBar } from './phone/PhoneTopBar'
+import { PhoneFooterBar } from './phone/PhoneFooterBar'
+import { usePhoneChrome } from './phone/usePhoneChrome'
 
 const EMPTY_QIRAAT_VARIANTS: QiraatVariant[] = []
 const EMPTY_QIRAAT_RULES: QiraatRule[] = []
@@ -161,6 +165,8 @@ type Mushaf1441ViewerProps = {
   surahOptions: Mushaf1441SurahOption[]
   /** Every ayah → personal group link, loaded on the server; null = not available (client fetches). */
   initialMutshabehatHighlights?: MutshabehatAyahLink[] | null
+  onOpenSearch?: () => void
+  onOpenBookmarks?: () => void
 }
 
 const MIN_PAGE = 1
@@ -558,6 +564,8 @@ export default function Mushaf1441Viewer({
   initialPageMetadata,
   surahOptions,
   initialMutshabehatHighlights = null,
+  onOpenSearch,
+  onOpenBookmarks,
 }: Mushaf1441ViewerProps) {
   ReactDOM.preconnect('https://verses.quran.foundation', { crossOrigin: 'anonymous' })
   ReactDOM.preload(getQcfV2FontUrl(initialPage.pageNumber), {
@@ -739,6 +747,14 @@ export default function Mushaf1441Viewer({
   }
   // Which iOS-parity sheet is open (picker, colour key, search …); rendered by QiraatFeaturesHost.
   const [qiraatFeature, setQiraatFeature] = useState<FeatureName | null>(null)
+  const [phonePopoverOpen, setPhonePopoverOpen] = useState(false)
+  const phoneChrome = usePhoneChrome({
+    autoHideAfterMs: 10_000,
+    autoHidesFooter: readingPreferences.prefs.autoHideFooter,
+    forceVisible: phonePopoverOpen || isSurahPickerOpen || isSettingsOpen || qiraatFeature !== null
+      || isMenuOpen || contextMenu !== null || mutshabehatPopupAyahKey !== null || isMobileNotesOpen
+      || hoveredQiraatWord !== null || qiraatSelection !== null || qiraatReferenceOpen,
+  })
   // Opening a sheet from the phone menu closes the menu behind it.
   function openQiraatFeature(name: FeatureName) {
     setQiraatFeature(name)
@@ -1265,6 +1281,11 @@ export default function Mushaf1441Viewer({
       : getReadingOrNull(effectiveQiraatFilter.readingId)?.readerId
     return readerId ? readerColor(readerId) : undefined
   }, [effectiveQiraatFilter, qiraatMode])
+  const phoneFilterColor = effectiveQiraatFilter.kind === 'reader'
+    ? `var(${readerCssVar(effectiveQiraatFilter.readerId)})`
+    : effectiveQiraatFilter.kind === 'reading'
+      ? `var(${narratorCssVar(effectiveQiraatFilter.readingId)})`
+      : undefined
   // Complete rulings (ignoring the باب switches): compare must never make a hidden باب look like «كحفص».
   const allRulingsByPageNumber = useMemo(() => byPageNumber(qiraatRulingsByPage), [qiraatRulingsByPage])
   // «مقارنة» needs the open word's complete data, not what the current filter would show: a filtered fallback would
@@ -1893,6 +1914,12 @@ export default function Mushaf1441Viewer({
     if (target.closest('button') || target.closest('a')) return
     const rect = event.currentTarget.getBoundingClientRect()
     const x = event.clientX - rect.left
+    if (isPhone) {
+      if (x < rect.width / 3) turnPage(1)
+      else if (x > rect.width * 2 / 3) turnPage(-1)
+      else phoneChrome.toggle()
+      return
+    }
     if (x < rect.width / 2) turnPage(1)
     else turnPage(-1)
   }
@@ -4974,8 +5001,20 @@ export default function Mushaf1441Viewer({
       } as CSSProperties}
     >
       <h1 className="sr-only">المصحف الشريف — الصفحة {pageNumber}</h1>
+      {isPhone ? (
+        <PhoneTopBar
+          metadata={visiblePageMetadata}
+          pageNumber={pageNumber}
+          qiraatEnabled={qiraatMode !== 'normal'}
+          filterName={effectiveQiraatFilter.kind === 'all' ? undefined : filterLabel(effectiveQiraatFilter)}
+          filterColor={phoneFilterColor}
+          surahPickerOpen={isSurahPickerOpen}
+          onOpenSurahPicker={() => { setSurahPickerSearch(''); setIsSurahPickerOpen(true) }}
+          onOpenReaderPicker={() => openQiraatFeature('readerPicker')}
+        />
+      ) : null}
       {/* Slim top bar — the main screen is the mushaf itself */}
-      <header className={`mushaf-reader-header flex shrink-0 items-center justify-between gap-2 border-b px-3 py-2 ${currentThemeTokens.headerBgClass}`}>
+      <header className={`mushaf-reader-header hidden shrink-0 items-center justify-between gap-2 border-b px-3 py-2 md:flex ${currentThemeTokens.headerBgClass}`}>
         <div className="flex min-w-0 items-center gap-2">
           <button
             type="button"
@@ -5015,7 +5054,7 @@ export default function Mushaf1441Viewer({
               </p>
             </div>
           </button>
-          {renderSurahPicker()}
+          {!isPhone ? renderSurahPicker() : null}
           </div>
           {/* The page number gets its own fixed-width frame OUTSIDE the truncating block: inside
               it, a long surah name pushed it into the ellipsis and the number became unreadable. */}
@@ -5104,6 +5143,7 @@ export default function Mushaf1441Viewer({
           </button>
         </div>
       </header>
+      {isPhone ? renderSurahPicker() : null}
 
       {/* On desktop / iPad landscape the Qiraat panel is a permanent sidebar beside the page
           instead of living inside the burger drawer; the page re-fits itself via container queries. */}
@@ -5115,7 +5155,7 @@ export default function Mushaf1441Viewer({
         ref={pageMainRef}
         className="relative min-h-0 min-w-0 flex-1 overflow-auto overscroll-contain"
         style={{ containerType: 'size', touchAction: 'none' }}
-        onPointerDown={handlePagePointerDown}
+        onPointerDown={(event) => { if (phoneChrome.visible) phoneChrome.reset(); handlePagePointerDown(event) }}
         onPointerMove={handlePagePointerMove}
         onPointerUp={handlePagePointerEnd}
         onPointerCancel={handlePagePointerEnd}
@@ -5234,7 +5274,7 @@ export default function Mushaf1441Viewer({
           <div
             data-testid="reader-footer"
             hidden={readingPreferences.footerHidden}
-            className={`${readingPreferences.footerHidden ? 'hidden' : 'flex'} relative shrink-0 items-center gap-3 border-t px-3 py-2 ${currentThemeTokens.sliderContainerClass}`}
+            className={`${readingPreferences.footerHidden ? 'hidden' : 'hidden md:flex'} relative shrink-0 items-center gap-3 border-t px-3 py-2 ${currentThemeTokens.sliderContainerClass}`}
             style={{ paddingBottom: 'calc(0.5rem + env(safe-area-inset-bottom))' }}
           >
             {pageSliderPreview !== null ? (
@@ -5277,6 +5317,27 @@ export default function Mushaf1441Viewer({
           </div>
         )
       })()}
+
+      {isPhone ? (
+        <PhoneFooterBar
+          visible={phoneChrome.visible}
+          pageNumber={pageNumber}
+          pageCount={MUSHAF_1441_PAGE_COUNT}
+          qiraatEnabled={qiraatMode !== 'normal'}
+          farshOnly={usulPrefs.farshOnly}
+          filterName={filterLabel(effectiveQiraatFilter)}
+          onInteraction={phoneChrome.reset}
+          onPopoverOpenChange={setPhonePopoverOpen}
+          onGoToPage={(page) => { void goToPage(page) }}
+          onOpenIndex={() => { setSurahPickerSearch(''); setIsSurahPickerOpen(true) }}
+          onOpenSearch={() => { if (onOpenSearch) onOpenSearch(); else setToast('قريبًا') }}
+          onOpenBookmarks={() => { if (onOpenBookmarks) onOpenBookmarks(); else setToast('قريبًا') }}
+          onToggleQiraat={() => toggleLayer('qiraat')}
+          onOpenQiraatFeature={openQiraatFeature}
+          onOpenMutoon={() => openQiraatFeature('mutoon')}
+          onOpenSettings={() => setIsSettingsOpen(true)}
+        />
+      ) : null}
 
 
       {/* Burger drawer: navigation sliders, account / sign-in, settings */}

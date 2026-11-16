@@ -1,3 +1,8 @@
+## 2026-11-16 — iOS-parity phone reader chrome
+- Replaced the phone-width action header and permanent page slider with the native-style informational top bar and floating six-item footer, while retaining the existing desktop header and slider at 768px and above. The compact phone scrubber floats above the footer and page-centre taps show or hide the chrome; the outer thirds retain RTL page turning.
+- Added accessible Qiraat and More popovers that reuse the existing reader picker, colour key, page summary, Qiraat search, Usul index and Mutoon sheets. The Qiraat layer toggle and filter state stay synchronized; Usul hides in Farsh-only mode, and the future memorization route remains visibly marked «قريبًا» behind a phone feature flag.
+- Added reduced-motion/transparency/contrast handling, focus return and Escape/outside dismissal, the dedicated phone footer auto-hide preference key, pure reducer/menu models, and Node coverage for ordering and conditional rows.
+
 ## 2026-11-16 — iOS-parity phone appearances and dynamic Qiraat surfaces
 - Added the five native Mushaf appearances on phone widths only: automatic, light, dark, white page and black page. The phone choice has its own guarded local-storage key; automatic follows the live system colour scheme, while the existing three desktop themes and their picker remain unchanged at 768px and above.
 - Added the exact iOS paper, ink, brown, gold, semantic and Qiraat-card tokens, with desk equal to paper in every appearance. Selecting a reader or narrator applies the native 5% parent-reader colour wash to both page and desk.

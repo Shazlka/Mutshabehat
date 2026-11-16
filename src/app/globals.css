@@ -334,6 +334,24 @@
   [data-mushaf-appearance] .qiraat-phone-progress { color: var(--app-progress); }
   [data-mushaf-appearance] .qiraat-phone-info { color: var(--app-info); }
   [data-mushaf-appearance] .qiraat-phone-hover:hover { background: var(--qiraat-badge-fill); }
+
+  [data-mushaf-appearance] .phone-chrome-surface {
+    border-color: color-mix(in srgb, var(--qiraat-card-stroke) 72%, transparent);
+    background: color-mix(in srgb, var(--qiraat-card-fill) 76%, transparent);
+    -webkit-backdrop-filter: blur(22px) saturate(145%);
+    backdrop-filter: blur(22px) saturate(145%);
+  }
+}
+
+@media (max-width: 767px) and (prefers-reduced-transparency: reduce),
+       (max-width: 767px) and (prefers-contrast: more) {
+  [data-mushaf-appearance] .phone-chrome-surface {
+    border-width: 0.5px;
+    border-color: var(--mushaf-rule);
+    background: var(--qiraat-card-fill);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
 }
 
 :root {
