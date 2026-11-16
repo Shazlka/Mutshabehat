@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 
 const KEY = 'mushaf1441:reading-prefs:v1'
+const PHONE_AUTO_HIDE_KEY = 'mushaf1441:phone:autoHideFooter:v1'
 export const SUBCATEGORY_KEY = 'mushaf1441:qiraat-show-subcategory:v1'
 interface ReadingPreferences { keepAwake: boolean; autoHideFooter: boolean; showSubcategory: boolean }
 const DEFAULTS: ReadingPreferences = { keepAwake: false, autoHideFooter: false, showSubcategory: false }
@@ -14,14 +15,16 @@ export function useReadingPreferences(holdFooter: boolean) {
   useEffect(() => {
     try {
       const raw = JSON.parse(localStorage.getItem(KEY) ?? '{}') as Partial<ReadingPreferences>
+      const phoneAutoHide = localStorage.getItem(PHONE_AUTO_HIDE_KEY)
       // eslint-disable-next-line react-hooks/set-state-in-effect
-      setPrefs({ keepAwake: raw?.keepAwake === true, autoHideFooter: raw?.autoHideFooter === true, showSubcategory: localStorage.getItem(SUBCATEGORY_KEY) === 'true' })
+      setPrefs({ keepAwake: raw?.keepAwake === true, autoHideFooter: phoneAutoHide === null ? raw?.autoHideFooter === true : phoneAutoHide === 'true', showSubcategory: localStorage.getItem(SUBCATEGORY_KEY) === 'true' })
     } catch { /* Use defaults for unavailable or malformed storage. */ }
   }, [])
   function update(next: ReadingPreferences) {
     setPrefs(next)
     try {
       localStorage.setItem(KEY, JSON.stringify(next))
+      localStorage.setItem(PHONE_AUTO_HIDE_KEY, String(next.autoHideFooter))
       localStorage.setItem(SUBCATEGORY_KEY, String(next.showSubcategory))
     } catch { /* The choices still apply for this visit. */ }
   }

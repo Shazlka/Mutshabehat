@@ -1,6 +1,30 @@
 ## 2026-11-16 — iOS parity: Mutshabehat magazine feed on phones
 - Below `lg` the magazine view of the group list is now the iOS-style feed (`MobileMagazineFeed`): hero / pair blocks partitioned exactly like `MutshabehatMagazine.swift` (FNV-style id hash, 12 jewel tones for default-coloured groups, custom colours kept), favourite star, edit shortcut, verse chips, flip card with the first verses' diff preview. Other views (flat, titles-only, collapsed) keep the row pager; desktop markup is unchanged. Filter/sort controls got touch-sized, horizontally scrollable classes at phone width only.
 - Tests: `tests/ios-parity/magazine-layout.test.ts` (hash, palette, block partition). Typecheck clean. Visual check pending on a preview.
+## 2026-11-16 — iOS parity: sheets and menus cover the phone footer
+- Index, Quran search, word card, settings, surah picker and the burger drawer now stack above the floating footer and scrubber (`z-[80]`), like iOS sheets that cover the tab bar. No desktop change.
+
+## 2026-11-16 — iOS-parity phone reader chrome integration and polish (Task 6)
+- Wired «الفهرس» (both header surah title and footer item) to `IndexSheet` with surah, juz, bookmarks (fed from existing in-memory annotations converted via `indexBookmarksFromAnnotations`), and page scrubber navigation.
+- Wired «بحث» to `QuranSearchSheet`, jumping to the target ayah page and smoothly scrolling the target ayah element (`#ayah-s-a`) into view. Retained «قريبًا» toast for unbuilt items.
+- Header and desk color parity: enforced `--mushaf-desk` == `--mushaf-paper` across all five phone appearances (`#000000` pure black in blackPage, paper tint in light), with 0.5px hairline border `--mushaf-rule-soft`.
+- Removed phone vertical gap under the 52px top bar by anchoring mobile slot containers with `max-md:items-start md:items-center` (leaving desktop >=768px centered and byte-identical).
+- Top bar arrangement matches iOS `ReaderTopBar.swift`: Surah title button and «صفحة N» at start, centered Qiraat filter chip, and stacked Juz/Hizb/Rub quarter disc at end, fitting down to 320px viewport without overlap.
+- Footer items feature tactile pressed feedback with active scale/opacity/tint and state timer; Qiraat and More popovers are constrained within safe-area boundaries without clipping.
+- Added pure unit tests for safe-area popover bounds and bookmark conversion in `tests/ios-parity/phone-chrome.test.ts`.
+
+## 2026-11-16 — iOS-parity phone reader chrome
+- Replaced the phone-width action header and permanent page slider with the native-style informational top bar and floating six-item footer, while retaining the existing desktop header and slider at 768px and above. The compact phone scrubber floats above the footer and page-centre taps show or hide the chrome; the outer thirds retain RTL page turning.
+- Added accessible Qiraat and More popovers that reuse the existing reader picker, colour key, page summary, Qiraat search, Usul index and Mutoon sheets. The Qiraat layer toggle and filter state stay synchronized; Usul hides in Farsh-only mode, and the future memorization route remains visibly marked «قريبًا» behind a phone feature flag.
+- Added reduced-motion/transparency/contrast handling, focus return and Escape/outside dismissal, the dedicated phone footer auto-hide preference key, pure reducer/menu models, and Node coverage for ordering and conditional rows.
+## 2026-11-16 — iOS parity: Index and Quran-search sheets for the phone reader (components only, wiring follows)
+- Added `IndexSheet` (tabs السور / الأجزاء / الفواصل, name/number search through `normalizeArabic`, current-surah marker, 1–604 page scrubber with preview) and `QuranSearchSheet` (modes ذكي / مطابق / موسّع ported from the iOS search, reference parsing «البقرة 255» / «2:255», highlighted matches, share) as self-contained components, plus the pure engine `src/lib/quran-search.ts`. Colours come from the iOS appearance tokens, so all five appearances work.
+- Tests: `tests/ios-parity/quran-search.test.ts` (14 with the earlier ones in that folder): diacritics and ٱ/ا folding, Uthmani orthography, exact vs broad, ranking, result cap. Typecheck and ESLint clean. Not yet reachable from the footer: wiring comes with the next change.
+
+## 2026-11-16 — iOS parity: browser-local reading and memorization stores
+- Added dependency-free, versioned IndexedDB repositories for reading/bookmarks/khatmas and Hafs memorization, with atomic in-memory adapters for tests and automatic session-only fallback when browser storage is unavailable or fails. Reading includes unique bookmarks, proportional/idempotent khatma credit, automatic completion and next-khatma creation, daily activity, streaks, manual-session delete/undo, and merge-friendly JSON transfer. Memorization includes sparse ayah rows, transactional plan/history snapshots, overlap-safe undo with streak-credit revocation, reviews, due queries, statistics, goals, and core-backed newer-wins backup merging.
+- Added React 19 `useSyncExternalStore` stores plus the pure/testable 1-second dwell state machine and reader hook, including flush on page changes, backgrounding, and `pagehide`, and a `justCompletedKhatma` signal. No Supabase schema, API, or existing reader UI changed.
+- Added in-memory storage tests for uniqueness, idempotence, khatma rollover, streak days, plan undo/overlap, export/import, newer-wins merging, and unavailable/quota fallback. No dependency or server database change.
 
 ## 2026-11-16 — iOS parity: pure memorization and reading logic in TypeScript (`packages/memorization-core`, `packages/reading-core`)
 - Ported the framework-free logic of the iOS app's memorization (حفظ القرآن) and reading/khatma modules: statuses and policy, Quran index (6,236 ayat, 604 page-equivalents), selection and Arabic selection parser, batch planner with no-op dropping and the 30-ayah/whole-surah confirmation rule, review engine (ladder 1/3/7/14/30/60, failure intervals, strength ageing), statistics (weakest-link page state, page mix), DST-safe streaks, backup/export JSON and merge, dwell credit (30 s target) and khatma percent (capped at 99 until all 6,236 ayat).

@@ -1,6 +1,6 @@
 'use client'
 
-import { Fragment, memo, useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, type CSSProperties, type FormEvent, type ReactNode, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent, type TouchEvent as ReactTouchEvent, type WheelEvent as ReactWheelEvent } from 'react'
+import { Fragment, memo, useCallback, useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, type CSSProperties, type FormEvent, type ReactNode, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent, type TouchEvent as ReactTouchEvent, type WheelEvent as ReactWheelEvent } from 'react'
 import ReactDOM from 'react-dom'
 import Link from 'next/link'
 import { useReadingPreferences } from './useReadingPreferences'
@@ -32,7 +32,7 @@ import { attributionForReadings, attributionLabelsAr, readingsNotIn, rollupAutho
 import { getReadingOrNull, QIRAAT_READINGS } from '../../../../packages/qiraat-core/readings'
 import { getReader } from '../../../../packages/qiraat-core/readers'
 import { getNarrator } from '../../../../packages/qiraat-core/narrators'
-import { QIRAAT_MULTI_READER_COLOR, readerColor, narratorColor } from '../../../../packages/qiraat-core/colors'
+import { QIRAAT_MULTI_READER_COLOR, readerColor, narratorColor, readerCssVar, narratorCssVar } from '../../../../packages/qiraat-core/colors'
 import { DIFFERENCE_TYPE_LABELS_AR, BASE_READING, type QiraatRulingAttribution, type QiraatVariant, type QiraatRule, type QiraatRuling, type ReadingId } from '../../../../packages/qiraat-core/types'
 import QiraatToolbar from './qiraat/QiraatToolbar'
 import QiraatReferenceSheet from './qiraat/QiraatReferenceSheet'
@@ -87,6 +87,13 @@ import {
   adaptColorForDark,
   adaptAnnotationForDark,
 } from './mushafTheme'
+import { filterLabel } from '../../../../packages/qiraat-core/features/readerPicker'
+import { PhoneTopBar } from './phone/PhoneTopBar'
+import { PhoneFooterBar } from './phone/PhoneFooterBar'
+import { usePhoneChrome } from './phone/usePhoneChrome'
+import { indexBookmarksFromAnnotations } from './phone/bookmarks'
+import { IndexSheet } from '../_features/index/IndexSheet'
+import { QuranSearchSheet } from '../_features/quran-search/QuranSearchSheet'
 
 const EMPTY_QIRAAT_VARIANTS: QiraatVariant[] = []
 const EMPTY_QIRAAT_RULES: QiraatRule[] = []
@@ -609,6 +616,14 @@ export default function Mushaf1441Viewer({
   const [mutshabehatLoadError, setMutshabehatLoadError] = useState<string | null>(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isSurahPickerOpen, setIsSurahPickerOpen] = useState(false)
+  const [isIndexOpen, setIsIndexOpen] = useState(false)
+  // Each opening remounts the sheet (key) so it can start on the tab that was asked for.
+  const [indexOpening, setIndexOpening] = useState<{ n: number; tab: 'surahs' | 'bookmarks' }>({ n: 0, tab: 'surahs' })
+  const openIndex = useCallback((tab: 'surahs' | 'bookmarks') => {
+    setIndexOpening((prev) => ({ n: prev.n + 1, tab }))
+    setIsIndexOpen(true)
+  }, [])
+  const [isQuranSearchOpen, setIsQuranSearchOpen] = useState(false)
   const [surahPickerSearch, setSurahPickerSearch] = useState('')
   const currentSurahItemRef = useRef<HTMLButtonElement | null>(null)
   const surahListRef = useRef<HTMLDivElement | null>(null)
@@ -662,7 +677,7 @@ export default function Mushaf1441Viewer({
   const isPhone = useSyncExternalStore(subscribeToPhoneQuery, getPhoneSnapshot, getMediaServerSnapshot)
   const systemPrefersDark = useSyncExternalStore(subscribeToDarkQuery, getDarkSnapshot, getMediaServerSnapshot)
   const [isSettingsOpen, setIsSettingsOpen] = useState(false)
-  const readingPreferences = useReadingPreferences(isSettingsOpen || isMenuOpen || isSurahPickerOpen || pageSliderPreview !== null)
+  const readingPreferences = useReadingPreferences(isSettingsOpen || isMenuOpen || isSurahPickerOpen || isIndexOpen || isQuranSearchOpen || pageSliderPreview !== null)
   useEffect(() => {
     if (!isSettingsOpen) return
     const previous = document.activeElement as HTMLElement | null
@@ -739,6 +754,14 @@ export default function Mushaf1441Viewer({
   }
   // Which iOS-parity sheet is open (picker, colour key, search …); rendered by QiraatFeaturesHost.
   const [qiraatFeature, setQiraatFeature] = useState<FeatureName | null>(null)
+  const [phonePopoverOpen, setPhonePopoverOpen] = useState(false)
+  const phoneChrome = usePhoneChrome({
+    autoHideAfterMs: 10_000,
+    autoHidesFooter: readingPreferences.prefs.autoHideFooter,
+    forceVisible: phonePopoverOpen || isSurahPickerOpen || isIndexOpen || isQuranSearchOpen || isSettingsOpen || qiraatFeature !== null
+      || isMenuOpen || contextMenu !== null || mutshabehatPopupAyahKey !== null || isMobileNotesOpen
+      || hoveredQiraatWord !== null || qiraatSelection !== null || qiraatReferenceOpen,
+  })
   // Opening a sheet from the phone menu closes the menu behind it.
   function openQiraatFeature(name: FeatureName) {
     setQiraatFeature(name)
@@ -1125,6 +1148,10 @@ export default function Mushaf1441Viewer({
     )),
     [annotations, pageNumber, companionPageNumber]
   )
+  const indexBookmarks = useMemo(
+    () => indexBookmarksFromAnnotations(annotations),
+    [annotations],
+  )
   const annotationsForSelectedTarget = useMemo(() => {
     if (!selectedAyahKey) return []
     if (selectedWordRange) {
@@ -1265,6 +1292,11 @@ export default function Mushaf1441Viewer({
       : getReadingOrNull(effectiveQiraatFilter.readingId)?.readerId
     return readerId ? readerColor(readerId) : undefined
   }, [effectiveQiraatFilter, qiraatMode])
+  const phoneFilterColor = effectiveQiraatFilter.kind === 'reader'
+    ? `var(${readerCssVar(effectiveQiraatFilter.readerId)})`
+    : effectiveQiraatFilter.kind === 'reading'
+      ? `var(${narratorCssVar(effectiveQiraatFilter.readingId)})`
+      : undefined
   // Complete rulings (ignoring the باب switches): compare must never make a hidden باب look like «كحفص».
   const allRulingsByPageNumber = useMemo(() => byPageNumber(qiraatRulingsByPage), [qiraatRulingsByPage])
   // «مقارنة» needs the open word's complete data, not what the current filter would show: a filtered fallback would
@@ -1893,6 +1925,12 @@ export default function Mushaf1441Viewer({
     if (target.closest('button') || target.closest('a')) return
     const rect = event.currentTarget.getBoundingClientRect()
     const x = event.clientX - rect.left
+    if (isPhone) {
+      if (x < rect.width / 3) turnPage(1)
+      else if (x > rect.width * 2 / 3) turnPage(-1)
+      else phoneChrome.toggle()
+      return
+    }
     if (x < rect.width / 2) turnPage(1)
     else turnPage(-1)
   }
@@ -3347,7 +3385,7 @@ export default function Mushaf1441Viewer({
     const close = () => setMutshabehatPopupAyahKey(null)
 
     return (
-      <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-6" role="dialog" aria-modal="true" aria-labelledby="mutshabehat-popup-title">
+      <div className="fixed inset-0 z-[80] flex items-end justify-center sm:items-center sm:p-6" role="dialog" aria-modal="true" aria-labelledby="mutshabehat-popup-title">
         <button type="button" aria-label="إغلاق" onClick={close} className="absolute inset-0 cursor-default bg-[#2a2111]/40" />
         <section
           className="relative flex max-h-[86dvh] w-full max-w-xl flex-col overflow-hidden rounded-t-2xl border border-[var(--mushaf-rule)] bg-[var(--mushaf-cream-3)] shadow-[0_24px_60px_-12px_rgba(42,33,17,0.45)] sm:rounded-2xl"
@@ -3405,7 +3443,7 @@ export default function Mushaf1441Viewer({
     }
 
     return (
-      <div className="fixed inset-0 z-50">
+      <div className="fixed inset-0 z-[80]">
         <button
           type="button"
           aria-label="إغلاق قائمة الخيارات"
@@ -4584,7 +4622,7 @@ export default function Mushaf1441Viewer({
           dir="rtl"
           role="dialog"
           aria-label="فهرس السور"
-          className="fixed inset-0 z-50 flex touch-manipulation flex-col overflow-hidden bg-[var(--mushaf-cream-3)] sm:absolute sm:inset-auto sm:right-0 sm:top-full sm:mt-1 sm:max-h-[min(60vh,420px)] sm:w-[19rem] sm:rounded-xl sm:border sm:border-[var(--mushaf-rule)] sm:shadow-[0_18px_50px_rgba(23,23,23,0.28)]"
+          className="fixed inset-0 z-[80] flex touch-manipulation flex-col overflow-hidden bg-[var(--mushaf-cream-3)] sm:absolute sm:inset-auto sm:right-0 sm:top-full sm:mt-1 sm:max-h-[min(60vh,420px)] sm:w-[19rem] sm:rounded-xl sm:border sm:border-[var(--mushaf-rule)] sm:shadow-[0_18px_50px_rgba(23,23,23,0.28)]"
           style={{ paddingTop: 'env(safe-area-inset-top)', paddingBottom: 'env(safe-area-inset-bottom)' }}
         >
             {/* Full-screen header — only meaningful affordance to close on mobile, since the
@@ -4754,7 +4792,7 @@ export default function Mushaf1441Viewer({
     const themes = isPhone ? phoneThemes : desktopThemes
 
     return (
-      <div className="fixed inset-0 z-50 flex items-end justify-center p-0 sm:items-center sm:p-4" dir="rtl">
+      <div className="fixed inset-0 z-[80] flex items-end justify-center p-0 sm:items-center sm:p-4" dir="rtl">
         {/* Backdrop */}
         <button
           type="button"
@@ -4974,8 +5012,20 @@ export default function Mushaf1441Viewer({
       } as CSSProperties}
     >
       <h1 className="sr-only">المصحف الشريف — الصفحة {pageNumber}</h1>
+      {isPhone ? (
+        <PhoneTopBar
+          metadata={visiblePageMetadata}
+          pageNumber={pageNumber}
+          qiraatEnabled={qiraatMode !== 'normal'}
+          filterName={effectiveQiraatFilter.kind === 'all' ? undefined : filterLabel(effectiveQiraatFilter)}
+          filterColor={phoneFilterColor}
+          surahPickerOpen={isIndexOpen}
+          onOpenSurahPicker={() => setIsIndexOpen(true)}
+          onOpenReaderPicker={() => openQiraatFeature('readerPicker')}
+        />
+      ) : null}
       {/* Slim top bar — the main screen is the mushaf itself */}
-      <header className={`mushaf-reader-header flex shrink-0 items-center justify-between gap-2 border-b px-3 py-2 ${currentThemeTokens.headerBgClass}`}>
+      <header className={`mushaf-reader-header hidden shrink-0 items-center justify-between gap-2 border-b px-3 py-2 md:flex ${currentThemeTokens.headerBgClass}`}>
         <div className="flex min-w-0 items-center gap-2">
           <button
             type="button"
@@ -5015,7 +5065,7 @@ export default function Mushaf1441Viewer({
               </p>
             </div>
           </button>
-          {renderSurahPicker()}
+          {!isPhone ? renderSurahPicker() : null}
           </div>
           {/* The page number gets its own fixed-width frame OUTSIDE the truncating block: inside
               it, a long surah name pushed it into the ellipsis and the number became unreadable. */}
@@ -5104,6 +5154,7 @@ export default function Mushaf1441Viewer({
           </button>
         </div>
       </header>
+      {isPhone ? renderSurahPicker() : null}
 
       {/* On desktop / iPad landscape the Qiraat panel is a permanent sidebar beside the page
           instead of living inside the burger drawer; the page re-fits itself via container queries. */}
@@ -5115,7 +5166,7 @@ export default function Mushaf1441Viewer({
         ref={pageMainRef}
         className="relative min-h-0 min-w-0 flex-1 overflow-auto overscroll-contain"
         style={{ containerType: 'size', touchAction: 'none' }}
-        onPointerDown={handlePagePointerDown}
+        onPointerDown={(event) => { if (phoneChrome.visible) phoneChrome.reset(); handlePagePointerDown(event) }}
         onPointerMove={handlePagePointerMove}
         onPointerUp={handlePagePointerEnd}
         onPointerCancel={handlePagePointerEnd}
@@ -5139,7 +5190,7 @@ export default function Mushaf1441Viewer({
                 data-page-slot-current={isCurrent ? '' : undefined}
                 aria-hidden={isCurrent ? undefined : true}
                 inert={!isCurrent}
-                className={`flex min-h-0 min-w-0 items-center justify-center [grid-area:1/1] ${isSpread ? 'gap-[3px]' : ''}`}
+                className={`flex min-h-0 min-w-0 max-md:items-start md:items-center justify-center [grid-area:1/1] ${isSpread ? 'gap-[3px]' : ''}`}
                 style={{ visibility: isCurrent ? 'visible' : 'hidden' }}
               >
                 {groupPages.map((no) => {
@@ -5234,7 +5285,7 @@ export default function Mushaf1441Viewer({
           <div
             data-testid="reader-footer"
             hidden={readingPreferences.footerHidden}
-            className={`${readingPreferences.footerHidden ? 'hidden' : 'flex'} relative shrink-0 items-center gap-3 border-t px-3 py-2 ${currentThemeTokens.sliderContainerClass}`}
+            className={`${readingPreferences.footerHidden ? 'hidden' : 'hidden md:flex'} relative shrink-0 items-center gap-3 border-t px-3 py-2 ${currentThemeTokens.sliderContainerClass}`}
             style={{ paddingBottom: 'calc(0.5rem + env(safe-area-inset-bottom))' }}
           >
             {pageSliderPreview !== null ? (
@@ -5277,6 +5328,27 @@ export default function Mushaf1441Viewer({
           </div>
         )
       })()}
+
+      {isPhone ? (
+        <PhoneFooterBar
+          visible={phoneChrome.visible}
+          pageNumber={pageNumber}
+          pageCount={MUSHAF_1441_PAGE_COUNT}
+          qiraatEnabled={qiraatMode !== 'normal'}
+          farshOnly={usulPrefs.farshOnly}
+          filterName={filterLabel(effectiveQiraatFilter)}
+          onInteraction={phoneChrome.reset}
+          onPopoverOpenChange={setPhonePopoverOpen}
+          onGoToPage={(page) => { void goToPage(page) }}
+          onOpenIndex={() => openIndex('surahs')}
+          onOpenSearch={() => setIsQuranSearchOpen(true)}
+          onOpenBookmarks={() => openIndex('bookmarks')}
+          onToggleQiraat={() => toggleLayer('qiraat')}
+          onOpenQiraatFeature={openQiraatFeature}
+          onOpenMutoon={() => openQiraatFeature('mutoon')}
+          onOpenSettings={() => setIsSettingsOpen(true)}
+        />
+      ) : null}
 
 
       {/* Burger drawer: navigation sliders, account / sign-in, settings */}
@@ -5446,7 +5518,7 @@ export default function Mushaf1441Viewer({
       {renderMutshabehatPopup()}
 
       {qiraatReferenceOpen ? (
-        <div className="fixed inset-0 z-50">
+        <div className="fixed inset-0 z-[80]">
           <button
             type="button"
             aria-label="إغلاق المرجع"
@@ -5586,6 +5658,35 @@ export default function Mushaf1441Viewer({
         onSelectWord={(wordId) => {
           const target = visibleQiraatPages.flatMap((no) => (pageCache[no]?.lines ?? []).flatMap((line) => line.words)).find((w) => w.id === wordId)
           if (target) goToMarkedQiraatWord(target)
+        }}
+      />
+      <IndexSheet
+        key={indexOpening.n}
+        initialTab={indexOpening.tab}
+        open={isIndexOpen}
+        onClose={() => setIsIndexOpen(false)}
+        currentPage={pageNumber}
+        currentSurah={visiblePageMetadata?.surahNumbers[0] ?? selectedSurahNumber}
+        onGoToPage={(page) => { void goToPage(page) }}
+        bookmarks={indexBookmarks}
+        onOpenBookmark={(b) => { void goToPage(b.page, b.ayah ? `${b.surah}:${b.ayah}` : undefined) }}
+        onDeleteBookmark={async (id) => {
+          const deleted = await deleteAnnotation(id)
+          if (deleted) void loadAnnotationsForPage(pageNumber)
+        }}
+      />
+      <QuranSearchSheet
+        open={isQuranSearchOpen}
+        onClose={() => setIsQuranSearchOpen(false)}
+        onGoToAyah={(surah, ayah, page) => {
+          const ayahKey = `${surah}:${ayah}`
+          setSelectedAyahKey(ayahKey)
+          void goToPage(page, ayahKey).then(() => {
+            window.requestAnimationFrame(() => {
+              const el = document.getElementById(navigateToAyah(ayahKey).slice(1))
+              el?.scrollIntoView({ block: 'center', behavior: 'smooth' })
+            })
+          })
         }}
       />
     </div>

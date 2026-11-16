@@ -235,7 +235,7 @@
 
   [data-mushaf-appearance="whitePage"] {
     --mushaf-paper: #FFFFFF;
-    --mushaf-desk: #FFFFFF;
+    --mushaf-desk: var(--mushaf-paper);
     --mushaf-ink: #000000;
     --mushaf-brown: #333333;
     --mushaf-gold: rgb(72% 55% 20%);
@@ -261,7 +261,7 @@
 
   [data-mushaf-appearance="blackPage"] {
     --mushaf-paper: #000000;
-    --mushaf-desk: #000000;
+    --mushaf-desk: var(--mushaf-paper);
     --mushaf-ink: #FFFFFF;
     --mushaf-brown: rgb(78% 78% 78%);
     --mushaf-gold: rgb(85% 72% 38%);
@@ -320,6 +320,7 @@
 
   [data-mushaf-appearance] {
     --mushaf-paper-tinted: var(--mushaf-paper);
+    --mushaf-desk: var(--mushaf-paper-tinted);
     --mushaf-rule: var(--qiraat-card-stroke);
     --mushaf-rule-soft: color-mix(in srgb, var(--qiraat-card-stroke) 55%, transparent);
     --mushaf-cream: var(--mushaf-paper-tinted);
@@ -332,13 +333,13 @@
     --qx-muted: var(--mushaf-brown);
     --qx-err: var(--app-danger);
     --qiraat-toolbar-idle-stroke: var(--qiraat-card-stroke);
-    background: var(--mushaf-paper-tinted) !important;
+    background: var(--mushaf-desk) !important;
     color: var(--mushaf-ink) !important;
   }
 
   [data-mushaf-appearance] .mushaf-reader-header {
-    border-color: var(--qiraat-card-stroke) !important;
-    background: var(--qiraat-card-fill) !important;
+    border-bottom: 0.5px solid var(--mushaf-rule-soft) !important;
+    background: var(--mushaf-desk) !important;
     color: var(--mushaf-ink) !important;
   }
 
@@ -373,6 +374,24 @@
   [data-mushaf-appearance] .qiraat-phone-progress { color: var(--app-progress); }
   [data-mushaf-appearance] .qiraat-phone-info { color: var(--app-info); }
   [data-mushaf-appearance] .qiraat-phone-hover:hover { background: var(--qiraat-badge-fill); }
+
+  [data-mushaf-appearance] .phone-chrome-surface {
+    border-color: color-mix(in srgb, var(--qiraat-card-stroke) 72%, transparent);
+    background: color-mix(in srgb, var(--qiraat-card-fill) 76%, transparent);
+    -webkit-backdrop-filter: blur(22px) saturate(145%);
+    backdrop-filter: blur(22px) saturate(145%);
+  }
+}
+
+@media (max-width: 767px) and (prefers-reduced-transparency: reduce),
+       (max-width: 767px) and (prefers-contrast: more) {
+  [data-mushaf-appearance] .phone-chrome-surface {
+    border-width: 0.5px;
+    border-color: var(--mushaf-rule);
+    background: var(--qiraat-card-fill);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
 }
 
 :root {

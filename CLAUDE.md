@@ -48,6 +48,15 @@ section below **and** the root
 
 # Changelog
 
+## 2026-11-16 — iOS-parity phone reader chrome integration and polish (Task 6)
+- Wired «الفهرس» (both header surah title and footer item) to `IndexSheet` with surah, juz, bookmarks (fed from existing in-memory annotations converted via `indexBookmarksFromAnnotations`), and page scrubber navigation.
+- Wired «بحث» to `QuranSearchSheet`, jumping to the target ayah page and smoothly scrolling the target ayah element (`#ayah-s-a`) into view. Retained «قريبًا» toast for unbuilt items.
+- Header and desk color parity: enforced `--mushaf-desk` == `--mushaf-paper` across all five phone appearances (`#000000` pure black in blackPage, paper tint in light), with 0.5px hairline border `--mushaf-rule-soft`.
+- Removed phone vertical gap under the 52px top bar by anchoring mobile slot containers with `max-md:items-start md:items-center` (leaving desktop >=768px centered and byte-identical).
+- Top bar arrangement matches iOS `ReaderTopBar.swift`: Surah title button and «صفحة N» at start, centered Qiraat filter chip, and stacked Juz/Hizb/Rub quarter disc at end, fitting down to 320px viewport without overlap.
+- Footer items feature tactile pressed feedback with active scale/opacity/tint and state timer; Qiraat and More popovers are constrained within safe-area boundaries without clipping.
+- Added pure unit tests for safe-area popover bounds and bookmark conversion in `tests/ios-parity/phone-chrome.test.ts`.
+
 ## 2026-11-15 — Qiraat and reading preferences in web reader Settings
 - Added a Qiraat section to the reader Settings: layer toggle, reader/narrator picker, Farsh-only, category switches with show/hide all, and the optional Farsh subcategory line (off by default, like iOS). Existing Usul preferences are reused; bulk changes preserve other category choices.
 - Added persistent keep-screen-awake and ten-second footer auto-hide preferences. Wake locks release on cleanup and reacquire when the page becomes visible; unsupported or denied requests show a status. Reading interaction restores the footer. Settings supports Escape, focus containment, and focus restoration.

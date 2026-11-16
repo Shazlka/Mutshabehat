@@ -19,6 +19,7 @@
     "test:reader-settings": "node scripts/verify-reader-settings.cjs",
     "test:memorization": "tsx --test tests/memorization/*.test.ts",
     "test:reading": "tsx --test tests/reading/*.test.ts",
+    "test:storage": "tsx --test tests/storage/*.test.ts",
     "test:qiraat:features": "tsx --test tests/qiraat/features/*.test.ts",
     "qiraat:validate": "node scripts/validate-qiraat-data.mjs",
     "qiraat:audit": "node scripts/qiraat/audit-qiraat-pages.mjs",
