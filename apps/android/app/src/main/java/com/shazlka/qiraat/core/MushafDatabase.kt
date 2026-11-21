@@ -103,6 +103,26 @@ class MushafDatabase private constructor(internal val database: SQLiteDatabase) 
         buildMap { while (cursor.moveToNext()) put(cursor.getInt(0), cursor.getInt(1)) }
     }
 
+    fun ayahLayout(): List<AyahLayoutRow> = database.rawQuery(
+        "SELECT surah, ayah, MIN(page), SUM(char_type = 'word') FROM words GROUP BY surah, ayah ORDER BY surah, ayah", null,
+    ).use { cursor ->
+        buildList {
+            while (cursor.moveToNext()) {
+                add(AyahLayoutRow(AyahKey(cursor.getInt(0), cursor.getInt(1)), cursor.getInt(2), cursor.getInt(3)))
+            }
+        }
+    }
+
+    fun pageJuzMap(): Map<Int, Int> = database.rawQuery(
+        "SELECT number, juz FROM pages", null,
+    ).use { cursor ->
+        buildMap {
+            while (cursor.moveToNext()) {
+                put(cursor.getInt(0), cursor.getInt(1))
+            }
+        }
+    }
+
     fun pageOf(ayah: AyahKey): Int? = database.rawQuery(
         "SELECT MIN(page) FROM words WHERE surah = ? AND ayah = ?", arrayOf(ayah.surah.toString(), ayah.ayah.toString()),
     ).use { cursor -> if (cursor.moveToFirst() && !cursor.isNull(0)) cursor.getInt(0) else null }

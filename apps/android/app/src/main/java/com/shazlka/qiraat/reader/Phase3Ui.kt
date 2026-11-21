@@ -31,7 +31,11 @@ import kotlinx.coroutines.withContext
 import java.util.UUID
 
 enum class AppTab(val title: String, val glyph: String) {
-    READER("المصحف", "۞"), MUTSHABEHAT("المتشابهات", "م"), SEARCH("البحث", "⌕"), QIRAAT("القراءات", "ق")
+    READER("المصحف", "۞"),
+    MUTSHABEHAT("المتشابهات", "م"),
+    MEMORIZATION("الحفظ", "ح"),
+    SEARCH("البحث", "⌕"),
+    SETTINGS("الإعدادات", "⚙")
 }
 
 @Composable

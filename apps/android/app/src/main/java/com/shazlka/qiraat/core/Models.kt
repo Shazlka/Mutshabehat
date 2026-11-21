@@ -58,6 +58,8 @@ data class PageMetadata(
 
 data class Surah(val number: Int, val name: String, val ayahCount: Int, val firstPage: Int, val lastPage: Int)
 
+data class AyahLayoutRow(val key: AyahKey, val page: Int, val wordCount: Int)
+
 data class MushafPage(val number: Int, val lines: List<MushafLine>, val metadata: PageMetadata) {
     val isRightHandPage: Boolean get() = number % 2 == 1
 }

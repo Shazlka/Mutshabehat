@@ -27,6 +27,16 @@
 
 # Changelog
 
+## 2026-11-21 — Android Phase 4: Reading statistics, Khatma, Bookmarks, Memorization, Settings, and Backup/Restore
+
+- Ported Quran reading statistics with daily reading progress chart, streak tracker, Khatma tracking/reset/celebration, and dwell/session logging under `apps/android` (`com.shazlka.qiraat.reading`).
+- Ported bookmarks (ayah and page bookmarks) with duplicate prevention and removal from any ayah on the page.
+- Ported memorization system under `apps/android` (`com.shazlka.qiraat.memorization`): Quran index layout weights, memorization policy, statistics engine, batch planner (`planUpdate`, `planReview`, confirmation thresholds), SQLite memorization database with conflict detection on undo (`HasNewerChanges`), in-memory store with snapshot caching, and Compose UI for dashboard, update sheet, and history.
+- Ported appearance preferences (Light, Dark, Sepia, White page, Black page, System), language toggle, reader options, and top banner / ayah marker toggles (`com.shazlka.qiraat.settings`).
+- Ported local backup and restore (`com.shazlka.qiraat.backup`) using Android Storage Access Framework (SAF) with iOS-compatible `MemorizationExport` JSON serialization and deterministic merge (`MemorizationMerge`).
+- Wired five-destination RTL footer navigation (`READER`, `MUTSHABEHAT`, `MEMORIZATION`, `SEARCH`, `SETTINGS`), reader toolbar, and reader header bookmark/status integration.
+- Added 19 comprehensive JVM/Robolectric unit tests covering reading database, reading tracker, memorization planner, memorization store lifecycle/undo conflicts, and backup export/import/merge. All 59 tests pass cleanly. No iOS, web, or cloud changes.
+
 ## 2026-11-21 — Android Phase 3: Mutashabihat and Quran search
 
 - Added the native Android Mutashabihat library/editor, iOS-compatible local SQLite semantics and Arabic live diff, indexed Quran search with the advanced AST/morphology rules, a four-destination RTL footer, result-to-reader navigation, and matched-ayah highlighting under `apps/android`.

@@ -8,6 +8,8 @@ import android.graphics.RectF
 import android.view.View
 import android.view.GestureDetector
 import android.view.MotionEvent
+import androidx.compose.ui.graphics.toArgb
+import com.shazlka.qiraat.core.AyahKey
 import com.shazlka.qiraat.core.LaidOutLineContent
 import com.shazlka.qiraat.core.MushafPage
 import com.shazlka.qiraat.core.PageLayout
@@ -21,6 +23,8 @@ import com.shazlka.qiraat.core.QiraatMarks
 import com.shazlka.qiraat.core.QiraatPageTint
 import com.shazlka.qiraat.core.QiraatUnderline
 import com.shazlka.qiraat.core.WordMarks
+import com.shazlka.qiraat.memorization.MemorizationStatus
+import com.shazlka.qiraat.settings.MushafAppearance
 import kotlin.math.max
 
 class MushafPageCanvas(context: Context) : View(context) {
@@ -40,8 +44,17 @@ class MushafPageCanvas(context: Context) : View(context) {
         set(value) { field = value; invalidate() }
     var highlightedWordIDs: Set<String> = emptySet()
         set(value) { field = value; invalidate() }
+    var appearance: MushafAppearance = MushafAppearance.SYSTEM
+        set(value) { field = value; invalidate() }
+    var isSystemDark: Boolean = false
+        set(value) { field = value; invalidate() }
+    var showsAyahMarker: Boolean = false
+        set(value) { field = value; invalidate() }
+    var ayahStatuses: Map<AyahKey, MemorizationStatus> = emptyMap()
+        set(value) { field = value; invalidate() }
     var onWordTap: ((com.shazlka.qiraat.core.MushafWord) -> Unit)? = null
     var onWordLongPress: ((com.shazlka.qiraat.core.MushafWord) -> Unit)? = null
+
     private var currentLayout: PageLayout? = null
     private val markPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { strokeCap = Paint.Cap.ROUND }
     private val gestures = GestureDetector(context, object : GestureDetector.SimpleOnGestureListener() {
@@ -68,7 +81,33 @@ class MushafPageCanvas(context: Context) : View(context) {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        val paper = QiraatColor(1.0, 252 / 255.0, 245 / 255.0)
+        val isDark = when (appearance) {
+            MushafAppearance.SYSTEM -> isSystemDark
+            MushafAppearance.DARK, MushafAppearance.BLACK_PAGE -> true
+            MushafAppearance.LIGHT, MushafAppearance.SEPIA, MushafAppearance.WHITE_PAGE -> false
+        }
+        val basePaper = if (appearance == MushafAppearance.SYSTEM) {
+            if (isDark) MushafAppearance.DARK.paperColor else MushafAppearance.LIGHT.paperColor
+        } else {
+            appearance.paperColor
+        }
+        val baseInk = if (appearance == MushafAppearance.SYSTEM) {
+            if (isDark) MushafAppearance.DARK.inkColor else MushafAppearance.LIGHT.inkColor
+        } else {
+            appearance.inkColor
+        }
+        val baseBrown = if (appearance == MushafAppearance.SYSTEM) {
+            if (isDark) MushafAppearance.DARK.brownColor else MushafAppearance.LIGHT.brownColor
+        } else {
+            appearance.brownColor
+        }
+        val baseGold = if (appearance == MushafAppearance.SYSTEM) {
+            if (isDark) MushafAppearance.DARK.goldColor else MushafAppearance.LIGHT.goldColor
+        } else {
+            appearance.goldColor
+        }
+
+        val paper = QiraatColor(basePaper.red.toDouble(), basePaper.green.toDouble(), basePaper.blue.toDouble())
         val tint = if (qiraatEnabled) qiraatMarks?.catalog?.let { QiraatPageTint.readerColor(qiraatFilter, it) } else null
         canvas.drawColor((tint?.let { QiraatPageTint.mixed(paper, it) } ?: paper).toArgb())
         val currentPage = page ?: return
@@ -80,6 +119,10 @@ class MushafPageCanvas(context: Context) : View(context) {
         }
         currentLayout = layout
         glyphPaint.textSize = layout.fontSize
+        val defaultInkArgb = baseInk.toArgb()
+        decorationPaint.color = baseBrown.toArgb()
+        linePaint.color = baseGold.toArgb()
+
         layout.lines.forEach { line ->
             when (val content = line.content) {
                 is LaidOutLineContent.Words -> content.boxes.forEach { box ->
@@ -89,7 +132,20 @@ class MushafPageCanvas(context: Context) : View(context) {
                         markPaint.style = Paint.Style.FILL
                         canvas.drawRoundRect(RectF(box.frame.left, box.frame.top, box.frame.right, box.frame.bottom), layout.fontSize * .08f, layout.fontSize * .08f, markPaint)
                     }
-                    glyphPaint.color = wordMarks?.textColor?.let(::parseColor) ?: Color.rgb(34, 29, 22)
+
+                    // Memorization status marker on Mushaf if enabled
+                    if (showsAyahMarker && ayahStatuses.isNotEmpty()) {
+                        val status = ayahStatuses[box.word.ayahKey]
+                        if (status != null && status != MemorizationStatus.NOT_MEMORIZED) {
+                            markPaint.color = statusColor(status)
+                            markPaint.style = Paint.Style.FILL
+                            markPaint.alpha = 45
+                            canvas.drawRect(box.frame.left, box.frame.bottom - layout.fontSize * 0.05f, box.frame.right, box.frame.bottom, markPaint)
+                            markPaint.alpha = 255
+                        }
+                    }
+
+                    glyphPaint.color = wordMarks?.textColor?.let(::parseColor) ?: defaultInkArgb
                     val natural = fonts.measureToken(box.word.glyph, currentPage.number, layout.fontSize, glyphPaint)
                     val scale = box.frame.width / max(natural, 1f)
                     val metrics = glyphPaint.fontMetrics
@@ -107,11 +163,17 @@ class MushafPageCanvas(context: Context) : View(context) {
         }
 
         decorationPaint.textSize = width * 0.028f
-        decorationPaint.color = Color.rgb(91, 72, 44)
         canvas.drawText(toArabicDigits(currentPage.number), width / 2f, height - width * 0.012f, decorationPaint)
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean = gestures.onTouchEvent(event) || super.onTouchEvent(event)
+
+    private fun statusColor(status: MemorizationStatus): Int = when (status) {
+        MemorizationStatus.MASTERED -> Color.rgb(46, 125, 50)
+        MemorizationStatus.MEMORIZED_WITH_ERRORS -> Color.rgb(245, 124, 0)
+        MemorizationStatus.NEEDS_MUSHAF -> Color.rgb(25, 118, 210)
+        MemorizationStatus.NOT_MEMORIZED -> Color.rgb(117, 117, 117)
+    }
 
     private fun drawMarks(canvas: Canvas, frame: Rect, marks: WordMarks, fontSize: Float) {
         val y = frame.bottom - fontSize * .02f
@@ -151,7 +213,6 @@ class MushafPageCanvas(context: Context) : View(context) {
         linePaint.strokeWidth = max(1f, fontSize * 0.055f)
         canvas.drawRoundRect(banner, fontSize * 0.18f, fontSize * 0.18f, linePaint)
         canvas.drawLine(banner.left + fontSize * 0.35f, banner.centerY(), banner.right - fontSize * 0.35f, banner.centerY(), linePaint)
-        decorationPaint.color = Color.rgb(59, 47, 29)
         decorationPaint.textSize = fontSize * 0.66f
         val metrics = decorationPaint.fontMetrics
         val baseline = banner.centerY() - (metrics.ascent + metrics.descent) / 2
