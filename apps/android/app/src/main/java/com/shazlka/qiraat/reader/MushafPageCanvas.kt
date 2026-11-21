@@ -28,6 +28,9 @@ import com.shazlka.qiraat.settings.MushafAppearance
 import kotlin.math.max
 
 class MushafPageCanvas(context: Context) : View(context) {
+    init {
+        setLayerType(LAYER_TYPE_SOFTWARE, null)
+    }
     var page: MushafPage? = null
         set(value) { field = value; invalidate() }
     var fontStore: QcfFontStore? = null

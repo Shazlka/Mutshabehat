@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-11-21 — Android Phase 5
+
+- Installed Android 35 ARM64 system image and emulator tools, created Pixel 6 AVD (`qiraat_pixel_6`) with 3 GB RAM and 10 GB data partition, and booted headless.
+- Verified package `com.shazlka.qiraat` installation, launch, and crash-free execution.
+- Exercised and visually verified all destinations with screenshots under `apps/android/verification/`: Mushaf Page 1, swipe to Page 2, Qiraat sheet on marked word, Mutashabihat library, Quran search query, Memorization tab, and Settings tab.
+- Fixed header status bar overlap cut-off via `statusBarsPadding()` on root container in `ReaderScreen.kt`.
+- Fixed 2D canvas rasterization for custom QCF PUA fonts by setting `LAYER_TYPE_SOFTWARE` in `MushafPageCanvas.kt`.
+- Created final installable APK at `apps/android/dist/Qiraat-android-debug.apk` (147 MB) with all 59 unit tests passing.
+
+
 ## 2026-11-21 — Android Phase 3
 
 - Ported the Mutashabihat models, transactional local SQLite store, 251-group bundled seed, Arabic live word diff, library/detail/editor screens, and explicit auto-colour workflow.

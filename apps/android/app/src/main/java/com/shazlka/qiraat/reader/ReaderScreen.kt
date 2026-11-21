@@ -80,7 +80,12 @@ private fun ReadyReader(model: ReaderViewModel, initialPage: Int) {
     }
 
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
-        Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
+        Column(
+            Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
+                .statusBarsPadding()
+        ) {
             Box(Modifier.weight(1f).fillMaxWidth()) {
                 when (tab) {
                     AppTab.READER -> {

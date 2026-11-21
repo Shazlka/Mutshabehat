@@ -38,7 +38,14 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
-## 2026-11-21 — Android Phase 4: Reading statistics, Khatma, Bookmarks, Memorization, Settings, and Backup/Restore
+## 2026-11-21 — Android Phase 5: Emulator verification, rendering fixes, and final APK packaging
+- Installed Android 35 ARM64 system image (`system-images;android-35;google_apis;arm64-v8a`) and emulator tools, provisioned Pixel 6 AVD (`qiraat_pixel_6`) with 3 GB RAM and 10 GB data partition, and booted headless via swiftshader indirect GPU.
+- Verified package `com.shazlka.qiraat` installation, launch, and error-free execution (zero FATAL/AndroidRuntime crashes in logcat).
+- Exercised and visually verified all primary app destinations with screenshots under `apps/android/verification/`: Mushaf Page 1, swipe to Page 2, Qiraat bottom sheet on marked word, Mutashabihat library tab, Quran search with query execution, Memorization dashboard tab, and Settings tab.
+- Fixed layout cut-off: added `statusBarsPadding()` to the root container in `ReaderScreen.kt` preventing the top status bar / camera cutout from overlapping the header across all screens.
+- Fixed 2D canvas rasterization: enabled `LAYER_TYPE_SOFTWARE` in `MushafPageCanvas.kt` ensuring custom QCF PUA font glyphs and marks render reliably across all hardware and virtual GPU backends.
+- Packaged and verified final installable APK at `apps/android/dist/Qiraat-android-debug.apk` (147 MB) with all 59 JVM unit tests passing cleanly.
+
 - Ported Quran reading statistics with daily reading progress chart, streak tracker, Khatma tracking/reset/celebration, and dwell/session logging under `apps/android` (`com.shazlka.qiraat.reading`).
 - Ported bookmarks (ayah and page bookmarks) with duplicate prevention and removal from any ayah on the page.
 - Ported memorization system under `apps/android` (`com.shazlka.qiraat.memorization`): Quran index layout weights, memorization policy, statistics engine, batch planner (`planUpdate`, `planReview`, confirmation thresholds), SQLite memorization database with conflict detection on undo (`HasNewerChanges`), in-memory store with snapshot caching, and Compose UI for dashboard, update sheet, and history.
