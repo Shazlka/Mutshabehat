@@ -14,6 +14,10 @@ SOURCES = {
     IOS / "QiraatReferences": ASSETS / "qiraat_references",
 }
 
+FILES = {
+    IOS / "mutshabehat.sqlite": ASSETS / "data" / "mutshabehat.sqlite",
+}
+
 
 def sync_tree(source: Path, target: Path) -> None:
     if not source.is_dir():
@@ -40,3 +44,10 @@ def sync_tree(source: Path, target: Path) -> None:
 if __name__ == "__main__":
     for source, target in SOURCES.items():
         sync_tree(source, target)
+    for source, target in FILES.items():
+        if not source.is_file():
+            raise SystemExit(f"Missing generated source: {source}")
+        target.parent.mkdir(parents=True, exist_ok=True)
+        if not target.exists() or target.stat().st_size != source.stat().st_size:
+            shutil.copy2(source, target)
+        print(f"{source.name}: {source.stat().st_size} bytes -> {target}")

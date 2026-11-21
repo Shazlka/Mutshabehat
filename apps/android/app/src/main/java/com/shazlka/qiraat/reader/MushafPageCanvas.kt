@@ -38,6 +38,8 @@ class MushafPageCanvas(context: Context) : View(context) {
         set(value) { field = value; invalidate() }
     var qiraatEnabled: Boolean = true
         set(value) { field = value; invalidate() }
+    var highlightedWordIDs: Set<String> = emptySet()
+        set(value) { field = value; invalidate() }
     var onWordTap: ((com.shazlka.qiraat.core.MushafWord) -> Unit)? = null
     var onWordLongPress: ((com.shazlka.qiraat.core.MushafWord) -> Unit)? = null
     private var currentLayout: PageLayout? = null
@@ -82,6 +84,11 @@ class MushafPageCanvas(context: Context) : View(context) {
             when (val content = line.content) {
                 is LaidOutLineContent.Words -> content.boxes.forEach { box ->
                     val wordMarks = if (qiraatEnabled) qiraatMarks?.wordMarks(box.word, qiraatFilter) else null
+                    if (box.word.id in highlightedWordIDs) {
+                        markPaint.color = Color.argb(92, 255, 193, 7)
+                        markPaint.style = Paint.Style.FILL
+                        canvas.drawRoundRect(RectF(box.frame.left, box.frame.top, box.frame.right, box.frame.bottom), layout.fontSize * .08f, layout.fontSize * .08f, markPaint)
+                    }
                     glyphPaint.color = wordMarks?.textColor?.let(::parseColor) ?: Color.rgb(34, 29, 22)
                     val natural = fonts.measureToken(box.word.glyph, currentPage.number, layout.fontSize, glyphPaint)
                     val scale = box.frame.width / max(natural, 1f)

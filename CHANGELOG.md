@@ -27,6 +27,11 @@
 
 # Changelog
 
+## 2026-11-21 — Android Phase 3: Mutashabihat and Quran search
+
+- Added the native Android Mutashabihat library/editor, iOS-compatible local SQLite semantics and Arabic live diff, indexed Quran search with the advanced AST/morphology rules, a four-destination RTL footer, result-to-reader navigation, and matched-ayah highlighting under `apps/android`.
+- Added idempotent preparation of the gitignored Mutashabihat seed and JVM/Robolectric tests against the real bundled Quran and Mutashabihat databases. No iOS, web source, package, deployment, or backend change.
+
 All notable changes to **متشابهات V2 (Mutshabehat V2)** are recorded here, newest first.
 One dated entry per change (bug fix / feature / performance). Each entry lists the files touched
 and any required DB migration.

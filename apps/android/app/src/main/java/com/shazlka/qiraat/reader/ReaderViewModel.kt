@@ -7,6 +7,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.shazlka.qiraat.core.MushafDatabase
+import com.shazlka.qiraat.core.AyahKey
 import com.shazlka.qiraat.core.MushafPage
 import com.shazlka.qiraat.core.QcfFontStore
 import com.shazlka.qiraat.core.ReadingPosition
@@ -19,6 +20,10 @@ import com.shazlka.qiraat.core.QiraatSearchIndex
 import com.shazlka.qiraat.core.QiraatStore
 import com.shazlka.qiraat.core.UsulCategory
 import com.shazlka.qiraat.core.UsulIndex
+import com.shazlka.qiraat.mutshabehat.MutshabehatStore
+import com.shazlka.qiraat.mutshabehat.SQLiteMutshabehatStore
+import com.shazlka.qiraat.search.AyahSearchResult
+import com.shazlka.qiraat.search.QuranSearchMode
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -62,6 +67,8 @@ class ReaderViewModel(application: Application) : AndroidViewModel(application) 
         private set
     lateinit var references: QiraatReferenceStore
         private set
+    lateinit var mutshabehatStore: MutshabehatStore
+        private set
 
     init {
         viewModelScope.launch {
@@ -75,6 +82,7 @@ class ReaderViewModel(application: Application) : AndroidViewModel(application) 
                     qiraatStore = QiraatStore.fromAssets(application.assets)
                     matnLibrary = MatnLibrary.fromAssets(application.assets)
                     references = QiraatReferenceStore.fromAssets(application.assets)
+                    mutshabehatStore = SQLiteMutshabehatStore.open(application)
                     qiraatEnabled = qiraatPreferences.enabled
                     qiraatFilter = qiraatPreferences.filter
                     hidesUsul = qiraatPreferences.hidesUsul
@@ -126,9 +134,22 @@ class ReaderViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
+    suspend fun searchQuran(query: String, mode: QuranSearchMode): List<AyahSearchResult> = withContext(Dispatchers.IO) {
+        database?.searchAyaat(query, mode, 100).orEmpty()
+    }
+
+    suspend fun ayahText(surah: Int, ayah: Int): String = withContext(Dispatchers.IO) {
+        database?.ayahText(AyahKey(surah, ayah)).orEmpty()
+    }
+
+    suspend fun pageOf(surah: Int, ayah: Int): Int? = withContext(Dispatchers.IO) {
+        database?.pageOf(AyahKey(surah, ayah))
+    }
+
     override fun onCleared() {
         database?.close()
         if (::qiraatStore.isInitialized) qiraatStore.close()
+        if (::mutshabehatStore.isInitialized) (mutshabehatStore as? java.io.Closeable)?.close()
         super.onCleared()
     }
 }

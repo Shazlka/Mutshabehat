@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-21 — Android Phase 3
+
+- Ported the Mutashabihat models, transactional local SQLite store, 251-group bundled seed, Arabic live word diff, library/detail/editor screens, and explicit auto-colour workflow.
+- Ported Quran normalization, the full iOS morphology lexicon, advanced-query AST parser/data/engine, smart/exact/broad indexed search, advanced guide, result navigation, and reader ayah highlighting.
+- Added the RTL Reader/Mutashabihat/Search/Qiraat footer, idempotent seed preparation, and JVM/Robolectric coverage against both real bundled databases.
+
 ## 2026-11-21 — Android Phase 2
 
 - Ported the offline Qiraat catalog/page models, loader, marks, filters, presentation, comparison, page summary, search, usul index, reading forms, references, and mutoon/sharh/symbol data.

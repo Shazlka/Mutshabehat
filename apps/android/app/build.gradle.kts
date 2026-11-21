@@ -14,7 +14,7 @@ android {
         minSdk = 26
         targetSdk = 35
         versionCode = 1
-        versionName = "0.2.0-phase2"
+        versionName = "0.3.0-phase3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -32,6 +32,15 @@ android {
     }
     kotlinOptions { jvmTarget = "17" }
     buildFeatures { compose = true }
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+            all {
+                val testHome = layout.buildDirectory.dir("robolectric-home").get().asFile.apply { mkdirs() }
+                it.systemProperty("user.home", testHome.absolutePath)
+            }
+        }
+    }
     packaging { resources.excludes += "/META-INF/{AL2.0,LGPL2.1}" }
 }
 
@@ -48,4 +57,6 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     debugImplementation(libs.androidx.compose.ui.tooling)
     testImplementation(libs.junit)
+    testImplementation("androidx.test:core:1.6.1")
+    testImplementation("org.robolectric:robolectric:4.14.1")
 }

@@ -38,6 +38,10 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-11-21 — Android Phase 3: Mutashabihat and Quran search
+- Added the native Android Mutashabihat library/editor, iOS-compatible local SQLite semantics and Arabic live diff, indexed Quran search with the advanced AST/morphology rules, a four-destination RTL footer, result-to-reader navigation, and matched-ayah highlighting under `apps/android`.
+- Added idempotent preparation of the gitignored Mutashabihat seed and JVM/Robolectric tests against the real bundled Quran and Mutashabihat databases. No iOS, web source, package, deployment, or backend change.
+
 ## 2026-10-05 — Review editor: «اعتماد» now saves unsaved edits first; unsaved edits are flagged and guarded
 - **Owner report:** variants added from nquran and approved were gone after a refresh.
 - **Checked on the live system:** the Vercel runtime logs for the last 24 h show no 4xx/5xx on `/api/mushaf-1441/qiraat-review`; the database (via the site's own API) holds every saved face of page 8, all 58 reviewed, with their edit history; the Funnel to the Colima database answers in 0.2 s. So nothing that reached the server was lost.

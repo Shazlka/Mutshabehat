@@ -78,7 +78,8 @@ private fun ReadyReader(model: ReaderViewModel, initialPage: Int) {
     var showLegend by remember { mutableStateOf(false) }
     var showSummary by remember { mutableStateOf(false) }
     var showCompare by remember { mutableStateOf<WordSelection?>(null) }
-    var showHub by remember { mutableStateOf(false) }
+    var tab by remember { mutableStateOf(AppTab.READER) }
+    var highlightedWordIDs by remember { mutableStateOf(emptySet<String>()) }
     var currentMushafPage by remember { mutableStateOf<MushafPage?>(null) }
     LaunchedEffect(pagerState.currentPage) {
         val page = pagerState.currentPage + 1
@@ -86,52 +87,41 @@ private fun ReadyReader(model: ReaderViewModel, initialPage: Int) {
         model.fontStore.prewarm(com.shazlka.qiraat.core.QcfFontStore.neighbourhood(page))
     }
     androidx.compose.runtime.CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
-        if (showHub) {
-            QiraatHub(model, onClose = { showHub = false }, onNavigate = { page -> showHub = false; scope.launch { pagerState.animateScrollToPage(page - 1) } })
-            return@CompositionLocalProvider
-        }
         Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
-            var headerPage by remember { mutableStateOf<MushafPage?>(null) }
-            LaunchedEffect(pagerState.currentPage) { headerPage = model.page(pagerState.currentPage + 1) }
-            ReaderHeader(headerPage)
-            HorizontalPager(
-                state = pagerState,
-                beyondViewportPageCount = 1,
-                modifier = Modifier.weight(1f).fillMaxWidth(),
-                key = { it + 1 },
-            ) { index ->
-                var page by remember(index) { mutableStateOf<MushafPage?>(null) }
-                LaunchedEffect(index) { page = model.page(index + 1); if (index == pagerState.currentPage) currentMushafPage = page }
-                BoxWithConstraints(Modifier.fillMaxSize().padding(horizontal = 6.dp, vertical = 2.dp), contentAlignment = Alignment.Center) {
-                    page?.let { loaded ->
-                        val density = LocalDensity.current
-                        val fitted = with(density) {
-                            PageLayoutConstants.fittedPageRect(
-                                Rect(0f, 0f, maxWidth.toPx(), maxHeight.toPx()), stretch = true,
-                            )
+            Box(Modifier.weight(1f).fillMaxWidth()) {
+                when (tab) {
+                    AppTab.READER -> Column(Modifier.fillMaxSize()) {
+                        var headerPage by remember { mutableStateOf<MushafPage?>(null) }
+                        LaunchedEffect(pagerState.currentPage) { headerPage = model.page(pagerState.currentPage + 1) }
+                        ReaderHeader(headerPage)
+                        HorizontalPager(
+                            state = pagerState, beyondViewportPageCount = 1,
+                            modifier = Modifier.weight(1f).fillMaxWidth(), key = { it + 1 },
+                        ) { index ->
+                            var page by remember(index) { mutableStateOf<MushafPage?>(null) }
+                            LaunchedEffect(index) { page = model.page(index + 1); if (index == pagerState.currentPage) currentMushafPage = page }
+                            BoxWithConstraints(Modifier.fillMaxSize().padding(horizontal = 6.dp, vertical = 2.dp), contentAlignment = Alignment.Center) {
+                                page?.let { loaded ->
+                                    val density = LocalDensity.current
+                                    val fitted = with(density) { PageLayoutConstants.fittedPageRect(Rect(0f, 0f, maxWidth.toPx(), maxHeight.toPx()), stretch = true) }
+                                    AndroidView(factory = { context -> MushafPageCanvas(context) }, update = { view ->
+                                        view.page = loaded; view.fontStore = model.fontStore; view.surahAyahCounts = model.surahAyahCounts; view.surahNames = model.surahNames
+                                        view.qiraatEnabled = model.qiraatEnabled; view.qiraatFilter = model.qiraatFilter; view.qiraatMarks = model.marks(loaded.number)
+                                        view.highlightedWordIDs = highlightedWordIDs
+                                        view.onWordTap = { word -> view.qiraatMarks?.selection(word.ayahKey.surah, word.ayahKey.ayah, word.indexInAyah, model.qiraatFilter)?.let { selected = WordSelection(word, it) } }
+                                        view.onWordLongPress = { word -> view.qiraatMarks?.selection(word.ayahKey.surah, word.ayahKey.ayah, word.indexInAyah, model.qiraatFilter)?.let { peek = WordSelection(word, it) } }
+                                    }, modifier = with(density) { Modifier.size(fitted.width.toDp(), fitted.height.toDp()) })
+                                } ?: CircularProgressIndicator(modifier = Modifier.size(28.dp))
+                            }
                         }
-                        AndroidView(
-                            factory = { context -> MushafPageCanvas(context) },
-                            update = { view ->
-                                view.page = loaded
-                                view.fontStore = model.fontStore
-                                view.surahAyahCounts = model.surahAyahCounts
-                                view.surahNames = model.surahNames
-                                view.qiraatEnabled = model.qiraatEnabled
-                                view.qiraatFilter = model.qiraatFilter
-                                view.qiraatMarks = model.marks(loaded.number)
-                                view.onWordTap = { word -> view.qiraatMarks?.selection(word.ayahKey.surah, word.ayahKey.ayah, word.indexInAyah, model.qiraatFilter)?.let { selected = WordSelection(word, it) } }
-                                view.onWordLongPress = { word -> view.qiraatMarks?.selection(word.ayahKey.surah, word.ayahKey.ayah, word.indexInAyah, model.qiraatFilter)?.let { peek = WordSelection(word, it) } }
-                            },
-                            modifier = with(density) { Modifier.size(fitted.width.toDp(), fitted.height.toDp()) },
-                        )
-                    } ?: CircularProgressIndicator(modifier = Modifier.size(28.dp))
+                        QiraatToolbar(onHub = { tab = AppTab.QIRAAT }, onPicker = { showPicker = true }, onSummary = { showSummary = true }, onLegend = { showLegend = true }, onPreferences = { showPreferences = true })
+                    }
+                    AppTab.MUTSHABEHAT -> MutshabehatLibraryScreen(model) { page, ids -> highlightedWordIDs = ids; tab = AppTab.READER; scope.launch { pagerState.animateScrollToPage(page - 1) } }
+                    AppTab.SEARCH -> QuranSearchScreen(model) { result -> highlightedWordIDs = result.matchedWordIDs.toSet(); tab = AppTab.READER; scope.launch { pagerState.animateScrollToPage(result.page - 1) } }
+                    AppTab.QIRAAT -> QiraatHub(model, onClose = { tab = AppTab.READER }, onNavigate = { page -> tab = AppTab.READER; scope.launch { pagerState.animateScrollToPage(page - 1) } })
                 }
             }
-            QiraatToolbar(
-                onHub = { showHub = true }, onPicker = { showPicker = true }, onSummary = { showSummary = true },
-                onLegend = { showLegend = true }, onPreferences = { showPreferences = true },
-            )
+            FooterNavigation(tab) { tab = it }
         }
         selected?.let { value -> QiraatWordSheet(value, model, { selected = null }, { showCompare = value; selected = null }) }
         peek?.let { value -> QiraatPeekDialog(value, model.qiraatStore.catalog) { peek = null } }

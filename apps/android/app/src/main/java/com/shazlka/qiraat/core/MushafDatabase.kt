@@ -13,7 +13,7 @@ sealed class MushafDatabaseException(message: String) : Exception(message) {
 }
 
 /** Read-only access to the byte-for-byte iOS mushaf.sqlite schema v2. */
-class MushafDatabase private constructor(private val database: SQLiteDatabase) : Closeable {
+class MushafDatabase private constructor(internal val database: SQLiteDatabase) : Closeable {
     companion object {
         const val SUPPORTED_SCHEMA_VERSION = 2
         private const val ASSET_PATH = "data/mushaf.sqlite"
@@ -107,6 +107,10 @@ class MushafDatabase private constructor(private val database: SQLiteDatabase) :
         "SELECT MIN(page) FROM words WHERE surah = ? AND ayah = ?", arrayOf(ayah.surah.toString(), ayah.ayah.toString()),
     ).use { cursor -> if (cursor.moveToFirst() && !cursor.isNull(0)) cursor.getInt(0) else null }
 
+    fun ayahText(ayah: AyahKey): String? = database.rawQuery(
+        "SELECT ayah_text FROM quran_ayah_search WHERE surah=? AND ayah=?", arrayOf(ayah.surah.toString(), ayah.ayah.toString()),
+    ).use { cursor -> if (cursor.moveToFirst()) cursor.getString(0) else null }
+
     fun wordPageIndex(): Map<MushafWordCoordinate, Int> = database.rawQuery(
         "SELECT surah, ayah, index_in_ayah, page FROM words WHERE char_type = 'word'", null,
     ).use { cursor ->
@@ -121,6 +125,9 @@ class MushafDatabase private constructor(private val database: SQLiteDatabase) :
             }
         }
     }
+
+    fun searchAyaat(text: String, mode: com.shazlka.qiraat.search.QuranSearchMode = com.shazlka.qiraat.search.QuranSearchMode.SMART, limit: Int = 50) =
+        com.shazlka.qiraat.search.QuranSearchEngine(database).search(text, mode, limit)
 
     override fun close() = database.close()
 }

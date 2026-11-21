@@ -1,12 +1,14 @@
-# Qiraat Android — Phase 2
+# Qiraat Android — Phase 3
 
-Native Kotlin/Jetpack Compose port of the iOS Mushaf reader. Phase 2 adds the offline Qiraat layer: the ten readers and narrators, فرش and أصول word marks, detail/peek/comparison UI, persisted reading preferences, page summaries, search, usul index, references, and the three متون with commentary/symbol data.
+Native Kotlin/Jetpack Compose port of the iOS Mushaf reader. Phase 3 adds the local Mutashabihat library/editor and indexed Quran search while retaining the Phase 1 reader and Phase 2 offline Qiraat layer.
+
+The four-item RTL footer reaches المصحف، المتشابهات، البحث، and القراءات. Mutashabihat supports magazine/list browsing, coloured group detail, transactional create/edit/delete, adding Quran ayat, and live Arabic word differences. Quran search supports the iOS smart/exact/broad normalization, advanced AST query language, morphology lexicon, guide examples, result-to-reader navigation, and ayah highlighting.
 
 ## Asset strategy
 
-The debug APK bundles all 604 QCF V2 fonts as TTF plus the existing schema-v2 `mushaf.sqlite`. Android cannot load the iOS WOFF2 files directly. `scripts/convert_fonts.py` converts each page font independently with fontTools/brotli; the runtime will only load `pN.ttf` for page N and never substitutes a different page font. Tokens containing spaces are split into page-font glyph runs plus a system-font space, preserving the iOS `QCFFontStore.line` rule for all 198 affected tokens.
+The debug APK bundles all 604 QCF V2 fonts as TTF plus the schema-v2 `mushaf.sqlite` and the iOS `mutshabehat.sqlite` seed. Android cannot load the iOS WOFF2 files directly. `scripts/convert_fonts.py` converts each page font independently with fontTools/brotli; the runtime will only load `pN.ttf` for page N and never substitutes a different page font. Tokens containing spaces are split into page-font glyph runs plus a system-font space, preserving the iOS `QCFFontStore.line` rule for all 198 affected tokens.
 
-The generated database and fonts are gitignored for licensing/data-size reasons. The verified debug APK is **146,790,138 bytes (140 MiB)**, so the bundled strategy remains comfortably below the approximately 250 MB Phase 1 ceiling and avoids a network-dependent first run.
+The generated databases and fonts are gitignored for licensing/data-size reasons. `scripts/prepare_assets.py` idempotently copies the Mutashabihat seed and Qiraat resources; the app copies the seed to private no-backup storage before opening it read/write behind `MutshabehatStore`.
 
 ## Generate local assets
 
@@ -41,12 +43,12 @@ Install on an attached Android device:
 $ANDROID_HOME/platform-tools/adb install -r app/build/outputs/apk/debug/app-debug.apk
 ```
 
-On first launch, the bundled read-only database is copied atomically to the app's no-backup storage and then opened with `SQLiteDatabase.OPEN_READONLY`.
+On first launch, the bundled Mushaf database is copied atomically and opened read-only. The Mutashabihat seed is copied separately and opened read/write in private app storage.
 
 ## Known differences from iOS
 
 - Compose uses a page-slide pager, not the UIKit/iBooks page curl.
 - The current surah banner is a native drawn cartouche rather than the iOS selectable illuminated banner asset system.
 - The basmala slot uses the same canonical four Page 1 QCF glyphs as iOS. Quran page tokens themselves always use their own converted QCF page font.
-- Sync/live overlays, review editing, Quran search, memorization, statistics, backup, and page curl remain outside the Android phase scope.
+- Sync/backup, review editing, memorization, statistics, and page curl remain outside the Android phase scope.
 - No emulator is provisioned by this task, so the build and JVM core tests do not constitute visual-device verification.
