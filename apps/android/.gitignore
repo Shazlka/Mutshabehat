@@ -1,0 +1,14 @@
+.gradle/
+build/
+app/build/
+local.properties
+.idea/
+*.iml
+
+# Generated from licensed iOS sources; never commit redistributed data/fonts.
+app/src/main/assets/data/mushaf.sqlite
+app/src/main/assets/fonts/*.ttf
+app/src/main/assets/qiraat/
+app/src/main/assets/qiraat_mutoon/
+app/src/main/assets/qiraat_references/
+font-conversion-venv/
