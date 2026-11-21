@@ -4,12 +4,14 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PageSize
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -24,6 +26,7 @@ import com.shazlka.qiraat.core.MushafPage
 import com.shazlka.qiraat.core.PageLayoutConstants
 import com.shazlka.qiraat.core.QiraatPageSummary
 import com.shazlka.qiraat.core.Rect
+import com.shazlka.qiraat.core.Spread
 import com.shazlka.qiraat.memorization.MemorizationDashboardScreen
 import com.shazlka.qiraat.memorization.MemorizationStatus
 import com.shazlka.qiraat.reading.KhatmaCelebrationDialog
@@ -79,6 +82,12 @@ private fun ReadyReader(model: ReaderViewModel, initialPage: Int) {
         model.fontStore.prewarm(com.shazlka.qiraat.core.QcfFontStore.neighbourhood(page))
     }
 
+    LaunchedEffect(pagerState.isScrollInProgress) {
+        if (!pagerState.isScrollInProgress && pagerState.currentPageOffsetFraction != 0f) {
+            pagerState.scrollToPage(pagerState.currentPage)
+        }
+    }
+
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
         Column(
             Modifier
@@ -129,8 +138,12 @@ private fun ReadyReader(model: ReaderViewModel, initialPage: Int) {
 
                                 HorizontalPager(
                                     state = pagerState,
+                                    pageSize = PageSize.Fill,
                                     beyondViewportPageCount = 1,
-                                    modifier = Modifier.weight(1f).fillMaxWidth(),
+                                    modifier = Modifier
+                                        .weight(1f)
+                                        .fillMaxWidth()
+                                        .clipToBounds(),
                                     key = { it + 1 },
                                 ) { index ->
                                     var page by remember(index) { mutableStateOf<MushafPage?>(null) }
@@ -139,13 +152,22 @@ private fun ReadyReader(model: ReaderViewModel, initialPage: Int) {
                                         if (index == pagerState.currentPage) currentMushafPage = page
                                     }
                                     BoxWithConstraints(
-                                        Modifier.fillMaxSize().padding(horizontal = 6.dp, vertical = 2.dp),
+                                        Modifier
+                                            .fillMaxSize()
+                                            .clipToBounds(),
                                         contentAlignment = Alignment.Center,
                                     ) {
                                         page?.let { loaded ->
+                                            val isSpread = Spread.isSpread(maxWidth.value, maxHeight.value)
                                             val density = LocalDensity.current
-                                            val fitted = with(density) {
-                                                PageLayoutConstants.fittedPageRect(Rect(0f, 0f, maxWidth.toPx(), maxHeight.toPx()), stretch = true)
+                                            val (pageWidthDp, pageHeightDp) = if (isSpread) {
+                                                with(density) {
+                                                    val area = Rect(0f, 0f, (maxWidth / 2).toPx(), maxHeight.toPx())
+                                                    val fitted = PageLayoutConstants.fittedPageRect(area, stretch = false)
+                                                    fitted.width.toDp() to fitted.height.toDp()
+                                                }
+                                            } else {
+                                                maxWidth to maxHeight
                                             }
                                             AndroidView(
                                                 factory = { context -> MushafPageCanvas(context) },
@@ -173,7 +195,7 @@ private fun ReadyReader(model: ReaderViewModel, initialPage: Int) {
                                                         }
                                                     }
                                                 },
-                                                modifier = with(density) { Modifier.size(fitted.width.toDp(), fitted.height.toDp()) },
+                                                modifier = Modifier.size(pageWidthDp, pageHeightDp),
                                             )
                                         } ?: CircularProgressIndicator(modifier = Modifier.size(28.dp))
                                     }

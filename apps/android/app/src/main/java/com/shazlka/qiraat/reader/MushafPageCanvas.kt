@@ -8,6 +8,7 @@ import android.graphics.RectF
 import android.view.View
 import android.view.GestureDetector
 import android.view.MotionEvent
+import android.view.ViewConfiguration
 import androidx.compose.ui.graphics.toArgb
 import com.shazlka.qiraat.core.AyahKey
 import com.shazlka.qiraat.core.LaidOutLineContent
@@ -25,6 +26,7 @@ import com.shazlka.qiraat.core.QiraatUnderline
 import com.shazlka.qiraat.core.WordMarks
 import com.shazlka.qiraat.memorization.MemorizationStatus
 import com.shazlka.qiraat.settings.MushafAppearance
+import kotlin.math.abs
 import kotlin.math.max
 
 class MushafPageCanvas(context: Context) : View(context) {
@@ -60,8 +62,13 @@ class MushafPageCanvas(context: Context) : View(context) {
 
     private var currentLayout: PageLayout? = null
     private val markPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { strokeCap = Paint.Cap.ROUND }
+    private var touchStartX = 0f
+    private var touchStartY = 0f
+    private var isDragging = false
+    private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
+
     private val gestures = GestureDetector(context, object : GestureDetector.SimpleOnGestureListener() {
-        override fun onDown(e: MotionEvent) = true
+        override fun onDown(e: MotionEvent): Boolean = true
         override fun onSingleTapUp(e: MotionEvent): Boolean {
             currentLayout?.wordAt(Point(e.x, e.y))?.let { onWordTap?.invoke(it) }
             return true
@@ -173,7 +180,43 @@ class MushafPageCanvas(context: Context) : View(context) {
         canvas.drawText(toArabicDigits(currentPage.number), width / 2f, height - width * 0.012f, decorationPaint)
     }
 
-    override fun onTouchEvent(event: MotionEvent): Boolean = gestures.onTouchEvent(event) || super.onTouchEvent(event)
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        when (event.actionMasked) {
+            MotionEvent.ACTION_DOWN -> {
+                touchStartX = event.x
+                touchStartY = event.y
+                isDragging = false
+                parent?.requestDisallowInterceptTouchEvent(true)
+                gestures.onTouchEvent(event)
+                return true
+            }
+            MotionEvent.ACTION_MOVE -> {
+                if (!isDragging) {
+                    val dx = abs(event.x - touchStartX)
+                    val dy = abs(event.y - touchStartY)
+                    if (dx > touchSlop || dy > touchSlop) {
+                        isDragging = true
+                        parent?.requestDisallowInterceptTouchEvent(false)
+                        return false
+                    }
+                } else {
+                    return false
+                }
+            }
+            MotionEvent.ACTION_UP -> {
+                if (isDragging) {
+                    isDragging = false
+                    return false
+                }
+                return gestures.onTouchEvent(event) || super.onTouchEvent(event)
+            }
+            MotionEvent.ACTION_CANCEL -> {
+                isDragging = false
+                return super.onTouchEvent(event)
+            }
+        }
+        return gestures.onTouchEvent(event) || super.onTouchEvent(event)
+    }
 
     private fun statusColor(status: MemorizationStatus): Int = when (status) {
         MemorizationStatus.MASTERED -> Color.rgb(46, 125, 50)
