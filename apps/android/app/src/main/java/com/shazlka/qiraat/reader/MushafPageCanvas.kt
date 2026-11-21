@@ -59,6 +59,7 @@ class MushafPageCanvas(context: Context) : View(context) {
         set(value) { field = value; invalidate() }
     var onWordTap: ((com.shazlka.qiraat.core.MushafWord) -> Unit)? = null
     var onWordLongPress: ((com.shazlka.qiraat.core.MushafWord) -> Unit)? = null
+    var onPageTap: (() -> Unit)? = null
 
     private var currentLayout: PageLayout? = null
     private val markPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { strokeCap = Paint.Cap.ROUND }
@@ -70,7 +71,12 @@ class MushafPageCanvas(context: Context) : View(context) {
     private val gestures = GestureDetector(context, object : GestureDetector.SimpleOnGestureListener() {
         override fun onDown(e: MotionEvent): Boolean = true
         override fun onSingleTapUp(e: MotionEvent): Boolean {
-            currentLayout?.wordAt(Point(e.x, e.y))?.let { onWordTap?.invoke(it) }
+            val word = currentLayout?.wordAt(Point(e.x, e.y))
+            if (word != null) {
+                onWordTap?.invoke(word)
+            } else {
+                onPageTap?.invoke()
+            }
             return true
         }
         override fun onLongPress(e: MotionEvent) {

@@ -2,6 +2,39 @@ package com.shazlka.qiraat.core
 
 data class AuthorityPill(val key: String, val name: String, val color: String, val kind: Kind) {
     enum class Kind { READER, NARRATOR, OTHER }
+
+    val initial: String
+        get() {
+            var base = name
+            for (prefix in listOf("الإمام ", "الراوي ")) {
+                if (base.startsWith(prefix)) {
+                    base = base.removePrefix(prefix)
+                    break
+                }
+            }
+            if (base.startsWith("ال") && base.length > 3) {
+                base = base.removePrefix("ال")
+            }
+            return base.firstOrNull()?.toString() ?: "؟"
+        }
+
+    val cleanName: String
+        get() {
+            for (prefix in listOf("الإمام ", "الراوي ")) {
+                if (name.startsWith(prefix)) {
+                    return name.removePrefix(prefix)
+                }
+            }
+            return name
+        }
+}
+
+fun parentNameOf(pill: AuthorityPill, catalog: QiraatCatalog): String? {
+    if (pill.kind != AuthorityPill.Kind.NARRATOR) return null
+    if (pill.name.contains(" عن ")) return null
+    val narrator = catalog.narrator(pill.key) ?: return null
+    val reader = catalog.reader(narrator.readerId) ?: return null
+    return reader.nameArShort
 }
 
 fun rollupAuthorityPills(ids: List<String>, catalog: QiraatCatalog): List<AuthorityPill> {
@@ -43,11 +76,118 @@ fun distinctRulingText(text: String?, categoryAr: String, actions: List<String?>
 
 fun isRedundantActionLabel(action: String?, categoryAr: String) = foldArabic(action.orEmpty()).let { it.isEmpty() || it == foldArabic(categoryAr) }
 
-data class RulingActionGroup(val action: String, val entries: List<QiraatAttribution>)
+data class RulingActionGroup(val action: String, val entries: List<QiraatAttribution>) {
+    companion object {
+        fun grouping(rows: List<QiraatAttribution>, fallback: String): List<RulingActionGroup> {
+            val order = mutableListOf<String>()
+            val groups = mutableMapOf<String, MutableList<QiraatAttribution>>()
+            for (entry in rows) {
+                val action = entry.action?.takeIf { it.isNotBlank() } ?: fallback
+                if (!groups.containsKey(action)) order.add(action)
+                groups.getOrPut(action) { mutableListOf() }.add(entry)
+            }
+            return order.map { RulingActionGroup(it, groups[it].orEmpty()) }
+        }
+    }
+}
+
 fun groupAttribution(rows: List<QiraatAttribution>, fallback: String): List<RulingActionGroup> {
-    val groups = linkedMapOf<String, MutableList<QiraatAttribution>>()
-    rows.forEach { groups.getOrPut(it.action ?: fallback) { mutableListOf() }.add(it) }
-    return groups.map { RulingActionGroup(it.key, it.value) }
+    return RulingActionGroup.grouping(rows, fallback)
+}
+
+fun QiraatVariant.attribution(readingIds: List<String>, catalog: QiraatCatalog): List<QiraatAttribution> {
+    val shown = readingIds.toSet()
+    val shownReaders = readingIds.mapNotNull { catalog.readerId(it) }.toSet()
+    return attribution.filter { row ->
+        if (row.authorityId.contains("-")) shown.contains(row.authorityId)
+        else shownReaders.contains(row.authorityId)
+    }
+}
+
+fun QiraatVariant.attributionByAction(readingIds: List<String>, catalog: QiraatCatalog): List<RulingActionGroup> {
+    return RulingActionGroup.grouping(attribution(readingIds, catalog), fallback = "")
+}
+
+fun QiraatRuling.attribution(filter: QiraatFilter, catalog: QiraatCatalog): List<QiraatAttribution> {
+    return when (filter) {
+        QiraatFilter.All -> attribution
+        is QiraatFilter.Reader -> attribution.filter { row ->
+            row.authorityId == filter.id || catalog.readerId(row.authorityId) == filter.id
+        }
+        is QiraatFilter.Reading -> {
+            val readerId = catalog.readerId(filter.id)
+            attribution.filter { it.authorityId == filter.id || (readerId != null && it.authorityId == readerId) }
+        }
+    }
+}
+
+fun QiraatRuling.attributionByAction(filter: QiraatFilter, catalog: QiraatCatalog): List<RulingActionGroup> {
+    return RulingActionGroup.grouping(attribution(filter, catalog), fallback = categoryAr)
+}
+
+fun QiraatRuling.hasAlternateReading(filter: QiraatFilter, catalog: QiraatCatalog): Boolean {
+    val alternateReadings = readings.filter { !it.isDefault }
+    return when (filter) {
+        QiraatFilter.All -> alternateReadings.isNotEmpty() || hasAlternate
+        is QiraatFilter.Reader -> alternateReadings.any { catalog.readerId(it.readingId) == filter.id }
+        is QiraatFilter.Reading -> alternateReadings.any { it.readingId == filter.id }
+    }
+}
+
+fun QiraatCatalog.filterName(filter: QiraatFilter): String = when (filter) {
+    QiraatFilter.All -> "الكل"
+    is QiraatFilter.Reader -> reader(filter.id)?.let { "الإمام ${it.nameArShort}" } ?: filter.id
+    is QiraatFilter.Reading -> narrator(filter.id)?.let { "الراوي ${unambiguousName(it)}" } ?: filter.id
+}
+
+fun QiraatCatalog.unambiguousName(narrator: QiraatCatalog.Narrator): String {
+    val name = narrator.nameAr
+    var clashes = false
+    for (other in readers) {
+        if (other.id != narrator.readerId) {
+            val opening = other.nameArShort.split(" ").firstOrNull()
+            if (opening == name) clashes = true
+        }
+    }
+    val own = reader(narrator.readerId)
+    return if (clashes && own != null) "$name عن ${own.nameArShort}" else name
+}
+
+object QiraatClassification {
+    const val FARSH_CATEGORY_TITLE = "فرش الحروف"
+    const val USUL_CATEGORY_TITLE = "أصول القراءات"
+
+    fun subCategory(differenceType: String?): String {
+        return differenceTypeLabelAr(differenceType?.trim()?.uppercase())
+    }
+
+    fun subCategory(variant: QiraatVariant): String {
+        return subCategory(variant.differenceType)
+    }
+
+    fun usulSubCategory(ruling: QiraatRuling): String? {
+        if (!ruling.subCategory.isNullOrBlank()) return ruling.subCategory.trim()
+        val actions = ruling.attribution.mapNotNull { it.action?.trim() }.filter { it.isNotBlank() }.distinct()
+        if (actions.size == 1 && actions.first().length <= 24 && foldArabic(actions.first()) != foldArabic(ruling.categoryAr)) {
+            return actions.first()
+        }
+        return null
+    }
+
+    fun classificationSegments(variant: QiraatVariant): List<String> =
+        listOf(FARSH_CATEGORY_TITLE, subCategory(variant))
+
+    fun classification(variant: QiraatVariant): String =
+        classificationSegments(variant).joinToString(" › ")
+
+    fun classificationSegments(ruling: QiraatRuling): List<String> {
+        val segments = mutableListOf(USUL_CATEGORY_TITLE, ruling.categoryAr)
+        usulSubCategory(ruling)?.let { segments.add(it) }
+        return segments
+    }
+
+    fun classification(ruling: QiraatRuling): String =
+        classificationSegments(ruling).joinToString(" › ")
 }
 
 object QiraatPageTint {
