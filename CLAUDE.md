@@ -38,6 +38,15 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-11-21 — Android Phase 6: Mushaf reader rendering fixes (Surah banner and glyph distortion/clipping)
+- **Surah banner cartouche fix**: Replaced naive horizontal strike-through line across text with an authentic illuminated cartouche matching iOS `drawFallbackSurahHeader`: outer rounded rectangular frame, inner inset border, central cartouche with solid paper background fill and gold border, and gold decorative side rules with terminal diamond/circle accent dots flanking the text (no lines through surah title).
+- **PUA glyph distortion and blob fix**: Root-caused Skia/FreeType rendering artifacts (black polygon blobs inside loops of `م`, `ق` and jagged tears across `عَلَىٰ`) to TrueType bytecode hinting distorting complex QCF font curves with coordinates from -1500 to +3000. Resolved by setting `glyphPaint.hinting = Paint.HINTING_OFF` and adding `Paint.SUBPIXEL_TEXT_FLAG`, restoring clean, unclipped letterforms matching iOS CoreText rendering.
+- **RTL word scaling alignment**: Updated horizontal scaling pivot in `MushafPageCanvas` from `box.frame.left` to `box.frame.right` with text origin at `box.frame.right - natural`, ensuring condensed lines anchor to the right margin in Arabic RTL reading order.
+- **Qiraat mark positioning**: Shifted margin indicators (family dots and imalah dots) outside the glyph bounding box to the left margin (`frame.left - dot * 0.2f`), and lowered reader underlines (`frame.bottom + thickness / 2f`) and dotted underlines (`frame.bottom + thickness * 2.6f`) below descending glyph strokes to eliminate collisions with text.
+- **Multi-piece token RTL order**: Fixed visual drawing order for multi-piece / space-containing tokens (e.g. `۞ إِنَّ`) in `QcfFontStore` by reversing piece order (`pieces.indices.reversed()`) so that the first token character renders on the right and subsequent pieces render to the left.
+- **Testing & Verification**: Added unit test `multiPieceTokenDrawOrderIsReversedForRtl()` in `QcfFontStoreTest.kt`. All 60 unit tests pass cleanly (`./gradlew clean testDebugUnitTest assembleDebug`). Re-verified visually on emulator via screenshots `fix_page_1.png`, `fix_page_2.png`, and `fix_page_300.png`.
+- **Packaging & Device Deployment**: Rebuilt and copied APK to `apps/android/dist/Qiraat-android-debug.apk` and installed to connected Samsung Galaxy A24 (`RK8W602ZRBH`) via `adb install -r`.
+
 ## 2026-11-21 — Android Phase 5: Emulator verification, rendering fixes, and final APK packaging
 - Installed Android 35 ARM64 system image (`system-images;android-35;google_apis;arm64-v8a`) and emulator tools, provisioned Pixel 6 AVD (`qiraat_pixel_6`) with 3 GB RAM and 10 GB data partition, and booted headless via swiftshader indirect GPU.
 - Verified package `com.shazlka.qiraat` installation, launch, and error-free execution (zero FATAL/AndroidRuntime crashes in logcat).

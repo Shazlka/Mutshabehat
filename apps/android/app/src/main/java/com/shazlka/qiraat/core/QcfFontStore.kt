@@ -33,14 +33,28 @@ class QcfFontStore(private val assets: AssetManager, private val capacity: Int =
         }.toFloat()
     }
 
-    /** Handles the 198 space-containing tokens without asking Android to font-fallback PUA glyphs. */
+    /** Handles the 198 space-containing tokens without asking Android to font-fallback PUA glyphs.
+     * In Arabic (RTL), pieces are stored in reading order (rightmost first).
+     * When drawn from left to right on canvas starting at x, they are drawn in reverse visual order.
+     */
     fun drawToken(canvas: Canvas, glyph: String, page: Int, x: Float, baseline: Float, paint: Paint) {
         val pageFont = font(page)
+        val pieces = splitToken(glyph)
+        if (pieces.size <= 1) {
+            paint.typeface = pageFont
+            canvas.drawText(glyph, x, baseline, paint)
+            return
+        }
+        val widths = pieces.map { piece ->
+            paint.typeface = if (piece == " ") Typeface.DEFAULT else pageFont
+            paint.measureText(piece)
+        }
         var cursor = x
-        splitToken(glyph).forEach { piece ->
+        pieces.indices.reversed().forEach { index ->
+            val piece = pieces[index]
             paint.typeface = if (piece == " ") Typeface.DEFAULT else pageFont
             canvas.drawText(piece, cursor, baseline, paint)
-            cursor += paint.measureText(piece)
+            cursor += widths[index]
         }
     }
 

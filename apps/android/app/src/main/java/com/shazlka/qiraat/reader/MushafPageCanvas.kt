@@ -71,7 +71,10 @@ class MushafPageCanvas(context: Context) : View(context) {
         }
     })
 
-    private val glyphPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Color.rgb(34, 29, 22) }
+    private val glyphPaint = Paint(Paint.ANTI_ALIAS_FLAG or Paint.SUBPIXEL_TEXT_FLAG).apply {
+        color = Color.rgb(34, 29, 22)
+        hinting = Paint.HINTING_OFF
+    }
     private val decorationPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Color.rgb(82, 65, 39)
         textAlign = Paint.Align.CENTER
@@ -112,7 +115,8 @@ class MushafPageCanvas(context: Context) : View(context) {
 
         val paper = QiraatColor(basePaper.red.toDouble(), basePaper.green.toDouble(), basePaper.blue.toDouble())
         val tint = if (qiraatEnabled) qiraatMarks?.catalog?.let { QiraatPageTint.readerColor(qiraatFilter, it) } else null
-        canvas.drawColor((tint?.let { QiraatPageTint.mixed(paper, it) } ?: paper).toArgb())
+        val currentPaperColor = (tint?.let { QiraatPageTint.mixed(paper, it) } ?: paper).toArgb()
+        canvas.drawColor(currentPaperColor)
         val currentPage = page ?: return
         val fonts = fontStore ?: return
         if (width <= 0 || height <= 0) return
@@ -154,12 +158,12 @@ class MushafPageCanvas(context: Context) : View(context) {
                     val metrics = glyphPaint.fontMetrics
                     val baseline = line.rect.centerY - (metrics.ascent + metrics.descent) / 2
                     canvas.save()
-                    canvas.scale(scale, 1f, box.frame.left, baseline)
-                    fonts.drawToken(canvas, box.word.glyph, currentPage.number, box.frame.left, baseline, glyphPaint)
+                    canvas.scale(scale, 1f, box.frame.right, baseline)
+                    fonts.drawToken(canvas, box.word.glyph, currentPage.number, box.frame.right - natural, baseline, glyphPaint)
                     canvas.restore()
                     wordMarks?.let { drawMarks(canvas, box.frame, it, layout.fontSize) }
                 }
-                is LaidOutLineContent.SurahHeader -> drawSurahHeader(canvas, content.surah, line.rect, layout.fontSize)
+                is LaidOutLineContent.SurahHeader -> drawSurahHeader(canvas, content.surah, line.rect, layout.fontSize, currentPaperColor)
                 LaidOutLineContent.Basmala -> drawBasmala(canvas, line.rect, layout.fontSize, fonts)
                 LaidOutLineContent.Empty -> Unit
             }
@@ -179,30 +183,51 @@ class MushafPageCanvas(context: Context) : View(context) {
     }
 
     private fun drawMarks(canvas: Canvas, frame: Rect, marks: WordMarks, fontSize: Float) {
-        val y = frame.bottom - fontSize * .02f
-        marks.underline?.let { drawUnderline(canvas, frame, y, it, false, fontSize) }
-        marks.dottedUnderline?.let { drawUnderline(canvas, frame, y + fontSize * .09f, it, true, fontSize) }
+        val thickness = max(1.2f, fontSize * 0.06f)
+        val dot = max(3f, fontSize * 0.16f)
+
+        marks.underline?.let { drawUnderline(canvas, frame, frame.bottom + thickness / 2f, it, false, thickness) }
+        marks.dottedUnderline?.let {
+            drawUnderline(canvas, frame, frame.bottom + thickness * 2.6f, it, true, thickness)
+        }
         marks.familyDotColor?.let {
-            markPaint.color = parseColor(it); markPaint.style = Paint.Style.FILL
-            canvas.drawCircle(frame.left + fontSize * .07f, frame.top + fontSize * .08f, fontSize * .055f, markPaint)
+            markPaint.color = parseColor(it)
+            markPaint.style = Paint.Style.FILL
+            val radius = dot / 2f
+            canvas.drawCircle(frame.left - dot * 0.2f, frame.top + dot * 0.5f, radius, markPaint)
         }
         marks.imalahDot?.let {
-            markPaint.color = parseColor(it.color); markPaint.strokeWidth = max(1f, fontSize * .045f)
-            markPaint.style = if (it.filled) Paint.Style.FILL else Paint.Style.STROKE
-            canvas.drawCircle(frame.left + fontSize * .08f, frame.bottom - fontSize * .06f, fontSize * .07f, markPaint)
+            val color = parseColor(it.color)
+            markPaint.color = color
+            val radius = dot / 2f
+            val cx = frame.left - dot * 0.2f
+            val cy = frame.bottom + thickness * 3.6f + dot * 0.5f
+            if (it.filled) {
+                markPaint.style = Paint.Style.FILL
+                canvas.drawCircle(cx, cy, radius, markPaint)
+            } else {
+                markPaint.style = Paint.Style.STROKE
+                markPaint.strokeWidth = max(1f, dot * 0.28f)
+                canvas.drawCircle(cx, cy, radius - markPaint.strokeWidth / 2f, markPaint)
+            }
         }
     }
 
-    private fun drawUnderline(canvas: Canvas, frame: Rect, y: Float, underline: QiraatUnderline, dotted: Boolean, fontSize: Float) {
+    private fun drawUnderline(canvas: Canvas, frame: Rect, y: Float, underline: QiraatUnderline, dotted: Boolean, thickness: Float) {
         markPaint.style = Paint.Style.STROKE
-        markPaint.strokeWidth = max(1.5f, fontSize * .055f)
-        markPaint.pathEffect = if (dotted) android.graphics.DashPathEffect(floatArrayOf(fontSize * .08f, fontSize * .1f), 0f) else null
+        markPaint.strokeWidth = if (dotted) thickness * 0.9f else thickness
+        markPaint.pathEffect = if (dotted) android.graphics.DashPathEffect(floatArrayOf(thickness, thickness * 1.3f), 0f) else null
         when (underline) {
-            is QiraatUnderline.Solid -> { markPaint.color = parseColor(underline.color); canvas.drawLine(frame.left, y, frame.right, y, markPaint) }
-            is QiraatUnderline.Segments -> underline.colors.forEachIndexed { i, color ->
-                markPaint.color = parseColor(color)
-                val segment = frame.width / underline.colors.size
-                canvas.drawLine(frame.left + i * segment, y, frame.left + (i + 1) * segment, y, markPaint)
+            is QiraatUnderline.Solid -> {
+                markPaint.color = parseColor(underline.color)
+                canvas.drawLine(frame.left, y, frame.right, y, markPaint)
+            }
+            is QiraatUnderline.Segments -> {
+                val segment = frame.width / max(underline.colors.size, 1)
+                underline.colors.forEachIndexed { i, color ->
+                    markPaint.color = parseColor(color)
+                    canvas.drawLine(frame.left + i * segment, y, frame.left + (i + 1) * segment, y, markPaint)
+                }
             }
         }
         markPaint.pathEffect = null
@@ -210,16 +235,63 @@ class MushafPageCanvas(context: Context) : View(context) {
 
     private fun parseColor(hex: String) = runCatching { Color.parseColor(hex) }.getOrDefault(Color.GRAY)
 
-    private fun drawSurahHeader(canvas: Canvas, surah: Int, rect: Rect, fontSize: Float) {
-        val inset = fontSize * 0.08f
-        val banner = RectF(rect.left + inset, rect.top + inset, rect.right - inset, rect.bottom - inset)
-        linePaint.strokeWidth = max(1f, fontSize * 0.055f)
-        canvas.drawRoundRect(banner, fontSize * 0.18f, fontSize * 0.18f, linePaint)
-        canvas.drawLine(banner.left + fontSize * 0.35f, banner.centerY(), banner.right - fontSize * 0.35f, banner.centerY(), linePaint)
+    private fun drawSurahHeader(canvas: Canvas, surah: Int, rect: Rect, fontSize: Float, paperColor: Int) {
+        val outerInset = fontSize * 0.08f
+        val banner = RectF(rect.left + outerInset, rect.top + outerInset, rect.right - outerInset, rect.bottom - outerInset)
+        val cornerRadius = banner.height() * 0.18f
+
+        // Outer rounded border
+        val outerStroke = max(1.4f, width * 0.003f)
+        linePaint.strokeWidth = outerStroke
+        linePaint.style = Paint.Style.STROKE
+        canvas.drawRoundRect(banner, cornerRadius, cornerRadius, linePaint)
+
+        // Inner rounded border
+        val innerInsetX = outerStroke * 2.2f
+        val innerInsetY = outerStroke * 2.0f
+        val innerBanner = RectF(banner.left + innerInsetX, banner.top + innerInsetY, banner.right - innerInsetX, banner.bottom - innerInsetY)
+        linePaint.strokeWidth = max(0.8f, outerStroke * 0.6f)
+        canvas.drawRoundRect(innerBanner, cornerRadius * 0.7f, cornerRadius * 0.7f, linePaint)
+
+        // Surah title
+        val title = "سُورَةُ ${surahNames[surah] ?: surah}"
         decorationPaint.textSize = fontSize * 0.66f
+        val textWidth = decorationPaint.measureText(title)
+        val textPad = fontSize * 0.45f
+        val cartoucheWidth = max(banner.width() * 0.45f, textWidth + textPad * 2)
+        val cartouche = RectF(
+            banner.centerX() - cartoucheWidth / 2f,
+            innerBanner.top + 1f,
+            banner.centerX() + cartoucheWidth / 2f,
+            innerBanner.bottom - 1f,
+        )
+
+        // Side decoration lines (flanking the cartouche, never passing through the text)
+        val lineY = banner.centerY()
+        val lineLeftEnd = cartouche.left - fontSize * 0.2f
+        val lineRightStart = cartouche.right + fontSize * 0.2f
+        val lineMargin = fontSize * 0.35f
+        if (lineLeftEnd > innerBanner.left + lineMargin) {
+            canvas.drawLine(innerBanner.left + lineMargin, lineY, lineLeftEnd, lineY, linePaint)
+            canvas.drawCircle(lineLeftEnd, lineY, max(1.5f, fontSize * 0.04f), linePaint)
+        }
+        if (lineRightStart < innerBanner.right - lineMargin) {
+            canvas.drawLine(lineRightStart, lineY, innerBanner.right - lineMargin, lineY, linePaint)
+            canvas.drawCircle(lineRightStart, lineY, max(1.5f, fontSize * 0.04f), linePaint)
+        }
+
+        // Cartouche: filled with opaque paper background and stroked with gold border
+        markPaint.style = Paint.Style.FILL
+        markPaint.color = paperColor
+        val cartoucheRadius = cartouche.height() * 0.35f
+        canvas.drawRoundRect(cartouche, cartoucheRadius, cartoucheRadius, markPaint)
+        linePaint.strokeWidth = max(1f, outerStroke * 0.85f)
+        canvas.drawRoundRect(cartouche, cartoucheRadius, cartoucheRadius, linePaint)
+
+        // Centred title text
         val metrics = decorationPaint.fontMetrics
         val baseline = banner.centerY() - (metrics.ascent + metrics.descent) / 2
-        canvas.drawText("سُورَةُ ${surahNames[surah] ?: surah}", banner.centerX(), baseline, decorationPaint)
+        canvas.drawText(title, banner.centerX(), baseline, decorationPaint)
     }
 
     private fun drawBasmala(canvas: Canvas, rect: Rect, fontSize: Float, fonts: QcfFontStore) {
