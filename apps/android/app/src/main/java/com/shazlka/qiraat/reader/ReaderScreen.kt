@@ -126,7 +126,11 @@ private fun ReadyReader(model: ReaderViewModel, initialPage: Int) {
                         .statusBarsPadding()
                 ) {
                     // Mushaf Paper & Pager Column
-                    Column(Modifier.fillMaxSize()) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .navigationBarsPadding()
+                    ) {
                         var headerPage by remember { mutableStateOf<MushafPage?>(null) }
                         LaunchedEffect(pagerState.currentPage) {
                             headerPage = model.page(pagerState.currentPage + 1)
@@ -144,21 +148,27 @@ private fun ReadyReader(model: ReaderViewModel, initialPage: Int) {
                             }
                         }
 
-                        // Top Header (hides and shows with chrome)
-                        AnimatedVisibility(
-                            visible = chromeVisible,
-                            enter = fadeIn(tween(200)) + expandVertically(tween(200)),
-                            exit = fadeOut(tween(200)) + shrinkVertically(tween(200))
+                        // Top Header (fixed height slot with smooth fade-in/out to prevent pager height jumps)
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(48.dp)
                         ) {
-                            ReaderHeader(
-                                page = headerPage,
-                                isBookmarked = model.readingTracker.isPageBookmarked(pagerState.currentPage + 1),
-                                bannerStatusText = bannerStatus?.titleAr,
-                                bannerStatusColor = bannerColor,
-                                onToggleBookmark = {
-                                    model.togglePageBookmark(pagerState.currentPage + 1)
-                                },
-                            )
+                            androidx.compose.animation.AnimatedVisibility(
+                                visible = chromeVisible,
+                                enter = fadeIn(tween(200)),
+                                exit = fadeOut(tween(200))
+                            ) {
+                                ReaderHeader(
+                                    page = headerPage,
+                                    isBookmarked = model.readingTracker.isPageBookmarked(pagerState.currentPage + 1),
+                                    bannerStatusText = bannerStatus?.titleAr,
+                                    bannerStatusColor = bannerColor,
+                                    onToggleBookmark = {
+                                        model.togglePageBookmark(pagerState.currentPage + 1)
+                                    },
+                                )
+                            }
                         }
 
                         HorizontalPager(
@@ -192,11 +202,8 @@ private fun ReadyReader(model: ReaderViewModel, initialPage: Int) {
                                             fitted.width.toDp() to fitted.height.toDp()
                                         }
                                     } else {
-                                        with(density) {
-                                            val area = Rect(0f, 0f, maxWidth.toPx(), maxHeight.toPx())
-                                            val fitted = PageLayoutConstants.fittedPageRect(area, stretch = false)
-                                            fitted.width.toDp() to fitted.height.toDp()
-                                        }
+                                        // Mobile portrait and single-page: stretch page to fill available width and height
+                                        maxWidth to maxHeight
                                     }
 
                                     AndroidView(
@@ -235,7 +242,7 @@ private fun ReadyReader(model: ReaderViewModel, initialPage: Int) {
                         }
 
                         // Bottom space under paper to guarantee bar never clips page content
-                        Spacer(Modifier.height(70.dp))
+                        Spacer(Modifier.height(76.dp))
                     }
 
                     // Single iOS-Exact Floating Capsule Footer Bar

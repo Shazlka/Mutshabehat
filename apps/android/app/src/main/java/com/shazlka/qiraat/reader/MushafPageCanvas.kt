@@ -183,7 +183,7 @@ class MushafPageCanvas(context: Context) : View(context) {
         }
 
         decorationPaint.textSize = width * 0.028f
-        canvas.drawText(toArabicDigits(currentPage.number), width / 2f, height - width * 0.012f, decorationPaint)
+        canvas.drawText(toArabicDigits(currentPage.number), width / 2f, layout.verticalMetrics.pageNumberY, decorationPaint)
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {

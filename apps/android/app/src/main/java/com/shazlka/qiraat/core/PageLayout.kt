@@ -17,12 +17,75 @@ object PageLayoutConstants {
     const val FONT_SIZE_RATIO = 0.057f
     const val PADDING_X_RATIO = 0.038f
     const val PADDING_Y_RATIO_OF_WIDTH = 0.032f
+    const val PADDING_BOTTOM_RATIO_OF_WIDTH = 0.042f
+    const val PAGE_NUMBER_Y_RATIO_OF_WIDTH = 0.018f
     const val OPENING_INSET_Y_RATIO = 0.22f
     const val OPENING_INSET_X_RATIO = 0.13f
     const val CENTRED_GAP_EM = 0.12f
     const val MINIMUM_GAP_EM = 0.04f
     const val SHORT_LINE_RATIO = 0.7f
     const val MAX_HEIGHT_STRETCH = 1.18f
+    const val MUSHAF_LINES_PER_PAGE = 15
+    const val OPENING_LINES_PER_PAGE = 8
+
+    data class VerticalMetrics(
+        val rowHeight: Float,
+        val bodyTop: Float,
+        val bodyBottom: Float,
+        val bodyHeight: Float,
+        val pageNumberY: Float,
+        val isOpening: Boolean,
+        val lineCount: Int,
+    )
+
+    /**
+     * Derives vertical layout metrics (line pitch, body bounds, page number baseline)
+     * from the available page viewport dimensions, exactly matching iOS MushafCore PageLayout.
+     *
+     * @param pageNumber 1..604 (pages 1-2 are opening centered blocks)
+     * @param viewportWidth Available page width in px or dp
+     * @param viewportHeight Available page height in px or dp (between header and footer)
+     * @param visibleLines Optional override for visible line count (default: 8 for pages 1-2, 15 for regular pages)
+     */
+    fun computeVerticalMetrics(
+        pageNumber: Int,
+        viewportWidth: Float,
+        viewportHeight: Float,
+        visibleLines: Int? = null,
+    ): VerticalMetrics {
+        val opening = pageNumber <= 2
+        val lineCount = visibleLines ?: if (opening) OPENING_LINES_PER_PAGE else MUSHAF_LINES_PER_PAGE
+        val bodyTop = if (opening) {
+            viewportHeight * OPENING_INSET_Y_RATIO
+        } else {
+            viewportWidth * PADDING_Y_RATIO_OF_WIDTH
+        }
+        val bodyBottom = if (opening) {
+            viewportHeight * (1f - OPENING_INSET_Y_RATIO)
+        } else {
+            viewportHeight - viewportWidth * PADDING_BOTTOM_RATIO_OF_WIDTH
+        }
+        val bodyHeight = max(0f, bodyBottom - bodyTop)
+        val rowHeight = if (lineCount > 0) bodyHeight / lineCount else 0f
+        val pageNumberY = viewportHeight - viewportWidth * PAGE_NUMBER_Y_RATIO_OF_WIDTH
+
+        return VerticalMetrics(
+            rowHeight = rowHeight,
+            bodyTop = bodyTop,
+            bodyBottom = bodyBottom,
+            bodyHeight = bodyHeight,
+            pageNumberY = pageNumberY,
+            isOpening = opening,
+            lineCount = lineCount,
+        )
+    }
+
+    fun verticalPitch(
+        pageNumber: Int,
+        viewportWidth: Float,
+        viewportHeight: Float,
+        lineCount: Int? = null,
+    ): Float = computeVerticalMetrics(pageNumber, viewportWidth, viewportHeight, lineCount).rowHeight
 
     enum class SpineSide { NONE, LEFT, RIGHT }
 
@@ -60,20 +123,30 @@ class PageLayout(
 ) {
     val fontSize: Float
     val lines: List<LaidOutLine>
+    val rowHeight: Float
+    val body: Rect
+    val verticalMetrics: PageLayoutConstants.VerticalMetrics
 
     init {
         val opening = page.number <= 2
         val visible = if (opening) page.lines.filter { it.words.isNotEmpty() || it.decoration != null } else page.lines
-        val body = if (opening) Rect(
-            width * PageLayoutConstants.OPENING_INSET_X_RATIO, height * PageLayoutConstants.OPENING_INSET_Y_RATIO,
-            width * (1 - PageLayoutConstants.OPENING_INSET_X_RATIO), height * (1 - PageLayoutConstants.OPENING_INSET_Y_RATIO),
+        val metrics = PageLayoutConstants.computeVerticalMetrics(
+            pageNumber = page.number,
+            viewportWidth = width,
+            viewportHeight = height,
+            visibleLines = if (opening) visible.size else max(visible.size, PageLayoutConstants.MUSHAF_LINES_PER_PAGE),
+        )
+        verticalMetrics = metrics
+        rowHeight = metrics.rowHeight
+        body = if (opening) Rect(
+            width * PageLayoutConstants.OPENING_INSET_X_RATIO, metrics.bodyTop,
+            width * (1 - PageLayoutConstants.OPENING_INSET_X_RATIO), metrics.bodyBottom,
         ) else Rect(
-            width * PageLayoutConstants.PADDING_X_RATIO, width * PageLayoutConstants.PADDING_Y_RATIO_OF_WIDTH,
-            width * (1 - PageLayoutConstants.PADDING_X_RATIO), height - width * PageLayoutConstants.PADDING_Y_RATIO_OF_WIDTH,
+            width * PageLayoutConstants.PADDING_X_RATIO, metrics.bodyTop,
+            width * (1 - PageLayoutConstants.PADDING_X_RATIO), metrics.bodyBottom,
         )
         val counts = page.lines.map { it.words.size }.filter { it > 0 }.sorted()
         val typical = if (counts.isEmpty()) 0 else counts[(counts.size * 0.75).toInt()]
-        val rowHeight = if (visible.isEmpty()) 0f else body.height / visible.size
         val target = min(body.width / 16.2f, rowHeight * 0.74f)
         fontSize = max(width * PageLayoutConstants.FONT_SIZE_RATIO, target)
         lines = visible.mapIndexed { row, line ->
