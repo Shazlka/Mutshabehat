@@ -12,7 +12,7 @@ Native **Kotlin / Jetpack Compose** port of the Qiraat iOS app (Mushaf 1441 read
 | `ios/main` | The **iOS app** (`apps/ios`, SwiftUI) — the reference implementation |
 | `qiraat_apk` (this) | **Android app + handoff**. Orphan branch, contains only `qiraat_APK/` |
 
-`qiraat_apk` is a permanent branch. It shares no history with the others; the original Android commit history lives on `ios/main` (commits below).
+`qiraat_apk` is a permanent branch. It shares no history with the others; the original Android commits (table in section 8) exist only in the local `ios/main` of the machine that built them and were **not pushed**; this branch is the canonical copy of the code.
 
 ## 2. Folder layout
 
@@ -94,7 +94,7 @@ The latest APK was copied to the owner's Google Drive (My Drive → `Qiraat-andr
 - Repo rule: every change must also be logged in root `CHANGELOG.md` and `CLAUDE.md` (newest first) on `ios/main`; this branch keeps its own `android/CHANGELOG.md`.
 - Do not commit APKs, fonts, `local.properties`, `.gradle`, `build/`.
 
-## 8. History (commits on `ios/main`, `apps/android`)
+## 8. History (local `ios/main`, `apps/android`; not on GitHub)
 
 | Commit | Phase |
 |---|---|
