@@ -1,0 +1,25 @@
+<task>
+Phase 5: verify the Android app in apps/android actually installs and runs on an Android emulator, fix any crash or blocking defect you find, and leave a final installable APK. The app (package com.shazlka.qiraat) already builds: `cd apps/android && ./gradlew testDebugUnitTest assembleDebug` passes (59 tests).
+</task>
+
+<context>
+- Repo /Users/amrelshazly/Projects/qiraat-ios (Apple Silicon Mac, no emulator installed yet). Toolchain: export JAVA_HOME=/opt/homebrew/opt/openjdk@17 PATH=$JAVA_HOME/bin:$PATH ANDROID_HOME=/opt/homebrew/share/android-commandlinetools ANDROID_SDK_ROOT=$ANDROID_HOME. sdkmanager is at $ANDROID_HOME/cmdline-tools/latest/bin; platform-tools (adb) is installed. Licences accepted.
+- Install: `sdkmanager "emulator" "system-images;android-35;google_apis;arm64-v8a"`, create an AVD with avdmanager (pixel_6 or similar, 2 GB+ RAM, data partition >= 6 GB via config.ini disk.dataPartition.size because the APK is 154 MB plus first-run asset copies), boot it headless (`emulator -avd NAME -no-window -no-audio -gpu swiftshader_indirect -no-boot-anim`), wait for `adb shell getprop sys.boot_completed` = 1.
+- The APK: apps/android/app/build/outputs/apk/debug/app-debug.apk (also copy to apps/android/dist/Qiraat-android-debug.apk at the end).
+</context>
+
+<scope>
+1. Install and boot the emulator as above.
+2. `adb install -r` the APK, launch com.shazlka.qiraat/.MainActivity, and confirm it does not crash (watch `adb logcat`, filter AndroidRuntime/FATAL).
+3. Exercise each destination via adb input/uiautomator dumps and capture screenshots (`adb exec-out screencap -p`) into apps/android/verification/ : Mushaf page 1 render, swipe to next page, Qiraat sheet on a marked word, mutashabihat tab, search tab (run a query), memorization tab, settings tab. For each screen report whether Arabic text renders correctly (QCF glyphs, RTL) or looks broken.
+4. Fix real defects you find (crashes, blank pages, missing assets, first-run asset copy failures, layout cut-offs) inside apps/android only, rebuild with `./gradlew clean testDebugUnitTest assembleDebug`, reinstall and re-verify. Keep all 59 tests passing.
+5. Shut the emulator down at the end.
+</scope>
+
+<out_of_scope>
+Anything under apps/ios, src/, packages/. Do NOT commit. Do not claim a screen works unless you captured and looked at its screenshot.
+</out_of_scope>
+
+<report>
+End with "VERIFIED ON EMULATOR" (screen by screen: PASS/FAIL with the screenshot path), "FIXES MADE" (files + why), "GATES" (command + PASS/FAIL), and "OPEN ISSUES".
+</report>

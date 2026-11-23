@@ -1,0 +1,28 @@
+<task>
+Phase 3 of the Android port in apps/android (Kotlin/Jetpack Compose, package com.shazlka.qiraat): port the Mutashabihat (المتشابهات) feature and Quran search from the iOS app. Phases 1-2 (Mushaf reader, Qiraat layer) already build; read apps/android/README.md and the existing code first.
+</task>
+
+<context>
+- Repo /Users/amrelshazly/Projects/qiraat-ios. iOS reference: apps/ios/Sources/Mutshabehat/** (magazine view, card expansion, group editor, live Arabic diff), apps/ios/Sources/Reader/AyahSearchView.swift, AdvancedSearchGuideView.swift, and in apps/ios/MushafCore/Sources/MushafCore: Models.swift, QuranSearch.swift, AdvancedQuranMorphology.swift, AdvancedQuranQueryParser.swift, AdvancedQuranSearchData.swift, AdvancedQuranSearchEngine.swift, WordContextIndex.swift, Storage/. Port rules faithfully; do not re-derive them.
+- Data: apps/ios/Generated/mutshabehat.sqlite (bundled by iOS project.yml) plus any search data the engine loads (see AdvancedQuranSearchData.swift for its resources). Copy into apps/android assets through an idempotent script in apps/android/scripts (assets stay gitignored when large/licensed; otherwise commit).
+- User groups are stored locally (see iOS Storage/ and UserStores.swift); use Room or SQLite in app storage with the same schema semantics. Backup/sync is a later phase; keep the store behind an interface.
+- Toolchain: export JAVA_HOME=/opt/homebrew/opt/openjdk@17, PATH including its bin, ANDROID_HOME=/opt/homebrew/share/android-commandlinetools. Build in apps/android with ./gradlew. Maven/network is available.
+</context>
+
+<scope>
+1. Kotlin ports of mutashabihat models/store and Arabic live-diff, the AST query parser, morphology lexicon and search engine, with JVM unit tests mirroring apps/ios/MushafCore/Tests (and apps/ios/Tests where relevant).
+2. Compose UI: mutashabihat library (magazine/list), group detail with colour-coded differences, group editor (create/edit/delete, add ayat), ayah search screen with advanced-query guide, results opening the reader at the right page and highlighting the ayah.
+3. Navigation: add a bottom/footer tab bar mirroring apps/ios/Sources/Reader/FooterTabBar.swift so Reader, Mutashabihat, Search, Qiraat hub are reachable. Arabic strings follow apps/ios/Sources/Localizable.xcstrings.
+</scope>
+
+<out_of_scope>
+Memorization, reading stats/khatma, bookmarks, sync/backup, settings, review editor, page curl, release signing. Do NOT modify apps/ios, src/, packages/. Do NOT commit.
+</out_of_scope>
+
+<verification>
+`cd apps/android && ./gradlew testDebugUnitTest assembleDebug` must pass. Report files created, APK path/size, what you could not port, and gate output tails. No emulator exists; do not claim UI was visually verified.
+</verification>
+
+<report>
+End with "GATES" (command + PASS/FAIL) and "OPEN ISSUES".
+</report>

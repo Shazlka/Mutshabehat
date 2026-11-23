@@ -1,0 +1,469 @@
+import XCTest
+
+/// End-to-end checks on a simulator: the reader opens where it was left, turns the right way, and
+/// the index jumps. Pages are found by accessibility identifier "mushaf-page-<n>".
+/// `@MainActor`: every XCUIApplication / XCUIElement API is main-actor isolated under Swift 6.
+@MainActor
+final class ReaderUITests: XCTestCase {
+    override nonisolated func setUp() { continueAfterFailure = false }
+
+    /// Launches with the stored reading position forced through the argument domain.
+    /// `pinLanguage` forces Arabic through the argument domain, which also shadows anything the app writes to that
+    /// key; the language test therefore launches without it.
+    private func launch(atPage page: Int, arabic: Bool = false, pinLanguage: Bool = true) -> XCUIApplication {
+        let app = XCUIApplication.isolated()
+        // Paging tests run on the plain mushaf: with the Qiraat layer on, a tap on a marked word
+        // opens its card instead of the chrome.
+        // `-reading-fresh`: a throw-away reading database, so earlier tests' reading progress cannot move
+        // where the index jumps (it opens a surah at its first unread page).
+        app.launchArguments = ["-mushaf1441:last-page:v1", "\(page)", "-mushaf1441:reader-layer:v1", "none", "-reading-fresh"]
+        if pinLanguage { app.launchArguments += ["-app:language:v1", "ar"] }
+        if arabic { app.launchArguments += ["-AppleLanguages", "(ar)", "-AppleLocale", "ar_SA"] }
+        app.launch()
+        return app
+    }
+
+    /// UIKit mirrors layout for Arabic; the pager forces LTR geometry so the curl must not flip.
+    func testTurnDirectionIsTheSameWhenTheDeviceIsInArabic() {
+        let app = launch(atPage: 50, arabic: true)
+        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
+        let left = app.coordinate(withNormalizedOffset: CGVector(dx: 0.03, dy: 0.6))
+        let right = app.coordinate(withNormalizedOffset: CGVector(dx: 0.97, dy: 0.6))
+        left.press(forDuration: 0.05, thenDragTo: right)
+        XCTAssertTrue(page(51, in: app).waitForExistence(timeout: 20), "left edge → next page, in Arabic too")
+    }
+
+    private func page(_ number: Int, in app: XCUIApplication) -> XCUIElement {
+        app.descendants(matching: .any)["mushaf-page-\(number)"]
+    }
+
+    /// A row of the settings list. The list only creates the rows on screen, and on iPad the settings sheet is
+    /// short, so a lower row (language, database) does not exist until the list is scrolled to it.
+    private func settingsRow(_ id: String, in app: XCUIApplication, kind: XCUIElement.ElementType = .button) -> XCUIElement {
+        let row = app.descendants(matching: kind)[id]
+        let list = app.collectionViews.firstMatch
+        for _ in 0..<4 where !(row.exists && row.isHittable) { list.swipeUp() }
+        for _ in 0..<4 where !(row.exists && row.isHittable) { list.swipeDown() }
+        return row
+    }
+
+    func testOpensOnTheStoredPage() {
+        let app = launch(atPage: 50)
+        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
+    }
+
+    func testLiftingTheLeftEdgeTurnsForwardAndTheRightEdgeTurnsBack() {
+        let app = launch(atPage: 50)
+        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
+
+        let left = app.coordinate(withNormalizedOffset: CGVector(dx: 0.03, dy: 0.6))
+        let right = app.coordinate(withNormalizedOffset: CGVector(dx: 0.97, dy: 0.6))
+        left.press(forDuration: 0.05, thenDragTo: right)
+        XCTAssertTrue(page(51, in: app).waitForExistence(timeout: 20), "left edge → next page")
+
+        right.press(forDuration: 0.05, thenDragTo: left)
+        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20), "right edge → previous page")
+    }
+
+    /// Settings → Page turn → Slide: the finger moves the same way as in the curl (left to right is forward), in Arabic
+    /// too, and Reduce Motion is not needed for it.
+    func testSlideTurnsForwardLeftToRightAndBackRightToLeftInArabic() {
+        let app = XCUIApplication.isolated()
+        app.launchArguments = ["-mushaf1441:last-page:v1", "50", "-mushaf1441:reader-layer:v1", "none", "-reading-fresh",
+                               "-app:language:v1", "ar", "-mushaf:pageTurn:v1", "slide",
+                               "-AppleLanguages", "(ar)", "-AppleLocale", "ar_SA"]
+        app.launch()
+        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
+        let left = app.coordinate(withNormalizedOffset: CGVector(dx: 0.1, dy: 0.5))
+        let right = app.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5))
+        left.press(forDuration: 0.05, thenDragTo: right)
+        XCTAssertTrue(page(51, in: app).waitForExistence(timeout: 20), "slide: left to right → next page")
+        right.press(forDuration: 0.05, thenDragTo: left)
+        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20), "slide: right to left → previous page")
+    }
+
+    func testReopensOnThePageItWasLeftOn() {
+        let app = launch(atPage: 50)
+        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
+        let left = app.coordinate(withNormalizedOffset: CGVector(dx: 0.03, dy: 0.6))
+        let right = app.coordinate(withNormalizedOffset: CGVector(dx: 0.97, dy: 0.6))
+        left.press(forDuration: 0.05, thenDragTo: right)
+        XCTAssertTrue(page(51, in: app).waitForExistence(timeout: 20))
+        app.terminate()
+
+        let relaunched = XCUIApplication.isolated()  // no launch arguments: only what the app saved
+        relaunched.launch()
+        XCTAssertTrue(page(51, in: relaunched).waitForExistence(timeout: 20))
+    }
+
+    func testCannotTurnBeforePageOne() {
+        let app = launch(atPage: 1)
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
+        let left = app.coordinate(withNormalizedOffset: CGVector(dx: 0.03, dy: 0.6))
+        let right = app.coordinate(withNormalizedOffset: CGVector(dx: 0.97, dy: 0.6))
+        right.press(forDuration: 0.05, thenDragTo: left)
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
+    }
+
+    func testIndexJumpsToASurah() {
+        let app = launch(atPage: 1)
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()  // show chrome
+        app.buttons["open-index"].tap()
+        app.buttons["index-row-آل عمران"].tap()
+        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
+    }
+
+    func testTappingTheSurahNameOpensTheIndex() {
+        let app = launch(atPage: 1)
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
+        let title = app.staticTexts["reading-surah-title"]
+        XCTAssertTrue(title.waitForExistence(timeout: 20))
+        title.tap()
+        XCTAssertTrue(app.navigationBars["الفهرس"].waitForExistence(timeout: 10))
+        app.buttons["index-row-آل عمران"].tap()
+        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
+    }
+
+    func testIndexScrollsDown() {
+        let app = launch(atPage: 1)
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()  // show chrome
+        app.buttons["open-index"].tap()
+        XCTAssertTrue(app.navigationBars["الفهرس"].waitForExistence(timeout: 10))
+        let list = app.collectionViews.firstMatch
+        XCTAssertTrue(list.waitForExistence(timeout: 10))
+        list.swipeUp()
+        list.swipeDown()
+    }
+
+    func testSettingsContainsThemeAndQiraatControlsWithoutBurgerMenu() {
+        let app = launch(atPage: 50)
+        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
+        app.chromeMarginCoordinate.tap()
+
+        XCTAssertFalse(app.buttons["reader-menu"].exists)
+        let settingsButton = app.buttons["settings-button"]
+        XCTAssertTrue(settingsButton.waitForExistence(timeout: 20))
+        settingsButton.tap()
+
+        XCTAssertTrue(app.navigationBars["الإعدادات"].waitForExistence(timeout: 20))
+        app.buttons["open-theme-settings"].tap()
+        XCTAssertTrue(app.buttons["theme-system"].exists)
+        XCTAssertTrue(app.buttons["theme-light"].exists)
+        XCTAssertTrue(app.buttons["theme-dark"].exists)
+        XCTAssertTrue(app.buttons["theme-whitePage"].exists)
+        XCTAssertTrue(app.buttons["theme-blackPage"].exists)
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        XCTAssertTrue(settingsRow("open-language-settings", in: app).exists)
+        XCTAssertTrue(settingsRow("qiraat-toggle", in: app, kind: .switch).exists)
+        XCTAssertTrue(settingsRow("open-qiraat-picker", in: app).exists)
+        XCTAssertFalse(app.buttons["settings-mutshabehat"].exists)
+    }
+
+    /// Labels with a substituted name carry invisible direction marks (U+2066 to U+2069) around it.
+    private func withoutBidiMarks(_ text: String) -> String {
+        String(text.unicodeScalars.filter { !(0x2066...0x2069).contains($0.value) })
+    }
+
+    func testQiraatReaderPickerOpensFullScreenWithColoredReaders() {
+        let app = launch(atPage: 1)
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        app.buttons["settings-button"].tap()
+        // The row is one element; only the switch inside it reacts to a tap.
+        let toggle = app.switches["qiraat-toggle"]
+        XCTAssertTrue(toggle.waitForExistence(timeout: 20))
+        toggle.switches.firstMatch.tap()
+        let picker = app.buttons["open-qiraat-picker"]
+        XCTAssertTrue(picker.isEnabled, "turning the layer on enables the reader picker")
+        picker.tap()
+
+        XCTAssertTrue(app.navigationBars["اختر القارئ أو الراوي"].waitForExistence(timeout: 20))
+        let reader = app.buttons["qiraat-reader-Q01"]
+        XCTAssertTrue(reader.waitForExistence(timeout: 20))
+        XCTAssertTrue(withoutBidiMarks(reader.label).contains("روايتا الإمام نافع"))
+
+        let narrator = app.buttons["qiraat-narrator-Q01-R02"]
+        XCTAssertTrue(narrator.waitForExistence(timeout: 20))
+        XCTAssertTrue(withoutBidiMarks(narrator.label).contains("ورش"))
+    }
+
+    func testQiraatReaderPickerSearchAndDismiss() {
+        let app = launch(atPage: 1)
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        app.buttons["settings-button"].tap()
+        let toggle = app.switches["qiraat-toggle"]
+        XCTAssertTrue(toggle.waitForExistence(timeout: 20))
+        toggle.switches.firstMatch.tap()
+        let picker = app.buttons["open-qiraat-picker"]
+        XCTAssertTrue(picker.waitForExistence(timeout: 20))
+        picker.tap()
+
+        XCTAssertTrue(app.navigationBars["اختر القارئ أو الراوي"].waitForExistence(timeout: 20))
+        let search = app.searchFields.firstMatch
+        XCTAssertTrue(search.waitForExistence(timeout: 20))
+        search.tap()
+        search.typeText("ورش")
+        XCTAssertTrue(app.buttons["qiraat-narrator-Q01-R02"].waitForExistence(timeout: 20))
+        XCTAssertFalse(app.buttons["qiraat-reader-Q02"].exists)
+
+        // Single selection dismisses on tap
+        app.buttons["qiraat-narrator-Q01-R02"].tap()
+        let gone = expectation(for: NSPredicate(format: "exists == false"),
+                               evaluatedWith: app.navigationBars["اختر القارئ أو الراوي"])
+        wait(for: [gone], timeout: 5)
+    }
+
+    func testMutshabehatOpensAsAFullScreenReaderDestination() {
+        let app = launch(atPage: 1)
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        app.buttons["more-button"].tap()
+        app.buttons["mutshabehat-button"].tap()
+        XCTAssertTrue(app.navigationBars["المتشابهات"].waitForExistence(timeout: 20))
+        // The reader stays in the accessibility tree behind a full-screen cover, but nothing in it can be reached.
+        XCTAssertFalse(app.buttons["settings-button"].isHittable)
+    }
+
+    /// Mutshabehat lives in the top bar, not in Settings (see `testSettingsShowsThemeLanguageAndQiraatControls`).
+    func testMutshabehatShowsItsPersonalAndAutomatedTabs() {
+        let app = launch(atPage: 50)
+        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
+        app.chromeMarginCoordinate.tap()
+        let more = app.buttons["more-button"]
+        XCTAssertTrue(more.waitForExistence(timeout: 20))
+        more.tap()
+        let button = app.buttons["mutshabehat-button"]
+        XCTAssertTrue(button.waitForExistence(timeout: 20))
+        button.tap()
+
+        XCTAssertTrue(app.navigationBars["المتشابهات"].waitForExistence(timeout: 20))
+        XCTAssertTrue(app.buttons["الشخصية"].exists)
+        XCTAssertTrue(app.buttons["الآلية"].exists)
+    }
+
+    func testShowingTheFooterBarKeepsTheFullSurahOnTopWithoutMovingThePage() {
+        let app = launch(atPage: 50)
+        let mushafPage = page(50, in: app)
+        XCTAssertTrue(mushafPage.waitForExistence(timeout: 20))
+        let frameBeforeShowingChrome = mushafPage.frame
+        app.chromeMarginCoordinate.tap()
+
+        let index = app.buttons["open-index"]
+        XCTAssertTrue(index.waitForExistence(timeout: 20))
+        XCTAssertTrue(app.staticTexts["reading-surah-title"].label.contains("آل عمران"), "the surah stays on top")
+        XCTAssertEqual(mushafPage.frame, frameBeforeShowingChrome, "Showing the footer bar must overlay the fixed Mushaf page")
+        XCTAssertFalse(app.staticTexts["page-number"].exists, "the page number is the printed one under the page")
+        XCTAssertFalse(app.sliders["page-slider"].exists, "Lower banner slider is removed")
+    }
+
+    /// The khatma progress is on top; a tap opens the reading statistics.
+    func testTappingTheKhatmaProgressOpensTheReadingStatistics() {
+        let app = launch(atPage: 1)
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
+        let khatma = app.buttons["khatma-progress"]
+        XCTAssertTrue(khatma.waitForExistence(timeout: 20))
+        khatma.tap()
+        XCTAssertTrue(app.navigationBars["إحصائيات القراءة والختمة"].waitForExistence(timeout: 10))
+    }
+
+    func testDeveloperDatabaseTransferControlsAreVisibleInDebugBuilds() {
+        let app = launch(atPage: 50)
+        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
+        app.chromeMarginCoordinate.tap()
+        app.buttons["settings-button"].tap()
+        XCTAssertTrue(app.navigationBars["الإعدادات"].waitForExistence(timeout: 20))
+        settingsRow("open-database-settings", in: app).tap()
+        XCTAssertTrue(app.buttons["export-qiraat-database"].exists)
+        XCTAssertTrue(app.buttons["import-qiraat-database"].exists)
+        XCTAssertTrue(app.buttons["export-mutshabehat-database"].exists)
+        XCTAssertTrue(app.buttons["import-mutshabehat-database"].exists)
+    }
+
+    func testLanguageSelectionChangesSettingsMenusToEnglish() {
+        let app = launch(atPage: 50, pinLanguage: false)
+        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
+        app.chromeMarginCoordinate.tap()
+        app.buttons["settings-button"].tap()
+        XCTAssertTrue(app.navigationBars["الإعدادات"].waitForExistence(timeout: 20))
+        settingsRow("open-language-settings", in: app).tap()
+
+        XCTAssertTrue(app.buttons["language-ar"].exists)
+        app.buttons["language-en"].tap()
+        // The navigation bar keeps the Arabic key as its identifier; the visible strings are what change.
+        let arabicOption = app.buttons["language-ar"]
+        XCTAssertTrue(arabicOption.waitForExistence(timeout: 20))
+        XCTAssertEqual(arabicOption.label, "Arabic")
+        XCTAssertEqual(app.buttons["language-en"].label, "English")
+        // The choice is stored on the device: put it back so later tests start in Arabic.
+        arabicOption.tap()
+        XCTAssertEqual(app.buttons["language-ar"].label, "العربية")
+    }
+
+    func testSearchFindsAnAyahAndJumpsToItsPage() {
+        let app = launch(atPage: 50)
+        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
+        app.chromeMarginCoordinate.tap()
+        let searchButton = app.buttons["search-button"]
+        XCTAssertTrue(searchButton.waitForExistence(timeout: 20))
+        searchButton.tap()
+
+        let field = app.textFields["search-field"].exists ? app.textFields["search-field"] : app.searchFields["search-field"]
+        XCTAssertTrue(field.waitForExistence(timeout: 20))
+        field.tap()
+        field.typeText("الله لا اله الا هو")
+        app.buttons["search-submit"].tap()
+        let result = app.buttons["search-result-2:255"]
+        XCTAssertTrue(result.waitForExistence(timeout: 20))
+        result.tap()
+        XCTAssertTrue(page(42, in: app).waitForExistence(timeout: 20))
+        XCTAssertTrue(app.staticTexts["search-highlighted-word"].waitForExistence(timeout: 20))
+    }
+
+    func testSmartSearchFindsModernSpellingOfUthmaniWord() {
+        let app = launch(atPage: 1)
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
+        app.chromeMarginCoordinate.tap()
+        app.buttons["search-button"].tap()
+
+        let field = app.textFields["search-field"].exists ? app.textFields["search-field"] : app.searchFields["search-field"]
+        XCTAssertTrue(field.waitForExistence(timeout: 20))
+        field.tap()
+        field.typeText("الصلاة")
+        app.buttons["search-submit"].tap()
+        XCTAssertTrue(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'search-result-'")).firstMatch
+            .waitForExistence(timeout: 20))
+        XCTAssertTrue(app.segmentedControls["search-mode"].exists)
+    }
+
+    func testIPadLandscapeShowsASpreadAndTurnsTwoPagesAtATime() throws {
+        guard UIDevice.current.userInterfaceIdiom == .pad else { throw XCTSkip("iPad only") }
+        XCUIDevice.shared.orientation = .landscapeLeft
+        defer { XCUIDevice.shared.orientation = .portrait }
+        let app = launch(atPage: 50)  // spread (49 right, 50 left)
+        XCTAssertTrue(page(49, in: app).waitForExistence(timeout: 20))
+        XCTAssertTrue(page(50, in: app).exists)
+        XCTAssertLessThan(page(50, in: app).frame.midX, page(49, in: app).frame.midX, "odd page on the right")
+        XCTAssertEqual(page(50, in: app).frame.maxX, page(49, in: app).frame.minX, accuracy: 1, "pages meet at the spine")
+        saveScreenshot(named: "ipad-spread-49-50")
+
+        let left = app.coordinate(withNormalizedOffset: CGVector(dx: 0.02, dy: 0.6))
+        let right = app.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.6))
+        left.press(forDuration: 0.05, thenDragTo: right)
+        XCTAssertTrue(page(51, in: app).waitForExistence(timeout: 20))
+        XCTAssertTrue(page(52, in: app).exists)
+        saveScreenshot(named: "ipad-spread-51-52")
+
+        XCUIDevice.shared.orientation = .portrait  // back to a single page, same place
+        XCTAssertTrue(page(51, in: app).waitForExistence(timeout: 20))
+        XCTAssertFalse(page(52, in: app).exists)
+    }
+
+    /// Tapping edges or anywhere does not turn pages (turning is swipe-only); tapping toggles chrome.
+    func testTappingEdgeDoesNotTurnPagesAndTapsToggleChrome() {
+        let app = launch(atPage: 50)
+        XCTAssertTrue(page(50, in: app).waitForExistence(timeout: 20))
+
+        // Tapping the outer edge does NOT turn the page
+        let leftEdge = app.chromeMarginCoordinate
+        leftEdge.tap()
+        XCTAssertTrue(app.buttons["open-index"].waitForExistence(timeout: 20))
+        XCTAssertTrue(page(50, in: app).exists)
+        XCTAssertFalse(page(51, in: app).exists)
+
+        // Swiping left to right turns the page
+        let left = app.coordinate(withNormalizedOffset: CGVector(dx: 0.03, dy: 0.6))
+        let right = app.coordinate(withNormalizedOffset: CGVector(dx: 0.97, dy: 0.6))
+        left.press(forDuration: 0.05, thenDragTo: right)
+        XCTAssertTrue(page(51, in: app).waitForExistence(timeout: 20))
+    }
+
+    func testTappingTheMiddleOfASpreadShowsTheChrome() throws {
+        guard UIDevice.current.userInterfaceIdiom == .pad else { throw XCTSkip("iPad only") }
+        XCUIDevice.shared.orientation = .landscapeLeft
+        defer { XCUIDevice.shared.orientation = .portrait }
+        let app = launch(atPage: 50)
+        XCTAssertTrue(page(49, in: app).waitForExistence(timeout: 20))
+        // The middle of the screen is the spine: it belongs to the reader, not to page turning.
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        XCTAssertTrue(app.buttons["open-index"].waitForExistence(timeout: 20))
+    }
+
+    func testReadingStatisticsSwipeToCompleteAndUnmark() {
+        let app = launch(atPage: 1)
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        app.buttons["settings-button"].tap()
+
+        let statsButton = app.buttons["open-reading-statistics"]
+        XCTAssertTrue(statsButton.waitForExistence(timeout: 20))
+        statsButton.tap()
+
+        XCTAssertTrue(app.navigationBars["إحصائيات القراءة والختمة"].waitForExistence(timeout: 4))
+        saveScreenshot(named: "reading-statistics-initial")
+
+        // Scroll down to the surah section
+        app.swipeUp()
+        saveScreenshot(named: "reading-statistics-surahs")
+
+        let row1 = app.descendants(matching: .any)["surah-progress-row-1"]
+        XCTAssertTrue(row1.waitForExistence(timeout: 4))
+
+        let start = row1.coordinate(withNormalizedOffset: CGVector(dx: 0.2, dy: 0.5))
+        let end = row1.coordinate(withNormalizedOffset: CGVector(dx: 0.8, dy: 0.5))
+        start.press(forDuration: 0.1, thenDragTo: end)
+
+        Thread.sleep(forTimeInterval: 0.5)
+        saveScreenshot(named: "reading-statistics-after-swipe")
+
+        // Test filter chip: tapping «المتبقي» must not crash and correctly filters
+        let remainingChip = app.buttons.containing(NSPredicate(format: "label CONTAINS[c] 'المتبقي'")).firstMatch
+        if remainingChip.waitForExistence(timeout: 4) {
+            remainingChip.tap()
+            Thread.sleep(forTimeInterval: 0.3)
+            saveScreenshot(named: "reading-statistics-remaining-filter")
+            // Surah 1 was completed above, so it should not be listed in remaining
+            XCTAssertFalse(app.descendants(matching: .any)["surah-progress-row-1"].exists)
+        }
+
+        // Test switching back to «الكل»
+        let allChip = app.buttons.containing(NSPredicate(format: "label CONTAINS[c] 'الكل'")).firstMatch
+        if allChip.waitForExistence(timeout: 4) {
+            allChip.tap()
+            Thread.sleep(forTimeInterval: 0.3)
+            XCTAssertTrue(app.descendants(matching: .any)["surah-progress-row-1"].waitForExistence(timeout: 4))
+        }
+
+        // Test smooth vertical scrolling down and up
+        app.swipeUp()
+        app.swipeDown()
+    }
+
+    func testICloudSyncSettingsViewShowsKhatmaStatus() {
+        let app = launch(atPage: 1)
+        XCTAssertTrue(page(1, in: app).waitForExistence(timeout: 20))
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        app.buttons["settings-button"].tap()
+
+        let syncButton = app.buttons["open-icloud-sync-settings"]
+        XCTAssertTrue(syncButton.waitForExistence(timeout: 20))
+        syncButton.tap()
+
+        XCTAssertTrue(app.navigationBars["مزامنة السحابة (iCloud)"].waitForExistence(timeout: 4))
+        saveScreenshot(named: "icloud-sync-settings")
+    }
+
+    /// Keeps a screenshot with the test result (and in SCREENSHOT_DIR when the runner sets it).
+    private func saveScreenshot(named name: String) {
+        let shot = XCUIScreen.main.screenshot()
+        let attachment = XCTAttachment(screenshot: shot)
+        attachment.name = name
+        attachment.lifetime = .keepAlways
+        add(attachment)
+        if let dir = ProcessInfo.processInfo.environment["SCREENSHOT_DIR"] {
+            try? shot.pngRepresentation.write(to: URL(fileURLWithPath: dir).appendingPathComponent("\(name).png"))
+        }
+    }
+}

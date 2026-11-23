@@ -1,0 +1,7698 @@
+{
+  "sourceLanguage" : "ar",
+  "strings" : {
+    "" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    "— آية %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "— Ayah %@"
+          }
+        }
+      }
+    },
+    "— آية %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "— Ayah %lld"
+          }
+        }
+      }
+    },
+    "(%@ : %lld)" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "(%1$@ : %2$lld)"
+          }
+        }
+      }
+    },
+    "(%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "(%@)"
+          }
+        }
+      }
+    },
+    "%@" : {
+
+    },
+    "%@ - Ayah %lld (Page %lld)" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ - Ayah %2$lld (Page %3$lld)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ - Ayah %lld (Page %lld)"
+          }
+        }
+      }
+    },
+    "%@ - آية %@" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ - آية %2$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ - Ayah %@"
+          }
+        }
+      }
+    },
+    "%@ - آية %lld (صفحة %lld)" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ - آية %2$lld (صفحة %3$lld)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ - Ayah %lld (Page %lld)"
+          }
+        }
+      }
+    },
+    "%@ · الآية %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ · Ayah %lld"
+          }
+        }
+      }
+    },
+    "%@ #%lld (%lld %@) • %lld %@" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ #%2$lld (%3$lld %4$@) • %5$lld %6$@"
+          }
+        }
+      }
+    },
+    "%@ %@، %@، %@" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@، %3$@، %4$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ %@, %@, %@"
+          }
+        }
+      }
+    },
+    "%@ بيتًا" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ verses"
+          }
+        }
+      }
+    },
+    "%@ عن %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ from %@"
+          }
+        }
+      }
+    },
+    "%@ من %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ of %@"
+          }
+        }
+      }
+    },
+    "%@ من ٦٠٤ صفحة، بقي %@ · %@ من %@ آية" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ من ٦٠٤ صفحة، بقي %2$@ · %3$@ من %4$@ آية"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ of 604 pages, %@ left · %@ of %@ ayahs"
+          }
+        }
+      }
+    },
+    "%@ موضعًا" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ locations"
+          }
+        }
+      }
+    },
+    "%@، %@" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@، %2$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "%1$@, %2$@"
+          }
+        }
+      }
+    },
+    "%@، %@ موضعًا" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, %@ locations"
+          }
+        }
+      }
+    },
+    "%@، %@، صفحة %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, %@, page %@"
+          }
+        }
+      }
+    },
+    "%@، فيها قراءات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, has Qira’at variants"
+          }
+        }
+      }
+    },
+    "%@: %@" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@: %2$@"
+          }
+        }
+      }
+    },
+    "%@." : {
+
+    },
+    "%@%@%@" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@%3$@"
+          }
+        }
+      }
+    },
+    "%@%@%@%@" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@%3$@%4$@"
+          }
+        }
+      }
+    },
+    "%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "%lld"
+          }
+        }
+      }
+    },
+    "%lld / 114" : {
+
+    },
+    "%lld %@" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld %2$@"
+          }
+        }
+      }
+    },
+    "%lld hidden" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld hidden"
+          }
+        }
+      }
+    },
+    "%lld آية" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld ayah"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld ayahs"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld حكم" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld rulings"
+          }
+        }
+      }
+    },
+    "%lld د" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min"
+          }
+        }
+      }
+    },
+    "%lld دقيقة" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld minute"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld minutes"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld مجموعة شخصية" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعات شخصية"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعة شخصية"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعة شخصية"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعة شخصية"
+                }
+              },
+              "two" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعتان شخصيتان"
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعة شخصية"
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld personal group"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld personal groups"
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld personal groups"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld مجموعة في عرض المجلة" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld group in Magazine view"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld groups in Magazine view"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld مجموعة مرشحة" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعات مرشحة"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعة مرشحة"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعة مرشحة"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعة مرشحة"
+                }
+              },
+              "two" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعتان مرشحتان"
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld مجموعة مرشحة"
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld candidate group"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld candidate groups"
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "machine_translated",
+                  "value" : "%lld candidate groups"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld مخفية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld hidden"
+          }
+        }
+      }
+    },
+    "%lld مواضع" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld location"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld locations"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld موضع" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld locations"
+          }
+        }
+      }
+    },
+    "%lld نتيجة بحث" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld search result"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld search results"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld يوم" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld day"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld days"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld يوم مداومة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld-day streak"
+          }
+        }
+      }
+    },
+    "%lld. %@" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld. %2$@"
+          }
+        }
+      }
+    },
+    "%lld. %@ — %lld" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld. %2$@ — %3$lld"
+          }
+        }
+      }
+    },
+    "%lld. %@ — آية %lld" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld. %2$@ — آية %3$lld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld. %@ — Ayah %lld"
+          }
+        }
+      }
+    },
+    "%lld/%lld" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld/%2$lld"
+          }
+        }
+      }
+    },
+    "%lld/%lld • المتبقي: %lld" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld/%2$lld • المتبقي: %3$lld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld/%lld • %lld left"
+          }
+        }
+      }
+    },
+    "%lld%%" : {
+
+    },
+    "•" : {
+
+    },
+    "• %@ ص • %@ آية" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "• %1$@ ص • %2$@ آية"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• %@ pp. • %@ ayahs"
+          }
+        }
+      }
+    },
+    "+ %lld مواضع أخرى" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "+ %lld more location"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "+ %lld more locations"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Advanced Search Examples:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Advanced Search Examples:"
+          }
+        }
+      }
+    },
+    "All" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All"
+          }
+        }
+      }
+    },
+    "All categories" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كل الأبواب"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All categories"
+          }
+        }
+      }
+    },
+    "Appearance" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appearance"
+          }
+        }
+      }
+    },
+    "Bookmark Ayah" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookmark Ayah"
+          }
+        }
+      }
+    },
+    "Bookmark Options" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookmark Options"
+          }
+        }
+      }
+    },
+    "Bookmark Page" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookmark Page"
+          }
+        }
+      }
+    },
+    "Bookmarks" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookmarks"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "Choose Reader or Narrator" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose Reader or Narrator"
+          }
+        }
+      }
+    },
+    "Close" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        }
+      }
+    },
+    "Cloud Synchronization" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cloud Synchronization"
+          }
+        }
+      }
+    },
+    "Complete" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complete"
+          }
+        }
+      }
+    },
+    "Confirm" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirm"
+          }
+        }
+      }
+    },
+    "Could not load the Qiraat data" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not load the Qira’at data"
+          }
+        }
+      }
+    },
+    "Could not update" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not update"
+          }
+        }
+      }
+    },
+    "Couldn’t open the memorization data" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعذّر فتح بيانات الحفظ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn’t open the memorization data"
+          }
+        }
+      }
+    },
+    "Curl" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Curl"
+          }
+        }
+      }
+    },
+    "Curl turns the page like a book. Slide moves it sideways. Two facing pages (iPad landscape) always curl. With Reduce Motion on, a single page always slides." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Curl turns the page like a book. Slide moves it sideways. Two facing pages (iPad landscape) always curl. With Reduce Motion on, a single page always slides."
+          }
+        }
+      }
+    },
+    "Currently learning" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Currently learning"
+          }
+        }
+      }
+    },
+    "date" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "date"
+          }
+        }
+      }
+    },
+    "Date" : {
+
+    },
+    "Done" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "English" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "English"
+          }
+        }
+      }
+    },
+    "Error" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
+          }
+        }
+      }
+    },
+    "Expected Result:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expected Result:"
+          }
+        }
+      }
+    },
+    "Farsh only (hide Usul)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Farsh only (hide Usul)"
+          }
+        }
+      }
+    },
+    "Hide the footer after 10 seconds" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hide the footer after 10 seconds"
+          }
+        }
+      }
+    },
+    "History" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "History"
+          }
+        }
+      }
+    },
+    "How to use advanced search:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How to use advanced search:"
+          }
+        }
+      }
+    },
+    "iCloud Sync (Mushaf_Qiraat)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud Sync (Mushaf_Qiraat)"
+          }
+        }
+      }
+    },
+    "Incomplete" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incomplete"
+          }
+        }
+      }
+    },
+    "Keep Screen Awake" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep Screen Awake"
+          }
+        }
+      }
+    },
+    "Landscape view" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Landscape view"
+          }
+        }
+      }
+    },
+    "Language" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
+          }
+        }
+      }
+    },
+    "learning" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "learning"
+          }
+        }
+      }
+    },
+    "Learning" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Learning"
+          }
+        }
+      }
+    },
+    "Least memorized" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Least memorized"
+          }
+        }
+      }
+    },
+    "Loading categories…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading categories…"
+          }
+        }
+      }
+    },
+    "Memorization" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Memorization"
+          }
+        }
+      }
+    },
+    "Most memorized" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Most memorized"
+          }
+        }
+      }
+    },
+    "Mushaf order" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mushaf order"
+          }
+        }
+      }
+    },
+    "Needs review" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Needs review"
+          }
+        }
+      }
+    },
+    "Newer changes exist" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Newer changes exist"
+          }
+        }
+      }
+    },
+    "No ayat" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No ayat"
+          }
+        }
+      }
+    },
+    "No changes will be saved until this is fixed. Restart the app, and if it persists restore a backup from Settings." : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لن تُحفظ أي تغييرات حتى تُحل المشكلة. أعد تشغيل التطبيق، وإن استمرت فاستعد نسخة احتياطية من الإعدادات."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No changes will be saved until this is fixed. Restart the app, and if it persists restore a backup from Settings."
+          }
+        }
+      }
+    },
+    "No history" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No history"
+          }
+        }
+      }
+    },
+    "No Usul categories in the installed data." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Usul categories in the installed data."
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "Open the index" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open the index"
+          }
+        }
+      }
+    },
+    "Opens reading statistics" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens reading statistics"
+          }
+        }
+      }
+    },
+    "Page turn" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Page turn"
+          }
+        }
+      }
+    },
+    "Pages" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pages"
+          }
+        }
+      }
+    },
+    "Preferences" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preferences"
+          }
+        }
+      }
+    },
+    "qiraat.caption.read_as" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تُقرأ هكذا"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Read like this"
+          }
+        }
+      }
+    },
+    "qiraat.category.farsh" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فرش الحروف"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Farsh"
+          }
+        }
+      }
+    },
+    "qiraat.category.usul" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أصول القراءات"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qira’at Usul"
+          }
+        }
+      }
+    },
+    "qiraat.difference.ADDITION" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "زيادة حرف أو كلمة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Letter or word addition"
+          }
+        }
+      }
+    },
+    "qiraat.difference.HAMZ" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "همز"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hamz"
+          }
+        }
+      }
+    },
+    "qiraat.difference.HARAKAH" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تشكيل"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vowel marks"
+          }
+        }
+      }
+    },
+    "qiraat.difference.IDGHAM" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إدغام"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Idgham"
+          }
+        }
+      }
+    },
+    "qiraat.difference.IMALAH" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إمالة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imalah"
+          }
+        }
+      }
+    },
+    "qiraat.difference.LETTER" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إبدال حرف"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Letter substitution"
+          }
+        }
+      }
+    },
+    "qiraat.difference.MADD" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مد"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Madd"
+          }
+        }
+      }
+    },
+    "qiraat.difference.NAQL" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نقل"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naql"
+          }
+        }
+      }
+    },
+    "qiraat.difference.OMISSION" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حذف حرف أو كلمة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Letter or word omission"
+          }
+        }
+      }
+    },
+    "qiraat.difference.ORTHOGRAPHY" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خلاف في الرسم"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orthography"
+          }
+        }
+      }
+    },
+    "qiraat.difference.OTHER" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "غير مصنَّف"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unclassified"
+          }
+        }
+      }
+    },
+    "qiraat.difference.PERFORMANCE" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أداء"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Performance"
+          }
+        }
+      }
+    },
+    "qiraat.difference.REORDER" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تقديم وتأخير"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reordering"
+          }
+        }
+      }
+    },
+    "qiraat.difference.SAKT" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سكت"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sakt"
+          }
+        }
+      }
+    },
+    "qiraat.difference.SILAH" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "صلة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silah"
+          }
+        }
+      }
+    },
+    "qiraat.difference.WAQF" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "وقف"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waqf"
+          }
+        }
+      }
+    },
+    "qiraat.difference.WORD_CHANGE" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اختلاف كلمة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Different word"
+          }
+        }
+      }
+    },
+    "qiraat.difference.WORD_FORM" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تقديم وتأخير"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reordering or word form"
+          }
+        }
+      }
+    },
+    "Quran Reading & Khatma" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quran Reading & Khatma"
+          }
+        }
+      }
+    },
+    "Range" : {
+
+    },
+    "Reading" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reading"
+          }
+        }
+      }
+    },
+    "Reading shows two facing pages. Learning shows one page, with the Qira'at of the word you tap in a side bar." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reading shows two facing pages. Learning shows one page, with the Qira’at of the word you tap in a side bar."
+          }
+        }
+      }
+    },
+    "Reading Statistics & Khatma" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reading Statistics & Khatma"
+          }
+        }
+      }
+    },
+    "Remove Ayah Bookmark" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove Ayah Bookmark"
+          }
+        }
+      }
+    },
+    "Remove Page Bookmark" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove Page Bookmark"
+          }
+        }
+      }
+    },
+    "Search in Quran" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search in Quran"
+          }
+        }
+      }
+    },
+    "Search Query:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search Query:"
+          }
+        }
+      }
+    },
+    "Search the Holy Quran..." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search the Holy Quran…"
+          }
+        }
+      }
+    },
+    "series" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "series"
+          }
+        }
+      }
+    },
+    "Show memorization marks on the Mushaf" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show memorization marks on the Mushaf"
+          }
+        }
+      }
+    },
+    "Show page status in the top banner" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show page status in the top banner"
+          }
+        }
+      }
+    },
+    "Show sub-category on Farsh cards" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إظهار التصنيف الفرعي في بطاقة الفرش"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show sub-category on Farsh cards"
+          }
+        }
+      }
+    },
+    "Slide" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Slide"
+          }
+        }
+      }
+    },
+    "strict" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "strict"
+          }
+        }
+      }
+    },
+    "Surah banner" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Surah banner"
+          }
+        }
+      }
+    },
+    "Ten Qira'at" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ten Qira’at"
+          }
+        }
+      }
+    },
+    "Total verses in search results: %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Total ayahs in search results: %lld"
+          }
+        }
+      }
+    },
+    "Turn a category off to hide its marks, cards and search results. \"Farsh only\" hides all of them." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn a category off to hide its marks, cards and search results. “Farsh only” hides all of them."
+          }
+        }
+      }
+    },
+    "Undo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Undo"
+          }
+        }
+      }
+    },
+    "Undo anyway" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Undo anyway"
+          }
+        }
+      }
+    },
+    "Unit" : {
+
+    },
+    "Update memorization" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update memorization"
+          }
+        }
+      }
+    },
+    "Update page status" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update page status"
+          }
+        }
+      }
+    },
+    "Usul categories" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usul categories"
+          }
+        }
+      }
+    },
+    "Value" : {
+
+    },
+    "آخر آية في النطاق تسبق أول آية. عدّل النطاق ليشمل آية واحدة على الأقل." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The last ayah of the range comes before the first. Adjust the range to include at least one ayah."
+          }
+        }
+      }
+    },
+    "آخر التحديثات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Latest updates"
+          }
+        }
+      }
+    },
+    "آية %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayah %@"
+          }
+        }
+      }
+    },
+    "آية %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayah %lld"
+          }
+        }
+      }
+    },
+    "آية: %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayah: %lld"
+          }
+        }
+      }
+    },
+    "أبواب الأصول" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usul categories"
+          }
+        }
+      }
+    },
+    "أجزاء الآية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayah parts"
+          }
+        }
+      }
+    },
+    "أخرى" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
+          }
+        }
+      }
+    },
+    "أصول القراءات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qira’at Usul"
+          }
+        }
+      }
+    },
+    "أضف جلسة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add session"
+          }
+        }
+      }
+    },
+    "أضف جلسة قراءة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add a reading session"
+          }
+        }
+      }
+    },
+    "أضف نجمة أو ملاحظة من تفاصيل كلمة في القراءات العشر." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add a star or note from a word’s Ten Qira’at details."
+          }
+        }
+      }
+    },
+    "أطول مدة مداومة: %lld يوم" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Longest streak: %lld day"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Longest streak: %lld days"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "أغلق البابَ لإخفاء علاماته وبطاقاته ونتائج البحث عنه. خيار «فرش فقط» يخفي الأبواب كلها." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn a category off to hide its marks, cards and search results. “Farsh only” hides all of them."
+          }
+        }
+      }
+    },
+    "أقل" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Less"
+          }
+        }
+      }
+    },
+    "أكثر من إمام على الكلمة: قطعة متساوية لكل إمام بترتيب القرّاء، والنص بلون مشترك." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "More than one reader applies to the word: one equal segment per reader, in reader order, with the text in the shared color."
+          }
+        }
+      }
+    },
+    "أكثر من باب من أبواب الأصول على الكلمة، بلون أول حكم عليها." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "More than one Usul category applies to the word; it takes the color of the first ruling."
+          }
+        }
+      }
+    },
+    "ألوان القرّاء والرواة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reader and narrator colors"
+          }
+        }
+      }
+    },
+    "أمثلة على البحث المتقدم:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Advanced search examples:"
+          }
+        }
+      }
+    },
+    "أيام" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "days"
+          }
+        }
+      }
+    },
+    "إبدال حرف" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Letter substitution"
+          }
+        }
+      }
+    },
+    "إبقاء الشاشة مضاءة أثناء القراءة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep the screen awake while reading"
+          }
+        }
+      }
+    },
+    "إجمالي الآيات في نتائج البحث: %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total ayahs in search results: %lld"
+          }
+        }
+      }
+    },
+    "إحصائيات القراءة والختمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reading Statistics & Khatma"
+          }
+        }
+      }
+    },
+    "إخفاء التلميح" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hide hint"
+          }
+        }
+      }
+    },
+    "إخفاء الشريط السفلي تلقائيًا بعد ١٠ ثوانٍ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hide the bottom bar automatically after 10 seconds"
+          }
+        }
+      }
+    },
+    "إخفاء تفاصيل المجموعة" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Hide Group Details"
+          }
+        }
+      }
+    },
+    "إزالة النجمة" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove star"
+          }
+        }
+      }
+    },
+    "إزالة فاصل الآية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove ayah bookmark"
+          }
+        }
+      }
+    },
+    "إزالة فاصل الصفحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove page bookmark"
+          }
+        }
+      }
+    },
+    "إزالة من المفضلة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Remove from Favorites"
+          }
+        }
+      }
+    },
+    "إصدار قاعدة الملاحظات أحدث من التطبيق." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The notes database is newer than this app."
+          }
+        }
+      }
+    },
+    "إصدار ملف الملاحظات غير مدعوم." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This notes file version is not supported."
+          }
+        }
+      }
+    },
+    "إضافة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add"
+          }
+        }
+      }
+    },
+    "إضافة آيات من القرآن" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add ayahs from the Quran"
+          }
+        }
+      }
+    },
+    "إضافة آية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add an ayah"
+          }
+        }
+      }
+    },
+    "إضافة إلى المفضلة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Add to Favorites"
+          }
+        }
+      }
+    },
+    "إضافة للمجموعة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add to group"
+          }
+        }
+      }
+    },
+    "إضافة ملاحظة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Note"
+          }
+        }
+      }
+    },
+    "إضافة من القرآن" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add from the Quran"
+          }
+        }
+      }
+    },
+    "إضافة نجمة" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Star"
+          }
+        }
+      }
+    },
+    "إظهار التصنيف الفرعي في بطاقة الفرش" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show sub-category on Farsh cards"
+          }
+        }
+      }
+    },
+    "إظهار تفاصيل المجموعة" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Show Group Details"
+          }
+        }
+      }
+    },
+    "إظهار حالة الحفظ على المصحف" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show memorization status on the Mushaf"
+          }
+        }
+      }
+    },
+    "إظهار حالة الحفظ في الشريط العلوي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show memorization status in the top bar"
+          }
+        }
+      }
+    },
+    "إظهار علامات القراءات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Show Qira’at Marks"
+          }
+        }
+      }
+    },
+    "إعادة المحاولة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try Again"
+          }
+        }
+      }
+    },
+    "إعادة تعيين" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset"
+          }
+        }
+      }
+    },
+    "إغلاق" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Close"
+          }
+        }
+      }
+    },
+    "إغلاق البحث" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close search"
+          }
+        }
+      }
+    },
+    "إغلاق التفاصيل" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Close Details"
+          }
+        }
+      }
+    },
+    "إكمال السورة في الختمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mark surah complete in the Khatma"
+          }
+        }
+      }
+    },
+    "إكمال في الختمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complete in Khatma"
+          }
+        }
+      }
+    },
+    "إلغاء" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "إلغاء إكمال السورة في الختمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unmark surah as complete in the Khatma"
+          }
+        }
+      }
+    },
+    "إلغاء الإكمال" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Undo completion"
+          }
+        }
+      }
+    },
+    "إلى صفحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To page"
+          }
+        }
+      }
+    },
+    "إمالة في باب الممال والمقلل، بلون هذا الباب." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imalah in the Imalah and Taqlil category, in that category’s color."
+          }
+        }
+      }
+    },
+    "ابحث عن آية أو كلمة من القرآن..." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search for an ayah or word from the Quran…"
+          }
+        }
+      }
+    },
+    "ابحث عن باب" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search for a category"
+          }
+        }
+      }
+    },
+    "ابحث عن قارئ أو راوٍ" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search for a reader or narrator"
+          }
+        }
+      }
+    },
+    "ابحث في القرآن الكريم..." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search the Holy Quran…"
+          }
+        }
+      }
+    },
+    "ابحث في المتون أو اكتب رقم البيت" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search the mutun or type a verse number"
+          }
+        }
+      }
+    },
+    "ابحث في كلمات الخلاف" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search disputed words"
+          }
+        }
+      }
+    },
+    "اختر الباب" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a category"
+          }
+        }
+      }
+    },
+    "اختر السورة لتسجيلها كاملة:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a surah to log it in full:"
+          }
+        }
+      }
+    },
+    "اختر القارئ أو الراوي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Choose a Reader or Narrator"
+          }
+        }
+      }
+    },
+    "اختر حتى %lld للمقارنة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose up to %lld to compare"
+          }
+        }
+      }
+    },
+    "اختر من القائمة لعرض المواضع" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose from the list to show locations"
+          }
+        }
+      }
+    },
+    "اختر نوع التلوين ثم اضغط على الكلمات لتلوينها:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a coloring type, then tap words to color them:"
+          }
+        }
+      }
+    },
+    "اختلاف" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "difference"
+          }
+        }
+      }
+    },
+    "اختلاف ٢" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "difference 2"
+          }
+        }
+      }
+    },
+    "اختلاف ٣" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "difference 3"
+          }
+        }
+      }
+    },
+    "اختيار القارئ أو الراوي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Reader or Narrator Selection"
+          }
+        }
+      }
+    },
+    "اختيار مجلد من الملفات" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a folder in Files"
+          }
+        }
+      }
+    },
+    "اختياري" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optional"
+          }
+        }
+      }
+    },
+    "استجابة الخادم خالية من المجموعات" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استجابة الخادم خالية من المجموعات"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The server response has no groups"
+          }
+        }
+      }
+    },
+    "استعلام البحث:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search query:"
+          }
+        }
+      }
+    },
+    "استيراد" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Import"
+          }
+        }
+      }
+    },
+    "استيراد القاعدة الآلية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Import Automation Rules"
+          }
+        }
+      }
+    },
+    "استيراد ملف الآلية (JSON)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Import Automation File (JSON)"
+          }
+        }
+      }
+    },
+    "اسحب أي سورة لليمين لإكمالها أو إلغائها في الختمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swipe any surah to the right to complete or undo it in the Khatma"
+          }
+        }
+      }
+    },
+    "اسم السورة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Surah name"
+          }
+        }
+      }
+    },
+    "اضغط كلمة ملوّنة في الصفحة لترى قراءاتها" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap a colored word on the page to see its readings"
+          }
+        }
+      }
+    },
+    "اضغط لعرض مواضع هذا الباب" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap to show locations for this category"
+          }
+        }
+      }
+    },
+    "اضغط للانتقال إلى هذا الموضع في المصحف" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap to go to this location in the Mushaf"
+          }
+        }
+      }
+    },
+    "افتح في الشاملة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open in Shamela"
+          }
+        }
+      }
+    },
+    "اكتب كلمة للبحث في مواضع الخلاف" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type a word to search disputed locations"
+          }
+        }
+      }
+    },
+    "ال" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "al-"
+          }
+        }
+      }
+    },
+    "الآلية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Automation"
+          }
+        }
+      }
+    },
+    "الآيات (%lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayahs (%lld)"
+          }
+        }
+      }
+    },
+    "الآية %lld، %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayah %lld, %@"
+          }
+        }
+      }
+    },
+    "الآية الأولى" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "First ayah"
+          }
+        }
+      }
+    },
+    "الآية الأولى (المرجع)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "First ayah (reference)"
+          }
+        }
+      }
+    },
+    "الآية الثانية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Second ayah"
+          }
+        }
+      }
+    },
+    "الآية الثانية (المقارنة)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Second ayah (comparison)"
+          }
+        }
+      }
+    },
+    "الأبيات %@–%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verses %@–%@"
+          }
+        }
+      }
+    },
+    "الأجزاء" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Juz’"
+          }
+        }
+      }
+    },
+    "الأحكام: " : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rulings: "
+          }
+        }
+      }
+    },
+    "الأحمر: رمز قارئ أو راوٍ — اضغط لمعرفة المقصود" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Red: a reader or narrator symbol — tap to see who"
+          }
+        }
+      }
+    },
+    "الأداء:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Performance:"
+          }
+        }
+      }
+    },
+    "الأداء: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Performance: %@"
+          }
+        }
+      }
+    },
+    "الأصول" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usul"
+          }
+        }
+      }
+    },
+    "الأقل حفظاً" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Least memorized"
+          }
+        }
+      }
+    },
+    "الأكثر حفظاً" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Most memorized"
+          }
+        }
+      }
+    },
+    "الألوان:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Colors:"
+          }
+        }
+      }
+    },
+    "الإصدار" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        }
+      }
+    },
+    "الإصدار %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@"
+          }
+        }
+      }
+    },
+    "الإعدادات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Settings"
+          }
+        }
+      }
+    },
+    "الإمام " : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imam "
+          }
+        }
+      }
+    },
+    "الإمام %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Imam %@"
+          }
+        }
+      }
+    },
+    "الإمام %@ (روايتاه)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imam %@ (both narrations)"
+          }
+        }
+      }
+    },
+    "الاختلاف في طريقة القراءة فقط، والرسم كما هو في المصحف." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only the recitation performance differs; the written form is unchanged from the Mushaf."
+          }
+        }
+      }
+    },
+    "الانتقال إلى الكلمة وعرض قراءاتها" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go to the word and show its readings"
+          }
+        }
+      }
+    },
+    "البحث في القرآن" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search in the Quran"
+          }
+        }
+      }
+    },
+    "البحث في القراءات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search Qira’at"
+          }
+        }
+      }
+    },
+    "البيت %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verse %@"
+          }
+        }
+      }
+    },
+    "البيت %@ من %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verse %@ of %@"
+          }
+        }
+      }
+    },
+    "البيت %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verse %lld"
+          }
+        }
+      }
+    },
+    "البيت التالي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next verse"
+          }
+        }
+      }
+    },
+    "البيت السابق" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previous verse"
+          }
+        }
+      }
+    },
+    "التالي" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
+          }
+        }
+      }
+    },
+    "التفضيلات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Preferences"
+          }
+        }
+      }
+    },
+    "التقليب كصفحة الكتاب، والانزلاق يحرّك الصفحة جانبًا. الصفحتان المتقابلتان (آيباد أفقيًا) تُقلَّبان دائمًا. ومع تقليل الحركة تنزلق الصفحة المفردة دائمًا." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Curl turns the page like a book. Slide moves it sideways. Two facing pages (iPad landscape) always curl. With Reduce Motion on, a single page always slides."
+          }
+        }
+      }
+    },
+    "التلوين التلقائي للفروقات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatic coloring of differences"
+          }
+        }
+      }
+    },
+    "التوقيت والمدة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timing and duration"
+          }
+        }
+      }
+    },
+    "الحالة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status"
+          }
+        }
+      }
+    },
+    "الحالة والفرز" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status and sorting"
+          }
+        }
+      }
+    },
+    "الحفظ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Memorization"
+          }
+        }
+      }
+    },
+    "الْحَمْدُ لِلَّهِ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All praise is due to Allah"
+          }
+        }
+      }
+    },
+    "الختم على حسب السورة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Khatma by surah"
+          }
+        }
+      }
+    },
+    "الختمة الحالية (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current Khatma (%@)"
+          }
+        }
+      }
+    },
+    "الختمة رقم %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Khatma no. %lld"
+          }
+        }
+      }
+    },
+    "الخصوصية والدعم" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy & Support"
+          }
+        }
+      }
+    },
+    "الخلاف: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Difference: %@"
+          }
+        }
+      }
+    },
+    "الدرة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durrah"
+          }
+        }
+      }
+    },
+    "الدرة المضية" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al-Durrah al-Madiyyah"
+          }
+        }
+      }
+    },
+    "الدعم" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support"
+          }
+        }
+      }
+    },
+    "الدلالة هنا" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Here"
+          }
+        }
+      }
+    },
+    "الراوي " : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Narrator "
+          }
+        }
+      }
+    },
+    "الراوي %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Narrator %@"
+          }
+        }
+      }
+    },
+    "الرمز: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Symbol: %@"
+          }
+        }
+      }
+    },
+    "الرموز والدلالات في هذا البيت" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Symbols and indications in this verse"
+          }
+        }
+      }
+    },
+    "السابق" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previous"
+          }
+        }
+      }
+    },
+    "السور" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Surahs"
+          }
+        }
+      }
+    },
+    "السورة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Surah"
+          }
+        }
+      }
+    },
+    "الشاطبية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shatibiyyah"
+          }
+        }
+      }
+    },
+    "الشخصية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Personal"
+          }
+        }
+      }
+    },
+    "الشرح" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commentary"
+          }
+        }
+      }
+    },
+    "الشرح متاح" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commentary available"
+          }
+        }
+      }
+    },
+    "الصفحات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pages"
+          }
+        }
+      }
+    },
+    "الصفحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Page"
+          }
+        }
+      }
+    },
+    "الصفحة التالية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next page"
+          }
+        }
+      }
+    },
+    "الصفحة السابقة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previous page"
+          }
+        }
+      }
+    },
+    "الصفحة: %lld" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Page: %lld"
+          }
+        }
+      }
+    },
+    "العربية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Arabic"
+          }
+        }
+      }
+    },
+    "العرض الأفقي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Landscape view"
+          }
+        }
+      }
+    },
+    "الفرش" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Farsh"
+          }
+        }
+      }
+    },
+    "الفهرس" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Index"
+          }
+        }
+      }
+    },
+    "الفهرس غير مكتمل: %lld صفحة غير متاحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The index is incomplete: %lld pages are unavailable"
+          }
+        }
+      }
+    },
+    "الفواصل" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookmarks"
+          }
+        }
+      }
+    },
+    "الفواصل والعلامات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookmarks and marks"
+          }
+        }
+      }
+    },
+    "القارئ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reader"
+          }
+        }
+      }
+    },
+    "القارئ غير معروف بعد في بيانات الكلمة، فلا يُنسب الخط إلى أحد." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The reader is not yet identified in this word’s data, so the line is not attributed to anyone."
+          }
+        }
+      }
+    },
+    "القارئ: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reader: %@"
+          }
+        }
+      }
+    },
+    "القارئون:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Readers:"
+          }
+        }
+      }
+    },
+    "القارئون: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Readers: %@"
+          }
+        }
+      }
+    },
+    "القاعدة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rule"
+          }
+        }
+      }
+    },
+    "القرّاء المذكورون (بالقراءة الأخرى)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Readers named (for the other reading)"
+          }
+        }
+      }
+    },
+    "القرّاء المذكورون (بهذه القراءة)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Readers named (for this reading)"
+          }
+        }
+      }
+    },
+    "القراء والرواة:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Readers and narrators:"
+          }
+        }
+      }
+    },
+    "القراءات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qira’at"
+          }
+        }
+      }
+    },
+    "القراءات العشر" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "The Ten Qira’at"
+          }
+        }
+      }
+    },
+    "القراءة:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reading:"
+          }
+        }
+      }
+    },
+    "القراءة: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reading: %@"
+          }
+        }
+      }
+    },
+    "القراءة: صفحتان متقابلتان. التعلّم: صفحة واحدة، وقراءات الكلمة التي تضغطها في شريط جانبي." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reading shows two facing pages. Learning shows one page, with the Qira’at of the word you tap in a side bar."
+          }
+        }
+      }
+    },
+    "الكل" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All"
+          }
+        }
+      }
+    },
+    "الكلمات محل الخلاف" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disputed words"
+          }
+        }
+      }
+    },
+    "الكلمة التالية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next word"
+          }
+        }
+      }
+    },
+    "الكلمة السابقة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previous word"
+          }
+        }
+      }
+    },
+    "الكلمة: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Word: %@"
+          }
+        }
+      }
+    },
+    "اللغة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Language"
+          }
+        }
+      }
+    },
+    "اللون المميّز" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Highlight color"
+          }
+        }
+      }
+    },
+    "المتبقي: %lld آية" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld ayah left"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld ayahs left"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "المتشابهات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Mutashabihat"
+          }
+        }
+      }
+    },
+    "المتون" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mutun"
+          }
+        }
+      }
+    },
+    "المتون غير مضمّنة في هذه النسخة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The mutun are not included in this build"
+          }
+        }
+      }
+    },
+    "المجموع: %lld آية" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Total: %lld ayah"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Total: %lld ayahs"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "المجموع: %lld صفحة" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Total: %lld page"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Total: %lld pages"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "المدة" : {
+
+    },
+    "المزامنة جارية بالفعل" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المزامنة جارية بالفعل"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A sync is already running"
+          }
+        }
+      }
+    },
+    "المزيد" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "More"
+          }
+        }
+      }
+    },
+    "المس كلمة ملوّنة لعرض قراءاتها" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap a colored word to see its readings"
+          }
+        }
+      }
+    },
+    "المصادر" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sources"
+          }
+        }
+      }
+    },
+    "المصادر والشكر" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sources and acknowledgements"
+          }
+        }
+      }
+    },
+    "المصادر: لم يُوثَّق بعد" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sources: not documented yet"
+          }
+        }
+      }
+    },
+    "المصدر" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source"
+          }
+        }
+      }
+    },
+    "المظهر" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Appearance"
+          }
+        }
+      }
+    },
+    "المفضلة فقط" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorites only"
+          }
+        }
+      }
+    },
+    "المقارنة غير متاحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comparison Unavailable"
+          }
+        }
+      }
+    },
+    "المكتمل" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completed"
+          }
+        }
+      }
+    },
+    "الملاحظات والفوائد" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notes and insights"
+          }
+        }
+      }
+    },
+    "الملف %@ غير متاح على الجهاز بعد. نزّله من تطبيق الملفات ثم أعد المحاولة." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The file %@ is not available on this device yet. Download it in Files, then try again."
+          }
+        }
+      }
+    },
+    "الملف ليس نسخة قراءات صالحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This file is not a valid Qiraat backup"
+          }
+        }
+      }
+    },
+    "المواضع والآيات المتشابهة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Locations and similar ayahs"
+          }
+        }
+      }
+    },
+    "الموضع" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location"
+          }
+        }
+      }
+    },
+    "الموضع %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location %@"
+          }
+        }
+      }
+    },
+    "الموضع المقروء" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reading position"
+          }
+        }
+      }
+    },
+    "الموضع: %lld:%lld" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location: %lld:%lld"
+          }
+        }
+      }
+    },
+    "النتيجة المتوقعة:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expected result:"
+          }
+        }
+      }
+    },
+    "النوع" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Type"
+          }
+        }
+      }
+    },
+    "الوجه %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wajh %@"
+          }
+        }
+      }
+    },
+    "الوجوه: " : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wujuh: "
+          }
+        }
+      }
+    },
+    "انتهاء عند:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ends at:"
+          }
+        }
+      }
+    },
+    "انزلاق" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Slide"
+          }
+        }
+      }
+    },
+    "انقر مرتين لإظهار أدوات القراءة أو إخفائها" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Double-tap to show or hide the reading tools"
+          }
+        }
+      }
+    },
+    "انقر مرتين لإغلاق المحرر" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Double-tap to close the editor"
+          }
+        }
+      }
+    },
+    "انقر مرتين لتحرير الأجزاء" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Double-tap to edit the parts"
+          }
+        }
+      }
+    },
+    "انقر مرتين لخيارات الآية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Double-tap for ayah options"
+          }
+        }
+      }
+    },
+    "باب" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category"
+          }
+        }
+      }
+    },
+    "باب:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category:"
+          }
+        }
+      }
+    },
+    "باب: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category: %@"
+          }
+        }
+      }
+    },
+    "بحاجة إلى مراجعة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Needs review"
+          }
+        }
+      }
+    },
+    "بحث" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Search"
+          }
+        }
+      }
+    },
+    "بحث عن قارئ أو راوٍ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search for a reader or narrator"
+          }
+        }
+      }
+    },
+    "بحث في أبواب الأصول..." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search Usul categories…"
+          }
+        }
+      }
+    },
+    "بحث في الفواصل..." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search bookmarks…"
+          }
+        }
+      }
+    },
+    "بحث في القرآن..." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Search the Quran…"
+          }
+        }
+      }
+    },
+    "بحث في الكلمات أو الصفحات..." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search words or pages…"
+          }
+        }
+      }
+    },
+    "بحث في المجموعات أو الآيات..." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Search groups or ayahs…"
+          }
+        }
+      }
+    },
+    "بدء ختمة جديدة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start a new Khatma"
+          }
+        }
+      }
+    },
+    "بدء من:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start from:"
+          }
+        }
+      }
+    },
+    "بلا اتصال" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offline"
+          }
+        }
+      }
+    },
+    "بلا اختلاف مسجّل هنا" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No recorded difference here"
+          }
+        }
+      }
+    },
+    "بلاغ عن خطأ في القراءات" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qira’at Error Report"
+          }
+        }
+      }
+    },
+    "بلّغ عن خطأ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Report an Error"
+          }
+        }
+      }
+    },
+    "بيانات الكلمات وتخطيط الصفحات وخطوط الصفحات عبر Quran Foundation (Quran.com). Quran data provided by Quran.Foundation." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Word data, page layout and page fonts via Quran Foundation (Quran.com). \"Quran data provided by Quran.Foundation.\""
+          }
+        }
+      }
+    },
+    "بيانات المجموعة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Group details"
+          }
+        }
+      }
+    },
+    "تأكيد" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirm"
+          }
+        }
+      }
+    },
+    "تأكيد الحذف" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirm deletion"
+          }
+        }
+      }
+    },
+    "تأكيد وتسجيل الجلسة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirm and log session"
+          }
+        }
+      }
+    },
+    "تابع القراءة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue reading"
+          }
+        }
+      }
+    },
+    "تاريخ ووقت القراءة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reading date and time"
+          }
+        }
+      }
+    },
+    "تتفقان في هذه الكلمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "They agree on this word"
+          }
+        }
+      }
+    },
+    "تجاهل التشكيل" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignore diacritics"
+          }
+        }
+      }
+    },
+    "تحتاج مراجعة يدوية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Needs manual review"
+          }
+        }
+      }
+    },
+    "تحديث الحفظ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update memorization"
+          }
+        }
+      }
+    },
+    "تحديث حالة الصفحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update page status"
+          }
+        }
+      }
+    },
+    "تحديد كامل السورة (%lld آية)" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Select the whole surah (%lld ayah)"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Select the whole surah (%lld ayahs)"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "تختلفان في هذه الكلمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "They differ on this word"
+          }
+        }
+      }
+    },
+    "تراجع" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Undo"
+          }
+        }
+      }
+    },
+    "تراجع على أي حال" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Undo anyway"
+          }
+        }
+      }
+    },
+    "ترتيب المصحف" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mushaf order"
+          }
+        }
+      }
+    },
+    "تسهيل" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تسهيل"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tashil"
+          }
+        }
+      }
+    },
+    "تشكيل" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vowel marks"
+          }
+        }
+      }
+    },
+    "تشمل النسخة الحفظ والقراءة والمتشابهات وبيانات القراءات في المجلد الذي تختاره من تطبيق الملفات." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Backups include memorization, reading, Mutashabihat and Qira’at data, in the folder you choose in Files."
+          }
+        }
+      }
+    },
+    "تصفية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter"
+          }
+        }
+      }
+    },
+    "تصفية حسب الاسم أو الرقم..." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter by name or number…"
+          }
+        }
+      }
+    },
+    "تُضاف المتون عند بناء التطبيق من نسختك من الكتب." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The mutun are added when the app is built from your copy of the books."
+          }
+        }
+      }
+    },
+    "تطبيق" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apply"
+          }
+        }
+      }
+    },
+    "تطبيق التلوين" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apply coloring"
+          }
+        }
+      }
+    },
+    "تعديل" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit"
+          }
+        }
+      }
+    },
+    "تعديل المجموعة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit group"
+          }
+        }
+      }
+    },
+    "تعديل الملاحظة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Note"
+          }
+        }
+      }
+    },
+    "تعذر إنشاء ملف قاعدة البيانات المؤقت" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعذر إنشاء ملف قاعدة البيانات المؤقت"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not create the temporary database file"
+          }
+        }
+      }
+    },
+    "تعذر الاتصال بخادم الويب" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعذر الاتصال بخادم الويب"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not reach the web server"
+          }
+        }
+      }
+    },
+    "تعذر التحديث" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not update"
+          }
+        }
+      }
+    },
+    "تعذر الحفظ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn’t Save"
+          }
+        }
+      }
+    },
+    "تعذر الوصول للمجلد المحدد" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعذر الوصول للمجلد المحدد"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cannot access the selected folder"
+          }
+        }
+      }
+    },
+    "تعذر تحميل الملاحظات" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn’t Load Notes"
+          }
+        }
+      }
+    },
+    "تعذر تحميل بيانات الصفحة الكاملة." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The complete page data could not be loaded."
+          }
+        }
+      }
+    },
+    "تعذّر تحميل بيانات القراءات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not load the Qira’at data"
+          }
+        }
+      }
+    },
+    "تعذّر تحميل خلافات هذه الصفحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not load this page’s differences"
+          }
+        }
+      }
+    },
+    "تعذّر فتح بيانات الحفظ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn’t open the memorization data"
+          }
+        }
+      }
+    },
+    "تعذّر فتح بيانات المصحف" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn’t open the Mushaf data"
+          }
+        }
+      }
+    },
+    "تعذّر فتح بيانات المصحف\n%@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Couldn’t open the Mushaf data\n%@"
+          }
+        }
+      }
+    },
+    "تعذر قراءة الملاحظات أو حفظها. أعد المحاولة." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The notes could not be read or saved. Try again."
+          }
+        }
+      }
+    },
+    "تعلّم" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Learning"
+          }
+        }
+      }
+    },
+    "تعيين على الكلمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assigned to the word"
+          }
+        }
+      }
+    },
+    "تفعيل القراءات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn on Qira’at"
+          }
+        }
+      }
+    },
+    "تقديم وتأخير" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reordering"
+          }
+        }
+      }
+    },
+    "تُقرأ هكذا" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Read like this"
+          }
+        }
+      }
+    },
+    "تقليب" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Curl"
+          }
+        }
+      }
+    },
+    "تقليل بلا إمالة في باب الممال والمقلل، بلون هذا الباب." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taqlil without Imalah in the Imalah and Taqlil category, in that category’s color."
+          }
+        }
+      }
+    },
+    "تلقائي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Automatic"
+          }
+        }
+      }
+    },
+    "تلوتُ عن ظهر قلب (من الذاكرة)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I recited from memory"
+          }
+        }
+      }
+    },
+    "تلوين تلقائي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatic coloring"
+          }
+        }
+      }
+    },
+    "تم" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "تم النسخ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copied"
+          }
+        }
+      }
+    },
+    "تم تحديد %lld آية" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld ayah selected"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld ayahs selected"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "تَمَّتْ خَتْمَةُ الْقُرْآنِ الْكَرِيمِ بِحَمْدِ اللَّهِ وَتَوْفِيقِهِ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Khatma of the Holy Quran is complete, praise be to Allah and by His help"
+          }
+        }
+      }
+    },
+    "تمييز الرموز" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Highlight symbols"
+          }
+        }
+      }
+    },
+    "تنبيه" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notice"
+          }
+        }
+      }
+    },
+    "توجد تغييرات أحدث" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Newer changes exist"
+          }
+        }
+      }
+    },
+    "جارٍ إعداد خلافات الصفحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparing page differences"
+          }
+        }
+      }
+    },
+    "جارٍ إعداد فهرس الأصول..." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparing the Usul index…"
+          }
+        }
+      }
+    },
+    "جارٍ البحث في القرآن الكريم..." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Searching the Holy Quran…"
+          }
+        }
+      }
+    },
+    "جارٍ تجهيز النتائج" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparing results"
+          }
+        }
+      }
+    },
+    "جارٍ تحديث النتائج" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Updating results"
+          }
+        }
+      }
+    },
+    "جارٍ تحميل أبواب الأصول" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading Usul categories"
+          }
+        }
+      }
+    },
+    "جارٍ تحميل الأبواب…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading categories…"
+          }
+        }
+      }
+    },
+    "جرّب البحث الموسع أو راجع كتابة الكلمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Try Broad Search or check the spelling"
+          }
+        }
+      }
+    },
+    "جزء" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Juz’"
+          }
+        }
+      }
+    },
+    "جلسة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Session"
+          }
+        }
+      }
+    },
+    "حالة الحفظ: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Memorization status: %@"
+          }
+        }
+      }
+    },
+    "حذف" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        }
+      }
+    },
+    "حذف الآية %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete ayah %lld"
+          }
+        }
+      }
+    },
+    "حذف الجزء %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove part %lld"
+          }
+        }
+      }
+    },
+    "حذف الكلمة المحفوظة وملاحظتها؟" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete the saved word and its note?"
+          }
+        }
+      }
+    },
+    "حذف حرف" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Letter omission"
+          }
+        }
+      }
+    },
+    "حذف هذه المجموعة نهائياً" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete this group permanently"
+          }
+        }
+      }
+    },
+    "حسناً" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "حسنًا" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "حفظ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
+          }
+        }
+      }
+    },
+    "حفظ أو مراجعة بدون الاستعانة بالمصحف" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Memorized or reviewed without the Mushaf"
+          }
+        }
+      }
+    },
+    "حفظ القرآن" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quran memorization"
+          }
+        }
+      }
+    },
+    "حفظ فاصل للآية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookmark ayah"
+          }
+        }
+      }
+    },
+    "حفظ فاصل للصفحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookmark page"
+          }
+        }
+      }
+    },
+    "حكم أصولي على الكلمة: يلوّن نصها إن لم يكن فيها اختلاف قراءة، وتُرسم به النقطة والخط المنقّط." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Usul ruling on the word: it colors the text when there is no reading variant, and sets the color of the dot and dotted line."
+          }
+        }
+      }
+    },
+    "حكم من أبواب الأصول بلا اختلاف في الرسم: يلوّن نص الكلمة بلا خط تحتها." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Usul ruling with no written-form difference: it colors the word without an underline."
+          }
+        }
+      }
+    },
+    "حلقة أسفل يسار الكلمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ring at the bottom left of the word"
+          }
+        }
+      }
+    },
+    "خط بلون الأداء" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Performance-colored line"
+          }
+        }
+      }
+    },
+    "خط رمادي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gray line"
+          }
+        }
+      }
+    },
+    "خط متصل تحت الكلمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solid line under the word"
+          }
+        }
+      }
+    },
+    "خط متصل تحت الكلمة، لون الأداء" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solid line under the word, in the performance color"
+          }
+        }
+      }
+    },
+    "خط متصل رمادي تحت الكلمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solid gray line under the word"
+          }
+        }
+      }
+    },
+    "خط مقسَّم" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segmented line"
+          }
+        }
+      }
+    },
+    "خط مقسَّم إلى أجزاء متساوية تحت الكلمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Line split into equal segments under the word"
+          }
+        }
+      }
+    },
+    "خط منقّط تحت الكلمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dotted line under the word"
+          }
+        }
+      }
+    },
+    "خطأ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
+          }
+        }
+      }
+    },
+    "خلاف في الرسم" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Orthographic difference"
+          }
+        }
+      }
+    },
+    "خلافات الصفحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Page Differences"
+          }
+        }
+      }
+    },
+    "خيارات الآية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayah options"
+          }
+        }
+      }
+    },
+    "خيارات التلوين" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coloring options"
+          }
+        }
+      }
+    },
+    "خيارات الفواصل" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookmark options"
+          }
+        }
+      }
+    },
+    "داكن" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Dark"
+          }
+        }
+      }
+    },
+    "دقائق" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "minutes"
+          }
+        }
+      }
+    },
+    "دقيقة" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "minute"
+          }
+        }
+      }
+    },
+    "دقيقتين" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "two minutes"
+          }
+        }
+      }
+    },
+    "ذكي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Smart"
+          }
+        }
+      }
+    },
+    "ذو وجهين (بخلف عنه) — الوجه الآخر جائز أيضًا" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Two readings (with a transmitted variant) — the other reading is also permissible"
+          }
+        }
+      }
+    },
+    "ذو وجهين: لقارئ أو راوٍ وجه ثانٍ جائز («بخلف عنه»)، بلونه، وبلون الباب في الأصول." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two wujuh: a reader or narrator has a second permitted wajh (“bi-khulf”), in their color (the category color for usul rulings)."
+          }
+        }
+      }
+    },
+    "ربط الكلمات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Link words"
+          }
+        }
+      }
+    },
+    "ربط وتلوين الكلمات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Link and color words"
+          }
+        }
+      }
+    },
+    "رقم الآية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayah number"
+          }
+        }
+      }
+    },
+    "رمز جماعي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Group symbol"
+          }
+        }
+      }
+    },
+    "رمز راوٍ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Narrator symbol"
+          }
+        }
+      }
+    },
+    "رمز قارئ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reader symbol"
+          }
+        }
+      }
+    },
+    "روايتا الإمام %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Both narrations of Imam %@"
+          }
+        }
+      }
+    },
+    "روايتاه معًا" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Both narrations together"
+          }
+        }
+      }
+    },
+    "زيادة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "addition"
+          }
+        }
+      }
+    },
+    "زيادة حرف" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Letter addition"
+          }
+        }
+      }
+    },
+    "سـ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سـ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "s"
+          }
+        }
+      }
+    },
+    "ساعات" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "hours"
+          }
+        }
+      }
+    },
+    "ساعة" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "hour"
+          }
+        }
+      }
+    },
+    "ساعتين" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "two hours"
+          }
+        }
+      }
+    },
+    "سجل القراءة اليومي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily reading log"
+          }
+        }
+      }
+    },
+    "سكت" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سكت"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sakt"
+          }
+        }
+      }
+    },
+    "سورة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Surah"
+          }
+        }
+      }
+    },
+    "سورة %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Surah %@"
+          }
+        }
+      }
+    },
+    "سورة %@، آية %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Surah %@, Ayah %@"
+          }
+        }
+      }
+    },
+    "سورة %@، آية %lld • ص %lld" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "سورة %1$@، آية %2$lld • ص %3$lld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Surah %@, Ayah %lld • p. %lld"
+          }
+        }
+      }
+    },
+    "سورة %lld" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Surah %lld"
+          }
+        }
+      }
+    },
+    "سورة %lld · آية %lld · كلمة %lld" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Surah %lld · Ayah %lld · Word %lld"
+          }
+        }
+      }
+    },
+    "سورة %lld · آية %lld · كلمة %lld · صفحة %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Surah %lld · Ayah %lld · Word %lld · Page %lld"
+          }
+        }
+      }
+    },
+    "سياسة الخصوصية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        }
+      }
+    },
+    "شرحا «الوافي» لعبد الفتاح القاضي و«الهادي» لمحمد سالم محيسن." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The commentaries al-Wafi by Abd al-Fattah al-Qadi and al-Hadi by Muhammad Salim Muhaysin."
+          }
+        }
+      }
+    },
+    "شكر وتراخيص" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acknowledgements & Licenses"
+          }
+        }
+      }
+    },
+    "شكل ترويسة السورة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Surah banner style"
+          }
+        }
+      }
+    },
+    "ص %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "p. %@"
+          }
+        }
+      }
+    },
+    "ص %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "p. %lld"
+          }
+        }
+      }
+    },
+    "صفحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Page"
+          }
+        }
+      }
+    },
+    "صفحة %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Page %@"
+          }
+        }
+      }
+    },
+    "صفحة %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Page %lld"
+          }
+        }
+      }
+    },
+    "صفحة %lld · آية %lld · كلمة %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Page %lld · Ayah %lld · Word %lld"
+          }
+        }
+      }
+    },
+    "صفحة بيضاء" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "White page"
+          }
+        }
+      }
+    },
+    "صفحة سوداء" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Black page"
+          }
+        }
+      }
+    },
+    "طبقة القراءات متوقفة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Qira’at layer is off"
+          }
+        }
+      }
+    },
+    "طريقة التلاوة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recitation mode"
+          }
+        }
+      }
+    },
+    "طريقة تقليب الصفحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Page turn style"
+          }
+        }
+      }
+    },
+    "طيبة النشر" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tayyibat al-Nashr"
+          }
+        }
+      }
+    },
+    "عادي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Normal"
+          }
+        }
+      }
+    },
+    "عرض الإحصائيات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show statistics"
+          }
+        }
+      }
+    },
+    "عرض البيت والشرح" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View verse and commentary"
+          }
+        }
+      }
+    },
+    "عرض كامل التفاصيل" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show full details"
+          }
+        }
+      }
+    },
+    "عرض مجلّاتي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My Magazine view"
+          }
+        }
+      }
+    },
+    "علامات الكلمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Word marks"
+          }
+        }
+      }
+    },
+    "علامة ضبط التسهيل: دائرة مطموسة الوسط" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "علامة ضبط التسهيل: دائرة مطموسة الوسط"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tashil orthography sign: filled circle"
+          }
+        }
+      }
+    },
+    "علامة ضبط السكت: سين صغيرة فوق الحرف" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "علامة ضبط السكت: سين صغيرة فوق الحرف"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sakt orthography sign: small high seen"
+          }
+        }
+      }
+    },
+    "على رسم المصحف" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "As written in the Mushaf"
+          }
+        }
+      }
+    },
+    "على رسم المصحف، بلا وجه مسجّل هنا" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "As written in the Mushaf; no recorded wajh here"
+          }
+        }
+      }
+    },
+    "عليها علامة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookmarked"
+          }
+        }
+      }
+    },
+    "عن %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "from %@"
+          }
+        }
+      }
+    },
+    "عنوان المتشابه" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mutashabih title"
+          }
+        }
+      }
+    },
+    "عُيّن يدويًا من محرر المتون" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assigned by hand in the matn editor"
+          }
+        }
+      }
+    },
+    "غير المكتمل" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incomplete"
+          }
+        }
+      }
+    },
+    "فائدة فريدة / إضافية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unique / extra insight"
+          }
+        }
+      }
+    },
+    "فاتح" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Light"
+          }
+        }
+      }
+    },
+    "فتح الفهرس" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open the index"
+          }
+        }
+      }
+    },
+    "فتح سورة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open a surah"
+          }
+        }
+      }
+    },
+    "فتح صفحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open a page"
+          }
+        }
+      }
+    },
+    "فتح صفحة من المصحف" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open a Mushaf page"
+          }
+        }
+      }
+    },
+    "فرش الحروف" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Farsh"
+          }
+        }
+      }
+    },
+    "فرش الحروف فقط (إخفاء الأصول)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Farsh only (hide Usul)"
+          }
+        }
+      }
+    },
+    "فريد" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "unique"
+          }
+        }
+      }
+    },
+    "في المفضلة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In favorites"
+          }
+        }
+      }
+    },
+    "قارئ أو راوٍ واحد على الكلمة. الألوان في القسم التالي." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One reader or narrator applies to the word. The colors are listed in the next section."
+          }
+        }
+      }
+    },
+    "قارئ/راوٍ" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reader/Narrator"
+          }
+        }
+      }
+    },
+    "قارن" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compare"
+          }
+        }
+      }
+    },
+    "قاعدة آلية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatic rule"
+          }
+        }
+      }
+    },
+    "قاعدة آلية رسمية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Official automatic rule"
+          }
+        }
+      }
+    },
+    "قبل " : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ago "
+          }
+        }
+      }
+    },
+    "قراءة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reading"
+          }
+        }
+      }
+    },
+    "قراءة القرآن والختمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quran Reading & Khatma"
+          }
+        }
+      }
+    },
+    "قيد الحفظ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Memorizing"
+          }
+        }
+      }
+    },
+    "كحفص" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like Hafs"
+          }
+        }
+      }
+    },
+    "كل الأبواب" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All categories"
+          }
+        }
+      }
+    },
+    "كل السور" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "All surahs"
+          }
+        }
+      }
+    },
+    "كل القراء والرواة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All readers and narrators"
+          }
+        }
+      }
+    },
+    "كلمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Word"
+          }
+        }
+      }
+    },
+    "كلمة %lld" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Word %lld"
+          }
+        }
+      }
+    },
+    "كلمة بلون الباب" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category-colored word"
+          }
+        }
+      }
+    },
+    "كيفية استخدام البحث المتقدم:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How to use advanced search:"
+          }
+        }
+      }
+    },
+    "لا توجد آيات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No ayahs"
+          }
+        }
+      }
+    },
+    "لا توجد آيات مضافة حتى الآن. يمكنك إضافة آيات من القرآن الكريم أو كتابتها يدوياً." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No ayahs added yet. You can add ayahs from the Holy Quran or type them in manually."
+          }
+        }
+      }
+    },
+    "لا توجد أبواب أصول في البيانات المثبّتة." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Usul categories in the installed data."
+          }
+        }
+      }
+    },
+    "لا توجد أصول متاحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Usul Available"
+          }
+        }
+      }
+    },
+    "لا توجد بيانات لهذا الاختيار" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No data is available for this selection"
+          }
+        }
+      }
+    },
+    "لا توجد تحديثات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No updates"
+          }
+        }
+      }
+    },
+    "لا توجد سور مطابقة للتصفية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No surahs match the filter"
+          }
+        }
+      }
+    },
+    "لا توجد فواصل محفوظة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No saved bookmarks"
+          }
+        }
+      }
+    },
+    "لا توجد كلمات محفوظة" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Saved Words"
+          }
+        }
+      }
+    },
+    "لا توجد مجموعات آلية مخزنة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "No saved automatic groups"
+          }
+        }
+      }
+    },
+    "لا توجد مجموعات تطابق البحث" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "No groups match your search"
+          }
+        }
+      }
+    },
+    "لا توجد نتائج" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "No results"
+          }
+        }
+      }
+    },
+    "لا توجد نتائج مطابقة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No matching results"
+          }
+        }
+      }
+    },
+    "لا خلاف في هذه الصفحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No differences on this page"
+          }
+        }
+      }
+    },
+    "لا خلاف في هذه الكلمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No variants in this word"
+          }
+        }
+      }
+    },
+    "لا نتائج" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No results"
+          }
+        }
+      }
+    },
+    "لا يتوفر شرح لهذا البيت في المرجع المضمّن" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No commentary is available for this verse in the bundled reference"
+          }
+        }
+      }
+    },
+    "لا يطابق قراءات هذه الكلمة، يحتاج مراجعة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Does not match this word's readings; needs review"
+          }
+        }
+      }
+    },
+    "لا يوجد مجلد للنسخ الاحتياطي. اختر مجلدًا من تطبيق الملفات في إعدادات النسخ الاحتياطي." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No backup folder is set. Choose a folder in Files from Backup settings."
+          }
+        }
+      }
+    },
+    "لتغيير القارئ أو الراوي" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To change the reader or narrator"
+          }
+        }
+      }
+    },
+    "لحذف الملاحظة، امسح النص ثم احفظ. تبقى الكلمة في المفضلة إذا كانت النجمة مفعّلة." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To delete the note, clear the text and save. The word stays in favorites while the star is on."
+          }
+        }
+      }
+    },
+    "لحفظ فاصل، اضغط مطولاً على رقم الآية في المصحف" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To save a bookmark, long-press the ayah number in the Mushaf"
+          }
+        }
+      }
+    },
+    "لم تُقرأ بعد • المتبقي: %lld آية" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Not read yet • %lld ayah left"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Not read yet • %lld ayahs left"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "لم يتم العثور على بيانات أصول القراءات في هذا المصحف." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Qira’at Usul data was found in this Mushaf."
+          }
+        }
+      }
+    },
+    "لم يتم العثور على مجلد Mushaf_Qiraat في iCloud Drive" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لم يتم العثور على مجلد Mushaf_Qiraat في iCloud Drive"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Mushaf_Qiraat folder was not found in iCloud Drive"
+          }
+        }
+      }
+    },
+    "لم يُحدَّد مجلد للنسخ الاحتياطي" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No backup folder is set"
+          }
+        }
+      }
+    },
+    "لن تُحفظ أي تغييرات حتى تُحل المشكلة. أعد تشغيل التطبيق، وإن استمرت فاستعد نسخة احتياطية من الإعدادات." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No changes will be saved until this is fixed. Restart the app, and if it persists restore a backup from Settings."
+          }
+        }
+      }
+    },
+    "ليست في المفضلة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not in favorites"
+          }
+        }
+      }
+    },
+    "متابعة إنجاز كل سورة والمتبقي منها" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Track your progress and what remains in each surah"
+          }
+        }
+      }
+    },
+    "متابعة القراءة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue reading"
+          }
+        }
+      }
+    },
+    "متفق عليها بين القراء العشرة ورواتهم" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agreed upon by the Ten Readers and their narrators"
+          }
+        }
+      }
+    },
+    "متن الشاطبية «حرز الأماني ووجه التهاني» للإمام الشاطبي (ت ٥٩٠هـ)، ومتنا «الدرة المضية» و«طيبة النشر» للإمام ابن الجزري (ت ٨٣٣هـ)، من نسخة المكتبة الشاملة (shamela.ws)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Matn texts of al-Shatibiyyah (al-Shatibi, d. 590 AH), al-Durrah and Tayyibat al-Nashr (Ibn al-Jazari, d. 833 AH), from the Shamela library edition (shamela.ws)."
+          }
+        }
+      }
+    },
+    "متوقفة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Off"
+          }
+        }
+      }
+    },
+    "مثال في المصحف:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Example in the Mushaf:"
+          }
+        }
+      }
+    },
+    "مثال: الرجفة / الصيحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Example: الرجفة / الصيحة"
+          }
+        }
+      }
+    },
+    "مجموع ما تدل عليه الرموز في هذا الموضع هو القرّاء الذين سمّاهم الشارح للبيت نفسه." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Together, the symbols here name exactly the readers the commentary names for this verse."
+          }
+        }
+      }
+    },
+    "مجموعة جديدة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New group"
+          }
+        }
+      }
+    },
+    "محدّث %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Updated %@"
+          }
+        }
+      }
+    },
+    "محدّث الآن" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Updated now"
+          }
+        }
+      }
+    },
+    "محقَّق من الشرح" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Checked against a commentary"
+          }
+        }
+      }
+    },
+    "مخصص" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom"
+          }
+        }
+      }
+    },
+    "مدة الجلسة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Session length"
+          }
+        }
+      }
+    },
+    "مَدَنِيَّة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Medinan"
+          }
+        }
+      }
+    },
+    "مراجَع" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reviewed"
+          }
+        }
+      }
+    },
+    "مزامنة iCloud (مصحف وقراءات)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud Sync (Mushaf and Qira’at)"
+          }
+        }
+      }
+    },
+    "مزامنة iCloud معطلة في هذا الإصدار" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud sync is disabled in this build"
+          }
+        }
+      }
+    },
+    "مزامنة السحابة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cloud sync"
+          }
+        }
+      }
+    },
+    "مستخرج" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Extracted"
+          }
+        }
+      }
+    },
+    "مسح البحث" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear search"
+          }
+        }
+      }
+    },
+    "مسح التصفية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear filter"
+          }
+        }
+      }
+    },
+    "مسودة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Draft"
+          }
+        }
+      }
+    },
+    "مشاركة الآية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share ayah"
+          }
+        }
+      }
+    },
+    "مطابق" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Exact"
+          }
+        }
+      }
+    },
+    "مطابق لقول الشارح (آليًّا)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Matches the commentary (by script)"
+          }
+        }
+      }
+    },
+    "معاينة الآية %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preview of ayah %lld"
+          }
+        }
+      }
+    },
+    "مغلق" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collapsed"
+          }
+        }
+      }
+    },
+    "مغلقة" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Closed"
+          }
+        }
+      }
+    },
+    "مفتاح الألوان" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Color Key"
+          }
+        }
+      }
+    },
+    "مفتوح" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expanded"
+          }
+        }
+      }
+    },
+    "مفتوحة" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Open"
+          }
+        }
+      }
+    },
+    "مفضّلة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorites"
+          }
+        }
+      }
+    },
+    "مفضلة وملاحظات القراءات" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qira’at Favourites and Notes"
+          }
+        }
+      }
+    },
+    "مفعّلة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "On"
+          }
+        }
+      }
+    },
+    "مقارنة القراءتين" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compare Readings"
+          }
+        }
+      }
+    },
+    "مقفلة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Locked"
+          }
+        }
+      }
+    },
+    "مكتملة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complete"
+          }
+        }
+      }
+    },
+    "مكتملة • %lld%%" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complete • %lld%%"
+          }
+        }
+      }
+    },
+    "مكتملة • لم يبقَ شيء" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complete • nothing left"
+          }
+        }
+      }
+    },
+    "مَكِّيَّة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meccan"
+          }
+        }
+      }
+    },
+    "ملاحظة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Note"
+          }
+        }
+      }
+    },
+    "ملاحظة الكلمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Word Note"
+          }
+        }
+      }
+    },
+    "ملاحظة شخصية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personal Note"
+          }
+        }
+      }
+    },
+    "ملاحظة عامة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General note"
+          }
+        }
+      }
+    },
+    "ملاحظة: سيتم استبدال الأجزاء الحالية للآيتين بنتيجة المقارنة." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Note: the current parts of both ayahs will be replaced by the comparison result."
+          }
+        }
+      }
+    },
+    "ملف القراءة لم يكتمل تنزيله بعد" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ملف القراءة لم يكتمل تنزيله بعد"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The reading file has not finished downloading yet"
+          }
+        }
+      }
+    },
+    "ملف الملاحظات غير صالح." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The notes file is invalid."
+          }
+        }
+      }
+    },
+    "ملف قراءة من جهاز آخر لم يكتمل تنزيله بعد" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ملف قراءة من جهاز آخر لم يكتمل تنزيله بعد"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A reading file from another device has not finished downloading yet"
+          }
+        }
+      }
+    },
+    "من البيت %@ في %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Defined in verse %@ of %@"
+          }
+        }
+      }
+    },
+    "من القرآن" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From the Quran"
+          }
+        }
+      }
+    },
+    "من صفحة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From page"
+          }
+        }
+      }
+    },
+    "من متن الدرة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From the Durrah"
+          }
+        }
+      }
+    },
+    "من متن الشاطبية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From the Shatibiyyah"
+          }
+        }
+      }
+    },
+    "من متن طيبة النشر" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From the Tayyibat al-Nashr"
+          }
+        }
+      }
+    },
+    "منسوخة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copied"
+          }
+        }
+      }
+    },
+    "منسوخة إلى الشخصية" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Copied to Personal"
+          }
+        }
+      }
+    },
+    "منشورة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Published"
+          }
+        }
+      }
+    },
+    "منظومة الدرة تعتمد أصولها على الشاطبية وفرشها على ما خالف أصله، ولم يُضمَّن لها شرح مستقل في التطبيق حالياً." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The rules of al-Durrah build upon al-Shatibiyyah and its farsh covers what differs from its source, and no standalone commentary is bundled for it currently."
+          }
+        }
+      }
+    },
+    "موثّق" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verified"
+          }
+        }
+      }
+    },
+    "موسع" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Broad"
+          }
+        }
+      }
+    },
+    "موضع الكلمة أو الملاحظة غير صالح." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The word location or note is invalid."
+          }
+        }
+      }
+    },
+    "نتيجة البحث: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search result: %@"
+          }
+        }
+      }
+    },
+    "نسخ إلى الشخصية" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Copy to Personal"
+          }
+        }
+      }
+    },
+    "نسخ إلى مجموعاتي الخاصة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy to my own groups"
+          }
+        }
+      }
+    },
+    "نسخ للمجموعات الخاصة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy to my own groups"
+          }
+        }
+      }
+    },
+    "نسخة محلية" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local copy"
+          }
+        }
+      }
+    },
+    "نص الجزء..." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Part text…"
+          }
+        }
+      }
+    },
+    "نص الكلمة ملوّن بلا خط تحتها" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colored word text without an underline"
+          }
+        }
+      }
+    },
+    "نص المصحف وخطوط صفحاته (QCF V2) وخط «KFGQPC Uthmanic Script HAFS»: مجمع الملك فهد لطباعة المصحف الشريف، المدينة المنورة. حقوق الخطوط محفوظة للمجمع." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mushaf text, QCF V2 page fonts and the KFGQPC Uthmanic Script HAFS font: King Fahd Glorious Quran Printing Complex, Madinah. Font rights belong to the Complex."
+          }
+        }
+      }
+    },
+    "نص المصحف:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mushaf text:"
+          }
+        }
+      }
+    },
+    "نص المصحف: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mushaf text: %@"
+          }
+        }
+      }
+    },
+    "نطاق البحث" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search Scope"
+          }
+        }
+      }
+    },
+    "نقطة أعلى يسار الكلمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dot at the top left of the word"
+          }
+        }
+      }
+    },
+    "نقطة مملوءة أسفل يسار الكلمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filled dot at the bottom left of the word"
+          }
+        }
+      }
+    },
+    "نقطة مملوءة أعلى يسار الكلمة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filled dot at the top left of the word"
+          }
+        }
+      }
+    },
+    "نقل الآية %lld للأسفل" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move ayah %lld down"
+          }
+        }
+      }
+    },
+    "نقل الآية %lld للأعلى" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move ayah %lld up"
+          }
+        }
+      }
+    },
+    "نقل الجزء %lld للأسفل" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move part %lld down"
+          }
+        }
+      }
+    },
+    "نقل الجزء %lld للأعلى" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move part %lld up"
+          }
+        }
+      }
+    },
+    "نمط البحث" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Search Mode"
+          }
+        }
+      }
+    },
+    "نمط التحديد" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selection style"
+          }
+        }
+      }
+    },
+    "هذه القراءة لم تُراجَع بعد" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This reading has not been reviewed yet"
+          }
+        }
+      }
+    },
+    "هل أنت متأكد من حذف هذه المجموعة نهائياً؟ لا يمكن التراجع عن هذا الإجراء." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to permanently delete this group? This cannot be undone."
+          }
+        }
+      }
+    },
+    "و%lld أبواب أخرى" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "and %lld more categories"
+          }
+        }
+      }
+    },
+    "و%lld أخرى" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "and %lld more"
+          }
+        }
+      }
+    },
+    "وجه %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wajh %lld"
+          }
+        }
+      }
+    },
+    "وحدة القياس" : {
+
+    },
+    "يحتاج مراجعة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Needs review"
+          }
+        }
+      }
+    },
+    "يرجى اختيار آيتين مختلفتين للمقارنة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please choose two different ayahs to compare"
+          }
+        }
+      }
+    },
+    "يطوي الملاحظات" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collapses the notes"
+          }
+        }
+      }
+    },
+    "يعرض الملاحظات كاملة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shows the full notes"
+          }
+        }
+      }
+    },
+    "يفتح إحصائيات القراءة" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens reading statistics"
+          }
+        }
+      }
+    },
+    "يفتح التطبيق حيث توقفت عن القراءة." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens the app where you stopped reading."
+          }
+        }
+      }
+    },
+    "يفتح المصحف على بداية سورة." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens the Mushaf at the start of a surah."
+          }
+        }
+      }
+    },
+    "يفتح المصحف على صفحة من ١ إلى ٦٠٤." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens the Mushaf at a page, 1 to 604."
+          }
+        }
+      }
+    },
+    "يفتح في Safari" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens in Safari"
+          }
+        }
+      }
+    },
+    "يقارن آيتين كلمةً كلمة ويعيّن أنواع الفروقات (مشترك، اختلاف، زيادة، فريد) تلقائياً." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compares two ayahs word by word and automatically assigns the difference types (shared, difference, addition, unique)."
+          }
+        }
+      }
+    },
+    "يُلوَّن الخط ونص الكلمة بلونه إذا ذُكر راوياه معًا، أو قطعةً من الخط المقسَّم." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Its color is used for the line and the word text when both its narrators are named together, or for one segment of a split line."
+          }
+        }
+      }
+    },
+    "يُلوَّن بلونه إذا ذُكر وحده دون زميله من الإمام نفسه." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Its color is used when this narrator is named without the other narrator of the same reader."
+          }
+        }
+      }
+    },
+    "يمكنك استيراد ملف بيانات الآلية (JSON) بالضغط على زر استيراد في الأعلى." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "You can import an automation data file (JSON) by tapping Import above."
+          }
+        }
+      }
+    },
+    "يوم" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "day"
+          }
+        }
+      }
+    },
+    "يومًا" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "days"
+          }
+        }
+      }
+    },
+    "يومين" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "two days"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.3"
+}

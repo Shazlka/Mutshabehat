@@ -1,0 +1,204 @@
+import Foundation
+
+// Text and pill rules of the web's Qiraat card (attribution.ts `rollupAuthorityPills`,
+// Mushaf1441Viewer.tsx `distinctRulingText` / `isRedundantActionLabel`). Change both or neither.
+
+public struct AuthorityPill: Hashable, Sendable, Identifiable {
+    public enum Kind: Hashable, Sendable { case reader, narrator, other }
+    public var id: String { key }
+    public let key: String
+    public let name: String
+    public let color: String
+    public let kind: Kind
+
+    /// True when the name already carries its reader («الدوري عن أبي عمرو»), so a chip need not add it.
+    public var namesItsReader: Bool { name.contains(" عن ") }
+}
+
+/// «الإمام حمزة» when a reader is named or both of his narrators appear, «الراوي ورش» for one
+/// narrator alone; readers in canonical order, then anything the catalog does not know, as given.
+public func rollupAuthorityPills(_ authorityIds: [String], catalog: QiraatCatalog) -> [AuthorityPill] {
+    var narratorsByReader: [String: Set<String>] = [:]
+    var explicitReaders: Set<String> = []
+    var others: [String] = []
+    for id in authorityIds where !id.isEmpty {
+        if let narrator = catalog.narrator(id) {
+            narratorsByReader[narrator.readerId, default: []].insert(narrator.id)
+        } else if catalog.reader(id) != nil {
+            explicitReaders.insert(id)
+        } else if !others.contains(id) {
+            others.append(id)
+        }
+    }
+    var pills: [AuthorityPill] = []
+    for reader in catalog.readers.sorted(by: { $0.sortOrder < $1.sortOrder }) {
+        let all = catalog.narrators(of: reader.id)
+        let present = narratorsByReader[reader.id] ?? []
+        if explicitReaders.contains(reader.id) || (!all.isEmpty && present.count >= all.count) {
+            pills.append(AuthorityPill(key: reader.id, name: "الإمام \(reader.nameArShort)", color: reader.color, kind: .reader))
+        } else {
+            for narrator in all where present.contains(narrator.id) {
+                pills.append(AuthorityPill(key: narrator.id, name: "الراوي \(narrator.nameAr)", color: narrator.color, kind: .narrator))
+            }
+        }
+    }
+    pills += others.map { AuthorityPill(key: $0, name: $0, color: "#8a7c5c", kind: .other) }
+    return pills
+}
+
+/// Folds harakat, tatweel and alef forms so wording that differs only in marks compares equal.
+private func folded(_ text: String) -> String {
+    text.replacingOccurrences(of: "[\u{064B}-\u{065F}\u{0670}\u{0640}]", with: "", options: .regularExpression)
+        .replacingOccurrences(of: "[ٱأإآ]", with: "ا", options: .regularExpression)
+        .replacingOccurrences(of: "[\\s.،:؛-]+", with: " ", options: .regularExpression)
+        .trimmingCharacters(in: .whitespaces)
+}
+
+/// The ruling's general text, only when it says something the category badge and the per-reader
+/// actions do not already say.
+public func distinctRulingText(_ text: String?, categoryAr: String, actions: [String?]) -> String? {
+    let t = folded(text ?? "")
+    guard !t.isEmpty, t != folded(categoryAr) else { return nil }
+    for action in actions {
+        let a = folded(action ?? "")
+        if !a.isEmpty, t == a || t.contains(a) || a.contains(t) { return nil }
+    }
+    return text?.trimmingCharacters(in: .whitespacesAndNewlines)
+}
+
+/// An action line that only repeats the category name («ترك الغنة» under «ترك الغنة»).
+public func isRedundantActionLabel(_ action: String?, categoryAr: String) -> Bool {
+    func norm(_ s: String) -> String {
+        s.replacingOccurrences(of: "[\u{064B}-\u{065F}\u{0670}\u{0640}]", with: "", options: .regularExpression)
+            .replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression)
+            .trimmingCharacters(in: .whitespaces)
+    }
+    let a = norm(action ?? "")
+    return a.isEmpty || a == norm(categoryAr)
+}
+
+public struct RulingActionGroup: Hashable, Sendable {
+    public let action: String
+    public let entries: [QiraatRulingAttribution]
+}
+
+extension RulingActionGroup {
+    /// Rows grouped by action, in first-appearance order; a row with no action falls under `fallback`.
+    public static func grouping(_ rows: [QiraatRulingAttribution], fallback: String) -> [RulingActionGroup] {
+        var order: [String] = []
+        var groups: [String: [QiraatRulingAttribution]] = [:]
+        for entry in rows {
+            let action = entry.action ?? fallback
+            if groups[action] == nil { order.append(action) }
+            groups[action, default: []].append(entry)
+        }
+        return order.map { RulingActionGroup(action: $0, entries: groups[$0]!) }
+    }
+}
+
+extension QiraatVariant {
+    /// The per-reader rows that apply to the readings a card shows (a reader or riwayah filter). A row
+    /// names a narrator ("Q04-R02") or, when the source named the whole reader, a reader ("Q04"); a reader
+    /// row applies when any shown reading belongs to that reader. Port of the web's `attributionForReadings`.
+    public func attribution(scopedTo readingIds: [String], catalog: QiraatCatalog) -> [QiraatRulingAttribution] {
+        let shown = Set(readingIds)
+        let shownReaders = Set(readingIds.compactMap { catalog.readerId(ofReading: $0) })
+        return attribution.filter { row in
+            row.authorityId.contains("-") ? shown.contains(row.authorityId) : shownReaders.contains(row.authorityId)
+        }
+    }
+
+    /// The rows for the shown readings grouped by action, so a reader who reads it another way (ابن ذكوان
+    /// «بالياء», wajh 2) keeps their own line under their own pill. A row with no action groups under "".
+    public func attributionByAction(scopedTo readingIds: [String], catalog: QiraatCatalog) -> [RulingActionGroup] {
+        RulingActionGroup.grouping(attribution(scopedTo: readingIds, catalog: catalog), fallback: "")
+    }
+}
+
+extension QiraatRuling {
+    /// Attribution grouped by action, in first-appearance order: «إمالة → حمزة، الكسائي» and
+    /// «تقليل → ورش» stay two lines instead of one flattened list.
+    public var attributionByAction: [RulingActionGroup] {
+        RulingActionGroup.grouping(attribution, fallback: categoryAr)
+    }
+
+    /// Readings whose second وجه is also valid.
+    public var alternateReadings: [QiraatRulingReading] { readings.filter { !$0.isDefault } }
+
+    /// The per-reader rows for the selected reader or narrator only («all» keeps every row). A reader-level
+    /// row ("Q07") applies to each of that reader's narrators; a count-school id belongs to no reader and
+    /// drops out of a narrowed card.
+    public func attribution(scopedTo filter: QiraatFilter, catalog: QiraatCatalog) -> [QiraatRulingAttribution] {
+        switch filter {
+        case .all:
+            return attribution
+        case .reader(let readerId):
+            return attribution.filter { row in
+                row.authorityId == readerId || catalog.readerId(ofReading: row.authorityId) == readerId
+            }
+        case .reading(let readingId):
+            let readerId = catalog.readerId(ofReading: readingId)
+            return attribution.filter { $0.authorityId == readingId || (readerId != nil && $0.authorityId == readerId) }
+        }
+    }
+
+    public func attributionByAction(scopedTo filter: QiraatFilter, catalog: QiraatCatalog) -> [RulingActionGroup] {
+        RulingActionGroup.grouping(attribution(scopedTo: filter, catalog: catalog), fallback: categoryAr)
+    }
+
+    /// A second, also-valid وجه exists for the selected reader or narrator.
+    public func hasAlternateReading(scopedTo filter: QiraatFilter, catalog: QiraatCatalog) -> Bool {
+        switch filter {
+        case .all: return !alternateReadings.isEmpty
+        case .reader(let readerId): return alternateReadings.contains { catalog.readerId(ofReading: $0.readingId) == readerId }
+        case .reading(let readingId): return alternateReadings.contains { $0.readingId == readingId }
+        }
+    }
+
+    /// More than one وجه is recorded, so each attribution shows its wajh number.
+    public var hasSeveralWajhs: Bool { attribution.contains { ($0.wajhOrder ?? 1) > 1 } }
+}
+
+/// packages/qiraat-core/types.ts `DIFFERENCE_TYPE_LABELS_AR`; anything unknown reads «أخرى».
+public func differenceTypeLabelAr(_ type: String?) -> String {
+    switch type {
+    case "HARAKAH": "تشكيل"
+    case "LETTER": "إبدال حرف"
+    case "ADDITION": "زيادة حرف أو كلمة"
+    case "OMISSION": "حذف حرف أو كلمة"
+    case "MADD": "مد"
+    case "HAMZ": "همز"
+    case "IMALAH": "إمالة"
+    case "IDGHAM": "إدغام"
+    case "WAQF": "وقف"
+    case "NAQL": "نقل"
+    case "SILAH": "صلة"
+    case "ORTHOGRAPHY": "خلاف في الرسم"
+    case "WORD_FORM", "REORDER": "تقديم وتأخير"
+    case "WORD_CHANGE": "اختلاف كلمة"
+    case "SAKT": "سكت"
+    default: "غير مصنَّف"
+    }
+}
+
+extension QiraatFilter {
+    /// "all", "reader:Q06" or "reading:Q03-R01" — what the app keeps in UserDefaults.
+    public var storageValue: String {
+        switch self {
+        case .all: "all"
+        case .reader(let id): "reader:\(id)"
+        case .reading(let id): "reading:\(id)"
+        }
+    }
+
+    public init?(storageValue: String) {
+        if storageValue == "all" { self = .all; return }
+        let parts = storageValue.split(separator: ":", maxSplits: 1).map(String.init)
+        guard parts.count == 2, !parts[1].isEmpty else { return nil }
+        switch parts[0] {
+        case "reader": self = .reader(parts[1])
+        case "reading": self = .reading(parts[1])
+        default: return nil
+        }
+    }
+}

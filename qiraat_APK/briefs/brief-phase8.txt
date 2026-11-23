@@ -1,0 +1,26 @@
+<task>
+Phase 8: make the Android reader's bottom navigation and Qiraat variant cards match the iOS app exactly (apps/android, package com.shazlka.qiraat). User feedback: "The down menu are in two lines not like ios app, need the UI to be like iOS exactly, also cards for variant".
+</task>
+
+<context>
+Current Android problem (see apps/android/verification/fix_page_1.png and phone_02_page28.png): at the bottom of the reader there are TWO stacked rows: a text row (القراءات | القارئ | الخلاصة | المفتاح | التفضيلات) and below it the 5-tab nav bar (المصحف | المتشابهات | الحفظ | البحث | الإعدادات). iOS has a single footer: read apps/ios/Sources/Reader/FooterTabBar.swift, apps/ios/Sources/Reader/MushafPager.swift / MushafPageView.swift and apps/ios/Sources/Qiraat/QiraatControls.swift, QiraatHub.swift, QiraatSheet.swift to see exactly how iOS lays the footer out (tab icons, labels, order, selected state, the Qiraat controls: where the reader picker, legend/key, summary and preferences live, what is a toolbar button vs a sheet, auto-hide after 10s setting, safe-area, sizes, spacing, colours, fonts). Reproduce that structure, spacing, icons (use Material Symbols/Compose vector equivalents of the SF Symbols iOS uses) and behaviour in Compose, single bar only, RTL-correct.
+Variants: iOS shows each Qiraat variant/ruling as a card (apps/ios/Sources/Qiraat/VariantCard.swift, RulingCard.swift, QiraatWordPeekView.swift, QiraatSheet.swift, QiraatPills.swift, QiraatCompareView.swift, QiraatClassificationLine.swift, QiraatReferencesRow.swift). Port these card designs exactly (card container shape/elevation/border, header with variant text in the QCF/Uthmani font, reader pills with the same colours, classification line, performance/notes, references row, ordering of cards, spacing, typography) so the Android Qiraat bottom sheet, the word peek and the compare view show real cards like iOS, replacing the current plain-text sheet content in reader/QiraatUi.kt.
+Use iOS Localizable.xcstrings for the Arabic strings; do not invent labels.
+Toolchain: export JAVA_HOME=/opt/homebrew/opt/openjdk@17 PATH=$JAVA_HOME/bin:$PATH ANDROID_HOME=/opt/homebrew/share/android-commandlinetools. The physical phone (RK8W602ZRBH) is probably disconnected; if `adb devices` lists it and it is unlocked you may install and screenshot, never change its settings or touch the lock. Otherwise use the emulator (AVD qiraat_pixel_6, headless: emulator -avd qiraat_pixel_6 -no-window -no-audio -gpu swiftshader_indirect; start it yourself, always pass -s <serial>, and shut it down at the end).
+</context>
+
+<scope>
+1. Footer: single iOS-exact bar replacing both rows; keep all five destinations reachable and the Qiraat controls reachable the way iOS does.
+2. Variant/ruling cards in the Qiraat sheet, peek and compare view matching iOS visuals and content.
+3. Unit tests where logic changes (ordering, grouping, labels). `cd apps/android && ./gradlew clean testDebugUnitTest assembleDebug` must pass (62+ tests).
+4. Screenshots into apps/android/verification/ (ios_match_*.png): reader with the new footer, a variant sheet for الٓمٓ (page 2 word 1) and for مالك (page 1, verse 1:4), the compare view. LOOK at them and compare side by side with the iOS source rules; report concrete differences you still see.
+5. Copy final APK to apps/android/dist/Qiraat-android-debug.apk and also to ~/Library/CloudStorage/GoogleDrive-amr.eshazly@gmail.com/My Drive/Qiraat-android-debug.apk (overwrite).
+</scope>
+
+<out_of_scope>
+apps/ios, src/, packages/. Do NOT commit. Add an entry to the root CHANGELOG.md and CLAUDE.md changelog sections (repo rule).
+</out_of_scope>
+
+<report>
+End with "FOOTER: iOS vs Android" (element by element), "VARIANT CARDS: iOS vs Android", "GATES", "OPEN ISSUES".
+</report>

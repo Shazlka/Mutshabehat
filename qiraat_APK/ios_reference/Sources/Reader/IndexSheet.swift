@@ -1,0 +1,312 @@
+import Combine
+import MushafCore
+import SwiftUI
+
+struct IndexSheet: View {
+    enum Tab: CaseIterable {
+        case surahs
+        case juz
+        case bookmarks
+
+        var title: LocalizedStringKey {
+            switch self {
+            case .surahs: "السور"
+            case .juz: "الأجزاء"
+            case .bookmarks: "الفواصل"
+            }
+        }
+    }
+
+    let library: MushafLibrary
+    let currentPage: Int
+    let onSelect: (Int) -> Void
+    /// Read for its data when the sheet opens and when a bookmark changes; not observed, so the reading statistics
+    /// ticking in the background do not redraw the whole index.
+    private let tracker = ReadingTracker.shared
+    @State private var bookmarks: [QuranBookmark] = []
+    @State private var tab = Tab.surahs
+    @State private var surahFilter = SurahProgressFilter.all
+    @State private var surahsProgress: [Int: SurahProgress] = [:]
+
+    init(library: MushafLibrary, currentPage: Int, onSelect: @escaping (Int) -> Void) {
+        self.library = library
+        self.currentPage = currentPage
+        self.onSelect = onSelect
+    }
+
+    private var displayedSurahs: [Surah] {
+        switch surahFilter {
+        case .all:
+            return library.surahs
+        case .remaining:
+            return library.surahs.filter { surah in
+                guard let p = surahsProgress[surah.number] else { return true }
+                return !p.isCompleted
+            }
+        case .completed:
+            return library.surahs.filter { surah in
+                guard let p = surahsProgress[surah.number] else { return false }
+                return p.isCompleted
+            }
+        case .started:
+            return library.surahs.filter { surah in
+                guard let p = surahsProgress[surah.number] else { return false }
+                return p.isStarted
+            }
+        }
+    }
+
+    var body: some View {
+        NavigationStack {
+            VStack(spacing: 0) {
+                if tab == .surahs {
+                    HStack(spacing: 6) {
+                        ForEach(SurahProgressFilter.allCases) { f in
+                            FilterChip(isSelected: surahFilter == f) {
+                                surahFilter = f
+                            } label: {
+                                Text(f.title)
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.8)
+                            }
+                            .frame(maxWidth: .infinity)
+                        }
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 8)
+                    .background(Color(uiColor: .systemBackground))
+                    Divider()
+                }
+
+                ScrollViewReader { proxy in
+                    List {
+                        switch tab {
+                        case .surahs:
+                            if displayedSurahs.isEmpty {
+                                VStack(spacing: 8) {
+                                    Image(systemName: "tray")
+                                        .font(.title2)
+                                        .foregroundStyle(.secondary)
+                                    Text("لا توجد سور مطابقة للتصفية")
+                                        .font(.subheadline)
+                                        .foregroundStyle(.secondary)
+                                }
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 32)
+                                .listRowBackground(Color.clear)
+                            } else {
+                                ForEach(displayedSurahs) { surah in
+                                    surahRow(surah: surah, isCurrent: containsCurrentPage(surah))
+                                        .id(surah.number)
+                                }
+                            }
+                        case .juz:
+                            ForEach(1...30, id: \.self) { juz in
+                                row(title: "الجزء \(juz)", number: juz, page: library.juzStartPages[juz] ?? 1,
+                                    isCurrent: juz == currentJuz)
+                                    .id(juz)
+                            }
+                        case .bookmarks:
+                            let all = bookmarks
+                            if all.isEmpty {
+                                VStack(spacing: 12) {
+                                    Image(systemName: "bookmark")
+                                        .scaledFont(size: 36)
+                                        .foregroundColor(.secondary)
+                                    Text("لا توجد فواصل محفوظة")
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                }
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .padding(.vertical, 32)
+                            } else {
+                                ForEach(all) { bookmark in
+                                    Button {
+                                        onSelect(bookmark.page)
+                                    } label: {
+                                        HStack {
+                                            VStack(alignment: .leading, spacing: 3) {
+                                                Text(library.surahNames[bookmark.surah] ?? "سورة \(bookmark.surah)")
+                                                    .font(.headline)
+                                                HStack(spacing: 6) {
+                                                    if bookmark.type == .ayah {
+                                                        Text("آية \(bookmark.ayah)")
+                                                            .font(.caption.bold())
+                                                            .foregroundColor(.accentColor)
+                                                    }
+                                                    Text("صفحة \(bookmark.page)")
+                                                        .font(.caption)
+                                                        .foregroundColor(.secondary)
+                                                }
+                                            }
+                                            Spacer()
+                                            Text(bookmark.type.title)
+                                                .font(.caption2.bold())
+                                                .padding(.horizontal, 8)
+                                                .padding(.vertical, 3)
+                                                .background(Color.accentColor.opacity(0.12))
+                                                .foregroundColor(.accentColor)
+                                                .clipShape(Capsule())
+                                        }
+                                    }
+                                    .buttonStyle(.plain)
+                                }
+                            }
+                        }
+                    }
+                    .listStyle(.plain)
+                    .id(tab)
+                    .task { loadSurahProgress() }
+                    // Fires once on subscribing, which loads the bookmarks, and again whenever one changes.
+                    .onReceive(tracker.$bookmarksVersion) { _ in loadBookmarks() }
+                    .onAppear {
+                        if let currentRow {
+                            DispatchQueue.main.async {
+                                proxy.scrollTo(currentRow, anchor: .center)
+                            }
+                        }
+                    }
+                    .onChange(of: tab) { _, _ in
+                        if let currentRow {
+                            DispatchQueue.main.async {
+                                proxy.scrollTo(currentRow, anchor: .center)
+                            }
+                        }
+                    }
+                    .onChange(of: currentPage) { _, _ in
+                        if let currentRow {
+                            DispatchQueue.main.async {
+                                proxy.scrollTo(currentRow, anchor: .center)
+                            }
+                        }
+                    }
+                    .onReceive(NotificationCenter.default.publisher(for: .readingDatabaseDidUpdate)) { _ in
+                        loadSurahProgress()
+                        loadBookmarks()
+                    }
+                }
+            }
+            .navigationTitle("الفهرس")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Picker("", selection: $tab) {
+                        ForEach(Tab.allCases, id: \.self) { Text($0.title).tag($0) }
+                    }
+                    .pickerStyle(.segmented)
+                    .frame(maxWidth: .infinity)
+                }
+            }
+        }
+    }
+
+    private func loadSurahProgress() {
+        let all = tracker.allSurahProgress(library: library)
+        surahsProgress = Dictionary(uniqueKeysWithValues: all.map { ($0.surahNumber, $0) })
+    }
+
+    private func loadBookmarks() {
+        bookmarks = tracker.allBookmarks()
+    }
+
+    private func containsCurrentPage(_ surah: Surah) -> Bool {
+        surah.firstPage <= currentPage && currentPage <= surah.lastPage
+    }
+
+    private var currentJuz: Int? {
+        library.juzStartPages.filter { $0.value <= currentPage }.max { $0.value < $1.value }?.key
+    }
+
+    private var currentRow: Int? {
+        switch tab {
+        case .surahs: library.surahs.first(where: containsCurrentPage)?.number
+        case .juz: currentJuz
+        case .bookmarks: nil
+        }
+    }
+
+    private func surahRow(surah: Surah, isCurrent: Bool) -> some View {
+        let progress = surahsProgress[surah.number] ?? SurahProgress(
+            surahNumber: surah.number,
+            surahName: surah.name,
+            readAyahsCount: 0,
+            totalAyahsCount: surah.ayahCount,
+            firstPage: surah.firstPage
+        )
+        let readCount = progress.readAyahsCount
+        let pct = progress.percentage
+
+        return Button {
+            let targetPage = tracker.nextUnreadPage(for: surah, library: library)
+            onSelect(targetPage)
+        } label: {
+            VStack(alignment: .leading, spacing: 4) {
+                HStack {
+                    Text(verbatim: String(surah.number)).monospacedDigit().foregroundStyle(.secondary).frame(minWidth: 32, alignment: .leading)
+                    Text(surah.name).font(.title3)
+                    if isCurrent {
+                        Image(systemName: "checkmark").foregroundStyle(Color.accentColor).accessibilityHidden(true)
+                    }
+                    if progress.isCompleted {
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(.caption2)
+                            .foregroundStyle(.progress)
+                    }
+                    Spacer()
+                    Text(verbatim: "ص \(surah.firstPage)").monospacedDigit().foregroundStyle(.secondary)
+                }
+
+                if readCount > 0 {
+                    HStack(spacing: 8) {
+                        ProgressView(value: min(1.0, max(0.0, pct / 100.0)))
+                            .tint(pct >= 100 ? Color.progress : Color.accentColor)
+                            .frame(maxWidth: .infinity)
+
+                        if progress.isCompleted {
+                            Text("مكتملة • \(Int(pct))%")
+                                .font(.caption2.bold())
+                                .foregroundStyle(.progress)
+                        } else {
+                            Text("\(readCount)/\(surah.ayahCount) • المتبقي: \(progress.remainingAyahsCount)")
+                                .font(.caption2.monospacedDigit())
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .padding(.leading, 34)
+                } else if surahFilter == .remaining {
+                    HStack {
+                        Text("لم تُقرأ بعد • المتبقي: \(surah.ayahCount) آية")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                    }
+                    .padding(.leading, 34)
+                }
+            }
+            .contentShape(Rectangle())
+            .padding(.vertical, 2)
+        }
+        .buttonStyle(.plain)
+        .listRowBackground(isCurrent ? Color.accentColor.opacity(0.12) : Color.clear)
+        .accessibilityAddTraits(isCurrent ? .isSelected : [])
+        .accessibilityIdentifier("index-row-\(surah.name)")
+    }
+
+    private func row(title: String, number: Int, page: Int, isCurrent: Bool) -> some View {
+        Button { onSelect(page) } label: {
+            HStack {
+                Text(verbatim: String(number)).monospacedDigit().foregroundStyle(.secondary).frame(minWidth: 32)
+                Text(title).font(.title3)
+                if isCurrent {
+                    Image(systemName: "checkmark").foregroundStyle(Color.accentColor).accessibilityHidden(true)
+                }
+                Spacer()
+                Text(verbatim: "ص \(page)").monospacedDigit().foregroundStyle(.secondary)
+            }
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .listRowBackground(isCurrent ? Color.accentColor.opacity(0.12) : Color.clear)
+        .accessibilityAddTraits(isCurrent ? .isSelected : [])
+        .accessibilityIdentifier("index-row-\(title)")
+    }
+}

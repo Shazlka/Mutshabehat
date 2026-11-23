@@ -1,0 +1,397 @@
+import MushafCore
+import SwiftUI
+import UIKit
+
+/// One page inside the pager: the desk colour, and the page fitted to the safe area at the print
+/// aspect. In a spread, each half is one of these.
+final class PageController: UIViewController, UIGestureRecognizerDelegate {
+    let page: MushafPage
+    private let pageView: MushafPageView
+    private var appearance: MushafAppearance
+    /// The chosen reader's wash, for the desk around the page.
+    private var pageTint: QiraatColor?
+    private let surahLabel = UILabel()
+    private let sectionLabel = UILabel()
+    /// With the side rails the page's printed number stands centred under the paper.
+    private let pageNumberLabel = UILabel()
+    private let isSpreadHalf: Bool
+    /// iPad landscape with the side rails: no header or footer to clear, so the page takes the full height.
+    private let fillsHeight: Bool
+    private let onTapCentre: () -> Void
+    private let onTapWord: (MushafPage, MushafWord) -> Void
+    private let onLongPressAyah: ((MushafPage, AyahKey) -> Void)?
+    private let tap = UITapGestureRecognizer()
+    /// Begins only on a Qiraat-marked word; while it can still succeed, the chrome tap waits for it.
+    private let wordTap = UITapGestureRecognizer()
+    private let longPress = UILongPressGestureRecognizer()
+    private(set) var chromeVisible: Bool = false
+    /// The pager's inputs this page was last built or updated with; the pager skips `apply` when they are unchanged.
+    var appliedInputs: MushafPager.Inputs?
+    /// VoiceOver page turn (three-finger swipe); set by the pager. `true` = next page in reading order.
+    var onAccessibilityTurn: ((_ forward: Bool) -> Bool)? {
+        get { pageView.onAccessibilityTurn }
+        set { pageView.onAccessibilityTurn = newValue }
+    }
+
+    init(page: MushafPage, library: MushafLibrary, isSpreadHalf: Bool, appearance: MushafAppearance,
+         qiraat: QiraatDisplay,
+         highlightedWordIDs: Set<String>,
+         bookmarkedAyahs: Set<AyahKey> = [],
+         isPageBookmarked: Bool = false,
+         memorizationStatuses: [AyahKey: MemorizationStatus] = [:],
+         chromeVisible: Bool = false,
+         fillsHeight: Bool = false,
+         bannerStyle: SurahBannerStyle = .current,
+         onTapCentre: @escaping () -> Void,
+         onTapWord: @escaping (MushafPage, MushafWord) -> Void,
+         onLongPressAyah: ((MushafPage, AyahKey) -> Void)? = nil) {
+        self.page = page
+        self.pageView = MushafPageView(page: page, library: library, appearance: appearance)
+        self.appearance = appearance
+        self.pageTint = qiraat.pageTint
+        self.isSpreadHalf = isSpreadHalf
+        self.fillsHeight = fillsHeight
+        let spine: PageLayoutConstants.SpineSide = !isSpreadHalf ? .none : page.isRightHandPage ? .left : .right
+        pageView.isSpreadHalf = isSpreadHalf
+        pageView.spineSide = spine
+        pageView.bannerStyle = bannerStyle
+        self.chromeVisible = chromeVisible
+        self.onTapCentre = onTapCentre
+        self.onTapWord = onTapWord
+        self.onLongPressAyah = onLongPressAyah
+        super.init(nibName: nil, bundle: nil)
+        pageView.onToggleChrome = onTapCentre
+        pageView.onAyahOptions = { [weak self] ayah in
+            guard let self else { return }
+            onLongPressAyah?(self.page, ayah)
+        }
+        pageView.qiraat = qiraat
+        pageView.highlightedWordIDs = highlightedWordIDs
+        pageView.bookmarkedAyahs = bookmarkedAyahs
+        pageView.isPageBookmarked = isPageBookmarked
+        pageView.memorizationStatuses = memorizationStatuses
+    }
+
+    /// The reader changed the Qiraat layer, appearance, or chrome state: redraw and update visibility.
+    func apply(_ qiraat: QiraatDisplay,
+               highlightedWordIDs: Set<String>,
+               bookmarkedAyahs: Set<AyahKey>,
+               isPageBookmarked: Bool,
+               memorizationStatuses: [AyahKey: MemorizationStatus] = [:],
+               appearance: MushafAppearance,
+               bannerStyle: SurahBannerStyle = .current,
+               chromeVisible: Bool = false) {
+        self.appearance = appearance
+        pageTint = qiraat.pageTint
+        pageView.appearance = appearance
+        pageView.bannerStyle = bannerStyle
+        pageView.isSpreadHalf = isSpreadHalf
+        let spine: PageLayoutConstants.SpineSide = !isSpreadHalf ? .none : page.isRightHandPage ? .left : .right
+        pageView.spineSide = spine
+        view.backgroundColor = appearance.desk(for: traitCollection, tint: pageTint)
+        for label in [surahLabel, sectionLabel, pageNumberLabel] {
+            label.textColor = appearance.ink(for: traitCollection)
+        }
+        pageView.qiraat = qiraat
+        pageView.highlightedWordIDs = highlightedWordIDs
+        pageView.bookmarkedAyahs = bookmarkedAyahs
+        pageView.isPageBookmarked = isPageBookmarked
+        pageView.memorizationStatuses = memorizationStatuses
+        updateBookStyling()
+        setChromeVisible(chromeVisible, animated: true)
+    }
+
+    func setChromeVisible(_ visible: Bool, animated: Bool) {
+        guard self.chromeVisible != visible else { return }
+        self.chromeVisible = visible
+        let targetAlpha: CGFloat = visible ? 0 : 1
+        if animated && view.window != nil {
+            UIView.animate(withDuration: 0.2) {
+                self.surahLabel.alpha = targetAlpha
+                self.sectionLabel.alpha = targetAlpha
+            }
+        } else {
+            self.surahLabel.alpha = targetAlpha
+            self.sectionLabel.alpha = targetAlpha
+        }
+    }
+
+    required init?(coder: NSCoder) { fatalError("not used") }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = appearance.desk(for: traitCollection, tint: pageTint)
+        configureMetadataLabels()
+        view.addSubview(pageView)
+        configurePageNumberLabel()
+        tap.addTarget(self, action: #selector(tapped(_:)))
+        view.addGestureRecognizer(tap)
+        wordTap.addTarget(self, action: #selector(tappedWord(_:)))
+        wordTap.delegate = self
+        view.addGestureRecognizer(wordTap)
+        tap.require(toFail: wordTap)
+
+        longPress.minimumPressDuration = 0.45
+        longPress.addTarget(self, action: #selector(longPressed(_:)))
+        longPress.delegate = self
+        view.addGestureRecognizer(longPress)
+        tap.require(toFail: longPress)
+    }
+
+    override func didMove(toParent parent: UIViewController?) {
+        super.didMove(toParent: parent)
+        // Disable tap-to-turn gestures so turning pages is exclusively via swiping left and right.
+        for recognizer in (parent as? UIPageViewController)?.gestureRecognizers ?? [] where recognizer is UITapGestureRecognizer {
+            recognizer.isEnabled = false
+        }
+    }
+
+    private var actualSafeAreaInsets: UIEdgeInsets {
+        if let windowInsets = view.window?.safeAreaInsets, windowInsets.top > 0 {
+            return windowInsets
+        }
+        if let parentInsets = parent?.view.safeAreaInsets, parentInsets.top > 0 {
+            return parentInsets
+        }
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let keyWindow = scene.windows.first(where: { $0.isKeyWindow }) ?? scene.windows.first,
+           keyWindow.safeAreaInsets.top > 0 {
+            return keyWindow.safeAreaInsets
+        }
+        return view.safeAreaInsets
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let isPad = traitCollection.userInterfaceIdiom == .pad || UIDevice.current.userInterfaceIdiom == .pad
+        let insets = actualSafeAreaInsets
+        let safeTop = insets.top
+        let safeBottom = insets.bottom
+
+        let topBannerHeight: CGFloat = 52
+
+        // Translate the window coordinates of ReaderTopBar and safe area into this view's local coordinate space.
+        // This avoids double-insetting when UIPageViewController is hosted inside a safe-area-constrained parent.
+        let viewOriginInWindow = view.convert(CGPoint.zero, to: nil)
+        let windowSafeTop = view.window?.safeAreaInsets.top ?? safeTop
+        let windowSafeBottom = view.window?.safeAreaInsets.bottom ?? safeBottom
+        let windowHeight = view.window?.bounds.height ?? view.bounds.height
+
+        let topBannerBottomInWindow = windowSafeTop + topBannerHeight
+        let topY = max(0, topBannerBottomInWindow - viewOriginInWindow.y)
+
+        // The footer bar floats above the home indicator and sits wholly below the paper (`ReaderFooterMetrics`).
+        let footerHeight = ReaderFooterMetrics.footerHeight(safeBottom: windowSafeBottom)
+        let windowBottomSafe = windowHeight - windowSafeBottom - footerHeight
+        let bottomY = max(topY + 120, windowBottomSafe - viewOriginInWindow.y)
+        let pageHeight = bottomY - topY
+
+        if isPad {
+            // Reserve top room for top bar / header and bottom page number; with the side rails only the status bar
+            // and the home indicator, and a 12 pt margin.
+            let topInset: CGFloat = fillsHeight ? max(0, windowSafeTop - viewOriginInWindow.y) + 12 : max(topY + 6, 60)
+            let bottomInset: CGFloat = fillsHeight
+                ? windowSafeBottom + 12 + pageNumberLabel.font.lineHeight + Self.pageNumberGap
+                : max(view.bounds.height - bottomY, 44)
+            let area = CGRect(
+                x: view.bounds.minX,
+                y: view.bounds.minY + topInset,
+                width: view.bounds.width,
+                height: max(0, view.bounds.height - topInset - bottomInset)
+            )
+            let spine: PageLayoutConstants.SpineSide = !isSpreadHalf ? .none : page.isRightHandPage ? .left : .right
+            pageView.frame = PageLayoutConstants.fittedPageRect(in: area, stretch: false, spine: spine).integral
+        } else {
+            // Mobile (iPhone): Page is stretched to fill the screen between the top header and bottom footer
+            pageView.frame = CGRect(x: 0, y: topY, width: view.bounds.width, height: pageHeight)
+        }
+
+        pageView.isSpreadHalf = isSpreadHalf
+        let spine: PageLayoutConstants.SpineSide = !isSpreadHalf ? .none : page.isRightHandPage ? .left : .right
+        pageView.spineSide = spine
+        updateBookStyling()
+        layoutMetadataLabels(around: pageView.frame)
+        layoutPageNumber(under: pageView.frame)
+    }
+
+    private static let pageNumberGap: CGFloat = 6
+
+    private func configurePageNumberLabel() {
+        guard fillsHeight else { return }
+        let base = UIFont(name: "GeezaPro-Bold", size: 17) ?? .systemFont(ofSize: 17, weight: .bold)
+        pageNumberLabel.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: base, maximumPointSize: 24)
+        pageNumberLabel.adjustsFontForContentSizeCategory = true
+        pageNumberLabel.textAlignment = .center
+        pageNumberLabel.textColor = appearance.ink(for: traitCollection)
+        pageNumberLabel.text = ArabicDigits.string(page.number)
+        pageNumberLabel.isUserInteractionEnabled = false
+        pageNumberLabel.isAccessibilityElement = true
+        pageNumberLabel.accessibilityLabel = appLocalized("صفحة") + " " + ArabicDigits.string(page.number)
+        pageNumberLabel.accessibilityTraits = .staticText
+        pageNumberLabel.accessibilityIdentifier = "page-number-\(page.number)"
+        view.addSubview(pageNumberLabel)
+    }
+
+    private func layoutPageNumber(under paperFrame: CGRect) {
+        guard fillsHeight else { return }
+        let height = ceil(pageNumberLabel.font.lineHeight)
+        pageNumberLabel.frame = CGRect(x: paperFrame.minX, y: paperFrame.maxY + Self.pageNumberGap,
+                                       width: paperFrame.width, height: height)
+    }
+
+    private func updateBookStyling() {
+        if isSpreadHalf {
+            pageView.layer.cornerRadius = 6
+            if page.isRightHandPage {
+                // Spine on left: curve outer top-right and bottom-right corners
+                pageView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+            } else {
+                // Spine on right: curve outer top-left and bottom-left corners
+                pageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+            }
+        } else {
+            pageView.layer.cornerRadius = 6
+            pageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+        }
+        pageView.layer.borderWidth = 0.5
+        pageView.layer.borderColor = appearance.brown(for: traitCollection).withAlphaComponent(0.20).cgColor
+        pageView.layer.shadowOpacity = isSpreadHalf ? 0.16 : 0.10
+        pageView.updateShadowPath()
+    }
+
+    private func configureMetadataLabels() {
+        let font = UIFont.systemFont(ofSize: isSpreadHalf ? 13 : 16, weight: .medium)
+        for label in [surahLabel, sectionLabel] {
+            label.font = font
+            label.textColor = appearance.ink(for: traitCollection)
+            label.backgroundColor = .clear
+            label.isUserInteractionEnabled = false
+            view.addSubview(label)
+        }
+        surahLabel.isHidden = true
+        sectionLabel.isHidden = true
+    }
+
+    private func layoutMetadataLabels(around paperFrame: CGRect) {
+        surahLabel.isHidden = true
+        sectionLabel.isHidden = true
+    }
+
+
+    @objc private func tappedWord(_ recognizer: UITapGestureRecognizer) {
+        if let word = pageView.markedWord(at: recognizer.location(in: pageView)) { onTapWord(page, word) }
+    }
+
+    // A tap on a marked word opens its Qiraat card; anywhere else the recognizer never begins, so
+    // the chrome tap is not delayed.
+    func gestureRecognizerShouldBegin(_ recognizer: UIGestureRecognizer) -> Bool {
+        guard recognizer === wordTap else { return true }
+        return pageView.markedWord(at: recognizer.location(in: pageView)) != nil
+    }
+
+    func gestureRecognizer(_ recognizer: UIGestureRecognizer,
+                           shouldBeRequiredToFailBy other: UIGestureRecognizer) -> Bool {
+        recognizer === wordTap && other is UITapGestureRecognizer && other !== tap
+    }
+
+    @objc private func tapped(_ recognizer: UITapGestureRecognizer) {
+        // Tapping anywhere toggles chrome; turning pages is only by swiping left and right.
+        onTapCentre()
+    }
+
+    // MARK: Finger-hold peek
+
+    /// A hold that began on a Qiraat-marked word: the finger slides across the page and each marked word it reaches
+    /// shows its summary, with a tick. Lifting without leaving the first word opens the ayah's options as before.
+    private struct Scrub {
+        let startWord: MushafWord
+        var currentWordID: String?
+        var movedOff = false
+    }
+    private var scrub: Scrub?
+    private var peekHost: UIHostingController<AnyView>?
+
+    @objc private func longPressed(_ recognizer: UILongPressGestureRecognizer) {
+        let location = recognizer.location(in: pageView)
+        switch recognizer.state {
+        case .began:
+            if let word = pageView.markedWord(at: location), let item = pageView.qiraatSummary(for: word) {
+                scrub = Scrub(startWord: word, currentWordID: word.id)
+                Haptics.prepare()
+                Haptics.wordPress()
+                showPeek(item, over: word)
+            } else if let ayah = pageView.ayahKey(at: location) {
+                Haptics.wordPress()
+                onLongPressAyah?(page, ayah)
+            }
+        case .changed:
+            guard var current = scrub else { return }
+            let word = pageView.markedWord(at: location)
+            guard word?.id != current.currentWordID else { return }
+            current.currentWordID = word?.id
+            if word?.id != current.startWord.id { current.movedOff = true }
+            scrub = current
+            if let word, let item = pageView.qiraatSummary(for: word) {
+                Haptics.selectionChanged()
+                showPeek(item, over: word)
+            } else {
+                hidePeek()
+            }
+        case .ended, .cancelled, .failed:
+            guard let finished = scrub else { return }
+            scrub = nil
+            hidePeek()
+            if recognizer.state == .ended, !finished.movedOff {
+                onLongPressAyah?(page, finished.startWord.ayahKey)
+            }
+        default:
+            break
+        }
+    }
+
+    private func showPeek(_ item: QiraatPageSummaryItem, over word: MushafWord) {
+        let root = AnyView(QiraatWordPeekView(item: item))
+        let host: UIHostingController<AnyView>
+        if let peekHost {
+            host = peekHost
+            host.rootView = root
+        } else {
+            host = UIHostingController(rootView: root)
+            host.view.backgroundColor = .clear
+            host.view.isUserInteractionEnabled = false
+            host.sizingOptions = []
+            addChild(host)
+            view.addSubview(host.view)
+            host.didMove(toParent: self)
+            peekHost = host
+        }
+        view.bringSubviewToFront(host.view)
+        host.view.isHidden = false
+
+        let margin: CGFloat = 12
+        let maxWidth = min(view.bounds.width - margin * 2, 320)
+        // Its natural width when it fits, otherwise wrapped to the widest the screen allows.
+        var size = host.sizeThatFits(in: CGSize(width: CGFloat.greatestFiniteMagnitude, height: view.bounds.height))
+        if size.width > maxWidth { size = host.sizeThatFits(in: CGSize(width: maxWidth, height: view.bounds.height)) }
+        size.width = min(size.width, maxWidth)
+        let wordRect = pageView.wordFrame(of: word).map { pageView.convert($0, to: view) } ?? .zero
+        // Above the word, clear of the finger; below it when the top of the page has no room.
+        let gap: CGFloat = 28
+        var y = wordRect.minY - gap - size.height
+        if y < view.safeAreaInsets.top + margin { y = wordRect.maxY + gap }
+        y = min(max(y, view.safeAreaInsets.top + margin), view.bounds.height - size.height - margin)
+        let x = min(max(wordRect.midX - size.width / 2, margin), view.bounds.width - size.width - margin)
+        host.view.frame = CGRect(x: x, y: y, width: size.width, height: size.height)
+    }
+
+    private func hidePeek() {
+        peekHost?.view.isHidden = true
+    }
+
+    /// A sheet or a page turn can take the page away mid-hold without the recognizer reporting an end.
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        scrub = nil
+        hidePeek()
+    }
+}

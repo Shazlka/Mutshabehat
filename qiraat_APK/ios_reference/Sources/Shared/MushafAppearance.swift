@@ -1,0 +1,112 @@
+import MushafCore
+import SwiftUI
+import UIKit
+
+enum MushafAppearance: String, CaseIterable, Identifiable {
+    /// The `UserDefaults` / `@AppStorage` key of the chosen Mushaf appearance.
+    static let storageKey = "mushaf1441:theme:v1"
+
+    case system
+    case light
+    case dark
+    case whitePage
+    case blackPage
+
+    var id: Self { self }
+
+    var colorScheme: ColorScheme? {
+        switch self {
+        case .system: nil
+        case .light, .whitePage: .light
+        case .dark, .blackPage: .dark
+        }
+    }
+
+    var title: LocalizedStringKey {
+        switch self {
+        case .system: "تلقائي"
+        case .light: "فاتح"
+        case .dark: "داكن"
+        case .whitePage: "صفحة بيضاء"
+        case .blackPage: "صفحة سوداء"
+        }
+    }
+
+    func paper(for traits: UITraitCollection) -> UIColor {
+        switch self {
+        case .whitePage: .white
+        case .blackPage: .black
+        case .system:
+            traits.userInterfaceStyle == .dark ? Self.darkPaper : Self.lightPaper
+        case .light: Self.lightPaper
+        case .dark: Self.darkPaper
+        }
+    }
+
+    /// What shows around the page, under the header and footer: the page's own colour in every theme, never darker.
+    func desk(for traits: UITraitCollection) -> UIColor { paper(for: traits) }
+
+    /// The paper with the chosen reader's soft wash (`QiraatPageTint.washAmount`); plain paper without one.
+    func paper(for traits: UITraitCollection, tint: QiraatColor?) -> UIColor {
+        guard let tint else { return paper(for: traits) }
+        return paper(for: traits).mixed(with: UIColor(red: tint.red, green: tint.green, blue: tint.blue, alpha: 1),
+                                        amount: CGFloat(QiraatPageTint.washAmount))
+    }
+
+    func desk(for traits: UITraitCollection, tint: QiraatColor?) -> UIColor { paper(for: traits, tint: tint) }
+
+    /// The bookmark ribbon's crimson, moved toward the ink only as far as it takes to hold 3:1 on the page (with the
+    /// reader's wash, if any). Opaque, so the measured contrast is the drawn one.
+    func bookmarkRibbon(for traits: UITraitCollection, tint: QiraatColor?) -> UIColor {
+        let page = paper(for: traits, tint: tint), ink = ink(for: traits)
+        var ribbon = UIColor(red: 0.76, green: 0.22, blue: 0.18, alpha: 1)
+        var step = 0
+        while ribbon.contrast(with: page) < 3, step < 20 {
+            ribbon = ribbon.mixed(with: ink, amount: 0.06)
+            step += 1
+        }
+        return ribbon
+    }
+
+    func ink(for traits: UITraitCollection) -> UIColor {
+        switch self {
+        case .blackPage: .white
+        case .whitePage: .black
+        case .system:
+            traits.userInterfaceStyle == .dark ? Self.darkInk : Self.lightInk
+        case .light: Self.lightInk
+        case .dark: Self.darkInk
+        }
+    }
+
+    func brown(for traits: UITraitCollection) -> UIColor {
+        switch self {
+        case .blackPage: UIColor(white: 0.78, alpha: 1)
+        case .whitePage: UIColor(white: 0.20, alpha: 1)
+        case .system:
+            traits.userInterfaceStyle == .dark ? Self.darkBrown : Self.lightBrown
+        case .light: Self.lightBrown
+        case .dark: Self.darkBrown
+        }
+    }
+
+    func gold(for traits: UITraitCollection) -> UIColor {
+        switch self {
+        case .blackPage: UIColor(red: 0.85, green: 0.72, blue: 0.38, alpha: 1)
+        case .whitePage: UIColor(red: 0.72, green: 0.55, blue: 0.20, alpha: 1)
+        case .system:
+            traits.userInterfaceStyle == .dark ? Self.darkGold : Self.lightGold
+        case .light: Self.lightGold
+        case .dark: Self.darkGold
+        }
+    }
+
+    private static let lightPaper = UIColor(red: 1, green: 0.992, blue: 0.965, alpha: 1)
+    private static let darkPaper = UIColor(red: 0.11, green: 0.105, blue: 0.09, alpha: 1)
+    private static let lightInk = UIColor(red: 0.09, green: 0.09, blue: 0.09, alpha: 1)
+    private static let darkInk = UIColor(red: 0.92, green: 0.91, blue: 0.86, alpha: 1)
+    private static let lightBrown = UIColor(red: 0.349, green: 0.275, blue: 0.114, alpha: 1)
+    private static let darkBrown = UIColor(red: 0.82, green: 0.74, blue: 0.55, alpha: 1)
+    private static let lightGold = UIColor(red: 0.78, green: 0.62, blue: 0.24, alpha: 1)
+    private static let darkGold = UIColor(red: 0.88, green: 0.75, blue: 0.42, alpha: 1)
+}

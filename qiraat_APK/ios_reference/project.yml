@@ -1,0 +1,161 @@
+name: Mutshabehat
+options:
+  bundleIdPrefix: com.shazlka
+  developmentLanguage: ar
+  deploymentTarget:
+    iOS: "26.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    CODE_SIGN_STYLE: Automatic
+packages:
+  MushafCore:
+    path: MushafCore
+  ReviewEditor:
+    path: ReviewEditor
+targets:
+  Mutshabehat:
+    type: application
+    platform: iOS
+    configFiles:
+      Debug: Base.xcconfig
+      Release: Base.xcconfig
+    sources:
+      - path: Sources
+      - path: Generated/mushaf.sqlite
+        buildPhase: resources
+      - path: Generated/mutshabehat.sqlite
+        buildPhase: resources
+      - path: Generated/Fonts
+        type: folder
+        buildPhase: resources
+      - path: Generated/Qiraat
+        type: folder
+        buildPhase: resources
+    dependencies:
+      - package: MushafCore
+      - package: ReviewEditor
+    postBuildScripts:
+      - name: Remove private group notes (Release)
+        basedOnDependencyAnalysis: false
+        script: |
+          # The owner's own groups carry private notes (`unote`). They stay in Debug builds and in a Release build made
+          # with KEEP_PRIVATE_NOTES=YES (the owner's own device); an App Store / TestFlight build ships the groups
+          # without them. The bundled copy is cleaned, never the source database.
+          if [ "$CONFIGURATION" = "Release" ] && [ "$KEEP_PRIVATE_NOTES" != "YES" ]; then
+            DB="$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/mutshabehat.sqlite"
+            if [ -f "$DB" ]; then
+              /usr/bin/sqlite3 "$DB" "PRAGMA journal_mode=DELETE; PRAGMA secure_delete=ON; UPDATE groups SET unote = NULL; VACUUM;" >/dev/null || { echo "error: could not remove private notes from $DB"; exit 1; }
+              rm -f "$DB-wal" "$DB-shm"
+            fi
+          fi
+    preBuildScripts:
+      - name: Check generated Mushaf data
+        basedOnDependencyAnalysis: false
+        script: |
+          GEN="$SRCROOT/Generated"
+          test -s "$GEN/mushaf.sqlite" || { echo "error: $GEN/mushaf.sqlite missing — run: make -C apps/ios data"; exit 1; }
+          test -s "$GEN/mutshabehat.sqlite" || { echo "error: $GEN/mutshabehat.sqlite missing — run: make -C apps/ios data"; exit 1; }
+          count=$(find "$GEN/Fonts" -name 'p*.woff2' -size +0 2>/dev/null | wc -l | tr -d ' ')
+          test "$count" = "604" || { echo "error: $count/604 QCF fonts — run: make -C apps/ios fonts"; exit 1; }
+          pages=$(find "$GEN/Qiraat" -name 'page-*.json' -size +0 2>/dev/null | wc -l | tr -d ' ')
+          test "$pages" = "604" -a -s "$GEN/Qiraat/catalog.json" || { echo "error: Qiraat snapshot incomplete ($pages/604 pages) — run: make -C apps/ios qiraat"; exit 1; }
+          test -s "$GEN/Fonts/KFGQPC Uthmanic Script HAFS Regular.otf" || { echo "error: KFGQPC Uthmanic Script HAFS Regular.otf missing from $GEN/Fonts"; exit 1; }
+      - name: Copy Qiraat references (optional)
+        basedOnDependencyAnalysis: false
+        script: |
+          # The scholarly references file (make references) is the person's own data and is optional:
+          # copied when present, removed from the bundle when absent so a stale copy never lingers.
+          SRC="$SRCROOT/Generated/QiraatReferences/references.json"
+          DEST="$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/QiraatReferences"
+          if [ -s "$SRC" ]; then
+            mkdir -p "$DEST" && cp "$SRC" "$DEST/references.json"
+          else
+            rm -rf "$DEST"
+          fi
+      - name: Copy Qiraat mutoon (optional)
+        basedOnDependencyAnalysis: false
+        script: |
+          # The three متون for the «المتون» page (make mutoon), their marked symbols (make matn-symbols), and
+          # verse commentary (make matn-sharh): the person's own data, copied when present.
+          SRC="$SRCROOT/Generated/QiraatMutoon/mutoon.json"
+          SYMBOLS="$SRCROOT/Generated/QiraatMutoon/mutoon-symbols.json"
+          SHARH="$SRCROOT/Generated/QiraatMutoon/mutoon-sharh.json"
+          DEST="$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/QiraatMutoon"
+          if [ -s "$SRC" ]; then
+            mkdir -p "$DEST" && cp "$SRC" "$DEST/mutoon.json"
+            if [ -s "$SYMBOLS" ]; then cp "$SYMBOLS" "$DEST/mutoon-symbols.json"; else rm -f "$DEST/mutoon-symbols.json"; fi
+            # The two modern commentaries (الوافي، الهادي) are in Release only once their rights holders have given written
+            # permission: build with INCLUDE_COMMENTARY=YES to ship them. Debug builds always include them.
+            if [ -s "$SHARH" ] && { [ "$CONFIGURATION" != "Release" ] || [ "$INCLUDE_COMMENTARY" = "YES" ]; }; then
+              cp "$SHARH" "$DEST/mutoon-sharh.json"
+            else
+              rm -f "$DEST/mutoon-sharh.json"
+            fi
+          else
+            rm -rf "$DEST"
+          fi
+      - name: Copy review reference (Debug only)
+        basedOnDependencyAnalysis: false
+        script: |
+          # The developer review editor's reference data ships only in Debug builds.
+          if [ "$CONFIGURATION" = "Debug" ]; then
+            SRC="$SRCROOT/Generated/Review/reference"
+            test -d "$SRC/nquran" || { echo "error: $SRC missing — run: make -C apps/ios review-data"; exit 1; }
+            DEST="$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/ReviewReference"
+            mkdir -p "$DEST" && rsync -a --delete "$SRC/" "$DEST/"
+          fi
+    info:
+      path: Sources/Info.plist
+      properties:
+        CFBundleDisplayName: Qiraat
+        CFBundleDevelopmentRegion: ar
+        ITSAppUsesNonExemptEncryption: false
+        UIAppFonts:
+          - Fonts/KFGQPC Uthmanic Script HAFS Regular.otf
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        UISupportedInterfaceOrientations~ipad:
+          [UIInterfaceOrientationPortrait, UIInterfaceOrientationPortraitUpsideDown,
+           UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
+    settings:
+      base:
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        SWIFT_EMIT_LOC_STRINGS: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.shazlka.qiraat
+        TARGETED_DEVICE_FAMILY: "1,2"
+        ENABLE_USER_SCRIPT_SANDBOXING: NO
+      configs:
+        Release:
+          # Strip the shipped binary in every Release build, not only an Archive: no symbols, no local build paths.
+          DEPLOYMENT_POSTPROCESSING: YES
+          STRIP_INSTALLED_PRODUCT: YES
+          STRIP_STYLE: all
+  MutshabehatTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [Tests]
+    dependencies:
+      - target: Mutshabehat
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.shazlka.qiraat.tests
+        GENERATE_INFOPLIST_FILE: YES
+  MutshabehatUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [UITests]
+    dependencies:
+      - target: Mutshabehat
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.shazlka.qiraat.uitests
+        GENERATE_INFOPLIST_FILE: YES
+schemes:
+  Mutshabehat:
+    build:
+      targets:
+        Mutshabehat: all
+    test:
+      targets: [MutshabehatTests, MutshabehatUITests]

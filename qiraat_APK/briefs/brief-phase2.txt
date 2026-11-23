@@ -1,0 +1,28 @@
+<task>
+Phase 2 of the Android port (apps/android, Kotlin/Compose, package com.shazlka.qiraat): port the Qiraat (القراءات العشر) layer of the iOS app on top of the Phase 1 Mushaf reader that already builds.
+</task>
+
+<context>
+- Repo /Users/amrelshazly/Projects/qiraat-ios. Read apps/android/README.md and the Phase 1 code first (core/, reader/). iOS reference: apps/ios/MushafCore/Sources/MushafCore/Qiraat*.swift (QiraatModels, QiraatStore, QiraatMarks, QiraatPresentation, QiraatCompare, QiraatPageTint, QiraatReadingForm, QiraatWordOrder, QiraatPageSummary, QiraatSearch, QiraatReferences, QiraatResolvedPageIndex, UsulIndex, Matn*.swift) and apps/ios/Sources/Qiraat/*.swift (UI: QiraatSheet, QiraatWordPeekView, QiraatCompareView, QiraatReaderPicker, QiraatLegendSheet, VariantCard, RulingCard, QiraatPageSummaryView, UsulIndexView, MutoonView, QiraatPreferences, QiraatHub...).
+- Data (gitignored build assets, same policy as fonts): apps/ios/Generated/Qiraat (catalog.json + page-001..604.json, 39 MB), Generated/QiraatMutoon (11 MB), Generated/QiraatReferences (2.7 MB). Copy/bundle into apps/android/app/src/main/assets via an extended apps/android/scripts script (idempotent), keep gitignored.
+- Toolchain: JAVA_HOME=/opt/homebrew/opt/openjdk@17 on PATH, ANDROID_HOME=/opt/homebrew/share/android-commandlinetools; use ./gradlew in apps/android. Network is allowed for Maven.
+</context>
+
+<scope>
+1. Kotlin port of the Qiraat core (models, store/loader of page JSON, marks, word lookup, presentation/compare logic, page tint, page summary, usul index, matn library/symbols/sharh) with JVM unit tests mirroring apps/ios/MushafCore/Tests Qiraat* tests where practical. Keep Arabic text handling and ordering identical to iOS (port the rules, do not re-derive them).
+2. Reader integration: coloured underline/tint marks on words with variants per reader preference, tap a marked word to open a bottom sheet (variants + rulings cards, reader pills), long-press peek, reader/narrator picker and qiraat preferences persisted (DataStore/SharedPreferences), legend sheet, page summary, compare view.
+3. A Qiraat hub screen reachable from the reader toolbar/bottom bar: usul index, search over qiraat, mutoon (matn) viewer, references row.
+4. Keep RTL and Arabic strings consistent with apps/ios/Sources/Localizable.xcstrings (Arabic is the source of truth; add English only where iOS has it).
+</scope>
+
+<out_of_scope>
+Mutashabihat, Quran search, memorization, reading stats, sync/backup, review editor (DEBUG-only on iOS, skip), page curl, release signing. Do NOT modify apps/ios, src/, packages/. Do NOT commit.
+</out_of_scope>
+
+<verification>
+`cd apps/android && ./gradlew testDebugUnitTest assembleDebug` must pass. Report APK path/size, files created, anything not ported and why, gate output tails. No emulator exists: do not claim UI was visually verified.
+</verification>
+
+<report>
+End with "GATES" (command + PASS/FAIL) and "OPEN ISSUES".
+</report>

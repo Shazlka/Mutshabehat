@@ -1,0 +1,1095 @@
+import CoreText
+import MushafCore
+import UIKit
+
+
+/// Draws one Mushaf page with CoreText from a `PageLayout`: one draw pass per page, no view per word,
+/// so a page turn stays cheap. Words are positioned by `PageLayout` (right to left), never by CoreText.
+/// With the Qiraat layer on, marked words take their colours and marks (see `WordMarks`) and each one
+/// is also an accessibility element ("qiraat-word-<surah>:<ayah>:<token>").
+final class MushafPageView: UIView {
+    let page: MushafPage
+    private let library: MushafLibrary
+    var appearance: MushafAppearance {
+        didSet {
+            guard appearance != oldValue else { return }
+            backgroundColor = paper
+            setNeedsDisplay()
+        }
+    }
+    /// How the surah banner looks (Settings → «شكل ترويسة السورة»).
+    var bannerStyle: SurahBannerStyle = .current {
+        didSet {
+            guard bannerStyle != oldValue else { return }
+            setNeedsDisplay()
+        }
+    }
+    private(set) var layout: PageLayout?
+    /// The Qiraat layer as the reader set it; marks are recomputed only when this or the layout changes.
+    var qiraat: QiraatDisplay = .off {
+        didSet {
+            guard qiraat != oldValue else { return }
+            if qiraat.pageTint != oldValue.pageTint {
+                backgroundColor = paper
+                setNeedsDisplay()
+            }
+            refreshQiraatMarks()
+            if qiraat.enabled { refreshLiveQiraat(force: true); prefetchNeighbourQiraat() }
+        }
+    }
+    var highlightedWordIDs: Set<String> = [] {
+        didSet {
+            if highlightedWordIDs != oldValue {
+                updateAccessibilityElements()
+                setNeedsDisplay()
+            }
+        }
+    }
+    var bookmarkedAyahs: Set<AyahKey> = [] {
+        didSet {
+            if bookmarkedAyahs != oldValue {
+                updateAccessibilityElements()
+                setNeedsDisplay()
+            }
+        }
+    }
+    /// Memorization statuses of this page's ayat for the optional marker under each ayah-end marker (empty = off).
+    var memorizationStatuses: [AyahKey: MemorizationStatus] = [:] {
+        didSet {
+            if memorizationStatuses != oldValue {
+                updateAccessibilityElements()
+                setNeedsDisplay()
+            }
+        }
+    }
+    var isPageBookmarked: Bool = false {
+        didSet {
+            if isPageBookmarked != oldValue {
+                updateAccessibilityElements()
+                setNeedsDisplay()
+            }
+        }
+    }
+    var isSpreadHalf: Bool = false {
+        didSet {
+            if isSpreadHalf != oldValue {
+                setNeedsDisplay()
+            }
+        }
+    }
+    var spineSide: PageLayoutConstants.SpineSide = .none {
+        didSet {
+            if spineSide != oldValue {
+                setNeedsDisplay()
+            }
+        }
+    }
+    private(set) var marks: [String: WordMarks] = [:]
+    private(set) var wordContext: PageWordContext?
+
+    init(page: MushafPage, library: MushafLibrary, appearance: MushafAppearance) {
+        self.page = page
+        self.library = library
+        self.appearance = appearance
+        super.init(frame: .zero)
+        backgroundColor = paper
+        contentMode = .redraw
+        isAccessibilityElement = false
+        // The page's one shadow (its strength follows spread/single in `PageController`).
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.10
+        layer.shadowRadius = 8
+        layer.shadowOffset = CGSize(width: 0, height: 3)
+        registerForTraitChanges([UITraitUserInterfaceStyle.self]) { (view: MushafPageView, _) in
+            view.backgroundColor = view.paper
+            view.setNeedsDisplay()
+        }
+        updateAccessibilityElements()
+    }
+
+    required init?(coder: NSCoder) { fatalError("not used") }
+
+    /// The page's paper: the theme's, washed softly with the chosen reader's colour.
+    private var paper: UIColor { appearance.paper(for: traitCollection, tint: qiraat.pageTint) }
+
+    private func layoutPage() {
+        guard bounds.width > 0, layout?.pageSize != bounds.size else { return }
+        let fonts = library.fonts, number = page.number
+        layout = PageLayout(page: page, pageSize: bounds.size, surahAyahCounts: library.surahAyahCounts) { word, size in
+            (try? fonts.advance(of: word.glyph, page: number, size: size)) ?? 0
+        }
+        refreshQiraatMarks()
+    }
+
+    // MARK: Live Qiraat data (the web app's database is the source of truth)
+
+    private var liveActive = false
+    private var liveTimer: Timer?
+    private var liveInterval = QiraatLiveSync.firstPollInterval
+    private var liveObservers: [NSObjectProtocol] = []
+
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        if window != nil { startLiveQiraat() } else { stopLiveQiraat() }
+    }
+
+    /// While this page is on screen: fetch it now, on returning to the app, and again on a backing-off
+    /// schedule (`QiraatLiveSync.nextPollInterval`), so a face saved in the web review editor shows
+    /// here without relaunching or syncing.
+    private func startLiveQiraat() {
+        guard !liveActive else { return }
+        liveActive = true
+        let center = NotificationCenter.default
+        liveObservers = [
+            center.addObserver(forName: .qiraatPageDidChange, object: nil, queue: .main) { [weak self] note in
+                let changedPage = note.userInfo?["page"] as? Int
+                MainActor.assumeIsolated {
+                    guard let self, changedPage == self.page.number else { return }
+                    self.prefetchGate.reset()
+                    self.refreshQiraatMarks()
+                }
+            },
+            center.addObserver(forName: .qiraatDatabaseDidUpdate, object: nil, queue: .main) { [weak self] _ in
+                WordContextIndex.shared.invalidate()
+                MainActor.assumeIsolated {
+                    self?.prefetchGate.reset()
+                    self?.refreshQiraatMarks()
+                }
+            },
+            center.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) { [weak self] _ in
+                MainActor.assumeIsolated {
+                    guard let self else { return }
+                    self.liveInterval = QiraatLiveSync.firstPollInterval
+                    self.refreshLiveQiraat(force: true)
+                }
+            },
+        ]
+        // A snapshot can change while this page is detached and has no observers. Its size may
+        // be unchanged on return, so layoutPage() alone would keep the old marks and hit map.
+        refreshQiraatMarks()
+        liveInterval = QiraatLiveSync.firstPollInterval
+        refreshLiveQiraat(force: true)
+        prefetchNeighbourQiraat()
+    }
+
+    /// Prefetches Qiraat context of adjacent pages off the main thread so page turns find
+    /// colours ready in memory with zero delay.
+    private func prefetchNeighbourQiraat() {
+        guard qiraat.enabled, let store = library.qiraat else { return }
+        // Once per page and Qiraat setting: the setters and every layout pass all land here.
+        guard prefetchGate.shouldRun(qiraat) else { return }
+        let number = page.number
+        let filter = qiraat.filter
+        WordContextIndex.shared.cancelObsolete(around: number, maxDistance: 2)
+        let neighbours = [number - 1, number + 1].filter { (1...mushafPageCount).contains($0) }
+        var wordsMap: [Int: [MushafWord]] = [:]
+        for n in neighbours {
+            if let p = library.page(n) {
+                wordsMap[n] = p.lines.flatMap(\.words)
+            }
+        }
+        WordContextIndex.shared.prefetch(pages: neighbours, filter: filter, qiraatStore: store, wordsMap: wordsMap)
+        Task.detached(priority: .background) {
+            for n in neighbours {
+                _ = await QiraatLiveSync.shared.refresh(page: n, store: store, force: false)
+            }
+        }
+    }
+
+    /// Lets the neighbour prefetch run again after the page was off screen or the Qiraat data changed.
+    private var prefetchGate = ChangeGate<QiraatDisplay>()
+
+    private func stopLiveQiraat() {
+        prefetchGate.reset()
+        liveActive = false
+        liveTimer?.invalidate()
+        liveTimer = nil
+        liveObservers.forEach(NotificationCenter.default.removeObserver)
+        liveObservers = []
+    }
+
+    private func scheduleLiveQiraat() {
+        liveTimer?.invalidate()
+        guard liveActive else { return }
+        liveTimer = Timer.scheduledTimer(withTimeInterval: liveInterval, repeats: false) { [weak self] _ in
+            MainActor.assumeIsolated { self?.refreshLiveQiraat(force: false) }
+        }
+    }
+
+    private func refreshLiveQiraat(force: Bool) {
+        guard qiraat.enabled, window != nil else { return }
+        let number = page.number, store = library.qiraat
+        Task { [weak self] in
+            let outcome = await QiraatLiveSync.shared.refresh(page: number, store: store, force: force)
+            guard let self, outcome != .skipped else {
+                self?.scheduleLiveQiraat()
+                return
+            }
+            self.liveInterval = QiraatLiveSync.nextPollInterval(after: outcome, current: self.liveInterval)
+            self.scheduleLiveQiraat()
+        }
+    }
+
+    private func refreshQiraatMarks() {
+        guard qiraat.enabled, let store = library.qiraat else {
+            marks = [:]
+            wordContext = nil
+            updateAccessibilityElements()
+            setNeedsDisplay()
+            return
+        }
+
+        store.hidesUsul = qiraat.hidesUsul
+        store.hiddenUsulCategories = qiraat.hiddenUsulCategories
+        let words = page.lines.flatMap(\.words)
+        let resolved = WordContextIndex.shared.resolveSync(
+            page: page.number,
+            filter: qiraat.filter,
+            qiraatStore: store,
+            pageWords: words,
+            queryCount: 0
+        )
+        marks = resolved.marksByWordID
+        wordContext = resolved
+        updateAccessibilityElements()
+        setNeedsDisplay()
+        prefetchNeighbourQiraat()
+    }
+
+    /// The memorization status to show under this word, when it is an ayah-end marker with a visible status.
+    private func memorizationMarker(for box: WordBox) -> MemorizationStatus? {
+        guard box.word.charType == .end, let status = memorizationStatuses[box.word.ayahKey], status != .notMemorized else { return nil }
+        return status
+    }
+
+    // MARK: VoiceOver
+
+    /// Double-tap on the page element (VoiceOver): show or hide the reader's controls.
+    var onToggleChrome: (() -> Void)?
+    /// Double-tap or the custom action on an ayah element: the same options a long press opens.
+    var onAyahOptions: ((AyahKey) -> Void)?
+    /// A three-finger swipe (VoiceOver): `true` turns to the next page in reading order.
+    var onAccessibilityTurn: ((_ forward: Bool) -> Bool)?
+
+    /// The QCF glyphs are Private Use Area code points VoiceOver cannot read, so the page exposes its
+    /// own elements, in reading order: the page, each surah header and basmala, then every ayah with
+    /// its text, each followed by its Qiraat-marked words, search hits and memorization marker.
+    ///
+    /// Built when an accessibility client (VoiceOver, Switch Control, UI tests) asks, not on every change: a change
+    /// only drops the stale list, so a burst of setters costs one rebuild at the next query and none with no client.
+    private var cachedAccessibilityElements: [Any]?
+
+    override var accessibilityElements: [Any]? {
+        get {
+            if cachedAccessibilityElements == nil { cachedAccessibilityElements = buildAccessibilityElements() }
+            return cachedAccessibilityElements
+        }
+        set { cachedAccessibilityElements = newValue }
+    }
+
+    private func updateAccessibilityElements() {
+        cachedAccessibilityElements = nil
+    }
+
+    private func buildAccessibilityElements() -> [Any] {
+        let pageElement = MushafAccessibilityElement(accessibilityContainer: self)
+        pageElement.accessibilityLabel = "\(appLocalized("صفحة")) \(page.number)"
+        pageElement.accessibilityValue = isPageBookmarked ? appLocalized("عليها علامة") : nil
+        pageElement.accessibilityHint = appLocalized("انقر مرتين لإظهار أدوات القراءة أو إخفائها")
+        // Turning a page was only a swipe; Switch Control and Voice Control cannot swipe, so the page names the actions.
+        pageElement.accessibilityCustomActions = [
+            UIAccessibilityCustomAction(name: appLocalized("الصفحة التالية")) { [weak self] _ in
+                self?.onAccessibilityTurn?(true) ?? false
+            },
+            UIAccessibilityCustomAction(name: appLocalized("الصفحة السابقة")) { [weak self] _ in
+                self?.onAccessibilityTurn?(false) ?? false
+            },
+        ]
+        pageElement.accessibilityIdentifier = "mushaf-page-\(page.number)"
+        pageElement.accessibilityLanguage = "ar"
+        pageElement.accessibilityFrameInContainerSpace = bounds
+        pageElement.onActivate = { [weak self] in
+            guard let toggle = self?.onToggleChrome else { return false }
+            toggle()
+            return true
+        }
+        var elements: [Any] = [pageElement]
+
+        enum Entry { case header(Int, CGRect), basmala(CGRect), ayah(AyahKey) }
+        var entries: [Entry] = []
+        var ayahBoxes: [AyahKey: [WordBox]] = [:]
+        for line in layout?.lines ?? [] {
+            switch line.content {
+            case let .surahHeader(number): entries.append(.header(number, line.rect))
+            case .basmala: entries.append(.basmala(line.rect))
+            case let .words(boxes, _):
+                for box in boxes {
+                    let key = box.word.ayahKey
+                    if ayahBoxes[key] == nil { entries.append(.ayah(key)) }
+                    ayahBoxes[key, default: []].append(box)
+                }
+            case .empty: break
+            }
+        }
+
+        for entry in entries {
+            switch entry {
+            case let .header(number, rect):
+                let element = UIAccessibilityElement(accessibilityContainer: self)
+                element.accessibilityLabel = appLocalized("سورة \(library.surahNames[number] ?? "\(number)")")
+                element.accessibilityTraits = .header
+                element.accessibilityLanguage = "ar"
+                element.accessibilityFrameInContainerSpace = rect
+                elements.append(element)
+            case let .basmala(rect):
+                let element = UIAccessibilityElement(accessibilityContainer: self)
+                element.accessibilityLabel = "بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ"
+                element.accessibilityLanguage = "ar"
+                element.accessibilityFrameInContainerSpace = rect
+                elements.append(element)
+            case let .ayah(key):
+                let boxes = ayahBoxes[key] ?? []
+                elements.append(ayahElement(key, boxes: boxes))
+                elements.append(contentsOf: boxes.compactMap(wordElement))
+            }
+        }
+        return elements
+    }
+
+    private func ayahElement(_ key: AyahKey, boxes: [WordBox]) -> UIAccessibilityElement {
+        let text = boxes.filter { $0.word.charType == .word }.map(\.word.textUthmani).joined(separator: " ")
+        let element = MushafAccessibilityElement(accessibilityContainer: self)
+        element.accessibilityLabel = appLocalized("الآية \(key.ayah)، \(text)")
+        element.accessibilityValue = bookmarkedAyahs.contains(key) ? appLocalized("عليها علامة") : nil
+        element.accessibilityHint = appLocalized("انقر مرتين لخيارات الآية")
+        element.accessibilityIdentifier = "ayah-\(key.surah)-\(key.ayah)"
+        element.accessibilityLanguage = "ar"
+        element.accessibilityFrameInContainerSpace = boxes.map(\.frame).reduce(CGRect.null) { $0.union($1) }
+        element.onActivate = { [weak self] in
+            guard let options = self?.onAyahOptions else { return false }
+            options(key)
+            return true
+        }
+        element.accessibilityCustomActions = [
+            UIAccessibilityCustomAction(name: appLocalized("خيارات الآية")) { [weak self] _ in
+                guard let options = self?.onAyahOptions else { return false }
+                options(key)
+                return true
+            },
+        ]
+        return element
+    }
+
+    /// A Qiraat-marked word, a search hit or a memorization marker; nil for any other word.
+    private func wordElement(_ box: WordBox) -> UIAccessibilityElement? {
+        let word = box.word
+        let element = UIAccessibilityElement(accessibilityContainer: self)
+        if let status = memorizationMarker(for: box) {
+            element.accessibilityLabel = appLocalized("حالة الحفظ: \(MemorizationTheme.label(status, language: AppLanguage(rawValue: appLanguageCode) ?? .deviceDefault))")
+            element.accessibilityIdentifier = "memo-ayah-marker-\(word.ayahKey.surah)-\(word.ayahKey.ayah)"
+            element.accessibilityTraits = .staticText
+        } else if marks[word.id] != nil {
+            element.accessibilityLabel = appLocalized("\(word.textUthmani)، فيها قراءات")
+            element.accessibilityIdentifier = "qiraat-word-\(word.ayahKey.surah):\(word.ayahKey.ayah):\(word.indexInAyah)"
+            element.accessibilityTraits = .button
+        } else if highlightedWordIDs.contains(word.id) {
+            element.accessibilityLabel = appLocalized("نتيجة البحث: \(word.textUthmani)")
+            element.accessibilityIdentifier = "search-highlighted-word"
+            element.accessibilityTraits = .staticText
+        } else {
+            return nil
+        }
+        element.accessibilityLanguage = "ar"
+        element.accessibilityFrameInContainerSpace = box.frame
+        return element
+    }
+
+    override func accessibilityScroll(_ direction: UIAccessibilityScrollDirection) -> Bool {
+        // A right-to-left book: a three-finger swipe right (`.left`) reveals the next page.
+        switch direction {
+        case .left, .next: return onAccessibilityTurn?(true) ?? false
+        case .right, .previous: return onAccessibilityTurn?(false) ?? false
+        default: return false
+        }
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layoutPage()
+        updateShadowPath()
+    }
+
+    /// An explicit outline for the shadow, so Core Animation does not render the page offscreen to find it on every
+    /// frame of a page curl. Follows the layer's corner radius and its rounded corners.
+    func updateShadowPath() {
+        var corners: UIRectCorner = []
+        let mask = layer.maskedCorners
+        if mask.contains(.layerMinXMinYCorner) { corners.insert(.topLeft) }
+        if mask.contains(.layerMaxXMinYCorner) { corners.insert(.topRight) }
+        if mask.contains(.layerMinXMaxYCorner) { corners.insert(.bottomLeft) }
+        if mask.contains(.layerMaxXMaxYCorner) { corners.insert(.bottomRight) }
+        let radius = layer.cornerRadius
+        layer.shadowPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners,
+                                        cornerRadii: CGSize(width: radius, height: radius)).cgPath
+    }
+
+    /// The marked word under `point` (page coordinates), with a little slop around its glyph box.
+    func markedWord(at point: CGPoint) -> MushafWord? {
+        guard let layout, !marks.isEmpty else { return nil }
+        let slop = layout.fontSize * 0.2
+        return layout.lines.flatMap(\.boxes).first {
+            marks[$0.word.id] != nil && $0.frame.insetBy(dx: -slop, dy: -slop).contains(point)
+        }?.word
+    }
+
+    /// The glyph box of `word` on this page (page coordinates).
+    func wordFrame(of word: MushafWord) -> CGRect? {
+        layout?.lines.flatMap(\.boxes).first { $0.word.id == word.id }?.frame
+    }
+
+    /// The short summary of a marked word (its readings and أبواب) for the finger-hold peek; nil when the layer is off.
+    func qiraatSummary(for word: MushafWord) -> QiraatPageSummaryItem? {
+        guard qiraat.enabled, marks[word.id] != nil, let store = library.qiraat,
+              let pageMarks = store.marks(page: page.number) else { return nil }
+        return QiraatPageSummary.build(page: page.number, words: [word], data: pageMarks.page, marks: pageMarks,
+                                       catalog: store.catalog, filter: qiraat.filter).first
+    }
+
+    /// Locates the Ayah under `point`. Prioritizes ayah end-markers, then any word of the ayah.
+    func ayahKey(at point: CGPoint) -> AyahKey? {
+        guard let layout else { return nil }
+        let slop = layout.fontSize * 0.45
+        let boxes = layout.lines.flatMap(\.boxes)
+        // Check if user tapped directly on or near an ayah end glyph
+        if let endBox = boxes.first(where: {
+            $0.word.charType == .end && $0.frame.insetBy(dx: -slop, dy: -slop).contains(point)
+        }) {
+            return endBox.word.ayahKey
+        }
+        // Fallback: check any word box
+        if let wordBox = boxes.first(where: {
+            $0.frame.insetBy(dx: -slop * 0.3, dy: -slop * 0.3).contains(point)
+        }) {
+            return wordBox.word.ayahKey
+        }
+        // The page spreads its 15 lines over the screen, so a line is taller than its glyphs: a press
+        // anywhere in a line of words (below a glyph or between two words) is the nearest word's ayah.
+        // Surah headers and basmala lines have no words and stay unanswered.
+        guard let line = layout.lines.first(where: { $0.rect.minY <= point.y && point.y < $0.rect.maxY }),
+              let nearest = line.boxes.min(by: { horizontalDistance($0.frame, point.x) < horizontalDistance($1.frame, point.x) })
+        else { return nil }
+        return nearest.word.ayahKey
+    }
+
+    private func horizontalDistance(_ frame: CGRect, _ x: CGFloat) -> CGFloat {
+        x < frame.minX ? frame.minX - x : (x > frame.maxX ? x - frame.maxX : 0)
+    }
+
+    override func draw(_ rect: CGRect) {
+        guard let layout, let context = UIGraphicsGetCurrentContext() else { return }
+        guard let font = try? library.fonts.font(page: page.number, size: layout.fontSize) else {
+            // Never a blank page: say which page's font is missing (a damaged or partial install).
+            drawCentred("تعذّر تحميل خط الصفحة \(page.number)", in: bounds, size: layout.fontSize * 0.8, weight: .semibold)
+            return
+        }
+
+        // Draw page bookmark ribbon if this page is bookmarked
+        if isPageBookmarked {
+            drawPageBookmarkRibbon(in: context)
+        }
+
+        // Draw physical book spine curvature and page edge shadows
+        if isSpreadHalf && spineSide != .none {
+            drawBookSpineAndPageEdges(in: context)
+        }
+
+        for line in layout.lines {
+            switch line.content {
+            case let .words(boxes, _):
+                for box in boxes { drawWord(box, font: font, in: context) }
+            case let .surahHeader(number):
+                drawSurahHeader(number: number, in: line.rect, fontSize: layout.fontSize, context: context)
+            case .basmala:
+                drawBasmala(in: line.rect, fontSize: layout.fontSize, in: context)
+            case .empty:
+                break
+            }
+        }
+    }
+
+    private func drawPageBookmarkRibbon(in context: CGContext) {
+        let ribbonWidth: CGFloat = max(14, bounds.width * 0.038)
+        let ribbonHeight: CGFloat = max(24, bounds.height * 0.045)
+        let ribbonX = page.isRightHandPage ? bounds.width * 0.08 : bounds.width * 0.92 - ribbonWidth
+        let ribbonRect = CGRect(x: ribbonX, y: 0, width: ribbonWidth, height: ribbonHeight)
+
+        context.saveGState()
+        let ribbonColor = appearance.bookmarkRibbon(for: traitCollection, tint: qiraat.pageTint)
+        let goldBorder = appearance.gold(for: traitCollection)
+
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: ribbonRect.minX, y: ribbonRect.minY))
+        path.addLine(to: CGPoint(x: ribbonRect.maxX, y: ribbonRect.minY))
+        path.addLine(to: CGPoint(x: ribbonRect.maxX, y: ribbonRect.maxY))
+        path.addLine(to: CGPoint(x: ribbonRect.midX, y: ribbonRect.maxY - ribbonHeight * 0.28))
+        path.addLine(to: CGPoint(x: ribbonRect.minX, y: ribbonRect.maxY))
+        path.close()
+
+        context.setFillColor(ribbonColor.cgColor)
+        context.addPath(path.cgPath)
+        context.fillPath()
+
+        context.setStrokeColor(goldBorder.cgColor)
+        context.setLineWidth(1.2)
+        context.addPath(path.cgPath)
+        context.strokePath()
+
+        // Delicate inner stitch line
+        let innerPath = UIBezierPath()
+        let inset: CGFloat = 2.0
+        innerPath.move(to: CGPoint(x: ribbonRect.minX + inset, y: ribbonRect.minY))
+        innerPath.addLine(to: CGPoint(x: ribbonRect.maxX - inset, y: ribbonRect.minY))
+        innerPath.addLine(to: CGPoint(x: ribbonRect.maxX - inset, y: ribbonRect.maxY - inset * 1.5))
+        innerPath.addLine(to: CGPoint(x: ribbonRect.midX, y: ribbonRect.maxY - ribbonHeight * 0.28 - inset))
+        innerPath.addLine(to: CGPoint(x: ribbonRect.minX + inset, y: ribbonRect.maxY - inset * 1.5))
+        innerPath.close()
+
+        context.setStrokeColor(goldBorder.withAlphaComponent(0.6).cgColor)
+        context.setLineWidth(0.6)
+        context.addPath(innerPath.cgPath)
+        context.strokePath()
+
+        context.restoreGState()
+    }
+
+    /// Where the two pages of a spread meet: one eased shade that deepens toward the spine (no flat band, no edge
+    /// anywhere on the paper), a hairline crease at the spine, and a faint rim on the page's outer edge.
+    private func drawBookSpineAndPageEdges(in context: CGContext) {
+        guard isSpreadHalf && spineSide != .none else { return }
+        context.saveGState()
+        defer { context.restoreGState() }
+
+        let width = bounds.width
+        let height = bounds.height
+        let isLeftSpine = (spineSide == .left)   // Right page of a spread: its spine is its left edge.
+        let isDark = traitCollection.userInterfaceStyle == .dark
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+
+        // The fold: black at the spine, easing out to nothing over 40 pt. The stops follow an ease-out curve, so the
+        // shade has no visible start and no step between two pixels.
+        let spineWidth: CGFloat = min(40, width * 0.07)
+        let fold: CGFloat = isDark ? 0.40 : 0.16
+        let stops: [(location: CGFloat, alpha: CGFloat)] = [
+            (0, 1), (0.08, 0.78), (0.2, 0.52), (0.4, 0.28), (0.65, 0.1), (0.85, 0.025), (1, 0),
+        ]
+        let colors = stops.map { UIColor(white: 0, alpha: fold * $0.alpha).cgColor } as CFArray
+        let spineX: CGFloat = isLeftSpine ? 0 : width
+        let fadeX: CGFloat = isLeftSpine ? spineWidth : width - spineWidth
+        if let gradient = CGGradient(colorsSpace: colorSpace, colors: colors, locations: stops.map(\.location)) {
+            context.drawLinearGradient(gradient, start: CGPoint(x: spineX, y: 0), end: CGPoint(x: fadeX, y: 0), options: [])
+        }
+
+        // The crease, a hairline right at the spine.
+        context.setStrokeColor(UIColor(white: 0, alpha: isDark ? 0.35 : 0.12).cgColor)
+        context.setLineWidth(1 / max(contentScaleFactor, 1))
+        let creaseX: CGFloat = isLeftSpine ? 0.25 : width - 0.25
+        context.strokeLineSegments(between: [CGPoint(x: creaseX, y: 0), CGPoint(x: creaseX, y: height)])
+
+        // The paper's depth on the side away from the spine.
+        let rimWidth: CGFloat = 4
+        let rimColor = UIColor(white: 0, alpha: isDark ? 0.22 : 0.07).cgColor
+        let clear = UIColor(white: 0, alpha: 0).cgColor
+        if let rim = CGGradient(colorsSpace: colorSpace, colors: [rimColor, clear] as CFArray, locations: [0, 1]) {
+            let edgeX: CGFloat = isLeftSpine ? width : 0
+            let innerX: CGFloat = isLeftSpine ? width - rimWidth : rimWidth
+            context.drawLinearGradient(rim, start: CGPoint(x: edgeX, y: 0), end: CGPoint(x: innerX, y: 0), options: [])
+        }
+    }
+
+    private struct BannerParts {
+        let leftWing: CGImage
+        let rightWing: CGImage
+        let midLine: CGImage
+    }
+
+    private static let bannerParts: BannerParts? = {
+        let rawImage: UIImage?
+        if let img = UIImage(named: "SurahBannerTemplate") {
+            rawImage = img
+        } else if let path = Bundle.main.path(forResource: "SurahBannerTemplate", ofType: "png"),
+                  let img = UIImage(contentsOfFile: path) {
+            rawImage = img
+        } else if let path = Bundle(for: MushafPageView.self).path(forResource: "SurahBannerTemplate", ofType: "png"),
+                  let img = UIImage(contentsOfFile: path) {
+            rawImage = img
+        } else {
+            rawImage = nil
+        }
+        guard let image = rawImage, let cgImage = image.cgImage else { return nil }
+
+        let scale = CGFloat(cgImage.height) / 60.0
+        let wingWidthPx = Int(round(180.0 * scale))
+        let midWidthPx = max(2, Int(round(20.0 * scale)))
+        let midXPx = Int(round(220.0 * scale))
+
+        guard let leftCG = cgImage.cropping(to: CGRect(x: 0, y: 0, width: wingWidthPx, height: cgImage.height)),
+              let rightCG = cgImage.cropping(to: CGRect(x: cgImage.width - wingWidthPx, y: 0, width: wingWidthPx, height: cgImage.height)),
+              let midCG = cgImage.cropping(to: CGRect(x: midXPx, y: 0, width: midWidthPx, height: cgImage.height)) else {
+            return nil
+        }
+
+        return BannerParts(leftWing: leftCG, rightWing: rightCG, midLine: midCG)
+    }()
+
+    private static let canonicalSurahTitles: [Int: String] = [
+        1: "الفَاتِحَةِ", 2: "البَقَرَةِ", 3: "آلِ عِمْرَانَ", 4: "النِّسَاءِ", 5: "المَائِدَةِ",
+        6: "الأَنْعَامِ", 7: "الأَعْرَافِ", 8: "الأَنْفَالِ", 9: "التَّوْبَةِ", 10: "يُونُسَ",
+        11: "هُودٍ", 12: "يُوسُفَ", 13: "الرَّعْدِ", 14: "إِبْرَاهِيمَ", 15: "الحِجْرِ",
+        16: "النَّحْلِ", 17: "الإِسْرَاءِ", 18: "الكَهْفِ", 19: "مَرْيَمَ", 20: "طه",
+        21: "الأَنْبِيَاءِ", 22: "الحَجِّ", 23: "المُؤْمِنُونَ", 24: "النُّورِ", 25: "الفُرْقَانِ",
+        26: "الشُّعَرَاءِ", 27: "النَّمْلِ", 28: "القَصَصِ", 29: "العَنْكَبُوتِ", 30: "الرُّومِ",
+        31: "لُقْمَانَ", 32: "السَّجْدَةِ", 33: "الأَحْزَابِ", 34: "سَبَإٍ", 35: "فَاطِرٍ",
+        36: "يس", 37: "الصَّافَّاتِ", 38: "ص", 39: "الزُّمَرِ", 40: "غَافِرٍ",
+        41: "فُصِّلَتْ", 42: "الشُّورَى", 43: "الزُّخْرُفِ", 44: "الدُّخَانِ", 45: "الجَاثِيَةِ",
+        46: "الأَحْقَافِ", 47: "مُحَمَّدٍ", 48: "الفَتْحِ", 49: "الحُجُرَاتِ", 50: "ق",
+        51: "الذَّارِيَاتِ", 52: "الطُّورِ", 53: "النَّجْمِ", 54: "القَمَرِ", 55: "الرَّحْمَٰنِ",
+        56: "الوَاقِعَةِ", 57: "الحَدِيدِ", 58: "المُجَادَلَةِ", 59: "الحَشْرِ", 60: "المُمْتَحَنَةِ",
+        61: "الصَّفِّ", 62: "الجُمُعَةِ", 63: "المُنَافِقُونَ", 64: "التَّغَابُنِ", 65: "الطَّلَاقِ",
+        66: "التَّحْرِيمِ", 67: "المُلْكِ", 68: "القَلَمِ", 69: "الحَاقَّةِ", 70: "المَعَارِجِ",
+        71: "نُوحٍ", 72: "الجِنِّ", 73: "المُزَّمِّلِ", 74: "المُدَّثِّرِ", 75: "القِيَامَةِ",
+        76: "الإِنْسَانِ", 77: "المُرْسَلَاتِ", 78: "النَّبَإِ", 79: "النَّازِعَاتِ", 80: "عَبَسَ",
+        81: "التَّكْوِيرِ", 82: "الانْفِطَارِ", 83: "المُطَفِّفِينَ", 84: "الانْشِقَاقِ", 85: "البُرُوجِ",
+        86: "الطَّارِقِ", 87: "الأَعْلَى", 88: "الغَاشِيَةِ", 89: "الفَجْرِ", 90: "البَلَدِ",
+        91: "الشَّمْسِ", 92: "اللَّيْلِ", 93: "الضُّحَى", 94: "الشَّرْحِ", 95: "التِّينِ",
+        96: "العَلَقِ", 97: "القَدْرِ", 98: "البَيِّنَةِ", 99: "الزَّلْزَلَةِ", 100: "العَادِيَاتِ",
+        101: "القَارِعَةِ", 102: "التَّكَاثُرِ", 103: "العَصْرِ", 104: "الهُمَزَةِ", 105: "الفِيلِ",
+        106: "قُرَيْشٍ", 107: "المَاعُونِ", 108: "الكَوْثَرِ", 109: "الكَافِرُونَ", 110: "النَّصْرِ",
+        111: "المَسَدِ", 112: "الإِخْلَاصِ", 113: "الفَلَقِ", 114: "النَّاسِ"
+    ]
+
+    /// Classical Islamic illuminated Mushaf Surah banner matching traditional manuscript illumination:
+    /// Features right roundel (Surah number), left roundel (Ayah count), and central cartouche
+    /// (Surah name in authentic Uthmanic calligraphy + Makkiyah/Madaniyah classification).
+    private func drawSurahHeader(number: Int, in lineRect: CGRect, fontSize: CGFloat, context: CGContext) {
+        let frame = lineRect.insetBy(dx: max(2, bounds.width * 0.008),
+                                     dy: max(1.5, lineRect.height * 0.08))
+        let isDarkTheme = (appearance == .dark || appearance == .blackPage || traitCollection.userInterfaceStyle == .dark)
+        let strokeColor = isDarkTheme ? appearance.gold(for: traitCollection) : appearance.brown(for: traitCollection)
+        let titleColor = appearance.ink(for: traitCollection)
+        let subtitleColor = isDarkTheme ? appearance.gold(for: traitCollection) : appearance.brown(for: traitCollection)
+        let fillColor = paper
+
+        if let art = bannerStyle.art {
+            let surahName = Self.canonicalSurahTitles[number] ?? library.surahNames[number] ?? "\(number)"
+            let prefix = "سُورَةُ "
+            if art.draw(in: frame, title: prefix + surahName, prefixLength: (prefix as NSString).length,
+                        surahNumber: number, ayahCount: library.surahAyahCounts[number] ?? 0,
+                        titleFont: { MushafLibrary.mushafFont(size: $0) }, context: context) {
+                return
+            }
+        }
+
+        context.saveGState()
+        context.setFillColor(fillColor.cgColor)
+        context.fill(frame)
+        context.restoreGState()
+
+        guard let parts = Self.bannerParts else {
+            drawFallbackSurahHeader(number: number, in: frame, fontSize: fontSize, context: context, strokeColor: strokeColor, goldColor: subtitleColor, fillColor: fillColor)
+            return
+        }
+
+        let wingWidth = frame.height * (180.0 / 60.0)
+        let leftWingRect = CGRect(x: frame.minX, y: frame.minY, width: wingWidth, height: frame.height)
+        let rightWingRect = CGRect(x: frame.maxX - wingWidth, y: frame.minY, width: wingWidth, height: frame.height)
+        let midRect = CGRect(x: leftWingRect.maxX, y: frame.minY, width: max(0, rightWingRect.minX - leftWingRect.maxX), height: frame.height)
+
+        drawTintedBannerPart(parts.leftWing, in: leftWingRect, color: strokeColor, in: context)
+        drawTintedBannerPart(parts.rightWing, in: rightWingRect, color: strokeColor, in: context)
+        if midRect.width > 0 {
+            drawTintedBannerPart(parts.midLine, in: midRect, color: strokeColor, in: context)
+        }
+
+        let surahName = library.surahNames[number] ?? "\(number)"
+        let ayahCount = library.surahAyahCounts[number] ?? 0
+
+        // 1. Right oval: the surah number. 2. Left oval: the ayah count. Plain digits (the Hafs font draws its own
+        // medallion round every digit and leaves the number tiny), as large as the oval takes.
+        drawHeaderNumber(number, centerX: frame.maxX - (119.0 / 60.0) * frame.height,
+                         in: frame, color: titleColor, context: context)
+        drawHeaderNumber(ayahCount, centerX: frame.minX + (117.0 / 60.0) * frame.height,
+                         in: frame, color: titleColor, context: context)
+
+        // 3. Center Cartouche: Surah title (aligned in the middle horizontally & vertically, NO makki/madani)
+        let cartoucheMidX = frame.midX
+        let maxCartoucheWidth = max(80, rightWingRect.minX - leftWingRect.maxX) * 0.88
+        let displaySurahName = Self.canonicalSurahTitles[number] ?? surahName
+        let titleStr = "سُورَةُ \(displaySurahName)" as NSString
+
+        var titleFontSize = frame.height * 0.52
+        var titleAttrs: [NSAttributedString.Key: Any] = [
+            .font: MushafLibrary.mushafFont(size: titleFontSize),
+            .foregroundColor: titleColor
+        ]
+        var titleSize = titleStr.size(withAttributes: titleAttrs)
+        let targetWidth = maxCartoucheWidth * 0.82
+        if titleSize.width > maxCartoucheWidth {
+            titleFontSize = max(frame.height * 0.34, titleFontSize * (maxCartoucheWidth / titleSize.width))
+        } else if titleSize.width < targetWidth && titleSize.width > 0 {
+            let idealSize = titleFontSize * (targetWidth / titleSize.width)
+            titleFontSize = min(frame.height * 0.58, idealSize)
+        }
+        titleAttrs[.font] = MushafLibrary.mushafFont(size: titleFontSize)
+        titleSize = titleStr.size(withAttributes: titleAttrs)
+
+        titleStr.draw(at: CGPoint(x: cartoucheMidX - titleSize.width / 2,
+                                  y: frame.midY - titleSize.height / 2),
+                      withAttributes: titleAttrs)
+    }
+
+    /// A number centred in one of the banner's two ovals, in plain Arabic-Indic digits: 0.5 of the banner's height,
+    /// shrunk only when a three-digit number would be wider than the oval is at the height of the digits.
+    private func drawHeaderNumber(_ value: Int, centerX: CGFloat, in frame: CGRect, color: UIColor, context: CGContext) {
+        let text = ArabicDigits.string(value) as NSString
+        let maxWidth = frame.height * 0.5
+        var fontSize = frame.height * 0.5
+        var font = UIFont.systemFont(ofSize: fontSize, weight: .semibold)
+        var attributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: color]
+        let width = text.size(withAttributes: attributes).width
+        if width > maxWidth, width > 0 {
+            fontSize *= maxWidth / width
+            font = UIFont.systemFont(ofSize: fontSize, weight: .semibold)
+            attributes[.font] = font
+        }
+        let size = text.size(withAttributes: attributes)
+        // Digits sit on the baseline and stand cap-height tall: centre that, not the line box.
+        let baseline = frame.midY + font.capHeight / 2
+        text.draw(at: CGPoint(x: centerX - size.width / 2, y: baseline - font.ascender), withAttributes: attributes)
+    }
+
+    private func drawTintedBannerPart(_ cgImage: CGImage, in rect: CGRect, color: UIColor, in context: CGContext) {
+        context.saveGState()
+        context.translateBy(x: rect.minX, y: rect.maxY)
+        context.scaleBy(x: 1.0, y: -1.0)
+        let localRect = CGRect(x: 0, y: 0, width: rect.width, height: rect.height)
+        context.clip(to: localRect, mask: cgImage)
+        context.setFillColor(color.cgColor)
+        context.fill(localRect)
+        context.restoreGState()
+    }
+
+    private func drawFallbackSurahHeader(
+        number: Int,
+        in frame: CGRect,
+        fontSize: CGFloat,
+        context: CGContext,
+        strokeColor: UIColor,
+        goldColor: UIColor,
+        fillColor: UIColor
+    ) {
+        let outerLineWidth = max(1.4, bounds.width * 0.003)
+        let innerLineWidth = max(0.8, outerLineWidth * 0.6)
+
+        context.saveGState()
+        context.setStrokeColor(strokeColor.cgColor)
+        context.setLineWidth(outerLineWidth)
+        context.setLineJoin(.round)
+
+        let cornerRadius = frame.height * 0.12
+        let outerPath = UIBezierPath(roundedRect: frame, cornerRadius: cornerRadius)
+        outerPath.stroke()
+
+        let innerFrame = frame.insetBy(dx: outerLineWidth * 2.2, dy: outerLineWidth * 2.0)
+        let innerPath = UIBezierPath(roundedRect: innerFrame, cornerRadius: cornerRadius * 0.7)
+        context.setStrokeColor(goldColor.cgColor)
+        context.setLineWidth(innerLineWidth)
+        innerPath.stroke()
+
+        let cartoucheWidth = frame.width * 0.52
+        let cartoucheRect = CGRect(
+            x: frame.midX - cartoucheWidth / 2,
+            y: innerFrame.minY + 1.0,
+            width: cartoucheWidth,
+            height: innerFrame.height - 2.0
+        )
+
+        let cartouchePath = UIBezierPath()
+        let archH = cartoucheRect.height * 0.22
+        let cuspH = cartoucheRect.height * 0.14
+
+        cartouchePath.move(to: CGPoint(x: cartoucheRect.minX + archH, y: cartoucheRect.minY))
+        cartouchePath.addLine(to: CGPoint(x: cartoucheRect.midX - archH * 0.7, y: cartoucheRect.minY))
+        cartouchePath.addQuadCurve(
+            to: CGPoint(x: cartoucheRect.midX, y: cartoucheRect.minY - archH * 0.35),
+            controlPoint: CGPoint(x: cartoucheRect.midX - archH * 0.2, y: cartoucheRect.minY - archH * 0.35)
+        )
+        cartouchePath.addQuadCurve(
+            to: CGPoint(x: cartoucheRect.midX + archH * 0.7, y: cartoucheRect.minY),
+            controlPoint: CGPoint(x: cartoucheRect.midX + archH * 0.2, y: cartoucheRect.minY - archH * 0.35)
+        )
+        cartouchePath.addLine(to: CGPoint(x: cartoucheRect.maxX - archH, y: cartoucheRect.minY))
+
+        cartouchePath.addCurve(
+            to: CGPoint(x: cartoucheRect.maxX, y: cartoucheRect.midY),
+            controlPoint1: CGPoint(x: cartoucheRect.maxX - cuspH * 0.4, y: cartoucheRect.minY + cuspH * 0.6),
+            controlPoint2: CGPoint(x: cartoucheRect.maxX, y: cartoucheRect.midY - cuspH * 0.6)
+        )
+        cartouchePath.addCurve(
+            to: CGPoint(x: cartoucheRect.maxX - archH, y: cartoucheRect.maxY),
+            controlPoint1: CGPoint(x: cartoucheRect.maxX, y: cartoucheRect.midY + cuspH * 0.6),
+            controlPoint2: CGPoint(x: cartoucheRect.maxX - cuspH * 0.4, y: cartoucheRect.maxY - cuspH * 0.6)
+        )
+
+        cartouchePath.addLine(to: CGPoint(x: cartoucheRect.midX + archH * 0.7, y: cartoucheRect.maxY))
+        cartouchePath.addQuadCurve(
+            to: CGPoint(x: cartoucheRect.midX, y: cartoucheRect.maxY + archH * 0.35),
+            controlPoint: CGPoint(x: cartoucheRect.midX + archH * 0.2, y: cartoucheRect.maxY + archH * 0.35)
+        )
+        cartouchePath.addQuadCurve(
+            to: CGPoint(x: cartoucheRect.midX - archH * 0.7, y: cartoucheRect.maxY),
+            controlPoint: CGPoint(x: cartoucheRect.midX - archH * 0.2, y: cartoucheRect.maxY + archH * 0.35)
+        )
+        cartouchePath.addLine(to: CGPoint(x: cartoucheRect.minX + archH, y: cartoucheRect.maxY))
+
+        cartouchePath.addCurve(
+            to: CGPoint(x: cartoucheRect.minX, y: cartoucheRect.midY),
+            controlPoint1: CGPoint(x: cartoucheRect.minX + cuspH * 0.4, y: cartoucheRect.maxY - cuspH * 0.6),
+            controlPoint2: CGPoint(x: cartoucheRect.minX, y: cartoucheRect.midY + cuspH * 0.6)
+        )
+        cartouchePath.addCurve(
+            to: CGPoint(x: cartoucheRect.minX + archH, y: cartoucheRect.minY),
+            controlPoint1: CGPoint(x: cartoucheRect.minX, y: cartoucheRect.midY - cuspH * 0.6),
+            controlPoint2: CGPoint(x: cartoucheRect.minX + cuspH * 0.4, y: cartoucheRect.minY + cuspH * 0.6)
+        )
+        cartouchePath.close()
+
+        context.setFillColor(fillColor.cgColor)
+        cartouchePath.fill()
+        context.setStrokeColor(strokeColor.cgColor)
+        context.setLineWidth(innerLineWidth * 1.1)
+        cartouchePath.stroke()
+        context.restoreGState()
+
+        let surahName = library.surahNames[number] ?? "\(number)"
+        let displaySurahName = Self.canonicalSurahTitles[number] ?? surahName
+        let titleStr = "سُورَةُ \(displaySurahName)" as NSString
+        var titleFontSize = fontSize * 0.72
+        var titleAttributes: [NSAttributedString.Key: Any] = [
+            .font: MushafLibrary.mushafFont(size: titleFontSize),
+            .foregroundColor: appearance.ink(for: traitCollection)
+        ]
+        var titleSize = titleStr.size(withAttributes: titleAttributes)
+        let targetWidth = cartoucheRect.width * 0.82
+        if titleSize.width > cartoucheRect.width * 0.90 {
+            titleFontSize = max(fontSize * 0.45, titleFontSize * ((cartoucheRect.width * 0.90) / titleSize.width))
+            titleAttributes[.font] = MushafLibrary.mushafFont(size: titleFontSize)
+            titleSize = titleStr.size(withAttributes: titleAttributes)
+        } else if titleSize.width < targetWidth && titleSize.width > 0 {
+            let idealSize = titleFontSize * (targetWidth / titleSize.width)
+            titleFontSize = min(fontSize * 0.82, idealSize)
+            titleAttributes[.font] = MushafLibrary.mushafFont(size: titleFontSize)
+            titleSize = titleStr.size(withAttributes: titleAttributes)
+        }
+
+        titleStr.draw(
+            at: CGPoint(x: cartoucheRect.midX - titleSize.width / 2, y: cartoucheRect.midY - titleSize.height / 2),
+            withAttributes: titleAttributes
+        )
+    }
+
+
+    private func drawWord(_ box: WordBox, font: CTFont, in context: CGContext) {
+        let mark = marks[box.word.id]
+        if highlightedWordIDs.contains(box.word.id) {
+            context.saveGState()
+            context.setFillColor(UIColor.systemYellow.withAlphaComponent(0.28).cgColor)
+            context.fill(box.frame.insetBy(dx: -2, dy: -1))
+            context.restoreGState()
+        }
+        let line = QCFFontStore.line(box.word.glyph, font: font,
+                                     color: mark.map { UIColor.qiraatGlyph(UIColor(qiraatHex: $0.textColor),
+                                                                           appearance: appearance,
+                                                                           traits: traitCollection,
+                                                                           tint: qiraat.pageTint).cgColor }
+                                         ?? appearance.ink(for: traitCollection).cgColor)
+        let natural = CGFloat(CTLineGetTypographicBounds(line, nil, nil, nil))
+        context.saveGState()
+        // UIKit is y-down, CoreText y-up. A condensed line (PageLayout squeeze) scales the glyph to its box.
+        context.translateBy(x: box.frame.minX, y: box.frame.maxY)
+        context.scaleBy(x: natural > 0 ? box.frame.width / natural : 1, y: -1)
+        context.textPosition = CGPoint(x: 0, y: box.frame.height * 0.28)
+        CTLineDraw(line, context)
+        context.restoreGState()
+        if box.word.charType == .end && bookmarkedAyahs.contains(box.word.ayahKey) {
+            drawAyahBookmarkIndicator(around: box.frame, context: context)
+        }
+        if box.word.charType == .end, let status = memorizationStatuses[box.word.ayahKey] {
+            drawMemorizationMarker(status, below: box.frame, context: context)
+        }
+        if let mark, let layout { drawQiraatMarks(mark, around: box.frame, fontSize: layout.fontSize, in: context) }
+    }
+
+    /// A tiny monochrome shape under the ayah-end marker: a filled disc (mastered), a ring with a centre dot
+    /// (memorized with errors) or a plain ring (needs the Mushaf). No hue, so it can never be mistaken for a
+    /// Qiraat colour, and the Quran text is not touched.
+    private func drawMemorizationMarker(_ status: MemorizationStatus, below frame: CGRect, context: CGContext) {
+        guard status != .notMemorized else { return }
+        let size = max(5, frame.height * 0.2)
+        let center = CGPoint(x: frame.midX, y: frame.maxY + size * 0.7)
+        let ink = appearance.ink(for: traitCollection).withAlphaComponent(0.55).cgColor
+        context.saveGState()
+        context.setFillColor(ink)
+        context.setStrokeColor(ink)
+        context.setLineWidth(max(0.9, size * 0.14))
+        let disc = CGRect(x: center.x - size / 2, y: center.y - size / 2, width: size, height: size)
+        switch status {
+        case .mastered:
+            context.fillEllipse(in: disc)
+        case .memorizedWithErrors:
+            context.strokeEllipse(in: disc.insetBy(dx: 0.5, dy: 0.5))
+            let dot = size * 0.3
+            context.fillEllipse(in: CGRect(x: center.x - dot / 2, y: center.y - dot / 2, width: dot, height: dot))
+        case .needsMushaf:
+            context.strokeEllipse(in: disc.insetBy(dx: 0.5, dy: 0.5))
+        case .notMemorized:
+            break
+        }
+        context.restoreGState()
+    }
+
+    private func drawAyahBookmarkIndicator(around frame: CGRect, context: CGContext) {
+        context.saveGState()
+        let size = max(7, frame.height * 0.30)
+        let rect = CGRect(x: frame.midX - size / 2, y: frame.minY - size * 0.85, width: size, height: size * 1.35)
+        let ribbon = UIBezierPath()
+        ribbon.move(to: CGPoint(x: rect.minX, y: rect.minY))
+        ribbon.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
+        ribbon.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+        ribbon.addLine(to: CGPoint(x: rect.midX, y: rect.maxY - size * 0.35))
+        ribbon.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+        ribbon.close()
+
+        let gold = appearance.gold(for: traitCollection)
+        let crimson = appearance.bookmarkRibbon(for: traitCollection, tint: qiraat.pageTint)
+        context.setFillColor(crimson.cgColor)
+        context.addPath(ribbon.cgPath)
+        context.fillPath()
+
+        context.setStrokeColor(gold.cgColor)
+        context.setLineWidth(0.8)
+        context.addPath(ribbon.cgPath)
+        context.strokePath()
+
+        context.restoreGState()
+    }
+
+    /// The web's marks, scaled to the glyph size: the variant bar under the word (one equal segment per
+    /// reader, left to right in reader order), a dotted underline for ذو وجهين (in the reader's colour for a variant, the family colour for a ruling), a dot at the top-left for
+    /// more than one usul family, and the إمالة/تقليل dot (filled / ring) at the bottom-left.
+    private func drawQiraatMarks(_ mark: WordMarks, around frame: CGRect, fontSize: CGFloat, in context: CGContext) {
+        let thickness = max(1.2, fontSize * 0.06)
+        let dot = max(3, fontSize * 0.16)
+        // Held to 3:1 on this page, like the word's own colour (the raw data colour fell to 2.3:1 on the dark page).
+        func markColor(_ hex: String) -> UIColor {
+            UIColor.qiraatMark(hex: hex, appearance: appearance, traits: traitCollection, tint: qiraat.pageTint)
+        }
+        context.saveGState()
+        switch mark.underline {
+        case .solid(let hex):
+            context.setFillColor(markColor(hex).cgColor)
+            context.fill(CGRect(x: frame.minX, y: frame.maxY, width: frame.width, height: thickness))
+        case .segments(let colors):
+            let width = frame.width / CGFloat(max(colors.count, 1))
+            for (i, hex) in colors.enumerated() {
+                context.setFillColor(markColor(hex).cgColor)
+                context.fill(CGRect(x: frame.minX + CGFloat(i) * width, y: frame.maxY, width: width, height: thickness))
+            }
+        case nil:
+            break
+        }
+        if let dotted = mark.dottedUnderline {
+            // «بخلف»: the reader's or narrator's own colour, one dotted segment per reader when several share the word.
+            let colors: [String] = switch dotted {
+            case .solid(let hex): [hex]
+            case .segments(let hexes): hexes
+            }
+            let y = frame.maxY + thickness * 2.6
+            let width = frame.width / CGFloat(max(colors.count, 1))
+            context.setLineWidth(thickness * 0.9)
+            context.setLineDash(phase: 0, lengths: [thickness, thickness * 1.3])
+            for (i, hex) in colors.enumerated() {
+                context.setStrokeColor(markColor(hex).cgColor)
+                context.strokeLineSegments(between: [CGPoint(x: frame.minX + CGFloat(i) * width, y: y),
+                                                     CGPoint(x: frame.minX + CGFloat(i + 1) * width, y: y)])
+            }
+            context.setLineDash(phase: 0, lengths: [])
+        }
+        if let hex = mark.familyDotColor {
+            context.setFillColor(markColor(hex).cgColor)
+            context.fillEllipse(in: CGRect(x: frame.minX - dot * 0.7, y: frame.minY, width: dot, height: dot))
+        }
+        if let imalah = mark.imalahDot {
+            let rect = CGRect(x: frame.minX - dot * 0.7, y: frame.maxY + thickness * 3.6, width: dot, height: dot)
+            let color = markColor(imalah.color).cgColor
+            if imalah.filled {
+                context.setFillColor(color)
+                context.fillEllipse(in: rect)
+            } else {
+                context.setStrokeColor(color)
+                context.setLineWidth(max(1, dot * 0.28))
+                context.strokeEllipse(in: rect.insetBy(dx: dot * 0.14, dy: dot * 0.14))
+            }
+        }
+        context.restoreGState()
+    }
+
+    private func drawBasmala(in rect: CGRect, fontSize: CGFloat, in context: CGContext) {
+        // Render using the canonical Madinah Mushaf Page 1 QCF font (glyphs ﱁ ﱂ ﱃ ﱄ)
+        if let p1Font = try? library.fonts.font(page: 1, size: fontSize * 1.05) {
+            let glyphs = ["ﱁ", "ﱂ", "ﱃ", "ﱄ"] // RTL: بِسْمِ (word 1), ٱللَّهِ (word 2), ٱلرَّحْمَـٰنِ (word 3), ٱلرَّحِيمِ (word 4)
+            let color = appearance.ink(for: traitCollection).cgColor
+            let lines = glyphs.map { QCFFontStore.line($0, font: p1Font, color: color) }
+            let widths = lines.map { CGFloat(CTLineGetTypographicBounds($0, nil, nil, nil)) }
+            let gap = fontSize * PageLayoutConstants.centredGapEm
+            let totalWidth = widths.reduce(0, +) + CGFloat(glyphs.count - 1) * gap
+            var currentX = rect.midX + totalWidth / 2
+            let height = fontSize * 1.15
+            let boxY = rect.midY - height / 2
+
+            for (i, line) in lines.enumerated() {
+                let w = widths[i]
+                context.saveGState()
+                context.translateBy(x: currentX - w, y: boxY + height)
+                context.scaleBy(x: 1.0, y: -1.0)
+                context.textPosition = CGPoint(x: 0, y: height * 0.28)
+                CTLineDraw(line, context)
+                context.restoreGState()
+                currentX -= (w + gap)
+            }
+            return
+        }
+
+        // Resilient fallback with Mushaf typography
+        let font = MushafLibrary.mushafFont(size: fontSize * 0.95)
+        let textColor = appearance.ink(for: traitCollection)
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: font,
+            .foregroundColor: textColor,
+        ]
+        let string = "بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ" as NSString
+        let measured = string.size(withAttributes: attributes)
+        string.draw(at: CGPoint(x: rect.midX - measured.width / 2, y: rect.midY - measured.height / 2),
+                    withAttributes: attributes)
+    }
+
+    private func drawCentred(_ text: String, in rect: CGRect, size: CGFloat, weight: UIFont.Weight) {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: size, weight: weight),
+            .foregroundColor: appearance.brown(for: traitCollection),
+        ]
+        let string = text as NSString
+        let measured = string.size(withAttributes: attributes)
+        string.draw(at: CGPoint(x: rect.midX - measured.width / 2, y: rect.midY - measured.height / 2),
+                    withAttributes: attributes)
+    }
+}

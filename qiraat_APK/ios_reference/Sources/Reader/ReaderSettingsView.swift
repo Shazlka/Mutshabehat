@@ -1,0 +1,437 @@
+import MushafCore
+#if DEBUG
+import ReviewEditor
+#endif
+import SwiftUI
+import UIKit
+
+struct SettingsView: View {
+    @Environment(\.dismiss) private var dismiss
+    @Binding var theme: String
+    @Binding var language: String
+    @Binding var keepScreenAwake: Bool
+    @Binding var autoHidesFooter: Bool
+    @Bindable var qiraat: QiraatPreferences
+    let library: MushafLibrary
+    let onSelectPage: (Int) -> Void
+    let onSelectBookmark: (QuranBookmark) -> Void
+    @State private var showingQiraatPicker = false
+    @AppStorage(LandscapeView.storageKey) private var landscapeView = LandscapeView.reading.rawValue
+    @AppStorage(SurahBannerStyle.storageKey) private var bannerStyle = SurahBannerStyle.royal.rawValue
+    @AppStorage(PageTurnStyle.storageKey) private var pageTurn = PageTurnStyle.curl.rawValue
+    @AppStorage(QiraatPreferences.showSubcategoryKey) private var showsSubcategory = false
+#if DEBUG
+    @State private var showingReviewEditor = false
+    @AppStorage(DeveloperSettings.cardReviewKey) private var showsCardReview = true
+#endif
+
+    private var appLanguage: AppLanguage {
+        AppLanguage(rawValue: language) ?? .deviceDefault
+    }
+
+    var body: some View {
+        NavigationStack {
+            Form {
+                Section(appLanguage == .english ? "Quran Reading & Khatma" : "قراءة القرآن والختمة") {
+                    NavigationLink {
+                        ReadingStatisticsView(library: library) { surah, targetPage in
+                            onSelectPage(targetPage)
+                        }
+                    } label: {
+                        Label(
+                            appLanguage == .english ? "Reading Statistics & Khatma" : "إحصائيات القراءة والختمة",
+                            systemImage: "chart.bar.xaxis"
+                        )
+                    }
+                    .accessibilityIdentifier("open-reading-statistics")
+
+                    NavigationLink {
+                        BookmarksView(library: library) { bookmark in
+                            onSelectBookmark(bookmark)
+                        }
+                    } label: {
+                        Label(
+                            appLanguage == .english ? "Bookmarks" : "الفواصل والعلامات",
+                            systemImage: "bookmark.fill"
+                        )
+                    }
+                    .accessibilityIdentifier("open-bookmarks-settings")
+
+                    Toggle(
+                        appLanguage == .english ? "Keep Screen Awake" : "إبقاء الشاشة مضاءة أثناء القراءة",
+                        isOn: $keepScreenAwake
+                    )
+                    .tint(.switchOn)
+                    .accessibilityIdentifier("keep-screen-awake-toggle")
+
+                    Toggle(
+                        appLanguage == .english ? "Hide the footer after 10 seconds" : "إخفاء الشريط السفلي تلقائيًا بعد ١٠ ثوانٍ",
+                        isOn: $autoHidesFooter
+                    )
+                    .tint(.switchOn)
+                    .accessibilityIdentifier("auto-hide-footer-toggle")
+                }
+
+                if library.qiraat?.catalog != nil {
+                    Section(appLanguage == .english ? "Ten Qira'at" : "القراءات العشر") {
+                        QiraatToggle(isOn: $qiraat.enabled)
+                        Button {
+                            showingQiraatPicker = true
+                        } label: {
+                            Label(
+                                appLanguage == .english ? "Choose Reader or Narrator" : "اختيار القارئ أو الراوي",
+                                systemImage: "person.2.fill"
+                            )
+                        }
+                        .disabled(!qiraat.enabled)
+                        .accessibilityIdentifier("open-qiraat-picker")
+                        Toggle(
+                            appLanguage == .english ? "Farsh only (hide Usul)" : "فرش الحروف فقط (إخفاء الأصول)",
+                            isOn: $qiraat.hidesUsul
+                        )
+                        .tint(.switchOn)
+                        .disabled(!qiraat.enabled)
+                        .accessibilityIdentifier("qiraat-hide-usul-toggle")
+                        Toggle(
+                            appLanguage == .english ? "Show sub-category on Farsh cards" : "إظهار التصنيف الفرعي في بطاقة الفرش",
+                            isOn: $showsSubcategory
+                        )
+                        .tint(.switchOn)
+                        .disabled(!qiraat.enabled)
+                        .accessibilityIdentifier("qiraat-show-subcategory-toggle")
+                        NavigationLink {
+                            UsulCategoriesSettingsView(qiraat: qiraat, library: library, language: appLanguage)
+                        } label: {
+                            HStack {
+                                Label(appLanguage == .english ? "Usul categories" : "أبواب الأصول",
+                                      systemImage: "books.vertical")
+                                Spacer()
+                                if !qiraat.hiddenUsulCategories.isEmpty {
+                                    Text(appLanguage == .english
+                                         ? "\(qiraat.hiddenUsulCategories.count) hidden"
+                                         : "\(qiraat.hiddenUsulCategories.count) مخفية")
+                                        .font(.footnote)
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
+                        }
+                        .disabled(!qiraat.enabled || qiraat.hidesUsul)
+                        .accessibilityIdentifier("open-qiraat-usul-categories")
+                    }
+                } else {
+                    // The Qiraat data failed to load (a damaged install or import). Hiding the whole section made that
+                    // look like a build without the feature, so say it.
+                    Section(appLanguage == .english ? "Ten Qira'at" : "القراءات العشر") {
+                        Label(appLanguage == .english ? "Could not load the Qiraat data" : "تعذّر تحميل بيانات القراءات",
+                              systemImage: "exclamationmark.triangle")
+                            .accessibilityIdentifier("qiraat-data-unavailable")
+                    }
+                }
+                if AppFeatures.iCloudSyncEnabled {
+                    Section(appLanguage == .english ? "Cloud Synchronization" : "مزامنة السحابة") {
+                        NavigationLink {
+                            ICloudSyncSettingsView(library: library)
+                        } label: {
+                            HStack {
+                                Label(
+                                    appLanguage == .english ? "iCloud Sync (Mushaf_Qiraat)" : "مزامنة iCloud (مصحف وقراءات)",
+                                    systemImage: "icloud.and.arrow.down.fill"
+                                )
+                                Spacer()
+                                Circle()
+                                    .fill(ICloudDatabaseSyncService.shared.isConnected ? Color.progress : Color.caution)
+                                    .frame(width: 8, height: 8)
+                            }
+                        }
+                        .accessibilityIdentifier("open-icloud-sync-settings")
+                    }
+                }
+
+                Section(appLanguage == .english ? "Preferences" : "التفضيلات") {
+                    NavigationLink {
+                        ThemeSettingsView(theme: $theme)
+                    } label: {
+                        Label(appLanguage == .english ? "Appearance" : "المظهر", systemImage: "circle.lefthalf.filled")
+                    }
+                    .accessibilityIdentifier("open-theme-settings")
+
+                    NavigationLink {
+                        SurahBannerSettingsView(style: $bannerStyle, language: appLanguage)
+                    } label: {
+                        Label(appLanguage == .english ? "Surah banner" : "شكل ترويسة السورة",
+                              systemImage: "rectangle.inset.filled")
+                    }
+                    .accessibilityIdentifier("open-surah-banner-settings")
+
+                    NavigationLink {
+                        LanguageSettingsView(language: $language)
+                    } label: {
+                        Label(appLanguage == .english ? "Language" : "اللغة", systemImage: "globe")
+                    }
+                    .accessibilityIdentifier("open-language-settings")
+                }
+                Section {
+                    Picker(selection: $pageTurn) {
+                        Text(appLanguage == .english ? "Curl" : "تقليب").tag(PageTurnStyle.curl.rawValue)
+                        Text(appLanguage == .english ? "Slide" : "انزلاق").tag(PageTurnStyle.slide.rawValue)
+                    } label: {
+                        Label(appLanguage == .english ? "Page turn" : "طريقة تقليب الصفحة",
+                              systemImage: "book.pages")
+                    }
+                    .accessibilityIdentifier("page-turn-picker")
+                } footer: {
+                    Text(appLanguage == .english
+                         ? "Curl turns the page like a book. Slide moves it sideways. Two facing pages (iPad landscape) always curl. With Reduce Motion on, a single page always slides."
+                         : "التقليب كصفحة الكتاب، والانزلاق يحرّك الصفحة جانبًا. الصفحتان المتقابلتان (آيباد أفقيًا) تُقلَّبان دائمًا. ومع تقليل الحركة تنزلق الصفحة المفردة دائمًا.")
+                }
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    Section {
+                        Picker(selection: $landscapeView) {
+                            Text(appLanguage == .english ? "Reading" : "قراءة").tag(LandscapeView.reading.rawValue)
+                            Text(appLanguage == .english ? "Learning" : "تعلّم").tag(LandscapeView.learning.rawValue)
+                        } label: {
+                            Label(appLanguage == .english ? "Landscape view" : "العرض الأفقي",
+                                  systemImage: "rectangle.split.2x1")
+                        }
+                        .accessibilityIdentifier("landscape-view-picker")
+                    } footer: {
+                        Text(appLanguage == .english
+                             ? "Reading shows two facing pages. Learning shows one page, with the Qira'at of the word you tap in a side bar."
+                             : "القراءة: صفحتان متقابلتان. التعلّم: صفحة واحدة، وقراءات الكلمة التي تضغطها في شريط جانبي.")
+                    }
+                }
+#if DEBUG
+                Section(language == AppLanguage.english.rawValue ? "Developer" : "المطور") {
+                    NavigationLink {
+                        DeveloperDataSettingsView(
+                            library: library,
+                            language: AppLanguage(rawValue: language) ?? .deviceDefault
+                        )
+                    } label: {
+                        Label(
+                            language == AppLanguage.english.rawValue ? "Databases" : "قواعد البيانات",
+                            systemImage: "externaldrive.connected.to.line.below"
+                        )
+                    }
+                    .accessibilityIdentifier("open-database-settings")
+
+                    Button { showingReviewEditor = true } label: {
+                        HStack {
+                            Label(
+                                language == AppLanguage.english.rawValue ? "Qiraat Editor" : "محرر القراءات",
+                                systemImage: "checkmark.seal.text.page"
+                            )
+                            Spacer()
+                            Image(systemName: "chevron.forward").font(.footnote.weight(.semibold)).foregroundStyle(.tertiary)
+                        }
+                    }
+                    .foregroundStyle(.primary)
+                    .accessibilityIdentifier("open-review-editor")
+
+                    Toggle(isOn: $showsCardReview) {
+                        Label(
+                            language == AppLanguage.english.rawValue ? "Review on word cards" : "المراجعة والتحرير في بطاقة الكلمة",
+                            systemImage: "checkmark.seal"
+                        )
+                    }
+                    .tint(.switchOn)
+                    .accessibilityIdentifier("developer-card-review-toggle")
+                }
+#endif
+
+                if let memorization = library.memorizationStore {
+                    Section(appLanguage == .english ? "Memorization" : "حفظ القرآن") {
+                        Toggle(appLanguage == .english ? "Show page status in the top banner" : "إظهار حالة الحفظ في الشريط العلوي",
+                               isOn: Binding(get: { memorization.showsBannerMark }, set: { memorization.showsBannerMark = $0 }))
+                            .tint(.switchOn)
+                            .accessibilityIdentifier("memo-setting-banner-mark")
+                        Toggle(appLanguage == .english ? "Show memorization marks on the Mushaf" : "إظهار حالة الحفظ على المصحف",
+                               isOn: Binding(get: { memorization.showsAyahMarker }, set: { memorization.showsAyahMarker = $0 }))
+                            .tint(.switchOn)
+                            .accessibilityIdentifier("memo-setting-ayah-marker")
+                    }
+                }
+
+                Section("الخصوصية والدعم") {
+                    Link(destination: LegalLinks.privacyPolicy(for: appLanguage)) {
+                        ExternalLinkRow(title: "سياسة الخصوصية", systemImage: "hand.raised.fill")
+                    }
+                    .accessibilityLabel(Text("سياسة الخصوصية"))
+                    .accessibilityHint(Text("يفتح في Safari"))
+                    .accessibilityIdentifier("open-privacy-policy")
+
+                    Link(destination: LegalLinks.support(for: appLanguage)) {
+                        ExternalLinkRow(title: "الدعم", systemImage: "questionmark.circle")
+                    }
+                    .accessibilityLabel(Text("الدعم"))
+                    .accessibilityHint(Text("يفتح في Safari"))
+                    .accessibilityIdentifier("open-support")
+
+                    NavigationLink {
+                        AcknowledgementsView()
+                    } label: {
+                        Label("شكر وتراخيص", systemImage: "text.book.closed")
+                    }
+                    .accessibilityLabel(Text("شكر وتراخيص"))
+                    .accessibilityIdentifier("open-acknowledgements")
+                }
+
+                Section {
+                    LabeledContent("الإصدار") {
+                        Text(verbatim: LegalLinks.appVersion)
+                    }
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel(Text("الإصدار \(LegalLinks.appVersion)"))
+                    .accessibilityIdentifier("app-version")
+                }
+            }
+#if DEBUG
+            .fullScreenCover(isPresented: $showingReviewEditor) {
+                ReviewEditorEntry(host: .make(library: library))
+            }
+#endif
+            .sheet(isPresented: $showingQiraatPicker) {
+                if let catalog = library.qiraat?.catalog {
+                    QiraatReaderPicker(catalog: catalog, selection: $qiraat.filter)
+                }
+            }
+            .navigationTitle("الإعدادات")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("تم") { dismiss() }
+                }
+            }
+        }
+    }
+}
+
+/// A Settings row that leaves the app: the title, then an arrow saying it opens outside (in Safari).
+private struct ExternalLinkRow: View {
+    let title: LocalizedStringKey
+    let systemImage: String
+
+    var body: some View {
+        HStack {
+            Label(title, systemImage: systemImage)
+            Spacer()
+            Image(systemName: "arrow.up.forward.square")
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(.tertiary)
+                .accessibilityHidden(true)
+        }
+        .foregroundStyle(.primary)
+    }
+}
+
+struct ThemeSettingsView: View {
+    @Binding var theme: String
+
+    var body: some View {
+        List(MushafAppearance.allCases) { option in
+            Button {
+                theme = option.rawValue
+            } label: {
+                HStack {
+                    Text(option.title)
+                    Spacer()
+                    if theme == option.rawValue {
+                        Image(systemName: "checkmark")
+                    }
+                }
+            }
+            .accessibilityIdentifier("theme-\(option.rawValue)")
+        }
+        .navigationTitle("المظهر")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+struct LanguageSettingsView: View {
+    @Binding var language: String
+
+    var body: some View {
+        List(AppLanguage.allCases) { option in
+            Button {
+                language = option.rawValue
+            } label: {
+                HStack {
+                    Text(option.title)
+                    Spacer()
+                    if language == option.rawValue {
+                        Image(systemName: "checkmark")
+                    }
+                }
+            }
+            .accessibilityIdentifier("language-\(option.rawValue)")
+        }
+        .navigationTitle("اللغة")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+/// One switch per أصول باب: off hides that باب's marks, cards, search results, key row and index entries.
+struct UsulCategoriesSettingsView: View {
+    @Bindable var qiraat: QiraatPreferences
+    let library: MushafLibrary
+    let language: AppLanguage
+    @State private var categories: [QiraatUsulCategory]?
+
+    private var isEnglish: Bool { language == .english }
+
+    var body: some View {
+        Form {
+            if let categories, !categories.isEmpty {
+                Section {
+                    Toggle(isOn: Binding(
+                        get: { categories.contains { !qiraat.hiddenUsulCategories.contains($0.code) } },
+                        set: { qiraat.setAllUsul(categories.map(\.code), shown: $0) }
+                    )) {
+                        Text(isEnglish ? "All categories" : "كل الأبواب").fontWeight(.semibold)
+                    }
+                    .tint(.switchOn)
+                    .accessibilityIdentifier("qiraat-usul-toggle-all")
+                }
+            }
+            Section {
+                if let categories {
+                    if categories.isEmpty {
+                        Text(isEnglish ? "No Usul categories in the installed data." : "لا توجد أبواب أصول في البيانات المثبّتة.")
+                            .foregroundStyle(.secondary)
+                    } else {
+                        ForEach(categories) { category in
+                            Toggle(isOn: Binding(
+                                get: { !qiraat.hiddenUsulCategories.contains(category.code) },
+                                set: { qiraat.setUsul(category.code, shown: $0) }
+                            )) {
+                                HStack(spacing: 8) {
+                                    Circle().fill(Color(qiraatHex: category.color)).frame(width: 10, height: 10)
+                                    Text(category.nameAr)
+                                }
+                            }
+                            .tint(.switchOn)
+                            .accessibilityIdentifier("qiraat-usul-toggle-\(category.code)")
+                        }
+                    }
+                } else {
+                    HStack(spacing: 8) {
+                        ProgressView()
+                        Text(isEnglish ? "Loading categories…" : "جارٍ تحميل الأبواب…").foregroundStyle(.secondary)
+                    }
+                }
+            } footer: {
+                Text(isEnglish
+                     ? "Turn a category off to hide its marks, cards and search results. \"Farsh only\" hides all of them."
+                     : "أغلق البابَ لإخفاء علاماته وبطاقاته ونتائج البحث عنه. خيار «فرش فقط» يخفي الأبواب كلها.")
+            }
+        }
+        .navigationTitle(isEnglish ? "Usul categories" : "أبواب الأصول")
+        .navigationBarTitleDisplayMode(.inline)
+        .task {
+            guard categories == nil, let store = library.qiraat else { return }
+            let found = await Task.detached(priority: .utility) { store.usulCategories() }.value
+            // First-seen order shifts whenever a live page arrives; a fixed alphabetical order keeps the list still.
+            categories = found.sorted { $0.nameAr.localizedStandardCompare($1.nameAr) == .orderedAscending }
+        }
+    }
+}

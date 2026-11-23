@@ -1,0 +1,26 @@
+<task>
+Phase 6: fix two visible rendering defects in the Android Mushaf reader (apps/android, package com.shazlka.qiraat), then rebuild, reinstall on the connected phone and re-verify with screenshots.
+</task>
+
+<context>
+Defects seen in apps/android/verification/01_mushaf_page_1.png (Mushaf page 1, surah Al-Baqarah, emulator):
+1. The surah banner cartouche («سورةُ البقرة» in a gold rounded box) has a horizontal gold line drawn straight through the surah name. It must look like the iOS banner (apps/ios/Sources/Reader/MushafPageView.swift and apps/ios/MushafCore PageLayout header/banner code): name centred cleanly, decoration lines at the sides or above/below, never through the text.
+2. Several words are garbled or clipped: line 2 «فِيهِ هُدًى» (left end of the line shows broken marks and a dotted underline stack), line 4 «من قبلك» (black blobs), line 5 «على». Investigate whether this is (a) Qiraat mark/underline overlay drawn over the glyph, (b) tokens containing a space or combining characters measured/drawn per the wrong rule (see iOS QCFFontStore.line(...) and the 198 space-containing tokens), (c) clipping of glyph bounds in MushafPageCanvas (ascent/descent, justification offsets), or (d) the software layer type. Fix the root cause so the page renders like the iOS app. Compare against apps/ios rendering logic, not guesses.
+Toolchain: export JAVA_HOME=/opt/homebrew/opt/openjdk@17 PATH=$JAVA_HOME/bin:$PATH ANDROID_HOME=/opt/homebrew/share/android-commandlinetools. adb: $ANDROID_HOME/platform-tools/adb. A physical phone (serial RK8W602ZRBH, Samsung SM-A245F) is connected but its screen may be locked: do NOT try to unlock it, bypass the lock, or enter any PIN. Use an emulator for visual checks (system image system-images;android-35;google_apis;arm64-v8a and AVD qiraat_pixel_6 may already exist; boot headless with -no-window -gpu swiftshader_indirect) and use -s <serial> on every adb call.
+</context>
+
+<scope>
+1. Find and fix both defects inside apps/android only (likely reader/MushafPageCanvas.kt, reader/ReaderScreen.kt, core/PageLayout.kt).
+2. `cd apps/android && ./gradlew clean testDebugUnitTest assembleDebug` must pass with all 59 tests; add a unit test for any layout rule you change.
+3. Reinstall on the emulator, capture before/after screenshots of pages 1, 2 and one mid-Quran page (e.g. page 300) into apps/android/verification/ (names fix_*.png) and look at them. Report precisely what you saw.
+4. Install the rebuilt APK on the phone with `adb -s RK8W602ZRBH install -r` (install only; do not launch or touch the screen), and copy it to apps/android/dist/Qiraat-android-debug.apk.
+5. Shut the emulator down.
+</scope>
+
+<out_of_scope>
+apps/ios, src/, packages/. Do NOT commit. Add an entry to the root CHANGELOG.md and CLAUDE.md changelog sections (repo rule).
+</out_of_scope>
+
+<report>
+End with "BEFORE/AFTER" (what each defect looked like, what it looks like now, screenshot paths), "ROOT CAUSES", "GATES", "OPEN ISSUES".
+</report>

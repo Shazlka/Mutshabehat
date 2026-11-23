@@ -1,0 +1,250 @@
+import MushafCore
+import SwiftUI
+import UIKit
+
+/// One أصول ruling card: its category, the readers grouped by action, and the notes the web shows.
+struct RulingCard: View {
+    let ruling: QiraatRuling
+    let catalog: QiraatCatalog
+    /// The selected reader or narrator: the card shows only that reader's groups.
+    var filter: QiraatFilter = .all
+
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.qiraatWordText) private var wordText
+
+    var body: some View {
+        let color = Color(qiraatHex: ruling.color)
+        // The ruling word is large text: held to 3:1 on the card. The outline and tint keep the category colour as it is.
+        let wordColor = Color(uiColor: .qiraatCardText(
+            hex: ruling.color, traits: UITraitCollection(userInterfaceStyle: colorScheme == .dark ? .dark : .light)))
+        let distinct = distinctRulingText(ruling.text, categoryAr: ruling.categoryAr,
+                                      actions: ruling.attribution(scopedTo: filter, catalog: catalog).map(\.action))
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(alignment: .firstTextBaseline) {
+                QiraatClassificationLine(ruling: ruling)
+                Spacer()
+                if let condition = ruling.condition {
+                    Text(verbatim: condition).font(.caption2.bold()).foregroundStyle(.secondary)
+                }
+            }
+            QiraatMatrixRow {
+                wordColumn(wordColor: wordColor, descriptor: distinct)
+            } readers: {
+                groupsColumn(wordColor: wordColor)
+            }
+            .padding(.vertical, 4)
+            if ruling.hasAlternateReading(scopedTo: filter, catalog: catalog) {
+                Text("ذو وجهين (بخلف عنه) — الوجه الآخر جائز أيضًا")
+                    .font(.caption.bold()).foregroundStyle(.qiraatBadgeInk)
+                    .padding(.horizontal, 8).padding(.vertical, 4)
+                    .background(RoundedRectangle(cornerRadius: 6).fill(.qiraatBadgeFill))
+            }
+            if !noteParagraphs.isEmpty { CollapsibleText(text: noteParagraphs.joined(separator: "\n")) }
+            if ruling.verificationStatus == "NEEDS_MANUAL_REVIEW" { QiraatNeedsReviewBadge() }
+        }
+        .padding(14)
+        .background {
+            RoundedRectangle(cornerRadius: 16).fill(.qiraatCardFill)
+            RoundedRectangle(cornerRadius: 16).fill(color.opacity(0.06))
+        }
+        .overlay(RoundedRectangle(cornerRadius: 16).stroke(color))
+        .environment(\.layoutDirection, .rightToLeft)
+    }
+
+    /// The word as it is read, with the rule's short descriptor above it (the old «تُقرأ هكذا» caption is gone).
+    @ViewBuilder private func wordColumn(wordColor: Color, descriptor: String?) -> some View {
+        if !ruling.baseText.isEmpty {
+            let shown = sharedForm ?? QiraatReadingForm.display(ruling.baseText)
+            VStack(spacing: 6) {
+                if ruling.endToken > ruling.startToken {
+                    Text("الكلمات محل الخلاف")
+                        .font(.caption.bold())
+                        .foregroundStyle(Color(uiColor: .mushafBrown))
+                        .accessibilityIdentifier("qiraat-span-heading")
+                }
+                if let descriptor { QiraatDescriptorPill(text: descriptor) }
+                Text(verbatim: shown)
+                    .font(rulingWordFont(size: shown.contains(" ") ? 26 : 34))
+                    .foregroundStyle(wordColor)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.7)
+                    .allowsTightening(true)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: .infinity)
+                    .accessibilityIdentifier("qiraat-ruling-word")
+            }
+            .frame(maxWidth: .infinity)
+        } else if let descriptor {
+            QiraatDescriptorPill(text: descriptor).frame(maxWidth: .infinity)
+        } else {
+            Color.clear.frame(height: 1)
+        }
+    }
+
+    /// The readers, one group per action, each with its chips and details.
+    private func groupsColumn(wordColor: Color) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            ForEach(scopedGroups, id: \.action) { group in
+                VStack(alignment: .leading, spacing: 4) {
+                    QiraatAttributionGrid(pills: rollupAuthorityPills(group.entries.map(\.authorityId), catalog: catalog),
+                                          catalog: catalog)
+                    QiraatGroupPerformance(group: group, categoryAr: ruling.categoryAr, showWajhs: scopedGroups.contains { $0.entries.contains { ($0.wajhOrder ?? 1) > 1 } })
+                    // One group reads the word differently from the others (نقل حركة الهمزة): show how it is written.
+                    if sharedForm == nil, let changed = form(of: group) {
+                        Text(verbatim: changed)
+                            .font(smallWordFont)
+                            .foregroundStyle(wordColor)
+                            .accessibilityIdentifier("qiraat-ruling-group-word")
+                    }
+                }
+            }
+        }
+    }
+
+    private var scopedGroups: [RulingActionGroup] { ruling.attributionByAction(scopedTo: filter, catalog: catalog) }
+
+    /// How each narrator group reads the word (nil when its action leaves the writing as it is).
+    private func form(of group: RulingActionGroup) -> String? {
+        QiraatReadingForm.form(baseText: ruling.baseText, action: group.action, categoryCode: ruling.category,
+                               previousWord: neighbour(-1), nextWord: neighbour(+1))
+    }
+
+    /// The Mushaf word just before (-1) or after (+1) the ruling's span, in its ayah or across the ayah end.
+    private func neighbour(_ step: Int) -> String? {
+        guard let lookup = wordText?.text else { return nil }
+        if step < 0 {
+            return ruling.startToken > 1 ? lookup(ruling.surah, ruling.ayah, ruling.startToken - 1) : nil
+        }
+        let endAyah = ruling.endAyah ?? ruling.ayah
+        return lookup(ruling.surah, endAyah, ruling.endToken + 1) ?? lookup(ruling.surah, endAyah + 1, 1)
+    }
+
+    /// When every group reads the word the same changed way (صلة ميم الجمع: «كأنهمُۥ»), the card's word is drawn that way.
+    private var sharedForm: String? {
+        let groups = scopedGroups
+        let forms = groups.map(form(of:))
+        guard let first = forms.first, let value = first, forms.allSatisfy({ $0 == value }) else { return nil }
+        return value
+    }
+
+    private var smallWordFont: Font {
+        _ = dynamicTypeSize
+        let baseFont = UIFont(name: "KFGQPCUthmanicScriptHAFS", size: 28) ?? UIFont.systemFont(ofSize: 28, weight: .bold)
+        return Font(UIFontMetrics(forTextStyle: .title2).scaledFont(for: baseFont, maximumPointSize: 44))
+    }
+
+    private func rulingWordFont(size: CGFloat) -> Font {
+        _ = dynamicTypeSize
+        let baseFont = UIFont(name: "KFGQPCUthmanicScriptHAFS", size: size)
+            ?? UIFont(name: "DamascusBold", size: size)
+            ?? UIFont.systemFont(ofSize: size, weight: .bold)
+        return Font(UIFontMetrics(forTextStyle: .title1)
+            .scaledFont(for: baseFont, maximumPointSize: VariantCard.maxWordSize))
+    }
+
+    /// The notes and the source notes, in the order the web shows them.
+    private var noteParagraphs: [String] {
+        ([ruling.notes].compactMap { $0 } + (ruling.sourceNotes ?? [])).filter { !$0.isEmpty }
+    }
+}
+
+/// Secondary text that shows three lines and offers «المزيد» when there is more, so a long note does not
+/// push the readers off the screen. Short text shows no button.
+struct CollapsibleText: View {
+    let text: String
+    var lineLimit = 3
+
+    @State private var expanded = false
+    @State private var fullHeight: CGFloat = 0
+    @State private var limitedHeight: CGFloat = 0
+
+    private var isTruncated: Bool { fullHeight > limitedHeight + 1 }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text(verbatim: text).font(.caption).foregroundStyle(.secondary)
+                .lineLimit(expanded ? nil : lineLimit)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(HeightReader(onChange: { limitedHeight = $0 }))
+                .background {
+                    // The same text with no line limit, only to know how tall it would be.
+                    Text(verbatim: text).font(.caption)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .hidden()
+                        .background(HeightReader(onChange: { fullHeight = $0 }))
+                }
+            if isTruncated || expanded {
+                Button {
+                    withMotion { expanded.toggle() }
+                } label: {
+                    toggleLabel.font(.caption.bold()).foregroundStyle(.qiraatBadgeInk)
+                        .frame(minWidth: 44, minHeight: 44, alignment: .leading)
+                        .contentShape(Rectangle())
+                }
+                .accessibilityIdentifier("qiraat-notes-toggle")
+                .accessibilityHint(expanded ? Text("يطوي الملاحظات") : Text("يعرض الملاحظات كاملة"))
+            }
+        }
+    }
+
+    private var toggleLabel: Text {
+        expanded ? Text("أقل") : Text("المزيد")
+    }
+}
+
+private struct HeightReader: View {
+    let onChange: (CGFloat) -> Void
+    var body: some View {
+        GeometryReader { proxy in
+            Color.clear
+                .onAppear { onChange(proxy.size.height) }
+                .onChange(of: proxy.size.height) { _, height in onChange(height) }
+        }
+    }
+}
+
+/// Compact Quranic orthography / dabt symbol shown alongside performance actions in ruling and variant cards.
+///
+/// Symbols:
+/// - `.tashil`: A small filled circle (دائرة صغيرة مطموسة الوسط بدون حركة) representing the easing of hamzah (بين بين).
+/// - `.sakt`: A small Arabic letter Seen (سين صغيرة سـ) representing breath-holding pause without cutting off recitation.
+struct QiraatDabtSymbol: View {
+    enum Kind: Hashable, CaseIterable, Sendable {
+        case tashil
+        case sakt
+    }
+
+    let kind: Kind
+
+    var body: some View {
+        switch kind {
+        case .tashil:
+            Circle()
+                .fill(Color.primary)
+                .frame(width: 7, height: 7)
+                .accessibilityLabel(Text("علامة ضبط التسهيل: دائرة مطموسة الوسط"))
+                .accessibilityIdentifier("qiraat-dabt-tashil")
+        case .sakt:
+            Text("سـ")
+                .scaledFont(size: 11, weight: .bold, relativeTo: .caption2)
+                .foregroundStyle(.secondary)
+                .accessibilityLabel(Text("علامة ضبط السكت: سين صغيرة فوق الحرف"))
+                .accessibilityIdentifier("qiraat-dabt-sakt")
+        }
+    }
+
+    /// Derives the appropriate dabt symbols for an action or rule text.
+    nonisolated static func symbols(for action: String) -> [Kind] {
+        var kinds: [Kind] = []
+        if action.contains("تسهيل") {
+            kinds.append(.tashil)
+        }
+        if action.contains("سكت") {
+            kinds.append(.sakt)
+        }
+        return kinds
+    }
+}
+

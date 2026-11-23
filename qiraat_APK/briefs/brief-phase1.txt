@@ -1,0 +1,36 @@
+<task>
+Create the Android port of the Qiraat iOS app (apps/ios) as a new Gradle project in apps/android. This is Phase 1 of a native Kotlin/Jetpack Compose port: project scaffold, data layer, QCF font handling, and a working Mushaf page reader. Produce a debug APK that builds and is installable.
+</task>
+
+<context>
+- Repo root: /Users/amrelshazly/Projects/qiraat-ios. iOS app lives in apps/ios (SwiftUI + UIKit + CoreText). Read apps/ios/README.md and apps/ios/AGENTS.md first.
+- The iOS reader's logic lives in apps/ios/MushafCore (Swift package, no UIKit): Models.swift, MushafDatabase.swift, PageLayout.swift, Navigation.swift, QCFFontStore.swift. Port these to Kotlin faithfully: page geometry rules, surah header/basmala slots, the per-page font rule (a page's glyphs only render in that page's own font; never fall back to another page's font), draw tokens line by line (198 tokens contain a space the QCF fonts lack; see QCFFontStore.line).
+- Data: apps/ios/Generated/mushaf.sqlite (54 MB, built by apps/ios/scripts/build_mushaf_db.py). Reuse as-is, do not change the schema. Ship as an app asset and copy to app storage on first run; open read-only with android.database.sqlite.
+- Fonts: 604 QCF V2 page fonts are WOFF2 (apps/ios/Generated/Fonts/p1..p604.woff2, ~95 MB, gitignored for licence reasons). Android cannot load WOFF2. Write apps/android/scripts/convert_fonts.py (fontTools + brotli; pip install in a venv under the scratch area, not globally) that converts them to TTF into apps/android/app/src/main/assets/fonts/ (gitignored). Bundle them in the debug APK if the APK stays under ~250 MB; otherwise implement on-demand fetch+convert-free download with progress UI. Document the decision in apps/android/README.md.
+- Package id com.shazlka.qiraat. minSdk 26, targetSdk 35, compileSdk 35, Kotlin, Compose Material3, Gradle Kotlin DSL with a version catalog.
+- Toolchain is already installed (do not reinstall):
+  JAVA_HOME=/opt/homebrew/opt/openjdk@17 (put its bin on PATH)
+  ANDROID_HOME=/opt/homebrew/share/android-commandlinetools (platforms;android-35, build-tools;35.0.0, platform-tools installed, licences accepted)
+  gradle 9.9 is on PATH via Homebrew: run `gradle wrapper` once, then use ./gradlew.
+  Write apps/android/local.properties (gitignored) with sdk.dir. Network access to Maven/Google repos may be needed; if your sandbox blocks the network, say so clearly in OPEN ISSUES and write everything else.
+</context>
+
+<scope>
+1. Gradle project apps/android (settings, root + app module, wrapper, .gitignore, README with build/install commands).
+2. Kotlin port of MushafCore models/database/layout/navigation (package com.shazlka.qiraat.core) with JVM unit tests mirroring the corresponding apps/ios/MushafCore/Tests where practical.
+3. Reader screen in Compose: pager over 604 pages, RTL (page 1 on the right, swipe left = next page), a page drawn with Canvas/native text using that page's TTF Typeface, justified lines per PageLayout rules, surah banner + basmala slots, page number, juz/hizb header. Match the iOS visual structure. Exact iBooks page curl is NOT required (page-slide pager is fine for now).
+4. App theme, RTL, app name «قراءات», launcher adaptive icon derived from apps/ios/Sources/Assets.xcassets AppIcon.
+5. `cd apps/android && ./gradlew assembleDebug` produces a debug APK.
+</scope>
+
+<out_of_scope>
+Qiraat layer, mutashabihat, search, memorization, reading stats, sync/backup, settings screens, page curl, release signing. Do NOT modify anything under apps/ios, src/, packages/ or the web app. Do NOT commit.
+</out_of_scope>
+
+<verification>
+Run and make pass: `cd apps/android && ./gradlew testDebugUnitTest assembleDebug`. No emulator is installed; do not claim UI verification, and do not install system images. Report files created, APK path and size, font strategy, iOS behaviour you could not port and why, and command output tails for the gates.
+</verification>
+
+<report>
+End with sections "GATES" (each command + PASS/FAIL) and "OPEN ISSUES".
+</report>

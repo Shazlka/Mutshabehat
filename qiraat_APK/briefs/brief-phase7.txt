@@ -1,0 +1,25 @@
+<task>
+Phase 7: fix a horizontal clipping defect that appears only on the real phone (Samsung SM-A245F, serial RK8W602ZRBH, 1080x2340) in the Android Mushaf reader (apps/android, package com.shazlka.qiraat), then verify on the phone.
+</task>
+
+<context>
+See apps/android/verification/device_02_page1.png (real phone, app opened on a saved page in Al-Baqarah, verses 182-189, page 28/29). Symptom: the reader draws TWO pages side by side in portrait; the right page's lines are cut off at the right screen edge (e.g. words at the line starts are missing) and the left page's lines are cut off at the left screen edge, so every line is clipped. The emulator (Pixel 6, 1080x2400) showed a single correctly fitted page (apps/android/verification/fix_page_1.png, fix_page_300.png), so the cause is likely window/pager width handling that depends on device metrics (e.g. a wide-screen / two-page-spread rule triggered wrongly by width in px vs dp, density, Samsung display-size or font-scale settings, a pager with page size or contentPadding/pageSpacing exceeding the viewport, or HorizontalPager showing neighbouring pages because pageSize is not Fill). Compare with iOS: single page in portrait phones, spread only on iPad landscape (apps/ios/Sources/Reader/MushafPager.swift, MushafPageView.swift).
+Find the real root cause by reading apps/android/app/src/main/java/com/shazlka/qiraat/reader/{ReaderScreen,MushafPageCanvas}.kt and the layout code, and by inspecting the phone's metrics with `adb -s RK8W602ZRBH shell wm size; wm density; settings get system font_scale; dumpsys window displays`. Fix so a portrait phone always shows exactly one page that fits the width with the safe margins of the iOS layout, whatever the density/font scale.
+Phone rules: the phone is currently unlocked. You may launch the app (`adb -s RK8W602ZRBH shell am start -n com.shazlka.qiraat/.MainActivity`), take screenshots (`adb -s RK8W602ZRBH exec-out screencap -p`), install builds, and swipe pages with `adb shell input swipe`. Do NOT change any phone setting (display size, font scale, density, locale), do NOT unlock/lock/PIN/bypass the lock, do NOT touch any other app. Always pass -s RK8W602ZRBH (an emulator may also exist).
+Toolchain: export JAVA_HOME=/opt/homebrew/opt/openjdk@17 PATH=$JAVA_HOME/bin:$PATH ANDROID_HOME=/opt/homebrew/share/android-commandlinetools.
+</context>
+
+<scope>
+1. Diagnose with phone metrics, fix in apps/android only, add a unit test for any layout rule you change (e.g. page count / page width as a pure function of viewport dp).
+2. `cd apps/android && ./gradlew clean testDebugUnitTest assembleDebug` must pass (60+ tests).
+3. Install on the phone, screenshot pages 1, 28, 300 and one swipe-next into apps/android/verification/ (names phone_*.png), look at them, and report what you saw. Also test the other four tabs on the phone with one screenshot each and report any clipping.
+4. Copy the final APK to apps/android/dist/Qiraat-android-debug.apk.
+</scope>
+
+<out_of_scope>
+apps/ios, src/, packages/. Do NOT commit. Add an entry to the root CHANGELOG.md and CLAUDE.md changelog sections (repo rule).
+</out_of_scope>
+
+<report>
+End with "ROOT CAUSE", "BEFORE/AFTER ON PHONE" (screenshot paths), "GATES", "OPEN ISSUES".
+</report>

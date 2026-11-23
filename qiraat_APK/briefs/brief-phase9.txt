@@ -1,0 +1,25 @@
+<task>
+Phase 9: stretch the Mushaf page lines vertically so the page fills the available height like the iOS app, removing the empty gaps (apps/android, package com.shazlka.qiraat). User request: "Stretch the rows on the page to fill the empty spaces".
+</task>
+
+<context>
+See apps/android/verification/user_phone_page26_gaps.jpg: real phone screenshot (Samsung SM-A245F 1080x2340) of a full text page (page 26, Al-Baqarah). The 15 lines are packed in the middle: there is a large empty band between the header (البقرة / الجزء · الحزب · الربع) and the first line, and another gap between the last line, the page number and the floating footer bar. On iOS the lines are stretched to use the full height ("full-stretched line spacing", see apps/ios/README.md rules and apps/ios/MushafCore/Sources/MushafCore/PageLayout.swift, apps/ios/Sources/Reader/MushafPageView.swift). Port the iOS vertical layout exactly: how line pitch is derived from the available page height (between header and page-number/footer), the top/bottom insets, how short pages (pages 1-2 centred block, surah-start pages with banner and basmala slots, last pages with fewer lines) are handled, and the page-number position.
+Rules: horizontal rules from earlier phases stay (single page fits width, no clipping). Do not shrink glyphs; only the vertical pitch/insets change. The footer is the floating iOS-style bar (reader/ReaderBottomBar.kt), which may overlay the bottom of the page or reserve space depending on the iOS behaviour: replicate iOS (auto-hide after 10 s setting included if iOS ties page height to it) and make sure the last line and the page number are never hidden behind the footer.
+Toolchain: export JAVA_HOME=/opt/homebrew/opt/openjdk@17 PATH=$JAVA_HOME/bin:$PATH ANDROID_HOME=/opt/homebrew/share/android-commandlinetools. The physical phone is probably disconnected; if `adb devices` lists it and it is unlocked you may install/screenshot, never change its settings or touch the lock. Otherwise use the emulator AVD qiraat_pixel_6 headless (emulator -avd qiraat_pixel_6 -no-window -no-audio -gpu swiftshader_indirect; configure its size to 1080x2340 / 450 dpi with `adb shell wm size`/`wm density` on the EMULATOR only, always pass -s <serial>, reset afterwards, shut it down at the end).
+</context>
+
+<scope>
+1. Fix the vertical layout in apps/android (likely core/PageLayout.kt, reader/MushafPageCanvas.kt, reader/ReaderScreen.kt), keeping every page type correct: normal 15-line pages, pages 1-2, surah-start pages, pages with fewer lines.
+2. Unit tests for the new vertical-pitch function across page types and viewport heights (e.g. 1080x2340 at 450 dpi, 1080x2400, small 720x1280 screens, tablets).
+3. `cd apps/android && ./gradlew clean testDebugUnitTest assembleDebug` must pass (68+ tests).
+4. Screenshots into apps/android/verification/ (stretch_*.png): pages 1, 2, 26, 300, 604 and a surah-start page (e.g. 50), on the 1080x2340 emulator. LOOK at them; confirm no gaps, no overlap with the footer, page number visible, glyphs not clipped. Report concretely.
+5. Copy the final APK to apps/android/dist/Qiraat-android-debug.apk and to ~/Library/CloudStorage/GoogleDrive-amr.eshazly@gmail.com/My Drive/Qiraat-android-debug.apk (overwrite).
+</scope>
+
+<out_of_scope>
+apps/ios, src/, packages/. Do NOT commit. Add an entry to the root CHANGELOG.md and CLAUDE.md changelog sections (repo rule).
+</out_of_scope>
+
+<report>
+End with "ROOT CAUSE / iOS RULE PORTED", "BEFORE/AFTER" (screenshot paths), "GATES", "OPEN ISSUES".
+</report>

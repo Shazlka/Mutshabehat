@@ -1,0 +1,27 @@
+<task>
+Phase 4 of the Android port in apps/android (Kotlin/Jetpack Compose, package com.shazlka.qiraat): port reading statistics + khatma, bookmarks, memorization (dashboard, update sheet, history), settings, and local backup/restore from the iOS app. Phases 1-3 (reader, Qiraat, mutashabihat, search, footer tabs) already build and are committed; read apps/android/README.md and the existing code first.
+</task>
+
+<context>
+- Repo /Users/amrelshazly/Projects/qiraat-ios. iOS reference: apps/ios/Sources/Reading/** (ReadingStatisticsView, khatma, bookmarks, daily progress chart), apps/ios/Sources/Memorization/**, apps/ios/Sources/Backup/**, apps/ios/Sources/Shared/** (language, appearance, haptics), settings screens (grep for Settings), and apps/ios/MushafCore/Sources/MushafCore/Memorization/, Backup/, Storage/ plus apps/ios/Sources/UserStores.swift. Port rules/semantics faithfully; Arabic strings follow apps/ios/Sources/Localizable.xcstrings (Arabic is source of truth, English where iOS has it).
+- Persist locally (Room or SQLite) behind interfaces; the Phase 3 mutashabihat store shows the pattern.
+- Toolchain: export JAVA_HOME=/opt/homebrew/opt/openjdk@17 PATH=$JAVA_HOME/bin:$PATH ANDROID_HOME=/opt/homebrew/share/android-commandlinetools. Build in apps/android with ./gradlew; Maven network is available.
+</context>
+
+<scope>
+1. Kotlin ports of reading-session tracking (dwell-based progress, daily streaks, khatma, manual surah logging), bookmarks, memorization model/store/dashboard logic, and the backup format (JSON export/import compatible with the iOS backup format where documented). JVM unit tests mirroring apps/ios/Tests ReadingTests/Memorization tests and MushafCore Memorization/Backup tests.
+2. Compose UI: reading statistics (with daily progress chart), khatma screen, bookmarks list, memorization dashboard/update sheet/history, settings (language, appearance/theme light/dark/sepia as iOS, reader options), backup export/import via the Storage Access Framework.
+3. Wire everything into the footer navigation and reader (bookmark toggle, session tracking).
+</scope>
+
+<out_of_scope>
+Cloud/iCloud/Supabase sync, review editor, page curl, release signing, anything under apps/ios, src/, packages/. Do NOT commit. Work only inside apps/android (plus the root CHANGELOG.md and CLAUDE.md changelog sections, per the repo's mandatory-changelog rule).
+</out_of_scope>
+
+<verification>
+`cd apps/android && ./gradlew testDebugUnitTest assembleDebug` must pass. Report files created, APK path/size, what you could not port, and the gate output tails. No emulator exists; do not claim UI was visually verified.
+</verification>
+
+<report>
+End with "GATES" (command + PASS/FAIL) and "OPEN ISSUES".
+</report>
