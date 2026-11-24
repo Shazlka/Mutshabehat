@@ -3,6 +3,11 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## 2026-11-24 — Fix in-app sign-in rejected by the server (signed query decoding)
+
+- Sign-in and sign-up failed with "تعذر تسجيل الدخول" at the `oauth2/continue` step with `invalid_signature`. The server signs its login query with `+` for spaces; the app decoded it with `URLComponents`, which keeps a literal `+`, and sent it back as `%2B`. The query is now decoded like JavaScript's `URLSearchParams` (`+` is a space, `%2B` is a plus). Verified against the live server with the app's own client; the Android client already decoded it correctly.
+- Test: `CloudAuthTests.testSignedQueryTreatsPlusAsSpaceLikeURLSearchParams`.
+
 ## 2026-11-24 — Account details in Account & Sync, and a baseline loader for your history
 
 - Sync reads and writes every table by column name in one fixed order (`ProgressDataset.columns`) instead of `SELECT *`. A table keeps the column order it was created or migrated with, and an older iPhone database has `last_read_at` before `seconds_read` in `reading_days`, so another device would have received those two values swapped. The baseline exporter uses the same order. **A baseline uploaded before this change has the 53 `reading_days` rows swapped: regenerate it and upload again with `--replace`.**

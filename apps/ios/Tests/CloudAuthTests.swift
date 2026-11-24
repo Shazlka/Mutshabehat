@@ -162,6 +162,15 @@ final class CloudAuthTests: XCTestCase {
         XCTAssertTrue(ScriptedServer.requests.isEmpty)
     }
 
+    /// The server signs its query with `+` for spaces (URLSearchParams); it must be sent back as `+`, not `%2B`.
+    func testSignedQueryTreatsPlusAsSpaceLikeURLSearchParams() {
+        let url = URL(string: "https://auth.example.test/login?client_id=c&scope=openid+profile+email&plus=a%2Bb&sig=s%2Fg&ba_param=scope&ba_param=plus&other=x")
+        let query = CloudAuthClient.signedQuery(from: url) ?? ""
+        XCTAssertTrue(query.contains("scope=openid+profile+email"))
+        XCTAssertTrue(query.contains("plus=a%2Bb"))
+        XCTAssertFalse(query.contains("other="))
+    }
+
     func testFormEncodingMatchesURLSearchParams() {
         XCTAssertEqual(CloudAuthClient.formEncode("a b+c=d&é~*"), "a+b%2Bc%3Dd%26%C3%A9%7E*")
     }

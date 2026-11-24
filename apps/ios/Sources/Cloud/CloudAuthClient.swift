@@ -157,12 +157,22 @@ struct CloudAuthClient {
 
     /// The part of the login redirect's query the server signed (`sig`, the names listed in `ba_param`, and `ba_param`).
     static func signedQuery(from url: URL?) -> String? {
-        guard let items = url.flatMap({ URLComponents(url: $0, resolvingAgainstBaseURL: true) })?.queryItems,
-              items.contains(where: { $0.name == "sig" }) else { return nil }
-        let signedNames = Set(items.filter { $0.name == "ba_param" }.compactMap(\.value))
+        // Decode the query the way JavaScript's URLSearchParams does: `+` is a space, `%2B` is a plus. URLComponents
+        // would keep a literal `+`, and re-encoding it as `%2B` breaks the signature.
+        guard let raw = url?.query else { return nil }
+        let items: [(name: String, value: String)] = raw.split(separator: "&", omittingEmptySubsequences: true).map { pair in
+            let parts = pair.split(separator: "=", maxSplits: 1, omittingEmptySubsequences: false)
+            func decode(_ text: Substring) -> String {
+                let spaced = text.replacingOccurrences(of: "+", with: " ")
+                return spaced.removingPercentEncoding ?? spaced
+            }
+            return (decode(parts[0]), parts.count > 1 ? decode(parts[1]) : "")
+        }
+        guard items.contains(where: { $0.name == "sig" }) else { return nil }
+        let signedNames = Set(items.filter { $0.name == "ba_param" }.map(\.value))
         guard !signedNames.isEmpty else { return nil }
         return items.filter { $0.name == "sig" || $0.name == "ba_param" || signedNames.contains($0.name) }
-            .map { "\(formEncode($0.name))=\(formEncode($0.value ?? ""))" }.joined(separator: "&")
+            .map { "\(formEncode($0.name))=\(formEncode($0.value))" }.joined(separator: "&")
     }
 
     /// `application/x-www-form-urlencoded` encoding, matching JavaScript's `URLSearchParams`.
