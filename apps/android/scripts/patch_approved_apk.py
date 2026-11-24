@@ -1,0 +1,181 @@
+#!/usr/bin/env python3
+"""Put the in-app sign-in and the live sync engine into the approved Qiraat Cloud Sync APK (v4).
+
+The approved APK has no sources, so this patches its compiled code and changes nothing else:
+
+* `CloudAccount.openSignIn` calls `NativeSignIn.start` where it opened a Custom Tab. Email sign-in and sign-up
+  happen in an in-app dialog; Google still opens the browser.
+* `CloudAccount.sync` hands over to `SyncEngine.sync`, which replaces the approved sync (it ordered
+  `reading_deletions` by a column that does not exist, wrote an empty baseline hash and flagged first syncs as
+  conflicts). The account screen, conflict dialog and status text are untouched.
+* `MainActivity` runs `LiveSync.loop` where it synced once per resume, so the app syncs every 5 seconds while open.
+* `ProgressDataset` orders `reading_deletions` by its real key columns.
+
+The new Kotlin classes are compiled by Gradle (`assembleDebug`), merged by d8 into one extra dex (`classes12.dex`),
+and the two patched shards (`classes5.dex`, `classes6.dex`) replace the originals. Every other entry of the APK is
+copied byte for byte. The result is zip-aligned and signed with the given keystore.
+
+Usage:
+  ./gradlew assembleDebug
+  python3 scripts/patch_approved_apk.py --base ~/Downloads/Qiraat-Cloud-Sync-v4.apk --apktool apktool.jar \
+      --output dist/Qiraat-Cloud-Sync-v6.apk
+"""
+
+import argparse
+import os
+import re
+import subprocess
+import tempfile
+import zipfile
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+APP = HERE.parent / "app"
+CLOUD = "com/shazlka/qiraat/cloud"
+SDK = Path(os.environ.get("ANDROID_HOME", "/opt/homebrew/share/android-commandlinetools"))
+NEW_CLASSES = re.compile(
+    r"^(NativeSignIn|CloudAuth|HttpReply|HttpTransport|UrlConnectionTransport|LiveSync|SyncEngine|"
+    r"ComposableSingletons\$NativeSignIn)"
+)
+
+
+def run(*args, **kwargs):
+    subprocess.run([str(a) for a in args], check=True, **kwargs)
+
+
+def replace_once(path, old, new):
+    text = path.read_text()
+    if text.count(old) != 1:
+        raise ValueError(f"{path.name}: expected exactly one occurrence of {old[:70]!r}, found {text.count(old)}")
+    path.write_text(text.replace(old, new))
+
+
+def decode_shard(base, number, work, apktool):
+    reduced = work / f"shard{number}.apk"
+    with zipfile.ZipFile(base) as source, zipfile.ZipFile(reduced, "w") as out:
+        out.writestr("AndroidManifest.xml", source.read("AndroidManifest.xml"))
+        out.writestr("classes.dex", source.read(f"classes{number}.dex"))
+    target = work / f"shard{number}"
+    run(*apktool, "d", "-r", "-o", target, reduced, stdout=subprocess.DEVNULL)
+    return target
+
+
+def build_shard(project, work, apktool):
+    built = work / (project.name + "-built.apk")
+    run(*apktool, "b", project, "-o", built, stdout=subprocess.DEVNULL)
+    with zipfile.ZipFile(built) as archive:
+        return archive.read("classes.dex")
+
+
+def patch_cloud(shard):
+    smali = shard / "smali" / CLOUD
+    account = smali / "CloudAccount.smali"
+    # 1. Sign in natively instead of opening the browser (Google falls through to the browser).
+    replace_once(
+        account,
+        "    invoke-virtual {p1, v6}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V\n",
+        "    invoke-static {p0, p1, p2, v5}, Lcom/shazlka/qiraat/cloud/NativeSignIn;->start("
+        "Ljava/lang/Object;Landroid/content/Context;Ljava/lang/Enum;Landroid/net/Uri;)Z\n\n"
+        "    move-result v7\n\n    if-nez v7, :cond_native_sign_in\n\n"
+        "    invoke-virtual {p1, v6}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V\n\n"
+        "    :cond_native_sign_in\n",
+    )
+    # 2. Hand the sync over to the engine.
+    replace_once(
+        account,
+        '            "Ljava/lang/Object;"\n        }\n    .end annotation\n\n    move-object/from16 v1, p0\n\n'
+        "    move-object/from16 v2, p5\n\n    instance-of v0, v2, Lcom/shazlka/qiraat/cloud/CloudAccount$sync$1;",
+        '            "Ljava/lang/Object;"\n        }\n    .end annotation\n\n'
+        "    invoke-static/range {p0 .. p5}, Lcom/shazlka/qiraat/cloud/SyncEngine;->sync("
+        "Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;ZLkotlin/coroutines/Continuation;)"
+        "Ljava/lang/Object;\n\n    move-result-object v0\n\n    return-object v0\n\n"
+        "    move-object/from16 v1, p0\n\n    move-object/from16 v2, p5\n\n"
+        "    instance-of v0, v2, Lcom/shazlka/qiraat/cloud/CloudAccount$sync$1;",
+    )
+    # 3. reading_deletions has no `id` column: order it by its key.
+    replace_once(
+        smali / "ProgressDataset.smali",
+        '    const-string v0, "reading_deletions"\n\n    invoke-virtual {p1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z\n\n'
+        "    move-result v0\n\n    if-nez v0, :cond_7\n\n    goto :goto_0\n\n    .line 43\n    :cond_7\n    goto :goto_2\n",
+        '    const-string v0, "reading_deletions"\n\n    invoke-virtual {p1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z\n\n'
+        "    move-result v0\n\n    if-nez v0, :cond_deletions\n\n    goto :goto_0\n\n    :cond_deletions\n"
+        '    const-string v1, " ORDER BY kind, khatma_number, surah, ayah, page ASC"\n\n    goto :goto_2\n\n'
+        "    .line 43\n    :cond_7\n    goto :goto_2\n",
+    )
+
+
+def patch_main(shard):
+    path = shard / "smali" / "com/shazlka/qiraat" / "MainActivity$onCreate$1$1$1$1.smali"
+    replace_once(
+        path,
+        "    invoke-static/range {v3 .. v10}, Lcom/shazlka/qiraat/cloud/CloudAccount;->sync$default("
+        "Lcom/shazlka/qiraat/cloud/CloudAccount;Lcom/shazlka/qiraat/reader/ReaderViewModel;"
+        "Lcom/shazlka/qiraat/cloud/ProgressDataset;Lcom/shazlka/qiraat/cloud/CloudAccount$Resolution;Z"
+        "Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;\n",
+        "    invoke-static {v3, v4, v8}, Lcom/shazlka/qiraat/cloud/LiveSync;->loop("
+        "Ljava/lang/Object;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;\n",
+    )
+
+
+def merge_new_classes(work, build_tools, android_jar):
+    archive = APP / "build/intermediates/project_dex_archive/debug/dexBuilderDebug/out" / CLOUD
+    files = sorted(p for p in archive.glob("*.dex") if NEW_CLASSES.match(p.name))
+    if not files:
+        raise SystemExit("Run ./gradlew assembleDebug first: no compiled sign-in classes found")
+    out = work / "newdex"
+    out.mkdir()
+    run(build_tools / "d8", "--release", "--min-api", "26", "--lib", android_jar, "--output", out, *files)
+    return (out / "classes.dex").read_bytes()
+
+
+def assemble(base, replacements, additions, destination):
+    with zipfile.ZipFile(base) as source, zipfile.ZipFile(destination, "w") as out:
+        for entry in source.infolist():
+            if entry.filename.startswith("META-INF/") and entry.filename.endswith((".SF", ".RSA", ".DSA", ".EC", "MANIFEST.MF")):
+                continue
+            entry.extra = b""
+            out.writestr(entry, replacements.get(entry.filename, source.read(entry)))
+        for name, data in additions.items():
+            out.writestr(zipfile.ZipInfo(name), data, compress_type=zipfile.ZIP_DEFLATED)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--base", type=Path, required=True, help="the approved Qiraat Cloud Sync APK")
+    parser.add_argument("--apktool", type=Path, required=True, help="apktool jar")
+    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--java", type=Path, default=Path("java"))
+    parser.add_argument("--build-tools", type=Path, default=next(iter(sorted((SDK / "build-tools").glob("*"))[-1:]), None))
+    parser.add_argument("--android-jar", type=Path, default=SDK / "platforms/android-35/android.jar")
+    parser.add_argument("--keystore", type=Path, default=Path.home() / ".android/debug.keystore")
+    args = parser.parse_args()
+    apktool = (args.java, "-jar", args.apktool)
+
+    with tempfile.TemporaryDirectory(prefix="qiraat-v4-patch-") as directory:
+        work = Path(directory)
+        with zipfile.ZipFile(args.base) as source:
+            if "classes12.dex" in source.namelist():
+                raise SystemExit("classes12.dex already exists in the base APK")
+        cloud = decode_shard(args.base, 6, work, apktool)
+        main_shard = decode_shard(args.base, 5, work, apktool)
+        patch_cloud(cloud)
+        patch_main(main_shard)
+        replacements = {
+            "classes5.dex": build_shard(main_shard, work, apktool),
+            "classes6.dex": build_shard(cloud, work, apktool),
+        }
+        additions = {"classes12.dex": merge_new_classes(work, args.build_tools, args.android_jar)}
+        unsigned, aligned = work / "unsigned.apk", work / "aligned.apk"
+        assemble(args.base, replacements, additions, unsigned)
+        run(args.build_tools / "zipalign", "-P", "16", "-f", "4", unsigned, aligned)
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        if args.output.exists():
+            args.output.unlink()
+        run(args.build_tools / "apksigner", "sign", "--ks", args.keystore, "--ks-key-alias", "androiddebugkey",
+            "--ks-pass", "pass:android", "--key-pass", "pass:android", "--out", args.output, aligned)
+        run(args.build_tools / "apksigner", "verify", args.output)
+    print(f"wrote {args.output}")
+
+
+if __name__ == "__main__":
+    main()

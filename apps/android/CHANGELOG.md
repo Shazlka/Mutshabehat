@@ -1,6 +1,15 @@
 # Changelog
 
-## 2026-11-24 — In-app sign-in and sign-up, 5-second live sync (build 0.4.3-native-auth, versionCode 4)
+## 2026-11-24 — Approved APK v4 patched: in-app sign-in and sign-up, working live sync (`Qiraat-Cloud-Sync-v6.apk`)
+
+- Built from the approved `Qiraat-Cloud-Sync-v4.apk` (0.4.4-cloud-sync, versionCode 5), not from source: only `classes5.dex` and `classes6.dex` change and `classes12.dex` is added. Every other entry (reader, icon, banner, import/export, resources) is byte-identical. Reproduce with `scripts/patch_approved_apk.py`.
+- Sign-in and sign-up: the account screen's own buttons now open an in-app dialog (`NativeSignIn`) instead of a Custom Tab. It gets the authorization code through `CloudAuthClient` and passes it to the approved module's own `finishSignIn`, so token storage, the account card and setup behave as before. Google still uses the browser.
+- Sync: the approved sync failed for real accounts (`reading_deletions ORDER BY id` on a table with no `id`, an empty baseline hash after choosing the cloud copy, a conflict on a first memorization sync). `CloudAccount.sync` now runs `SyncEngine`, the algorithm used on iOS, and drives the same busy/error/conflict/last-sync state, so the screens and conflict dialog are unchanged.
+- Live sync: `LiveSync` replaces the single sync per resume with a sync every 5 seconds while the app is open, waiting for the reader's databases first so launch no longer shows a false error.
+- Verified on the emulator against the live Neon project: sign-up in the dialog, cloud change adopted by the app within 5 seconds, local change uploaded within one cycle, baseline equal to the cloud revision.
+- Signing: v4 was signed with a key that is not on this Mac, so v6 is signed with this machine's debug key. Uninstall v4 before installing v6 (progress that was synced stays in the cloud).
+
+## 2026-11-24 — In-app sign-in and sign-up, 5-second live sync (source build 0.4.3-native-auth, versionCode 4)
 
 - Account & Sync has a native email/password form (sign in or create account), matching iOS. No browser or Custom Tab opens: `CloudAuthClient` runs the Better Auth sign-in and OAuth continue/consent exchange in-app with an in-memory cookie jar. The password is never stored; tokens stay in the Keystore-encrypted file. Sign-out revokes the refresh token. Google remains the only browser path.
 - Foreground sync runs every 5 seconds (was 60).
