@@ -57,6 +57,21 @@ import kotlin.coroutines.intrinsics.suspendCoroutineUninterceptedOrReturn
 object NativeSignIn {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 
+    /** What the person typed, kept only while the account finishes signing in so it can show the email. */
+    @Volatile
+    private var profile: Pair<String, String?>? = null
+
+    /**
+     * Called by the patched `finishSignIn` with the `/v1/account` answer. The tokens carry no email or name, so the
+     * account module saved none; adding what the person typed lets it store and show them like any other account.
+     */
+    @JvmStatic
+    fun enrich(identity: org.json.JSONObject) {
+        val (email, name) = profile ?: return
+        if (identity.optString("email").isBlank()) identity.put("email", email)
+        if (name != null && identity.optString("name").isBlank()) identity.put("name", name)
+    }
+
     /** Returns true when the sign-in was handled natively; false means the caller should open the browser. */
     @JvmStatic
     fun start(account: Any, context: Context, mode: Enum<*>, uri: Uri): Boolean {
@@ -106,6 +121,7 @@ object NativeSignIn {
         }
         val callback = Uri.Builder().scheme("com.shazlka.qiraat").authority("cloud").path("/callback")
             .appendQueryParameter("code", code).appendQueryParameter("state", state).build()
+        profile = email.trim() to if (create) email.trim().substringBefore('@') else null
         return try {
             finish(account, callback)
             null
@@ -113,6 +129,8 @@ object NativeSignIn {
             throw cancelled
         } catch (_: Exception) {
             CloudAuthError.REJECTED.text
+        } finally {
+            profile = null
         }
     }
 

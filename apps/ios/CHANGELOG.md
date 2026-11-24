@@ -3,6 +3,11 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## 2026-11-24 — Account details in Account & Sync, and a baseline loader for your history
+
+- The signed-in Account & Sync screen now shows the account's name and email with the sync state. The email and name come from the in-app sign-in (the sign-in tokens carry neither) and are kept in the Keychain session; a token refresh keeps them, and a Google sign-in shows a short id instead.
+- Baseline tooling in `cloud/baseline/`: `export_snapshots.py` turns an app backup (`reading.sqlite`, `memorization.sqlite`, as found in the iCloud `Mushaf_Qiraat/Backups/latest` folder on the Mac Mini) into the exact sync snapshots, and `upload_baseline.mjs` signs in as you (asks for the password in the terminal, never stores it) and uploads them as the account's first cloud revision. It refuses to overwrite a dataset that already has cloud data unless `--replace` is passed. Dry-run against a throwaway account with a 3.6 MB synthetic khatma snapshot: accepted, and the overwrite guard held.
+
 ## 2026-11-24 — In-app sign-in and sign-up, 5-second live sync
 
 - Account & Sync now has a native email/password form (sign in or create account). No browser opens: `CloudAuthClient` runs the same Better Auth sign-in and OAuth continue/consent exchange the hosted page used, with an in-memory cookie jar, so the deployed Function and Neon Auth need no change. The password is never stored; tokens stay in the Keychain. Sign-out now also revokes the refresh token. Google is the only path that still opens a browser (provider requirement).

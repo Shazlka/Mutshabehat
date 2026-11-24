@@ -7,6 +7,7 @@
 - Sync: the approved sync failed for real accounts (`reading_deletions ORDER BY id` on a table with no `id`, an empty baseline hash after choosing the cloud copy, a conflict on a first memorization sync). `CloudAccount.sync` now runs `SyncEngine`, the algorithm used on iOS, and drives the same busy/error/conflict/last-sync state, so the screens and conflict dialog are unchanged.
 - Live sync: `LiveSync` replaces the single sync per resume with a sync every 5 seconds while the app is open, waiting for the reader's databases first so launch no longer shows a false error.
 - Verified on the emulator against the live Neon project: sign-up in the dialog, cloud change adopted by the app within 5 seconds, local change uploaded within one cycle, baseline equal to the cloud revision.
+- Account details: the account card shows the email and name. The tokens carry neither and the server's `/v1/account` returns only the id, so the sign-in dialog passes what was typed to the approved `finishSignIn`, which stores it like any other account. Signed in before this build, or with Google: the card keeps its short-id name until you sign in again with email.
 - Signing: v4 was signed with a key that is not on this Mac, so v6 is signed with this machine's debug key. Uninstall v4 before installing v6 (progress that was synced stays in the cloud).
 
 ## 2026-11-24 — In-app sign-in and sign-up, 5-second live sync (source build 0.4.3-native-auth, versionCode 4)

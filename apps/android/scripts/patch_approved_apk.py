@@ -80,6 +80,13 @@ def patch_cloud(shard):
         "    invoke-virtual {p1, v6}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V\n\n"
         "    :cond_native_sign_in\n",
     )
+    # 1b. The tokens carry no email or name, so give finishSignIn what the person typed to store and show.
+    replace_once(
+        account,
+        '    .line 290\n    .local v1, "identity":Lorg/json/JSONObject;\n',
+        '    .line 290\n    .local v1, "identity":Lorg/json/JSONObject;\n'
+        "    invoke-static {v1}, Lcom/shazlka/qiraat/cloud/NativeSignIn;->enrich(Lorg/json/JSONObject;)V\n\n",
+    )
     # 2. Hand the sync over to the engine.
     replace_once(
         account,

@@ -61,6 +61,19 @@ struct CloudAccountView: View {
                     Text("Google فقط يفتح صفحة تسجيل الدخول من Google.")
                 }
             } else {
+                Section {
+                    HStack(spacing: 14) {
+                        Image(systemName: "person.crop.circle.fill").font(.system(size: 40)).foregroundStyle(.green)
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text(account.displayName ?? "").font(.headline).accessibilityIdentifier("cloud-name")
+                            if let email = account.email {
+                                Text(email).font(.subheadline).foregroundStyle(.secondary).accessibilityIdentifier("cloud-email-shown")
+                            }
+                            Label(account.busy ? "جاري المزامنة..." : "متزامن", systemImage: account.busy ? "arrow.triangle.2.circlepath" : "checkmark.circle.fill")
+                                .font(.caption).foregroundStyle(account.busy ? Color.secondary : Color.green)
+                        }
+                    }
+                }
                 if isSetup {
                     Text("يمكنك نسخ تقدّم الضيف قبل فتح المصحف. إذا كان لديك تقدّم على جهاز آخر، اختر المتابعة لمزامنته.")
                     Button("متابعة", action: account.finishSetup)

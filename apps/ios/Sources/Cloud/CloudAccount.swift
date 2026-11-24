@@ -49,6 +49,8 @@ final class CloudAccount {
         let refreshToken: String?
         let expiry: Date
         let issuer: URL
+        var email: String? = nil
+        var name: String? = nil
     }
 
     private struct Remote: Codable {
@@ -75,6 +77,14 @@ final class CloudAccount {
     private var browser: ASWebAuthenticationSession?
     private let anchor = CloudBrowserAnchor()
     var accountID: String? { session?.accountID }
+    var email: String? { session?.email }
+    /// The name to show for the account: its name, else the part of the email before the @, else a short id.
+    var displayName: String? {
+        guard let session else { return nil }
+        if let name = session.name, !name.isEmpty { return name }
+        if let email = session.email, let local = email.split(separator: "@").first { return String(local) }
+        return "مستخدم Qiraat #\(session.accountID.prefix(6))"
+    }
     private(set) var preparing = false
     private(set) var busy = false
     private(set) var lastSync: Date?
@@ -126,7 +136,9 @@ final class CloudAccount {
             let client = CloudAuthClient(configuration: config, session: authSession)
             let code = try await client.authorize(email: email.trimmingCharacters(in: .whitespacesAndNewlines),
                                                   password: password, create: create, challenge: challenge, state: state)
-            try await completeSignIn(config, code: code, verifier: verifier)
+            let address = email.trimmingCharacters(in: .whitespacesAndNewlines)
+            try await completeSignIn(config, code: code, verifier: verifier, email: address,
+                                     name: create ? address.split(separator: "@").first.map(String.init) : nil)
         } catch is CancellationError {
         } catch let failure as CloudAuthError {
             self.error = failure.errorDescription
@@ -155,14 +167,15 @@ final class CloudAccount {
         }
     }
 
-    private func completeSignIn(_ config: CloudConfiguration, code: String, verifier: String) async throws {
+    private func completeSignIn(_ config: CloudConfiguration, code: String, verifier: String,
+                                email: String? = nil, name: String? = nil) async throws {
         let tokens = try await token(config, parameters: [
             "grant_type": "authorization_code", "code": code, "code_verifier": verifier, "redirect_uri": config.redirect,
         ])
         struct Identity: Decodable { let id: String }
         let data = try await request(config.origin.appending(path: "v1/account"), accessToken: tokens.access_token)
         let identity = try JSONDecoder().decode(Identity.self, from: data)
-        try saveSession(tokens, config: config, accountID: identity.id)
+        try saveSession(tokens, config: config, accountID: identity.id, email: email, name: name)
         preparing = needsSetup
     }
 
@@ -336,10 +349,13 @@ final class CloudAccount {
     }
 
     private func saveSession(_ tokens: Tokens, config: CloudConfiguration, accountID: String,
-                             fallbackRefresh: String? = nil) throws {
+                             fallbackRefresh: String? = nil, email: String? = nil, name: String? = nil) throws {
+        // A token refresh keeps the account details the person signed in with.
+        let known = session?.accountID == accountID ? session : nil
         let saved = Session(accountID: accountID, accessToken: tokens.access_token,
                             refreshToken: tokens.refresh_token ?? fallbackRefresh,
-                            expiry: Date().addingTimeInterval(TimeInterval(tokens.expires_in)), issuer: config.issuer)
+                            expiry: Date().addingTimeInterval(TimeInterval(tokens.expires_in)), issuer: config.issuer,
+                            email: email ?? known?.email, name: name ?? known?.name)
         let data = try JSONEncoder().encode(saved)
         let query = Self.keychainQuery
         let updated = SecItemUpdate(query as CFDictionary, [kSecValueData: data] as CFDictionary)
