@@ -84,8 +84,9 @@ private fun ReadyReader(model: ReaderViewModel, initialPage: Int) {
     var currentMushafPage by remember { mutableStateOf<MushafPage?>(null) }
     val isDark = isSystemInDarkTheme()
 
-    // Chrome visibility state: header and single bottom footer bar
-    var chromeVisible by remember { mutableStateOf(true) }
+    // Chrome visibility state: only the bottom footer bar hides; the header is always shown
+    val chromeState = remember { mutableStateOf(true) }
+    var chromeVisible by chromeState
 
     LaunchedEffect(pagerState.currentPage) {
         val page = pagerState.currentPage + 1
@@ -148,27 +149,21 @@ private fun ReadyReader(model: ReaderViewModel, initialPage: Int) {
                             }
                         }
 
-                        // Top Header (fixed height slot with smooth fade-in/out to prevent pager height jumps)
+                        // Top Header: always shown (only the footer hides and shows)
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(48.dp)
                         ) {
-                            androidx.compose.animation.AnimatedVisibility(
-                                visible = chromeVisible,
-                                enter = fadeIn(tween(200)),
-                                exit = fadeOut(tween(200))
-                            ) {
-                                ReaderHeader(
-                                    page = headerPage,
-                                    isBookmarked = model.readingTracker.isPageBookmarked(pagerState.currentPage + 1),
-                                    bannerStatusText = bannerStatus?.titleAr,
-                                    bannerStatusColor = bannerColor,
-                                    onToggleBookmark = {
-                                        model.togglePageBookmark(pagerState.currentPage + 1)
-                                    },
-                                )
-                            }
+                            ReaderHeader(
+                                page = headerPage,
+                                isBookmarked = model.readingTracker.isPageBookmarked(pagerState.currentPage + 1),
+                                bannerStatusText = bannerStatus?.titleAr,
+                                bannerStatusColor = bannerColor,
+                                onToggleBookmark = {
+                                    model.togglePageBookmark(pagerState.currentPage + 1)
+                                },
+                            )
                         }
 
                         HorizontalPager(
@@ -241,8 +236,8 @@ private fun ReadyReader(model: ReaderViewModel, initialPage: Int) {
                             }
                         }
 
-                        // Bottom space under paper to guarantee bar never clips page content
-                        Spacer(Modifier.height(76.dp))
+                        // Bottom space under paper to guarantee bar never clips page content; a tap on it shows or hides the footer
+                        Spacer(ReaderChromeTap.tapTarget(Modifier, chromeState).height(76.dp))
                     }
 
                     // Single iOS-Exact Floating Capsule Footer Bar

@@ -11,11 +11,13 @@ The approved APK has no sources, so this patches its compiled code and changes n
 * `MainActivity` runs `LiveSync.loop` where it synced once per resume, so the app syncs every 5 seconds while open.
 * `ProgressDataset` reads and writes the tables by column name (`SnapshotIO`), so the iPhone's older `reading_days`
   column order and Android's older `reading_deletions` table no longer break or corrupt the exchange.
+* The reader's header is always shown (only the footer hides), and a tap on the empty strip under the page shows or
+  hides the footer (`ReaderChromeTap`): the strip was a plain spacer, so a hidden footer could not be brought back.
 * `ReadingStatisticsScreen` hands over to `KhatmaStatsScreen` (`KhatmaStatsUi.kt`), the khatma statistics screen laid out
   and coloured like the iOS one (correct khatma percentage, tappable daily chart, compact surah rows).
 
 The new Kotlin classes are compiled by Gradle (`assembleDebug`), merged by d8 into one extra dex (`classes12.dex`),
-and the three patched shards (`classes5.dex`, `classes6.dex`, `classes9.dex`) replace the originals. Every other entry of the APK is
+and the four patched shards (`classes3.dex`, `classes5.dex`, `classes6.dex`, `classes9.dex`) replace the originals. Every other entry of the APK is
 copied byte for byte. The result is zip-aligned and signed with the given keystore.
 
 Usage:
@@ -41,6 +43,7 @@ NEW_CLASSES = re.compile(
     r"^(NativeSignIn|CloudAuth|HttpReply|HttpTransport|UrlConnectionTransport|LiveSync|SyncEngine|SnapshotIO|"
     r"ComposableSingletons\$NativeSignIn)"
 )
+READER_CLASSES = re.compile(r"^ReaderChromeTap")
 READING_CLASSES = re.compile(r"^(KhatmaStats|KhatmaTier|KhatmaHeat|KhatmaChart|KhatmaPlace|ComposableSingletons\$KhatmaStats)")
 
 
@@ -123,6 +126,27 @@ def patch_cloud(shard):
     )
 
 
+def patch_reader(shard):
+    """Header always visible; a tap on the spacer under the page toggles the footer (the chrome state is `p5`)."""
+    path = shard / "smali" / "com/shazlka/qiraat/reader" / "ReaderScreenKt.smali"
+    replace_once(
+        path,
+        "    invoke-static/range {p5 .. p5}, Lcom/shazlka/qiraat/reader/ReaderScreenKt;->ReadyReader$lambda$44("
+        "Landroidx/compose/runtime/MutableState;)Z\n\n    move-result v92\n",
+        "    invoke-static/range {p5 .. p5}, Lcom/shazlka/qiraat/reader/ReaderScreenKt;->ReadyReader$lambda$44("
+        "Landroidx/compose/runtime/MutableState;)Z\n\n    move-result v92\n\n    const/16 v92, 0x1\n",
+    )
+    replace_once(
+        path,
+        "    check-cast v14, Landroidx/compose/ui/Modifier;\n\n    const/16 v15, 0x4c\n",
+        "    check-cast v14, Landroidx/compose/ui/Modifier;\n\n"
+        "    move-object/from16 v15, p5\n\n"
+        "    invoke-static {v14, v15}, Lcom/shazlka/qiraat/reader/ReaderChromeTap;->tapTarget("
+        "Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/MutableState;)Landroidx/compose/ui/Modifier;\n\n"
+        "    move-result-object v14\n\n    const/16 v15, 0x4c\n",
+    )
+
+
 def patch_reading(shard):
     """The approved statistics screen hands over to the iOS-matched one (same parameters, so a plain forward)."""
     insert_after_annotations(
@@ -163,6 +187,7 @@ def merge_new_classes(work, build_tools, android_jar):
     archive = APP / "build/intermediates/project_dex_archive/debug/dexBuilderDebug/out" / "com/shazlka/qiraat"
     files = sorted(p for p in (archive / "cloud").glob("*.dex") if NEW_CLASSES.match(p.name))
     files += sorted(p for p in (archive / "reading").glob("*.dex") if READING_CLASSES.match(p.name))
+    files += sorted(p for p in (archive / "reader").glob("*.dex") if READER_CLASSES.match(p.name))
     if not files or not any(READING_CLASSES.match(p.name) for p in files):
         raise SystemExit("Run ./gradlew assembleDebug first: no compiled sign-in / statistics classes found")
     out = work / "newdex"
@@ -197,7 +222,7 @@ def check_packaged(work, patched_shards, new_dex, build_tools, base):
     for shard in patched_shards:
         for path in shard.rglob("*.smali"):
             called |= set(re.findall(
-                r"invoke-static[^\n]*L(com/shazlka/qiraat/(?:cloud/(?:NativeSignIn|SyncEngine|LiveSync|SnapshotIO)|reading/KhatmaStatsUiKt));",
+                r"invoke-static[^\n]*L(com/shazlka/qiraat/(?:cloud/(?:NativeSignIn|SyncEngine|LiveSync|SnapshotIO)|reading/KhatmaStatsUiKt|reader/ReaderChromeTap));",
                 path.read_text(),
             ))
     missing = sorted(called - packaged)
@@ -259,17 +284,20 @@ def main():
         cloud = decode_shard(args.base, 6, work, apktool)
         main_shard = decode_shard(args.base, 5, work, apktool)
         reading = decode_shard(args.base, 9, work, apktool)
+        reader = decode_shard(args.base, 3, work, apktool)
         patch_cloud(cloud)
         patch_main(main_shard)
         patch_reading(reading)
+        patch_reader(reader)
         replacements = {
             "classes5.dex": build_shard(main_shard, work, apktool),
             "classes6.dex": build_shard(cloud, work, apktool),
             "classes9.dex": build_shard(reading, work, apktool),
+            "classes3.dex": build_shard(reader, work, apktool),
         }
         additions = {"classes12.dex": merge_new_classes(work, args.build_tools, args.android_jar)}
         (work / "classes12.dex").write_bytes(additions["classes12.dex"])
-        check_packaged(work, [cloud, main_shard, reading], work / "classes12.dex", args.build_tools, args.base)
+        check_packaged(work, [cloud, main_shard, reading, reader], work / "classes12.dex", args.build_tools, args.base)
         unsigned, aligned = work / "unsigned.apk", work / "aligned.apk"
         assemble(args.base, replacements, additions, unsigned)
         run(args.build_tools / "zipalign", "-P", "16", "-f", "4", unsigned, aligned)

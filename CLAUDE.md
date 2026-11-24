@@ -38,6 +38,10 @@ React 19, Supabase (SSR + RLS), Tailwind v4, D3 (network graph only).
 
 # Changelog
 
+## 2026-11-24 — Android reader: header always shown, footer shows and hides from the empty strip
+
+- Only the footer hides now; the header stays. A tap on the empty area under the page shows the footer (it was not tappable). Files: `apps/android/app/src/main/java/com/shazlka/qiraat/reader/{ReaderScreen,ReaderChromeTap}.kt`, `apps/android/scripts/patch_approved_apk.py`. Details in `apps/android/CHANGELOG.md`.
+
 ## 2026-11-24 — Android khatma statistics match iOS
 
 - Android khatma percentage fixed (it read 0%: now counted in Mushaf pages like iOS), tappable daily chart with the day's ayahs / pages / juz', iOS-sized surah cards and the iOS palette and layout. Files: `apps/android/app/src/main/java/com/shazlka/qiraat/reading/KhatmaStatsUi.kt`, `ReadingUi.kt`, `apps/android/scripts/patch_approved_apk.py`. Details in `apps/android/CHANGELOG.md`.

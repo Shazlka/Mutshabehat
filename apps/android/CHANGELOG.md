@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-24 — Reader: the header always stays, and the empty strip under the page shows and hides the footer (`Qiraat-Cloud-Sync-v8.apk`)
+
+- Tapping the page used to hide the header and the footer together. Now only the footer hides; the header (surah, juz', page, memorization status, bookmark star) is always shown.
+- With the footer hidden, the empty strip where it was did nothing, so the only way back was to tap the page. That strip is a plain spacer that was zero wide in its column, so it could not be tapped. It is now full width and a tap on it shows the footer; a tap beside the footer capsule hides it again (`ReaderChromeTap`). The 10-second auto-hide still applies to the footer only.
+- Patched into the approved APK: `ReadyReader`'s header flag is forced on and the spacer gets the tap target; the new class goes into `classes12.dex` and `classes3.dex` is the fourth patched shard. Verified on the emulator and on the phone (hide by tapping the page, show by tapping the strip; the header stayed).
+
 ## 2026-11-24 — Android khatma statistics screen matches iOS (`Qiraat-Cloud-Sync-v7.apk`)
 
 - The khatma percentage showed 0%: it was read from a stored column that is never updated. It is now counted in Mushaf pages from the pages saved with each read ayah, like iOS (`KhatmaProgress`): below 100% until every ayah has been read. The summary also shows pages read and left, lifetime time, reading days, ayahs and completed khatmas.
