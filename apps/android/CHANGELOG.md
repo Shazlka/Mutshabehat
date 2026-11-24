@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-24 — Android khatma statistics screen matches iOS (`Qiraat-Cloud-Sync-v7.apk`)
+
+- The khatma percentage showed 0%: it was read from a stored column that is never updated. It is now counted in Mushaf pages from the pages saved with each read ayah, like iOS (`KhatmaProgress`): below 100% until every ayah has been read. The summary also shows pages read and left, lifetime time, reading days, ayahs and completed khatmas.
+- The daily chart is tappable: touch a bar to see that day's ayahs, pages or juz' and its reading time; touch again to clear. It also has the iOS metric picker (ayahs / pages / juz'), the 7 / 14 / 30 day menu, the average / total / peak summary and a daily history card.
+- Surah cards use the iOS compact row (completed rows are no longer taller), the iOS search field, filter chips with counts and swipe to complete or undo a surah; the continue-reading card names the surah and ayah.
+- Same palette, spacing and left-to-right layout as the iPhone screen (`KhatmaStatsUi.kt`), light and dark. The reading code is `khatmaPercent` (3 new tests; 95 unit tests pass).
+- The approved APK is patched the same way as before: `ReadingStatisticsScreen` forwards to the new screen, the new classes go into `classes12.dex`, and `classes9.dex` is the third patched shard. The patch script now also checks that every member the new code calls exists in the approved app.
+- Verified on the emulator (screen, chart tap, swipe to complete). Installed on the phone, not opened there because it was locked.
+
 ## 2026-11-24 — Approved APK v4 patched: in-app sign-in and sign-up, working live sync (`Qiraat-Cloud-Sync-v6.apk`)
 
 - Built from the approved `Qiraat-Cloud-Sync-v4.apk` (0.4.4-cloud-sync, versionCode 5), not from source: only `classes5.dex` and `classes6.dex` change and `classes12.dex` is added. Every other entry (reader, icon, banner, import/export, resources) is byte-identical. Reproduce with `scripts/patch_approved_apk.py`.

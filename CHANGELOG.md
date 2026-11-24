@@ -6,6 +6,10 @@
 - **Verification:** typecheck, `test:qiraat:review` 113/113, eslint unchanged (14 problems before and after on the four touched files). The React flows themselves have no unit tests here and were not exercised against the real database.
 - **Files:** `review/_components/{ReviewApp,ReviewEditorPane,MobileReviewEditorView,useReviewEditorDraft}.ts*`. **DB migration:** none.
 
+## 2026-11-24 — Android khatma statistics match iOS
+
+- Android khatma percentage fixed (it read 0%: now counted in Mushaf pages like iOS), tappable daily chart with the day's ayahs / pages / juz', iOS-sized surah cards and the iOS palette and layout. Files: `apps/android/app/src/main/java/com/shazlka/qiraat/reading/KhatmaStatsUi.kt`, `ReadingUi.kt`, `apps/android/scripts/patch_approved_apk.py`. Details in `apps/android/CHANGELOG.md`.
+
 ## 2026-11-24 — Cross-platform Qiraat progress sync
 
 - Android build 0.4.2-agy-cloud-sync applies account sync to the November 23 approved AGY APK, retaining its updated reader, app icon, illuminated banner, and manual khatma import and export. The merge script verifies the two approved input APKs before packaging.

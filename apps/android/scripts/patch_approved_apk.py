@@ -11,9 +11,11 @@ The approved APK has no sources, so this patches its compiled code and changes n
 * `MainActivity` runs `LiveSync.loop` where it synced once per resume, so the app syncs every 5 seconds while open.
 * `ProgressDataset` reads and writes the tables by column name (`SnapshotIO`), so the iPhone's older `reading_days`
   column order and Android's older `reading_deletions` table no longer break or corrupt the exchange.
+* `ReadingStatisticsScreen` hands over to `KhatmaStatsScreen` (`KhatmaStatsUi.kt`), the khatma statistics screen laid out
+  and coloured like the iOS one (correct khatma percentage, tappable daily chart, compact surah rows).
 
 The new Kotlin classes are compiled by Gradle (`assembleDebug`), merged by d8 into one extra dex (`classes12.dex`),
-and the two patched shards (`classes5.dex`, `classes6.dex`) replace the originals. Every other entry of the APK is
+and the three patched shards (`classes5.dex`, `classes6.dex`, `classes9.dex`) replace the originals. Every other entry of the APK is
 copied byte for byte. The result is zip-aligned and signed with the given keystore.
 
 Usage:
@@ -33,11 +35,13 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 APP = HERE.parent / "app"
 CLOUD = "com/shazlka/qiraat/cloud"
+READING = "com/shazlka/qiraat/reading"
 SDK = Path(os.environ.get("ANDROID_HOME", "/opt/homebrew/share/android-commandlinetools"))
 NEW_CLASSES = re.compile(
     r"^(NativeSignIn|CloudAuth|HttpReply|HttpTransport|UrlConnectionTransport|LiveSync|SyncEngine|SnapshotIO|"
     r"ComposableSingletons\$NativeSignIn)"
 )
+READING_CLASSES = re.compile(r"^(KhatmaStats|KhatmaTier|KhatmaHeat|KhatmaChart|KhatmaPlace|ComposableSingletons\$KhatmaStats)")
 
 
 def run(*args, **kwargs):
@@ -119,6 +123,19 @@ def patch_cloud(shard):
     )
 
 
+def patch_reading(shard):
+    """The approved statistics screen hands over to the iOS-matched one (same parameters, so a plain forward)."""
+    insert_after_annotations(
+        shard / "smali" / READING / "ReadingUiKt.smali",
+        ".method public static final ReadingStatisticsScreen(Lcom/shazlka/qiraat/reading/ReadingTracker;Ljava/util/List;"
+        "Ljava/util/Map;ILkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function0;"
+        "Landroidx/compose/runtime/Composer;I)V",
+        "    invoke-static/range {p0 .. p7}, Lcom/shazlka/qiraat/reading/KhatmaStatsUiKt;->KhatmaStatsScreen("
+        "Lcom/shazlka/qiraat/reading/ReadingTracker;Ljava/util/List;Ljava/util/Map;ILkotlin/jvm/functions/Function1;"
+        "Lkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;I)V\n\n    return-void\n\n",
+    )
+
+
 def insert_after_annotations(path, header, code):
     """Put `code` at the start of the method's body, right after its last .annotation block."""
     text = path.read_text()
@@ -143,28 +160,72 @@ def patch_main(shard):
 
 
 def merge_new_classes(work, build_tools, android_jar):
-    archive = APP / "build/intermediates/project_dex_archive/debug/dexBuilderDebug/out" / CLOUD
-    files = sorted(p for p in archive.glob("*.dex") if NEW_CLASSES.match(p.name))
-    if not files:
-        raise SystemExit("Run ./gradlew assembleDebug first: no compiled sign-in classes found")
+    archive = APP / "build/intermediates/project_dex_archive/debug/dexBuilderDebug/out" / "com/shazlka/qiraat"
+    files = sorted(p for p in (archive / "cloud").glob("*.dex") if NEW_CLASSES.match(p.name))
+    files += sorted(p for p in (archive / "reading").glob("*.dex") if READING_CLASSES.match(p.name))
+    if not files or not any(READING_CLASSES.match(p.name) for p in files):
+        raise SystemExit("Run ./gradlew assembleDebug first: no compiled sign-in / statistics classes found")
     out = work / "newdex"
     out.mkdir()
     run(build_tools / "d8", "--release", "--min-api", "26", "--lib", android_jar, "--output", out, *files)
     return (out / "classes.dex").read_bytes()
 
 
-def check_packaged(work, patched_shards, new_dex, build_tools):
-    """Every class the patches call must exist in the new dex: a missing one only fails on the device, as an Error."""
-    dump = subprocess.run([str(build_tools / "dexdump"), "-f", str(new_dex)], capture_output=True, text=True,
-                          errors="replace").stdout
-    packaged = set(re.findall(r"Class descriptor\s+: 'L(com/shazlka/qiraat/cloud/[^;']+);'", dump))
+def dex_classes(build_tools, dex):
+    dump = subprocess.run([str(build_tools / "dexdump"), "-f", str(dex)], capture_output=True, text=True, errors="replace").stdout
+    classes, methods, owner, name = set(), set(), None, None
+    for line in dump.splitlines():
+        text = line.strip()
+        if text.startswith("Class descriptor"):
+            classes.add(text.split("'")[1])
+        elif text.startswith("#") and "(in L" in text:
+            owner = text.split("(in ")[1].rstrip(")")
+        elif text.startswith("name") and owner:
+            name = text.split("'")[1]
+        elif text.startswith("type") and owner and name:
+            methods.add((owner, name, text.split("'")[1]))
+            name = None
+    return classes, methods
+
+
+def check_packaged(work, patched_shards, new_dex, build_tools, base):
+    """Every class the patches call must exist in the new dex, and everything the new dex calls in the approved app must
+    exist there with the same signature: a missing one only fails on the device, as an Error."""
+    classes, methods = dex_classes(build_tools, new_dex)
+    packaged = {c[1:-1] for c in classes}
     called = set()
     for shard in patched_shards:
         for path in shard.rglob("*.smali"):
-            called |= set(re.findall(r"invoke-static[^\n]*L(com/shazlka/qiraat/cloud/(?:NativeSignIn|SyncEngine|LiveSync|SnapshotIO));", path.read_text()))
+            called |= set(re.findall(
+                r"invoke-static[^\n]*L(com/shazlka/qiraat/(?:cloud/(?:NativeSignIn|SyncEngine|LiveSync|SnapshotIO)|reading/KhatmaStatsUiKt));",
+                path.read_text(),
+            ))
     missing = sorted(called - packaged)
     if missing:
         raise SystemExit(f"patched code calls classes that are not in the new dex: {missing}")
+
+    base_classes, base_methods = set(), set()
+    with zipfile.ZipFile(base) as archive:
+        for entry in archive.namelist():
+            if re.fullmatch(r"classes\d*\.dex", entry):
+                target = work / f"base-{entry}"
+                target.write_bytes(archive.read(entry))
+                found_classes, found_methods = dex_classes(build_tools, target)
+                base_classes |= found_classes
+                base_methods |= found_methods
+    own_classes, own_methods = classes, methods
+    dump = subprocess.run([str(build_tools / "dexdump"), "-d", str(new_dex)], capture_output=True, text=True, errors="replace").stdout
+    problems = set()
+    for owner, name, proto in re.findall(r",\s*(L[^;\s]+;)\.([^:\s]+):(\([^)]*\)\S+)\s+//\s+method@", dump):
+        if owner in own_classes or name in {"ordinal", "name", "hashCode", "equals", "toString", "compareTo", "getClass"}:
+            continue
+        if owner.startswith(("Lcom/shazlka/", "Landroidx/", "Lkotlin/", "Lkotlinx/")):
+            if (owner, name, proto) not in base_methods and (owner, name, proto) not in own_methods:
+                # Inherited and Object methods resolve through the class hierarchy; flag only a missing class or a member of ours.
+                if owner not in base_classes or owner.startswith("Lcom/shazlka/"):
+                    problems.add(f"{owner}.{name}{proto}")
+    if problems:
+        raise SystemExit("the new dex calls members the approved app does not have:\n  " + "\n  ".join(sorted(problems)))
 
 
 def assemble(base, replacements, additions, destination):
@@ -197,15 +258,18 @@ def main():
                 raise SystemExit("classes12.dex already exists in the base APK")
         cloud = decode_shard(args.base, 6, work, apktool)
         main_shard = decode_shard(args.base, 5, work, apktool)
+        reading = decode_shard(args.base, 9, work, apktool)
         patch_cloud(cloud)
         patch_main(main_shard)
+        patch_reading(reading)
         replacements = {
             "classes5.dex": build_shard(main_shard, work, apktool),
             "classes6.dex": build_shard(cloud, work, apktool),
+            "classes9.dex": build_shard(reading, work, apktool),
         }
         additions = {"classes12.dex": merge_new_classes(work, args.build_tools, args.android_jar)}
         (work / "classes12.dex").write_bytes(additions["classes12.dex"])
-        check_packaged(work, [cloud, main_shard], work / "classes12.dex", args.build_tools)
+        check_packaged(work, [cloud, main_shard, reading], work / "classes12.dex", args.build_tools, args.base)
         unsigned, aligned = work / "unsigned.apk", work / "aligned.apk"
         assemble(args.base, replacements, additions, unsigned)
         run(args.build_tools / "zipalign", "-P", "16", "-f", "4", unsigned, aligned)
