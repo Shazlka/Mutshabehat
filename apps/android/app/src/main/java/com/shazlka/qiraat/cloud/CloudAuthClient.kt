@@ -42,13 +42,17 @@ internal object UrlConnectionTransport : HttpTransport {
         val connection = URL(url).openConnection() as HttpURLConnection
         try {
             connection.instanceFollowRedirects = false
-            connection.connectTimeout = 15_000
-            connection.readTimeout = 30_000
+            connection.connectTimeout = 20_000
+            // A full khatma is several megabytes and the server takes a while to store it.
+            connection.readTimeout = 120_000
             connection.requestMethod = method
             headers.forEach { (name, value) -> connection.setRequestProperty(name, value) }
             body?.let {
+                val bytes = it.toByteArray()
                 connection.doOutput = true
-                connection.outputStream.use { stream -> stream.write(it.toByteArray()) }
+                // Stream the body instead of buffering a second copy in memory.
+                connection.setFixedLengthStreamingMode(bytes.size)
+                connection.outputStream.use { stream -> stream.write(bytes) }
             }
             val status = connection.responseCode
             val stream = if (status >= 400) connection.errorStream else connection.inputStream

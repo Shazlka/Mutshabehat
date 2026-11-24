@@ -22,37 +22,9 @@ enum class ProgressDataset(val path: String, val title: String, val tables: List
         if (table == "khatmas") rows.any { it[4] == "completed" } else rows.isNotEmpty()
     }
 
-    fun capture(db: SQLiteDatabase): ProgressSnapshot = tables.associateWith { table ->
-        db.rawQuery("SELECT * FROM $table${filter(table)}", null).use { cursor ->
-            buildList {
-                while (cursor.moveToNext()) {
-                    add(List(cursor.columnCount) { column -> if (cursor.isNull(column)) null else cursor.getString(column) })
-                }
-            }.sortedWith { a, b ->
-                a.indices.firstNotNullOfOrNull { column ->
-                    a[column].orEmpty().compareTo(b[column].orEmpty()).takeIf { it != 0 }
-                } ?: 0
-            }
-        }
-    }
+    fun capture(db: SQLiteDatabase): ProgressSnapshot = SnapshotIO.capture(this, db)
 
-    fun replace(db: SQLiteDatabase, snapshot: ProgressSnapshot) {
-        require(snapshot.keys == tables.toSet())
-        db.beginTransaction()
-        try {
-            for (table in tables.asReversed()) db.execSQL("DELETE FROM $table${filter(table)}")
-            for (table in tables) {
-                for (row in snapshot.getValue(table)) {
-                    if (table == "memorization_meta") require(row.firstOrNull() in metadata)
-                    val placeholders = List(row.size) { "?" }.joinToString(",")
-                    db.execSQL("INSERT INTO $table VALUES ($placeholders)", row.toTypedArray())
-                }
-            }
-            db.setTransactionSuccessful()
-        } finally {
-            db.endTransaction()
-        }
-    }
+    fun replace(db: SQLiteDatabase, snapshot: ProgressSnapshot) = SnapshotIO.replace(this, db, snapshot)
 
     fun decode(value: JSONObject): ProgressSnapshot {
         require(value.keys().asSequence().toSet() == tables.toSet())
@@ -77,12 +49,7 @@ enum class ProgressDataset(val path: String, val title: String, val tables: List
 
     fun fingerprint(snapshot: ProgressSnapshot): String = sha256(encode(snapshot).toString())
 
-    private fun filter(table: String): String =
-        if (table == "memorization_meta") " WHERE key IN ('milestones_seen','quran_completed_at')" else ""
-
     companion object {
-        private val metadata = setOf("milestones_seen", "quran_completed_at")
-
         internal fun sha256(value: String): String = MessageDigest.getInstance("SHA-256")
             .digest(value.toByteArray()).joinToString("") { "%02x".format(it) }
     }

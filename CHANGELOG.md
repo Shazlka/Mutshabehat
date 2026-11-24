@@ -6,6 +6,13 @@
 - **Verification:** typecheck, `test:qiraat:review` 113/113, eslint unchanged (14 problems before and after on the four touched files). The React flows themselves have no unit tests here and were not exercised against the real database.
 - **Files:** `review/_components/{ReviewApp,ReviewEditorPane,MobileReviewEditorView,useReviewEditorDraft}.ts*`. **DB migration:** none.
 
+## 2026-11-24 — Cross-platform Qiraat progress sync
+
+- Android build 0.4.2-agy-cloud-sync applies account sync to the November 23 approved AGY APK, retaining its updated reader, app icon, illuminated banner, and manual khatma import and export. The merge script verifies the two approved input APKs before packaging.
+- Android build 0.4.1-cloud-sync increments the package version to 2 and packages account sync on the approved Android reader baseline.
+- Added account-scoped sync for khatma, reading activity, memorization, review history, and goals across iOS and Android. Added email registration, email sign-in, and development Google sign-in through Neon Auth.
+- Added a dedicated Neon development database and Function. Progress is isolated by account in PostgreSQL and in the apps' local SQLite files. Guest progress can be copied into an empty account dataset. Concurrent changes prompt for a choice before replacing either version.
+
 ## 2026-10-05 — Review editor: nquran differences match whole words in their own ayah (no more «آل» on «البحر»), ميم الجمع only on its own word
 - **Owner report:** on «ٱلْبَحْرَ» and «ذَٰلِكُم» the panel offered the nquran difference «آل»; on «وَفِى» it offered «نساءكم وفي» with صلة ميم الجمع, which belongs to «نساءكم» only. Repeated all over the Mushaf.
 - **Cause:** `rankDifferencesForWord` matched by substring after normalising (the location «ال» is inside «البحر» and «ذالكم»), without looking at the ayah, and a two-word location applied to both words.

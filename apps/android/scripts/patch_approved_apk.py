@@ -7,9 +7,10 @@ The approved APK has no sources, so this patches its compiled code and changes n
   happen in an in-app dialog; Google still opens the browser.
 * `CloudAccount.sync` hands over to `SyncEngine.sync`, which replaces the approved sync (it ordered
   `reading_deletions` by a column that does not exist, wrote an empty baseline hash and flagged first syncs as
-  conflicts). The account screen, conflict dialog and status text are untouched.
+  conflicts, and its `SELECT *` exchange failed on the older database layouts). The account screen, conflict dialog and status text are untouched.
 * `MainActivity` runs `LiveSync.loop` where it synced once per resume, so the app syncs every 5 seconds while open.
-* `ProgressDataset` orders `reading_deletions` by its real key columns.
+* `ProgressDataset` reads and writes the tables by column name (`SnapshotIO`), so the iPhone's older `reading_days`
+  column order and Android's older `reading_deletions` table no longer break or corrupt the exchange.
 
 The new Kotlin classes are compiled by Gradle (`assembleDebug`), merged by d8 into one extra dex (`classes12.dex`),
 and the two patched shards (`classes5.dex`, `classes6.dex`) replace the originals. Every other entry of the APK is
@@ -34,7 +35,7 @@ APP = HERE.parent / "app"
 CLOUD = "com/shazlka/qiraat/cloud"
 SDK = Path(os.environ.get("ANDROID_HOME", "/opt/homebrew/share/android-commandlinetools"))
 NEW_CLASSES = re.compile(
-    r"^(NativeSignIn|CloudAuth|HttpReply|HttpTransport|UrlConnectionTransport|LiveSync|SyncEngine|"
+    r"^(NativeSignIn|CloudAuth|HttpReply|HttpTransport|UrlConnectionTransport|LiveSync|SyncEngine|SnapshotIO|"
     r"ComposableSingletons\$NativeSignIn)"
 )
 
@@ -99,16 +100,33 @@ def patch_cloud(shard):
         "    move-object/from16 v1, p0\n\n    move-object/from16 v2, p5\n\n"
         "    instance-of v0, v2, Lcom/shazlka/qiraat/cloud/CloudAccount$sync$1;",
     )
-    # 3. reading_deletions has no `id` column: order it by its key.
-    replace_once(
-        smali / "ProgressDataset.smali",
-        '    const-string v0, "reading_deletions"\n\n    invoke-virtual {p1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z\n\n'
-        "    move-result v0\n\n    if-nez v0, :cond_7\n\n    goto :goto_0\n\n    .line 43\n    :cond_7\n    goto :goto_2\n",
-        '    const-string v0, "reading_deletions"\n\n    invoke-virtual {p1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z\n\n'
-        "    move-result v0\n\n    if-nez v0, :cond_deletions\n\n    goto :goto_0\n\n    :cond_deletions\n"
-        '    const-string v1, " ORDER BY kind, khatma_number, surah, ayah, page ASC"\n\n    goto :goto_2\n\n'
-        "    .line 43\n    :cond_7\n    goto :goto_2\n",
+    # 3. Read and write the tables by column name (SnapshotIO): the approved code used SELECT * / INSERT ... VALUES, which
+    #    depends on each install's column order and cannot cope with Android's older reading_deletions table.
+    dataset = smali / "ProgressDataset.smali"
+    insert_after_annotations(
+        dataset,
+        ".method public final capture(Landroid/database/sqlite/SQLiteDatabase;)Ljava/util/Map;",
+        "    invoke-static {p0, p1}, Lcom/shazlka/qiraat/cloud/SnapshotIO;->capture("
+        "Lcom/shazlka/qiraat/cloud/ProgressDataset;Landroid/database/sqlite/SQLiteDatabase;)Ljava/util/Map;\n\n"
+        "    move-result-object v0\n\n    return-object v0\n\n",
     )
+    insert_after_annotations(
+        dataset,
+        ".method public final replace(Landroid/database/sqlite/SQLiteDatabase;Ljava/util/Map;)V",
+        "    invoke-static {p0, p1, p2}, Lcom/shazlka/qiraat/cloud/SnapshotIO;->replace("
+        "Lcom/shazlka/qiraat/cloud/ProgressDataset;Landroid/database/sqlite/SQLiteDatabase;Ljava/util/Map;)V\n\n"
+        "    return-void\n\n",
+    )
+
+
+def insert_after_annotations(path, header, code):
+    """Put `code` at the start of the method's body, right after its last .annotation block."""
+    text = path.read_text()
+    start = text.index(header)
+    end = text.index(".end method", start)
+    body = text[start:end]
+    marker = body.rindex("    .end annotation\n") + len("    .end annotation\n")
+    path.write_text(text[: start + marker] + "\n" + code + text[start + marker + 1 :])
 
 
 def patch_main(shard):
@@ -133,6 +151,20 @@ def merge_new_classes(work, build_tools, android_jar):
     out.mkdir()
     run(build_tools / "d8", "--release", "--min-api", "26", "--lib", android_jar, "--output", out, *files)
     return (out / "classes.dex").read_bytes()
+
+
+def check_packaged(work, patched_shards, new_dex, build_tools):
+    """Every class the patches call must exist in the new dex: a missing one only fails on the device, as an Error."""
+    dump = subprocess.run([str(build_tools / "dexdump"), "-f", str(new_dex)], capture_output=True, text=True,
+                          errors="replace").stdout
+    packaged = set(re.findall(r"Class descriptor\s+: 'L(com/shazlka/qiraat/cloud/[^;']+);'", dump))
+    called = set()
+    for shard in patched_shards:
+        for path in shard.rglob("*.smali"):
+            called |= set(re.findall(r"invoke-static[^\n]*L(com/shazlka/qiraat/cloud/(?:NativeSignIn|SyncEngine|LiveSync|SnapshotIO));", path.read_text()))
+    missing = sorted(called - packaged)
+    if missing:
+        raise SystemExit(f"patched code calls classes that are not in the new dex: {missing}")
 
 
 def assemble(base, replacements, additions, destination):
@@ -172,6 +204,8 @@ def main():
             "classes6.dex": build_shard(cloud, work, apktool),
         }
         additions = {"classes12.dex": merge_new_classes(work, args.build_tools, args.android_jar)}
+        (work / "classes12.dex").write_bytes(additions["classes12.dex"])
+        check_packaged(work, [cloud, main_shard], work / "classes12.dex", args.build_tools)
         unsigned, aligned = work / "unsigned.apk", work / "aligned.apk"
         assemble(args.base, replacements, additions, unsigned)
         run(args.build_tools / "zipalign", "-P", "16", "-f", "4", unsigned, aligned)

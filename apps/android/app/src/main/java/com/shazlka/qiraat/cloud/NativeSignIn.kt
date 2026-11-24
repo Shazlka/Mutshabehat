@@ -94,7 +94,10 @@ object NativeSignIn {
             setContent {
                 QiraatTheme {
                     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
-                        SignInForm(create, dialog::dismiss) { email, password, creating ->
+                        SignInForm(create, dialog::dismiss, onGoogle = {
+                            openBrowser(activity, uri)
+                            dialog.dismiss()
+                        }) { email, password, creating ->
                             submit(account, client, email, password, creating, challenge, state)
                         }
                     }
@@ -134,6 +137,20 @@ object NativeSignIn {
         }
     }
 
+    /**
+     * Google sign-in needs the provider's own page, which the approved module reached through the browser. The
+     * account already saved the pending sign-in before calling [start], so the browser round trip finishes through
+     * the app's callback link exactly as it did before.
+     */
+    private fun openBrowser(context: Context, uri: Uri) {
+        val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, uri)
+            .putExtra("android.support.customtabs.extra.TOOLBAR_COLOR", TOOLBAR_COLOR)
+            .putExtra("androidx.browser.customtabs.extra.TOOLBAR_COLOR", TOOLBAR_COLOR)
+        runCatching { context.startActivity(intent) }
+    }
+
+    private const val TOOLBAR_COLOR = -0xe3c5d9
+
     private fun text(account: Any, getter: String): String = account.javaClass.getMethod(getter).invoke(account) as String
 
     private suspend fun finish(account: Any, callback: Uri) {
@@ -145,6 +162,7 @@ object NativeSignIn {
     private fun SignInForm(
         initialCreate: Boolean,
         onClose: () -> Unit,
+        onGoogle: () -> Unit,
         onSubmit: suspend (String, String, Boolean) -> String?,
     ) {
         var creating by remember { mutableStateOf(initialCreate) }
@@ -196,6 +214,9 @@ object NativeSignIn {
                 }
                 TextButton(onClick = { creating = !creating; error = null }, enabled = !busy) {
                     Text(if (creating) "لديك حساب؟ سجّل الدخول" else "ليس لديك حساب؟ أنشئ حسابًا")
+                }
+                TextButton(onClick = onGoogle, enabled = !busy, modifier = Modifier.fillMaxWidth()) {
+                    Text("المتابعة بحساب Google")
                 }
                 TextButton(onClick = onClose, enabled = !busy, modifier = Modifier.fillMaxWidth()) { Text("إلغاء") }
             }

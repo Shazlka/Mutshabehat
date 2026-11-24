@@ -18,6 +18,31 @@ enum ProgressDataset: String, CaseIterable {
 
     var title: String { self == .khatma ? "الختمة" : "الحفظ" }
 
+    /// The columns of every synced table, in the one order the cloud format uses. They are read and written by name,
+    /// never with `SELECT *`: a table keeps the column order it was created or migrated with, and that differs between
+    /// installs (an older iPhone database has `last_read_at` before `seconds_read` in `reading_days`).
+    static let columns: [String: [String]] = [
+        "khatmas": ["id", "khatma_number", "started_at", "completed_at", "status", "percent_complete"],
+        "khatma_read_ayahs": ["khatma_id", "surah", "ayah", "page", "read_at"],
+        "reading_days": ["date_string", "ayahs_read", "pages_read", "seconds_read", "last_read_at"],
+        "reading_days_legacy": ["date_string", "ayahs_read", "pages_read", "seconds_read", "last_read_at"],
+        "reading_activity_events": ["id", "date_string", "ayahs_read", "pages_read", "seconds_read", "recorded_at"],
+        "reading_deletions": ["kind", "khatma_number", "surah", "ayah", "page", "deleted_at"],
+        "memorization_ayahs": ["surah", "ayah", "status", "review_strength", "is_learning", "first_memorized_at",
+                               "last_status_changed_at", "last_reviewed_at", "next_review_at", "review_count",
+                               "successful_review_count", "consecutive_successful_reviews", "error_count", "updated_at"],
+        "memorization_batches": ["id", "created_at", "kind", "label", "scope_json", "ayah_count", "device_id",
+                                 "counts_for_streak", "gain_ayahs", "undone_at", "undoes_batch_id"],
+        "memorization_events": ["id", "batch_id", "surah", "ayah", "at", "old_status", "new_status", "old_strength",
+                                "new_strength", "before_json", "after_json"],
+        "memorization_goals": ["id", "json"],
+        "memorization_meta": ["key", "value"],
+    ]
+
+    private static func list(_ table: String) -> String {
+        (columns[table] ?? []).map { "\"\($0)\"" }.joined(separator: ", ")
+    }
+
     func hasProgress(_ snapshot: ProgressSnapshot) -> Bool {
         tables.contains { table in
             switch table {
@@ -34,7 +59,7 @@ enum ProgressDataset: String, CaseIterable {
             let filter = table == "memorization_meta" ? " WHERE key IN ('milestones_seen','quran_completed_at')" : ""
             var statement: OpaquePointer?
             defer { sqlite3_finalize(statement) }
-            try check(sqlite3_prepare_v2(db, "SELECT * FROM \(table)\(filter)", -1, &statement, nil))
+            try check(sqlite3_prepare_v2(db, "SELECT \(Self.list(table)) FROM \(table)\(filter)", -1, &statement, nil))
             let count = sqlite3_column_count(statement)
             var rows: [[String?]] = []
             var status = sqlite3_step(statement)
@@ -67,10 +92,11 @@ enum ProgressDataset: String, CaseIterable {
                        !["milestones_seen", "quran_completed_at"].contains(row.first.flatMap { $0 } ?? "") {
                         throw CloudError.invalidData
                     }
+                    guard row.count == Self.columns[table]?.count else { throw CloudError.invalidData }
                     let placeholders = Array(repeating: "?", count: row.count).joined(separator: ",")
                     var statement: OpaquePointer?
                     defer { sqlite3_finalize(statement) }
-                    try check(sqlite3_prepare_v2(db, "INSERT INTO \(table) VALUES (\(placeholders))", -1, &statement, nil))
+                    try check(sqlite3_prepare_v2(db, "INSERT INTO \(table) (\(Self.list(table))) VALUES (\(placeholders))", -1, &statement, nil))
                     for (index, value) in row.enumerated() {
                         let slot = Int32(index + 1)
                         if let value {

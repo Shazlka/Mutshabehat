@@ -21,19 +21,35 @@ DATASETS = {
     "memorization": ("memorization.sqlite", ["memorization_ayahs", "memorization_batches", "memorization_events",
                                              "memorization_goals", "memorization_meta"]),
 }
-EXPECTED_COLUMNS = {
-    "khatmas": 6, "khatma_read_ayahs": 5, "reading_days": 5, "reading_days_legacy": 5,
-    "reading_activity_events": 6, "reading_deletions": 6,
-    "memorization_ayahs": 14, "memorization_batches": 11, "memorization_events": 11,
-    "memorization_goals": 2, "memorization_meta": 2,
+# The columns of every synced table in the one order the cloud format uses. They are read by name: a table keeps the
+# column order it was created or migrated with, and an older iPhone database has last_read_at before seconds_read in
+# reading_days, so SELECT * would hand other devices the two values swapped.
+COLUMNS = {
+    "khatmas": ["id", "khatma_number", "started_at", "completed_at", "status", "percent_complete"],
+    "khatma_read_ayahs": ["khatma_id", "surah", "ayah", "page", "read_at"],
+    "reading_days": ["date_string", "ayahs_read", "pages_read", "seconds_read", "last_read_at"],
+    "reading_days_legacy": ["date_string", "ayahs_read", "pages_read", "seconds_read", "last_read_at"],
+    "reading_activity_events": ["id", "date_string", "ayahs_read", "pages_read", "seconds_read", "recorded_at"],
+    "reading_deletions": ["kind", "khatma_number", "surah", "ayah", "page", "deleted_at"],
+    "memorization_ayahs": ["surah", "ayah", "status", "review_strength", "is_learning", "first_memorized_at",
+                           "last_status_changed_at", "last_reviewed_at", "next_review_at", "review_count",
+                           "successful_review_count", "consecutive_successful_reviews", "error_count", "updated_at"],
+    "memorization_batches": ["id", "created_at", "kind", "label", "scope_json", "ayah_count", "device_id",
+                             "counts_for_streak", "gain_ayahs", "undone_at", "undoes_batch_id"],
+    "memorization_events": ["id", "batch_id", "surah", "ayah", "at", "old_status", "new_status", "old_strength",
+                            "new_strength", "before_json", "after_json"],
+    "memorization_goals": ["id", "json"],
+    "memorization_meta": ["key", "value"],
 }
 META_KEYS = ("milestones_seen", "quran_completed_at")
 
 
 def capture(db, table):
-    columns = [row[1] for row in db.execute(f"PRAGMA table_info({table})")]
-    if len(columns) != EXPECTED_COLUMNS[table]:
-        raise SystemExit(f"{table}: {len(columns)} columns, the cloud expects {EXPECTED_COLUMNS[table]}")
+    present = {row[1] for row in db.execute(f"PRAGMA table_info({table})")}
+    columns = COLUMNS[table]
+    missing = [name for name in columns if name not in present]
+    if missing:
+        raise SystemExit(f"{table}: missing columns {missing}")
     where = " WHERE key IN ({})".format(",".join("?" * len(META_KEYS))) if table == "memorization_meta" else ""
     query = "SELECT {} FROM {}{}".format(", ".join(f'CAST("{c}" AS TEXT)' for c in columns), table, where)
     rows = [list(row) for row in db.execute(query, META_KEYS if where else ())]

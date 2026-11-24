@@ -5,6 +5,8 @@
 
 ## 2026-11-24 — Account details in Account & Sync, and a baseline loader for your history
 
+- Sync reads and writes every table by column name in one fixed order (`ProgressDataset.columns`) instead of `SELECT *`. A table keeps the column order it was created or migrated with, and an older iPhone database has `last_read_at` before `seconds_read` in `reading_days`, so another device would have received those two values swapped. The baseline exporter uses the same order. **A baseline uploaded before this change has the 53 `reading_days` rows swapped: regenerate it and upload again with `--replace`.**
+
 - The signed-in Account & Sync screen now shows the account's name and email with the sync state. The email and name come from the in-app sign-in (the sign-in tokens carry neither) and are kept in the Keychain session; a token refresh keeps them, and a Google sign-in shows a short id instead.
 - Baseline tooling in `cloud/baseline/`: `export_snapshots.py` turns an app backup (`reading.sqlite`, `memorization.sqlite`, as found in the iCloud `Mushaf_Qiraat/Backups/latest` folder on the Mac Mini) into the exact sync snapshots, and `upload_baseline.mjs` signs in as you (asks for the password in the terminal, never stores it) and uploads them as the account's first cloud revision. It refuses to overwrite a dataset that already has cloud data unless `--replace` is passed. Dry-run against a throwaway account with a 3.6 MB synthetic khatma snapshot: accepted, and the overwrite guard held.
 

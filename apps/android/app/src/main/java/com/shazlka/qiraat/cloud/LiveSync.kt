@@ -28,10 +28,10 @@ object LiveSync {
         waitUntilReady(model)
         while (true) {
             try {
-                SyncEngine.sync(account, model, null, null, false)
+                SyncEngine.background(account, model)
             } catch (cancelled: CancellationException) {
                 throw cancelled
-            } catch (_: Exception) {
+            } catch (_: Throwable) {
                 // The next tick tries again; the engine already reported the failure on the account.
             }
             delay(INTERVAL_MS)
