@@ -177,6 +177,12 @@ class MemorizationStore(
         onDataChanged?.invoke()
     }
 
+    fun reloadFromDatabase() {
+        records.clear()
+        records.putAll(database.loadRecords())
+        version++
+    }
+
     private fun reportNew(milestones: List<Milestone>): List<Milestone> {
         val seenRaw = database.meta(MILESTONES_SEEN_KEY) ?: ""
         val seen = seenRaw.split(',').filter { it.isNotBlank() }.toMutableSet()

@@ -37,16 +37,16 @@ fun ReadingStatisticsScreen(
     var searchQuery by remember { mutableStateOf("") }
     var showAddSessionDialog by remember { mutableStateOf(false) }
 
-    val overview = remember(tracker.totalAyahsRead, tracker.activeKhatma.id) {
+    val overview = remember(tracker.progressVersion, tracker.totalAyahsRead, tracker.activeKhatma.id) {
         tracker.readingStatsOverview()
     }
-    val weeklyDays = remember(tracker.totalAyahsRead) {
+    val weeklyDays = remember(tracker.progressVersion, tracker.totalAyahsRead) {
         tracker.currentWeekReadingDays()
     }
-    val recentDays = remember(tracker.totalAyahsRead) {
+    val recentDays = remember(tracker.progressVersion, tracker.totalAyahsRead) {
         tracker.db.allReadingDays()
     }
-    val surahsProgress = remember(tracker.totalAyahsRead, tracker.activeKhatma.id) {
+    val surahsProgress = remember(tracker.progressVersion, tracker.totalAyahsRead, tracker.activeKhatma.id) {
         tracker.surahProgressList(surahs)
     }
 

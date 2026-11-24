@@ -5,6 +5,11 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
 }
 
+fun publicConfig(name: String, default: String = ""): String =
+    providers.gradleProperty(name).orElse(default).get()
+        .replace("\\", "\\\\").replace("\"", "\\\"")
+        .let { "\"$it\"" }
+
 android {
     namespace = "com.shazlka.qiraat"
     compileSdk = 35
@@ -13,13 +18,22 @@ android {
         applicationId = "com.shazlka.qiraat"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.4.0-phase4"
+        versionCode = 4
+        versionName = "0.4.3-native-auth"
+
+        for (name in listOf("QIRAAT_CLOUD_ORIGIN", "QIRAAT_CLOUD_ISSUER", "QIRAAT_CLOUD_CLIENT_ID")) {
+            buildConfigField("String", name, publicConfig(name))
+        }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "QIRAAT_CLOUD_ORIGIN", publicConfig("QIRAAT_CLOUD_ORIGIN", "https://br-still-sunset-bgeylsq4-qiraatsync.compute.c-9.eu-central-1.aws.neon.tech"))
+            buildConfigField("String", "QIRAAT_CLOUD_ISSUER", publicConfig("QIRAAT_CLOUD_ISSUER", "https://ep-silent-frost-bglqosbx.neonauth.c-9.eu-central-1.aws.neon.tech/neondb/auth"))
+            buildConfigField("String", "QIRAAT_CLOUD_CLIENT_ID", publicConfig("QIRAAT_CLOUD_CLIENT_ID", "MrnWcXbCmpeSORVQYKQMXIolZygFSpNc"))
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
@@ -31,7 +45,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions { jvmTarget = "17" }
-    buildFeatures { compose = true }
+    buildFeatures {
+        compose = true
+        buildConfig = true
+    }
     testOptions {
         unitTests {
             isIncludeAndroidResources = true

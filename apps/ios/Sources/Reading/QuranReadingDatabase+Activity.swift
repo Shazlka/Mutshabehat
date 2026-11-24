@@ -275,7 +275,7 @@ extension QuranReadingDatabase {
                     if ayahs > 0 { seconds = ayahs * 20 }
                     else if pages > 0 { seconds = pages * 75 }
                 }
-                let lastRead = Self.isoFormatter.date(from: sqliteColumnText(stmt, 4)) ?? Date()
+                let lastRead = Self.parseReadingDate(sqliteColumnText(stmt, 4)) ?? Date()
                 records.append(ReadingDayRecord(dateString: dateStr, ayahsRead: ayahs, pagesRead: pages, secondsRead: seconds, lastReadAt: lastRead))
             }
         }

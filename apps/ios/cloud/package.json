@@ -1,0 +1,16 @@
+{
+  "name": "qiraat-mobile-cloud",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "@neon/auth": "^0.8.0",
+    "jose": "^6.0.0",
+    "pg": "^8.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}

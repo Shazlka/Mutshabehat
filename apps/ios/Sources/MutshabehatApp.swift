@@ -3,7 +3,13 @@ import UIKit
 
 @main
 struct MutshabehatApp: App {
-    @State private var library = MushafLibrary.load()
+    @State private var account = CloudAccount()
+
+    var body: some Scene {
+        WindowGroup {
+            AccountReader(account: account).id(account.accountID)
+        }
+    }
 
     init() {
 #if DEBUG
@@ -14,23 +20,40 @@ struct MutshabehatApp: App {
         }
 #endif
     }
+}
 
-    var body: some Scene {
-        WindowGroup {
+private struct AccountReader: View {
+    let account: CloudAccount
+    @State private var library: Result<MushafLibrary, Error>?
+
+    var body: some View {
+        Group {
             switch library {
             case let .success(library):
-                ReaderView(library: library)
+                if account.preparing {
+                    NavigationStack {
+                        CloudAccountView(account: account, library: library, isSetup: true)
+                    }
+                } else {
+                    ReaderView(library: library)
+                }
             case let .failure(error):
-                // Only reachable if the build shipped without its generated data (see project.yml).
                 ContentUnavailableView {
                     Label("تعذّر فتح بيانات المصحف", systemImage: "exclamationmark.triangle")
                 } description: {
                     Text(verbatim: error.localizedDescription)
                 } actions: {
-                    Button("إعادة المحاولة") { library = MushafLibrary.load() }
+                    Button("إعادة المحاولة") { load() }
                         .buttonStyle(.borderedProminent)
                 }
+            case nil:
+                ProgressView()
             }
         }
+        .task { if library == nil { load() } }
+    }
+
+    private func load() {
+        library = MushafLibrary.load(cloudAccount: account)
     }
 }

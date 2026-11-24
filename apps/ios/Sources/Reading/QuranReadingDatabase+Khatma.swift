@@ -20,7 +20,7 @@ extension QuranReadingDatabase {
                 let id = sqliteColumnText(stmt, 0)
                 let num = Int(sqlite3_column_int64(stmt, 1))
                 let startedStr = sqliteColumnText(stmt, 2)
-                let started = Self.isoFormatter.date(from: startedStr) ?? Date()
+                let started = Self.parseReadingDate(startedStr) ?? Date()
                 let pct = sqlite3_column_double(stmt, 5)
                 sqlite3_finalize(stmt)
                 return KhatmaRecord(id: id, khatmaNumber: num, startedAt: started, status: "active", percentComplete: pct)
@@ -318,7 +318,7 @@ extension QuranReadingDatabase {
                 let id = sqliteColumnText(selectStmt, 0)
                 let num = Int(sqlite3_column_int64(selectStmt, 1))
                 let startedStr = sqliteColumnText(selectStmt, 2)
-                let started = Self.isoFormatter.date(from: startedStr) ?? now
+                let started = Self.parseReadingDate(startedStr) ?? now
                 completedRecord = KhatmaRecord(id: id, khatmaNumber: num, startedAt: started, completedAt: now, status: "completed", percentComplete: 100.0)
             }
         }

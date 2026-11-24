@@ -14,6 +14,10 @@ enum MushafLibraryError: LocalizedError {
 /// a page is ~140 rows of SQLite, well under a millisecond, so there is no need for a background queue.
 @MainActor
 final class MushafLibrary {
+    let cloudAccount: CloudAccount?
+    let accountDirectory: URL?
+    let readingDatabase: QuranReadingDatabase
+    lazy var readingTracker = accountDirectory == nil ? ReadingTracker.shared : ReadingTracker(database: readingDatabase)
     let database: MushafDatabase
     let fonts: QCFFontStore
     let surahs: [Surah]
@@ -97,11 +101,22 @@ final class MushafLibrary {
 
     /// Backups and restores of the person's data, created together with the memorization store.
     private(set) lazy var backupController: BackupController? = {
-        guard let store = memorizationStore else { return nil }
+        guard accountDirectory == nil, let store = memorizationStore else { return nil }
         return BackupRuntime.makeController(library: self, store: store)
     }()
 
-    init(bundle: Bundle = .main, qiraatStore: QiraatStore? = nil) throws {
+    init(bundle: Bundle = .main, qiraatStore: QiraatStore? = nil, cloudAccount: CloudAccount? = nil) throws {
+        self.cloudAccount = cloudAccount
+        accountDirectory = cloudAccount?.directory
+        if var accountDirectory {
+            try FileManager.default.createDirectory(at: accountDirectory, withIntermediateDirectories: true)
+            var attributes = URLResourceValues()
+            attributes.isExcludedFromBackup = true
+            try accountDirectory.setResourceValues(attributes)
+            readingDatabase = QuranReadingDatabase(url: accountDirectory.appending(path: "mushaf_reading.sqlite"))
+        } else {
+            readingDatabase = .shared
+        }
         guard let databaseURL = bundle.url(forResource: "mushaf", withExtension: "sqlite") else {
             throw MushafLibraryError.missingResource("mushaf.sqlite")
         }
@@ -164,8 +179,8 @@ final class MushafLibrary {
         return UIFont.systemFont(ofSize: size, weight: .regular)
     }
 
-    static func load() -> Result<MushafLibrary, Error> {
-        Result { try MushafLibrary() }
+    static func load(cloudAccount: CloudAccount? = nil) -> Result<MushafLibrary, Error> {
+        Result { try MushafLibrary(cloudAccount: cloudAccount) }
     }
 
     /// The last pages read from SQLite. A page never changes, and the reader asks for the same few again and again

@@ -22,7 +22,7 @@ struct IndexSheet: View {
     let onSelect: (Int) -> Void
     /// Read for its data when the sheet opens and when a bookmark changes; not observed, so the reading statistics
     /// ticking in the background do not redraw the whole index.
-    private let tracker = ReadingTracker.shared
+    private var tracker: ReadingTracker { library.readingTracker }
     @State private var bookmarks: [QuranBookmark] = []
     @State private var tab = Tab.surahs
     @State private var surahFilter = SurahProgressFilter.all

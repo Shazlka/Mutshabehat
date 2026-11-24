@@ -19,7 +19,12 @@ struct ReaderView: View {
 #endif
         return library.qiraatReferences
     }
-    @StateObject private var tracker = ReadingTracker.shared
+    @StateObject private var tracker: ReadingTracker
+
+    init(library: MushafLibrary) {
+        self.library = library
+        _tracker = StateObject(wrappedValue: library.readingTracker)
+    }
     private let intentRouter = AppIntentRouter.shared
     @State private var page: Int = {
         if let p = LaunchHooks.intValue(after: "-page") { return clampPage(p) }
@@ -186,6 +191,13 @@ struct ReaderView: View {
             if qiraatSelection != nil || sideSelection != nil { refreshMarkedWords() }
         }
         .task(id: qiraat.enabled) { startQiraatBulkSync() }
+        .task(id: scenePhase) {
+            guard scenePhase == .active, library.accountDirectory != nil, let account = library.cloudAccount else { return }
+            while !Task.isCancelled {
+                await account.sync(library: library)
+                try? await Task.sleep(for: .seconds(CloudAccount.liveSyncInterval))
+            }
+        }
         .onChange(of: qiraat.hidesUsul, initial: true) { _, hidden in library.qiraat?.hidesUsul = hidden }
         .onChange(of: qiraat.hiddenUsulCategories, initial: true) { _, hidden in
             library.qiraat?.hiddenUsulCategories = hidden
@@ -194,7 +206,7 @@ struct ReaderView: View {
             refreshHeaderInfo()
             tracker.configureScreenAwake(enabled: keepScreenAwake, scenePhase: scenePhase)
             tracker.pageDidChange(to: page, library: library)
-            if ICloudDatabaseSyncService.shared.autoSyncEnabled {
+            if library.accountDirectory == nil, ICloudDatabaseSyncService.shared.autoSyncEnabled {
                 Task { await ICloudDatabaseSyncService.shared.automaticSync(library: library) }
             }
         }
@@ -206,7 +218,7 @@ struct ReaderView: View {
                 tracker.flushCurrentPageDwell(library: library)
             } else {
                 tracker.resumeCurrentPage(library: library)
-                if ICloudDatabaseSyncService.shared.autoSyncEnabled {
+                if library.accountDirectory == nil, ICloudDatabaseSyncService.shared.autoSyncEnabled {
                     Task { await ICloudDatabaseSyncService.shared.automaticSync(library: library) }
                 }
             }

@@ -6,7 +6,13 @@ struct BookmarksView: View {
     let onSelectBookmark: (QuranBookmark) -> Void
 
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var tracker = ReadingTracker.shared
+    @StateObject private var tracker: ReadingTracker
+
+    init(library: MushafLibrary, onSelectBookmark: @escaping (QuranBookmark) -> Void) {
+        self.library = library
+        self.onSelectBookmark = onSelectBookmark
+        _tracker = StateObject(wrappedValue: library.readingTracker)
+    }
     @State private var filter: BookmarkFilter = .all
     @State private var searchQuery: String = ""
     @State private var bookmarks: [QuranBookmark] = []

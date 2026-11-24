@@ -13,6 +13,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.shazlka.qiraat.backup.BackupSettingsScreen
+import com.shazlka.qiraat.cloud.CloudAccountScreen
 import com.shazlka.qiraat.core.QiraatFilter
 import com.shazlka.qiraat.core.UsulCategory
 import com.shazlka.qiraat.memorization.MemorizationHistoryScreen
@@ -27,6 +28,7 @@ private enum class SettingsSubScreen {
     BOOKMARKS,
     MEMORIZATION_HISTORY,
     BACKUP,
+    CLOUD_ACCOUNT,
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -82,6 +84,10 @@ fun SettingsScreen(
             )
             return
         }
+        SettingsSubScreen.CLOUD_ACCOUNT -> {
+            CloudAccountScreen(model) { subScreen = SettingsSubScreen.NONE }
+            return
+        }
         SettingsSubScreen.NONE -> Unit
     }
 
@@ -102,6 +108,16 @@ fun SettingsScreen(
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
+            item {
+                ElevatedCard(shape = RoundedCornerShape(12.dp)) {
+                    SettingsNavRow(
+                        title = "الحساب والمزامنة",
+                        subtitle = "مزامنة الختمة والحفظ بين أجهزتك",
+                        onClick = { subScreen = SettingsSubScreen.CLOUD_ACCOUNT },
+                    )
+                }
+            }
+
             // 1. Quran Reading & Khatma
             item {
                 SettingsSectionHeader("قراءة القرآن والختمة")

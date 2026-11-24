@@ -19,7 +19,7 @@ enum MemorizationRuntime {
             return store
         }
 #endif
-        return MemorizationStore(database: MemorizationDatabase(), index: index)
+        return MemorizationStore(database: MemorizationDatabase(url: library.accountDirectory?.appending(path: "mushaf_memorization.sqlite")), index: index)
     }
 
 #if DEBUG

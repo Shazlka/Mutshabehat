@@ -3,6 +3,8 @@ package com.shazlka.qiraat.reading
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
+import com.shazlka.qiraat.cloud.ProgressDataset
+import com.shazlka.qiraat.cloud.ProgressSnapshot
 import com.shazlka.qiraat.core.AyahKey
 import java.io.Closeable
 import java.io.File
@@ -148,6 +150,20 @@ class QuranReadingDatabase private constructor(
                 );
             """)
 
+            db.execSQL("""
+                CREATE TABLE IF NOT EXISTS reading_days_legacy (
+                    date_string TEXT PRIMARY KEY, ayahs_read INTEGER NOT NULL,
+                    pages_read INTEGER NOT NULL, seconds_read INTEGER NOT NULL, last_read_at TEXT NOT NULL
+                )
+            """)
+            db.execSQL("""
+                CREATE TABLE IF NOT EXISTS reading_deletions (
+                    kind TEXT NOT NULL, khatma_number INTEGER NOT NULL DEFAULT 0,
+                    surah INTEGER NOT NULL, ayah INTEGER NOT NULL DEFAULT 0,
+                    page INTEGER NOT NULL DEFAULT 0, deleted_at TEXT NOT NULL,
+                    PRIMARY KEY(kind, khatma_number, surah, ayah, page)
+                )
+            """)
             db.execSQL("""
                 CREATE TABLE IF NOT EXISTS reading_metadata (
                     key TEXT PRIMARY KEY,
@@ -664,6 +680,12 @@ class QuranReadingDatabase private constructor(
         reopened.execSQL("PRAGMA foreign_keys = ON;")
         setupTables(reopened)
         db = reopened
+    }
+
+    @Synchronized
+    fun cloudSnapshot(replacement: ProgressSnapshot? = null): ProgressSnapshot {
+        if (replacement != null) ProgressDataset.KHATMA.replace(db, replacement)
+        return ProgressDataset.KHATMA.capture(db)
     }
 
     override fun close() {

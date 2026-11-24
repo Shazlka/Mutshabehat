@@ -3,6 +3,27 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## 2026-11-24 — In-app sign-in and sign-up, 5-second live sync
+
+- Account & Sync now has a native email/password form (sign in or create account). No browser opens: `CloudAuthClient` runs the same Better Auth sign-in and OAuth continue/consent exchange the hosted page used, with an in-memory cookie jar, so the deployed Function and Neon Auth need no change. The password is never stored; tokens stay in the Keychain. Sign-out now also revokes the refresh token. Google is the only path that still opens a browser (provider requirement).
+- Arabic errors for wrong password, existing email, short password, rate limiting, no connection, and "verify your email" after sign-up.
+- Foreground sync runs every 5 seconds (was 60): an unchanged check is one small request, so edits on Android appear here within seconds and local edits upload as fast.
+- Tests: `CloudAuthTests` (8) cover the full flow, consent, sign-up verification, error mapping, state mismatch, validation, and form encoding. Files: `Sources/Cloud/CloudAuthClient.swift`, `CloudAccount.swift`, `CloudAccountView.swift`, `Reader/ReaderView.swift`, `Tests/CloudAuthTests.swift`.
+
+## 2026-11-24 — Cross-platform Qiraat progress sync
+
+- Added account-scoped sync for khatma, reading activity, memorization, review history, and goals across iOS and Android. Added email registration, email sign-in, and development Google sign-in through Neon Auth.
+- Added a dedicated Neon development database and Function. Progress is isolated by account in PostgreSQL and in the apps' local SQLite files. Guest progress can be copied into an empty account dataset. Concurrent changes prompt for a choice before replacing either version.
+
+## [Unreleased] — 2026-11-13 — Khatma statistics: daily reading chart (ayahs, pages, juz’), unit picker fixed
+- **New `DailyReadingProgressChartCard`** in `ReadingStatisticsView`: a Swift Charts bar chart of what was read each day, in ayahs, pages or juz’, over 7, 14 or 30 days, with the period's daily average, total and peak day.
+- **Fix, unit picker:** each option was an icon plus a text in an `HStack`, and a segmented picker makes every child view its own segment. It showed 6 segments (one truncated) and highlighted the wrong one (juz’ chosen, the pages icon lit). Each option is now one `Text`, as in every other segmented picker in the app.
+- **Fix, day selection:** `chartXSelection` cleared the day as soon as the finger lifted, so the «tap anywhere to reset» hint and its button never applied, and its drag competed with scrolling. A tap now selects a bar and keeps it; tapping it again or «إلغاء التحديد» clears it.
+- **Fix, juz’ value:** a juz’ is 604/30 pages (was 20) and 6236/30 ayahs (was 208), so a whole khatma reads 30, not 30.2.
+- **Fix, numbers:** one formatter for the summary, the day callout and the Y axis (was three copies); 5.96 no longer prints as «6.0»; the summary uses the same unit words as the callout.
+- **Review clean-up:** the points were rebuilt, with new `DateFormatter`s, about six times per render and once more per axis label; they are built once per render and the formatters are cached. Removed the unused `dayLabel` / `isToday` fields and an unused binding. The chosen unit and range are remembered (`reading.chart.metric`, `reading.chart.range`). Bars, the range menu and the summary have VoiceOver labels. «١٤ يوم» → «١٤ يومًا».
+- **Tests:** point building (every day of the range, zero days, records outside the range), juz’ conversion, period summary and axis height, formatting; 5 tests replace the earlier 3. `ReadingTests` pass on the simulator. Checked on the iPhone simulator: three segments, the right one highlighted, each unit redraws the chart, a tapped bar stays selected.
+
 ## [Unreleased] — 2026-11-12 — Module boundaries: a Shared folder, Qiraat no longer depends on Reader
 - **New `Sources/Shared/`** for code every feature uses and that uses no feature: `AppLanguage`, `MushafAppearance`, `MushafColors`, `Haptics`, `SearchDebounce`, the bar menus (`BarPopoverMenu`, `FooterMenuTouch`, `ChromeContrast`), `FlowLayout`, `AppEndpoints`, `ManifestNameGuard` and `LaunchHooks` (was at the top of `ReaderView.swift`). Checked by grep: no type from a feature folder is used in `Shared` or `Design`.
 - **Qiraat no longer references Reader:** the hub routes (`ReaderView.qiraatDestination`) moved to `Reader/ReaderView+QiraatRoutes.swift`; the Qiraat data archive (`QiraatBackupService`, used by backup, restore and sync in every build) moved out of the DEBUG developer-data screen into `Qiraat/QiraatArchiveService.swift`, and its error text has English.

@@ -1,6 +1,8 @@
 package com.shazlka.qiraat.reader
 
 import android.app.Application
+import com.shazlka.qiraat.cloud.CloudAccount
+import java.io.File
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -44,6 +46,17 @@ sealed interface ReaderState {
 }
 
 class ReaderViewModel(application: Application) : AndroidViewModel(application) {
+    val cloudAccount = CloudAccount.get(application)
+    val cloudDirectory = cloudAccount.directory
+
+    fun finishCloudSetup() {
+        cloudAccount.finishSetup()
+        if (!cloudAccount.preparing) onPageSelected(currentPageNumber)
+    }
+
+    private fun progressFile(name: String): File =
+        cloudDirectory?.let { File(it, name) } ?: getApplication<Application>().getDatabasePath(name)
+
     var state: ReaderState by mutableStateOf(ReaderState.Loading)
         private set
     var surahAyahCounts: Map<Int, Int> by mutableStateOf(emptyMap())
@@ -137,10 +150,10 @@ class ReaderViewModel(application: Application) : AndroidViewModel(application) 
                     keepScreenAwake = settingsPreferences.keepScreenAwake
                     autoHideFooter = settingsPreferences.autoHideFooter
 
-                    readingDb = QuranReadingDatabase.open(application.getDatabasePath("mushaf_reading.sqlite"))
+                    readingDb = QuranReadingDatabase.open(progressFile("mushaf_reading.sqlite"))
                     quranIndex = QuranIndex.load(db)
                     readingTracker = ReadingTracker(readingDb, viewModelScope)
-                    memorizationDb = SQLiteMemorizationDatabase.open(application.getDatabasePath("mushaf_memorization.sqlite"))
+                    memorizationDb = SQLiteMemorizationDatabase.open(progressFile("mushaf_memorization.sqlite"))
                     memorizationStore = MemorizationStore(memorizationDb, quranIndex)
                     backupService = BackupService(memorizationStore, readingDb, mutshabehatStore)
                 }
@@ -148,7 +161,7 @@ class ReaderViewModel(application: Application) : AndroidViewModel(application) 
                 val initialPage = ReadingPosition(preferences).page
                 currentPageNumber = initialPage
                 state = ReaderState.Ready(initialPage)
-                onPageSelected(initialPage)
+                if (!cloudAccount.preparing) onPageSelected(initialPage)
             }.onFailure { error ->
                 state = ReaderState.Failed(error.message ?: "تعذر فتح بيانات المصحف")
             }

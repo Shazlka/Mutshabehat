@@ -6,7 +6,13 @@ struct AddReadingSessionView: View {
     let onSave: () -> Void
 
     @Environment(\.dismiss) private var dismiss
-    @ObservedObject private var tracker = ReadingTracker.shared
+    @ObservedObject private var tracker: ReadingTracker
+
+    init(library: MushafLibrary, onSave: @escaping () -> Void) {
+        self.library = library
+        self.onSave = onSave
+        _tracker = ObservedObject(wrappedValue: library.readingTracker)
+    }
 
     enum RangeMode: String, CaseIterable, Identifiable {
         case bySurah = "bySurah"

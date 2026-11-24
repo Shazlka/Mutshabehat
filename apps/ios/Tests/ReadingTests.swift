@@ -863,6 +863,87 @@ final class ReadingTests: XCTestCase {
         XCTAssertEqual(heatDeep, .deep)
         XCTAssertEqual(heatDeep.textColor, .white)
     }
+
+    // MARK: - Daily Reading Progress Chart Tests
+
+    private func chartCalendar() -> Calendar {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone.autoupdatingCurrent
+        return calendar
+    }
+
+    private func chartDay(_ string: String) -> Date {
+        QuranReadingDatabase.dayFormatter.date(from: string)!
+    }
+
+    func testChartMetricFormatsValuesWithUnits() {
+        XCTAssertEqual(ReadingChartMetric.ayahs.formatted(201, isArabic: true), "٢٠١ آية")
+        XCTAssertEqual(ReadingChartMetric.ayahs.formatted(201, isArabic: false), "201 ayahs")
+        XCTAssertEqual(ReadingChartMetric.pages.formatted(32, isArabic: true), "٣٢ صفحة")
+        XCTAssertEqual(ReadingChartMetric.pages.formatted(4.57, isArabic: false), "4.6 pages")
+        XCTAssertEqual(ReadingChartMetric.juz.formatted(1.6, isArabic: true), "١٫٦ جزء")
+        XCTAssertEqual(ReadingChartMetric.juz.formatted(1.6, isArabic: false), "1.6 juz’")
+        // A value that rounds to a whole number shows no decimal.
+        XCTAssertEqual(ReadingChartMetric.juz.formatted(1.96, isArabic: false), "2 juz’")
+        XCTAssertEqual(ReadingChartMetric.juz.formatted(0, isArabic: true), "٠ جزء")
+    }
+
+    func testChartMetricAndRangeTitles() {
+        XCTAssertEqual(ReadingChartMetric.allCases.map { $0.title(isArabic: true) }, ["الآيات", "الصفحات", "الأجزاء"])
+        XCTAssertEqual(ReadingChartMetric.allCases.map { $0.title(isArabic: false) }, ["Ayahs", "Pages", "Juz’"])
+        XCTAssertEqual(ReadingChartRange.allCases.map(\.rawValue), [7, 14, 30])
+        XCTAssertEqual(ReadingChartRange.allCases.map { $0.title(isArabic: true) }, ["٧ أيام", "١٤ يومًا", "٣٠ يومًا"])
+        XCTAssertEqual(ReadingChartRange.allCases.map { $0.title(isArabic: false) }, ["7 Days", "14 Days", "30 Days"])
+    }
+
+    func testChartPointsCoverEveryDayOfTheRangeEndingToday() {
+        let records = [
+            ReadingDayRecord(dateString: "2026-11-13", ayahsRead: 201, pagesRead: 32, secondsRead: 2640, lastReadAt: Date()),
+            ReadingDayRecord(dateString: "2026-11-10", ayahsRead: 50, pagesRead: 0, secondsRead: 0, lastReadAt: Date()),
+            // Outside the 7-day window: must not appear.
+            ReadingDayRecord(dateString: "2026-11-01", ayahsRead: 999, pagesRead: 99, secondsRead: 9, lastReadAt: Date()),
+        ]
+        let points = DailyReadingChartPoint.points(
+            for: .days7, from: records, today: chartDay("2026-11-13").addingTimeInterval(3600 * 15), calendar: chartCalendar()
+        )
+
+        XCTAssertEqual(points.map(\.dateString), [
+            "2026-11-07", "2026-11-08", "2026-11-09", "2026-11-10", "2026-11-11", "2026-11-12", "2026-11-13",
+        ])
+        XCTAssertEqual(points.map(\.ayahs), [0, 0, 0, 50, 0, 0, 201])
+        XCTAssertEqual(points.map(\.pages), [0, 0, 0, 0, 0, 0, 32])
+        XCTAssertEqual(points.last?.seconds, 2640)
+        XCTAssertEqual(DailyReadingChartPoint.points(for: .days30, from: records, today: chartDay("2026-11-13"), calendar: chartCalendar()).count, 30)
+    }
+
+    func testChartJuzComesFromPagesAndFallsBackToAyahs() {
+        func point(ayahs: Int, pages: Int) -> DailyReadingChartPoint {
+            DailyReadingChartPoint(date: Date(), dateString: "2026-11-13", ayahs: ayahs, pages: pages, seconds: 0)
+        }
+        // The whole Mushaf is exactly 30 juz’ by either measure.
+        XCTAssertEqual(point(ayahs: 0, pages: 604).juz, 30, accuracy: 0.0001)
+        XCTAssertEqual(point(ayahs: 6236, pages: 0).juz, 30, accuracy: 0.0001)
+        // Pages win when both are logged.
+        XCTAssertEqual(point(ayahs: 6236, pages: 302).juz, 15, accuracy: 0.0001)
+        XCTAssertEqual(point(ayahs: 0, pages: 0).juz, 0)
+    }
+
+    func testChartSummaryTotalsAverageAndAxis() {
+        let records = [
+            ReadingDayRecord(dateString: "2026-11-13", ayahsRead: 100, pagesRead: 20, lastReadAt: Date()),
+            ReadingDayRecord(dateString: "2026-11-12", ayahsRead: 40, pagesRead: 8, lastReadAt: Date()),
+        ]
+        let points = DailyReadingChartPoint.points(for: .days7, from: records, today: chartDay("2026-11-13"), calendar: chartCalendar())
+
+        let pages = ReadingChartSummary(points: points, metric: .pages)
+        XCTAssertEqual(pages.total, 28)
+        XCTAssertEqual(pages.average, 4, accuracy: 0.0001)
+        XCTAssertEqual(pages.peak, 20)
+        XCTAssertEqual(pages.axisMaximum(for: .pages), 23)
+
+        let empty = ReadingChartSummary(points: DailyReadingChartPoint.points(for: .days7, from: [], today: chartDay("2026-11-13"), calendar: chartCalendar()), metric: .juz)
+        XCTAssertEqual(empty.total, 0)
+        XCTAssertEqual(empty.axisMaximum(for: .juz), 1)
+        XCTAssertEqual(ReadingChartSummary(points: [], metric: .ayahs).average, 0)
+    }
 }
-
-

@@ -3,6 +3,8 @@ package com.shazlka.qiraat.memorization
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
+import com.shazlka.qiraat.cloud.ProgressDataset
+import com.shazlka.qiraat.cloud.ProgressSnapshot
 import com.shazlka.qiraat.core.AyahKey
 import java.io.Closeable
 import java.io.File
@@ -526,6 +528,12 @@ class SQLiteMemorizationDatabase private constructor(
         reopened.execSQL("PRAGMA foreign_keys = ON;")
         setupTables(reopened)
         db = reopened
+    }
+
+    @Synchronized
+    fun cloudSnapshot(replacement: ProgressSnapshot? = null): ProgressSnapshot {
+        if (replacement != null) ProgressDataset.MEMORIZATION.replace(db, replacement)
+        return ProgressDataset.MEMORIZATION.capture(db)
     }
 
     override fun close() {

@@ -6,7 +6,13 @@ struct ReadingStatisticsView: View {
     let onSelectSurah: (Surah, Int) -> Void
 
     @Environment(\.dismiss) private var dismiss
-    @ObservedObject private var tracker = ReadingTracker.shared
+    @ObservedObject private var tracker: ReadingTracker
+
+    init(library: MushafLibrary, onSelectSurah: @escaping (Surah, Int) -> Void) {
+        self.library = library
+        self.onSelectSurah = onSelectSurah
+        _tracker = ObservedObject(wrappedValue: library.readingTracker)
+    }
     @State private var surahsProgress: [SurahProgress] = []
     @State private var overview: ReadingStatsOverview? = nil
     @State private var weeklyDays: [WeeklyDayStatus] = []
@@ -93,7 +99,10 @@ struct ReadingStatisticsView: View {
                         onAddSession: { showingAddSessionSheet = true }
                     )
 
-                    // 5. Daily Reading History (Hours and minutes per day)
+                    // 5. Daily Reading Progress Bar Chart (Ayahs, Pages, Juz')
+                    DailyReadingProgressChartCard(days: recentDays)
+
+                    // 6. Daily Reading History (Hours and minutes per day)
                     DailyReadingHistoryCard(days: recentDays)
                 }
 
@@ -241,7 +250,7 @@ struct ReadingStatisticsView: View {
         }
         .onAppear {
             loadData()
-            if ICloudDatabaseSyncService.shared.autoSyncEnabled {
+            if library.accountDirectory == nil, ICloudDatabaseSyncService.shared.autoSyncEnabled {
                 Task {
                     await ICloudDatabaseSyncService.shared.automaticSync(library: library)
                     await MainActor.run {
@@ -274,7 +283,7 @@ struct ReadingStatisticsView: View {
             tracker.markSurahCompleted(surahNumber, completed: willComplete, library: library)
             overview = tracker.statsOverview(library: library)
             weeklyDays = tracker.currentWeekReadingDays()
-            recentDays = QuranReadingDatabase.shared.allReadingDays()
+            recentDays = library.readingDatabase.allReadingDays()
         }
     }
 
@@ -282,6 +291,6 @@ struct ReadingStatisticsView: View {
         overview = tracker.statsOverview(library: library)
         surahsProgress = tracker.allSurahProgress(library: library)
         weeklyDays = tracker.currentWeekReadingDays()
-        recentDays = QuranReadingDatabase.shared.allReadingDays()
+        recentDays = library.readingDatabase.allReadingDays()
     }
 }

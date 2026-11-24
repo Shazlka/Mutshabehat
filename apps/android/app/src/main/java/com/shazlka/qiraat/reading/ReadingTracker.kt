@@ -48,6 +48,8 @@ class ReadingTracker(
         private set
     var bookmarkedAyahs: Set<AyahKey> by mutableStateOf(emptySet())
         private set
+    var progressVersion: Int by mutableIntStateOf(0)
+        private set
     var bookmarksVersion: Int by mutableIntStateOf(0)
         private set
 
@@ -62,6 +64,12 @@ class ReadingTracker(
     init {
         refreshStats()
         refreshBookmarksCache()
+    }
+
+    fun reloadFromDatabase() {
+        progressVersion++
+        activeKhatma = db.getOrCreateActiveKhatma()
+        refreshStats()
     }
 
     fun refreshStats() {

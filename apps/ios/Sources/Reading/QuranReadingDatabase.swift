@@ -31,6 +31,10 @@ public final class QuranReadingDatabase: @unchecked Sendable {
         return f
     }()
 
+    static func parseReadingDate(_ value: String) -> Date? {
+        isoFormatter.date(from: value) ?? (try? Date(value, strategy: .iso8601))
+    }
+
     static let dayFormatter: DateFormatter = {
         let f = DateFormatter()
         f.locale = Locale(identifier: "en_US_POSIX")

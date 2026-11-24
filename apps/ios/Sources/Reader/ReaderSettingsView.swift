@@ -32,6 +32,14 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
+                if let account = library.cloudAccount {
+                    NavigationLink {
+                        CloudAccountView(account: account, library: library)
+                    } label: {
+                        Label(appLanguage == .english ? "Account & Sync" : "الحساب والمزامنة",
+                              systemImage: "person.crop.circle")
+                    }
+                }
                 Section(appLanguage == .english ? "Quran Reading & Khatma" : "قراءة القرآن والختمة") {
                     NavigationLink {
                         ReadingStatisticsView(library: library) { surah, targetPage in
@@ -127,7 +135,7 @@ struct SettingsView: View {
                             .accessibilityIdentifier("qiraat-data-unavailable")
                     }
                 }
-                if AppFeatures.iCloudSyncEnabled {
+                if library.accountDirectory == nil, AppFeatures.iCloudSyncEnabled {
                     Section(appLanguage == .english ? "Cloud Synchronization" : "مزامنة السحابة") {
                         NavigationLink {
                             ICloudSyncSettingsView(library: library)
