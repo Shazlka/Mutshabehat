@@ -14,9 +14,12 @@ import com.shazlka.qiraat.reader.ReaderViewModel
 import com.shazlka.qiraat.reading.QuranReadingDatabase
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import java.io.File
+import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
@@ -30,6 +33,8 @@ class CloudAccount private constructor(private val context: Context) {
     val configured = origin.startsWith("https://") && issuer.startsWith("https://") && clientId.isNotBlank()
     private val redirect = "$origin/auth/mobile-callback"
     private val credentials = CloudCredentials(context)
+    private val refreshMutex = Mutex()
+    private val syncMutex = Mutex()
     private var session by mutableStateOf(restoreSession())
     private var pending: Pending? = null
     val id: String? get() = session?.id
@@ -170,15 +175,15 @@ class CloudAccount private constructor(private val context: Context) {
     }
 
     suspend fun sync(model: ReaderViewModel, dataset: ProgressDataset? = null, resolution: Resolution? = null,
-                     importGuest: Boolean = false) {
-        val localDirectory = directory ?: return
-        if (busy || localDirectory != model.cloudDirectory) return
+                     importGuest: Boolean = false) = syncMutex.withLock {
+        val localDirectory = directory ?: return@withLock
+        if (busy || localDirectory != model.cloudDirectory) return@withLock
         busy = true
         error = null
         try {
             for (item in dataset?.let(::listOf) ?: ProgressDataset.entries) {
                 try {
-                    val access = accessToken()
+                    var access = accessToken()
                     val endpoint = "$origin/v1/progress/${item.path}"
                     val local = snapshot(model, item)
                     val hash = item.fingerprint(local)
@@ -188,7 +193,8 @@ class CloudAccount private constructor(private val context: Context) {
                         Baseline(value.getInt("revision"), value.getString("fingerprint"))
                     }.getOrNull()
                     val lookup = if (importGuest) endpoint else "$endpoint?known=${base?.revision ?: 0}"
-                    val remote = request(lookup, access)
+                    val (remote, currentAccess) = requestWithRefresh(lookup, access)
+                    access = currentAccess
                     val remoteRevision = remote.getInt("revision")
                     val incoming = remote.optJSONObject("snapshot")?.let(item::decode)
                     val hasChanges = base?.let { it.hash != hash } ?: item.hasProgress(local)
@@ -269,23 +275,76 @@ class CloudAccount private constructor(private val context: Context) {
     private suspend fun upload(item: ProgressDataset, snapshot: ProgressSnapshot, revision: Int,
                                endpoint: String, access: String): Int {
         val body = JSONObject().put("revision", revision).put("snapshot", item.encode(snapshot))
-        return request(endpoint, access, "PUT", body.toString()).getInt("revision")
+        return requestWithRefresh(endpoint, access, "PUT", body.toString()).first.getInt("revision")
     }
 
-    private suspend fun accessToken(): String {
+    private suspend fun requestWithRefresh(
+        url: String,
+        initialAccess: String,
+        method: String = "GET",
+        body: String? = null,
+    ): Pair<JSONObject, String> {
+        return try {
+            request(url, initialAccess, method, body) to initialAccess
+        } catch (_: UnauthorizedHttpException) {
+            val refreshed = accessToken(forceRefresh = true)
+            try {
+                request(url, refreshed, method, body) to refreshed
+            } catch (_: UnauthorizedHttpException) {
+                throw IllegalStateException(SIGN_IN_ERROR)
+            }
+        }
+    }
+
+    private suspend fun accessToken(forceRefresh: Boolean = false): String = refreshMutex.withLock {
         val current = session ?: throw IllegalStateException(SIGN_IN_ERROR)
-        if (current.expiry > System.currentTimeMillis() + 60_000) return current.access
-        val refresh = current.refresh ?: throw IllegalStateException(SIGN_IN_ERROR)
-        val tokens = token(mapOf("grant_type" to "refresh_token", "refresh_token" to refresh))
+        if (!forceRefresh && current.expiry > System.currentTimeMillis() + 60_000) return@withLock current.access
+        val refresh = current.refresh
+        if (refresh.isNullOrBlank()) {
+            clearExpiredSession()
+            throw IllegalStateException(SIGN_IN_EXPIRED_ERROR)
+        }
+        val tokens = token(mapOf("grant_type" to "refresh_token", "refresh_token" to refresh), isRefresh = true)
         save(tokens, current.id, refresh)
-        return tokens.getString("access_token")
+        return@withLock tokens.getString("access_token")
     }
 
-    private suspend fun token(fields: Map<String, String>): JSONObject {
+    private suspend fun token(fields: Map<String, String>, isRefresh: Boolean = false): JSONObject {
         val form = fields + mapOf("client_id" to clientId, "resource" to origin)
-        return request("$issuer/oauth2/token", method = "POST", contentType = "application/x-www-form-urlencoded",
-            body = form.entries.joinToString("&") { (key, value) -> "$key=${URLEncoder.encode(value, "UTF-8")}" })
+        val encoded = form.entries.joinToString("&") { (key, value) -> "$key=${URLEncoder.encode(value, "UTF-8")}" }
+        val reply = withContext(Dispatchers.IO) {
+            try {
+                UrlConnectionTransport.execute(
+                    "POST",
+                    "$issuer/oauth2/token",
+                    mapOf("Content-Type" to "application/x-www-form-urlencoded", "Accept" to "application/json"),
+                    encoded,
+                )
+            } catch (cancelled: CancellationException) {
+                throw cancelled
+            } catch (_: IOException) {
+                throw IllegalStateException(if (isRefresh) UNAVAILABLE_ERROR else SIGN_IN_ERROR)
+            }
+        }
+        if (reply.status in 200..299) return JSONObject(reply.body)
+        val errorCode = runCatching { JSONObject(reply.body).optString("error").lowercase() }.getOrDefault("")
+        if (isRefresh && (reply.status == 400 || reply.status == 401) &&
+            (errorCode == "invalid_grant" || errorCode == "invalid_client" || errorCode == "unauthorized_client")
+        ) {
+            clearExpiredSession()
+            throw IllegalStateException(SIGN_IN_EXPIRED_ERROR)
+        }
+        throw IllegalStateException(if (isRefresh) UNAVAILABLE_ERROR else SIGN_IN_ERROR)
     }
+
+    private fun clearExpiredSession() {
+        credentials.clear()
+        session = null
+        preparing = false
+        conflicts = emptyMap()
+    }
+
+    private class UnauthorizedHttpException : IllegalStateException(SIGN_IN_ERROR)
 
     private fun save(tokens: JSONObject, id: String, fallbackRefresh: String? = null) {
         val refresh = tokens.optString("refresh_token").ifBlank { fallbackRefresh }
@@ -308,18 +367,21 @@ class CloudAccount private constructor(private val context: Context) {
         val connection = URL(url).openConnection() as HttpURLConnection
         try {
             connection.instanceFollowRedirects = false
-            connection.connectTimeout = 15_000
-            connection.readTimeout = 30_000
+            connection.connectTimeout = 20_000
+            connection.readTimeout = 120_000
             connection.requestMethod = method
             access?.let { connection.setRequestProperty("Authorization", "Bearer $it") }
             body?.let {
+                val bytes = it.toByteArray(Charsets.UTF_8)
                 connection.doOutput = true
+                connection.setFixedLengthStreamingMode(bytes.size)
                 connection.setRequestProperty("Content-Type", contentType)
-                connection.outputStream.use { stream -> stream.write(it.toByteArray()) }
+                connection.outputStream.use { stream -> stream.write(bytes) }
             }
             when (connection.responseCode) {
                 200 -> connection.inputStream.bufferedReader(Charsets.UTF_8).use { JSONObject(it.readText()) }
-                400, 401 -> throw IllegalStateException(SIGN_IN_ERROR)
+                401 -> throw UnauthorizedHttpException()
+                400 -> throw IllegalStateException(SIGN_IN_ERROR)
                 409 -> throw IllegalStateException(CHANGED_ERROR)
                 else -> throw IllegalStateException("HTTP ${connection.responseCode}")
             }
@@ -336,6 +398,8 @@ class CloudAccount private constructor(private val context: Context) {
          *  appear within this window and local changes upload within it. */
         const val LIVE_SYNC_INTERVAL_MS = 5_000L
         private const val SIGN_IN_ERROR = "تعذر تسجيل الدخول. حاول مرة أخرى."
+        private const val SIGN_IN_EXPIRED_ERROR = "انتهت جلسة السحابة. يرجى تسجيل الدخول مرة أخرى."
+        private const val UNAVAILABLE_ERROR = "تعذر الاتصال بالسحابة. بياناتك محفوظة على الجهاز."
         private const val CHANGED_ERROR = "تغيّرت البيانات أثناء المزامنة. أعد المحاولة."
         private var instance: CloudAccount? = null
 

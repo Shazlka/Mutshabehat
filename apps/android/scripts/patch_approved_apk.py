@@ -88,6 +88,38 @@ def patch_cloud(shard):
         "    invoke-virtual {p1, v6}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V\n\n"
         "    :cond_native_sign_in\n",
     )
+    # 1a. Make the quick Google button on CloudAccountScreen actually invoke AuthMode.GOOGLE instead of SIGN_IN.
+    screen = smali / "CloudAccountScreenKt.smali"
+    replace_once(
+        screen,
+        ".method private static final CloudAccountScreen$lambda$6$0$1$0$2$1$0("
+        "Lcom/shazlka/qiraat/cloud/CloudAccount;Landroid/content/Context;)Lkotlin/Unit;\n"
+        "    .locals 2\n"
+        '    .param p0, "$cloudAccount"    # Lcom/shazlka/qiraat/cloud/CloudAccount;\n'
+        '    .param p1, "$context"    # Landroid/content/Context;\n\n'
+        "    .line 226\n"
+        "    const/4 v0, 0x0\n\n"
+        "    const/4 v1, 0x2\n\n"
+        "    invoke-static {p0, p1, v0, v1, v0}, Lcom/shazlka/qiraat/cloud/CloudAccount;->openSignIn$default("
+        "Lcom/shazlka/qiraat/cloud/CloudAccount;Landroid/content/Context;"
+        "Lcom/shazlka/qiraat/cloud/CloudAccount$AuthMode;ILjava/lang/Object;)V\n",
+        ".method private static final CloudAccountScreen$lambda$6$0$1$0$2$1$0("
+        "Lcom/shazlka/qiraat/cloud/CloudAccount;Landroid/content/Context;)Lkotlin/Unit;\n"
+        "    .locals 2\n"
+        '    .param p0, "$cloudAccount"    # Lcom/shazlka/qiraat/cloud/CloudAccount;\n'
+        '    .param p1, "$context"    # Landroid/content/Context;\n\n'
+        "    .line 226\n"
+        "    sget-object v0, Lcom/shazlka/qiraat/cloud/CloudAccount$AuthMode;->GOOGLE:Lcom/shazlka/qiraat/cloud/CloudAccount$AuthMode;\n\n"
+        "    invoke-virtual {p0, p1, v0}, Lcom/shazlka/qiraat/cloud/CloudAccount;->openSignIn("
+        "Landroid/content/Context;Lcom/shazlka/qiraat/cloud/CloudAccount$AuthMode;)V\n",
+    )
+    # 1c. Widen token and account HTTP timeouts from 15s (0x3a98) to 30s (0x7530) for Neon Compute cold starts.
+    for suffix in ("tokenRequest$2.smali", "request$2.smali"):
+        req_smali = smali / f"CloudAccount${suffix}"
+        text = req_smali.read_text()
+        if "0x3a98" not in text:
+            raise ValueError(f"{req_smali.name}: expected 0x3a98 timeout literal")
+        req_smali.write_text(text.replace("0x3a98", "0x7530"))
     # 1b. The tokens carry no email or name, so give finishSignIn what the person typed to store and show.
     replace_once(
         account,

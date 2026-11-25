@@ -1,10 +1,26 @@
 # Qiraat iOS — Agent Handoff (Reference Baseline: iOS v1.0)
 
-Last updated: 2026-10-05
+Last updated: 2026-11-25
 Milestone: **iOS v1.0** (Reference Tag: `ios-v1.0`)
 
 This is the active handoff and reference baseline for the native iPhone/iPad app in `apps/ios`.
 The repository-root `HANDOFF.md` describes the web application and production backend; do not replace it with iOS state.
+
+---
+
+## Cloud Auth & Live Sync Handoff (2026-11-25)
+
+Fixed OAuth token refresh, session expiry recovery, and login edge cases across both mobile clients on `ios/main`:
+
+- **iOS (`apps/ios/Sources/Cloud/CloudAccount.swift`, `CloudAuthClient.swift`, `Tests/CloudAuthTests.swift`):**
+  - Coalesced token refreshes into a single unstructured `refreshTask` (`resource = origin` preserved) so concurrent sync callers cannot reuse a rotated refresh token and trigger Neon/Better Auth refresh-family revocation (`invalid_grant: session not found`), and rotated tokens still save if the calling view task cancels.
+  - Added `CloudError.sessionExpired` (`"انتهت جلسة السحابة. يرجى تسجيل الدخول مرة أخرى."`): clears dead Keychain sessions on permanent `400`/`401` `invalid_grant`/`invalid_client` rejections instead of looping every 5 seconds with `CloudError.connection`, while keeping sessions intact across transient offline/`5xx` outages.
+  - Added one-time forced-refresh retry on HTTP `401` from `/v1/progress/*`, serialized explicit sync actions behind active background syncs, raised progress API timeouts to `120s` (`45s` for `/oauth2/token`), anchored Google `ASWebAuthenticationSession` to the active foreground window, extracted `email`/`name` fallback claims from `id_token`, and resolved relative OAuth redirects against the issuing request URL.
+  - Verified on `iPhone 18 Pro Max` simulator (`CloudAuthTests` 15/15, `CloudProgressTests` 3/3 passed). Real devices (`Shazly iPhone 15 pro max`, `Shazly iPhone Air`, `Amr’s iPad`) were offline during the session; rebuild/run the `Debug` scheme on iPhone to pick up the fix (note `project.yml` sets `QIRAAT_CLOUD_*` under `Debug` only per `apps/ios/cloud/README.md`).
+- **Android (`apps/android/...`, patched release `dist/Qiraat-Cloud-Sync-v9.apk` from `Qiraat-Cloud-Sync-v4.apk`):**
+  - Serialized `SyncEngine` & `CloudAccount` token refresh under a `Mutex` with direct `/oauth2/token` refresh (`resource = origin`), `401` forced-refresh retry, permanent `invalid_grant` session cleanup vs offline session preservation, and `NativeSignIn.submit` verification of saved `id` / surfaced `error`.
+  - Fixed the quick Google button on `CloudAccountScreen` passing `AuthMode.SIGN_IN` instead of `AuthMode.GOOGLE`, widened `v4` smali HTTP timeouts (`15s` → `30s`), added IME scroll to `NativeSignIn`, and resolved relative OAuth redirects against the issuing URL (`CloudAuthClient.kt`).
+  - Verified with `100/100` Gradle unit tests (`SyncEngineTest` 4/4, `CloudAuthClientTest` 11/11), live Neon expiry refresh & sign-up on `emulator-5562`, and in-place upgrade (`v9`) on Samsung Galaxy A24 (`RK8W602ZRBH`). Sign in once on devices whose prior token was already invalidated (`invalid_grant: session not found`).
 
 ---
 

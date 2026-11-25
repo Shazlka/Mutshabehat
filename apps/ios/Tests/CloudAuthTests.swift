@@ -20,7 +20,8 @@ final class CloudAuthTests: XCTestCase {
         return CloudAuthClient(configuration: configuration, session: URLSession(configuration: config))
     }
 
-    private func json(_ value: [String: Any]) -> Data { try! JSONSerialization.data(withJSONObject: value) }
+    private static func json(_ value: [String: Any]) -> Data { try! JSONSerialization.data(withJSONObject: value) }
+    private func json(_ value: [String: Any]) -> Data { Self.json(value) }
 
     private let loginRedirect = "https://sync.example.test/auth/sign-in?response_type=code&client_id=client-1&state=S1&utm=drop"
         + "&exp=9&ba_iat=8&ba_param=ba_iat&ba_param=ba_param&ba_param=client_id&ba_param=exp&ba_param=response_type"
@@ -173,6 +174,167 @@ final class CloudAuthTests: XCTestCase {
 
     func testFormEncodingMatchesURLSearchParams() {
         XCTAssertEqual(CloudAuthClient.formEncode("a b+c=d&é~*"), "a+b%2Bc%3Dd%26%C3%A9%7E*")
+    }
+
+    func testRelativeAuthorizeRedirectResolvesAgainstIssuerHost() async throws {
+        ScriptedServer.handler = { [self] request in
+            switch (request.httpMethod, request.url?.absoluteString) {
+            case ("GET", let url) where url?.contains("/db/auth/oauth2/authorize") == true:
+                return (302, ["Location": "/db/auth/sign-in?sig=s&ba_param=x&x=1"], Data())
+            case ("POST", "https://auth.example.test/db/auth/sign-in/email"):
+                return (200, ["Set-Cookie": "session=ok; Path=/"], json(["token": "t"]))
+            case ("POST", "https://auth.example.test/db/auth/oauth2/continue"):
+                return (200, [:], json(["url": "/db/auth/consent?sig=c&ba_param=y&y=2"]))
+            case ("POST", "https://auth.example.test/db/auth/oauth2/consent"):
+                return (200, [:], json(["url": "https://sync.example.test/auth/mobile-callback?code=IOS1&state=S1"]))
+            default:
+                return (404, [:], Data())
+            }
+        }
+        let code = try await client().authorize(email: "u@example.com", password: "12345678", create: false, challenge: "c", state: "S1")
+        XCTAssertEqual(code, "IOS1")
+    }
+
+    @MainActor
+    func testConcurrentAccessTokenCallsCoalesceIntoSingleRefreshWithResource() async throws {
+        let sessionConfig = URLSessionConfiguration.ephemeral
+        sessionConfig.protocolClasses = [ScriptedServer.self]
+        let account = CloudAccount(configuration: configuration, persistKeychain: false)
+        account.apiSession = URLSession(configuration: sessionConfig)
+        account.seedSessionForTesting(
+            accountID: "user-1",
+            accessToken: "stale-access",
+            refreshToken: "rt-1",
+            expiry: Date().addingTimeInterval(-30)
+        )
+
+        ScriptedServer.handler = { request in
+            XCTAssertEqual(request.url?.absoluteString, "https://auth.example.test/db/auth/oauth2/token")
+            let raw = String(decoding: ScriptedServer.body(of: request), as: UTF8.self)
+            let form = Self.parseForm(raw)
+            XCTAssertEqual(form["grant_type"], "refresh_token")
+            XCTAssertEqual(form["refresh_token"], "rt-1")
+            XCTAssertEqual(form["client_id"], "client-1")
+            XCTAssertEqual(form["resource"], "https://sync.example.test")
+            Thread.sleep(forTimeInterval: 0.05)
+            return (200, [:], Self.json(["access_token": "fresh-access", "refresh_token": "rt-2", "expires_in": 3600]))
+        }
+
+        let config = configuration
+        async let first = account.accessToken(config)
+        async let second = account.accessToken(config)
+        async let third = account.accessToken(config)
+        let tokens = try await [first, second, third]
+
+        XCTAssertEqual(tokens, ["fresh-access", "fresh-access", "fresh-access"])
+        XCTAssertEqual(ScriptedServer.requests.count, 1)
+    }
+
+    @MainActor
+    func testInvalidGrantClearsExpiredSessionAndSurfacesMessage() async {
+        let sessionConfig = URLSessionConfiguration.ephemeral
+        sessionConfig.protocolClasses = [ScriptedServer.self]
+        let account = CloudAccount(configuration: configuration, persistKeychain: false)
+        account.apiSession = URLSession(configuration: sessionConfig)
+        account.seedSessionForTesting(
+            accountID: "user-1",
+            accessToken: "stale-access",
+            refreshToken: "dead-rt",
+            expiry: Date().addingTimeInterval(-30)
+        )
+
+        ScriptedServer.handler = { _ in
+            (400, [:], Self.json(["error": "invalid_grant", "error_description": "session not found"]))
+        }
+
+        do {
+            _ = try await account.accessToken(configuration)
+            XCTFail("expected sessionExpired")
+        } catch let error as CloudError {
+            XCTAssertEqual(error, .sessionExpired)
+        } catch {
+            XCTFail("unexpected error: \(error)")
+        }
+
+        XCTAssertNil(account.accountID)
+        XCTAssertEqual(account.error, CloudError.sessionExpired.errorDescription)
+    }
+
+    @MainActor
+    func testTransientServerOutagePreservesSession() async {
+        let sessionConfig = URLSessionConfiguration.ephemeral
+        sessionConfig.protocolClasses = [ScriptedServer.self]
+        let account = CloudAccount(configuration: configuration, persistKeychain: false)
+        account.apiSession = URLSession(configuration: sessionConfig)
+        account.seedSessionForTesting(
+            accountID: "user-1",
+            accessToken: "stale-access",
+            refreshToken: "good-rt",
+            expiry: Date().addingTimeInterval(-30)
+        )
+
+        ScriptedServer.handler = { _ in (503, [:], Data()) }
+
+        do {
+            _ = try await account.accessToken(configuration)
+            XCTFail("expected connection error")
+        } catch let error as CloudError {
+            XCTAssertEqual(error, .connection)
+        } catch {
+            XCTFail("unexpected error: \(error)")
+        }
+
+        XCTAssertEqual(account.accountID, "user-1")
+    }
+
+    @MainActor
+    func testRequestWithRefreshRetriesOnceAfter401() async throws {
+        let sessionConfig = URLSessionConfiguration.ephemeral
+        sessionConfig.protocolClasses = [ScriptedServer.self]
+        let account = CloudAccount(configuration: configuration, persistKeychain: false)
+        account.apiSession = URLSession(configuration: sessionConfig)
+        account.seedSessionForTesting(
+            accountID: "user-1",
+            accessToken: "revoked-access",
+            refreshToken: "rt-1",
+            expiry: Date().addingTimeInterval(3600)
+        )
+
+        nonisolated(unsafe) var progressCount = 0
+        ScriptedServer.handler = { request in
+            if request.url?.path.hasSuffix("/oauth2/token") == true {
+                return (200, [:], Self.json(["access_token": "new-access", "refresh_token": "rt-2", "expires_in": 3600]))
+            }
+            if request.url?.path == "/v1/progress/khatma" {
+                progressCount += 1
+                if progressCount == 1 {
+                    XCTAssertEqual(request.value(forHTTPHeaderField: "Authorization"), "Bearer revoked-access")
+                    return (401, [:], Data())
+                }
+                XCTAssertEqual(request.value(forHTTPHeaderField: "Authorization"), "Bearer new-access")
+                return (200, [:], Self.json(["revision": 9, "unchanged": true]))
+            }
+            return (404, [:], Data())
+        }
+
+        let endpoint = origin.appending(path: "v1/progress/khatma")
+        let (data, updatedToken) = try await account.requestWithRefresh(configuration, initialToken: "revoked-access", url: endpoint)
+        XCTAssertEqual(progressCount, 2)
+        XCTAssertEqual(updatedToken, "new-access")
+        let decoded = try XCTUnwrap(JSONSerialization.jsonObject(with: data) as? [String: Any])
+        XCTAssertEqual(decoded["revision"] as? Int, 9)
+    }
+
+    private static func parseForm(_ raw: String) -> [String: String] {
+        Dictionary(uniqueKeysWithValues: raw.split(separator: "&").compactMap { pair -> (String, String)? in
+            let parts = pair.split(separator: "=", maxSplits: 1, omittingEmptySubsequences: false)
+            guard let key = parts.first else { return nil }
+            let decode: (Substring) -> String = {
+                let spaced = $0.replacingOccurrences(of: "+", with: " ")
+                return spaced.removingPercentEncoding ?? spaced
+            }
+            return (decode(key), parts.count > 1 ? decode(parts[1]) : "")
+        })
     }
 }
 

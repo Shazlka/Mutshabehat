@@ -92,14 +92,15 @@ internal class CloudAuthClient(
         val jar = linkedMapOf<String, String>()
 
         // 1. Start without a session: the server answers with the signed query its login page would receive.
-        val started = send("GET", authorizeUrl(challenge, state), null, jar, json = false)
+        val startUrl = authorizeUrl(challenge, state)
+        val started = send("GET", startUrl, null, jar, json = false)
         // Depending on request headers the server answers with a 302 Location or a 200 `{redirect, url}` body.
         val location = when (started.status) {
             in 300..399 -> started.header("Location")
-            200 -> redirectOf(started)?.toString()
+            200 -> redirectOf(started, startUrl)?.toString()
             else -> null
         }
-        val signed = location?.let { signedQuery(resolve(it)) }
+        val signed = location?.let { signedQuery(resolve(it, startUrl)) }
         signed ?: throw CloudAuthException(CloudAuthError.REJECTED)
 
         // 2. Create the account or sign in; the response sets the session cookie.
@@ -111,12 +112,14 @@ internal class CloudAuthClient(
         }
 
         // 3. Resume the authorization with that session, accepting consent for our own first-party app.
+        var currentUrl = "${issuer.trimEnd('/')}/oauth2/continue"
         var next = post("oauth2/continue", JSONObject().put("selected", true).put("oauth_query", signed), jar)
         repeat(4) {
-            val target = redirectOf(next) ?: throw CloudAuthException(CloudAuthError.REJECTED)
+            val target = redirectOf(next, currentUrl) ?: throw CloudAuthException(CloudAuthError.REJECTED)
             if (target.toString().startsWith(redirect)) return code(target, state)
             val query = if (target.path.orEmpty().endsWith("/consent")) signedQuery(target) else null
             query ?: throw CloudAuthException(CloudAuthError.REJECTED)
+            currentUrl = "${issuer.trimEnd('/')}/oauth2/consent"
             next = post("oauth2/consent", JSONObject().put("accept", true).put("oauth_query", query), jar)
         }
         throw CloudAuthException(CloudAuthError.REJECTED)
@@ -152,7 +155,7 @@ internal class CloudAuthClient(
         val code = runCatching { JSONObject(reply.body).optString("code") }.getOrDefault("").uppercase()
         return CloudAuthException(
             when (code) {
-                "INVALID_EMAIL_OR_PASSWORD", "INVALID_PASSWORD", "USER_NOT_FOUND" -> CloudAuthError.INVALID_CREDENTIALS
+                "INVALID_EMAIL_OR_PASSWORD", "INVALID_PASSWORD", "USER_NOT_FOUND", "CREDENTIAL_ACCOUNT_NOT_FOUND" -> CloudAuthError.INVALID_CREDENTIALS
                 "USER_ALREADY_EXISTS", "USER_ALREADY_EXISTS_USE_ANOTHER_EMAIL" -> CloudAuthError.EMAIL_TAKEN
                 "PASSWORD_TOO_SHORT", "PASSWORD_TOO_LONG" -> CloudAuthError.WEAK_PASSWORD
                 "INVALID_EMAIL" -> CloudAuthError.INVALID_EMAIL
@@ -162,10 +165,10 @@ internal class CloudAuthClient(
         )
     }
 
-    private fun resolve(value: String): URI = URI(origin).resolve(value)
+    private fun resolve(value: String, baseUrl: String = origin): URI = URI(baseUrl).resolve(value)
 
-    private fun redirectOf(reply: HttpReply): URI? =
-        runCatching { resolve(JSONObject(reply.body).getString("url")) }.getOrNull()
+    private fun redirectOf(reply: HttpReply, baseUrl: String = origin): URI? =
+        runCatching { resolve(JSONObject(reply.body).getString("url"), baseUrl) }.getOrNull()
 
     private fun code(url: URI, state: String): String {
         val items = parse(url.rawQuery)

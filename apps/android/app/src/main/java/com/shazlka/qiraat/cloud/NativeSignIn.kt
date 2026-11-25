@@ -3,15 +3,19 @@ package com.shazlka.qiraat.cloud
 import android.content.Context
 import android.content.ContextWrapper
 import android.net.Uri
+import android.util.Log
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.ComponentDialog
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -119,7 +123,8 @@ object NativeSignIn {
             throw cancelled
         } catch (failure: CloudAuthException) {
             return failure.error.text
-        } catch (_: Exception) {
+        } catch (error: Exception) {
+            Log.w("QiraatCloud", "Native authorize failed", error)
             return CloudAuthError.REJECTED.text
         }
         val callback = Uri.Builder().scheme("com.shazlka.qiraat").authority("cloud").path("/callback")
@@ -127,10 +132,19 @@ object NativeSignIn {
         profile = email.trim() to if (create) email.trim().substringBefore('@') else null
         return try {
             finish(account, callback)
-            null
+            val signedInId = runCatching { account.javaClass.getMethod("getId").invoke(account) as? String }.getOrNull()
+            if (signedInId.isNullOrBlank()) {
+                val accountError = runCatching { account.javaClass.getMethod("getError").invoke(account) as? String }
+                    .getOrNull()?.takeIf { it.isNotBlank() }
+                Log.w("QiraatCloud", "finishSignIn returned without active session: $accountError")
+                accountError ?: CloudAuthError.REJECTED.text
+            } else {
+                null
+            }
         } catch (cancelled: CancellationException) {
             throw cancelled
-        } catch (_: Exception) {
+        } catch (error: Exception) {
+            Log.w("QiraatCloud", "Native sign-in completion failed", error)
             CloudAuthError.REJECTED.text
         } finally {
             profile = null
@@ -183,7 +197,13 @@ object NativeSignIn {
         }
 
         Surface(shape = MaterialTheme.shapes.extraLarge, tonalElevation = 6.dp) {
-            Column(Modifier.padding(24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Column(
+                Modifier
+                    .verticalScroll(rememberScrollState())
+                    .imePadding()
+                    .padding(24.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
                 Text(
                     if (creating) "إنشاء حساب جديد" else "تسجيل الدخول",
                     style = MaterialTheme.typography.titleLarge,

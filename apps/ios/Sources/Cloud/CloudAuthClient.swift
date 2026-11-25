@@ -55,13 +55,14 @@ struct CloudAuthClient {
         var jar: [String: String] = [:]
 
         // 1. Start the flow without a session. The server answers with the signed query its login page would get.
-        var start = URLRequest(url: configuration.authorizeURL(challenge: challenge, state: state))
+        let startURL = configuration.authorizeURL(challenge: challenge, state: state)
+        var start = URLRequest(url: startURL)
         start.httpShouldHandleCookies = false
         let started = try await send(start, jar: &jar)
         // Depending on request headers the server answers with a 302 Location or a 200 `{redirect, url}` body.
         let location = (300..<400).contains(started.status) ? started.header("Location")
-            : started.status == 200 ? Self.redirect(in: started.data, relativeTo: configuration.origin)?.absoluteString : nil
-        guard let location, let signed = Self.signedQuery(from: URL(string: location, relativeTo: configuration.origin)) else {
+            : started.status == 200 ? Self.redirect(in: started.data, relativeTo: startURL)?.absoluteString : nil
+        guard let location, let signed = Self.signedQuery(from: URL(string: location, relativeTo: startURL)) else {
             throw CloudAuthError.rejected
         }
 
@@ -76,11 +77,13 @@ struct CloudAuthClient {
         }
 
         // 3. Resume the authorization with that session, accepting consent for our own first-party app.
+        var currentURL = configuration.issuer.appending(path: "oauth2/continue")
         var next = try await post("oauth2/continue", ["selected": true, "oauth_query": signed], jar: &jar)
         for _ in 0..<4 {
-            guard let target = Self.redirect(in: next.data, relativeTo: configuration.origin) else { throw CloudAuthError.rejected }
+            guard let target = Self.redirect(in: next.data, relativeTo: currentURL) else { throw CloudAuthError.rejected }
             if target.absoluteString.hasPrefix(configuration.redirect) { return try Self.code(in: target, state: state) }
             guard target.path.hasSuffix("/consent"), let query = Self.signedQuery(from: target) else { throw CloudAuthError.rejected }
+            currentURL = configuration.issuer.appending(path: "oauth2/consent")
             next = try await post("oauth2/consent", ["accept": true, "oauth_query": query], jar: &jar)
         }
         throw CloudAuthError.rejected
@@ -139,7 +142,7 @@ struct CloudAuthClient {
         if status == 429 { return .rateLimited }
         let body = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any]
         switch (body?["code"] as? String)?.uppercased() {
-        case "INVALID_EMAIL_OR_PASSWORD", "INVALID_PASSWORD", "USER_NOT_FOUND": return .invalidCredentials
+        case "INVALID_EMAIL_OR_PASSWORD", "INVALID_PASSWORD", "USER_NOT_FOUND", "CREDENTIAL_ACCOUNT_NOT_FOUND": return .invalidCredentials
         case "USER_ALREADY_EXISTS", "USER_ALREADY_EXISTS_USE_ANOTHER_EMAIL": return .emailTaken
         case "PASSWORD_TOO_SHORT", "PASSWORD_TOO_LONG": return .weakPassword
         case "INVALID_EMAIL": return .invalidEmail

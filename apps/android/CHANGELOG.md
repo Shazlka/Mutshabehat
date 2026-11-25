@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-25 — Cloud login and sync reliability (`Qiraat-Cloud-Sync-v9.apk`)
+
+- Fixed Android OAuth token refresh races and silent sync failures (`SyncEngine.kt`, `CloudAccount.kt`): serialized token refreshes under a single-flight `Mutex` with double-checked expiry validation so concurrent sync passes (`LiveSync` 5-second loop, launch sync, manual sync) cannot reuse an already-rotated refresh token and trigger Neon Auth refresh-family revocation (`invalid_grant: session not found`).
+- Added direct `/oauth2/token` refresh in `SyncEngine` with the `resource` (`origin`) parameter, one-time retry on HTTP `401` via forced refresh, and clear `QiraatSync` diagnostics.
+- Distinguished permanent `400`/`401` `invalid_grant`/`invalid_client` token errors (clears the dead session and surfaces an explicit re-login message) from transient offline/`5xx` errors (preserves the session and retries automatically).
+- Fixed `NativeSignIn.submit` dismissing the sign-in dialog as successful when `CloudAccount.finishSignIn` caught an error internally; now verifies an active session ID was saved and displays `CloudAccount.error` in place.
+- Fixed the quick Google sign-in button on `CloudAccountScreen` in patched APKs passing `AuthMode.SIGN_IN` instead of `AuthMode.GOOGLE` (`patch_approved_apk.py`), widened `v4` smali token/account HTTP timeouts from 15s to 30s (`0x3a98` -> `0x7530`) for Neon Compute cold starts, made `NativeSignIn` scrollable with IME padding, and resolved relative OAuth redirects against the issuing URL (`CloudAuthClient.kt`).
+- Added unit tests in `SyncEngineTest.kt` and `CloudAuthClientTest.kt` (`100` unit tests passing, `0` failed).
+
 ## 2026-11-24 — Reader: the header always stays, and the empty strip under the page shows and hides the footer (`Qiraat-Cloud-Sync-v8.apk`)
 
 - Tapping the page used to hide the header and the footer together. Now only the footer hides; the header (surah, juz', page, memorization status, bookmark star) is always shown.

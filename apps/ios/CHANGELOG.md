@@ -3,6 +3,14 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## 2026-11-25 — Fix iOS cloud login and token-refresh sync failures
+
+- Coalesced OAuth token refreshes in `CloudAccount` (`refreshTask`) so concurrent callers cannot reuse an already-rotated `refresh_token` and trigger Neon/Better Auth refresh-family revocation (`invalid_grant: session not found`), and preserved in-flight token saves even if a calling view task cancels mid-refresh.
+- Distinguished permanent `400`/`401` `invalid_grant` / `invalid_client` token errors from transient outages (`CloudAccount.swift`): expired/revoked Keychain sessions are now cleared with an explicit `"انتهت جلسة السحابة. يرجى تسجيل الدخول مرة أخرى."` prompt instead of retrying in an error loop (`CloudError.connection`), while offline/`5xx` outages keep the session and retry automatically.
+- Added one-time retry with forced token refresh when `/v1/progress/*` answers `401`, queued explicit sync actions (`resolution` / `dataset` / `importGuest`) behind any active background sync instead of dropping them silently, widened progress API timeouts to `120s` (`45s` for `/oauth2/token`), mapped `URLError` network failures cleanly to `CloudError.connection`, anchored Google `ASWebAuthenticationSession` to the active foreground window, and decoded `email`/`name` fallback claims from `id_token`.
+- Resolved relative OAuth authorize/continue redirects against the issuing request URL rather than `configuration.origin` and mapped `CREDENTIAL_ACCOUNT_NOT_FOUND` (`CloudAuthClient.swift`).
+- Tests: expanded `CloudAuthTests` (`15` tests) covering relative issuer redirects, single-flight refresh coalescence with `resource`, `invalid_grant` Keychain cleanup, transient `503` session preservation, and `401` retry-after-refresh.
+
 ## 2026-11-24 — Fix in-app sign-in rejected by the server (signed query decoding)
 
 - Sign-in and sign-up failed with "تعذر تسجيل الدخول" at the `oauth2/continue` step with `invalid_signature`. The server signs its login query with `+` for spaces; the app decoded it with `URLComponents`, which keeps a literal `+`, and sent it back as `%2B`. The query is now decoded like JavaScript's `URLSearchParams` (`+` is a space, `%2B` is a plus). Verified against the live server with the app's own client; the Android client already decoded it correctly.

@@ -176,4 +176,25 @@ class CloudAuthClientTest {
         assertEquals("a%3D=a+b%2Bc%26%C3%A9%7E*", CloudAuthClient.form(listOf("a=" to "a b+c&é~*")))
         assertNull(CloudAuthClient.signedQuery(URI("https://x.test/auth/sign-in?state=1")))
     }
+
+    @Test
+    fun relativeAuthorizeLocationResolvesAgainstIssuerHost() {
+        val code = client { call ->
+            when {
+                call.method == "GET" && "/oauth2/authorize" in call.url -> reply(
+                    302,
+                    "",
+                    "Location" to "/db/auth/sign-in?sig=s&ba_param=x&x=1",
+                )
+                call.method == "POST" && call.url == "https://auth.example.test/db/auth/sign-in/email" ->
+                    reply(200, "{}", "Set-Cookie" to "session=ok; Path=/")
+                call.method == "POST" && call.url == "https://auth.example.test/db/auth/oauth2/continue" ->
+                    reply(200, json("url" to "/db/auth/consent?sig=c&ba_param=y&y=2"))
+                call.method == "POST" && call.url == "https://auth.example.test/db/auth/oauth2/consent" ->
+                    reply(200, json("url" to "https://sync.example.test/auth/mobile-callback?code=AUTH1&state=S1"))
+                else -> error("unexpected ${call.method} ${call.url}")
+            }
+        }.authorize("user@example.com", "12345678", create = false, challenge = "C1", state = "S1")
+        assertEquals("AUTH1", code)
+    }
 }
