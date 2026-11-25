@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
     if (error.code === '23505') {
       return NextResponse.json({ error: 'وسم بهذا الاسم موجود مسبقاً' }, { status: 409 })
     }
-    return NextResponse.json({ error: error.message }, { status: 500 })
+    return NextResponse.json({ error: 'failed to create tag' }, { status: 500 })
   }
   return NextResponse.json({ tag: data }, { status: 201 })
 }

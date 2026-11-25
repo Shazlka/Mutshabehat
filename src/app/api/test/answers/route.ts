@@ -35,6 +35,6 @@ export async function POST(request: NextRequest) {
     ayah: Number.isInteger(body.ayah) ? body.ayah : null,
     group_id: body.groupId && UUID.test(body.groupId) ? body.groupId : null,
   })
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  if (error) return NextResponse.json({ error: 'failed to save answer' }, { status: 500 })
   return NextResponse.json({ ok: true })
 }

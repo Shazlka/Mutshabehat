@@ -11,9 +11,17 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const format = searchParams.get('format') === 'csv' ? 'csv' : 'json'
 
-  const { data: tags } = await supabase.from('tags').select('id, name, color')
-  const { data: gt }   = await supabase.from('group_tags').select('group_id, tag_id')
-  const { data: groups } = await supabase.from('groups').select('id, title')
+  const { data: tags } = await supabase.from('tags').select('id, name, color').eq('user_id', user.id)
+  const { data: groups } = await supabase.from('groups').select('id, title').eq('user_id', user.id)
+  const groupIds = (groups || []).map((g: { id: string }) => g.id)
+  const { data: gt } = groupIds.length
+    ? await supabase.from('group_tags').select('group_id, tag_id').in('group_id', groupIds)
+    : { data: [] as { group_id: string; tag_id: string }[] }
+
+  const csvCell = (val: string) => {
+    const neutral = /^[=+\-@\t\r]/.test(val) ? `'${val}` : val
+    return `"${neutral.replace(/"/g, '""')}"`
+  }
 
   if (format === 'csv') {
     const tagMap = new Map((tags || []).map((t: { id: string; name: string }) => [t.id, t.name]))
@@ -25,8 +33,7 @@ export async function GET(request: Request) {
     const header = 'group_id,group_title,tag_names'
     const rows = (groups || []).map((g: { id: string; title: string }) => {
       const ts = (groupTags.get(g.id) || []).join('|')
-      const safeTitle = `"${(g.title || '').replace(/"/g, '""')}"`
-      return `${g.id},${safeTitle},"${ts}"`
+      return `${g.id},${csvCell(g.title || '')},${csvCell(ts)}`
     })
     const csv = [header, ...rows].join('\n')
     return new NextResponse(csv, {

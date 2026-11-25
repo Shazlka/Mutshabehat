@@ -19,13 +19,13 @@ export async function POST(request: NextRequest) {
 
   if (mode === 'replace') {
     const { error } = await supabase.from('group_tags').delete().in('group_id', body.group_ids)
-    if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+    if (error) return NextResponse.json({ error: 'failed to update tags' }, { status: 500 })
   }
   if (mode === 'remove') {
     if (body.tag_ids.length) {
       const { error } = await supabase.from('group_tags').delete()
         .in('group_id', body.group_ids).in('tag_id', body.tag_ids)
-      if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+      if (error) return NextResponse.json({ error: 'failed to remove tags' }, { status: 500 })
     }
   } else {
     // add or replace → insert all pairs
@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
     if (rows.length) {
       // .upsert with onConflict prevents duplicate-pk errors on add-mode
       const { error } = await supabase.from('group_tags').upsert(rows, { onConflict: 'group_id,tag_id', ignoreDuplicates: true })
-      if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+      if (error) return NextResponse.json({ error: 'failed to attach tags' }, { status: 500 })
     }
   }
 

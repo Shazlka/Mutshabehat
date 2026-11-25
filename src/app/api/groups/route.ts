@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
   if (favorite) query = query.eq('favorite', favorite === 'true')
 
   const { data, error, count } = await query
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  if (error) return NextResponse.json({ error: 'failed to load groups' }, { status: 500 })
 
   const filtered = surah
     ? (data || []).filter((g) =>
@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
       status:  body.status || 'draft',
     })
     .select('*').single()
-  if (gErr) return NextResponse.json({ error: gErr.message }, { status: 500 })
+  if (gErr) return NextResponse.json({ error: 'failed to create group' }, { status: 500 })
 
   if (Array.isArray(body.verses) && body.verses.length) {
     // Batch insert all verses
@@ -85,8 +85,8 @@ export async function POST(request: NextRequest) {
 
     if (vErr) {
       // Roll back the group to avoid orphaned record
-      await supabase.from('groups').delete().eq('id', group.id)
-      return NextResponse.json({ error: vErr.message }, { status: 500 })
+      await supabase.from('groups').delete().eq('id', group.id).eq('user_id', user.id)
+      return NextResponse.json({ error: 'failed to save group verses' }, { status: 500 })
     }
 
     if (insertedVerses) {
@@ -105,8 +105,8 @@ export async function POST(request: NextRequest) {
       if (allParts.length) {
         const { error: pErr } = await supabase.from('parts').insert(allParts)
         if (pErr) {
-          await supabase.from('groups').delete().eq('id', group.id)
-          return NextResponse.json({ error: pErr.message }, { status: 500 })
+          await supabase.from('groups').delete().eq('id', group.id).eq('user_id', user.id)
+          return NextResponse.json({ error: 'failed to save verse parts' }, { status: 500 })
         }
       }
     }

@@ -26,11 +26,12 @@ export async function GET(_request: NextRequest, ctx: Ctx) {
       )
     `)
     .eq('id', id)
+    .eq('user_id', user.id)
     .single()
 
   if (error) {
     const status = error.code === 'PGRST116' ? 404 : 500
-    return NextResponse.json({ error: error.message }, { status })
+    return NextResponse.json({ error: status === 404 ? 'not found' : 'failed to load group' }, { status })
   }
 
   type VerseRow = { sort_order?: number | null; parts?: { sort_order?: number | null }[] }
@@ -82,7 +83,7 @@ export async function PATCH(request: NextRequest, ctx: Ctx) {
   })
   if (error) {
     const status = error.code === '42501' ? 403 : 500
-    return NextResponse.json({ error: error.message }, { status })
+    return NextResponse.json({ error: status === 403 ? 'forbidden' : 'failed to update group' }, { status })
   }
 
   return NextResponse.json({ success: true })
@@ -95,8 +96,8 @@ export async function DELETE(_request: NextRequest, ctx: Ctx) {
   const user = await getSessionUser(supabase)
   if (!user) return NextResponse.json({ error: 'unauthorized' }, { status: 401 })
 
-  const { data, error } = await supabase.from('groups').delete().eq('id', id).select('id')
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  const { data, error } = await supabase.from('groups').delete().eq('id', id).eq('user_id', user.id).select('id')
+  if (error) return NextResponse.json({ error: 'failed to delete group' }, { status: 500 })
   if (!data?.length) return NextResponse.json({ error: 'forbidden' }, { status: 403 })
   return NextResponse.json({ success: true })
 }

@@ -56,10 +56,7 @@ async function getAuthenticatedSupabase() {
         supabase: null,
         user: null,
         response: NextResponse.json(
-          {
-            error: 'Supabase authentication is unavailable for the Mushaf 1441 preview',
-            detail: error.message,
-          },
+          { error: 'Supabase authentication is unavailable for the Mushaf 1441 preview' },
           { status: 503 }
         ),
       }
@@ -74,15 +71,12 @@ async function getAuthenticatedSupabase() {
     }
 
     return { supabase, user, response: null }
-  } catch (error) {
+  } catch {
     return {
       supabase: null,
       user: null,
       response: NextResponse.json(
-        {
-          error: 'Supabase configuration is unavailable for the Mushaf 1441 preview',
-          detail: error instanceof Error ? error.message : 'Unknown Supabase configuration error',
-        },
+        { error: 'Supabase configuration is unavailable for the Mushaf 1441 preview' },
         { status: 503 }
       ),
     }
@@ -110,7 +104,7 @@ function normalizeTableError(error: { message: string; code?: string }) {
     )
   }
 
-  return NextResponse.json({ error: error.message }, { status: 500 })
+  return NextResponse.json({ error: 'failed to process annotations' }, { status: 500 })
 }
 
 function isAyahKey(value: unknown): value is string {

@@ -34,7 +34,7 @@ export async function GET(_request: NextRequest, ctx: Ctx) {
     .select('tag_id, tags(id, name, color)')
     .eq('group_id', id)
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  if (error) return NextResponse.json({ error: 'failed to load group tags' }, { status: 500 })
   return NextResponse.json({ tags: (data || []).map((r) => r.tags) })
 }
 
@@ -56,7 +56,7 @@ export async function POST(request: NextRequest, ctx: Ctx) {
     .from('group_tags')
     .insert({ group_id: id, tag_id: body.tag_id })
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  if (error) return NextResponse.json({ error: 'failed to attach tag' }, { status: 500 })
   return NextResponse.json({ success: true }, { status: 201 })
 }
 
@@ -81,6 +81,6 @@ export async function DELETE(request: NextRequest, ctx: Ctx) {
     .eq('group_id', id)
     .eq('tag_id', tagId)
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  if (error) return NextResponse.json({ error: 'failed to remove tag' }, { status: 500 })
   return NextResponse.json({ success: true })
 }
