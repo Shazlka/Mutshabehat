@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-25 — Android manifest & sync log hardening
+
+- Set `android:allowBackup="false"` in `AndroidManifest.xml` so OS/ADB backups cannot extract local SQLite progress databases or PKCE pending preferences (tokens remain Keystore-encrypted in `noBackupFilesDir`).
+- Removed raw HTTP response body snippets and full endpoint URLs from `SyncEngine` failure logs (`error` code / path / status only).
+
 ## 2026-11-25 — Cloud login and sync reliability (`Qiraat-Cloud-Sync-v9.apk`)
 
 - Fixed Android OAuth token refresh races and silent sync failures (`SyncEngine.kt`, `CloudAccount.kt`): serialized token refreshes under a single-flight `Mutex` with double-checked expiry validation so concurrent sync passes (`LiveSync` 5-second loop, launch sync, manual sync) cannot reuse an already-rotated refresh token and trigger Neon Auth refresh-family revocation (`invalid_grant: session not found`).

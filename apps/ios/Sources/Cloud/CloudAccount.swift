@@ -421,8 +421,7 @@ final class CloudAccount {
         }
         let errorCode = ((try? JSONSerialization.jsonObject(with: data)) as? [String: Any])?["error"] as? String ?? ""
         let normalized = errorCode.lowercased()
-        let snippet = String(data: data.prefix(200), encoding: .utf8) ?? ""
-        Self.logger.warning("token refresh failed status=\(status) error=\(normalized, privacy: .public) body=\(snippet, privacy: .public)")
+        Self.logger.warning("token refresh failed status=\(status) error=\(normalized, privacy: .public)")
         if (status == 400 || status == 401),
            ["invalid_grant", "invalid_client", "unauthorized_client"].contains(normalized) {
             clearExpiredSession()
@@ -488,8 +487,7 @@ final class CloudAccount {
         case 401: throw CloudError.signIn
         case 409: throw CloudError.changed
         case 400:
-            let snippet = String(data: data.prefix(200), encoding: .utf8) ?? ""
-            Self.logger.warning("\(method, privacy: .public) \(url.path, privacy: .public) returned 400: \(snippet, privacy: .public)")
+            Self.logger.warning("\(method, privacy: .public) \(url.path, privacy: .public) returned 400")
             throw CloudError.invalidData
         default:
             Self.logger.warning("\(method, privacy: .public) \(url.path, privacy: .public) returned \(status)")

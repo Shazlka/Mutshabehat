@@ -226,12 +226,12 @@ object SyncEngine {
                 200 -> JSONObject(reply.body)
                 401 -> throw UnauthorizedException()
                 400 -> {
-                    android.util.Log.w(TAG, "$method $url returned 400: ${reply.body.take(200)}")
+                    android.util.Log.w(TAG, "$method ${endpointPath(url)} returned 400")
                     throw SyncFailure(FAILED)
                 }
                 409 -> throw SyncFailure(CHANGED)
                 else -> {
-                    android.util.Log.w(TAG, "$method $url returned ${reply.status}: ${reply.body.take(200)}")
+                    android.util.Log.w(TAG, "$method ${endpointPath(url)} returned ${reply.status}")
                     throw SyncFailure(FAILED)
                 }
             }
@@ -408,7 +408,7 @@ object SyncEngine {
         }
 
         val errorCode = runCatching { JSONObject(reply.body).optString("error").lowercase() }.getOrDefault("")
-        android.util.Log.w(TAG, "token refresh failed status=${reply.status} error=$errorCode body=${reply.body.take(200)}")
+        android.util.Log.w(TAG, "token refresh failed status=${reply.status} error=$errorCode")
         if ((reply.status == 400 || reply.status == 401) &&
             (errorCode == "invalid_grant" || errorCode == "invalid_client" || errorCode == "unauthorized_client")
         ) {
@@ -424,6 +424,8 @@ object SyncEngine {
                 isAccessible = true
                 invoke(target)
             }
+
+    private fun endpointPath(url: String): String = runCatching { java.net.URI(url).path.orEmpty() }.getOrDefault("")
 
     private suspend fun onMain(block: () -> Unit) {
         val hasMain = runCatching { android.os.Looper.getMainLooper() != null }.getOrDefault(false)

@@ -550,6 +550,7 @@ public final class MutshabehatDatabase: @unchecked Sendable {
     /// A group deleted at the source is not deleted here. A group deleted here (see `group_deletions`) is not brought
     /// back by the source, and the source's own deletion markers are kept so a deletion survives the next merge. Posts no notification: the caller does, on the main thread.
     public func mergeDatabase(from sourceURL: URL) throws {
+        guard sourceURL.isFileURL, !sourceURL.path.contains("\0") else { throw DatabaseTransferError.invalidDatabase }
         do { try SQLiteFile.validate(at: sourceURL, requiredTables: Self.requiredTables) } catch {
             throw DatabaseTransferError.invalidDatabase
         }

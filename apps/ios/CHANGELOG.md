@@ -3,6 +3,15 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## 2026-11-25 — Security hardening for Cloud Function, iOS DB merges, and logs
+
+- **Neon Cloud Function (`apps/ios/cloud/server.js`, `build.js`, `server.test.mjs`):**
+  - Escaped `>` and `'` alongside `&`, `"`, `<` in `attribute()` for HTML/meta callback rendering.
+  - Enforced `Content-Type: application/json` on `PUT /v1/progress/:dataset`, prototype-safe `Object.hasOwn` snapshot table lookup, `memorization_meta` key allowlisting (`milestones_seen`, `quran_completed_at`), and per-cell length bounds (`256 KiB`).
+  - Added per-isolate sliding-window rate limiting (`429` + `Retry-After`) by IP and account on `PUT`, rejected `OPTIONS` preflight cleanly (`405`, no `Access-Control-Allow-Origin` header), added `Strict-Transport-Security`, `X-Frame-Options: DENY`, and `Cross-Origin-Resource-Policy: same-origin`, and set `sourcemap: false` explicitly in `build.js`.
+- **iOS (`CloudAccount.swift`, `QuranReadingDatabase+Merge.swift`, `MutshabehatDatabase.swift`):**
+  - Validated `sourceURL.isFileURL` and rejected NUL bytes prior to `ATTACH DATABASE`, and removed raw HTTP response body snippets from error logs.
+
 ## 2026-11-25 — Fix iOS cloud login and token-refresh sync failures
 
 - Coalesced OAuth token refreshes in `CloudAccount` (`refreshTask`) so concurrent callers cannot reuse an already-rotated `refresh_token` and trigger Neon/Better Auth refresh-family revocation (`invalid_grant: session not found`), and preserved in-flight token saves even if a calling view task cancels mid-refresh.

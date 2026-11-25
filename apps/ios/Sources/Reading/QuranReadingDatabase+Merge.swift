@@ -12,6 +12,7 @@ extension QuranReadingDatabase {
     /// - Bookmarks are unioned by (type, surah, ayah, page).
     @discardableResult
     public func mergeDatabase(from sourceURL: URL) throws -> (khatmasMerged: Int, ayahsMerged: Int, daysMerged: Int) {
+        guard sourceURL.isFileURL, !sourceURL.path.contains("\0") else { throw TransferError.invalidDatabase }
         do { try SQLiteFile.validate(at: sourceURL, requiredTables: Self.requiredTables) } catch {
             throw TransferError.invalidDatabase
         }
