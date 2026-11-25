@@ -3,6 +3,14 @@
 > Newest first. One dated entry per change. iOS changes are logged here, never in the root
 > `CHANGELOG.md`, which belongs to the web app (see `AGENTS.md` §1).
 
+## 2026-11-25 — Khatma day detail sheet with add/delete, save & cloud sync
+
+- Added `ReadingDayDetailView` (`Sources/Reading/ReadingDayDetailView.swift`) opened when tapping any day in the Weekly Streak card, the Daily Bar Chart day callout, or the Daily Reading History rows inside `ReadingStatisticsView`.
+- Displays the clicked day's live totals (ayahs, pages, juz’, duration), grouped completed surah ayah/page ranges (`CompletedSurahDayItem`), logged sessions (`reading_activity_events`), and legacy activity (`reading_days_legacy`).
+- Allows staging deletions (completed surah portions or individual sessions, with Undo before saving) and staging additions via `AddReadingSessionView(initialDate:onStageAddition:)` pre-locked to that day, then saving atomically (`QuranReadingDatabase.applyDayEdits` with `kind = 'ayah'` tombstones in `reading_deletions` honored by `mergeDeletionTombstones` + `reading_days` recomputation) and pushing immediately to Neon Cloud (`CloudAccount.sync(..., dataset: .khatma)`) and iCloud.
+- Also triggers `.khatma` Neon Cloud sync after standalone session saves and surah completion toggles in `ReadingStatisticsView`.
+- Tests: `ReadingTests` + `ReadingCloudSyncTests` + `CloudAuthTests` + `CloudProgressTests` (`62/62` passed on `iPhone 18 Pro Max` simulator).
+
 ## 2026-11-25 — Security hardening for Cloud Function, iOS DB merges, and logs
 
 - **Neon Cloud Function (`apps/ios/cloud/server.js`, `build.js`, `server.test.mjs`):**

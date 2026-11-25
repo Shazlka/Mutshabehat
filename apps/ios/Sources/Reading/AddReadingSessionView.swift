@@ -3,15 +3,25 @@ import SwiftUI
 
 struct AddReadingSessionView: View {
     let library: MushafLibrary
+    let initialDate: Date?
+    let onStageAddition: ((PendingDayReadingAddition) -> Void)?
     let onSave: () -> Void
 
     @Environment(\.dismiss) private var dismiss
     @ObservedObject private var tracker: ReadingTracker
 
-    init(library: MushafLibrary, onSave: @escaping () -> Void) {
+    init(
+        library: MushafLibrary,
+        initialDate: Date? = nil,
+        onStageAddition: ((PendingDayReadingAddition) -> Void)? = nil,
+        onSave: @escaping () -> Void = {}
+    ) {
         self.library = library
+        self.initialDate = initialDate
+        self.onStageAddition = onStageAddition
         self.onSave = onSave
         _tracker = ObservedObject(wrappedValue: library.readingTracker)
+        _sessionDate = State(initialValue: initialDate ?? Date())
     }
 
     enum RangeMode: String, CaseIterable, Identifiable {
@@ -46,7 +56,7 @@ struct AddReadingSessionView: View {
     @State private var toPage: Int = 1
 
     // Metadata
-    @State private var sessionDate: Date = Date()
+    @State private var sessionDate: Date
     @State private var durationMinutes: Int = 15
     @State private var isFromMemory: Bool = false
 
@@ -270,11 +280,21 @@ struct AddReadingSessionView: View {
 
                 // MARK: - 2. Time & Duration Section
                 Section {
-                    DatePicker(
-                        "تاريخ ووقت القراءة",
-                        selection: $sessionDate,
-                        displayedComponents: [.date, .hourAndMinute]
-                    )
+                    if onStageAddition == nil {
+                        DatePicker(
+                            "تاريخ ووقت القراءة",
+                            selection: $sessionDate,
+                            displayedComponents: [.date, .hourAndMinute]
+                        )
+                    } else if let initialDate {
+                        HStack {
+                            Text("اليوم المحدد")
+                            Spacer()
+                            Text(initialDate.formatted(.dateTime.weekday(.wide).day().month(.wide).year().locale(Locale(identifier: "ar"))))
+                                .font(.subheadline.weight(.medium))
+                                .foregroundColor(.secondary)
+                        }
+                    }
 
                     VStack(alignment: .leading, spacing: 10) {
                         HStack {
@@ -371,6 +391,58 @@ struct AddReadingSessionView: View {
         guard !isRangeInvalid else { return }
         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         saveError = nil
+
+        if let onStageAddition {
+            let staged: PendingDayReadingAddition?
+            switch mode {
+            case .bySurah:
+                let name = selectedSurah?.name ?? "\(selectedSurahNumber)"
+                staged = tracker.buildManualSessionAddition(
+                    fromSurah: selectedSurahNumber,
+                    fromAyah: 1,
+                    toSurah: selectedSurahNumber,
+                    toAyah: selectedSurahMaxAyahs,
+                    durationMinutes: durationMinutes,
+                    label: "سورة \(name) (\(selectedSurahMaxAyahs) آية) • \(durationMinutes) د",
+                    library: library
+                )
+            case .byAyah:
+                let fromName = library.surahs.first { $0.number == fromSurahNumber }?.name ?? "\(fromSurahNumber)"
+                let toName = library.surahs.first { $0.number == toSurahNumber }?.name ?? "\(toSurahNumber)"
+                let desc = fromSurahNumber == toSurahNumber
+                    ? "\(fromName) (\(fromAyahNumber)–\(toAyahNumber))"
+                    : "\(fromName):\(fromAyahNumber) – \(toName):\(toAyahNumber)"
+                staged = tracker.buildManualSessionAddition(
+                    fromSurah: fromSurahNumber,
+                    fromAyah: fromAyahNumber,
+                    toSurah: toSurahNumber,
+                    toAyah: toAyahNumber,
+                    durationMinutes: durationMinutes,
+                    label: "\(desc) • \(durationMinutes) د",
+                    library: library
+                )
+            case .byPage:
+                let rangeLabel = fromPage == toPage ? "صفحة \(fromPage)" : "الصفحات \(fromPage)–\(toPage)"
+                staged = tracker.buildManualPageRangeAddition(
+                    fromPage: fromPage,
+                    toPage: toPage,
+                    durationMinutes: durationMinutes,
+                    label: "\(rangeLabel) • \(durationMinutes) د",
+                    library: library
+                )
+            }
+
+            guard let addition = staged else {
+                UINotificationFeedbackGenerator().notificationOccurred(.error)
+                saveError = "لم تُسجَّل أي آية. تحقق من النطاق ثم حاول مرة أخرى."
+                return
+            }
+
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
+            onStageAddition(addition)
+            dismiss()
+            return
+        }
 
         let recorded: Int
         switch mode {

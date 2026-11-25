@@ -392,6 +392,104 @@ final class ReadingTracker: ObservableObject {
         return items.count
     }
 
+    func dayDetail(for dateString: String) -> ReadingDayDetail {
+        db.dayDetail(for: dateString, khatmaId: activeKhatma.id)
+    }
+
+    func buildManualSessionAddition(
+        fromSurah: Int,
+        fromAyah: Int,
+        toSurah: Int,
+        toAyah: Int,
+        durationMinutes: Int,
+        label: String,
+        library: MushafLibrary
+    ) -> PendingDayReadingAddition? {
+        var items: [(surah: Int, ayah: Int, page: Int)] = []
+        let startS = min(fromSurah, toSurah)
+        let endS = max(fromSurah, toSurah)
+
+        for s in startS...endS {
+            let maxAyahs = library.surahAyahCounts[s] ?? 0
+            let startA = (s == startS) ? max(1, fromAyah) : 1
+            let endA = (s == endS) ? min(maxAyahs, toAyah) : maxAyahs
+            guard startA <= endA else { continue }
+            for a in startA...endA {
+                let p = library.page(of: AyahKey(surah: s, ayah: a)) ?? 1
+                items.append((surah: s, ayah: a, page: p))
+            }
+        }
+        guard !items.isEmpty else { return nil }
+        return PendingDayReadingAddition(
+            label: label,
+            items: items,
+            pageCount: Set(items.map(\.page)).count,
+            durationMinutes: durationMinutes
+        )
+    }
+
+    func buildManualPageRangeAddition(
+        fromPage: Int,
+        toPage: Int,
+        durationMinutes: Int,
+        label: String,
+        library: MushafLibrary
+    ) -> PendingDayReadingAddition? {
+        let p1 = max(1, min(fromPage, toPage))
+        let p2 = min(604, max(fromPage, toPage))
+        var items: [(surah: Int, ayah: Int, page: Int)] = []
+        for p in p1...p2 {
+            if let mushafPage = library.page(p) {
+                var seen = Set<AyahKey>()
+                for line in mushafPage.lines {
+                    for word in line.words {
+                        let key = word.ayahKey
+                        if !seen.contains(key) {
+                            seen.insert(key)
+                            items.append((surah: key.surah, ayah: key.ayah, page: p))
+                        }
+                    }
+                }
+            }
+        }
+        guard !items.isEmpty else { return nil }
+        return PendingDayReadingAddition(
+            label: label,
+            items: items,
+            pageCount: p2 - p1 + 1,
+            durationMinutes: durationMinutes
+        )
+    }
+
+    @discardableResult
+    func applyDayEdits(
+        dateString: String,
+        removedSurahAyahs: [(surah: Int, ayahs: [Int], pageCount: Int)],
+        removedEventIds: [String],
+        removeLegacy: Bool,
+        additions: [PendingDayReadingAddition],
+        on date: Date,
+        pushToICloud: Bool = true
+    ) -> Bool {
+        let ok = db.applyDayEdits(
+            khatmaId: activeKhatma.id,
+            dateString: dateString,
+            removedSurahAyahs: removedSurahAyahs,
+            removedEventIds: removedEventIds,
+            removeLegacy: removeLegacy,
+            additions: additions,
+            on: date
+        )
+        guard ok else { return false }
+        refreshStats()
+        if !additions.isEmpty && totalAyahsRead >= cachedTotalQuranAyahs {
+            triggerKhatmaCompletion()
+        } else if pushToICloud {
+            sync.pushReadingToICloud()
+        }
+        return true
+    }
+
     func currentWeekReadingDays() -> [WeeklyDayStatus] {
         let calendar = Calendar.autoupdatingCurrent
         let today = Date()

@@ -19,6 +19,7 @@ struct ReadingStatisticsView: View {
     @State private var recentDays: [ReadingDayRecord] = []
     @State private var selectedFilter: SurahProgressFilter = .all
     @State private var searchText: String = ""
+    @State private var selectedDayForDetail: SelectedReadingDay? = nil
 #if DEBUG
     // UI tests open the add-session sheet with a launch argument; Release builds never read launch arguments.
     @State private var showingAddSessionSheet: Bool = CommandLine.arguments.contains("-open-add-session")
@@ -96,14 +97,21 @@ struct ReadingStatisticsView: View {
                         currentStreak: stats.currentStreak,
                         longestStreak: stats.longestStreak,
                         days: weeklyDays,
-                        onAddSession: { showingAddSessionSheet = true }
+                        onAddSession: { showingAddSessionSheet = true },
+                        onSelectDay: { selectedDayForDetail = SelectedReadingDay(id: $0) }
                     )
 
                     // 5. Daily Reading Progress Bar Chart (Ayahs, Pages, Juz')
-                    DailyReadingProgressChartCard(days: recentDays)
+                    DailyReadingProgressChartCard(
+                        days: recentDays,
+                        onSelectDay: { selectedDayForDetail = SelectedReadingDay(id: $0) }
+                    )
 
                     // 6. Daily Reading History (Hours and minutes per day)
-                    DailyReadingHistoryCard(days: recentDays)
+                    DailyReadingHistoryCard(
+                        days: recentDays,
+                        onSelectDay: { selectedDayForDetail = SelectedReadingDay(id: $0) }
+                    )
                 }
 
                 // 6. Khatma by Surah Section with Remaining/Completed Filters
@@ -244,7 +252,15 @@ struct ReadingStatisticsView: View {
             }
         }
         .sheet(isPresented: $showingAddSessionSheet) {
-            AddReadingSessionView(library: library) {
+            AddReadingSessionView(library: library, onSave: {
+                loadData()
+                if let account = library.cloudAccount, account.accountID != nil {
+                    Task { await account.sync(library: library, dataset: .khatma) }
+                }
+            })
+        }
+        .sheet(item: $selectedDayForDetail) { selected in
+            ReadingDayDetailView(dateString: selected.id, library: library) {
                 loadData()
             }
         }
@@ -284,6 +300,9 @@ struct ReadingStatisticsView: View {
             overview = tracker.statsOverview(library: library)
             weeklyDays = tracker.currentWeekReadingDays()
             recentDays = library.readingDatabase.allReadingDays()
+            if let account = library.cloudAccount, account.accountID != nil {
+                await account.sync(library: library, dataset: .khatma)
+            }
         }
     }
 

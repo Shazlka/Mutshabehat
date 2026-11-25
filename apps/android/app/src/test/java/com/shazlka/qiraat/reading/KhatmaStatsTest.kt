@@ -24,4 +24,12 @@ class KhatmaStatsTest {
         assertEquals(0.0, khatmaPercent(-5, false), 0.0)
         assertEquals(99.0, khatmaPercent(9999, false), 0.0)
     }
+
+    @Test
+    fun formatsContiguousAyahRangesAndCalculatesJuz() {
+        assertEquals("١–٥، ٨، ١٠–١٢", khatmaStatsFormatRanges(listOf(12, 1, 2, 3, 4, 5, 8, 10, 11, 2)))
+        assertEquals("", khatmaStatsFormatRanges(emptyList()))
+        assertEquals(15.0, khatmaStatsDayJuz(0, 302), 1e-6)
+        assertEquals(1.0, khatmaStatsDayJuz(6236 / 30, 0), 0.05)
+    }
 }

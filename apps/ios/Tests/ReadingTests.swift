@@ -946,4 +946,100 @@ final class ReadingTests: XCTestCase {
         XCTAssertEqual(empty.axisMaximum(for: .juz), 1)
         XCTAssertEqual(ReadingChartSummary(points: [], metric: .ayahs).average, 0)
     }
+
+    // MARK: - 5. Day Detail & Edits Tests
+
+    func testDayDetailListsCompletedSurahsAndAppliesAdditionsAndDeletions() throws {
+        let khatma = testDB.getOrCreateActiveKhatma()
+        let day = chartDay("2026-11-25").addingTimeInterval(12 * 3600)
+        let prevDay = chartDay("2026-11-24").addingTimeInterval(12 * 3600)
+
+        let fatihah = (1...7).map { (surah: 1, ayah: $0, page: 1) }
+        let baqarahStart = (1...5).map { (surah: 2, ayah: $0, page: 2) }
+        XCTAssertEqual(testDB.recordReading(khatmaId: khatma.id, items: fatihah + baqarahStart, at: day, pagesCount: 2, seconds: 900) { $0 }, 12)
+        XCTAssertEqual(testDB.recordReading(khatmaId: khatma.id, items: [(surah: 112, ayah: 1, page: 604)], at: prevDay, pagesCount: 1, seconds: 300) { $0 }, 1)
+
+        let detail = testDB.dayDetail(for: "2026-11-25", khatmaId: khatma.id)
+        XCTAssertEqual(detail.completedSurahs.map(\.surahNumber), [1, 2])
+        XCTAssertEqual(detail.completedSurahs[0].ayahs, [1, 2, 3, 4, 5, 6, 7])
+        XCTAssertEqual(detail.completedSurahs[1].ayahs, [1, 2, 3, 4, 5])
+        XCTAssertEqual(detail.activityEvents.count, 1)
+        XCTAssertEqual(detail.summary?.ayahsRead, 12)
+
+        // Delete Surah 2's 5 ayahs from that day and stage Surah 113 (5 ayahs, page 604, 10m).
+        let added = PendingDayReadingAddition(
+            label: "الفلق",
+            items: (1...5).map { (surah: 113, ayah: $0, page: 604) },
+            pageCount: 1,
+            durationMinutes: 10
+        )
+        let saved = testDB.applyDayEdits(
+            khatmaId: khatma.id,
+            dateString: "2026-11-25",
+            removedSurahAyahs: [(surah: 2, ayahs: [1, 2, 3, 4, 5], pageCount: 1)],
+            removedEventIds: [],
+            removeLegacy: false,
+            additions: [added],
+            on: day
+        )
+        XCTAssertTrue(saved)
+
+        let updated = testDB.dayDetail(for: "2026-11-25", khatmaId: khatma.id)
+        XCTAssertEqual(updated.completedSurahs.map(\.surahNumber), [1, 113])
+        XCTAssertEqual(updated.summary?.ayahsRead, 12) // 12 - 5 + 5
+        XCTAssertEqual(updated.summary?.pagesRead, 2)  // 2 - 1 + 1
+        XCTAssertEqual(testDB.readAyahsCount(khatmaId: khatma.id), 13) // Fatihah(7) + 112:1(1) + 113(5)
+
+        // Remove all items from 2026-11-25: reading_days row is removed too, leaving 2026-11-24 intact.
+        let cleared = testDB.applyDayEdits(
+            khatmaId: khatma.id,
+            dateString: "2026-11-25",
+            removedSurahAyahs: [
+                (surah: 1, ayahs: Array(1...7), pageCount: 1),
+                (surah: 113, ayahs: Array(1...5), pageCount: 1),
+            ],
+            removedEventIds: updated.activityEvents.map(\.id),
+            removeLegacy: updated.legacyActivity != nil,
+            additions: [],
+            on: day
+        )
+        XCTAssertTrue(cleared)
+        let emptyDay = testDB.dayDetail(for: "2026-11-25", khatmaId: khatma.id)
+        XCTAssertNil(emptyDay.summary)
+        XCTAssertTrue(emptyDay.completedSurahs.isEmpty)
+        XCTAssertEqual(testDB.allReadingDays().map(\.dateString), ["2026-11-24"])
+        XCTAssertEqual(testDB.readAyahsCount(khatmaId: khatma.id), 1)
+    }
+
+    @MainActor
+    func testDayAyahDeletionTombstonesPreventMergeResurrection() throws {
+        let dir = tempDirectoryURL.appendingPathComponent("merge-tombstones")
+        try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        let dbA = QuranReadingDatabase(url: dir.appendingPathComponent("a.sqlite"))
+        let dbB = QuranReadingDatabase(url: dir.appendingPathComponent("b.sqlite"))
+        let kA = dbA.getOrCreateActiveKhatma()
+        let kB = dbB.getOrCreateActiveKhatma()
+        let service = ICloudDatabaseSyncService()
+        let day = chartDay("2026-11-25").addingTimeInterval(12 * 3600)
+
+        _ = dbA.recordReading(khatmaId: kA.id, items: [(2, 1, 2), (2, 2, 2)], at: day, pagesCount: 1, seconds: 120) { $0 }
+        _ = try service.syncReadingSnapshots(in: dir, database: dbA, deviceID: "dev-a")
+        _ = try service.syncReadingSnapshots(in: dir, database: dbB, deviceID: "dev-b")
+        XCTAssertEqual(dbB.readAyahsCount(khatmaId: kB.id), 2)
+
+        let ok = dbB.applyDayEdits(
+            khatmaId: kB.id,
+            dateString: "2026-11-25",
+            removedSurahAyahs: [(surah: 2, ayahs: [2], pageCount: 0)],
+            removedEventIds: [],
+            removeLegacy: false,
+            additions: [],
+            on: day
+        )
+        XCTAssertTrue(ok)
+        _ = try service.syncReadingSnapshots(in: dir, database: dbB, deviceID: "dev-b")
+        _ = try service.syncReadingSnapshots(in: dir, database: dbA, deviceID: "dev-a")
+        XCTAssertEqual(dbA.readAyahsCount(khatmaId: kA.id), 1)
+        XCTAssertEqual(dbA.allReadAyahsForSurah(khatmaId: kA.id, surah: 2), [1])
+    }
 }

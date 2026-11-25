@@ -475,6 +475,12 @@ object SyncEngine {
         }
     }
 
+    internal fun isSignedIn(account: Any): Boolean =
+        runCatching { call(account, "getSession") != null }.getOrDefault(false)
+
+    internal fun lastError(account: Any): String? =
+        runCatching { call(account, "getError") as? String }.getOrNull()
+
     /** Captures the dataset, or replaces it with [replacement] and returns the result. */
     @Suppress("UNCHECKED_CAST")
     private fun snapshot(account: Any, model: Any, item: ProgressDataset, replacement: ProgressSnapshot?): ProgressSnapshot {

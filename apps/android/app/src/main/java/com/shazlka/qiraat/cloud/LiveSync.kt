@@ -1,5 +1,6 @@
 package com.shazlka.qiraat.cloud
 
+import java.lang.ref.WeakReference
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
 
@@ -14,6 +15,21 @@ import kotlinx.coroutines.delay
 object LiveSync {
     const val INTERVAL_MS = 5_000L
 
+    @Volatile
+    private var activeAccount: WeakReference<Any>? = null
+
+    @Volatile
+    private var activeModel: WeakReference<Any>? = null
+
+    /** Pushes/syncs the khatma dataset immediately after user edits (when signed in). */
+    suspend fun syncKhatmaNow(): Pair<Boolean, String?> {
+        val account = activeAccount?.get() ?: return false to null
+        val model = activeModel?.get() ?: return false to null
+        if (!SyncEngine.isSignedIn(account)) return false to null
+        val ok = SyncEngine.sync(account, model, ProgressDataset.KHATMA, null, false)
+        return ok to SyncEngine.lastError(account)
+    }
+
     /** The reader opens its databases after the screen starts; syncing earlier fails and shows a false error. */
     private suspend fun waitUntilReady(model: Any) {
         val getters = listOf("getReadingDb", "getMemorizationDb").mapNotNull {
@@ -25,6 +41,8 @@ object LiveSync {
     /** Never returns normally; it ends when the surrounding lifecycle block is cancelled. */
     @JvmStatic
     suspend fun loop(account: Any, model: Any): Boolean {
+        activeAccount = WeakReference(account)
+        activeModel = WeakReference(model)
         waitUntilReady(model)
         while (true) {
             try {

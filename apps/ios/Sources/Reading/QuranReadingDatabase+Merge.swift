@@ -278,6 +278,12 @@ extension QuranReadingDatabase {
                 WHERE d.kind = 'surah' AND k.id = khatma_read_ayahs.khatma_id
                 AND d.surah = khatma_read_ayahs.surah AND d.deleted_at >= khatma_read_ayahs.read_at
             );
+            DELETE FROM khatma_read_ayahs WHERE EXISTS (
+                SELECT 1 FROM reading_deletions d JOIN khatmas k ON k.khatma_number = d.khatma_number
+                WHERE d.kind = 'ayah' AND k.id = khatma_read_ayahs.khatma_id
+                AND d.surah = khatma_read_ayahs.surah AND d.ayah = khatma_read_ayahs.ayah
+                AND d.deleted_at >= khatma_read_ayahs.read_at
+            );
             """)
     }
 }

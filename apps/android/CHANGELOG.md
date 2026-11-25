@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-25 — Khatma day detail dialog with add/delete, save & cloud sync (`Qiraat-Cloud-Sync-v9.apk`)
+
+- Made every day in `WeeklyStreak`, `DailyChart` selected day callout, and `DailyHistory` inside `KhatmaStatsUi.kt` clickable to open `KhatmaStatsDayDetailDialog`.
+- Shows the clicked day's live summary (ayahs, pages, juz’, duration), completed surah ayah/page ranges grouped from `khatma_read_ayahs`, logged sessions (`reading_activity_events`), and legacy activity (`reading_days_legacy`).
+- Supports staging deletions (with `reading_deletions` `kind='ayah'` tombstones and undo before saving), staging additions via `AddReadingSessionDialog` (with full page-range ayah lookup from `MushafDatabase`), saving atomically (`KhatmaStatsDayStore.applyEdits`), and syncing immediately to Neon Cloud via `LiveSync.syncKhatmaNow()` (`SyncEngine.kt`).
+- Added unit tests in `KhatmaStatsTest.kt` (`101/101` unit tests passing, `0` failures).
+
 ## 2026-11-25 — Android manifest & sync log hardening
 
 - Set `android:allowBackup="false"` in `AndroidManifest.xml` so OS/ADB backups cannot extract local SQLite progress databases or PKCE pending preferences (tokens remain Keystore-encrypted in `noBackupFilesDir`).

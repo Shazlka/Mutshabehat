@@ -242,6 +242,7 @@ struct WeeklyStreakTrackerCard: View {
     let longestStreak: Int
     let days: [WeeklyDayStatus]
     let onAddSession: () -> Void
+    var onSelectDay: ((String) -> Void)? = nil
 
     var body: some View {
         VStack(spacing: 16) {
@@ -281,49 +282,56 @@ struct WeeklyStreakTrackerCard: View {
             HStack(spacing: 0) {
                 ForEach(days) { day in
                     let heat = DailyHeatLevel(seconds: day.readingSeconds, isRead: day.isRead)
-                    VStack(spacing: 6) {
-                        Text(day.dayNameAr.prefix(3))
-                            .font(.caption2.weight(.medium))
-                            .foregroundColor(day.isToday ? .progress : .secondary)
+                    Button {
+                        onSelectDay?(day.dateString)
+                    } label: {
+                        VStack(spacing: 6) {
+                            Text(day.dayNameAr.prefix(3))
+                                .font(.caption2.weight(.medium))
+                                .foregroundColor(day.isToday ? .progress : .secondary)
 
-                        ZStack {
-                            if day.isRead {
+                            ZStack {
+                                if day.isRead {
+                                    Circle()
+                                        .fill(heat.fillColor)
+                                        .frame(width: 32, height: 32)
+                                        .shadow(color: heat.shadowColor, radius: heat.shadowRadius, x: 0, y: 1.5)
+
+                                    Text(day.dayNumber)
+                                        .font(.caption.weight(.bold))
+                                        .foregroundColor(heat.textColor)
+                                } else {
+                                    Circle()
+                                        .stroke(day.isToday ? Color.progress : Color(uiColor: .tertiarySystemFill), lineWidth: 1.5)
+                                        .frame(width: 32, height: 32)
+                                    Text(day.dayNumber)
+                                        .font(.caption.weight(day.isToday ? .bold : .regular))
+                                        .foregroundColor(day.isToday ? .progress : .secondary)
+                                }
+                            }
+
+                            if day.isToday {
                                 Circle()
-                                    .fill(heat.fillColor)
-                                    .frame(width: 32, height: 32)
-                                    .shadow(color: heat.shadowColor, radius: heat.shadowRadius, x: 0, y: 1.5)
-
-                                Text(day.dayNumber)
-                                    .font(.caption.weight(.bold))
-                                    .foregroundColor(heat.textColor)
+                                    .fill(Color.progress)
+                                    .frame(width: 4, height: 4)
                             } else {
                                 Circle()
-                                    .stroke(day.isToday ? Color.progress : Color(uiColor: .tertiarySystemFill), lineWidth: 1.5)
-                                    .frame(width: 32, height: 32)
-                                Text(day.dayNumber)
-                                    .font(.caption.weight(day.isToday ? .bold : .regular))
-                                    .foregroundColor(day.isToday ? .progress : .secondary)
+                                    .fill(Color.clear)
+                                    .frame(width: 4, height: 4)
                             }
-                        }
 
-                        if day.isToday {
-                            Circle()
-                                .fill(Color.progress)
-                                .frame(width: 4, height: 4)
-                        } else {
-                            Circle()
-                                .fill(Color.clear)
-                                .frame(width: 4, height: 4)
+                            // Daily duration (hours and minutes)
+                            Text(day.formattedDuration)
+                                .font(.system(.caption2, design: .rounded, weight: day.isRead ? .bold : .regular))
+                                .foregroundColor(day.isRead ? .primary : .secondary.opacity(0.5))
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.75)
                         }
-
-                        // Daily duration (hours and minutes)
-                        Text(day.formattedDuration)
-                            .font(.system(.caption2, design: .rounded, weight: day.isRead ? .bold : .regular))
-                            .foregroundColor(day.isRead ? .primary : .secondary.opacity(0.5))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.75)
+                        .frame(maxWidth: .infinity)
+                        .contentShape(Rectangle())
                     }
-                    .frame(maxWidth: .infinity)
+                    .buttonStyle(.plain)
+                    .disabled(onSelectDay == nil)
                     .accessibilityElement(children: .combine)
                     .accessibilityLabel("\(day.dayNameAr)، \(day.isRead ? day.formattedDuration : "لم يُقرأ")")
                 }
@@ -590,6 +598,7 @@ struct SurahProgressItemRow: View {
 
 struct DailyReadingHistoryCard: View {
     let days: [ReadingDayRecord]
+    var onSelectDay: ((String) -> Void)? = nil
 
     private static let inFormatter: DateFormatter = {
         let f = DateFormatter()
@@ -622,30 +631,42 @@ struct DailyReadingHistoryCard: View {
 
                 VStack(spacing: 8) {
                     ForEach(days.prefix(7)) { day in
-                        HStack(spacing: 10) {
-                            Text(formatDate(day.dateString))
-                                .font(.subheadline.weight(.medium))
-                                .foregroundColor(.primary)
+                        Button {
+                            onSelectDay?(day.dateString)
+                        } label: {
+                            HStack(spacing: 10) {
+                                Text(formatDate(day.dateString))
+                                    .font(.subheadline.weight(.medium))
+                                    .foregroundColor(.primary)
 
-                            Spacer()
+                                Spacer()
 
-                            HStack(spacing: 4) {
-                                Image(systemName: "clock")
-                                    .font(.caption2)
-                                    .foregroundColor(.info)
-                                Text(formatDuration(day.secondsRead))
-                                    .font(.subheadline.bold())
-                                    .foregroundColor(.info)
+                                HStack(spacing: 4) {
+                                    Image(systemName: "clock")
+                                        .font(.caption2)
+                                        .foregroundColor(.info)
+                                    Text(formatDuration(day.secondsRead))
+                                        .font(.subheadline.bold())
+                                        .foregroundColor(.info)
+                                }
+
+                                Text("• \(ArabicDigits.string(day.pagesRead)) ص • \(ArabicDigits.string(day.ayahsRead)) آية")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+
+                                if onSelectDay != nil {
+                                    Image(systemName: "chevron.forward")
+                                        .font(.caption2.weight(.semibold))
+                                        .foregroundColor(Color(uiColor: .tertiaryLabel))
+                                }
                             }
-
-                            Text("• \(ArabicDigits.string(day.pagesRead)) ص • \(ArabicDigits.string(day.ayahsRead)) آية")
-                                .font(.caption)
-                                .foregroundColor(.secondary)
+                            .padding(.vertical, 8)
+                            .padding(.horizontal, 12)
+                            .background(Color(uiColor: .tertiarySystemGroupedBackground))
+                            .cornerRadius(10)
                         }
-                        .padding(.vertical, 8)
-                        .padding(.horizontal, 12)
-                        .background(Color(uiColor: .tertiarySystemGroupedBackground))
-                        .cornerRadius(10)
+                        .buttonStyle(.plain)
+                        .disabled(onSelectDay == nil)
                     }
                 }
             }

@@ -1,5 +1,6 @@
 package com.shazlka.qiraat.reading
 
+import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.graphics.Paint
@@ -27,11 +28,14 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material.icons.filled.ArrowBackIosNew
 import androidx.compose.material.icons.filled.AutoStories
 import androidx.compose.material.icons.filled.BarChart
@@ -39,6 +43,9 @@ import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.ChevronRight
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.CloudUpload
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Inbox
 import androidx.compose.material.icons.filled.LocalFireDepartment
 import androidx.compose.material.icons.filled.PanTool
@@ -47,6 +54,7 @@ import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.TouchApp
 import androidx.compose.material.icons.filled.UnfoldMore
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.HorizontalDivider
@@ -60,7 +68,18 @@ import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
+import com.shazlka.qiraat.cloud.LiveSync
+import com.shazlka.qiraat.core.AyahKey
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+import java.util.UUID
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -131,6 +150,8 @@ fun KhatmaStatsScreen(
     var filter by remember { mutableStateOf(SurahProgressFilter.ALL) }
     var search by remember { mutableStateOf("") }
     var showAddSession by remember { mutableStateOf(false) }
+    var selectedDayForDetail by remember { mutableStateOf<String?>(null) }
+    val syncScope = rememberCoroutineScope()
 
     val khatmaId = tracker.activeKhatma.id
     val ayahsRead = tracker.totalAyahsRead
@@ -168,9 +189,20 @@ fun KhatmaStatsScreen(
                         }
                     }
                 }
-                item { Gap { WeeklyStreak(c, tracker.currentStreak, tracker.longestStreak, data.weekly) { showAddSession = true } } }
-                item { Gap { DailyChart(c, data.days) } }
-                if (data.days.isNotEmpty()) item { Gap { DailyHistory(c, data.days) } }
+                item {
+                    Gap {
+                        WeeklyStreak(
+                            c = c,
+                            current = tracker.currentStreak,
+                            longest = tracker.longestStreak,
+                            days = data.weekly,
+                            onAdd = { showAddSession = true },
+                            onSelectDay = { selectedDayForDetail = it },
+                        )
+                    }
+                }
+                item { Gap { DailyChart(c, data.days) { selectedDayForDetail = it } } }
+                if (data.days.isNotEmpty()) item { Gap { DailyHistory(c, data.days) { selectedDayForDetail = it } } }
                 item {
                     SurahSection(
                         c = c,
@@ -202,6 +234,7 @@ fun KhatmaStatsScreen(
                                         pageResolver = { s, _ -> surahs.firstOrNull { it.number == s }?.firstPage ?: 1 },
                                     )
                                     tick++
+                                    syncScope.launch { LiveSync.syncKhatmaNow() }
                                 },
                             )
                         }
@@ -229,17 +262,35 @@ fun KhatmaStatsScreen(
                 )
                 showAddSession = false
                 tick++
+                syncScope.launch { LiveSync.syncKhatmaNow() }
             },
             onSavePageSession = { fromPage, toPage, duration ->
+                val pageAyahs = khatmaStatsResolvePageAyahs(context)
                 tracker.recordManualPageRangeSession(
                     fromPage = fromPage,
                     toPage = toPage,
                     sessionDate = Instant.now(),
                     durationMinutes = duration,
-                    pageAyahsResolver = { emptyList() },
+                    pageAyahsResolver = pageAyahs,
                 )
                 showAddSession = false
                 tick++
+                syncScope.launch { LiveSync.syncKhatmaNow() }
+            },
+        )
+    }
+
+    selectedDayForDetail?.let { dayKey ->
+        KhatmaStatsDayDetailDialog(
+            c = c,
+            dateString = dayKey,
+            tracker = tracker,
+            surahs = surahs,
+            surahAyahCounts = surahAyahCounts,
+            onDismiss = { selectedDayForDetail = null },
+            onSavedAndSynced = {
+                tick++
+                selectedDayForDetail = null
             },
         )
     }
@@ -566,7 +617,14 @@ private enum class KhatmaHeat {
 }
 
 @Composable
-private fun WeeklyStreak(c: KhatmaStatsColors, current: Int, longest: Int, days: List<WeeklyDayStatus>, onAdd: () -> Unit) {
+private fun WeeklyStreak(
+    c: KhatmaStatsColors,
+    current: Int,
+    longest: Int,
+    days: List<WeeklyDayStatus>,
+    onAdd: () -> Unit,
+    onSelectDay: (String) -> Unit,
+) {
     Column(Modifier.padding(horizontal = 16.dp).fillMaxWidth().card(c, 18).padding(16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(Icons.Filled.LocalFireDepartment, null, tint = c.caution, modifier = Modifier.size(28.dp))
@@ -587,7 +645,11 @@ private fun WeeklyStreak(c: KhatmaStatsColors, current: Int, longest: Int, days:
         Row(Modifier.fillMaxWidth().padding(top = 4.dp)) {
             days.forEach { day ->
                 val heat = KhatmaHeat.of(day.readingSeconds, day.isRead)
-                Column(Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                Column(
+                    Modifier.weight(1f).clip(RoundedCornerShape(10.dp)).clickable { onSelectDay(day.dateString) }.padding(vertical = 2.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(6.dp),
+                ) {
                     StatsText(day.dayNameAr.take(3), 11f, if (day.isToday) c.progress else c.secondary, weight = FontWeight.Medium, maxLines = 1)
                     Box(Modifier.size(32.dp), contentAlignment = Alignment.Center) {
                         if (day.isRead) {
@@ -667,7 +729,7 @@ private fun axisStep(maximum: Double): Double {
 }
 
 @Composable
-private fun DailyChart(c: KhatmaStatsColors, days: List<ReadingDayRecord>) {
+private fun DailyChart(c: KhatmaStatsColors, days: List<ReadingDayRecord>, onSelectDay: (String) -> Unit) {
     val context = LocalContext.current
     val preferences = remember { context.getSharedPreferences("reading_chart", Context.MODE_PRIVATE) }
     var metric by remember { mutableStateOf(KhatmaChartMetric.entries.firstOrNull { it.name == preferences.getString("metric", null) } ?: KhatmaChartMetric.PAGES) }
@@ -724,7 +786,9 @@ private fun DailyChart(c: KhatmaStatsColors, days: List<ReadingDayRecord>) {
             if (selectedPoint != null) {
                 Row(
                     Modifier.fillMaxSize().clip(RoundedCornerShape(12.dp)).background(tint.copy(alpha = 0.08f))
-                        .border(1.dp, tint.copy(alpha = 0.28f), RoundedCornerShape(12.dp)).padding(10.dp),
+                        .border(1.dp, tint.copy(alpha = 0.28f), RoundedCornerShape(12.dp))
+                        .clickable { onSelectDay(selectedPoint.key) }
+                        .padding(10.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(3.dp)) {
@@ -741,6 +805,8 @@ private fun DailyChart(c: KhatmaStatsColors, days: List<ReadingDayRecord>) {
                             StatsText(duration(selectedPoint.seconds), 12f, c.info, weight = FontWeight.Bold, maxLines = 1)
                         }
                     }
+                    Spacer(Modifier.width(6.dp))
+                    Icon(Icons.Filled.ChevronRight, null, tint = tint, modifier = Modifier.size(16.dp))
                 }
             } else {
                 Row(
@@ -883,7 +949,7 @@ private fun BarChart(
 // MARK: - History
 
 @Composable
-private fun DailyHistory(c: KhatmaStatsColors, days: List<ReadingDayRecord>) {
+private fun DailyHistory(c: KhatmaStatsColors, days: List<ReadingDayRecord>, onSelectDay: (String) -> Unit) {
     Column(Modifier.padding(horizontal = 16.dp).fillMaxWidth().card(c, 18).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(Icons.Filled.CalendarMonth, null, tint = c.info, modifier = Modifier.size(20.dp))
@@ -894,7 +960,9 @@ private fun DailyHistory(c: KhatmaStatsColors, days: List<ReadingDayRecord>) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             days.take(7).forEach { day ->
                 Row(
-                    Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp)).background(c.cardInset).padding(vertical = 8.dp, horizontal = 12.dp),
+                    Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp)).background(c.cardInset)
+                        .clickable { onSelectDay(day.dateString) }
+                        .padding(vertical = 8.dp, horizontal = 12.dp),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
@@ -907,6 +975,7 @@ private fun DailyHistory(c: KhatmaStatsColors, days: List<ReadingDayRecord>) {
                         StatsText(duration(day.secondsRead), 15f, c.info, weight = FontWeight.Bold, maxLines = 1)
                     }
                     StatsText("• ${indic(day.pagesRead)} ص • ${indic(day.ayahsRead)} آية", 12f, c.secondary, maxLines = 1)
+                    Icon(Icons.Filled.ChevronRight, null, tint = c.tertiary, modifier = Modifier.size(14.dp))
                 }
             }
         }
@@ -1098,5 +1167,735 @@ private fun SurahRowContent(c: KhatmaStatsColors, progress: SurahProgress) {
             }
         }
         Icon(Icons.Filled.ChevronRight, null, tint = c.tertiary, modifier = Modifier.size(16.dp))
+    }
+}
+
+// MARK: - Day detail (completed surahs, sessions, add/delete, save & sync)
+
+internal class KhatmaStatsCompletedSurah(
+    val surahNumber: Int,
+    val ayahs: List<Int>,
+    val pages: List<Int>,
+) {
+    val minPage: Int get() = pages.firstOrNull() ?: 1
+    val maxPage: Int get() = pages.lastOrNull() ?: minPage
+}
+
+internal class KhatmaStatsDayEvent(
+    val id: String,
+    val ayahsRead: Int,
+    val pagesRead: Int,
+    val secondsRead: Int,
+    val recordedAt: String,
+)
+
+internal class KhatmaStatsPendingAdd(
+    val id: String,
+    val label: String,
+    val items: List<Triple<Int, Int, Int>>,
+    val pageCount: Int,
+    val durationMinutes: Int,
+)
+
+internal class KhatmaStatsDayDetailData(
+    val dateString: String,
+    val summaryAyahs: Int,
+    val summaryPages: Int,
+    val summarySeconds: Int,
+    val completedSurahs: List<KhatmaStatsCompletedSurah>,
+    val events: List<KhatmaStatsDayEvent>,
+    val legacy: KhatmaStatsDayEvent?,
+)
+
+internal fun khatmaStatsFormatRanges(sortedValues: List<Int>): String {
+    if (sortedValues.isEmpty()) return ""
+    val clean = sortedValues.distinct().sorted()
+    val ranges = mutableListOf<Pair<Int, Int>>()
+    var start = clean[0]
+    var end = clean[0]
+    for (i in 1 until clean.size) {
+        val value = clean[i]
+        if (value == end + 1) {
+            end = value
+        } else {
+            ranges.add(start to end)
+            start = value
+            end = value
+        }
+    }
+    ranges.add(start to end)
+    return ranges.joinToString("، ") { (s, e) ->
+        if (s == e) indic(s) else "${indic(s)}–${indic(e)}"
+    }
+}
+
+internal fun khatmaStatsDayJuz(ayahs: Int, pages: Int): Double = when {
+    pages > 0 -> pages / (604.0 / 30.0)
+    ayahs > 0 -> ayahs / (6236.0 / 30.0)
+    else -> 0.0
+}
+
+internal fun khatmaStatsResolvePageAyahs(context: Context): (Int) -> List<AyahKey> = { page ->
+    try {
+        MushafDatabase.open(MushafDatabase.installBundledDatabase(context)).use { db ->
+            db.page(page).lines.flatMap { it.words }.map { it.ayahKey }.distinct()
+        }
+    } catch (_: Exception) {
+        emptyList()
+    }
+}
+
+internal object KhatmaStatsDayStore {
+    private val localDateFormat = DateTimeFormatter.ISO_LOCAL_DATE.withZone(ZoneId.systemDefault())
+
+    private fun parseDateKey(isoText: String): String? = runCatching {
+        localDateFormat.format(Instant.parse(isoText))
+    }.getOrNull()
+
+    fun load(dbPath: String, khatmaId: String, dateString: String): KhatmaStatsDayDetailData {
+        var sumA = 0
+        var sumP = 0
+        var sumS = 0
+        val surahMap = mutableMapOf<Int, Pair<MutableList<Int>, MutableSet<Int>>>()
+        val events = mutableListOf<KhatmaStatsDayEvent>()
+        var legacy: KhatmaStatsDayEvent? = null
+
+        SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READONLY).use { db ->
+            db.rawQuery(
+                "SELECT ayahs_read, pages_read, seconds_read FROM reading_days WHERE date_string = ?",
+                arrayOf(dateString),
+            ).use { cursor ->
+                if (cursor.moveToFirst()) {
+                    sumA = cursor.getInt(0)
+                    sumP = cursor.getInt(1)
+                    sumS = cursor.getInt(2)
+                }
+            }
+
+            db.rawQuery(
+                "SELECT surah, ayah, page, read_at FROM khatma_read_ayahs WHERE khatma_id = ? ORDER BY surah ASC, ayah ASC",
+                arrayOf(khatmaId),
+            ).use { cursor ->
+                while (cursor.moveToNext()) {
+                    val readAt = cursor.getString(3) ?: continue
+                    if (parseDateKey(readAt) != dateString) continue
+                    val surah = cursor.getInt(0)
+                    val ayah = cursor.getInt(1)
+                    val page = cursor.getInt(2)
+                    val pair = surahMap.getOrPut(surah) { mutableListOf<Int>() to mutableSetOf() }
+                    pair.first.add(ayah)
+                    pair.second.add(page)
+                }
+            }
+
+            db.rawQuery(
+                "SELECT id, ayahs_read, pages_read, seconds_read, recorded_at FROM reading_activity_events WHERE date_string = ? ORDER BY recorded_at DESC",
+                arrayOf(dateString),
+            ).use { cursor ->
+                while (cursor.moveToNext()) {
+                    events.add(
+                        KhatmaStatsDayEvent(
+                            id = cursor.getString(0),
+                            ayahsRead = cursor.getInt(1),
+                            pagesRead = cursor.getInt(2),
+                            secondsRead = cursor.getInt(3),
+                            recordedAt = cursor.getString(4) ?: "",
+                        ),
+                    )
+                }
+            }
+
+            db.rawQuery(
+                "SELECT ayahs_read, pages_read, seconds_read, last_read_at FROM reading_days_legacy WHERE date_string = ?",
+                arrayOf(dateString),
+            ).use { cursor ->
+                if (cursor.moveToFirst()) {
+                    val a = cursor.getInt(0)
+                    val p = cursor.getInt(1)
+                    val s = cursor.getInt(2)
+                    if (a > 0 || p > 0 || s > 0) {
+                        legacy = KhatmaStatsDayEvent("legacy", a, p, s, cursor.getString(3) ?: "")
+                    }
+                }
+            }
+        }
+
+        val completed = surahMap.keys.sorted().map { surah ->
+            val (ayahs, pages) = surahMap[surah]!!
+            KhatmaStatsCompletedSurah(surah, ayahs.sorted(), pages.sorted())
+        }
+        return KhatmaStatsDayDetailData(dateString, sumA, sumP, sumS, completed, events, legacy)
+    }
+
+    fun applyEdits(
+        dbPath: String,
+        khatmaId: String,
+        khatmaNumber: Int,
+        dateString: String,
+        removedSurahs: List<KhatmaStatsCompletedSurah>,
+        removedEventIds: Set<String>,
+        removeLegacy: Boolean,
+        additions: List<KhatmaStatsPendingAdd>,
+    ): Boolean {
+        return try {
+            val dayInstant = LocalDate.parse(dateString).atTime(12, 0).atZone(ZoneId.systemDefault()).toInstant()
+            val dayIso = dayInstant.toString()
+            SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READWRITE).use { db ->
+                runCatching { db.rawQuery("PRAGMA busy_timeout = 3000;", null).use { it.moveToFirst() } }
+                db.beginTransaction()
+                try {
+                    for (eventId in removedEventIds) {
+                        db.delete("reading_activity_events", "id = ?", arrayOf(eventId))
+                    }
+                    if (removeLegacy) {
+                        db.delete("reading_days_legacy", "date_string = ?", arrayOf(dateString))
+                    }
+
+                    var cutAyahs = 0
+                    var cutPages = 0
+                    val deletedAt = Instant.now().toString()
+                    for (surah in removedSurahs) {
+                        for (ayah in surah.ayahs) {
+                            val delVals = ContentValues().apply {
+                                put("kind", "ayah")
+                                put("khatma_number", khatmaNumber)
+                                put("surah", surah.surahNumber)
+                                put("ayah", ayah)
+                                put("page", 0)
+                                put("deleted_at", deletedAt)
+                            }
+                            db.insertWithOnConflict("reading_deletions", null, delVals, SQLiteDatabase.CONFLICT_REPLACE)
+                            cutAyahs += db.delete(
+                                "khatma_read_ayahs",
+                                "khatma_id = ? AND surah = ? AND ayah = ?",
+                                arrayOf(khatmaId, surah.surahNumber.toString(), ayah.toString()),
+                            )
+                        }
+                        cutPages += surah.pages.size
+                    }
+
+                    if (cutAyahs > 0 && removedEventIds.isEmpty() && !removeLegacy) {
+                        trimDayActivity(db, dateString, cutAyahs, cutPages)
+                    }
+
+                    for (add in additions) {
+                        var newlyInserted = 0
+                        for ((surah, ayah, page) in add.items) {
+                            val row = ContentValues().apply {
+                                put("khatma_id", khatmaId)
+                                put("surah", surah)
+                                put("ayah", ayah)
+                                put("page", page)
+                                put("read_at", dayIso)
+                            }
+                            if (db.insertWithOnConflict("khatma_read_ayahs", null, row, SQLiteDatabase.CONFLICT_IGNORE) != -1L) {
+                                newlyInserted++
+                            }
+                        }
+                        val actAyahs = max(1, if (newlyInserted > 0) newlyInserted else add.items.size)
+                        val actSeconds = max(60, add.durationMinutes * 60)
+                        val evRow = ContentValues().apply {
+                            put("id", UUID.randomUUID().toString())
+                            put("date_string", dateString)
+                            put("ayahs_read", actAyahs)
+                            put("pages_read", add.pageCount)
+                            put("seconds_read", actSeconds)
+                            put("recorded_at", dayIso)
+                        }
+                        db.insert("reading_activity_events", null, evRow)
+                    }
+
+                    recomputeDay(db, dateString)
+                    db.setTransactionSuccessful()
+                } finally {
+                    db.endTransaction()
+                }
+            }
+            true
+        } catch (_: Exception) {
+            false
+        }
+    }
+
+    private fun trimDayActivity(db: SQLiteDatabase, dateString: String, ayahsToRemove: Int, pagesToRemove: Int) {
+        var remA = ayahsToRemove
+        var remP = pagesToRemove
+        val rows = mutableListOf<List<Any>>()
+        db.rawQuery(
+            "SELECT id, ayahs_read, pages_read, seconds_read FROM reading_activity_events WHERE date_string = ? ORDER BY recorded_at DESC",
+            arrayOf(dateString),
+        ).use { c ->
+            while (c.moveToNext()) rows.add(listOf(c.getString(0), c.getInt(1), c.getInt(2), c.getInt(3)))
+        }
+        for (r in rows) {
+            if (remA <= 0 && remP <= 0) break
+            val id = r[0] as String
+            val a = r[1] as Int
+            val p = r[2] as Int
+            val s = r[3] as Int
+            val cutA = min(a, remA)
+            val cutP = min(p, remP)
+            remA -= cutA
+            remP -= cutP
+            val newA = a - cutA
+            val newP = p - cutP
+            val newS = if (a > 0 && newA > 0) (s.toDouble() * newA / a).roundToInt() else 0
+            if (newA <= 0 && newP <= 0) {
+                db.delete("reading_activity_events", "id = ?", arrayOf(id))
+            } else {
+                val cv = ContentValues().apply {
+                    put("ayahs_read", newA)
+                    put("pages_read", newP)
+                    put("seconds_read", newS)
+                }
+                db.update("reading_activity_events", cv, "id = ?", arrayOf(id))
+            }
+        }
+        if (remA > 0 || remP > 0) {
+            db.rawQuery(
+                "SELECT ayahs_read, pages_read, seconds_read FROM reading_days_legacy WHERE date_string = ?",
+                arrayOf(dateString),
+            ).use { c ->
+                if (c.moveToFirst()) {
+                    val a = c.getInt(0)
+                    val p = c.getInt(1)
+                    val s = c.getInt(2)
+                    val newA = max(0, a - remA)
+                    val newP = max(0, p - remP)
+                    val newS = if (a > 0 && newA > 0) (s.toDouble() * newA / a).roundToInt() else 0
+                    if (newA <= 0 && newP <= 0) {
+                        db.delete("reading_days_legacy", "date_string = ?", arrayOf(dateString))
+                    } else {
+                        val cv = ContentValues().apply {
+                            put("ayahs_read", newA)
+                            put("pages_read", newP)
+                            put("seconds_read", newS)
+                        }
+                        db.update("reading_days_legacy", cv, "date_string = ?", arrayOf(dateString))
+                    }
+                }
+            }
+        }
+    }
+
+    private fun recomputeDay(db: SQLiteDatabase, dateString: String) {
+        var legA = 0
+        var legP = 0
+        var legS = 0
+        var legLast = ""
+        db.rawQuery(
+            "SELECT ayahs_read, pages_read, seconds_read, last_read_at FROM reading_days_legacy WHERE date_string = ?",
+            arrayOf(dateString),
+        ).use { c ->
+            if (c.moveToFirst()) {
+                legA = c.getInt(0)
+                legP = c.getInt(1)
+                legS = c.getInt(2)
+                legLast = c.getString(3) ?: ""
+            }
+        }
+
+        var evA = 0
+        var evP = 0
+        var evS = 0
+        var evLast = ""
+        db.rawQuery(
+            "SELECT COALESCE(SUM(ayahs_read), 0), COALESCE(SUM(pages_read), 0), COALESCE(SUM(seconds_read), 0), COALESCE(MAX(recorded_at), '') FROM reading_activity_events WHERE date_string = ?",
+            arrayOf(dateString),
+        ).use { c ->
+            if (c.moveToFirst()) {
+                evA = c.getInt(0)
+                evP = c.getInt(1)
+                evS = c.getInt(2)
+                evLast = c.getString(3) ?: ""
+            }
+        }
+
+        val totalA = legA + evA
+        val totalP = legP + evP
+        val totalS = legS + evS
+        val latestAt = maxOf(legLast, evLast).ifEmpty { Instant.now().toString() }
+
+        if (totalA <= 0 && totalP <= 0 && totalS <= 0) {
+            db.delete("reading_days", "date_string = ?", arrayOf(dateString))
+        } else {
+            val cv = ContentValues().apply {
+                put("date_string", dateString)
+                put("ayahs_read", totalA)
+                put("pages_read", totalP)
+                put("seconds_read", totalS)
+                put("last_read_at", latestAt)
+            }
+            db.insertWithOnConflict("reading_days", null, cv, SQLiteDatabase.CONFLICT_REPLACE)
+        }
+    }
+}
+
+@Composable
+private fun KhatmaStatsDayDetailDialog(
+    c: KhatmaStatsColors,
+    dateString: String,
+    tracker: ReadingTracker,
+    surahs: List<Surah>,
+    surahAyahCounts: Map<Int, Int>,
+    onDismiss: () -> Unit,
+    onSavedAndSynced: () -> Unit,
+) {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    val khatma = tracker.activeKhatma
+    val initial = remember(dateString, khatma.id, tracker.totalAyahsRead, tracker.currentStreak, tracker.totalReadingDays) {
+        KhatmaStatsDayStore.load(tracker.db.databaseFile.path, khatma.id, dateString)
+    }
+
+    var removedSurahs by remember(dateString) { mutableStateOf(emptySet<Int>()) }
+    var removedEvents by remember(dateString) { mutableStateOf(emptySet<String>()) }
+    var removeLegacy by remember(dateString) { mutableStateOf(false) }
+    var pendingAdditions by remember(dateString) { mutableStateOf(emptyList<KhatmaStatsPendingAdd>()) }
+    var showAddDialog by remember { mutableStateOf(false) }
+    var saving by remember { mutableStateOf(false) }
+    var statusText by remember { mutableStateOf<String?>(null) }
+    var statusError by remember { mutableStateOf(false) }
+
+    val visibleSurahs = initial.completedSurahs.filter { it.surahNumber !in removedSurahs }
+    val visibleEvents = initial.events.filter { it.id !in removedEvents }
+    val visibleLegacy = initial.legacy.takeIf { !removeLegacy }
+    val hasChanges = removedSurahs.isNotEmpty() || removedEvents.isNotEmpty() || removeLegacy || pendingAdditions.isNotEmpty()
+
+    var previewAyahs = initial.summaryAyahs
+    var previewPages = initial.summaryPages
+    var previewSeconds = initial.summarySeconds
+    if (removedEvents.isNotEmpty() || removeLegacy) {
+        previewAyahs = visibleEvents.sumOf { it.ayahsRead } + (visibleLegacy?.ayahsRead ?: 0)
+        previewPages = visibleEvents.sumOf { it.pagesRead } + (visibleLegacy?.pagesRead ?: 0)
+        previewSeconds = visibleEvents.sumOf { it.secondsRead } + (visibleLegacy?.secondsRead ?: 0)
+    } else if (removedSurahs.isNotEmpty()) {
+        val dropped = initial.completedSurahs.filter { it.surahNumber in removedSurahs }
+        val cutA = dropped.sumOf { it.ayahs.size }
+        val cutP = dropped.sumOf { it.pages.size }
+        val nextA = max(0, previewAyahs - cutA)
+        previewSeconds = if (previewAyahs > 0) (previewSeconds.toDouble() * nextA / previewAyahs).roundToInt() else 0
+        previewAyahs = nextA
+        previewPages = max(0, previewPages - cutP)
+    }
+    for (add in pendingAdditions) {
+        previewAyahs += add.items.size
+        previewPages += add.pageCount
+        previewSeconds += max(60, add.durationMinutes * 60)
+    }
+    val previewJuz = khatmaStatsDayJuz(previewAyahs, previewPages)
+
+    Dialog(onDismissRequest = { if (!saving) onDismiss() }, properties = DialogProperties(usePlatformDefaultWidth = false)) {
+        CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+            Column(
+                Modifier.padding(16.dp).fillMaxWidth().clip(RoundedCornerShape(22.dp)).background(c.background),
+            ) {
+                Row(
+                    Modifier.fillMaxWidth().background(c.card).padding(horizontal = 16.dp, vertical = 14.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Icon(
+                        Icons.Filled.Close,
+                        "إغلاق",
+                        tint = c.secondary,
+                        modifier = Modifier.size(22.dp).clickable(enabled = !saving) { onDismiss() },
+                    )
+                    Spacer(Modifier.width(12.dp))
+                    StatsText("تفاصيل اليوم", 17f, c.label, Modifier.weight(1f), FontWeight.Bold)
+                    Row(
+                        Modifier.clip(CircleShape).background(c.progress.copy(alpha = 0.14f))
+                            .clickable(enabled = !saving) { showAddDialog = true }
+                            .padding(horizontal = 10.dp, vertical = 6.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(4.dp),
+                    ) {
+                        Icon(Icons.Filled.Add, null, tint = c.progress, modifier = Modifier.size(14.dp))
+                        StatsText("إضافة", 12f, c.progress, weight = FontWeight.Bold)
+                    }
+                }
+
+                Column(
+                    Modifier.fillMaxWidth().weight(1f, fill = false).verticalScroll(rememberScrollState()).padding(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(14.dp),
+                ) {
+                    Column(Modifier.fillMaxWidth().card(c, 16).padding(14.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            StatsText(
+                                runCatching { fullDate(LocalDate.parse(dateString)) }.getOrDefault(dateString),
+                                16f, c.label, Modifier.weight(1f), FontWeight.Bold,
+                            )
+                            if (hasChanges) {
+                                Box(Modifier.clip(CircleShape).background(c.caution.copy(alpha = 0.16f)).padding(horizontal = 8.dp, vertical = 3.dp)) {
+                                    StatsText("تعديلات غير محفوظة", 11f, c.caution, weight = FontWeight.Bold)
+                                }
+                            }
+                        }
+                        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            Box(Modifier.weight(1f).clip(RoundedCornerShape(10.dp)).background(c.cardInset).padding(vertical = 8.dp), contentAlignment = Alignment.Center) {
+                                SummaryColumn(c, "الآيات", indic(previewAyahs), c.progress, Modifier)
+                            }
+                            Box(Modifier.weight(1f).clip(RoundedCornerShape(10.dp)).background(c.cardInset).padding(vertical = 8.dp), contentAlignment = Alignment.Center) {
+                                SummaryColumn(c, "الصفحات", indic(previewPages), c.info, Modifier)
+                            }
+                            Box(Modifier.weight(1f).clip(RoundedCornerShape(10.dp)).background(c.cardInset).padding(vertical = 8.dp), contentAlignment = Alignment.Center) {
+                                SummaryColumn(c, "الأجزاء", number(previewJuz), c.insight, Modifier)
+                            }
+                            Box(Modifier.weight(1f).clip(RoundedCornerShape(10.dp)).background(c.cardInset).padding(vertical = 8.dp), contentAlignment = Alignment.Center) {
+                                SummaryColumn(c, "الوقت", duration(previewSeconds), c.secondary, Modifier)
+                            }
+                        }
+                    }
+
+                    Column(Modifier.fillMaxWidth().card(c, 16).padding(14.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            StatsText("المكتمل في هذا اليوم", 15f, c.label, Modifier.weight(1f), FontWeight.Bold)
+                            if (removedSurahs.isNotEmpty()) {
+                                StatsText("تراجع", 12f, c.progress, Modifier.clickable { removedSurahs = emptySet() }, FontWeight.Bold)
+                            }
+                        }
+                        if (visibleSurahs.isEmpty()) {
+                            StatsText("لا توجد سور مكتملة مسجلة في هذا اليوم", 13f, c.secondary)
+                        } else {
+                            visibleSurahs.forEach { item ->
+                                val surahName = surahs.firstOrNull { it.number == item.surahNumber }?.name ?: item.surahNumber.toString()
+                                val rangeText = khatmaStatsFormatRanges(item.ayahs)
+                                val pageText = if (item.minPage == item.maxPage) "ص ${indic(item.minPage)}" else "ص ${indic(item.minPage)}–${indic(item.maxPage)}"
+                                Row(
+                                    Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp)).background(c.cardInset).padding(10.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                                ) {
+                                    Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                                        StatsText("سورة $surahName", 15f, c.label, weight = FontWeight.SemiBold)
+                                        StatsText("الآيات $rangeText (${indic(item.ayahs.size)} آية) • $pageText", 12f, c.secondary)
+                                    }
+                                    Icon(
+                                        Icons.Filled.Delete,
+                                        "حذف",
+                                        tint = c.danger,
+                                        modifier = Modifier.size(20.dp).clickable(enabled = !saving) {
+                                            removedSurahs = removedSurahs + item.surahNumber
+                                            statusText = null
+                                        },
+                                    )
+                                }
+                            }
+                        }
+
+                        Row(
+                            Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp)).background(c.progress.copy(alpha = 0.12f))
+                                .clickable(enabled = !saving) { showAddDialog = true }
+                                .padding(vertical = 10.dp, horizontal = 12.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Center,
+                        ) {
+                            Icon(Icons.Filled.AddCircle, null, tint = c.progress, modifier = Modifier.size(18.dp))
+                            Spacer(Modifier.width(6.dp))
+                            StatsText("إضافة قراءة لهذا اليوم", 13f, c.progress, weight = FontWeight.Bold)
+                        }
+                    }
+
+                    if (visibleEvents.isNotEmpty() || visibleLegacy != null) {
+                        Column(Modifier.fillMaxWidth().card(c, 16).padding(14.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                StatsText("الجلسات المسجلة", 15f, c.label, Modifier.weight(1f), FontWeight.Bold)
+                                if (removedEvents.isNotEmpty() || removeLegacy) {
+                                    StatsText("تراجع", 12f, c.progress, Modifier.clickable {
+                                        removedEvents = emptySet()
+                                        removeLegacy = false
+                                    }, FontWeight.Bold)
+                                }
+                            }
+                            visibleEvents.forEach { ev ->
+                                Row(
+                                    Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp)).background(c.cardInset).padding(10.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                                ) {
+                                    Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                                        StatsText("جلسة قراءة", 14f, c.label, weight = FontWeight.Medium)
+                                        StatsText("${indic(ev.ayahsRead)} آية • ${indic(ev.pagesRead)} ص • ${duration(ev.secondsRead)}", 12f, c.secondary)
+                                    }
+                                    Icon(
+                                        Icons.Filled.Delete,
+                                        "حذف",
+                                        tint = c.danger,
+                                        modifier = Modifier.size(20.dp).clickable(enabled = !saving) {
+                                            removedEvents = removedEvents + ev.id
+                                            statusText = null
+                                        },
+                                    )
+                                }
+                            }
+                            visibleLegacy?.let { leg ->
+                                Row(
+                                    Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp)).background(c.cardInset).padding(10.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                                ) {
+                                    Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                                        StatsText("نشاط مسجل سابقًا", 14f, c.label, weight = FontWeight.Medium)
+                                        StatsText("${indic(leg.ayahsRead)} آية • ${indic(leg.pagesRead)} ص • ${duration(leg.secondsRead)}", 12f, c.secondary)
+                                    }
+                                    Icon(
+                                        Icons.Filled.Delete,
+                                        "حذف",
+                                        tint = c.danger,
+                                        modifier = Modifier.size(20.dp).clickable(enabled = !saving) {
+                                            removeLegacy = true
+                                            statusText = null
+                                        },
+                                    )
+                                }
+                            }
+                        }
+                    }
+
+                    if (pendingAdditions.isNotEmpty()) {
+                        Column(Modifier.fillMaxWidth().card(c, 16).padding(14.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                            StatsText("إضافات بانتظار الحفظ", 15f, c.label, weight = FontWeight.Bold)
+                            pendingAdditions.forEach { add ->
+                                Row(
+                                    Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp)).background(c.cardInset).padding(10.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                                ) {
+                                    Icon(Icons.Filled.AddCircle, null, tint = c.progress, modifier = Modifier.size(18.dp))
+                                    StatsText(add.label, 13f, c.label, Modifier.weight(1f), FontWeight.Medium)
+                                    Icon(
+                                        Icons.Filled.Close,
+                                        "إزالة",
+                                        tint = c.secondary,
+                                        modifier = Modifier.size(18.dp).clickable(enabled = !saving) {
+                                            pendingAdditions = pendingAdditions.filterNot { it.id == add.id }
+                                        },
+                                    )
+                                }
+                            }
+                        }
+                    }
+
+                    Row(
+                        Modifier.fillMaxWidth().clip(RoundedCornerShape(14.dp))
+                            .background(if (saving) c.progressFill.copy(alpha = 0.6f) else c.progressFill)
+                            .clickable(enabled = !saving) {
+                                scope.launch {
+                                    saving = true
+                                    statusText = null
+                                    statusError = false
+                                    if (hasChanges) {
+                                        val ok = withContext(Dispatchers.IO) {
+                                            KhatmaStatsDayStore.applyEdits(
+                                                dbPath = tracker.db.databaseFile.path,
+                                                khatmaId = khatma.id,
+                                                khatmaNumber = khatma.khatmaNumber,
+                                                dateString = dateString,
+                                                removedSurahs = initial.completedSurahs.filter { it.surahNumber in removedSurahs },
+                                                removedEventIds = removedEvents,
+                                                removeLegacy = removeLegacy,
+                                                additions = pendingAdditions,
+                                            )
+                                        }
+                                        if (!ok) {
+                                            saving = false
+                                            statusError = true
+                                            statusText = "تعذر حفظ التعديلات محليًا."
+                                            return@launch
+                                        }
+                                        tracker.refreshStats()
+                                        removedSurahs = emptySet()
+                                        removedEvents = emptySet()
+                                        removeLegacy = false
+                                        pendingAdditions = emptyList()
+                                    }
+                                    val (_, err) = LiveSync.syncKhatmaNow()
+                                    saving = false
+                                    if (err != null) {
+                                        statusError = true
+                                        statusText = "تم الحفظ محليًا، وتعذرت المزامنة: $err"
+                                    } else {
+                                        onSavedAndSynced()
+                                    }
+                                }
+                            }
+                            .padding(vertical = 13.dp, horizontal = 16.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center,
+                    ) {
+                        if (saving) {
+                            CircularProgressIndicator(modifier = Modifier.size(18.dp), color = Color.White, strokeWidth = 2.dp)
+                            Spacer(Modifier.width(8.dp))
+                            StatsText("جاري الحفظ والمزامنة...", 15f, Color.White, weight = FontWeight.Bold)
+                        } else {
+                            Icon(Icons.Filled.CloudUpload, null, tint = Color.White, modifier = Modifier.size(18.dp))
+                            Spacer(Modifier.width(8.dp))
+                            StatsText("حفظ ومزامنة مع السحابة", 15f, Color.White, weight = FontWeight.Bold)
+                        }
+                    }
+
+                    statusText?.let { msg ->
+                        StatsText(msg, 12f, if (statusError) c.danger else c.progress)
+                    }
+                }
+            }
+        }
+    }
+
+    if (showAddDialog) {
+        AddReadingSessionDialog(
+            surahs = surahs,
+            surahAyahCounts = surahAyahCounts,
+            onDismiss = { showAddDialog = false },
+            onSaveSession = { fromS, fromA, toS, toA, mins ->
+                val s1 = min(fromS, toS).coerceIn(1, 114)
+                val s2 = max(fromS, toS).coerceIn(1, 114)
+                val items = mutableListOf<Triple<Int, Int, Int>>()
+                for (s in s1..s2) {
+                    val maxA = surahAyahCounts[s] ?: 0
+                    val a1 = if (s == s1) max(1, fromA) else 1
+                    val a2 = if (s == s2) min(maxA, toA) else maxA
+                    for (a in a1..a2) {
+                        items.add(Triple(s, a, surahs.firstOrNull { it.number == s }?.firstPage ?: 1))
+                    }
+                }
+                if (items.isNotEmpty()) {
+                    val s1Name = surahs.firstOrNull { it.number == s1 }?.name ?: s1.toString()
+                    val s2Name = surahs.firstOrNull { it.number == s2 }?.name ?: s2.toString()
+                    val desc = if (s1 == s2) "$s1Name (${indic(fromA)}–${indic(toA)})" else "$s1Name – $s2Name"
+                    pendingAdditions = pendingAdditions + KhatmaStatsPendingAdd(
+                        id = UUID.randomUUID().toString(),
+                        label = "$desc • ${indic(mins)} د",
+                        items = items,
+                        pageCount = items.map { it.third }.toSet().size,
+                        durationMinutes = mins,
+                    )
+                    statusText = null
+                }
+                showAddDialog = false
+            },
+            onSavePageSession = { fromP, toP, mins ->
+                val p1 = min(fromP, toP).coerceIn(1, 604)
+                val p2 = max(fromP, toP).coerceIn(1, 604)
+                val resolver = khatmaStatsResolvePageAyahs(context)
+                val items = mutableListOf<Triple<Int, Int, Int>>()
+                for (p in p1..p2) {
+                    for (k in resolver(p)) {
+                        items.add(Triple(k.surah, k.ayah, p))
+                    }
+                }
+                if (items.isNotEmpty()) {
+                    val desc = if (p1 == p2) "صفحة ${indic(p1)}" else "الصفحات ${indic(p1)}–${indic(p2)}"
+                    pendingAdditions = pendingAdditions + KhatmaStatsPendingAdd(
+                        id = UUID.randomUUID().toString(),
+                        label = "$desc • ${indic(mins)} د",
+                        items = items,
+                        pageCount = p2 - p1 + 1,
+                        durationMinutes = mins,
+                    )
+                    statusText = null
+                }
+                showAddDialog = false
+            },
+        )
     }
 }

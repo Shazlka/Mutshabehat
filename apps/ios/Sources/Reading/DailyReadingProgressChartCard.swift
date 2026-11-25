@@ -171,6 +171,7 @@ struct ReadingChartSummary: Equatable {
 
 struct DailyReadingProgressChartCard: View {
     let days: [ReadingDayRecord]
+    var onSelectDay: ((String) -> Void)? = nil
 
     @AppStorage(AppLanguage.storageKey) private var languageRaw: String = AppLanguage.defaultCode
     @AppStorage("reading.chart.metric") private var selectedMetric: ReadingChartMetric = .pages
@@ -274,40 +275,52 @@ struct DailyReadingProgressChartCard: View {
     // MARK: - Summary
 
     private func dayCallout(_ point: DailyReadingChartPoint) -> some View {
-        HStack(spacing: 12) {
-            VStack(alignment: .leading, spacing: 3) {
-                Text(verbatim: Self.fullDateFormatter(isArabic: isArabic).string(from: point.date))
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(.secondary)
+        Button {
+            onSelectDay?(point.dateString)
+        } label: {
+            HStack(spacing: 12) {
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(verbatim: Self.fullDateFormatter(isArabic: isArabic).string(from: point.date))
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.secondary)
 
-                Text(verbatim: selectedMetric.formatted(point.value(for: selectedMetric), isArabic: isArabic))
-                    .font(.title3.weight(.bold))
-                    .foregroundStyle(selectedMetric.tintColor)
-            }
-
-            Spacer()
-
-            if point.seconds > 0 {
-                HStack(spacing: 4) {
-                    Image(systemName: "clock")
-                        .font(.caption2)
-                    Text(verbatim: formatDuration(point.seconds))
-                        .font(.caption.bold())
+                    Text(verbatim: selectedMetric.formatted(point.value(for: selectedMetric), isArabic: isArabic))
+                        .font(.title3.weight(.bold))
+                        .foregroundStyle(selectedMetric.tintColor)
                 }
-                .foregroundStyle(Color.info)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .background(Color.info.opacity(0.12))
-                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+
+                Spacer()
+
+                if point.seconds > 0 {
+                    HStack(spacing: 4) {
+                        Image(systemName: "clock")
+                            .font(.caption2)
+                        Text(verbatim: formatDuration(point.seconds))
+                            .font(.caption.bold())
+                    }
+                    .foregroundStyle(Color.info)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(Color.info.opacity(0.12))
+                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                }
+
+                if onSelectDay != nil {
+                    Image(systemName: "chevron.forward")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(selectedMetric.tintColor)
+                }
             }
+            .padding(10)
+            .background(selectedMetric.tintColor.opacity(0.08))
+            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            .overlay(
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .stroke(selectedMetric.tintColor.opacity(0.28), lineWidth: 1)
+            )
         }
-        .padding(10)
-        .background(selectedMetric.tintColor.opacity(0.08))
-        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-        .overlay(
-            RoundedRectangle(cornerRadius: 12, style: .continuous)
-                .stroke(selectedMetric.tintColor.opacity(0.28), lineWidth: 1)
-        )
+        .buttonStyle(.plain)
+        .disabled(onSelectDay == nil)
         .accessibilityElement(children: .combine)
         .accessibilityIdentifier("reading-chart-day")
     }

@@ -265,3 +265,96 @@ public enum KhatmaProgress {
         return min(pages / Double(totalPages) * 100, 99)
     }
 }
+
+public struct CompletedSurahDayItem: Identifiable, Hashable, Sendable {
+    public var id: Int { surahNumber }
+    public let surahNumber: Int
+    public let ayahs: [Int]
+    public let pages: [Int]
+
+    public init(surahNumber: Int, ayahs: [Int], pages: [Int]) {
+        self.surahNumber = surahNumber
+        self.ayahs = Array(Set(ayahs)).sorted()
+        self.pages = Array(Set(pages)).sorted()
+    }
+
+    public var minPage: Int { pages.first ?? 1 }
+    public var maxPage: Int { pages.last ?? minPage }
+
+    public func formattedAyahRanges(isArabic: Bool) -> String {
+        guard !ayahs.isEmpty else { return "" }
+        var ranges: [(Int, Int)] = []
+        var start = ayahs[0]
+        var end = ayahs[0]
+        for value in ayahs.dropFirst() {
+            if value == end + 1 {
+                end = value
+            } else {
+                ranges.append((start, end))
+                start = value
+                end = value
+            }
+        }
+        ranges.append((start, end))
+        let formatNumber: (Int) -> String = { isArabic ? ArabicDigits.string($0) : "\($0)" }
+        let separator = isArabic ? "، " : ", "
+        return ranges.map { pair in
+            pair.0 == pair.1 ? formatNumber(pair.0) : "\(formatNumber(pair.0))–\(formatNumber(pair.1))"
+        }.joined(separator: separator)
+    }
+}
+
+public struct ReadingActivityEventRecord: Identifiable, Hashable, Sendable {
+    public let id: String
+    public let dateString: String
+    public let ayahsRead: Int
+    public let pagesRead: Int
+    public let secondsRead: Int
+    public let recordedAt: Date
+
+    public init(id: String, dateString: String, ayahsRead: Int, pagesRead: Int, secondsRead: Int, recordedAt: Date) {
+        self.id = id
+        self.dateString = dateString
+        self.ayahsRead = ayahsRead
+        self.pagesRead = pagesRead
+        self.secondsRead = secondsRead
+        self.recordedAt = recordedAt
+    }
+}
+
+public struct ReadingDayDetail: Sendable {
+    public let dateString: String
+    public let summary: ReadingDayRecord?
+    public let completedSurahs: [CompletedSurahDayItem]
+    public let activityEvents: [ReadingActivityEventRecord]
+    public let legacyActivity: ReadingDayRecord?
+
+    public init(
+        dateString: String,
+        summary: ReadingDayRecord?,
+        completedSurahs: [CompletedSurahDayItem],
+        activityEvents: [ReadingActivityEventRecord],
+        legacyActivity: ReadingDayRecord?
+    ) {
+        self.dateString = dateString
+        self.summary = summary
+        self.completedSurahs = completedSurahs
+        self.activityEvents = activityEvents
+        self.legacyActivity = legacyActivity
+    }
+}
+
+public struct PendingDayReadingAddition: Identifiable, Sendable {
+    public let id = UUID()
+    public let label: String
+    public let items: [(surah: Int, ayah: Int, page: Int)]
+    public let pageCount: Int
+    public let durationMinutes: Int
+
+    public init(label: String, items: [(surah: Int, ayah: Int, page: Int)], pageCount: Int, durationMinutes: Int) {
+        self.label = label
+        self.items = items
+        self.pageCount = pageCount
+        self.durationMinutes = durationMinutes
+    }
+}
