@@ -1,3 +1,10 @@
+## 2026-11-25 — Web security hardening (dependencies, XSS, CSRF, BOLA, headers)
+- **Dependencies:** Upgraded `next` & `eslint-config-next` (`16.2.6` → `16.4.6`) and ran `npm audit fix` to clear the critical Next.js advisories along with `postcss`, `sharp`, `sanitize-html`, `undici`, `nanoid`, `brace-expansion`, `source-map-js`, and `baseline-browser-mapping` (only transitive `uuid < 11.1.1` inside `exceljs` remains, intentionally avoiding a breaking `exceljs` downgrade).
+- **XSS (`src/components/RichEditor.tsx`):** Sanitized external `value` through `sanitizeNote()` before assigning `el.innerHTML`.
+- **CSRF (`src/proxy.ts`):** Added centralized same-origin & `Sec-Fetch-Site: cross-site` validation (`403 Forbidden`) for all non-public mutating `/api/*` requests (`POST`, `PUT`, `PATCH`, `DELETE`).
+- **Validation, BOLA defense-in-depth & hygiene:** Added payload size (`512 KiB`, `413`), array bounds (`500` tags, `5,000` links), UUID/color validation, and user-scoped query filtering in `src/app/api/tags/import/route.ts`, `src/app/api/tags/route.ts`, and `src/app/api/tags/[id]/route.ts`; avoided raw database error message responses on tag routes. Disabled browser source maps explicitly (`productionBrowserSourceMaps: false`) and added security headers (`X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, `Strict-Transport-Security`) in `next.config.ts`.
+- **Verification:** `tsc --noEmit` clean, `npm run build` clean (0 `.map` files), `tests/proxy-autologin.test.mjs` + `tests/public-api.test.ts` (16/16 run passing, 1 env-gated skipped), `test:reading` (22/22), `test:memorization` (181/181), `test:storage` (14/14), `test:quiz` (77/77), `test:qiraat:features` (156/156), `test:mutoon` (28/28). **DB migration:** none.
+
 ## 2026-11-16 — iOS parity: no page slider on phones, iOS type sizes in the chrome
 - Removed the page scrubber above the phone footer (page jumps live in the Index sheet, like iOS). Phone top bar text now uses the iOS sizes: surah title 19, page number 15, Juz/Hizb 13, Qiraat chip 12; footer labels 10 (system tab-bar size). Desktop unchanged.
 

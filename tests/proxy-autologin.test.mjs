@@ -61,3 +61,19 @@ test('proxy immediately bypasses /api/public/* with no auth check and no cookies
     assert.equal(response.headers.get('set-cookie'), null, `Expected no set-cookie for ${url}`)
   }
 })
+
+test('proxy rejects cross-origin and cross-site API mutations with 403', async () => {
+  const evilOriginReq = new NextRequest('https://mutshabehat-v2.vercel.app/api/groups', {
+    method: 'POST',
+    headers: { origin: 'https://evil.example' },
+  })
+  const evilRes = await proxy(evilOriginReq)
+  assert.equal(evilRes.status, 403)
+
+  const crossSiteReq = new NextRequest('https://mutshabehat-v2.vercel.app/api/tags', {
+    method: 'POST',
+    headers: { 'sec-fetch-site': 'cross-site' },
+  })
+  const crossRes = await proxy(crossSiteReq)
+  assert.equal(crossRes.status, 403)
+})

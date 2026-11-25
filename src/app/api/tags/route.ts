@@ -11,9 +11,10 @@ export async function GET() {
   const { data, error } = await supabase
     .from('tags')
     .select('*')
+    .eq('user_id', user.id)
     .order('name', { ascending: true })
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  if (error) return NextResponse.json({ error: 'failed to load tags' }, { status: 500 })
   return NextResponse.json({ tags: data || [] })
 }
 

@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { sanitizeNote } from '@/lib/sanitize'
 
 interface Props {
   value: string
@@ -19,10 +20,11 @@ const TOOLBAR = [
 export default function RichEditor({ value, onChange, placeholder }: Props) {
   const ref = useRef<HTMLDivElement>(null)
 
-  // Sync external value → DOM (only when DOM differs to preserve caret)
+  // Sync external value → DOM (sanitized, only when DOM differs to preserve caret)
   useEffect(() => {
     const el = ref.current
-    if (el && el.innerHTML !== value) el.innerHTML = value || ''
+    const clean = sanitizeNote(value) ?? ''
+    if (el && el.innerHTML !== clean) el.innerHTML = clean
   }, [value])
 
   function exec(cmd: string) {

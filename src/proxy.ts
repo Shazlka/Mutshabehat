@@ -7,6 +7,36 @@ import { resilientFetch } from '@/lib/resilient-fetch'
 // silently establishes a session for the one account (credentials in
 // AUTOLOGIN_EMAIL / AUTOLOGIN_PASSWORD) so every request is authenticated and
 // RLS (`auth.uid()`) keeps working unchanged.
+function isLocalHostname(hostname: string): boolean {
+  return hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1'
+}
+
+function isSameOriginMutation(request: NextRequest): boolean {
+  const secFetchSite = request.headers.get('sec-fetch-site')
+  if (secFetchSite === 'cross-site') return false
+
+  const origin = request.headers.get('origin')
+  if (!origin) return true
+
+  try {
+    const originUrl = new URL(origin)
+    const reqUrl = new URL(request.url)
+    if (isLocalHostname(originUrl.hostname) && isLocalHostname(reqUrl.hostname)) {
+      return true
+    }
+    if (originUrl.origin === reqUrl.origin) return true
+
+    const host = request.headers.get('x-forwarded-host') || request.headers.get('host')
+    if (host && originUrl.host === host) {
+      const proto = request.headers.get('x-forwarded-proto')
+      if (!proto || originUrl.protocol === `${proto}:`) return true
+    }
+    return false
+  } catch {
+    return false
+  }
+}
+
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
   const normalizedPath = pathname.toLowerCase()
@@ -22,6 +52,17 @@ export async function proxy(request: NextRequest) {
     normalizedPath.startsWith('/support/')
   ) {
     return NextResponse.next()
+  }
+
+  // Enforce same-origin CSRF checks on all cookie-backed API mutations.
+  if (
+    pathname.startsWith('/api/') &&
+    request.method !== 'GET' &&
+    request.method !== 'HEAD' &&
+    request.method !== 'OPTIONS' &&
+    !isSameOriginMutation(request)
+  ) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
   }
 
   let supabaseResponse = NextResponse.next({ request })

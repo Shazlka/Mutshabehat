@@ -20,8 +20,8 @@ export async function PATCH(request: NextRequest, ctx: Ctx) {
     return NextResponse.json({ error: 'nothing to update' }, { status: 400 })
   }
 
-  const { error } = await supabase.from('tags').update(updates).eq('id', id)
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  const { error } = await supabase.from('tags').update(updates).eq('id', id).eq('user_id', user.id)
+  if (error) return NextResponse.json({ error: 'failed to update tag' }, { status: 500 })
   return NextResponse.json({ success: true })
 }
 
@@ -32,7 +32,7 @@ export async function DELETE(_request: NextRequest, ctx: Ctx) {
   const user = await getSessionUser(supabase)
   if (!user) return NextResponse.json({ error: 'unauthorized' }, { status: 401 })
 
-  const { error } = await supabase.from('tags').delete().eq('id', id)
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  const { error } = await supabase.from('tags').delete().eq('id', id).eq('user_id', user.id)
+  if (error) return NextResponse.json({ error: 'failed to delete tag' }, { status: 500 })
   return NextResponse.json({ success: true })
 }
