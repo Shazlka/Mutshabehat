@@ -5,7 +5,7 @@
 - Made every day in `WeeklyStreak`, `DailyChart` selected day callout, and `DailyHistory` inside `KhatmaStatsUi.kt` clickable to open `KhatmaStatsDayDetailDialog`.
 - Shows the clicked day's live summary (ayahs, pages, juz’, duration), completed surah ayah/page ranges grouped from `khatma_read_ayahs`, logged sessions (`reading_activity_events`), and legacy activity (`reading_days_legacy`).
 - Supports staging deletions (with `reading_deletions` `kind='ayah'` tombstones and undo before saving), staging additions via `AddReadingSessionDialog` (with full page-range ayah lookup from `MushafDatabase`), saving atomically (`KhatmaStatsDayStore.applyEdits`), and syncing immediately to Neon Cloud via `LiveSync.syncKhatmaNow()` (`SyncEngine.kt`).
-- Added unit tests in `KhatmaStatsTest.kt` (`101/101` unit tests passing, `0` failures).
+- Added unit tests in `KhatmaStatsTest.kt` (`101/101` unit tests passing, `0` failures); rebuilt `dist/Qiraat-Cloud-Sync-v9.apk` (exported to `~/Downloads/Qiraat-Cloud-Sync-v9.apk`) and installed onto Samsung Galaxy A24 (`RK8W602ZRBH`) and `emulator-5562`.
 
 ## 2026-11-25 — Android manifest & sync log hardening
 

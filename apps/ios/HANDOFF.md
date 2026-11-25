@@ -27,7 +27,7 @@ Fixed OAuth token refresh, session expiry recovery, and login edge cases across 
 - **Khatma Day Detail Window & Instant Cloud Sync (`2026-11-25`, iOS + Android):**
   - Tapping any day in Weekly Streak, the Bar Chart day callout, or Daily Reading History opens `ReadingDayDetailView` (iOS) / `KhatmaStatsDayDetailDialog` (Android) showing completed surah ranges (`khatma_read_ayahs`) + logged sessions (`reading_activity_events` / legacy) for that day.
   - Supports staging deletions (`kind='ayah'` tombstones in `reading_deletions`), staging additions scoped to that day, atomic SQLite save (`reading_days` recomputed), and immediate Neon Cloud `.khatma` sync (`CloudAccount.sync` on iOS, `LiveSync.syncKhatmaNow` on Android).
-  - Verified on Simulator (`62/62` across `ReadingTests`, `ReadingCloudSyncTests`, `CloudAuthTests`, `CloudProgressTests`), installed on **Shazly iPhone Air**, passed `101/101` Android unit tests, rebuilt `Qiraat-Cloud-Sync-v9.apk`, and installed on `emulator-5562` (physical Galaxy A24 was disconnected during this build).
+  - Verified on Simulator (`62/62` across `ReadingTests`, `ReadingCloudSyncTests`, `CloudAuthTests`, `CloudProgressTests`), installed on **Shazly iPhone Air** (`00008150-001178293C02401C`), passed `101/101` Android unit tests, rebuilt `apps/android/dist/Qiraat-Cloud-Sync-v9.apk` (also saved to `~/Downloads/Qiraat-Cloud-Sync-v9.apk`), and installed onto **Samsung Galaxy A24** (`RK8W602ZRBH`) + `emulator-5562`. *(Do not commit the `142M` APK into git because GitHub rejects blobs >100 MiB; attach it as a GitHub Release asset once `github.com` connectivity/`gh auth` is restored.)*
 
 ---
 
